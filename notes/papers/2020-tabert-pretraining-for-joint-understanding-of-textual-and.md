@@ -13,7 +13,11 @@ raw_md: raw/papers/2005.08314.md
 raw_pdf: raw/papers/2005.08314.pdf
 read: false
 slug: tabert-pretraining-for-joint-understanding-of-textual-and
-tags: []
+tags:
+- pretraining
+- tabular
+- nlp
+- transformer
 title: 'TaBERT: Pretraining for Joint Understanding of Textual and Tabular Data'
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Recent years have witnessed the burgeoning of pretrained language models (LMs) f
 - PDF: `raw/papers/2005.08314.pdf`
 - arXiv: <http://arxiv.org/abs/2005.08314v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-yin-tabert]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-yin-tabert.md` before that tree was retired.*
+
+TaBERT — BERT applied to natural language plus linearized tables (semantic, not predictive).

@@ -12,7 +12,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2009-koren-matrix-factorization
-tags: []
+tags:
+- recsys
+- matrix-factorization
+- optimization
 title: Matrix Factorization Techniques for Recommender Systems
 type: note
 updated: '2026-05-09'
@@ -33,6 +36,9 @@ year: 2009
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2009-koren-matrix-factorization]]
+*Imported 2026-05-09 from `papers/2009-koren-matrix-factorization.md` before that tree was retired.*
+
+Netflix retrospective — winners were ensembles of classical models, not deep nets.

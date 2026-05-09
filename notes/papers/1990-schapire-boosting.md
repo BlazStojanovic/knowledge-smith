@@ -2,7 +2,7 @@
 arxiv: null
 authors:
 - Robert E. Schapire
-created: '2026-05-09'
+created: 2026-05-09
 doi: null
 kind: paper
 parser: none
@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1990-schapire-boosting
-tags: []
+tags:
+- boosting
+- ml
+- theory
 title: The Strength of Weak Learnability
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1990
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1990-schapire-boosting]]
+*Imported 2026-05-09 from `papers/1990-schapire-boosting.md` before that tree was retired.*
+
+Proof that weak learnability implies strong learnability.

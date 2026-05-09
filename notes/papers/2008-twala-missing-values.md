@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2008-twala-missing-values
-tags: []
+tags:
+- missing-data
+- decision-tree
+- tabular
 title: An Empirical Study of Missing Data and Imputation Strategies in Decision Tree
   Classification
 type: note
@@ -32,6 +35,9 @@ year: 2008
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2008-twala-missing-values]]
+*Imported 2026-05-09 from `papers/2008-twala-missing-values.md` before that tree was retired.*
+
+Empirical comparison of tree missingness strategies; canonical "trees just handle NA" reference.

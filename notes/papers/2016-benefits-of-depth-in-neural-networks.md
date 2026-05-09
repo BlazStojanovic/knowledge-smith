@@ -10,7 +10,10 @@ raw_md: raw/papers/1602.04485.md
 raw_pdf: raw/papers/1602.04485.pdf
 read: false
 slug: benefits-of-depth-in-neural-networks
-tags: []
+tags:
+- theory
+- deep-learning
+- generalization
 title: Benefits of depth in neural networks
 type: note
 updated: '2026-05-09'
@@ -41,5 +44,9 @@ For any positive integer $k$, there exist neural networks with $Θ(k^3)$ layers,
 - PDF (gitignored): `raw/papers/1602.04485.pdf`
 - arXiv: <http://arxiv.org/abs/1602.04485v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-telgarsky-benefits-of-depth]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-telgarsky-benefits-of-depth.md` before that tree was retired.*
+
+Constructs a $\Theta(k^3)$-layer ReLU network whose function any $o(k)$-layer network requires $\Omega(2^k)$ width to approximate, formalizing a depth-vs-width separation theorem that anchors expressivity-side arguments about why deep networks can represent functions shallow ones cannot.

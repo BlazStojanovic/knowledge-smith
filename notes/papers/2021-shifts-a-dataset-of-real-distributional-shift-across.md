@@ -27,7 +27,11 @@ raw_md: raw/papers/2107.07455.md
 raw_pdf: raw/papers/2107.07455.pdf
 read: false
 slug: shifts-a-dataset-of-real-distributional-shift-across
-tags: []
+tags:
+- benchmark
+- uncertainty
+- tabular
+- generalization
 title: 'Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale
   Tasks'
 type: note
@@ -59,5 +63,9 @@ There has been significant research done on developing methods for improving rob
 - PDF: `raw/papers/2107.07455.pdf`
 - arXiv: <http://arxiv.org/abs/2107.07455v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-malinin-shifts]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-malinin-shifts.md` before that tree was retired.*
+
+"Shifts" — real-world distributional drift benchmark including a tabular track.

@@ -14,7 +14,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2014-srivastava-dropout
-tags: []
+tags:
+- generalization
+- deep-learning
+- regularization
 title: 'Dropout: A Simple Way to Prevent Neural Networks from Overfitting'
 type: note
 updated: '2026-05-09'
@@ -35,6 +38,9 @@ year: 2014
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2014-srivastava-dropout]]
+*Imported 2026-05-09 from `papers/2014-srivastava-dropout.md` before that tree was retired.*
+
+Dropout; standard regularizer ported onto tabular MLPs.

@@ -11,7 +11,10 @@ raw_md: raw/papers/2010.07890.md
 raw_pdf: raw/papers/2010.07890.pdf
 read: false
 slug: formulas-for-coefficients-of-polynomials-assigned-to
-tags: []
+tags:
+- theory
+- number-theory
+- combinatorics
 title: Formulas for coefficients of polynomials assigned to arithmetic functions
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ We attach to normalized (non-vanishing) arithmetic functions $g$ and $h$ recursi
 - PDF: `raw/papers/2010.07890.pdf`
 - arXiv: <http://arxiv.org/abs/2010.07890v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-cerda-dirty-categories]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-cerda-dirty-categories.md` before that tree was retired.*
+
+Gamma-Poisson and min-hash encoding for very high-cardinality strings.

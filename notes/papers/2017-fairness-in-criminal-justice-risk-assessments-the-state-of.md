@@ -14,7 +14,10 @@ raw_md: raw/papers/1703.09207.md
 raw_pdf: raw/papers/1703.09207.pdf
 read: false
 slug: fairness-in-criminal-justice-risk-assessments-the-state-of
-tags: []
+tags:
+- fairness
+- ml
+- evaluation
 title: 'Fairness in Criminal Justice Risk Assessments: The State of the Art'
 type: note
 updated: '2026-05-09'
@@ -48,5 +51,9 @@ Objectives: Discussions of fairness in criminal justice risk assessments typical
 - PDF (gitignored): `raw/papers/1703.09207.pdf`
 - arXiv: <http://arxiv.org/abs/1703.09207v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-chouldechova-fairness]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-chouldechova-fairness.md` before that tree was retired.*
+
+Foundational "fairness criteria are incompatible" paper.

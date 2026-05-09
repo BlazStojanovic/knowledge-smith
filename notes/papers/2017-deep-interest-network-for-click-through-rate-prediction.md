@@ -19,7 +19,11 @@ raw_md: raw/papers/1706.06978.md
 raw_pdf: raw/papers/1706.06978.pdf
 read: false
 slug: deep-interest-network-for-click-through-rate-prediction
-tags: []
+tags:
+- ctr-prediction
+- attention
+- recsys
+- feature-encoding
 title: Deep Interest Network for Click-Through Rate Prediction
 type: note
 updated: '2026-05-09'
@@ -50,5 +54,9 @@ Click-through rate prediction is an essential task in industrial applications, s
 - PDF: `raw/papers/1706.06978.pdf`
 - arXiv: <http://arxiv.org/abs/1706.06978v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-zhou-din]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-zhou-din.md` before that tree was retired.*
+
+Alibaba's DIN — attention over user history for e-commerce CTR.

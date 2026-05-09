@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2000-dietterich-ensemble-methods
-tags: []
+tags:
+- ml
+- ensemble
+- survey
 title: Ensemble Methods in Machine Learning
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2000
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2000-dietterich-ensemble-methods]]
+*Imported 2026-05-09 from `papers/2000-dietterich-ensemble-methods.md` before that tree was retired.*
+
+Crisp survey of bagging, boosting, and stacking as ensemble consensus.

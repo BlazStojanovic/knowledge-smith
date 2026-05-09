@@ -11,7 +11,10 @@ raw_md: raw/papers/1705.07874.md
 raw_pdf: raw/papers/1705.07874.pdf
 read: false
 slug: a-unified-approach-to-interpreting-model-predictions
-tags: []
+tags:
+- interpretability
+- ml
+- feature-encoding
 title: A Unified Approach to Interpreting Model Predictions
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ Understanding why a model makes a certain prediction can be as crucial as the pr
 - PDF (gitignored): `raw/papers/1705.07874.pdf`
 - arXiv: <http://arxiv.org/abs/1705.07874v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-lundberg-shap]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-lundberg-shap.md` before that tree was retired.*
+
+SHAP — now the default for tabular explanations.

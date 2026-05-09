@@ -11,7 +11,11 @@ raw_md: raw/papers/2205.09328.md
 raw_pdf: raw/papers/2205.09328.pdf
 read: false
 slug: transtab-learning-transferable-tabular-transformers-across
-tags: []
+tags:
+- tabular
+- transformer
+- pretraining
+- fine-tuning
 title: 'TransTab: Learning Transferable Tabular Transformers Across Tables'
 type: note
 updated: '2026-05-09'
@@ -43,5 +47,9 @@ Tabular data (or tables) are the most widely used data format in machine learnin
 - PDF: `raw/papers/2205.09328.pdf`
 - arXiv: <http://arxiv.org/abs/2205.09328v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-wang-transtab]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-wang-transtab.md` before that tree was retired.*
+
+TransTab — transformer that serializes rows with column-name tokens across heterogeneous tables; direct precursor to TabPFN/CARTE framing.

@@ -12,7 +12,11 @@ raw_md: raw/papers/2306.11134.md
 raw_pdf: raw/papers/2306.11134.pdf
 read: false
 slug: openp5-an-open-source-platform-for-developing-training-and
-tags: []
+tags:
+- recsys
+- llm
+- pretraining
+- benchmark
 title: 'OpenP5: An Open-Source Platform for Developing, Training, and Evaluating LLM-based
   Recommender Systems'
 type: note
@@ -44,5 +48,9 @@ In recent years, the integration of Large Language Models (LLMs) into recommende
 - PDF: `raw/papers/2306.11134.pdf`
 - arXiv: <http://arxiv.org/abs/2306.11134v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-zharmagambetov-comprehensive]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2024-zharmagambetov-comprehensive.md` before that tree was retired.*
+
+Independent 2024 benchmark confirming DL frequently does not surpass GBMs.

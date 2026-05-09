@@ -11,7 +11,11 @@ raw_md: raw/papers/1603.02754.md
 raw_pdf: raw/papers/1603.02754.pdf
 read: false
 slug: xgboost-a-scalable-tree-boosting-system
-tags: []
+tags:
+- gradient-boosting
+- decision-tree
+- tabular
+- optimization
 title: 'XGBoost: A Scalable Tree Boosting System'
 type: note
 updated: '2026-05-09'
@@ -42,5 +46,9 @@ Tree boosting is a highly effective and widely used machine learning method. In 
 - PDF (gitignored): `raw/papers/1603.02754.pdf`
 - arXiv: <http://arxiv.org/abs/1603.02754v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-chen-xgboost]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-chen-xgboost.md` before that tree was retired.*
+
+XGBoost — the competition-destroying GBDT implementation.

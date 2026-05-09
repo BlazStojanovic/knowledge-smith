@@ -13,7 +13,10 @@ raw_md: raw/papers/1512.03385.md
 raw_pdf: raw/papers/1512.03385.pdf
 read: false
 slug: deep-residual-learning-for-image-recognition
-tags: []
+tags:
+- vision
+- deep-learning
+- cnn
 title: Deep Residual Learning for Image Recognition
 type: note
 updated: '2026-05-09'
@@ -45,5 +48,9 @@ Deeper neural networks are more difficult to train. We present a residual learni
 - PDF (gitignored): `raw/papers/1512.03385.pdf`
 - arXiv: <http://arxiv.org/abs/1512.03385v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-he-resnet]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-he-resnet.md` before that tree was retired.*
+
+ResNet — the deep-CNN backbone that later tabular papers try to transplant.

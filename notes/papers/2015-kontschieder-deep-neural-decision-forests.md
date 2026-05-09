@@ -13,7 +13,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2015-kontschieder-deep-neural-decision-forests
-tags: []
+tags:
+- decision-tree
+- deep-learning
+- vision
 title: Deep Neural Decision Forests
 type: note
 updated: '2026-05-09'
@@ -34,6 +37,9 @@ year: 2015
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2015-kontschieder-deep-neural-decision-forests]]
+*Imported 2026-05-09 from `papers/2015-kontschieder-deep-neural-decision-forests.md` before that tree was retired.*
+
+Deep Neural Decision Forests — canonical soft-tree paper (ICCV 2015).

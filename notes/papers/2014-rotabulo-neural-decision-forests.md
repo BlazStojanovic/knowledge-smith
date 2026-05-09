@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2014-rotabulo-neural-decision-forests
-tags: []
+tags:
+- decision-tree
+- ml
+- deep-learning
 title: A Neural Statistical Relational Learner Based on Random Decision Forests
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2014
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2014-rotabulo-neural-decision-forests]]
+*Imported 2026-05-09 from `papers/2014-rotabulo-neural-decision-forests.md` before that tree was retired.*
+
+CVPR 2014 — granddaddy of back-propagable decision forests.

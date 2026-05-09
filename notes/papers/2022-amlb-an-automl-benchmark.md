@@ -17,7 +17,10 @@ raw_md: raw/papers/2207.12560.md
 raw_pdf: raw/papers/2207.12560.pdf
 read: false
 slug: amlb-an-automl-benchmark
-tags: []
+tags:
+- benchmark
+- tabular
+- automl
 title: 'AMLB: an AutoML Benchmark'
 type: note
 updated: '2026-05-09'
@@ -47,6 +50,3 @@ Comparing different AutoML frameworks is notoriously challenging and often done 
 - Raw markdown: [[raw/papers/2207.12560]]
 - PDF: `raw/papers/2207.12560.pdf`
 - arXiv: <http://arxiv.org/abs/2207.12560v2>
-
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-gijsbers-amlb]]

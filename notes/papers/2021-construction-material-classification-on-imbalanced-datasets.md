@@ -13,7 +13,11 @@ raw_md: raw/papers/2108.09527.md
 raw_pdf: raw/papers/2108.09527.pdf
 read: false
 slug: construction-material-classification-on-imbalanced-datasets
-tags: []
+tags:
+- vision
+- transformer
+- imbalanced-data
+- fine-tuning
 title: Construction material classification on imbalanced datasets using Vision Transformer
   (ViT) architecture
 type: note
@@ -45,5 +49,9 @@ This research proposes a reliable model for identifying different construction m
 - PDF: `raw/papers/2108.09527.pdf`
 - arXiv: <http://arxiv.org/abs/2108.09527v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-darabi-contrastive-mixup]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-darabi-contrastive-mixup.md` before that tree was retired.*
+
+Contrastive Mixup for tabular self-supervised learning.

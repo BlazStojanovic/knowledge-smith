@@ -14,7 +14,11 @@ raw_md: raw/papers/2211.16887.md
 raw_pdf: raw/papers/2211.16887.pdf
 read: false
 slug: t2g-former-organizing-tabular-features-into-relation-graphs
-tags: []
+tags:
+- tabular
+- transformer
+- gnn
+- feature-encoding
 title: 'T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous
   Feature Interaction'
 type: note
@@ -46,5 +50,9 @@ Recent development of deep neural networks (DNNs) for tabular learning has large
 - PDF: `raw/papers/2211.16887.pdf`
 - arXiv: <http://arxiv.org/abs/2211.16887v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-yan-t2gformer]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-yan-t2gformer.md` before that tree was retired.*
+
+A transformer that automatically estimates a feature-relation graph from data and uses it to route attention, framing per-instance feature interaction as guided graph construction; reports competitive performance with tree-based models.

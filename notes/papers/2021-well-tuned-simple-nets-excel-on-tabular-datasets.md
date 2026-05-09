@@ -13,7 +13,11 @@ raw_md: raw/papers/2106.11189.md
 raw_pdf: raw/papers/2106.11189.pdf
 read: false
 slug: well-tuned-simple-nets-excel-on-tabular-datasets
-tags: []
+tags:
+- tabular
+- optimization
+- generalization
+- gradient-boosting
 title: Well-tuned Simple Nets Excel on Tabular Datasets
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,60 @@ Tabular datasets are the last "unconquered castle" for deep learning, with tradi
 - PDF: `raw/papers/2106.11189.pdf`
 - arXiv: <http://arxiv.org/abs/2106.11189v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-kadra-well-tuned-nets]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-kadra-well-tuned-nets.md` before that tree was retired.*
+
+> **2026-05-05 correction.** Previous stub had arXiv ID 2106.03253; the actual ID is **2106.11189** per the bib entry and verified abstract.
+
+- **ArXiv:** 2106.11189
+- **Authors:** Arlind Kadra, Marius Lindauer, Frank Hutter, Josif Grabocka
+- **Year:** 2021
+- **Venue:** NeurIPS 2021
+- **Raw:** [[raw/papers/2021-kadra-well-tuned-nets.pdf]]
+
+## Core claim
+
+A plain MLP, jointly tuned over a *cocktail* of 13 modern regularisation techniques, **outperforms specialised tabular DL architectures and outperforms XGBoost** on a 40-dataset benchmark. Tabular DL had been losing to GBDTs not because deep networks lacked expressivity but because the field had been comparing under-regularised MLPs to bespoke architectures and tuned trees. The recipe lives in the regularisation, not the backbone.
+
+## Architecture / Method
+
+The architecture is a vanilla MLP. The methodological contribution is a *joint hyperparameter optimisation* over (a) which regularisers to apply and (b) their continuous hyperparameters. The 13 regularisers cover:
+
+- **Weight decay / L2 / L1**, classic shrinkage.
+- **Dropout** (standard + variational).
+- **Batch / Layer Normalization.**
+- **Mixup** (input-space and feature-space convex combinations).
+- **Stochastic Depth.**
+- **Standard data augmentation** (per-feature jitter where applicable).
+- **Lookahead** optimizer wrapper.
+- **Snapshot ensembling.**
+- **Early stopping.**
+- **Knowledge distillation** (from a tuned tree-based model where applicable).
+
+A Bayesian optimiser searches over the joint space of (binary inclusion, continuous hyperparameters) per dataset. The search budget is comparable to what specialised tabular DL papers use for their own architectures.
+
+## Key result
+
+- **40 tabular datasets** from OpenML's CC-18 + complementary collections.
+- Well-regularised MLP (the "regularisation cocktail") outperforms TabNet, NODE, MLP, ResNet, and tuned XGBoost on the suite.
+- The headline finding: **architecture innovation is not the dominant variable; regularisation tuning is.**
+
+## Why it matters for §2.4.4 (the methodological correction)
+
+Kadra et al. is the most-cited single piece of evidence that "the deep-tabular gap was a tuning gap." For §2.4.4 it provides the controlled experiment:
+
+- **Hold the architecture constant** (plain MLP).
+- **Vary the regularisation discipline** (cocktail vs. standard).
+- **Observe** that the cocktail closes — and on this benchmark, beats — the GBDT and specialised-DL gap.
+
+This is the controlled experiment §2.4.4 needs. The paper lands awkwardly for the architectural-innovation school (it implies many of the architectural wins were tuning effects), and is later confirmed and extended by RealMLP [@holzmuller2024realmlp] (meta-learned defaults), TabM [@gorishniy2025tabm] (parameter-efficient ensembling), and Zabergja et al. [@zabergja2024nlpinspired] (NLP-inspired tabular tricks fail under fair comparison).
+
+The diagnostic reading: §2.1, §2.2, §2.3 still characterise real inductive-bias problems, but the architecture-zoo's verdict is "the right *training procedure* on a plain MLP closes more of the gap than the wrong training procedure on a specialised architecture."
+
+## Caveats
+
+- The 40-dataset suite skews toward small-to-medium problems where the cocktail's variance-reducing effects are most powerful. Behaviour on production-scale tabular workloads (millions of rows) is not the paper's focus.
+- "Beats XGBoost" is on this benchmark; later fair-protocol benchmarks (TabReD [@rubachev2025tabred], TabArena [@erickson2025tabarena]) re-rank methods and the cocktail-MLP's relative position depends on the specific HPO budget used per comparator.
+- The cocktail's HPO budget is not free — joint search over 13 regularisers' inclusion + hyperparameters is expensive, and "well-tuned MLP" hides that cost. Practitioners should treat the cocktail as evidence that *the tuning ceiling is high*, not as a drop-in replacement.

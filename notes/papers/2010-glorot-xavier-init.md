@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2010-glorot-xavier-init
-tags: []
+tags:
+- optimization
+- deep-learning
+- ml
 title: Understanding the Difficulty of Training Deep Feedforward Neural Networks
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2010
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2010-glorot-xavier-init]]
+*Imported 2026-05-09 from `papers/2010-glorot-xavier-init.md` before that tree was retired.*
+
+Xavier initialization; part of the pre-2012 training-stability prehistory.

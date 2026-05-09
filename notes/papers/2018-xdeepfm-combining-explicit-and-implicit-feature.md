@@ -15,7 +15,11 @@ raw_md: raw/papers/1803.05170.md
 raw_pdf: raw/papers/1803.05170.pdf
 read: false
 slug: xdeepfm-combining-explicit-and-implicit-feature
-tags: []
+tags:
+- recsys
+- ctr-prediction
+- feature-encoding
+- ml
 title: 'xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender
   Systems'
 type: note
@@ -47,5 +51,9 @@ Combinatorial features are essential for the success of many commercial models. 
 - PDF: `raw/papers/1803.05170.pdf`
 - arXiv: <http://arxiv.org/abs/1803.05170v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-lian-xdeepfm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-lian-xdeepfm.md` before that tree was retired.*
+
+xDeepFM — Compressed Interaction Network for high-order explicit feature crosses.

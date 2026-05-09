@@ -11,7 +11,11 @@ raw_md: raw/papers/1708.05027.md
 raw_pdf: raw/papers/1708.05027.pdf
 read: false
 slug: neural-factorization-machines-for-sparse-predictive
-tags: []
+tags:
+- recsys
+- ctr-prediction
+- feature-encoding
+- tabular
 title: Neural Factorization Machines for Sparse Predictive Analytics
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Many predictive tasks of web applications need to model categorical variables, s
 - PDF (gitignored): `raw/papers/1708.05027.pdf`
 - arXiv: <http://arxiv.org/abs/1708.05027v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-he-nfm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-he-nfm.md` before that tree was retired.*
+
+Neural Factorization Machine with bi-interaction pooling layer.

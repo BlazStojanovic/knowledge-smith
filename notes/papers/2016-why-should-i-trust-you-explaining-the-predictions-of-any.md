@@ -12,7 +12,11 @@ raw_md: raw/papers/1602.04938.md
 raw_pdf: raw/papers/1602.04938.pdf
 read: false
 slug: why-should-i-trust-you-explaining-the-predictions-of-any
-tags: []
+tags:
+- interpretability
+- ml
+- lime
+- feature-encoding
 title: '"Why Should I Trust You?": Explaining the Predictions of Any Classifier'
 type: note
 updated: '2026-05-09'
@@ -43,5 +47,9 @@ Despite widespread adoption, machine learning models remain mostly black boxes. 
 - PDF (gitignored): `raw/papers/1602.04938.pdf`
 - arXiv: <http://arxiv.org/abs/1602.04938v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-ribeiro-lime]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-ribeiro-lime.md` before that tree was retired.*
+
+LIME — local interpretable model-agnostic explanations.

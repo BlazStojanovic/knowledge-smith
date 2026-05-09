@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-breiman-two-cultures
-tags: []
+tags:
+- ml
+- survey
+- theory
 title: 'Statistical Modeling: The Two Cultures'
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2001
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2001-breiman-two-cultures]]
+*Imported 2026-05-09 from `papers/2001-breiman-two-cultures.md` before that tree was retired.*
+
+Key framing piece: algorithmic vs. data-modeling cultures; trees win the prediction game.

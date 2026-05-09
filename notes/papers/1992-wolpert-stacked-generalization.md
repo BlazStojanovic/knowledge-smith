@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1992-wolpert-stacked-generalization
-tags: []
+tags:
+- ml
+- ensemble
+- generalization
 title: Stacked Generalization
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1992
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1992-wolpert-stacked-generalization]]
+*Imported 2026-05-09 from `papers/1992-wolpert-stacked-generalization.md` before that tree was retired.*
+
+Stacked generalization; the ensembling backbone of every Kaggle winner.

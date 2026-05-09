@@ -16,7 +16,11 @@ raw_md: raw/papers/1611.00144.md
 raw_pdf: raw/papers/1611.00144.pdf
 read: false
 slug: product-based-neural-networks-for-user-response-prediction
-tags: []
+tags:
+- ctr-prediction
+- recsys
+- feature-encoding
+- tabular
 title: Product-based Neural Networks for User Response Prediction
 type: note
 updated: '2026-05-09'
@@ -47,5 +51,9 @@ Predicting user responses, such as clicks and conversions, is of great importanc
 - PDF (gitignored): `raw/papers/1611.00144.pdf`
 - arXiv: <http://arxiv.org/abs/1611.00144v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-qu-pnn]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-qu-pnn.md` before that tree was retired.*
+
+Product-based Neural Network; explicit inner/outer product interaction layers.

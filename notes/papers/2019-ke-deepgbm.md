@@ -14,7 +14,11 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2019-ke-deepgbm
-tags: []
+tags:
+- gradient-boosting
+- distillation
+- tabular
+- ctr-prediction
 title: 'DeepGBM: A Deep Learning Framework Distilled by GBDT for Online Prediction
   Tasks'
 type: note
@@ -36,6 +40,9 @@ year: 2019
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2019-ke-deepgbm]]
+*Imported 2026-05-09 from `papers/2019-ke-deepgbm.md` before that tree was retired.*
+
+Microsoft DeepGBM — distills GBDT categorical knowledge into a neural net.

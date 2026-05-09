@@ -12,7 +12,10 @@ raw_md: raw/papers/2106.00783.md
 raw_pdf: raw/papers/2106.00783.pdf
 read: false
 slug: fourier-space-losses-for-efficient-perceptual-image-super
-tags: []
+tags:
+- vision
+- optimization
+- image-super-resolution
 title: Fourier Space Losses for Efficient Perceptual Image Super-Resolution
 type: note
 updated: '2026-05-09'
@@ -43,5 +46,9 @@ Many super-resolution (SR) models are optimized for high performance only and th
 - PDF: `raw/papers/2106.00783.pdf`
 - arXiv: <http://arxiv.org/abs/2106.00783v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-lemorvan-whats-good-imputation]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-lemorvan-whats-good-imputation.md` before that tree was retired.*
+
+What's a good imputation for prediction? Theoretical and empirical analysis.

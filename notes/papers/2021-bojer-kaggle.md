@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2021-bojer-kaggle
-tags: []
+tags:
+- benchmark
+- time-series
+- ml
 title: 'Kaggle Forecasting Competitions: An Overview and Research Opportunities'
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2021
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2021-bojer-kaggle]]
+*Imported 2026-05-09 from `papers/2021-bojer-kaggle.md` before that tree was retired.*
+
+Citable retrospective on Kaggle forecasting competitions; GBDTs keep winning into the DL era.

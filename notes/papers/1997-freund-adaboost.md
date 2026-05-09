@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1997-freund-adaboost
-tags: []
+tags:
+- boosting
+- ml
+- theory
 title: A Decision-Theoretic Generalization of On-Line Learning and an Application
   to Boosting
 type: note
@@ -33,6 +36,9 @@ year: 1997
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1997-freund-adaboost]]
+*Imported 2026-05-09 from `papers/1997-freund-adaboost.md` before that tree was retired.*
+
+AdaBoost, the first widely deployed boosting algorithm.

@@ -15,7 +15,10 @@ raw_md: raw/papers/1802.04422.md
 raw_pdf: raw/papers/1802.04422.pdf
 read: false
 slug: a-comparative-study-of-fairness-enhancing-interventions-in
-tags: []
+tags:
+- fairness
+- benchmark
+- ml
 title: A comparative study of fairness-enhancing interventions in machine learning
 type: note
 updated: '2026-05-09'
@@ -46,5 +49,9 @@ Computers are increasingly used to make decisions that have significant impact i
 - PDF: `raw/papers/1802.04422.pdf`
 - arXiv: <http://arxiv.org/abs/1802.04422v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-friedler-comparative-fairness]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-friedler-comparative-fairness.md` before that tree was retired.*
+
+Comparative study of fairness interventions on tabular data.

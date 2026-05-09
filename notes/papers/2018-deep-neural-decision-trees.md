@@ -12,7 +12,11 @@ raw_md: raw/papers/1806.06988.md
 raw_pdf: raw/papers/1806.06988.pdf
 read: false
 slug: deep-neural-decision-trees
-tags: []
+tags:
+- decision-tree
+- tabular
+- interpretability
+- ml
 title: Deep Neural Decision Trees
 type: note
 updated: '2026-05-09'
@@ -43,5 +47,9 @@ Deep neural networks have been proven powerful at processing perceptual data, su
 - PDF: `raw/papers/1806.06988.pdf`
 - arXiv: <http://arxiv.org/abs/1806.06988v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-yang-dndt]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-yang-dndt.md` before that tree was retired.*
+
+Deep Neural Decision Trees with soft binning and Gumbel-softmax.

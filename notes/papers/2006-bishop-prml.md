@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2006-bishop-prml
-tags: []
+tags:
+- book
+- ml
+- theory
 title: Pattern Recognition and Machine Learning
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2006
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2006-bishop-prml]]
+*Imported 2026-05-09 from `papers/2006-bishop-prml.md` before that tree was retired.*
+
+Pattern Recognition and Machine Learning — the Bayesian sibling of ESL.

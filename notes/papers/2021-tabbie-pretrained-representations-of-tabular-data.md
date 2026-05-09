@@ -13,7 +13,11 @@ raw_md: raw/papers/2105.02584.md
 raw_pdf: raw/papers/2105.02584.pdf
 read: false
 slug: tabbie-pretrained-representations-of-tabular-data
-tags: []
+tags:
+- tabular
+- pretraining
+- transformer
+- self-supervised
 title: 'TABBIE: Pretrained Representations of Tabular Data'
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Existing work on tabular representation learning jointly models tables and assoc
 - PDF: `raw/papers/2105.02584.pdf`
 - arXiv: <http://arxiv.org/abs/2105.02584v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-iida-tabbie]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-iida-tabbie.md` before that tree was retired.*
+
+TABBIE — NAACL dual-encoder over Wikipedia tables.

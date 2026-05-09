@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-breiman-random-forests
-tags: []
+tags:
+- ml
+- ensemble
+- decision-tree
 title: Random Forests
 type: note
 updated: '2026-05-09'
@@ -30,7 +33,3 @@ year: 2001
 ## Notes
 
 (your synthesis)
-
-
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2001-breiman-random-forests]]

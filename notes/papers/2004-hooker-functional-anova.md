@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2004-hooker-functional-anova
-tags: []
+tags:
+- interpretability
+- ml
+- feature-encoding
 title: Discovering Additive Structure in Black Box Functions
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2004
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2004-hooker-functional-anova]]
+*Imported 2026-05-09 from `papers/2004-hooker-functional-anova.md` before that tree was retired.*
+
+Additive/interaction decomposition — why trees and GAMs capture tabular structure cleanly.

@@ -11,7 +11,11 @@ raw_md: raw/papers/1702.08835.md
 raw_pdf: raw/papers/1702.08835.pdf
 read: false
 slug: deep-forest
-tags: []
+tags:
+- deep-forest
+- decision-tree
+- tabular
+- ml
 title: Deep Forest
 type: note
 updated: '2026-05-09'
@@ -42,5 +46,9 @@ Current deep learning models are mostly build upon neural networks, i.e., multip
 - PDF: `raw/papers/1702.08835.pdf`
 - arXiv: <http://arxiv.org/abs/1702.08835v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-zhou-deep-forest]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-zhou-deep-forest.md` before that tree was retired.*
+
+gcForest — "deep" via cascaded forests, not backprop.

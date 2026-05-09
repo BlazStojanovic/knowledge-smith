@@ -21,7 +21,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2025-erickson-tabarena
-tags: []
+tags:
+- tabular
+- benchmark
+- evaluation
 title: 'TabArena: A Living Benchmark for Machine Learning on Tabular Data'
 type: note
 updated: '2026-05-09'
@@ -42,6 +45,9 @@ year: 2025
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2025-erickson-tabarena]]
+*Imported 2026-05-09 from `papers/2025-erickson-tabarena.md` before that tree was retired.*
+
+TabArena — the living benchmark successor to AutoML Benchmark.

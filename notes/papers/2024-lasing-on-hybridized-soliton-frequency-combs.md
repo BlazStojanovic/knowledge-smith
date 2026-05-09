@@ -22,7 +22,11 @@ raw_md: raw/papers/2408.09284.md
 raw_pdf: raw/papers/2408.09284.pdf
 read: false
 slug: lasing-on-hybridized-soliton-frequency-combs
-tags: []
+tags:
+- photonics
+- optics
+- soliton
+- frequency-comb
 title: Lasing on hybridized soliton frequency combs
 type: note
 updated: '2026-05-09'
@@ -53,5 +57,9 @@ Coupling is an essential mechanism that drives complexity in natural systems, tr
 - PDF: `raw/papers/2408.09284.pdf`
 - arXiv: <http://arxiv.org/abs/2408.09284v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-tschalzev-data-centric]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2024-tschalzev-data-centric.md` before that tree was retired.*
+
+Model rankings flip once proper dataset-specific feature engineering is applied.

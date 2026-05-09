@@ -25,7 +25,10 @@ raw_md: raw/papers/2307.10029.md
 raw_pdf: raw/papers/2307.10029.pdf
 read: false
 slug: borderline-hyperbolic-comet-c-2021-o3-panstarrs-was-fading
-tags: []
+tags:
+- astronomy
+- solar-system
+- comet
 title: Borderline hyperbolic comet C/2021 O3 (PANSTARRS) was fading as it approached
   the Sun
 type: note
@@ -57,5 +60,9 @@ We present an observational and numerical study of the borderline hyperbolic com
 - PDF: `raw/papers/2307.10029.pdf`
 - arXiv: <http://arxiv.org/abs/2307.10029v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-han-ffb]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-han-ffb.md` before that tree was retired.*
+
+FFB — group-fairness methods are highly sensitive to evaluation choices on tabular data.

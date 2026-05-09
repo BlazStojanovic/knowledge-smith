@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1998-breiman-arcing
-tags: []
+tags:
+- boosting
+- ml
+- ensemble
 title: Arcing Classifiers
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1998
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1998-breiman-arcing]]
+*Imported 2026-05-09 from `papers/1998-breiman-arcing.md` before that tree was retired.*
+
+Breiman's argument for why boosting works.

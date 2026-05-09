@@ -32,7 +32,11 @@ raw_md: raw/papers/2012.07421.md
 raw_pdf: raw/papers/2012.07421.pdf
 read: false
 slug: wilds-a-benchmark-of-in-the-wild-distribution-shifts
-tags: []
+tags:
+- benchmark
+- generalization
+- fairness
+- distribution-shift
 title: 'WILDS: A Benchmark of in-the-Wild Distribution Shifts'
 type: note
 updated: '2026-05-09'
@@ -63,5 +67,9 @@ Distribution shifts -- where the training distribution differs from the test dis
 - PDF: `raw/papers/2012.07421.pdf`
 - arXiv: <http://arxiv.org/abs/2012.07421v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-koh-wilds]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-koh-wilds.md` before that tree was retired.*
+
+WILDS — general-purpose distribution-shift benchmark.

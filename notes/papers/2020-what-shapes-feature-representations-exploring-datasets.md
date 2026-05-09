@@ -11,7 +11,11 @@ raw_md: raw/papers/2006.12433.md
 raw_pdf: raw/papers/2006.12433.pdf
 read: false
 slug: what-shapes-feature-representations-exploring-datasets
-tags: []
+tags:
+- interpretability
+- generalization
+- feature-encoding
+- ml
 title: What shapes feature representations? Exploring datasets, architectures, and
   training
 type: note
@@ -43,5 +47,9 @@ In naturalistic learning problems, a model's input contains a wide range of feat
 - PDF: `raw/papers/2006.12433.pdf`
 - arXiv: <http://arxiv.org/abs/2006.12433v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-katzir-netdnf]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-katzir-netdnf.md` before that tree was retired.*
+
+Net-DNF — architectural prior mimicking DNF formulas.

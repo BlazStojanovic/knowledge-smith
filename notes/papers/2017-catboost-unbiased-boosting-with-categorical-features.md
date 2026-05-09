@@ -14,7 +14,11 @@ raw_md: raw/papers/1706.09516.md
 raw_pdf: raw/papers/1706.09516.pdf
 read: false
 slug: catboost-unbiased-boosting-with-categorical-features
-tags: []
+tags:
+- gradient-boosting
+- tabular
+- feature-encoding
+- decision-tree
 title: 'CatBoost: unbiased boosting with categorical features'
 type: note
 updated: '2026-05-09'
@@ -45,5 +49,9 @@ This paper presents the key algorithmic techniques behind CatBoost, a new gradie
 - PDF: `raw/papers/1706.09516.pdf`
 - arXiv: <http://arxiv.org/abs/1706.09516v5>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-prokhorenkova-catboost]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-prokhorenkova-catboost.md` before that tree was retired.*
+
+CatBoost — ordered boosting with native categorical feature handling.

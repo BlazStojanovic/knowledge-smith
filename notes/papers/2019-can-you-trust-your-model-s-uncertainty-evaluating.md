@@ -18,7 +18,11 @@ raw_md: raw/papers/1906.02530.md
 raw_pdf: raw/papers/1906.02530.pdf
 read: false
 slug: can-you-trust-your-model-s-uncertainty-evaluating
-tags: []
+tags:
+- uncertainty
+- calibration
+- benchmark
+- ml
 title: Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under
   Dataset Shift
 type: note
@@ -50,5 +54,9 @@ Modern machine learning methods including deep learning have achieved great succ
 - PDF: `raw/papers/1906.02530.pdf`
 - arXiv: <http://arxiv.org/abs/1906.02530v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-ovadia-can-you-trust]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-ovadia-can-you-trust.md` before that tree was retired.*
+
+Systematic comparison of uncertainty methods under shift; softmax is notoriously poor.

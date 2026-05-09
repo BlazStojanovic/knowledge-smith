@@ -13,7 +13,10 @@ raw_md: raw/papers/1802.07814.md
 raw_pdf: raw/papers/1802.07814.pdf
 read: false
 slug: learning-to-explain-an-information-theoretic-perspective-on
-tags: []
+tags:
+- interpretability
+- ml
+- uncertainty
 title: 'Learning to Explain: An Information-Theoretic Perspective on Model Interpretation'
 type: note
 updated: '2026-05-09'
@@ -44,5 +47,9 @@ We introduce instancewise feature selection as a methodology for model interpret
 - PDF: `raw/papers/1802.07814.pdf`
 - arXiv: <http://arxiv.org/abs/1802.07814v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-chen-l2x]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-chen-l2x.md` before that tree was retired.*
+
+L2X — deep-tabular interpretability via information-theoretic feature selection.

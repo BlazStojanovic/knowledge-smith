@@ -13,7 +13,11 @@ raw_md: raw/papers/2108.04884.md
 raw_pdf: raw/papers/2108.04884.pdf
 read: false
 slug: retiring-adult-new-datasets-for-fair-machine-learning
-tags: []
+tags:
+- fairness
+- benchmark
+- tabular
+- distribution-shift
 title: 'Retiring Adult: New Datasets for Fair Machine Learning'
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Although the fairness community has recognized the importance of data, researche
 - PDF: `raw/papers/2108.04884.pdf`
 - arXiv: <http://arxiv.org/abs/2108.04884v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-ding-folktables]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-ding-folktables.md` before that tree was retired.*
+
+Folktables — replacement benchmark for the broken UCI Adult dataset.

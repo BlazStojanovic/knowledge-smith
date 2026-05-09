@@ -14,7 +14,10 @@ raw_md: raw/papers/2112.02962.md
 raw_pdf: raw/papers/2112.02962.pdf
 read: false
 slug: danets-deep-abstract-networks-for-tabular-data
-tags: []
+tags:
+- tabular
+- ml
+- feature-encoding
 title: 'DANets: Deep Abstract Networks for Tabular Data Classification and Regression'
 type: note
 updated: '2026-05-09'
@@ -45,5 +48,9 @@ Tabular data are ubiquitous in real world applications. Although many commonly-u
 - PDF: `raw/papers/2112.02962.pdf`
 - arXiv: <http://arxiv.org/abs/2112.02962v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-chen-danets]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-chen-danets.md` before that tree was retired.*
+
+DANets — deep abstract layers with sparse feature grouping.

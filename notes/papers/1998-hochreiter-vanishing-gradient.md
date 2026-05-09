@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1998-hochreiter-vanishing-gradient
-tags: []
+tags:
+- ml
+- optimization
+- theory
 title: The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem
   Solutions
 type: note
@@ -32,6 +35,9 @@ year: 1998
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1998-hochreiter-vanishing-gradient]]
+*Imported 2026-05-09 from `papers/1998-hochreiter-vanishing-gradient.md` before that tree was retired.*
+
+Diagnosis of the vanishing gradient problem.

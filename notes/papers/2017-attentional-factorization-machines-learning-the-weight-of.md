@@ -15,7 +15,11 @@ raw_md: raw/papers/1708.04617.md
 raw_pdf: raw/papers/1708.04617.pdf
 read: false
 slug: attentional-factorization-machines-learning-the-weight-of
-tags: []
+tags:
+- recsys
+- attention
+- ctr-prediction
+- feature-encoding
 title: 'Attentional Factorization Machines: Learning the Weight of Feature Interactions
   via Attention Networks'
 type: note
@@ -47,5 +51,9 @@ Factorization Machines (FMs) are a supervised learning approach that enhances th
 - PDF: `raw/papers/1708.04617.pdf`
 - arXiv: <http://arxiv.org/abs/1708.04617v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-xiao-afm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-xiao-afm.md` before that tree was retired.*
+
+Attentional Factorization Machine with attention weights on pairwise interactions.

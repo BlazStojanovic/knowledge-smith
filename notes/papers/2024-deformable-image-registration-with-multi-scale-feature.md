@@ -11,7 +11,11 @@ raw_md: raw/papers/2408.05717.md
 raw_pdf: raw/papers/2408.05717.pdf
 read: false
 slug: deformable-image-registration-with-multi-scale-feature
-tags: []
+tags:
+- vision
+- image-registration
+- medical-imaging
+- ml
 title: Deformable Image Registration with Multi-scale Feature Fusion from Shared Encoder,
   Auxiliary and Pyramid Decoders
 type: note
@@ -43,5 +47,9 @@ In this work, we propose a novel deformable convolutional pyramid network for un
 - PDF: `raw/papers/2408.05717.pdf`
 - arXiv: <http://arxiv.org/abs/2408.05717v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2025-rubachev-tabred]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2025-rubachev-tabred.md` before that tree was retired.*
+
+TabReD — critiques temporal leakage as a major source of benchmark contamination.

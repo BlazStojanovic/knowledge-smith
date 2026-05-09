@@ -16,7 +16,11 @@ raw_md: raw/papers/1810.11921.md
 raw_pdf: raw/papers/1810.11921.pdf
 read: false
 slug: autoint-automatic-feature-interaction-learning-via-self
-tags: []
+tags:
+- attention
+- recsys
+- ctr-prediction
+- feature-encoding
 title: 'AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural
   Networks'
 type: note
@@ -48,5 +52,9 @@ Click-through rate (CTR) prediction, which aims to predict the probability of a 
 - PDF: `raw/papers/1810.11921.pdf`
 - arXiv: <http://arxiv.org/abs/1810.11921v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-song-autoint]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-song-autoint.md` before that tree was retired.*
+
+Self-attention over feature embeddings, predating TabTransformer by a year.

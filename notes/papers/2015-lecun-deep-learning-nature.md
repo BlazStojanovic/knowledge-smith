@@ -12,7 +12,9 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2015-lecun-deep-learning-nature
-tags: []
+tags:
+- deep-learning
+- survey
 title: Deep Learning
 type: note
 updated: '2026-05-09'
@@ -33,6 +35,9 @@ year: 2015
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2015-lecun-deep-learning-nature]]
+*Imported 2026-05-09 from `papers/2015-lecun-deep-learning-nature.md` before that tree was retired.*
+
+LeCun/Bengio/Hinton's Nature manifesto; contained the implicit "tabular is next" promise.

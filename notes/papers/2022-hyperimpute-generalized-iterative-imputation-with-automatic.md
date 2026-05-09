@@ -14,7 +14,10 @@ raw_md: raw/papers/2206.07769.md
 raw_pdf: raw/papers/2206.07769.pdf
 read: false
 slug: hyperimpute-generalized-iterative-imputation-with-automatic
-tags: []
+tags:
+- missing-data
+- tabular
+- automl
 title: 'HyperImpute: Generalized Iterative Imputation with Automatic Model Selection'
 type: note
 updated: '2026-05-09'
@@ -45,5 +48,9 @@ Consider the problem of imputing missing values in a dataset. One the one hand, 
 - PDF: `raw/papers/2206.07769.pdf`
 - arXiv: <http://arxiv.org/abs/2206.07769v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-perez-lebel-benchmark-missing]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-perez-lebel-benchmark-missing.md` before that tree was retired.*
+
+Benchmark on real health tables; GBDTs with native NA handling remain strong.

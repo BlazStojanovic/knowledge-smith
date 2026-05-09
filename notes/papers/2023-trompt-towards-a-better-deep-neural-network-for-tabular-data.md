@@ -14,7 +14,11 @@ raw_md: raw/papers/2305.18446.md
 raw_pdf: raw/papers/2305.18446.pdf
 read: false
 slug: trompt-towards-a-better-deep-neural-network-for-tabular-data
-tags: []
+tags:
+- tabular
+- attention
+- benchmark
+- fine-tuning
 title: 'Trompt: Towards a Better Deep Neural Network for Tabular Data'
 type: note
 updated: '2026-05-09'
@@ -45,5 +49,9 @@ Tabular data is arguably one of the most commonly used data structures in variou
 - PDF: `raw/papers/2305.18446.pdf`
 - arXiv: <http://arxiv.org/abs/2305.18446v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-chen-trompt]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-chen-trompt.md` before that tree was retired.*
+
+Trompt — tree-based neural network for tabular data.

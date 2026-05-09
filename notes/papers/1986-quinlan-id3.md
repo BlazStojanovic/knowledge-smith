@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1986-quinlan-id3
-tags: []
+tags:
+- decision-tree
+- ml
+- theory
 title: Induction of Decision Trees
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1986
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1986-quinlan-id3]]
+*Imported 2026-05-09 from `papers/1986-quinlan-id3.md` before that tree was retired.*
+
+ID3 information-gain tree induction, the intellectual seed of decision tree learning.

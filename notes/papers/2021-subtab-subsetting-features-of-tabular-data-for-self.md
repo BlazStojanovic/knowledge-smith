@@ -12,7 +12,11 @@ raw_md: raw/papers/2110.04361.md
 raw_pdf: raw/papers/2110.04361.pdf
 read: false
 slug: subtab-subsetting-features-of-tabular-data-for-self
-tags: []
+tags:
+- tabular
+- self-supervised
+- contrastive
+- feature-encoding
 title: 'SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation
   Learning'
 type: note
@@ -44,5 +48,9 @@ Self-supervised learning has been shown to be very effective in learning useful 
 - PDF: `raw/papers/2110.04361.pdf`
 - arXiv: <http://arxiv.org/abs/2110.04361v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-ucar-subtab]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-ucar-subtab.md` before that tree was retired.*
+
+SubTab — reconstruct full row from feature subsets for contrastive pretraining.

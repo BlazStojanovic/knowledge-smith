@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2006-caruana-empirical-comparison
-tags: []
+tags:
+- benchmark
+- ml
+- evaluation
 title: An Empirical Comparison of Supervised Learning Algorithms
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2006
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2006-caruana-empirical-comparison]]
+*Imported 2026-05-09 from `papers/2006-caruana-empirical-comparison.md` before that tree was retired.*
+
+ICML 2006 — boosted trees plus RF win on supervised tabular tasks.

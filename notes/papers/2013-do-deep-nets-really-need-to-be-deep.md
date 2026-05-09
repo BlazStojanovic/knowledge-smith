@@ -11,7 +11,10 @@ raw_md: raw/papers/1312.6184.md
 raw_pdf: raw/papers/1312.6184.pdf
 read: false
 slug: do-deep-nets-really-need-to-be-deep
-tags: []
+tags:
+- distillation
+- deep-learning
+- generalization
 title: Do Deep Nets Really Need to be Deep?
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ Currently, deep neural networks are the state of the art on problems such as spe
 - PDF (gitignored): `raw/papers/1312.6184.pdf`
 - arXiv: <http://arxiv.org/abs/1312.6184v7>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2014-ba-do-deep-nets-need-to-be-deep]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2014-ba-do-deep-nets-need-to-be-deep.md` before that tree was retired.*
+
+Ba & Caruana — shallow nets match deep ones via distillation; context that DL wasn't always necessary even where it worked.

@@ -27,7 +27,10 @@ raw_md: raw/papers/1810.01943.md
 raw_pdf: raw/papers/1810.01943.pdf
 read: false
 slug: ai-fairness-360-an-extensible-toolkit-for-detecting
-tags: []
+tags:
+- fairness
+- benchmark
+- ml
 title: 'AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating
   Unwanted Algorithmic Bias'
 type: note
@@ -60,5 +63,9 @@ Fairness is an increasingly important concern as machine learning models are use
 - PDF: `raw/papers/1810.01943.pdf`
 - arXiv: <http://arxiv.org/abs/1810.01943v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-bellamy-aif360]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-bellamy-aif360.md` before that tree was retired.*
+
+IBM's AIF360 toolkit for algorithmic fairness.

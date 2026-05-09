@@ -11,7 +11,9 @@ raw_md: raw/papers/1809.07483.md
 raw_pdf: raw/papers/1809.07483.pdf
 read: false
 slug: building-context-aware-clause-representations-for-situation
-tags: []
+tags:
+- nlp
+- ml
 title: Building Context-aware Clause Representations for Situation Entity Type Classification
 type: note
 updated: '2026-05-09'
@@ -42,5 +44,9 @@ Capabilities to categorize a clause based on the type of situation entity (e.g.,
 - PDF: `raw/papers/1809.07483.pdf`
 - arXiv: <http://arxiv.org/abs/1809.07483v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-smieja-processing-missing]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-smieja-processing-missing.md` before that tree was retired.*
+
+Density-based treatment of missing values in MLPs.

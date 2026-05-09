@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1993-quinlan-c45
-tags: []
+tags:
+- decision-tree
+- ml
+- book
 title: 'C4.5: Programs for Machine Learning'
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1993
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1993-quinlan-c45]]
+*Imported 2026-05-09 from `papers/1993-quinlan-c45.md` before that tree was retired.*
+
+C4.5, the practical tree-learner of the 1990s.

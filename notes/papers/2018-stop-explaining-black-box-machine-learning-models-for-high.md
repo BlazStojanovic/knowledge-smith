@@ -10,7 +10,10 @@ raw_md: raw/papers/1811.10154.md
 raw_pdf: raw/papers/1811.10154.pdf
 read: false
 slug: stop-explaining-black-box-machine-learning-models-for-high
-tags: []
+tags:
+- interpretability
+- fairness
+- ml
 title: Stop Explaining Black Box Machine Learning Models for High Stakes Decisions
   and Use Interpretable Models Instead
 type: note
@@ -42,5 +45,9 @@ Black box machine learning models are currently being used for high stakes decis
 - PDF: `raw/papers/1811.10154.pdf`
 - arXiv: <http://arxiv.org/abs/1811.10154v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-rudin-stop-explaining]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-rudin-stop-explaining.md` before that tree was retired.*
+
+"Stop Explaining Black Box Models" — the argument for inherently interpretable tabular models.

@@ -14,7 +14,11 @@ raw_md: raw/papers/2303.05506.md
 raw_pdf: raw/papers/2303.05506.pdf
 read: false
 slug: tangos-regularizing-tabular-neural-networks-through
-tags: []
+tags:
+- tabular
+- interpretability
+- generalization
+- optimization
 title: 'TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization
   and Specialization'
 type: note
@@ -46,5 +50,9 @@ Despite their success with unstructured data, deep neural networks are not yet a
 - PDF: `raw/papers/2303.05506.pdf`
 - arXiv: <http://arxiv.org/abs/2303.05506v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-jeffares-tangos]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-jeffares-tangos.md` before that tree was retired.*
+
+TANGOS — gradient orthogonalization regularizer bolted onto tabular nets; emblematic of the "tabular-specific inductive bias bolted on MLP" mini-wave.

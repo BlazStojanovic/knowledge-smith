@@ -12,7 +12,11 @@ raw_md: raw/papers/2312.07577.md
 raw_pdf: raw/papers/2312.07577.pdf
 read: false
 slug: benchmarking-distribution-shift-in-tabular-data-with
-tags: []
+tags:
+- tabular
+- benchmark
+- generalization
+- fairness
 title: Benchmarking Distribution Shift in Tabular Data with TableShift
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Robustness to distribution shift has become a growing concern for text and image
 - PDF: `raw/papers/2312.07577.pdf`
 - arXiv: <http://arxiv.org/abs/2312.07577v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-gardner-tableshift]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-gardner-tableshift.md` before that tree was retired.*
+
+TableShift — purpose-built tabular distribution-shift benchmark with 15 tasks.

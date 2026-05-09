@@ -19,7 +19,11 @@ raw_md: raw/papers/1905.04610.md
 raw_pdf: raw/papers/1905.04610.pdf
 read: false
 slug: explainable-ai-for-trees-from-local-explanations-to-global
-tags: []
+tags:
+- interpretability
+- decision-tree
+- gradient-boosting
+- tabular
 title: 'Explainable AI for Trees: From Local Explanations to Global Understanding'
 type: note
 updated: '2026-05-09'
@@ -50,5 +54,9 @@ Tree-based machine learning models such as random forests, decision trees, and g
 - PDF: `raw/papers/1905.04610.pdf`
 - arXiv: <http://arxiv.org/abs/1905.04610v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-lundberg-treeshap]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-lundberg-treeshap.md` before that tree was retired.*
+
+TreeSHAP — polynomial-time exact Shapley values on GBDTs; the reason GBDT+SHAP became industry standard.

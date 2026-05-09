@@ -18,7 +18,11 @@ raw_md: raw/papers/2310.18498.md
 raw_pdf: raw/papers/2310.18498.pdf
 read: false
 slug: gpt-4-vision-on-medical-image-classification-a-case-study
-tags: []
+tags:
+- llm
+- vision
+- evaluation
+- medical-imaging
 title: GPT-4 Vision on Medical Image Classification -- A Case Study on COVID-19 Dataset
 type: note
 updated: '2026-05-09'
@@ -49,5 +53,9 @@ This technical report delves into the application of GPT-4 Vision (GPT-4V) in th
 - PDF: `raw/papers/2310.18498.pdf`
 - arXiv: <http://arxiv.org/abs/2310.18498v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-nam-stunt]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-nam-stunt.md` before that tree was retired.*
+
+STUNT — self-generated pretext tasks for tabular unsupervised learning.

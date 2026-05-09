@@ -17,7 +17,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2017-ke-lightgbm
-tags: []
+tags:
+- gradient-boosting
+- decision-tree
+- tabular
 title: 'LightGBM: A Highly Efficient Gradient Boosting Decision Tree'
 type: note
 updated: '2026-05-09'
@@ -38,6 +41,9 @@ year: 2017
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2017-ke-lightgbm]]
+*Imported 2026-05-09 from `papers/2017-ke-lightgbm.md` before that tree was retired.*
+
+LightGBM — histogram-based, GPU-scalable GBDT.

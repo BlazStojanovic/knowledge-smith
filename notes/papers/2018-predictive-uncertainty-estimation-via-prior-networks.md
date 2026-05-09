@@ -11,7 +11,10 @@ raw_md: raw/papers/1802.10501.md
 raw_pdf: raw/papers/1802.10501.pdf
 read: false
 slug: predictive-uncertainty-estimation-via-prior-networks
-tags: []
+tags:
+- uncertainty
+- calibration
+- ml
 title: Predictive Uncertainty Estimation via Prior Networks
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ Estimating how uncertain an AI system is in its predictions is important to impr
 - PDF: `raw/papers/1802.10501.pdf`
 - arXiv: <http://arxiv.org/abs/1802.10501v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-malinin-prior-networks]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-malinin-prior-networks.md` before that tree was retired.*
+
+Prior networks with explicit distributional uncertainty.

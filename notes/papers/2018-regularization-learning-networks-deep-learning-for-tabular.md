@@ -11,7 +11,11 @@ raw_md: raw/papers/1805.06440.md
 raw_pdf: raw/papers/1805.06440.pdf
 read: false
 slug: regularization-learning-networks-deep-learning-for-tabular
-tags: []
+tags:
+- tabular
+- ml
+- generalization
+- gradient-boosting
 title: 'Regularization Learning Networks: Deep Learning for Tabular Datasets'
 type: note
 updated: '2026-05-09'
@@ -42,5 +46,9 @@ Despite their impressive performance, Deep Neural Networks (DNNs) typically unde
 - PDF: `raw/papers/1805.06440.pdf`
 - arXiv: <http://arxiv.org/abs/1805.06440v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-shavitt-rln]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-shavitt-rln.md` before that tree was retired.*
+
+Regularization Learning Networks with per-weight learnable regularization.

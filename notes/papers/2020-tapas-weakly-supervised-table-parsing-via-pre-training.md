@@ -14,7 +14,12 @@ raw_md: raw/papers/2004.02349.md
 raw_pdf: raw/papers/2004.02349.pdf
 read: false
 slug: tapas-weakly-supervised-table-parsing-via-pre-training
-tags: []
+tags:
+- nlp
+- tabular
+- pretraining
+- transformer
+- question-answering
 title: 'TAPAS: Weakly Supervised Table Parsing via Pre-training'
 type: note
 updated: '2026-05-09'
@@ -45,5 +50,9 @@ Answering natural language questions over tables is usually seen as a semantic p
 - PDF: `raw/papers/2004.02349.pdf`
 - arXiv: <http://arxiv.org/abs/2004.02349v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-herzig-tapas]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-herzig-tapas.md` before that tree was retired.*
+
+Google's TAPAS — weakly-supervised table question answering.

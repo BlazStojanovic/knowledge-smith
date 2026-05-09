@@ -11,7 +11,11 @@ raw_md: raw/papers/2201.08528.md
 raw_pdf: raw/papers/2201.08528.pdf
 read: false
 slug: to-smote-or-not-to-smote
-tags: []
+tags:
+- tabular
+- fairness
+- imbalanced-data
+- benchmark
 title: To SMOTE, or not to SMOTE?
 type: note
 updated: '2026-05-09'
@@ -42,5 +46,9 @@ Balancing the data before training a classifier is a popular technique to addres
 - PDF: `raw/papers/2201.08528.pdf`
 - arXiv: <http://arxiv.org/abs/2201.08528v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-gardner-subgroup-trees]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-gardner-subgroup-trees.md` before that tree was retired.*
+
+"Subgroup Robustness Grows on Trees" — GBDTs tend to be more robust out of the box.

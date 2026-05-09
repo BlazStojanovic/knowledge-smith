@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1995-cortes-svm
-tags: []
+tags:
+- ml
+- theory
+- optimization
 title: Support-Vector Networks
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 1995
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1995-cortes-svm]]
+*Imported 2026-05-09 from `papers/1995-cortes-svm.md` before that tree was retired.*
+
+SVMs; rounds out the pre-2001 classical-ML roster as another "felt solved" paradigm.

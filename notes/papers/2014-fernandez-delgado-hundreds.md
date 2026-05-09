@@ -13,7 +13,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2014-fernandez-delgado-hundreds
-tags: []
+tags:
+- benchmark
+- ml
+- evaluation
 title: Do We Need Hundreds of Classifiers to Solve Real World Classification Problems?
 type: note
 updated: '2026-05-09'
@@ -34,6 +37,9 @@ year: 2014
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2014-fernandez-delgado-hundreds]]
+*Imported 2026-05-09 from `papers/2014-fernandez-delgado-hundreds.md` before that tree was retired.*
+
+179 classifiers on 121 UCI datasets; RF/SVM dominate; canonical pre-DL tabular shootout.

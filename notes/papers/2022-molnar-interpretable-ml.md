@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2022-molnar-interpretable-ml
-tags: []
+tags:
+- book
+- interpretability
+- ml
 title: Interpretable Machine Learning
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2022
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2022-molnar-interpretable-ml]]
+*Imported 2026-05-09 from `papers/2022-molnar-interpretable-ml.md` before that tree was retired.*
+
+Interpretable Machine Learning — the reference book on explainability methods.

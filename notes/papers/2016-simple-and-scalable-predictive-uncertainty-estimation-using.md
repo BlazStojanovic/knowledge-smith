@@ -12,7 +12,10 @@ raw_md: raw/papers/1612.01474.md
 raw_pdf: raw/papers/1612.01474.pdf
 read: false
 slug: simple-and-scalable-predictive-uncertainty-estimation-using
-tags: []
+tags:
+- uncertainty
+- calibration
+- deep-learning
 title: Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles
 type: note
 updated: '2026-05-09'
@@ -43,5 +46,9 @@ Deep neural networks (NNs) are powerful black box predictors that have recently 
 - PDF (gitignored): `raw/papers/1612.01474.pdf`
 - arXiv: <http://arxiv.org/abs/1612.01474v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-lakshminarayanan-deep-ensembles]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-lakshminarayanan-deep-ensembles.md` before that tree was retired.*
+
+Deep ensembles as a strong but expensive DL uncertainty baseline.

@@ -13,7 +13,10 @@ raw_md: raw/papers/1706.04599.md
 raw_pdf: raw/papers/1706.04599.pdf
 read: false
 slug: on-calibration-of-modern-neural-networks
-tags: []
+tags:
+- calibration
+- uncertainty
+- ml
 title: On Calibration of Modern Neural Networks
 type: note
 updated: '2026-05-09'
@@ -44,5 +47,9 @@ Confidence calibration -- the problem of predicting probability estimates repres
 - PDF (gitignored): `raw/papers/1706.04599.pdf`
 - arXiv: <http://arxiv.org/abs/1706.04599v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-guo-calibration]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-guo-calibration.md` before that tree was retired.*
+
+Modern DL is badly miscalibrated; temperature scaling as baseline calibration.

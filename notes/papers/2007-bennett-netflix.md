@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2007-bennett-netflix
-tags: []
+tags:
+- recsys
+- benchmark
+- ml
 title: The Netflix Prize
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2007
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2007-bennett-netflix]]
+*Imported 2026-05-09 from `papers/2007-bennett-netflix.md` before that tree was retired.*
+
+The Netflix Prize origin; matrix factorization plus ensembles dominated.

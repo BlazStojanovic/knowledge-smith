@@ -16,7 +16,11 @@ raw_md: raw/papers/2310.18378.md
 raw_pdf: raw/papers/2310.18378.pdf
 read: false
 slug: ontology-revision-based-on-pre-trained-language-models
-tags: []
+tags:
+- nlp
+- pretraining
+- knowledge-graph
+- ontology
 title: Ontology Revision based on Pre-trained Language Models
 type: note
 updated: '2026-05-09'
@@ -47,5 +51,9 @@ Ontology revision aims to seamlessly incorporate a new ontology into an existing
 - PDF: `raw/papers/2310.18378.pdf`
 - arXiv: <http://arxiv.org/abs/2310.18378v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-chen-recontab]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-chen-recontab.md` before that tree was retired.*
+
+ReConTab — regularized contrastive tabular representations.

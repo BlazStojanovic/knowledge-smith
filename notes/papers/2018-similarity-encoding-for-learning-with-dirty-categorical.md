@@ -12,7 +12,10 @@ raw_md: raw/papers/1806.00979.md
 raw_pdf: raw/papers/1806.00979.pdf
 read: false
 slug: similarity-encoding-for-learning-with-dirty-categorical
-tags: []
+tags:
+- tabular
+- feature-encoding
+- ml
 title: Similarity encoding for learning with dirty categorical variables
 type: note
 updated: '2026-05-09'
@@ -43,5 +46,9 @@ For statistical learning, categorical variables in a table are usually considere
 - PDF: `raw/papers/1806.00979.pdf`
 - arXiv: <http://arxiv.org/abs/1806.00979v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2018-cerda-similarity-encoding]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2018-cerda-similarity-encoding.md` before that tree was retired.*
+
+Similarity encoding for dirty categorical variables.

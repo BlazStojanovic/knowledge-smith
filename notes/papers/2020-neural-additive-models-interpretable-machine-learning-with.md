@@ -16,7 +16,11 @@ raw_md: raw/papers/2004.13912.md
 raw_pdf: raw/papers/2004.13912.pdf
 read: false
 slug: neural-additive-models-interpretable-machine-learning-with
-tags: []
+tags:
+- interpretability
+- tabular
+- ml
+- fairness
 title: 'Neural Additive Models: Interpretable Machine Learning with Neural Nets'
 type: note
 updated: '2026-05-09'
@@ -47,5 +51,9 @@ Deep neural networks (DNNs) are powerful black-box predictors that have achieved
 - PDF: `raw/papers/2004.13912.pdf`
 - arXiv: <http://arxiv.org/abs/2004.13912v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-agarwal-nam]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-agarwal-nam.md` before that tree was retired.*
+
+Neural Additive Models — GAM-style DL for tabular interpretability.

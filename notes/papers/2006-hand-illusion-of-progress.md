@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2006-hand-illusion-of-progress
-tags: []
+tags:
+- benchmark
+- evaluation
+- reproducibility
 title: Classifier Technology and the Illusion of Progress
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2006
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2006-hand-illusion-of-progress]]
+*Imported 2026-05-09 from `papers/2006-hand-illusion-of-progress.md` before that tree was retired.*
+
+"Illusion of Progress" — sophisticated methods beat simple ones by margins that shrink under honest evaluation.

@@ -11,7 +11,10 @@ raw_md: raw/papers/1604.06737.md
 raw_pdf: raw/papers/1604.06737.pdf
 read: false
 slug: entity-embeddings-of-categorical-variables
-tags: []
+tags:
+- tabular
+- feature-encoding
+- deep-learning
 title: Entity Embeddings of Categorical Variables
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ We map categorical variables in a function approximation problem into Euclidean 
 - PDF (gitignored): `raw/papers/1604.06737.pdf`
 - arXiv: <http://arxiv.org/abs/1604.06737v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-guo-entity-embeddings]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-guo-entity-embeddings.md` before that tree was retired.*
+
+Seminal entity embeddings for categoricals from the Rossmann Kaggle winner; still baked into every modern tabular net.

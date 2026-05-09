@@ -17,7 +17,11 @@ raw_md: raw/papers/2404.16030.md
 raw_pdf: raw/papers/2404.16030.pdf
 read: false
 slug: mode-clip-data-experts-via-clustering
-tags: []
+tags:
+- contrastive
+- vision
+- pretraining
+- mixture-of-experts
 title: 'MoDE: CLIP Data Experts via Clustering'
 type: note
 updated: '2026-05-09'
@@ -48,5 +52,9 @@ The success of contrastive language-image pretraining (CLIP) relies on the super
 - PDF: `raw/papers/2404.16030.pdf`
 - arXiv: <http://arxiv.org/abs/2404.16030v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-kohli-quantifying-benchmarks]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2024-kohli-quantifying-benchmarks.md` before that tree was retired.*
+
+Surveys 30 papers across 187 datasets; small dataset changes flip conclusions.

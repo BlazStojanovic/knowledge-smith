@@ -15,7 +15,11 @@ raw_md: raw/papers/2301.02819.md
 raw_pdf: raw/papers/2301.02819.pdf
 read: false
 slug: excelformer-a-neural-network-surpassing-gbdts-on-tabular
-tags: []
+tags:
+- tabular
+- transformer
+- attention
+- gradient-boosting
 title: 'ExcelFormer: A neural network surpassing GBDTs on tabular data'
 type: note
 updated: '2026-05-09'
@@ -46,5 +50,9 @@ Data organized in tabular format is ubiquitous in real-world applications, and u
 - PDF: `raw/papers/2301.02819.pdf`
 - arXiv: <http://arxiv.org/abs/2301.02819v8>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-chen-excelformer]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2024-chen-excelformer.md` before that tree was retired.*
+
+A transformer-on-tables design that explicitly targets three deep-tabular failure modes — rotational invariance, data scarcity, and over-smoothing — and claims to outperform GBDTs without extensive hyperparameter tuning across a benchmark suite.

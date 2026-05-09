@@ -11,7 +11,11 @@ raw_md: raw/papers/2107.07511.md
 raw_pdf: raw/papers/2107.07511.pdf
 read: false
 slug: a-gentle-introduction-to-conformal-prediction-and
-tags: []
+tags:
+- uncertainty
+- calibration
+- distribution-free
+- survey
 title: A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty
   Quantification
 type: note
@@ -44,5 +48,9 @@ Black-box machine learning models are now routinely used in high-risk settings, 
 - PDF: `raw/papers/2107.07511.pdf`
 - arXiv: <http://arxiv.org/abs/2107.07511v6>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-angelopoulos-conformal]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-angelopoulos-conformal.md` before that tree was retired.*
+
+Conformal prediction — distribution-free coverage wrapper applicable to GBDTs.

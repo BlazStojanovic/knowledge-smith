@@ -12,7 +12,12 @@ raw_md: raw/papers/2408.10717.md
 raw_pdf: raw/papers/2408.10717.pdf
 read: false
 slug: accelerated-training-of-deep-learning-surrogate-models-for
-tags: []
+tags:
+- ml
+- surrogate-model
+- uncertainty
+- simulation
+- geoscience
 title: Accelerated training of deep learning surrogate models for surface displacement
   and flow, with application to MCMC-based history matching of CO2 storage operations
 type: note
@@ -44,5 +49,9 @@ Deep learning surrogate modeling shows great promise for subsurface flow applica
 - PDF: `raw/papers/2408.10717.pdf`
 - arXiv: <http://arxiv.org/abs/2408.10717v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2024-ye-talent]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2024-ye-talent.md` before that tree was retired.*
+
+TALENT — a closer look at deep tabular methods across diverse benchmarks.

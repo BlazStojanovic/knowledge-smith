@@ -12,7 +12,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2000-friedman-additive-logistic
-tags: []
+tags:
+- boosting
+- ml
+- theory
 title: 'Additive Logistic Regression: A Statistical View of Boosting'
 type: note
 updated: '2026-05-09'
@@ -33,6 +36,9 @@ year: 2000
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2000-friedman-additive-logistic]]
+*Imported 2026-05-09 from `papers/2000-friedman-additive-logistic.md` before that tree was retired.*
+
+Boosting reinterpreted as additive logistic regression.

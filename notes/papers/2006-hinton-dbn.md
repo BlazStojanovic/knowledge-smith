@@ -12,7 +12,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2006-hinton-dbn
-tags: []
+tags:
+- pretraining
+- ml
+- deep-learning
 title: A Fast Learning Algorithm for Deep Belief Nets
 type: note
 updated: '2026-05-09'
@@ -33,6 +36,9 @@ year: 2006
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2006-hinton-dbn]]
+*Imported 2026-05-09 from `papers/2006-hinton-dbn.md` before that tree was retired.*
+
+Deep belief networks; the pre-AlexNet signal that deep models could be trained at all.

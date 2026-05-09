@@ -14,7 +14,11 @@ raw_md: raw/papers/1807.06699.md
 raw_pdf: raw/papers/1807.06699.pdf
 read: false
 slug: adaptive-neural-trees
-tags: []
+tags:
+- decision-tree
+- ml
+- interpretability
+- vision
 title: Adaptive Neural Trees
 type: note
 updated: '2026-05-09'
@@ -45,5 +49,9 @@ Deep neural networks and decision trees operate on largely separate paradigms; t
 - PDF: `raw/papers/1807.06699.pdf`
 - arXiv: <http://arxiv.org/abs/1807.06699v5>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-tanno-adaptive-neural-trees]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-tanno-adaptive-neural-trees.md` before that tree was retired.*
+
+Adaptive Neural Trees with grow/prune operations.

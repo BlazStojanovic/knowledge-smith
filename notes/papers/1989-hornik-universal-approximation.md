@@ -12,7 +12,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1989-hornik-universal-approximation
-tags: []
+tags:
+- ml
+- theory
+- optimization
 title: Multilayer Feedforward Networks are Universal Approximators
 type: note
 updated: '2026-05-09'
@@ -33,6 +36,9 @@ year: 1989
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1989-hornik-universal-approximation]]
+*Imported 2026-05-09 from `papers/1989-hornik-universal-approximation.md` before that tree was retired.*
+
+Universal approximation theorem; the theoretical claim that "nets should work on anything," setting up the puzzle of why they don't on tables.

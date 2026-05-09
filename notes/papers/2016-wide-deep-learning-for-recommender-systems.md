@@ -25,7 +25,11 @@ raw_md: raw/papers/1606.07792.md
 raw_pdf: raw/papers/1606.07792.pdf
 read: false
 slug: wide-deep-learning-for-recommender-systems
-tags: []
+tags:
+- recsys
+- ctr-prediction
+- feature-encoding
+- tabular
 title: Wide & Deep Learning for Recommender Systems
 type: note
 updated: '2026-05-09'
@@ -56,5 +60,9 @@ Generalized linear models with nonlinear feature transformations are widely used
 - PDF (gitignored): `raw/papers/1606.07792.pdf`
 - arXiv: <http://arxiv.org/abs/1606.07792v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2016-cheng-wide-deep]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2016-cheng-wide-deep.md` before that tree was retired.*
+
+Google's Wide & Deep; joint linear plus deep with hand-crafted feature crosses.

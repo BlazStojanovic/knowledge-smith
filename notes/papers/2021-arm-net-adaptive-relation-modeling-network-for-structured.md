@@ -15,7 +15,11 @@ raw_md: raw/papers/2107.01830.md
 raw_pdf: raw/papers/2107.01830.pdf
 read: false
 slug: arm-net-adaptive-relation-modeling-network-for-structured
-tags: []
+tags:
+- tabular
+- attention
+- feature-encoding
+- interpretability
 title: 'ARM-Net: Adaptive Relation Modeling Network for Structured Data'
 type: note
 updated: '2026-05-09'
@@ -47,5 +51,9 @@ Relational databases are the de facto standard for storing and querying structur
 - PDF: `raw/papers/2107.01830.pdf`
 - arXiv: <http://arxiv.org/abs/2107.01830v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-cai-armnet]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-cai-armnet.md` before that tree was retired.*
+
+An adaptive feature-interaction model that selects per-instance cross-features through a sparse attention layer, framing tabular prediction as relation modeling — an early academic transformer-on-tables instance from the database community, predating TabTransformer and FT-Transformer.

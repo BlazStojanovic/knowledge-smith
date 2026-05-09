@@ -13,7 +13,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2013-james-isl
-tags: []
+tags:
+- book
+- ml
+- theory
 title: An Introduction to Statistical Learning
 type: note
 updated: '2026-05-09'
@@ -34,6 +37,9 @@ year: 2013
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2013-james-isl]]
+*Imported 2026-05-09 from `papers/2013-james-isl.md` before that tree was retired.*
+
+An Introduction to Statistical Learning — evidence that tabular ML felt pedagogically closed by 2013.

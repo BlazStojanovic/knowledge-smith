@@ -11,7 +11,8 @@ raw_md: raw/papers/1412.6980.md
 raw_pdf: raw/papers/1412.6980.pdf
 read: false
 slug: adam-a-method-for-stochastic-optimization
-tags: []
+tags:
+- optimization
 title: 'Adam: A Method for Stochastic Optimization'
 type: note
 updated: '2026-05-09'
@@ -42,5 +43,9 @@ We introduce Adam, an algorithm for first-order gradient-based optimization of s
 - PDF (gitignored): `raw/papers/1412.6980.pdf`
 - arXiv: <http://arxiv.org/abs/1412.6980v9>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2015-kingma-adam]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2015-kingma-adam.md` before that tree was retired.*
+
+Adam optimizer, used in every tabular-DL attempt.

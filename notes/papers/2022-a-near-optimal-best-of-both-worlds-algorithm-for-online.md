@@ -13,7 +13,10 @@ raw_md: raw/papers/2206.00557.md
 raw_pdf: raw/papers/2206.00557.pdf
 read: false
 slug: a-near-optimal-best-of-both-worlds-algorithm-for-online
-tags: []
+tags:
+- optimization
+- theory
+- rl
 title: A Near-Optimal Best-of-Both-Worlds Algorithm for Online Learning with Feedback
   Graphs
 type: note
@@ -45,5 +48,9 @@ We consider online learning with feedback graphs, a sequential decision-making f
 - PDF: `raw/papers/2206.00557.pdf`
 - arXiv: <http://arxiv.org/abs/2206.00557v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-schafl-hopular]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-schafl-hopular.md` before that tree was retired.*
+
+Hopular — modern Hopfield layers applied to tabular data.

@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-friedman-gbm
-tags: []
+tags:
+- gradient-boosting
+- optimization
+- decision-tree
 title: 'Greedy Function Approximation: A Gradient Boosting Machine'
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2001
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2001-friedman-gbm]]
+*Imported 2026-05-09 from `papers/2001-friedman-gbm.md` before that tree was retired.*
+
+The foundational gradient boosting machine (GBM) paper.

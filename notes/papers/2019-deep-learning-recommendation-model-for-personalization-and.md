@@ -33,7 +33,11 @@ raw_md: raw/papers/1906.00091.md
 raw_pdf: raw/papers/1906.00091.pdf
 read: false
 slug: deep-learning-recommendation-model-for-personalization-and
-tags: []
+tags:
+- recsys
+- ctr-prediction
+- ml
+- feature-encoding
 title: Deep Learning Recommendation Model for Personalization and Recommendation Systems
 type: note
 updated: '2026-05-09'
@@ -64,5 +68,9 @@ With the advent of deep learning, neural network-based recommendation models hav
 - PDF: `raw/papers/1906.00091.pdf`
 - arXiv: <http://arxiv.org/abs/1906.00091v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2019-naumov-dlrm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2019-naumov-dlrm.md` before that tree was retired.*
+
+Meta's DLRM — open-source reference for billion-scale recsys tables.

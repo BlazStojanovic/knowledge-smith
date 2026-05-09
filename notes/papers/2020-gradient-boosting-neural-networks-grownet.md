@@ -15,7 +15,11 @@ raw_md: raw/papers/2002.07971.md
 raw_pdf: raw/papers/2002.07971.pdf
 read: false
 slug: gradient-boosting-neural-networks-grownet
-tags: []
+tags:
+- gradient-boosting
+- tabular
+- optimization
+- ml
 title: 'Gradient Boosting Neural Networks: GrowNet'
 type: note
 updated: '2026-05-09'
@@ -46,5 +50,9 @@ A novel gradient boosting framework is proposed where shallow neural networks ar
 - PDF: `raw/papers/2002.07971.pdf`
 - arXiv: <http://arxiv.org/abs/2002.07971v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-badirli-grownet]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-badirli-grownet.md` before that tree was retired.*
+
+GrowNet — stacked weak-MLPs trained in a gradient-boosting loop; most-literal "GBDT but with MLPs."

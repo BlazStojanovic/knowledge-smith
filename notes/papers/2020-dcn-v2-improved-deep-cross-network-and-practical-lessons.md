@@ -16,7 +16,11 @@ raw_md: raw/papers/2008.13535.md
 raw_pdf: raw/papers/2008.13535.pdf
 read: false
 slug: dcn-v2-improved-deep-cross-network-and-practical-lessons
-tags: []
+tags:
+- recsys
+- feature-encoding
+- ctr-prediction
+- tabular
 title: 'DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale
   Learning to Rank Systems'
 type: note
@@ -49,5 +53,9 @@ Learning effective feature crosses is the key behind building recommender system
 - PDF: `raw/papers/2008.13535.pdf`
 - arXiv: <http://arxiv.org/abs/2008.13535v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-wang-dcnv2]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-wang-dcnv2.md` before that tree was retired.*
+
+DCN v2 — Google's web-scale DCN redo with low-rank MoE cross layer.

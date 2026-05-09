@@ -11,7 +11,10 @@ raw_md: raw/papers/1711.09784.md
 raw_pdf: raw/papers/1711.09784.pdf
 read: false
 slug: distilling-a-neural-network-into-a-soft-decision-tree
-tags: []
+tags:
+- distillation
+- interpretability
+- decision-tree
 title: Distilling a Neural Network Into a Soft Decision Tree
 type: note
 updated: '2026-05-09'
@@ -42,5 +45,9 @@ Deep neural networks have proved to be a very effective way to perform classific
 - PDF (gitignored): `raw/papers/1711.09784.pdf`
 - arXiv: <http://arxiv.org/abs/1711.09784v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-frosst-soft-decision-tree]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-frosst-soft-decision-tree.md` before that tree was retired.*
+
+Hinton soft-tree distillation.

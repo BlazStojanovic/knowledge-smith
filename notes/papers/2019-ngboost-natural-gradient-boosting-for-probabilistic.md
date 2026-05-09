@@ -16,7 +16,11 @@ raw_md: raw/papers/1910.03225.md
 raw_pdf: raw/papers/1910.03225.pdf
 read: false
 slug: ngboost-natural-gradient-boosting-for-probabilistic
-tags: []
+tags:
+- gradient-boosting
+- uncertainty
+- calibration
+- optimization
 title: 'NGBoost: Natural Gradient Boosting for Probabilistic Prediction'
 type: note
 updated: '2026-05-09'
@@ -47,5 +51,9 @@ We present Natural Gradient Boosting (NGBoost), an algorithm for generic probabi
 - PDF: `raw/papers/1910.03225.pdf`
 - arXiv: <http://arxiv.org/abs/1910.03225v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-duan-ngboost]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-duan-ngboost.md` before that tree was retired.*
+
+NGBoost — probabilistic GBDT outputting full predictive distributions.

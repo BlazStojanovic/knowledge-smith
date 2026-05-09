@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1997-mitchell-ml
-tags: []
+tags:
+- ml
+- book
+- survey
 title: Machine Learning
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 1997
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1997-mitchell-ml]]
+*Imported 2026-05-09 from `papers/1997-mitchell-ml.md` before that tree was retired.*
+
+Mitchell's textbook; by 1997, ML was already a codified discipline.

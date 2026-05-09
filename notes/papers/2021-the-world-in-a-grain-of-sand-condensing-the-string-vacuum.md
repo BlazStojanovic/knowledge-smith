@@ -12,7 +12,9 @@ raw_md: raw/papers/2111.04761.md
 raw_pdf: raw/papers/2111.04761.pdf
 read: false
 slug: the-world-in-a-grain-of-sand-condensing-the-string-vacuum
-tags: []
+tags:
+- ml
+- contrastive
 title: 'The World in a Grain of Sand: Condensing the String Vacuum Degeneracy'
 type: note
 updated: '2026-05-09'
@@ -43,5 +45,9 @@ We propose a novel approach toward the vacuum degeneracy problem of the string l
 - PDF: `raw/papers/2111.04761.pdf`
 - arXiv: <http://arxiv.org/abs/2111.04761v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-bischl-openml]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-bischl-openml.md` before that tree was retired.*
+
+OpenML benchmarking suites for standardized ML evaluation.

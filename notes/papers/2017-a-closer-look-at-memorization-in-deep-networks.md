@@ -20,7 +20,11 @@ raw_md: raw/papers/1706.05394.md
 raw_pdf: raw/papers/1706.05394.pdf
 read: false
 slug: a-closer-look-at-memorization-in-deep-networks
-tags: []
+tags:
+- generalization
+- ml
+- theory
+- optimization
 title: A Closer Look at Memorization in Deep Networks
 type: note
 updated: '2026-05-09'
@@ -51,5 +55,9 @@ We examine the role of memorization in deep learning, drawing connections to cap
 - PDF (gitignored): `raw/papers/1706.05394.pdf`
 - arXiv: <http://arxiv.org/abs/1706.05394v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-arpit-memorization]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-arpit-memorization.md` before that tree was retired.*
+
+MLPs have a smoothness/simplicity bias; foundational for why they can't fit jagged tabular surfaces.

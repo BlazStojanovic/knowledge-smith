@@ -12,7 +12,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2012-krizhevsky-alexnet
-tags: []
+tags:
+- vision
+- deep-learning
+- cnn
 title: ImageNet Classification with Deep Convolutional Neural Networks
 type: note
 updated: '2026-05-09'
@@ -33,6 +36,9 @@ year: 2012
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2012-krizhevsky-alexnet]]
+*Imported 2026-05-09 from `papers/2012-krizhevsky-alexnet.md` before that tree was retired.*
+
+AlexNet — the 2012 ImageNet moment that launched the DL revolution.

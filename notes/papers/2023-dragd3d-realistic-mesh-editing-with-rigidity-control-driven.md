@@ -13,7 +13,11 @@ raw_md: raw/papers/2310.04561.md
 raw_pdf: raw/papers/2310.04561.pdf
 read: false
 slug: dragd3d-realistic-mesh-editing-with-rigidity-control-driven
-tags: []
+tags:
+- diffusion
+- vision
+- 3d-mesh
+- generative
 title: 'DragD3D: Realistic Mesh Editing with Rigidity Control Driven by 2D Diffusion
   Priors'
 type: note
@@ -45,5 +49,9 @@ Direct mesh editing and deformation are key components in the geometric modeling
 - PDF: `raw/papers/2310.04561.pdf`
 - arXiv: <http://arxiv.org/abs/2310.04561v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-levin-transfer-learning-tabular]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-levin-transfer-learning-tabular.md` before that tree was retired.*
+
+Deep tabular's representation advantage shows up only in low-data transfer settings.

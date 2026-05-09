@@ -11,7 +11,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2008-friedman-rulefit
-tags: []
+tags:
+- interpretability
+- gradient-boosting
+- decision-tree
 title: Predictive Learning via Rule Ensembles
 type: note
 updated: '2026-05-09'
@@ -32,6 +35,9 @@ year: 2008
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2008-friedman-rulefit]]
+*Imported 2026-05-09 from `papers/2008-friedman-rulefit.md` before that tree was retired.*
+
+RuleFit; trees plus rules plus interpretability in one package.

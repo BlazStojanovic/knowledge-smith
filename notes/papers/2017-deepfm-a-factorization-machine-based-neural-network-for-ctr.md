@@ -14,7 +14,11 @@ raw_md: raw/papers/1703.04247.md
 raw_pdf: raw/papers/1703.04247.pdf
 read: false
 slug: deepfm-a-factorization-machine-based-neural-network-for-ctr
-tags: []
+tags:
+- ctr-prediction
+- recsys
+- feature-encoding
+- tabular
 title: 'DeepFM: A Factorization-Machine based Neural Network for CTR Prediction'
 type: note
 updated: '2026-05-09'
@@ -45,5 +49,9 @@ Learning sophisticated feature interactions behind user behaviors is critical in
 - PDF (gitignored): `raw/papers/1703.04247.pdf`
 - arXiv: <http://arxiv.org/abs/1703.04247v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-guo-deepfm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-guo-deepfm.md` before that tree was retired.*
+
+DeepFM — factorization machine plus MLP; CTR-dominant but never crossed to general tabular.

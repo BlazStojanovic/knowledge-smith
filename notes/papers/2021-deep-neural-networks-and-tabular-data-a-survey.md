@@ -15,7 +15,11 @@ raw_md: raw/papers/2110.01889.md
 raw_pdf: raw/papers/2110.01889.pdf
 read: false
 slug: deep-neural-networks-and-tabular-data-a-survey
-tags: []
+tags:
+- tabular
+- survey
+- ml
+- benchmark
 title: 'Deep Neural Networks and Tabular Data: A Survey'
 type: note
 updated: '2026-05-09'
@@ -46,5 +50,9 @@ Heterogeneous tabular data are the most commonly used form of data and are essen
 - PDF: `raw/papers/2110.01889.pdf`
 - arXiv: <http://arxiv.org/abs/2110.01889v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2022-borisov-deep-survey]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2022-borisov-deep-survey.md` before that tree was retired.*
+
+IEEE TNNLS survey of deep learning for tabular data.

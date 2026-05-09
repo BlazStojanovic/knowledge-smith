@@ -12,7 +12,11 @@ raw_md: raw/papers/1909.06312.md
 raw_pdf: raw/papers/1909.06312.pdf
 read: false
 slug: neural-oblivious-decision-ensembles-for-deep-learning-on
-tags: []
+tags:
+- tabular
+- decision-tree
+- gradient-boosting
+- ml
 title: Neural Oblivious Decision Ensembles for Deep Learning on Tabular Data
 type: note
 updated: '2026-05-09'
@@ -43,5 +47,34 @@ Nowadays, deep neural networks (DNNs) have become the main instrument for machin
 - PDF: `raw/papers/1909.06312.pdf`
 - arXiv: <http://arxiv.org/abs/1909.06312v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-popov-node]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-popov-node.md` before that tree was retired.*
+
+## Core claim
+
+Tabular DL had no convincing baseline against GBDTs through 2019; NODE proposes a deep, end-to-end-differentiable architecture that *generalises ensembles of oblivious decision trees* and reports outperforming the leading GBDT packages on most tabular benchmarks. The thesis is structural: if the right inductive bias for tables is axis-aligned splits, build that bias into a deep network rather than fighting it.
+
+## Architecture
+
+The atomic NODE layer is a *differentiable oblivious decision tree* (ODT). An ODT is the same tree CatBoost uses internally — a fully balanced tree where every node at the same depth tests the same feature with the same threshold. NODE replaces ODT's hard splits with `entmax`-based soft routing so the tree is differentiable end-to-end:
+
+- Each tree has $d$ depth, $2^d$ leaves, and $d$ split decisions, each a soft-attention over input features.
+- Splits use an `entmax` activation (a sparsity-tunable softmax variant) that drives the routing toward axis-aligned, hard-split behaviour at the limit while remaining differentiable in the interior.
+- Multiple trees are stacked layer-wise (DenseNet-style residual stacking): each layer's outputs concatenate to the next layer's input features, enabling hierarchical representation learning across multiple "rounds" of tree splits.
+
+The result is a network whose *expressive class* is roughly that of a CatBoost-style model but whose *optimization story* is end-to-end SGD with backprop, allowing combination with any differentiable head and joint training inside larger pipelines.
+
+## Key result
+
+Across a large set of tabular benchmarks (Higgs, Microsoft, Yahoo, Click, etc.), NODE outperforms tuned XGBoost, CatBoost, and LightGBM on most tasks under matched HPO budgets. The paper's headline framing: NODE is the first deep tabular architecture to credibly compete with GBDTs as a default choice.
+
+## Why it matters for §2.4.1 (tests of rotational invariance)
+
+NODE is the strongest "axis-aligned-by-construction" deep architecture in the literature — the most committed implementation of the prior §2.1 names as load-bearing. If the rotational-invariance diagnosis is correct (any rotationally invariant learner pays $\Omega(K)$ irrelevant-feature sample cost; trees pay $O(\log K)$), then explicitly baking axis-alignment into the architecture should narrow the gap. NODE is the controlled experiment: it does narrow the gap, and on some benchmarks closes it. But subsequent reproductions ([@gorishniy2021ftt; @holzmuller2024realmlp]) found that NODE's wins are sensitive to HPO budget and benchmark choice, and a well-tuned MLP with proper input embeddings often catches up or beats it ([@gorishniy2022embeddings]). The rotational-invariance lever, by itself, isn't enough to dethrone GBDTs.
+
+## Caveats
+
+- NODE's training is markedly slower than tuned GBDTs (multiple-hour fits where CatBoost converges in minutes), which the paper acknowledges and which has limited NODE's adoption in practice.
+- The "outperforms GBDT on most tasks" framing depends on the baseline tuning protocol — fair-protocol comparisons in [@gorishniy2021ftt] and [@grinsztajn2022tree] are less favourable.

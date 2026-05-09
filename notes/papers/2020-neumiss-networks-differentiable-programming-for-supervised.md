@@ -14,7 +14,11 @@ raw_md: raw/papers/2007.01627.md
 raw_pdf: raw/papers/2007.01627.pdf
 read: false
 slug: neumiss-networks-differentiable-programming-for-supervised
-tags: []
+tags:
+- missing-data
+- tabular
+- ml
+- generalization
 title: 'NeuMiss networks: differentiable programming for supervised learning with
   missing values'
 type: note
@@ -46,5 +50,9 @@ The presence of missing values makes supervised learning much more challenging. 
 - PDF: `raw/papers/2007.01627.pdf`
 - arXiv: <http://arxiv.org/abs/2007.01627v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2020-lemorvan-neumiss]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2020-lemorvan-neumiss.md` before that tree was retired.*
+
+NeuMiss — missingness-aware differentiable architecture for prediction with missing data.

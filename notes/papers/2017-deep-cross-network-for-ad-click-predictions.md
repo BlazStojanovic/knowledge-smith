@@ -13,7 +13,11 @@ raw_md: raw/papers/1708.05123.md
 raw_pdf: raw/papers/1708.05123.pdf
 read: false
 slug: deep-cross-network-for-ad-click-predictions
-tags: []
+tags:
+- ctr-prediction
+- recsys
+- feature-encoding
+- tabular
 title: Deep & Cross Network for Ad Click Predictions
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Feature engineering has been the key to the success of many prediction models. H
 - PDF (gitignored): `raw/papers/1708.05123.pdf`
 - arXiv: <http://arxiv.org/abs/1708.05123v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-wang-dcn]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-wang-dcn.md` before that tree was retired.*
+
+Deep & Cross Network — residual polynomial feature crosses.

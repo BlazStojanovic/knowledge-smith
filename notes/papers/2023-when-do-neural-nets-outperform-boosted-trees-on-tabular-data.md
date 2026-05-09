@@ -18,7 +18,11 @@ raw_md: raw/papers/2305.02997.md
 raw_pdf: raw/papers/2305.02997.pdf
 read: false
 slug: when-do-neural-nets-outperform-boosted-trees-on-tabular-data
-tags: []
+tags:
+- tabular
+- benchmark
+- gradient-boosting
+- decision-tree
 title: When Do Neural Nets Outperform Boosted Trees on Tabular Data?
 type: note
 updated: '2026-05-09'
@@ -49,5 +53,9 @@ Tabular data is one of the most commonly used types of data in machine learning.
 - PDF: `raw/papers/2305.02997.pdf`
 - arXiv: <http://arxiv.org/abs/2305.02997v4>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-mcelfresh-tabzilla]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-mcelfresh-tabzilla.md` before that tree was retired.*
+
+TabZilla — asks when and whether neural nets actually beat boosted trees.

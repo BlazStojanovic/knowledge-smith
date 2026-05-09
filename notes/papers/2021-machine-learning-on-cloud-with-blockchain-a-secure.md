@@ -14,7 +14,10 @@ raw_md: raw/papers/2101.02334.md
 raw_pdf: raw/papers/2101.02334.pdf
 read: false
 slug: machine-learning-on-cloud-with-blockchain-a-secure
-tags: []
+tags:
+- ml
+- privacy
+- optimization
 title: 'Machine Learning on Cloud with Blockchain: A Secure, Verifiable and Fair Approach
   to Outsource the Linear Regression for Data Analysis'
 type: note
@@ -46,5 +49,9 @@ Linear Regression (LR) is a classical machine learning algorithm which has many 
 - PDF: `raw/papers/2101.02334.pdf`
 - arXiv: <http://arxiv.org/abs/2101.02334v2>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-abutbul-dnfnet]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-abutbul-dnfnet.md` before that tree was retired.*
+
+DNF-Net — follow-up to Net-DNF.

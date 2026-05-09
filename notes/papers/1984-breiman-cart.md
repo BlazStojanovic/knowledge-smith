@@ -13,7 +13,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 1984-breiman-cart
-tags: []
+tags:
+- decision-tree
+- ml
+- theory
 title: Classification and Regression Trees
 type: note
 updated: '2026-05-09'
@@ -34,6 +37,9 @@ year: 1984
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/1984-breiman-cart]]
+*Imported 2026-05-09 from `papers/1984-breiman-cart.md` before that tree was retired.*
+
+CART monograph; surrogate splits for missing values originate here.

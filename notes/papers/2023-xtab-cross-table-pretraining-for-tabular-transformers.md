@@ -15,7 +15,11 @@ raw_md: raw/papers/2305.06090.md
 raw_pdf: raw/papers/2305.06090.pdf
 read: false
 slug: xtab-cross-table-pretraining-for-tabular-transformers
-tags: []
+tags:
+- tabular
+- pretraining
+- transformer
+- self-supervised
 title: 'XTab: Cross-table Pretraining for Tabular Transformers'
 type: note
 updated: '2026-05-09'
@@ -46,5 +50,9 @@ The success of self-supervised learning in computer vision and natural language 
 - PDF: `raw/papers/2305.06090.pdf`
 - arXiv: <http://arxiv.org/abs/2305.06090v1>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2023-zhu-xtab]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-zhu-xtab.md` before that tree was retired.*
+
+XTab — cross-table pretraining for tabular transformers.

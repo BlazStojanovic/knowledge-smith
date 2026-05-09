@@ -10,7 +10,9 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2011-pedregosa-scikit-learn
-tags: []
+tags:
+- ml
+- benchmark
 title: 'Scikit-learn: Machine Learning in Python'
 type: note
 updated: '2026-05-09'
@@ -31,6 +33,9 @@ year: 2011
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2011-pedregosa-scikit-learn]]
+*Imported 2026-05-09 from `papers/2011-pedregosa-scikit-learn.md` before that tree was retired.*
+
+scikit-learn — the API that anchored the tabular ML ecosystem.

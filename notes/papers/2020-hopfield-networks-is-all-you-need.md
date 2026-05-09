@@ -25,7 +25,11 @@ raw_md: raw/papers/2008.02217.md
 raw_pdf: raw/papers/2008.02217.pdf
 read: false
 slug: hopfield-networks-is-all-you-need
-tags: []
+tags:
+- attention
+- transformer
+- ml
+- theory
 title: Hopfield Networks is All You Need
 type: note
 updated: '2026-05-09'
@@ -56,5 +60,9 @@ We introduce a modern Hopfield network with continuous states and a correspondin
 - PDF: `raw/papers/2008.02217.pdf`
 - arXiv: <http://arxiv.org/abs/2008.02217v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2021-ramsauer-modern-hopfield]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2021-ramsauer-modern-hopfield.md` before that tree was retired.*
+
+Modern Hopfield networks equal transformer attention; theoretical basis for Hopular.

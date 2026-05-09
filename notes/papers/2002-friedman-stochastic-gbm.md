@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2002-friedman-stochastic-gbm
-tags: []
+tags:
+- gradient-boosting
+- optimization
+- decision-tree
 title: Stochastic Gradient Boosting
 type: note
 updated: '2026-05-09'
@@ -31,6 +34,9 @@ year: 2002
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2002-friedman-stochastic-gbm]]
+*Imported 2026-05-09 from `papers/2002-friedman-stochastic-gbm.md` before that tree was retired.*
+
+Stochastic GBM — the subsampling trick that made boosting practical at scale.

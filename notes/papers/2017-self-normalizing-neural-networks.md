@@ -13,7 +13,11 @@ raw_md: raw/papers/1706.02515.md
 raw_pdf: raw/papers/1706.02515.pdf
 read: false
 slug: self-normalizing-neural-networks
-tags: []
+tags:
+- ml
+- optimization
+- generalization
+- tabular
 title: Self-Normalizing Neural Networks
 type: note
 updated: '2026-05-09'
@@ -44,5 +48,9 @@ Deep Learning has revolutionized vision via convolutional neural networks (CNNs)
 - PDF (gitignored): `raw/papers/1706.02515.pdf`
 - arXiv: <http://arxiv.org/abs/1706.02515v5>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2017-klambauer-selu]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2017-klambauer-selu.md` before that tree was retired.*
+
+SELU/SNN — the most-cited "deep nets finally work on tables" paper of 2017; over-promised, under-delivered.

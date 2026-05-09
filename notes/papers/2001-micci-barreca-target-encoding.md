@@ -10,7 +10,10 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-micci-barreca-target-encoding
-tags: []
+tags:
+- feature-encoding
+- tabular
+- categorical-encoding
 title: A Preprocessing Scheme for High-Cardinality Categorical Attributes in Classification
   and Prediction Problems
 type: note
@@ -32,6 +35,9 @@ year: 2001
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2001-micci-barreca-target-encoding]]
+*Imported 2026-05-09 from `papers/2001-micci-barreca-target-encoding.md` before that tree was retired.*
+
+Original target/impact encoding; powers every Kaggle GBDT stack.

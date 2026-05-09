@@ -11,7 +11,10 @@ raw_md: raw/papers/1502.03167.md
 raw_pdf: raw/papers/1502.03167.pdf
 read: false
 slug: batch-normalization-accelerating-deep-network-training-by
-tags: []
+tags:
+- optimization
+- deep-learning
+- generalization
 title: 'Batch Normalization: Accelerating Deep Network Training by Reducing Internal
   Covariate Shift'
 type: note
@@ -43,5 +46,9 @@ Training Deep Neural Networks is complicated by the fact that the distribution o
 - PDF (gitignored): `raw/papers/1502.03167.pdf`
 - arXiv: <http://arxiv.org/abs/1502.03167v3>
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../papers/2015-ioffe-batchnorm]]
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2015-ioffe-batchnorm.md` before that tree was retired.*
+
+Batch normalization; the stability trick that made deep vision nets trainable.

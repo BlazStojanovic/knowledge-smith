@@ -13,7 +13,9 @@ raw_md: null
 raw_pdf: null
 read: false
 slug: 2022-hajiramezanali-stab
-tags: []
+tags:
+- tabular
+- self-supervised
 title: 'STab: Self-supervised Learning for Tabular Data'
 type: note
 updated: '2026-05-09'
@@ -34,6 +36,9 @@ year: 2022
 
 (your synthesis)
 
+<!-- ks-harvest -->
+## Notes (imported from writings)
 
-<!-- ks-crosslink -->
-**Writing-tier note:** [[../../../papers/2022-hajiramezanali-stab]]
+*Imported 2026-05-09 from `papers/2022-hajiramezanali-stab.md` before that tree was retired.*
+
+An augmentation-free self-supervised tabular method that uses two weight-sharing MLP encoders trained with different stochastic regularization (no negative pairs, no input augmentation), motivated by the observation that table-domain augmentations are mostly heuristic and brittle.
