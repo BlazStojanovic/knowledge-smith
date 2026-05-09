@@ -11,8 +11,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2206.00664.md
-raw_pdf: raw/papers/2206.00664.pdf
+raw_md: raw/papers/md/2022-hopular-modern-hopfield-networks-for-tabular-data.md
+raw_pdf: raw/papers/pdf/2022-hopular-modern-hopfield-networks-for-tabular-data.pdf
 read: false
 slug: hopular-modern-hopfield-networks-for-tabular-data
 tags:
@@ -42,8 +42,8 @@ year: 2022
 
 ## Source
 
-- Raw markdown: [[raw/papers/2206.00664]]
-- PDF: `raw/papers/2206.00664.pdf`
+- Raw markdown: [[raw/papers/md/2022-hopular-modern-hopfield-networks-for-tabular-data]]
+- PDF: `raw/papers/pdf/2022-hopular-modern-hopfield-networks-for-tabular-data.pdf`
 - arXiv: <https://arxiv.org/abs/2206.00664>
 
 <!-- ks-harvest -->

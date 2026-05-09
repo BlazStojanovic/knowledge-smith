@@ -29,8 +29,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1906.00091.md
-raw_pdf: raw/papers/1906.00091.pdf
+raw_md: raw/papers/md/2019-deep-learning-recommendation-model-for-personalization-and.md
+raw_pdf: raw/papers/pdf/2019-deep-learning-recommendation-model-for-personalization-and.pdf
 read: false
 slug: deep-learning-recommendation-model-for-personalization-and
 tags:
@@ -64,8 +64,8 @@ With the advent of deep learning, neural network-based recommendation models hav
 
 ## Source
 
-- Raw markdown: [[raw/papers/1906.00091]]
-- PDF: `raw/papers/1906.00091.pdf`
+- Raw markdown: [[raw/papers/md/2019-deep-learning-recommendation-model-for-personalization-and]]
+- PDF: `raw/papers/pdf/2019-deep-learning-recommendation-model-for-personalization-and.pdf`
 - arXiv: <http://arxiv.org/abs/1906.00091v1>
 
 <!-- ks-harvest -->

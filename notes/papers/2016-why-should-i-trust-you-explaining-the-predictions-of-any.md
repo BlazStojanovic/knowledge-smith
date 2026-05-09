@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1602.04938.md
-raw_pdf: raw/papers/1602.04938.pdf
+raw_md: raw/papers/md/2016-why-should-i-trust-you-explaining-the-predictions-of-any.md
+raw_pdf: raw/papers/pdf/2016-why-should-i-trust-you-explaining-the-predictions-of-any.pdf
 read: false
 slug: why-should-i-trust-you-explaining-the-predictions-of-any
 tags:
@@ -43,8 +43,8 @@ Despite widespread adoption, machine learning models remain mostly black boxes. 
 
 ## Source
 
-- Raw markdown: [[raw/papers/1602.04938]]
-- PDF (gitignored): `raw/papers/1602.04938.pdf`
+- Raw markdown: [[raw/papers/md/2016-why-should-i-trust-you-explaining-the-predictions-of-any]]
+- PDF (gitignored): `raw/papers/pdf/2016-why-should-i-trust-you-explaining-the-predictions-of-any.pdf`
 - arXiv: <http://arxiv.org/abs/1602.04938v3>
 
 <!-- ks-harvest -->

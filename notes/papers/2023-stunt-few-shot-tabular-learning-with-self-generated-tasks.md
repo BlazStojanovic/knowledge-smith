@@ -16,8 +16,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2303.00918.md
-raw_pdf: raw/papers/2303.00918.pdf
+raw_md: raw/papers/md/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.md
+raw_pdf: raw/papers/pdf/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.pdf
 read: false
 slug: stunt-few-shot-tabular-learning-with-self-generated-tasks
 tags:
@@ -48,8 +48,8 @@ year: 2023
 
 ## Source
 
-- Raw markdown: [[raw/papers/2303.00918]]
-- PDF: `raw/papers/2303.00918.pdf`
+- Raw markdown: [[raw/papers/md/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks]]
+- PDF: `raw/papers/pdf/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.pdf`
 - arXiv: <https://arxiv.org/abs/2303.00918>
 
 <!-- ks-harvest -->

@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2107.07511.md
-raw_pdf: raw/papers/2107.07511.pdf
+raw_md: raw/papers/md/2021-a-gentle-introduction-to-conformal-prediction-and.md
+raw_pdf: raw/papers/pdf/2021-a-gentle-introduction-to-conformal-prediction-and.pdf
 read: false
 slug: a-gentle-introduction-to-conformal-prediction-and
 tags:
@@ -44,8 +44,8 @@ Black-box machine learning models are now routinely used in high-risk settings, 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2107.07511]]
-- PDF: `raw/papers/2107.07511.pdf`
+- Raw markdown: [[raw/papers/md/2021-a-gentle-introduction-to-conformal-prediction-and]]
+- PDF: `raw/papers/pdf/2021-a-gentle-introduction-to-conformal-prediction-and.pdf`
 - arXiv: <http://arxiv.org/abs/2107.07511v6>
 
 <!-- ks-harvest -->

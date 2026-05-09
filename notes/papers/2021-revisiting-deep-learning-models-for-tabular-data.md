@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2106.11959.md
-raw_pdf: raw/papers/2106.11959.pdf
+raw_md: raw/papers/md/2021-revisiting-deep-learning-models-for-tabular-data.md
+raw_pdf: raw/papers/pdf/2021-revisiting-deep-learning-models-for-tabular-data.pdf
 read: false
 slug: revisiting-deep-learning-models-for-tabular-data
 tags:
@@ -45,8 +45,8 @@ The existing literature on deep learning for tabular data proposes a wide range 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2106.11959]]
-- PDF: `raw/papers/2106.11959.pdf`
+- Raw markdown: [[raw/papers/md/2021-revisiting-deep-learning-models-for-tabular-data]]
+- PDF: `raw/papers/pdf/2021-revisiting-deep-learning-models-for-tabular-data.pdf`
 - arXiv: <http://arxiv.org/abs/2106.11959v5>
 
 <!-- ks-harvest -->

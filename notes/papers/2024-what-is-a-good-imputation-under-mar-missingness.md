@@ -6,8 +6,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2403.19196.md
-raw_pdf: raw/papers/2403.19196.pdf
+raw_md: raw/papers/md/2024-what-is-a-good-imputation-under-mar-missingness.md
+raw_pdf: raw/papers/pdf/2024-what-is-a-good-imputation-under-mar-missingness.pdf
 read: false
 slug: what-is-a-good-imputation-under-mar-missingness
 tags:
@@ -37,8 +37,8 @@ year: 2024
 
 ## Source
 
-- Raw markdown: [[raw/papers/2403.19196]]
-- PDF: `raw/papers/2403.19196.pdf`
+- Raw markdown: [[raw/papers/md/2024-what-is-a-good-imputation-under-mar-missingness]]
+- PDF: `raw/papers/pdf/2024-what-is-a-good-imputation-under-mar-missingness.pdf`
 - arXiv: <https://arxiv.org/abs/2403.19196>
 
 <!-- ks-harvest -->

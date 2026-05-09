@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2106.01342.md
-raw_pdf: raw/papers/2106.01342.pdf
+raw_md: raw/papers/md/2021-saint-improved-neural-networks-for-tabular-data-via-row.md
+raw_pdf: raw/papers/pdf/2021-saint-improved-neural-networks-for-tabular-data-via-row.pdf
 read: false
 slug: saint-improved-neural-networks-for-tabular-data-via-row
 tags:
@@ -46,8 +46,8 @@ Tabular data underpins numerous high-impact applications of machine learning fro
 
 ## Source
 
-- Raw markdown: [[raw/papers/2106.01342]]
-- PDF: `raw/papers/2106.01342.pdf`
+- Raw markdown: [[raw/papers/md/2021-saint-improved-neural-networks-for-tabular-data-via-row]]
+- PDF: `raw/papers/pdf/2021-saint-improved-neural-networks-for-tabular-data-via-row.pdf`
 - arXiv: <http://arxiv.org/abs/2106.01342v1>
 
 <!-- ks-harvest -->

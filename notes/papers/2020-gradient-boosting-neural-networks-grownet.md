@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2002.07971.md
-raw_pdf: raw/papers/2002.07971.pdf
+raw_md: raw/papers/md/2020-gradient-boosting-neural-networks-grownet.md
+raw_pdf: raw/papers/pdf/2020-gradient-boosting-neural-networks-grownet.pdf
 read: false
 slug: gradient-boosting-neural-networks-grownet
 tags:
@@ -46,8 +46,8 @@ A novel gradient boosting framework is proposed where shallow neural networks ar
 
 ## Source
 
-- Raw markdown: [[raw/papers/2002.07971]]
-- PDF: `raw/papers/2002.07971.pdf`
+- Raw markdown: [[raw/papers/md/2020-gradient-boosting-neural-networks-grownet]]
+- PDF: `raw/papers/pdf/2020-gradient-boosting-neural-networks-grownet.pdf`
 - arXiv: <http://arxiv.org/abs/2002.07971v2>
 
 <!-- ks-harvest -->

@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1708.04617.md
-raw_pdf: raw/papers/1708.04617.pdf
+raw_md: raw/papers/md/2017-attentional-factorization-machines-learning-the-weight-of.md
+raw_pdf: raw/papers/pdf/2017-attentional-factorization-machines-learning-the-weight-of.pdf
 read: false
 slug: attentional-factorization-machines-learning-the-weight-of
 tags:
@@ -47,8 +47,8 @@ Factorization Machines (FMs) are a supervised learning approach that enhances th
 
 ## Source
 
-- Raw markdown: [[raw/papers/1708.04617]]
-- PDF: `raw/papers/1708.04617.pdf`
+- Raw markdown: [[raw/papers/md/2017-attentional-factorization-machines-learning-the-weight-of]]
+- PDF: `raw/papers/pdf/2017-attentional-factorization-machines-learning-the-weight-of.pdf`
 - arXiv: <http://arxiv.org/abs/1708.04617v1>
 
 <!-- ks-harvest -->

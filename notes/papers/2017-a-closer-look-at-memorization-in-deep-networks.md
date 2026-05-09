@@ -16,8 +16,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1706.05394.md
-raw_pdf: raw/papers/1706.05394.pdf
+raw_md: raw/papers/md/2017-a-closer-look-at-memorization-in-deep-networks.md
+raw_pdf: raw/papers/pdf/2017-a-closer-look-at-memorization-in-deep-networks.pdf
 read: false
 slug: a-closer-look-at-memorization-in-deep-networks
 tags:
@@ -51,8 +51,8 @@ We examine the role of memorization in deep learning, drawing connections to cap
 
 ## Source
 
-- Raw markdown: [[raw/papers/1706.05394]]
-- PDF (gitignored): `raw/papers/1706.05394.pdf`
+- Raw markdown: [[raw/papers/md/2017-a-closer-look-at-memorization-in-deep-networks]]
+- PDF (gitignored): `raw/papers/pdf/2017-a-closer-look-at-memorization-in-deep-networks.pdf`
 - arXiv: <http://arxiv.org/abs/1706.05394v2>
 
 <!-- ks-harvest -->

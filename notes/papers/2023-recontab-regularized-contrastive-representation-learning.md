@@ -9,8 +9,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2310.18541.md
-raw_pdf: raw/papers/2310.18541.pdf
+raw_md: raw/papers/md/2023-recontab-regularized-contrastive-representation-learning.md
+raw_pdf: raw/papers/pdf/2023-recontab-regularized-contrastive-representation-learning.pdf
 read: false
 slug: recontab-regularized-contrastive-representation-learning
 tags:
@@ -40,8 +40,8 @@ year: 2023
 
 ## Source
 
-- Raw markdown: [[raw/papers/2310.18541]]
-- PDF: `raw/papers/2310.18541.pdf`
+- Raw markdown: [[raw/papers/md/2023-recontab-regularized-contrastive-representation-learning]]
+- PDF: `raw/papers/pdf/2023-recontab-regularized-contrastive-representation-learning.pdf`
 - arXiv: <https://arxiv.org/abs/2310.18541>
 
 <!-- ks-harvest -->

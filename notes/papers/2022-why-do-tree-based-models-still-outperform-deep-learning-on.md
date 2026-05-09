@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2207.08815.md
-raw_pdf: raw/papers/2207.08815.pdf
+raw_md: raw/papers/md/2022-why-do-tree-based-models-still-outperform-deep-learning-on.md
+raw_pdf: raw/papers/pdf/2022-why-do-tree-based-models-still-outperform-deep-learning-on.pdf
 read: false
 slug: why-do-tree-based-models-still-outperform-deep-learning-on
 tags:
@@ -43,8 +43,8 @@ While deep learning has enabled tremendous progress on text and image datasets, 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2207.08815]]
-- PDF: `raw/papers/2207.08815.pdf`
+- Raw markdown: [[raw/papers/md/2022-why-do-tree-based-models-still-outperform-deep-learning-on]]
+- PDF: `raw/papers/pdf/2022-why-do-tree-based-models-still-outperform-deep-learning-on.pdf`
 - arXiv: <http://arxiv.org/abs/2207.08815v1>
 
 <!-- ks-harvest -->

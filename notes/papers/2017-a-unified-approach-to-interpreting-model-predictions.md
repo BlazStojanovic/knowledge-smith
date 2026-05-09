@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1705.07874.md
-raw_pdf: raw/papers/1705.07874.pdf
+raw_md: raw/papers/md/2017-a-unified-approach-to-interpreting-model-predictions.md
+raw_pdf: raw/papers/pdf/2017-a-unified-approach-to-interpreting-model-predictions.pdf
 read: false
 slug: a-unified-approach-to-interpreting-model-predictions
 tags:
@@ -41,8 +41,8 @@ Understanding why a model makes a certain prediction can be as crucial as the pr
 
 ## Source
 
-- Raw markdown: [[raw/papers/1705.07874]]
-- PDF (gitignored): `raw/papers/1705.07874.pdf`
+- Raw markdown: [[raw/papers/md/2017-a-unified-approach-to-interpreting-model-predictions]]
+- PDF (gitignored): `raw/papers/pdf/2017-a-unified-approach-to-interpreting-model-predictions.pdf`
 - arXiv: <http://arxiv.org/abs/1705.07874v2>
 
 <!-- ks-harvest -->

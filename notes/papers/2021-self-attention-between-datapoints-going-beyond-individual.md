@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2106.02584.md
-raw_pdf: raw/papers/2106.02584.pdf
+raw_md: raw/papers/md/2021-self-attention-between-datapoints-going-beyond-individual.md
+raw_pdf: raw/papers/pdf/2021-self-attention-between-datapoints-going-beyond-individual.pdf
 read: false
 slug: self-attention-between-datapoints-going-beyond-individual
 tags:
@@ -47,8 +47,8 @@ We challenge a common assumption underlying most supervised deep learning: that 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2106.02584]]
-- PDF: `raw/papers/2106.02584.pdf`
+- Raw markdown: [[raw/papers/md/2021-self-attention-between-datapoints-going-beyond-individual]]
+- PDF: `raw/papers/pdf/2021-self-attention-between-datapoints-going-beyond-individual.pdf`
 - arXiv: <http://arxiv.org/abs/2106.02584v2>
 
 <!-- ks-harvest -->

@@ -7,8 +7,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2406.19380.md
-raw_pdf: raw/papers/2406.19380.pdf
+raw_md: raw/papers/md/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.md
+raw_pdf: raw/papers/pdf/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.pdf
 read: false
 slug: tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular
 tags:
@@ -38,8 +38,8 @@ year: 2024
 
 ## Source
 
-- Raw markdown: [[raw/papers/2406.19380]]
-- PDF: `raw/papers/2406.19380.pdf`
+- Raw markdown: [[raw/papers/md/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular]]
+- PDF: `raw/papers/pdf/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.pdf`
 - arXiv: <https://arxiv.org/abs/2406.19380>
 
 <!-- ks-harvest -->

@@ -14,8 +14,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2006.10739.md
-raw_pdf: raw/papers/2006.10739.pdf
+raw_md: raw/papers/md/2020-fourier-features-let-networks-learn-high-frequency.md
+raw_pdf: raw/papers/pdf/2020-fourier-features-let-networks-learn-high-frequency.pdf
 read: false
 slug: fourier-features-let-networks-learn-high-frequency
 tags:
@@ -50,8 +50,8 @@ We show that passing input points through a simple Fourier feature mapping enabl
 
 ## Source
 
-- Raw markdown: [[raw/papers/2006.10739]]
-- PDF: `raw/papers/2006.10739.pdf`
+- Raw markdown: [[raw/papers/md/2020-fourier-features-let-networks-learn-high-frequency]]
+- PDF: `raw/papers/pdf/2020-fourier-features-let-networks-learn-high-frequency.pdf`
 - arXiv: <http://arxiv.org/abs/2006.10739v1>
 
 <!-- ks-harvest -->

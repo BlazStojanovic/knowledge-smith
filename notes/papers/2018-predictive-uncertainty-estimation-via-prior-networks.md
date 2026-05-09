@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1802.10501.md
-raw_pdf: raw/papers/1802.10501.pdf
+raw_md: raw/papers/md/2018-predictive-uncertainty-estimation-via-prior-networks.md
+raw_pdf: raw/papers/pdf/2018-predictive-uncertainty-estimation-via-prior-networks.pdf
 read: false
 slug: predictive-uncertainty-estimation-via-prior-networks
 tags:
@@ -41,8 +41,8 @@ Estimating how uncertain an AI system is in its predictions is important to impr
 
 ## Source
 
-- Raw markdown: [[raw/papers/1802.10501]]
-- PDF: `raw/papers/1802.10501.pdf`
+- Raw markdown: [[raw/papers/md/2018-predictive-uncertainty-estimation-via-prior-networks]]
+- PDF: `raw/papers/pdf/2018-predictive-uncertainty-estimation-via-prior-networks.pdf`
 - arXiv: <http://arxiv.org/abs/1802.10501v4>
 
 <!-- ks-harvest -->

@@ -14,8 +14,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2305.02997.md
-raw_pdf: raw/papers/2305.02997.pdf
+raw_md: raw/papers/md/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data.md
+raw_pdf: raw/papers/pdf/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data.pdf
 read: false
 slug: when-do-neural-nets-outperform-boosted-trees-on-tabular-data
 tags:
@@ -49,8 +49,8 @@ Tabular data is one of the most commonly used types of data in machine learning.
 
 ## Source
 
-- Raw markdown: [[raw/papers/2305.02997]]
-- PDF: `raw/papers/2305.02997.pdf`
+- Raw markdown: [[raw/papers/md/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data]]
+- PDF: `raw/papers/pdf/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data.pdf`
 - arXiv: <http://arxiv.org/abs/2305.02997v4>
 
 <!-- ks-harvest -->

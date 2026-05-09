@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2309.17130.md
-raw_pdf: raw/papers/2309.17130.pdf
+raw_md: raw/papers/md/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.md
+raw_pdf: raw/papers/pdf/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.pdf
 read: false
 slug: grande-gradient-based-decision-tree-ensembles-for-tabular
 tags:
@@ -44,8 +44,8 @@ Despite the success of deep learning for text and image data, tree-based ensembl
 
 ## Source
 
-- Raw markdown: [[raw/papers/2309.17130]]
-- PDF: `raw/papers/2309.17130.pdf`
+- Raw markdown: [[raw/papers/md/2023-grande-gradient-based-decision-tree-ensembles-for-tabular]]
+- PDF: `raw/papers/pdf/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.pdf`
 - arXiv: <http://arxiv.org/abs/2309.17130v3>
 
 <!-- ks-harvest -->

@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1802.04422.md
-raw_pdf: raw/papers/1802.04422.pdf
+raw_md: raw/papers/md/2018-a-comparative-study-of-fairness-enhancing-interventions-in.md
+raw_pdf: raw/papers/pdf/2018-a-comparative-study-of-fairness-enhancing-interventions-in.pdf
 read: false
 slug: a-comparative-study-of-fairness-enhancing-interventions-in
 tags:
@@ -45,8 +45,8 @@ Computers are increasingly used to make decisions that have significant impact i
 
 ## Source
 
-- Raw markdown: [[raw/papers/1802.04422]]
-- PDF: `raw/papers/1802.04422.pdf`
+- Raw markdown: [[raw/papers/md/2018-a-comparative-study-of-fairness-enhancing-interventions-in]]
+- PDF: `raw/papers/pdf/2018-a-comparative-study-of-fairness-enhancing-interventions-in.pdf`
 - arXiv: <http://arxiv.org/abs/1802.04422v1>
 
 <!-- ks-harvest -->

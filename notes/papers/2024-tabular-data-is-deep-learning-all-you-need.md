@@ -8,8 +8,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2402.03970.md
-raw_pdf: raw/papers/2402.03970.pdf
+raw_md: raw/papers/md/2024-tabular-data-is-deep-learning-all-you-need.md
+raw_pdf: raw/papers/pdf/2024-tabular-data-is-deep-learning-all-you-need.pdf
 read: false
 slug: tabular-data-is-deep-learning-all-you-need
 tags:
@@ -39,8 +39,8 @@ year: 2024
 
 ## Source
 
-- Raw markdown: [[raw/papers/2402.03970]]
-- PDF: `raw/papers/2402.03970.pdf`
+- Raw markdown: [[raw/papers/md/2024-tabular-data-is-deep-learning-all-you-need]]
+- PDF: `raw/papers/pdf/2024-tabular-data-is-deep-learning-all-you-need.pdf`
 - arXiv: <https://arxiv.org/abs/2402.03970>
 
 <!-- ks-harvest -->

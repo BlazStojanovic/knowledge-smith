@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1312.6184.md
-raw_pdf: raw/papers/1312.6184.pdf
+raw_md: raw/papers/md/2013-do-deep-nets-really-need-to-be-deep.md
+raw_pdf: raw/papers/pdf/2013-do-deep-nets-really-need-to-be-deep.pdf
 read: false
 slug: do-deep-nets-really-need-to-be-deep
 tags:
@@ -41,8 +41,8 @@ Currently, deep neural networks are the state of the art on problems such as spe
 
 ## Source
 
-- Raw markdown: [[raw/papers/1312.6184]]
-- PDF (gitignored): `raw/papers/1312.6184.pdf`
+- Raw markdown: [[raw/papers/md/2013-do-deep-nets-really-need-to-be-deep]]
+- PDF (gitignored): `raw/papers/pdf/2013-do-deep-nets-really-need-to-be-deep.pdf`
 - arXiv: <http://arxiv.org/abs/1312.6184v7>
 
 <!-- ks-harvest -->

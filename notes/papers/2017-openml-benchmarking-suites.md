@@ -13,8 +13,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1708.03731.md
-raw_pdf: raw/papers/1708.03731.pdf
+raw_md: raw/papers/md/2017-openml-benchmarking-suites.md
+raw_pdf: raw/papers/pdf/2017-openml-benchmarking-suites.pdf
 read: false
 slug: openml-benchmarking-suites
 tags:
@@ -44,8 +44,8 @@ year: 2017
 
 ## Source
 
-- Raw markdown: [[raw/papers/1708.03731]]
-- PDF: `raw/papers/1708.03731.pdf`
+- Raw markdown: [[raw/papers/md/2017-openml-benchmarking-suites]]
+- PDF: `raw/papers/pdf/2017-openml-benchmarking-suites.pdf`
 - arXiv: <https://arxiv.org/abs/1708.03731>
 
 <!-- ks-harvest -->

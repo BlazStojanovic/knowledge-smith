@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1702.08835.md
-raw_pdf: raw/papers/1702.08835.pdf
+raw_md: raw/papers/md/2017-deep-forest.md
+raw_pdf: raw/papers/pdf/2017-deep-forest.pdf
 read: false
 slug: deep-forest
 tags:
@@ -42,8 +42,8 @@ Current deep learning models are mostly build upon neural networks, i.e., multip
 
 ## Source
 
-- Raw markdown: [[raw/papers/1702.08835]]
-- PDF: `raw/papers/1702.08835.pdf`
+- Raw markdown: [[raw/papers/md/2017-deep-forest]]
+- PDF: `raw/papers/pdf/2017-deep-forest.pdf`
 - arXiv: <http://arxiv.org/abs/1702.08835v4>
 
 <!-- ks-harvest -->

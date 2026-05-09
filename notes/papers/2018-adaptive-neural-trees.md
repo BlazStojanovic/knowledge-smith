@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1807.06699.md
-raw_pdf: raw/papers/1807.06699.pdf
+raw_md: raw/papers/md/2018-adaptive-neural-trees.md
+raw_pdf: raw/papers/pdf/2018-adaptive-neural-trees.pdf
 read: false
 slug: adaptive-neural-trees
 tags:
@@ -45,8 +45,8 @@ Deep neural networks and decision trees operate on largely separate paradigms; t
 
 ## Source
 
-- Raw markdown: [[raw/papers/1807.06699]]
-- PDF: `raw/papers/1807.06699.pdf`
+- Raw markdown: [[raw/papers/md/2018-adaptive-neural-trees]]
+- PDF: `raw/papers/pdf/2018-adaptive-neural-trees.pdf`
 - arXiv: <http://arxiv.org/abs/1807.06699v5>
 
 <!-- ks-harvest -->

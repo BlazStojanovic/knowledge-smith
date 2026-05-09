@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1805.06440.md
-raw_pdf: raw/papers/1805.06440.pdf
+raw_md: raw/papers/md/2018-regularization-learning-networks-deep-learning-for-tabular.md
+raw_pdf: raw/papers/pdf/2018-regularization-learning-networks-deep-learning-for-tabular.pdf
 read: false
 slug: regularization-learning-networks-deep-learning-for-tabular
 tags:
@@ -42,8 +42,8 @@ Despite their impressive performance, Deep Neural Networks (DNNs) typically unde
 
 ## Source
 
-- Raw markdown: [[raw/papers/1805.06440]]
-- PDF: `raw/papers/1805.06440.pdf`
+- Raw markdown: [[raw/papers/md/2018-regularization-learning-networks-deep-learning-for-tabular]]
+- PDF: `raw/papers/pdf/2018-regularization-learning-networks-deep-learning-for-tabular.pdf`
 - arXiv: <http://arxiv.org/abs/1805.06440v3>
 
 <!-- ks-harvest -->

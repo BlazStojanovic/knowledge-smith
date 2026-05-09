@@ -12,8 +12,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2004.13912.md
-raw_pdf: raw/papers/2004.13912.pdf
+raw_md: raw/papers/md/2020-neural-additive-models-interpretable-machine-learning-with.md
+raw_pdf: raw/papers/pdf/2020-neural-additive-models-interpretable-machine-learning-with.pdf
 read: false
 slug: neural-additive-models-interpretable-machine-learning-with
 tags:
@@ -47,8 +47,8 @@ Deep neural networks (DNNs) are powerful black-box predictors that have achieved
 
 ## Source
 
-- Raw markdown: [[raw/papers/2004.13912]]
-- PDF: `raw/papers/2004.13912.pdf`
+- Raw markdown: [[raw/papers/md/2020-neural-additive-models-interpretable-machine-learning-with]]
+- PDF: `raw/papers/pdf/2020-neural-additive-models-interpretable-machine-learning-with.pdf`
 - arXiv: <http://arxiv.org/abs/2004.13912v2>
 
 <!-- ks-harvest -->

@@ -8,8 +8,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2108.12296.md
-raw_pdf: raw/papers/2108.12296.pdf
+raw_md: raw/papers/md/2021-contrastive-mixup-self-and-semi-supervised-learning-for.md
+raw_pdf: raw/papers/pdf/2021-contrastive-mixup-self-and-semi-supervised-learning-for.pdf
 read: false
 slug: contrastive-mixup-self-and-semi-supervised-learning-for
 tags:
@@ -39,8 +39,8 @@ year: 2021
 
 ## Source
 
-- Raw markdown: [[raw/papers/2108.12296]]
-- PDF: `raw/papers/2108.12296.pdf`
+- Raw markdown: [[raw/papers/md/2021-contrastive-mixup-self-and-semi-supervised-learning-for]]
+- PDF: `raw/papers/pdf/2021-contrastive-mixup-self-and-semi-supervised-learning-for.pdf`
 - arXiv: <https://arxiv.org/abs/2108.12296>
 
 <!-- ks-harvest -->

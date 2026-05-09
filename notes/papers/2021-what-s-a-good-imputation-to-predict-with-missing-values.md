@@ -10,8 +10,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2106.00311.md
-raw_pdf: raw/papers/2106.00311.pdf
+raw_md: raw/papers/md/2021-what-s-a-good-imputation-to-predict-with-missing-values.md
+raw_pdf: raw/papers/pdf/2021-what-s-a-good-imputation-to-predict-with-missing-values.pdf
 read: false
 slug: what-s-a-good-imputation-to-predict-with-missing-values
 tags:
@@ -41,8 +41,8 @@ year: 2021
 
 ## Source
 
-- Raw markdown: [[raw/papers/2106.00311]]
-- PDF: `raw/papers/2106.00311.pdf`
+- Raw markdown: [[raw/papers/md/2021-what-s-a-good-imputation-to-predict-with-missing-values]]
+- PDF: `raw/papers/pdf/2021-what-s-a-good-imputation-to-predict-with-missing-values.pdf`
 - arXiv: <https://arxiv.org/abs/2106.00311>
 
 <!-- ks-harvest -->

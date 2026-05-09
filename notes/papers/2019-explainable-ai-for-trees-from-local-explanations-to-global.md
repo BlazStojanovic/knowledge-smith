@@ -15,8 +15,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1905.04610.md
-raw_pdf: raw/papers/1905.04610.pdf
+raw_md: raw/papers/md/2019-explainable-ai-for-trees-from-local-explanations-to-global.md
+raw_pdf: raw/papers/pdf/2019-explainable-ai-for-trees-from-local-explanations-to-global.pdf
 read: false
 slug: explainable-ai-for-trees-from-local-explanations-to-global
 tags:
@@ -50,8 +50,8 @@ Tree-based machine learning models such as random forests, decision trees, and g
 
 ## Source
 
-- Raw markdown: [[raw/papers/1905.04610]]
-- PDF: `raw/papers/1905.04610.pdf`
+- Raw markdown: [[raw/papers/md/2019-explainable-ai-for-trees-from-local-explanations-to-global]]
+- PDF: `raw/papers/pdf/2019-explainable-ai-for-trees-from-local-explanations-to-global.pdf`
 - arXiv: <http://arxiv.org/abs/1905.04610v1>
 
 <!-- ks-harvest -->

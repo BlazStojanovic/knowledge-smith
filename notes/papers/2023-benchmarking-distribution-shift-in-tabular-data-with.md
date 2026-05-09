@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2312.07577.md
-raw_pdf: raw/papers/2312.07577.pdf
+raw_md: raw/papers/md/2023-benchmarking-distribution-shift-in-tabular-data-with.md
+raw_pdf: raw/papers/pdf/2023-benchmarking-distribution-shift-in-tabular-data-with.pdf
 read: false
 slug: benchmarking-distribution-shift-in-tabular-data-with
 tags:
@@ -44,8 +44,8 @@ Robustness to distribution shift has become a growing concern for text and image
 
 ## Source
 
-- Raw markdown: [[raw/papers/2312.07577]]
-- PDF: `raw/papers/2312.07577.pdf`
+- Raw markdown: [[raw/papers/md/2023-benchmarking-distribution-shift-in-tabular-data-with]]
+- PDF: `raw/papers/pdf/2023-benchmarking-distribution-shift-in-tabular-data-with.pdf`
 - arXiv: <http://arxiv.org/abs/2312.07577v3>
 
 <!-- ks-harvest -->

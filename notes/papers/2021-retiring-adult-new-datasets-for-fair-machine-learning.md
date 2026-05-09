@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2108.04884.md
-raw_pdf: raw/papers/2108.04884.pdf
+raw_md: raw/papers/md/2021-retiring-adult-new-datasets-for-fair-machine-learning.md
+raw_pdf: raw/papers/pdf/2021-retiring-adult-new-datasets-for-fair-machine-learning.pdf
 read: false
 slug: retiring-adult-new-datasets-for-fair-machine-learning
 tags:
@@ -44,8 +44,8 @@ Although the fairness community has recognized the importance of data, researche
 
 ## Source
 
-- Raw markdown: [[raw/papers/2108.04884]]
-- PDF: `raw/papers/2108.04884.pdf`
+- Raw markdown: [[raw/papers/md/2021-retiring-adult-new-datasets-for-fair-machine-learning]]
+- PDF: `raw/papers/pdf/2021-retiring-adult-new-datasets-for-fair-machine-learning.pdf`
 - arXiv: <http://arxiv.org/abs/2108.04884v3>
 
 <!-- ks-harvest -->

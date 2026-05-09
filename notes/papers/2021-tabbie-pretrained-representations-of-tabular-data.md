@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2105.02584.md
-raw_pdf: raw/papers/2105.02584.pdf
+raw_md: raw/papers/md/2021-tabbie-pretrained-representations-of-tabular-data.md
+raw_pdf: raw/papers/pdf/2021-tabbie-pretrained-representations-of-tabular-data.pdf
 read: false
 slug: tabbie-pretrained-representations-of-tabular-data
 tags:
@@ -44,8 +44,8 @@ Existing work on tabular representation learning jointly models tables and assoc
 
 ## Source
 
-- Raw markdown: [[raw/papers/2105.02584]]
-- PDF: `raw/papers/2105.02584.pdf`
+- Raw markdown: [[raw/papers/md/2021-tabbie-pretrained-representations-of-tabular-data]]
+- PDF: `raw/papers/pdf/2021-tabbie-pretrained-representations-of-tabular-data.pdf`
 - arXiv: <http://arxiv.org/abs/2105.02584v1>
 
 <!-- ks-harvest -->

@@ -7,8 +7,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2211.12703.md
-raw_pdf: raw/papers/2211.12703.pdf
+raw_md: raw/papers/md/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.md
+raw_pdf: raw/papers/pdf/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.pdf
 read: false
 slug: subgroup-robustness-grows-on-trees-an-empirical-baseline
 tags:
@@ -38,8 +38,8 @@ year: 2022
 
 ## Source
 
-- Raw markdown: [[raw/papers/2211.12703]]
-- PDF: `raw/papers/2211.12703.pdf`
+- Raw markdown: [[raw/papers/md/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline]]
+- PDF: `raw/papers/pdf/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.pdf`
 - arXiv: <https://arxiv.org/abs/2211.12703>
 
 <!-- ks-harvest -->

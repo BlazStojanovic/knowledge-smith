@@ -21,8 +21,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1606.07792.md
-raw_pdf: raw/papers/1606.07792.pdf
+raw_md: raw/papers/md/2016-wide-deep-learning-for-recommender-systems.md
+raw_pdf: raw/papers/pdf/2016-wide-deep-learning-for-recommender-systems.pdf
 read: false
 slug: wide-deep-learning-for-recommender-systems
 tags:
@@ -56,8 +56,8 @@ Generalized linear models with nonlinear feature transformations are widely used
 
 ## Source
 
-- Raw markdown: [[raw/papers/1606.07792]]
-- PDF (gitignored): `raw/papers/1606.07792.pdf`
+- Raw markdown: [[raw/papers/md/2016-wide-deep-learning-for-recommender-systems]]
+- PDF (gitignored): `raw/papers/pdf/2016-wide-deep-learning-for-recommender-systems.pdf`
 - arXiv: <http://arxiv.org/abs/1606.07792v1>
 
 <!-- ks-harvest -->

@@ -23,8 +23,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2107.07455.md
-raw_pdf: raw/papers/2107.07455.pdf
+raw_md: raw/papers/md/2021-shifts-a-dataset-of-real-distributional-shift-across.md
+raw_pdf: raw/papers/pdf/2021-shifts-a-dataset-of-real-distributional-shift-across.pdf
 read: false
 slug: shifts-a-dataset-of-real-distributional-shift-across
 tags:
@@ -59,8 +59,8 @@ There has been significant research done on developing methods for improving rob
 
 ## Source
 
-- Raw markdown: [[raw/papers/2107.07455]]
-- PDF: `raw/papers/2107.07455.pdf`
+- Raw markdown: [[raw/papers/md/2021-shifts-a-dataset-of-real-distributional-shift-across]]
+- PDF: `raw/papers/pdf/2021-shifts-a-dataset-of-real-distributional-shift-across.pdf`
 - arXiv: <http://arxiv.org/abs/2107.07455v3>
 
 <!-- ks-harvest -->

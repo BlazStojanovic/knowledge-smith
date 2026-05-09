@@ -23,8 +23,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1810.01943.md
-raw_pdf: raw/papers/1810.01943.pdf
+raw_md: raw/papers/md/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.md
+raw_pdf: raw/papers/pdf/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.pdf
 read: false
 slug: ai-fairness-360-an-extensible-toolkit-for-detecting
 tags:
@@ -59,8 +59,8 @@ Fairness is an increasingly important concern as machine learning models are use
 
 ## Source
 
-- Raw markdown: [[raw/papers/1810.01943]]
-- PDF: `raw/papers/1810.01943.pdf`
+- Raw markdown: [[raw/papers/md/2018-ai-fairness-360-an-extensible-toolkit-for-detecting]]
+- PDF: `raw/papers/pdf/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.pdf`
 - arXiv: <http://arxiv.org/abs/1810.01943v1>
 
 <!-- ks-harvest -->

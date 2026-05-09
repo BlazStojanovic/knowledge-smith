@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1512.03385.md
-raw_pdf: raw/papers/1512.03385.pdf
+raw_md: raw/papers/md/2015-deep-residual-learning-for-image-recognition.md
+raw_pdf: raw/papers/pdf/2015-deep-residual-learning-for-image-recognition.pdf
 read: false
 slug: deep-residual-learning-for-image-recognition
 tags:
@@ -44,8 +44,8 @@ Deeper neural networks are more difficult to train. We present a residual learni
 
 ## Source
 
-- Raw markdown: [[raw/papers/1512.03385]]
-- PDF (gitignored): `raw/papers/1512.03385.pdf`
+- Raw markdown: [[raw/papers/md/2015-deep-residual-learning-for-image-recognition]]
+- PDF (gitignored): `raw/papers/pdf/2015-deep-residual-learning-for-image-recognition.pdf`
 - arXiv: <http://arxiv.org/abs/1512.03385v1>
 
 <!-- ks-harvest -->

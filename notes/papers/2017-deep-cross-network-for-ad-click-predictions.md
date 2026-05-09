@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1708.05123.md
-raw_pdf: raw/papers/1708.05123.pdf
+raw_md: raw/papers/md/2017-deep-cross-network-for-ad-click-predictions.md
+raw_pdf: raw/papers/pdf/2017-deep-cross-network-for-ad-click-predictions.pdf
 read: false
 slug: deep-cross-network-for-ad-click-predictions
 tags:
@@ -44,8 +44,8 @@ Feature engineering has been the key to the success of many prediction models. H
 
 ## Source
 
-- Raw markdown: [[raw/papers/1708.05123]]
-- PDF (gitignored): `raw/papers/1708.05123.pdf`
+- Raw markdown: [[raw/papers/md/2017-deep-cross-network-for-ad-click-predictions]]
+- PDF (gitignored): `raw/papers/pdf/2017-deep-cross-network-for-ad-click-predictions.pdf`
 - arXiv: <http://arxiv.org/abs/1708.05123v1>
 
 <!-- ks-harvest -->

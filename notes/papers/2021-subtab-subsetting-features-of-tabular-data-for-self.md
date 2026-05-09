@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2110.04361.md
-raw_pdf: raw/papers/2110.04361.pdf
+raw_md: raw/papers/md/2021-subtab-subsetting-features-of-tabular-data-for-self.md
+raw_pdf: raw/papers/pdf/2021-subtab-subsetting-features-of-tabular-data-for-self.pdf
 read: false
 slug: subtab-subsetting-features-of-tabular-data-for-self
 tags:
@@ -44,8 +44,8 @@ Self-supervised learning has been shown to be very effective in learning useful 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2110.04361]]
-- PDF: `raw/papers/2110.04361.pdf`
+- Raw markdown: [[raw/papers/md/2021-subtab-subsetting-features-of-tabular-data-for-self]]
+- PDF: `raw/papers/pdf/2021-subtab-subsetting-features-of-tabular-data-for-self.pdf`
 - arXiv: <http://arxiv.org/abs/2110.04361v2>
 
 <!-- ks-harvest -->

@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2301.02819.md
-raw_pdf: raw/papers/2301.02819.pdf
+raw_md: raw/papers/md/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.md
+raw_pdf: raw/papers/pdf/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.pdf
 read: false
 slug: excelformer-a-neural-network-surpassing-gbdts-on-tabular
 tags:
@@ -46,8 +46,8 @@ Data organized in tabular format is ubiquitous in real-world applications, and u
 
 ## Source
 
-- Raw markdown: [[raw/papers/2301.02819]]
-- PDF: `raw/papers/2301.02819.pdf`
+- Raw markdown: [[raw/papers/md/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular]]
+- PDF: `raw/papers/pdf/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.pdf`
 - arXiv: <http://arxiv.org/abs/2301.02819v8>
 
 <!-- ks-harvest -->

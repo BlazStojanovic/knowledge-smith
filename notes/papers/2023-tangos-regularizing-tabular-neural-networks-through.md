@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2303.05506.md
-raw_pdf: raw/papers/2303.05506.pdf
+raw_md: raw/papers/md/2023-tangos-regularizing-tabular-neural-networks-through.md
+raw_pdf: raw/papers/pdf/2023-tangos-regularizing-tabular-neural-networks-through.pdf
 read: false
 slug: tangos-regularizing-tabular-neural-networks-through
 tags:
@@ -46,8 +46,8 @@ Despite their success with unstructured data, deep neural networks are not yet a
 
 ## Source
 
-- Raw markdown: [[raw/papers/2303.05506]]
-- PDF: `raw/papers/2303.05506.pdf`
+- Raw markdown: [[raw/papers/md/2023-tangos-regularizing-tabular-neural-networks-through]]
+- PDF: `raw/papers/pdf/2023-tangos-regularizing-tabular-neural-networks-through.pdf`
 - arXiv: <http://arxiv.org/abs/2303.05506v1>
 
 <!-- ks-harvest -->

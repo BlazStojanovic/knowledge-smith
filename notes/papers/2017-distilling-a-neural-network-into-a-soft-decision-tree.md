@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1711.09784.md
-raw_pdf: raw/papers/1711.09784.pdf
+raw_md: raw/papers/md/2017-distilling-a-neural-network-into-a-soft-decision-tree.md
+raw_pdf: raw/papers/pdf/2017-distilling-a-neural-network-into-a-soft-decision-tree.pdf
 read: false
 slug: distilling-a-neural-network-into-a-soft-decision-tree
 tags:
@@ -41,8 +41,8 @@ Deep neural networks have proved to be a very effective way to perform classific
 
 ## Source
 
-- Raw markdown: [[raw/papers/1711.09784]]
-- PDF (gitignored): `raw/papers/1711.09784.pdf`
+- Raw markdown: [[raw/papers/md/2017-distilling-a-neural-network-into-a-soft-decision-tree]]
+- PDF (gitignored): `raw/papers/pdf/2017-distilling-a-neural-network-into-a-soft-decision-tree.pdf`
 - arXiv: <http://arxiv.org/abs/1711.09784v1>
 
 <!-- ks-harvest -->

@@ -9,8 +9,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2407.04057.md
-raw_pdf: raw/papers/2407.04057.pdf
+raw_md: raw/papers/md/2024-talent-a-tabular-analytics-and-learning-toolbox.md
+raw_pdf: raw/papers/pdf/2024-talent-a-tabular-analytics-and-learning-toolbox.pdf
 read: false
 slug: talent-a-tabular-analytics-and-learning-toolbox
 tags:
@@ -40,8 +40,8 @@ year: 2024
 
 ## Source
 
-- Raw markdown: [[raw/papers/2407.04057]]
-- PDF: `raw/papers/2407.04057.pdf`
+- Raw markdown: [[raw/papers/md/2024-talent-a-tabular-analytics-and-learning-toolbox]]
+- PDF: `raw/papers/pdf/2024-talent-a-tabular-analytics-and-learning-toolbox.pdf`
 - arXiv: <https://arxiv.org/abs/2407.04057>
 
 <!-- ks-harvest -->

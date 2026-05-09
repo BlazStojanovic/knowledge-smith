@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1802.07814.md
-raw_pdf: raw/papers/1802.07814.pdf
+raw_md: raw/papers/md/2018-learning-to-explain-an-information-theoretic-perspective-on.md
+raw_pdf: raw/papers/pdf/2018-learning-to-explain-an-information-theoretic-perspective-on.pdf
 read: false
 slug: learning-to-explain-an-information-theoretic-perspective-on
 tags:
@@ -43,8 +43,8 @@ We introduce instancewise feature selection as a methodology for model interpret
 
 ## Source
 
-- Raw markdown: [[raw/papers/1802.07814]]
-- PDF: `raw/papers/1802.07814.pdf`
+- Raw markdown: [[raw/papers/md/2018-learning-to-explain-an-information-theoretic-perspective-on]]
+- PDF: `raw/papers/pdf/2018-learning-to-explain-an-information-theoretic-perspective-on.pdf`
 - arXiv: <http://arxiv.org/abs/1802.07814v2>
 
 <!-- ks-harvest -->

@@ -5,8 +5,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: docling
-raw_md: raw/papers/ee6275a849.md
-raw_pdf: raw/papers/ee6275a849.pdf
+raw_md: raw/papers/md/2004-ng-feature-selection-l1.md
+raw_pdf: raw/papers/pdf/2004-ng-feature-selection-l1.pdf
 read: false
 slug: 2004-ng-feature-selection-l1
 tags:

@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1604.06737.md
-raw_pdf: raw/papers/1604.06737.pdf
+raw_md: raw/papers/md/2016-entity-embeddings-of-categorical-variables.md
+raw_pdf: raw/papers/pdf/2016-entity-embeddings-of-categorical-variables.pdf
 read: false
 slug: entity-embeddings-of-categorical-variables
 tags:
@@ -41,8 +41,8 @@ We map categorical variables in a function approximation problem into Euclidean 
 
 ## Source
 
-- Raw markdown: [[raw/papers/1604.06737]]
-- PDF (gitignored): `raw/papers/1604.06737.pdf`
+- Raw markdown: [[raw/papers/md/2016-entity-embeddings-of-categorical-variables]]
+- PDF (gitignored): `raw/papers/pdf/2016-entity-embeddings-of-categorical-variables.pdf`
 - arXiv: <http://arxiv.org/abs/1604.06737v1>
 
 <!-- ks-harvest -->

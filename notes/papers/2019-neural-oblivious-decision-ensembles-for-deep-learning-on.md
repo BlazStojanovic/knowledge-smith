@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1909.06312.md
-raw_pdf: raw/papers/1909.06312.pdf
+raw_md: raw/papers/md/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.md
+raw_pdf: raw/papers/pdf/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.pdf
 read: false
 slug: neural-oblivious-decision-ensembles-for-deep-learning-on
 tags:
@@ -43,8 +43,8 @@ Nowadays, deep neural networks (DNNs) have become the main instrument for machin
 
 ## Source
 
-- Raw markdown: [[raw/papers/1909.06312]]
-- PDF: `raw/papers/1909.06312.pdf`
+- Raw markdown: [[raw/papers/md/2019-neural-oblivious-decision-ensembles-for-deep-learning-on]]
+- PDF: `raw/papers/pdf/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.pdf`
 - arXiv: <http://arxiv.org/abs/1909.06312v2>
 
 <!-- ks-harvest -->

@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2307.14338.md
-raw_pdf: raw/papers/2307.14338.pdf
+raw_md: raw/papers/md/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.md
+raw_pdf: raw/papers/pdf/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.pdf
 read: false
 slug: tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023
 tags:
@@ -47,8 +47,8 @@ Deep learning (DL) models for tabular data problems (e.g. classification, regres
 
 ## Source
 
-- Raw markdown: [[raw/papers/2307.14338]]
-- PDF: `raw/papers/2307.14338.pdf`
+- Raw markdown: [[raw/papers/md/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023]]
+- PDF: `raw/papers/pdf/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.pdf`
 - arXiv: <http://arxiv.org/abs/2307.14338v2>
 
 <!-- ks-harvest -->

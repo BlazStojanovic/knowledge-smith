@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2006.12433.md
-raw_pdf: raw/papers/2006.12433.pdf
+raw_md: raw/papers/md/2020-what-shapes-feature-representations-exploring-datasets.md
+raw_pdf: raw/papers/pdf/2020-what-shapes-feature-representations-exploring-datasets.pdf
 read: false
 slug: what-shapes-feature-representations-exploring-datasets
 tags:
@@ -43,8 +43,8 @@ In naturalistic learning problems, a model's input contains a wide range of feat
 
 ## Source
 
-- Raw markdown: [[raw/papers/2006.12433]]
-- PDF: `raw/papers/2006.12433.pdf`
+- Raw markdown: [[raw/papers/md/2020-what-shapes-feature-representations-exploring-datasets]]
+- PDF: `raw/papers/pdf/2020-what-shapes-feature-representations-exploring-datasets.pdf`
 - arXiv: <http://arxiv.org/abs/2006.12433v2>
 
 <!-- ks-harvest -->

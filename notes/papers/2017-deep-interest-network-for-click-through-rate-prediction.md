@@ -15,8 +15,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1706.06978.md
-raw_pdf: raw/papers/1706.06978.pdf
+raw_md: raw/papers/md/2017-deep-interest-network-for-click-through-rate-prediction.md
+raw_pdf: raw/papers/pdf/2017-deep-interest-network-for-click-through-rate-prediction.pdf
 read: false
 slug: deep-interest-network-for-click-through-rate-prediction
 tags:
@@ -50,8 +50,8 @@ Click-through rate prediction is an essential task in industrial applications, s
 
 ## Source
 
-- Raw markdown: [[raw/papers/1706.06978]]
-- PDF: `raw/papers/1706.06978.pdf`
+- Raw markdown: [[raw/papers/md/2017-deep-interest-network-for-click-through-rate-prediction]]
+- PDF: `raw/papers/pdf/2017-deep-interest-network-for-click-through-rate-prediction.pdf`
 - arXiv: <http://arxiv.org/abs/1706.06978v4>
 
 <!-- ks-harvest -->

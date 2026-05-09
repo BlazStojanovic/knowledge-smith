@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2112.02962.md
-raw_pdf: raw/papers/2112.02962.pdf
+raw_md: raw/papers/md/2021-danets-deep-abstract-networks-for-tabular-data.md
+raw_pdf: raw/papers/pdf/2021-danets-deep-abstract-networks-for-tabular-data.pdf
 read: false
 slug: danets-deep-abstract-networks-for-tabular-data
 tags:
@@ -44,8 +44,8 @@ Tabular data are ubiquitous in real world applications. Although many commonly-u
 
 ## Source
 
-- Raw markdown: [[raw/papers/2112.02962]]
-- PDF: `raw/papers/2112.02962.pdf`
+- Raw markdown: [[raw/papers/md/2021-danets-deep-abstract-networks-for-tabular-data]]
+- PDF: `raw/papers/pdf/2021-danets-deep-abstract-networks-for-tabular-data.pdf`
 - arXiv: <http://arxiv.org/abs/2112.02962v4>
 
 <!-- ks-harvest -->

@@ -8,8 +8,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2407.02112.md
-raw_pdf: raw/papers/2407.02112.pdf
+raw_md: raw/papers/md/2024-a-data-centric-perspective-on-evaluating-machine-learning.md
+raw_pdf: raw/papers/pdf/2024-a-data-centric-perspective-on-evaluating-machine-learning.pdf
 read: false
 slug: a-data-centric-perspective-on-evaluating-machine-learning
 tags:
@@ -40,8 +40,8 @@ year: 2024
 
 ## Source
 
-- Raw markdown: [[raw/papers/2407.02112]]
-- PDF: `raw/papers/2407.02112.pdf`
+- Raw markdown: [[raw/papers/md/2024-a-data-centric-perspective-on-evaluating-machine-learning]]
+- PDF: `raw/papers/pdf/2024-a-data-centric-perspective-on-evaluating-machine-learning.pdf`
 - arXiv: <https://arxiv.org/abs/2407.02112>
 
 <!-- ks-harvest -->

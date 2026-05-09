@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2407.03257.md
-raw_pdf: raw/papers/2407.03257.pdf
+raw_md: raw/papers/md/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.md
+raw_pdf: raw/papers/pdf/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.pdf
 read: false
 slug: revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular
 tags:
@@ -45,8 +45,8 @@ The widespread enthusiasm for deep learning has recently expanded into the domai
 
 ## Source
 
-- Raw markdown: [[raw/papers/2407.03257]]
-- PDF: `raw/papers/2407.03257.pdf`
+- Raw markdown: [[raw/papers/md/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular]]
+- PDF: `raw/papers/pdf/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.pdf`
 - arXiv: <http://arxiv.org/abs/2407.03257v2>
 
 <!-- ks-harvest -->

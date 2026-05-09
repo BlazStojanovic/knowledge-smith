@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2005.08314.md
-raw_pdf: raw/papers/2005.08314.pdf
+raw_md: raw/papers/md/2020-tabert-pretraining-for-joint-understanding-of-textual-and.md
+raw_pdf: raw/papers/pdf/2020-tabert-pretraining-for-joint-understanding-of-textual-and.pdf
 read: false
 slug: tabert-pretraining-for-joint-understanding-of-textual-and
 tags:
@@ -44,8 +44,8 @@ Recent years have witnessed the burgeoning of pretrained language models (LMs) f
 
 ## Source
 
-- Raw markdown: [[raw/papers/2005.08314]]
-- PDF: `raw/papers/2005.08314.pdf`
+- Raw markdown: [[raw/papers/md/2020-tabert-pretraining-for-joint-understanding-of-textual-and]]
+- PDF: `raw/papers/pdf/2020-tabert-pretraining-for-joint-understanding-of-textual-and.pdf`
 - arXiv: <http://arxiv.org/abs/2005.08314v1>
 
 <!-- ks-harvest -->

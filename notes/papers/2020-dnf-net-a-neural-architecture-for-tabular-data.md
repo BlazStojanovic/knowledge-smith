@@ -9,8 +9,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2006.06465.md
-raw_pdf: raw/papers/2006.06465.pdf
+raw_md: raw/papers/md/2020-dnf-net-a-neural-architecture-for-tabular-data.md
+raw_pdf: raw/papers/pdf/2020-dnf-net-a-neural-architecture-for-tabular-data.pdf
 read: false
 slug: dnf-net-a-neural-architecture-for-tabular-data
 tags:
@@ -40,8 +40,8 @@ year: 2020
 
 ## Source
 
-- Raw markdown: [[raw/papers/2006.06465]]
-- PDF: `raw/papers/2006.06465.pdf`
+- Raw markdown: [[raw/papers/md/2020-dnf-net-a-neural-architecture-for-tabular-data]]
+- PDF: `raw/papers/pdf/2020-dnf-net-a-neural-architecture-for-tabular-data.pdf`
 - arXiv: <https://arxiv.org/abs/2006.06465>
 
 <!-- ks-harvest -->

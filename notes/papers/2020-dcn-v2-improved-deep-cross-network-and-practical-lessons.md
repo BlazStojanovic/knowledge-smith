@@ -12,8 +12,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2008.13535.md
-raw_pdf: raw/papers/2008.13535.pdf
+raw_md: raw/papers/md/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.md
+raw_pdf: raw/papers/pdf/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.pdf
 read: false
 slug: dcn-v2-improved-deep-cross-network-and-practical-lessons
 tags:
@@ -49,8 +49,8 @@ Learning effective feature crosses is the key behind building recommender system
 
 ## Source
 
-- Raw markdown: [[raw/papers/2008.13535]]
-- PDF: `raw/papers/2008.13535.pdf`
+- Raw markdown: [[raw/papers/md/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons]]
+- PDF: `raw/papers/pdf/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.pdf`
 - arXiv: <http://arxiv.org/abs/2008.13535v2>
 
 <!-- ks-harvest -->

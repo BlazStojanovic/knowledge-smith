@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1502.03167.md
-raw_pdf: raw/papers/1502.03167.pdf
+raw_md: raw/papers/md/2015-batch-normalization-accelerating-deep-network-training-by.md
+raw_pdf: raw/papers/pdf/2015-batch-normalization-accelerating-deep-network-training-by.pdf
 read: false
 slug: batch-normalization-accelerating-deep-network-training-by
 tags:
@@ -42,8 +42,8 @@ Training Deep Neural Networks is complicated by the fact that the distribution o
 
 ## Source
 
-- Raw markdown: [[raw/papers/1502.03167]]
-- PDF (gitignored): `raw/papers/1502.03167.pdf`
+- Raw markdown: [[raw/papers/md/2015-batch-normalization-accelerating-deep-network-training-by]]
+- PDF (gitignored): `raw/papers/pdf/2015-batch-normalization-accelerating-deep-network-training-by.pdf`
 - arXiv: <http://arxiv.org/abs/1502.03167v3>
 
 <!-- ks-harvest -->

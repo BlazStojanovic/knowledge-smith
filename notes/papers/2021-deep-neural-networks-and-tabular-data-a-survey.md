@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2110.01889.md
-raw_pdf: raw/papers/2110.01889.pdf
+raw_md: raw/papers/md/2021-deep-neural-networks-and-tabular-data-a-survey.md
+raw_pdf: raw/papers/pdf/2021-deep-neural-networks-and-tabular-data-a-survey.pdf
 read: false
 slug: deep-neural-networks-and-tabular-data-a-survey
 tags:
@@ -46,8 +46,8 @@ Heterogeneous tabular data are the most commonly used form of data and are essen
 
 ## Source
 
-- Raw markdown: [[raw/papers/2110.01889]]
-- PDF: `raw/papers/2110.01889.pdf`
+- Raw markdown: [[raw/papers/md/2021-deep-neural-networks-and-tabular-data-a-survey]]
+- PDF: `raw/papers/pdf/2021-deep-neural-networks-and-tabular-data-a-survey.pdf`
 - arXiv: <http://arxiv.org/abs/2110.01889v3>
 
 <!-- ks-harvest -->

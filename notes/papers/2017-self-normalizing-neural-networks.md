@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1706.02515.md
-raw_pdf: raw/papers/1706.02515.pdf
+raw_md: raw/papers/md/2017-self-normalizing-neural-networks.md
+raw_pdf: raw/papers/pdf/2017-self-normalizing-neural-networks.pdf
 read: false
 slug: self-normalizing-neural-networks
 tags:
@@ -44,8 +44,8 @@ Deep Learning has revolutionized vision via convolutional neural networks (CNNs)
 
 ## Source
 
-- Raw markdown: [[raw/papers/1706.02515]]
-- PDF (gitignored): `raw/papers/1706.02515.pdf`
+- Raw markdown: [[raw/papers/md/2017-self-normalizing-neural-networks]]
+- PDF (gitignored): `raw/papers/pdf/2017-self-normalizing-neural-networks.pdf`
 - arXiv: <http://arxiv.org/abs/1706.02515v5>
 
 <!-- ks-harvest -->

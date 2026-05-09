@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2003.04560.md
-raw_pdf: raw/papers/2003.04560.pdf
+raw_md: raw/papers/md/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform.md
+raw_pdf: raw/papers/pdf/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform.pdf
 read: false
 slug: frequency-bias-in-neural-networks-for-input-of-non-uniform
 tags:
@@ -46,8 +46,8 @@ Recent works have partly attributed the generalization ability of over-parameter
 
 ## Source
 
-- Raw markdown: [[raw/papers/2003.04560]]
-- PDF: `raw/papers/2003.04560.pdf`
+- Raw markdown: [[raw/papers/md/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform]]
+- PDF: `raw/papers/pdf/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform.pdf`
 - arXiv: <http://arxiv.org/abs/2003.04560v1>
 
 <!-- ks-harvest -->

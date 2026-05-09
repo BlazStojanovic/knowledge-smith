@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2203.05556.md
-raw_pdf: raw/papers/2203.05556.pdf
+raw_md: raw/papers/md/2022-on-embeddings-for-numerical-features-in-tabular-deep.md
+raw_pdf: raw/papers/pdf/2022-on-embeddings-for-numerical-features-in-tabular-deep.pdf
 read: false
 slug: on-embeddings-for-numerical-features-in-tabular-deep
 tags:
@@ -43,8 +43,8 @@ Recently, Transformer-like deep architectures have shown strong performance on t
 
 ## Source
 
-- Raw markdown: [[raw/papers/2203.05556]]
-- PDF: `raw/papers/2203.05556.pdf`
+- Raw markdown: [[raw/papers/md/2022-on-embeddings-for-numerical-features-in-tabular-deep]]
+- PDF: `raw/papers/pdf/2022-on-embeddings-for-numerical-features-in-tabular-deep.pdf`
 - arXiv: <http://arxiv.org/abs/2203.05556v4>
 
 <!-- ks-harvest -->

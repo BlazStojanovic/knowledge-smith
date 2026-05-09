@@ -12,8 +12,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1810.11921.md
-raw_pdf: raw/papers/1810.11921.pdf
+raw_md: raw/papers/md/2018-autoint-automatic-feature-interaction-learning-via-self.md
+raw_pdf: raw/papers/pdf/2018-autoint-automatic-feature-interaction-learning-via-self.pdf
 read: false
 slug: autoint-automatic-feature-interaction-learning-via-self
 tags:
@@ -48,8 +48,8 @@ Click-through rate (CTR) prediction, which aims to predict the probability of a 
 
 ## Source
 
-- Raw markdown: [[raw/papers/1810.11921]]
-- PDF: `raw/papers/1810.11921.pdf`
+- Raw markdown: [[raw/papers/md/2018-autoint-automatic-feature-interaction-learning-via-self]]
+- PDF: `raw/papers/pdf/2018-autoint-automatic-feature-interaction-learning-via-self.pdf`
 - arXiv: <http://arxiv.org/abs/1810.11921v2>
 
 <!-- ks-harvest -->

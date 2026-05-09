@@ -21,8 +21,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2008.02217.md
-raw_pdf: raw/papers/2008.02217.pdf
+raw_md: raw/papers/md/2020-hopfield-networks-is-all-you-need.md
+raw_pdf: raw/papers/pdf/2020-hopfield-networks-is-all-you-need.pdf
 read: false
 slug: hopfield-networks-is-all-you-need
 tags:
@@ -56,8 +56,8 @@ We introduce a modern Hopfield network with continuous states and a correspondin
 
 ## Source
 
-- Raw markdown: [[raw/papers/2008.02217]]
-- PDF: `raw/papers/2008.02217.pdf`
+- Raw markdown: [[raw/papers/md/2020-hopfield-networks-is-all-you-need]]
+- PDF: `raw/papers/pdf/2020-hopfield-networks-is-all-you-need.pdf`
 - arXiv: <http://arxiv.org/abs/2008.02217v3>
 
 <!-- ks-harvest -->

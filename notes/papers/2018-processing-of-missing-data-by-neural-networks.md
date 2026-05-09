@@ -8,8 +8,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1805.07405.md
-raw_pdf: raw/papers/1805.07405.pdf
+raw_md: raw/papers/md/2018-processing-of-missing-data-by-neural-networks.md
+raw_pdf: raw/papers/pdf/2018-processing-of-missing-data-by-neural-networks.pdf
 read: false
 slug: processing-of-missing-data-by-neural-networks
 tags:
@@ -38,8 +38,8 @@ year: 2018
 
 ## Source
 
-- Raw markdown: [[raw/papers/1805.07405]]
-- PDF: `raw/papers/1805.07405.pdf`
+- Raw markdown: [[raw/papers/md/2018-processing-of-missing-data-by-neural-networks]]
+- PDF: `raw/papers/pdf/2018-processing-of-missing-data-by-neural-networks.pdf`
 - arXiv: <https://arxiv.org/abs/1805.07405>
 
 <!-- ks-harvest -->

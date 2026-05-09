@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1412.6980.md
-raw_pdf: raw/papers/1412.6980.pdf
+raw_md: raw/papers/md/2014-adam-a-method-for-stochastic-optimization.md
+raw_pdf: raw/papers/pdf/2014-adam-a-method-for-stochastic-optimization.pdf
 read: false
 slug: adam-a-method-for-stochastic-optimization
 tags:
@@ -39,8 +39,8 @@ We introduce Adam, an algorithm for first-order gradient-based optimization of s
 
 ## Source
 
-- Raw markdown: [[raw/papers/1412.6980]]
-- PDF (gitignored): `raw/papers/1412.6980.pdf`
+- Raw markdown: [[raw/papers/md/2014-adam-a-method-for-stochastic-optimization]]
+- PDF (gitignored): `raw/papers/pdf/2014-adam-a-method-for-stochastic-optimization.pdf`
 - arXiv: <http://arxiv.org/abs/1412.6980v9>
 
 <!-- ks-harvest -->

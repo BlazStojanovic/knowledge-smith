@@ -12,8 +12,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1910.03225.md
-raw_pdf: raw/papers/1910.03225.pdf
+raw_md: raw/papers/md/2019-ngboost-natural-gradient-boosting-for-probabilistic.md
+raw_pdf: raw/papers/pdf/2019-ngboost-natural-gradient-boosting-for-probabilistic.pdf
 read: false
 slug: ngboost-natural-gradient-boosting-for-probabilistic
 tags:
@@ -47,8 +47,8 @@ We present Natural Gradient Boosting (NGBoost), an algorithm for generic probabi
 
 ## Source
 
-- Raw markdown: [[raw/papers/1910.03225]]
-- PDF: `raw/papers/1910.03225.pdf`
+- Raw markdown: [[raw/papers/md/2019-ngboost-natural-gradient-boosting-for-probabilistic]]
+- PDF: `raw/papers/pdf/2019-ngboost-natural-gradient-boosting-for-probabilistic.pdf`
 - arXiv: <http://arxiv.org/abs/1910.03225v4>
 
 <!-- ks-harvest -->

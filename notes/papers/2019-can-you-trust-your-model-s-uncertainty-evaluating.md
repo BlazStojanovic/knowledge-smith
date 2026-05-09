@@ -14,8 +14,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1906.02530.md
-raw_pdf: raw/papers/1906.02530.pdf
+raw_md: raw/papers/md/2019-can-you-trust-your-model-s-uncertainty-evaluating.md
+raw_pdf: raw/papers/pdf/2019-can-you-trust-your-model-s-uncertainty-evaluating.pdf
 read: false
 slug: can-you-trust-your-model-s-uncertainty-evaluating
 tags:
@@ -50,8 +50,8 @@ Modern machine learning methods including deep learning have achieved great succ
 
 ## Source
 
-- Raw markdown: [[raw/papers/1906.02530]]
-- PDF: `raw/papers/1906.02530.pdf`
+- Raw markdown: [[raw/papers/md/2019-can-you-trust-your-model-s-uncertainty-evaluating]]
+- PDF: `raw/papers/pdf/2019-can-you-trust-your-model-s-uncertainty-evaluating.pdf`
 - arXiv: <http://arxiv.org/abs/1906.02530v2>
 
 <!-- ks-harvest -->

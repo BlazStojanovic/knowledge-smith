@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2211.16887.md
-raw_pdf: raw/papers/2211.16887.pdf
+raw_md: raw/papers/md/2022-t2g-former-organizing-tabular-features-into-relation-graphs.md
+raw_pdf: raw/papers/pdf/2022-t2g-former-organizing-tabular-features-into-relation-graphs.pdf
 read: false
 slug: t2g-former-organizing-tabular-features-into-relation-graphs
 tags:
@@ -46,8 +46,8 @@ Recent development of deep neural networks (DNNs) for tabular learning has large
 
 ## Source
 
-- Raw markdown: [[raw/papers/2211.16887]]
-- PDF: `raw/papers/2211.16887.pdf`
+- Raw markdown: [[raw/papers/md/2022-t2g-former-organizing-tabular-features-into-relation-graphs]]
+- PDF: `raw/papers/pdf/2022-t2g-former-organizing-tabular-features-into-relation-graphs.pdf`
 - arXiv: <http://arxiv.org/abs/2211.16887v2>
 
 <!-- ks-harvest -->

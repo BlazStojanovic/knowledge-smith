@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1706.04599.md
-raw_pdf: raw/papers/1706.04599.pdf
+raw_md: raw/papers/md/2017-on-calibration-of-modern-neural-networks.md
+raw_pdf: raw/papers/pdf/2017-on-calibration-of-modern-neural-networks.pdf
 read: false
 slug: on-calibration-of-modern-neural-networks
 tags:
@@ -43,8 +43,8 @@ Confidence calibration -- the problem of predicting probability estimates repres
 
 ## Source
 
-- Raw markdown: [[raw/papers/1706.04599]]
-- PDF (gitignored): `raw/papers/1706.04599.pdf`
+- Raw markdown: [[raw/papers/md/2017-on-calibration-of-modern-neural-networks]]
+- PDF (gitignored): `raw/papers/pdf/2017-on-calibration-of-modern-neural-networks.pdf`
 - arXiv: <http://arxiv.org/abs/1706.04599v2>
 
 <!-- ks-harvest -->

@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1806.00979.md
-raw_pdf: raw/papers/1806.00979.pdf
+raw_md: raw/papers/md/2018-similarity-encoding-for-learning-with-dirty-categorical.md
+raw_pdf: raw/papers/pdf/2018-similarity-encoding-for-learning-with-dirty-categorical.pdf
 read: false
 slug: similarity-encoding-for-learning-with-dirty-categorical
 tags:
@@ -42,8 +42,8 @@ For statistical learning, categorical variables in a table are usually considere
 
 ## Source
 
-- Raw markdown: [[raw/papers/1806.00979]]
-- PDF: `raw/papers/1806.00979.pdf`
+- Raw markdown: [[raw/papers/md/2018-similarity-encoding-for-learning-with-dirty-categorical]]
+- PDF: `raw/papers/pdf/2018-similarity-encoding-for-learning-with-dirty-categorical.pdf`
 - arXiv: <http://arxiv.org/abs/1806.00979v1>
 
 <!-- ks-harvest -->

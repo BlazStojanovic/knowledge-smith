@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1806.06988.md
-raw_pdf: raw/papers/1806.06988.pdf
+raw_md: raw/papers/md/2018-deep-neural-decision-trees.md
+raw_pdf: raw/papers/pdf/2018-deep-neural-decision-trees.pdf
 read: false
 slug: deep-neural-decision-trees
 tags:
@@ -43,8 +43,8 @@ Deep neural networks have been proven powerful at processing perceptual data, su
 
 ## Source
 
-- Raw markdown: [[raw/papers/1806.06988]]
-- PDF: `raw/papers/1806.06988.pdf`
+- Raw markdown: [[raw/papers/md/2018-deep-neural-decision-trees]]
+- PDF: `raw/papers/pdf/2018-deep-neural-decision-trees.pdf`
 - arXiv: <http://arxiv.org/abs/1806.06988v1>
 
 <!-- ks-harvest -->

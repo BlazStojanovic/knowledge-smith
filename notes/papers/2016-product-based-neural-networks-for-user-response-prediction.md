@@ -12,8 +12,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1611.00144.md
-raw_pdf: raw/papers/1611.00144.pdf
+raw_md: raw/papers/md/2016-product-based-neural-networks-for-user-response-prediction.md
+raw_pdf: raw/papers/pdf/2016-product-based-neural-networks-for-user-response-prediction.pdf
 read: false
 slug: product-based-neural-networks-for-user-response-prediction
 tags:
@@ -47,8 +47,8 @@ Predicting user responses, such as clicks and conversions, is of great importanc
 
 ## Source
 
-- Raw markdown: [[raw/papers/1611.00144]]
-- PDF (gitignored): `raw/papers/1611.00144.pdf`
+- Raw markdown: [[raw/papers/md/2016-product-based-neural-networks-for-user-response-prediction]]
+- PDF (gitignored): `raw/papers/pdf/2016-product-based-neural-networks-for-user-response-prediction.pdf`
 - arXiv: <http://arxiv.org/abs/1611.00144v1>
 
 <!-- ks-harvest -->

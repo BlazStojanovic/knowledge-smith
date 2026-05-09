@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2305.06090.md
-raw_pdf: raw/papers/2305.06090.pdf
+raw_md: raw/papers/md/2023-xtab-cross-table-pretraining-for-tabular-transformers.md
+raw_pdf: raw/papers/pdf/2023-xtab-cross-table-pretraining-for-tabular-transformers.pdf
 read: false
 slug: xtab-cross-table-pretraining-for-tabular-transformers
 tags:
@@ -46,8 +46,8 @@ The success of self-supervised learning in computer vision and natural language 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2305.06090]]
-- PDF: `raw/papers/2305.06090.pdf`
+- Raw markdown: [[raw/papers/md/2023-xtab-cross-table-pretraining-for-tabular-transformers]]
+- PDF: `raw/papers/pdf/2023-xtab-cross-table-pretraining-for-tabular-transformers.pdf`
 - arXiv: <http://arxiv.org/abs/2305.06090v1>
 
 <!-- ks-harvest -->

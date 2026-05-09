@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1603.02754.md
-raw_pdf: raw/papers/1603.02754.pdf
+raw_md: raw/papers/md/2016-xgboost-a-scalable-tree-boosting-system.md
+raw_pdf: raw/papers/pdf/2016-xgboost-a-scalable-tree-boosting-system.pdf
 read: false
 slug: xgboost-a-scalable-tree-boosting-system
 tags:
@@ -42,8 +42,8 @@ Tree boosting is a highly effective and widely used machine learning method. In 
 
 ## Source
 
-- Raw markdown: [[raw/papers/1603.02754]]
-- PDF (gitignored): `raw/papers/1603.02754.pdf`
+- Raw markdown: [[raw/papers/md/2016-xgboost-a-scalable-tree-boosting-system]]
+- PDF (gitignored): `raw/papers/pdf/2016-xgboost-a-scalable-tree-boosting-system.pdf`
 - arXiv: <http://arxiv.org/abs/1603.02754v3>
 
 <!-- ks-harvest -->

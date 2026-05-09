@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2306.11134.md
-raw_pdf: raw/papers/2306.11134.pdf
+raw_md: raw/papers/md/2023-openp5-an-open-source-platform-for-developing-training-and.md
+raw_pdf: raw/papers/pdf/2023-openp5-an-open-source-platform-for-developing-training-and.pdf
 read: false
 slug: openp5-an-open-source-platform-for-developing-training-and
 tags:
@@ -44,8 +44,8 @@ In recent years, the integration of Large Language Models (LLMs) into recommende
 
 ## Source
 
-- Raw markdown: [[raw/papers/2306.11134]]
-- PDF: `raw/papers/2306.11134.pdf`
+- Raw markdown: [[raw/papers/md/2023-openp5-an-open-source-platform-for-developing-training-and]]
+- PDF: `raw/papers/pdf/2023-openp5-an-open-source-platform-for-developing-training-and.pdf`
 - arXiv: <http://arxiv.org/abs/2306.11134v2>
 
 <!-- ks-harvest -->

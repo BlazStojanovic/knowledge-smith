@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2205.09328.md
-raw_pdf: raw/papers/2205.09328.pdf
+raw_md: raw/papers/md/2022-transtab-learning-transferable-tabular-transformers-across.md
+raw_pdf: raw/papers/pdf/2022-transtab-learning-transferable-tabular-transformers-across.pdf
 read: false
 slug: transtab-learning-transferable-tabular-transformers-across
 tags:
@@ -43,8 +43,8 @@ Tabular data (or tables) are the most widely used data format in machine learnin
 
 ## Source
 
-- Raw markdown: [[raw/papers/2205.09328]]
-- PDF: `raw/papers/2205.09328.pdf`
+- Raw markdown: [[raw/papers/md/2022-transtab-learning-transferable-tabular-transformers-across]]
+- PDF: `raw/papers/pdf/2022-transtab-learning-transferable-tabular-transformers-across.pdf`
 - arXiv: <http://arxiv.org/abs/2205.09328v2>
 
 <!-- ks-harvest -->

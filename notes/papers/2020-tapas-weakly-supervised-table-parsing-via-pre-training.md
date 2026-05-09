@@ -10,8 +10,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2004.02349.md
-raw_pdf: raw/papers/2004.02349.pdf
+raw_md: raw/papers/md/2020-tapas-weakly-supervised-table-parsing-via-pre-training.md
+raw_pdf: raw/papers/pdf/2020-tapas-weakly-supervised-table-parsing-via-pre-training.pdf
 read: false
 slug: tapas-weakly-supervised-table-parsing-via-pre-training
 tags:
@@ -46,8 +46,8 @@ Answering natural language questions over tables is usually seen as a semantic p
 
 ## Source
 
-- Raw markdown: [[raw/papers/2004.02349]]
-- PDF: `raw/papers/2004.02349.pdf`
+- Raw markdown: [[raw/papers/md/2020-tapas-weakly-supervised-table-parsing-via-pre-training]]
+- PDF: `raw/papers/pdf/2020-tapas-weakly-supervised-table-parsing-via-pre-training.pdf`
 - arXiv: <http://arxiv.org/abs/2004.02349v2>
 
 <!-- ks-harvest -->

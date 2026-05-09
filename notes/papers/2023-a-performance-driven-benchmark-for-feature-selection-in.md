@@ -13,8 +13,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2311.05877.md
-raw_pdf: raw/papers/2311.05877.pdf
+raw_md: raw/papers/md/2023-a-performance-driven-benchmark-for-feature-selection-in.md
+raw_pdf: raw/papers/pdf/2023-a-performance-driven-benchmark-for-feature-selection-in.pdf
 read: false
 slug: a-performance-driven-benchmark-for-feature-selection-in
 tags:
@@ -48,8 +48,8 @@ Academic tabular benchmarks often contain small sets of curated features. In con
 
 ## Source
 
-- Raw markdown: [[raw/papers/2311.05877]]
-- PDF: `raw/papers/2311.05877.pdf`
+- Raw markdown: [[raw/papers/md/2023-a-performance-driven-benchmark-for-feature-selection-in]]
+- PDF: `raw/papers/pdf/2023-a-performance-driven-benchmark-for-feature-selection-in.pdf`
 - arXiv: <http://arxiv.org/abs/2311.05877v1>
 
 <!-- ks-harvest -->

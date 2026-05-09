@@ -13,8 +13,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2207.12560.md
-raw_pdf: raw/papers/2207.12560.pdf
+raw_md: raw/papers/md/2022-amlb-an-automl-benchmark.md
+raw_pdf: raw/papers/pdf/2022-amlb-an-automl-benchmark.pdf
 read: false
 slug: amlb-an-automl-benchmark
 tags:
@@ -47,6 +47,6 @@ Comparing different AutoML frameworks is notoriously challenging and often done 
 
 ## Source
 
-- Raw markdown: [[raw/papers/2207.12560]]
-- PDF: `raw/papers/2207.12560.pdf`
+- Raw markdown: [[raw/papers/md/2022-amlb-an-automl-benchmark]]
+- PDF: `raw/papers/pdf/2022-amlb-an-automl-benchmark.pdf`
 - arXiv: <http://arxiv.org/abs/2207.12560v2>

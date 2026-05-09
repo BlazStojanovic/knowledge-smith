@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2407.04491.md
-raw_pdf: raw/papers/2407.04491.pdf
+raw_md: raw/papers/md/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.md
+raw_pdf: raw/papers/pdf/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.pdf
 read: false
 slug: better-by-default-strong-pre-tuned-mlps-and-boosted-trees
 tags:
@@ -43,8 +43,8 @@ For classification and regression on tabular data, the dominance of gradient-boo
 
 ## Source
 
-- Raw markdown: [[raw/papers/2407.04491]]
-- PDF: `raw/papers/2407.04491.pdf`
+- Raw markdown: [[raw/papers/md/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees]]
+- PDF: `raw/papers/pdf/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.pdf`
 - arXiv: <http://arxiv.org/abs/2407.04491v3>
 
 <!-- ks-harvest -->

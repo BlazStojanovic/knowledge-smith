@@ -6,8 +6,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1907.01860.md
-raw_pdf: raw/papers/1907.01860.pdf
+raw_md: raw/papers/md/2019-encoding-high-cardinality-string-categorical-variables.md
+raw_pdf: raw/papers/pdf/2019-encoding-high-cardinality-string-categorical-variables.pdf
 read: false
 slug: encoding-high-cardinality-string-categorical-variables
 tags:
@@ -37,8 +37,8 @@ year: 2019
 
 ## Source
 
-- Raw markdown: [[raw/papers/1907.01860]]
-- PDF: `raw/papers/1907.01860.pdf`
+- Raw markdown: [[raw/papers/md/2019-encoding-high-cardinality-string-categorical-variables]]
+- PDF: `raw/papers/pdf/2019-encoding-high-cardinality-string-categorical-variables.pdf`
 - arXiv: <https://arxiv.org/abs/1907.01860>
 
 <!-- ks-harvest -->

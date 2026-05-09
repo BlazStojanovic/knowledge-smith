@@ -8,8 +8,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2306.09468.md
-raw_pdf: raw/papers/2306.09468.pdf
+raw_md: raw/papers/md/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.md
+raw_pdf: raw/papers/pdf/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.pdf
 read: false
 slug: ffb-a-fair-fairness-benchmark-for-in-processing-group
 tags:
@@ -39,8 +39,8 @@ year: 2023
 
 ## Source
 
-- Raw markdown: [[raw/papers/2306.09468]]
-- PDF: `raw/papers/2306.09468.pdf`
+- Raw markdown: [[raw/papers/md/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group]]
+- PDF: `raw/papers/pdf/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.pdf`
 - arXiv: <https://arxiv.org/abs/2306.09468>
 
 <!-- ks-harvest -->

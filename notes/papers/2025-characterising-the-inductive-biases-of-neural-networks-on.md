@@ -11,8 +11,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2505.24060.md
-raw_pdf: raw/papers/2505.24060.pdf
+raw_md: raw/papers/md/2025-characterising-the-inductive-biases-of-neural-networks-on.md
+raw_pdf: raw/papers/pdf/2025-characterising-the-inductive-biases-of-neural-networks-on.pdf
 read: false
 slug: characterising-the-inductive-biases-of-neural-networks-on
 tags:
@@ -46,8 +46,8 @@ Deep neural networks are renowned for their ability to generalise well across di
 
 ## Source
 
-- Raw markdown: [[raw/papers/2505.24060]]
-- PDF: `raw/papers/2505.24060.pdf`
+- Raw markdown: [[raw/papers/md/2025-characterising-the-inductive-biases-of-neural-networks-on]]
+- PDF: `raw/papers/pdf/2025-characterising-the-inductive-biases-of-neural-networks-on.pdf`
 - arXiv: <http://arxiv.org/abs/2505.24060v1>
 
 <!-- ks-harvest -->

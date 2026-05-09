@@ -6,8 +6,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1811.10154.md
-raw_pdf: raw/papers/1811.10154.pdf
+raw_md: raw/papers/md/2018-stop-explaining-black-box-machine-learning-models-for-high.md
+raw_pdf: raw/papers/pdf/2018-stop-explaining-black-box-machine-learning-models-for-high.pdf
 read: false
 slug: stop-explaining-black-box-machine-learning-models-for-high
 tags:
@@ -41,8 +41,8 @@ Black box machine learning models are currently being used for high stakes decis
 
 ## Source
 
-- Raw markdown: [[raw/papers/1811.10154]]
-- PDF: `raw/papers/1811.10154.pdf`
+- Raw markdown: [[raw/papers/md/2018-stop-explaining-black-box-machine-learning-models-for-high]]
+- PDF: `raw/papers/pdf/2018-stop-explaining-black-box-machine-learning-models-for-high.pdf`
 - arXiv: <http://arxiv.org/abs/1811.10154v3>
 
 <!-- ks-harvest -->

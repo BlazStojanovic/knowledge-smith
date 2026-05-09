@@ -8,8 +8,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2410.24210.md
-raw_pdf: raw/papers/2410.24210.pdf
+raw_md: raw/papers/md/2024-tabm-advancing-tabular-deep-learning-with-parameter.md
+raw_pdf: raw/papers/pdf/2024-tabm-advancing-tabular-deep-learning-with-parameter.pdf
 read: false
 slug: tabm-advancing-tabular-deep-learning-with-parameter
 tags:
@@ -43,8 +43,8 @@ Deep learning architectures for supervised learning on tabular data range from s
 
 ## Source
 
-- Raw markdown: [[raw/papers/2410.24210]]
-- PDF: `raw/papers/2410.24210.pdf`
+- Raw markdown: [[raw/papers/md/2024-tabm-advancing-tabular-deep-learning-with-parameter]]
+- PDF: `raw/papers/pdf/2024-tabm-advancing-tabular-deep-learning-with-parameter.pdf`
 - arXiv: <http://arxiv.org/abs/2410.24210v3>
 
 <!-- ks-harvest -->

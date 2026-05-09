@@ -10,8 +10,8 @@ created: '2026-05-09'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2202.10580.md
-raw_pdf: raw/papers/2202.10580.pdf
+raw_md: raw/papers/md/2022-benchmarking-missing-values-approaches-for-predictive.md
+raw_pdf: raw/papers/pdf/2022-benchmarking-missing-values-approaches-for-predictive.pdf
 read: false
 slug: benchmarking-missing-values-approaches-for-predictive
 tags:
@@ -41,8 +41,8 @@ year: 2022
 
 ## Source
 
-- Raw markdown: [[raw/papers/2202.10580]]
-- PDF: `raw/papers/2202.10580.pdf`
+- Raw markdown: [[raw/papers/md/2022-benchmarking-missing-values-approaches-for-predictive]]
+- PDF: `raw/papers/pdf/2022-benchmarking-missing-values-approaches-for-predictive.pdf`
 - arXiv: <https://arxiv.org/abs/2202.10580>
 
 <!-- ks-harvest -->

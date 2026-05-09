@@ -9,8 +9,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/2207.03208.md
-raw_pdf: raw/papers/2207.03208.pdf
+raw_md: raw/papers/md/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.md
+raw_pdf: raw/papers/pdf/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.pdf
 read: false
 slug: revisiting-pretraining-objectives-for-tabular-deep-learning
 tags:
@@ -45,8 +45,8 @@ Recent deep learning models for tabular data currently compete with the traditio
 
 ## Source
 
-- Raw markdown: [[raw/papers/2207.03208]]
-- PDF: `raw/papers/2207.03208.pdf`
+- Raw markdown: [[raw/papers/md/2022-revisiting-pretraining-objectives-for-tabular-deep-learning]]
+- PDF: `raw/papers/pdf/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.pdf`
 - arXiv: <http://arxiv.org/abs/2207.03208v2>
 
 <!-- ks-harvest -->

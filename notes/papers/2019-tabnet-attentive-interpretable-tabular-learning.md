@@ -7,8 +7,8 @@ created: '2026-05-08'
 doi: null
 kind: paper
 parser: ar5iv
-raw_md: raw/papers/1908.07442.md
-raw_pdf: raw/papers/1908.07442.pdf
+raw_md: raw/papers/md/2019-tabnet-attentive-interpretable-tabular-learning.md
+raw_pdf: raw/papers/pdf/2019-tabnet-attentive-interpretable-tabular-learning.pdf
 read: false
 slug: tabnet-attentive-interpretable-tabular-learning
 tags:
@@ -42,8 +42,8 @@ We propose a novel high-performance and interpretable canonical deep tabular dat
 
 ## Source
 
-- Raw markdown: [[raw/papers/1908.07442]]
-- PDF: `raw/papers/1908.07442.pdf`
+- Raw markdown: [[raw/papers/md/2019-tabnet-attentive-interpretable-tabular-learning]]
+- PDF: `raw/papers/pdf/2019-tabnet-attentive-interpretable-tabular-learning.pdf`
 - arXiv: <http://arxiv.org/abs/1908.07442v5>
 
 <!-- ks-harvest -->
