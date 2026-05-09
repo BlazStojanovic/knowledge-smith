@@ -1,0 +1,49 @@
+---
+arxiv: '1706.09516'
+authors:
+- Liudmila Prokhorenkova
+- Gleb Gusev
+- Aleksandr Vorobev
+- Anna Veronika Dorogush
+- Andrey Gulin
+created: '2026-05-08'
+doi: null
+kind: paper
+parser: ar5iv
+raw_md: raw/papers/1706.09516.md
+raw_pdf: raw/papers/1706.09516.pdf
+read: false
+slug: catboost-unbiased-boosting-with-categorical-features
+tags: []
+title: 'CatBoost: unbiased boosting with categorical features'
+type: note
+updated: '2026-05-09'
+url: http://arxiv.org/abs/1706.09516v5
+venue: null
+year: 2017
+---
+
+# CatBoost: unbiased boosting with categorical features
+
+> *Liudmila Prokhorenkova, Gleb Gusev, Aleksandr Vorobev…* — arXiv 1706.09516, 2017
+
+## Abstract
+
+This paper presents the key algorithmic techniques behind CatBoost, a new gradient boosting toolkit. Their combination leads to CatBoost outperforming other publicly available boosting implementations in terms of quality on a variety of datasets. Two critical algorithmic advances introduced in CatBoost are the implementation of ordered boosting, a permutation-driven alternative to the classic algorithm, and an innovative algorithm for processing categorical features. Both techniques were created to fight a prediction shift caused by a special kind of target leakage present in all currently existing implementations of gradient boosting algorithms. In this paper, we provide a detailed analysis of this problem and demonstrate that proposed algorithms solve it effectively, leading to excellent empirical results.
+
+## TL;DR
+
+(stub)
+
+## Notes
+
+(stub)
+
+## Source
+
+- Raw markdown: [[raw/papers/1706.09516]]
+- PDF: `raw/papers/1706.09516.pdf`
+- arXiv: <http://arxiv.org/abs/1706.09516v5>
+
+<!-- ks-crosslink -->
+**Writing-tier note:** [[../papers/2018-prokhorenkova-catboost]]

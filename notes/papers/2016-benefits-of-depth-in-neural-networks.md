@@ -1,0 +1,45 @@
+---
+arxiv: '1602.04485'
+authors:
+- Matus Telgarsky
+created: '2026-05-08'
+doi: null
+kind: paper
+parser: ar5iv
+raw_md: raw/papers/1602.04485.md
+raw_pdf: raw/papers/1602.04485.pdf
+read: false
+slug: benefits-of-depth-in-neural-networks
+tags: []
+title: Benefits of depth in neural networks
+type: note
+updated: '2026-05-09'
+url: http://arxiv.org/abs/1602.04485v2
+venue: null
+year: 2016
+---
+
+# Benefits of depth in neural networks
+
+> *Matus Telgarsky* — arXiv 1602.04485, 2016
+
+## Abstract
+
+For any positive integer $k$, there exist neural networks with $Θ(k^3)$ layers, $Θ(1)$ nodes per layer, and $Θ(1)$ distinct parameters which can not be approximated by networks with $\mathcal{O}(k)$ layers unless they are exponentially large --- they must possess $Ω(2^k)$ nodes. This result is proved here for a class of nodes termed "semi-algebraic gates" which includes the common choices of ReLU, maximum, indicator, and piecewise polynomial functions, therefore establishing benefits of depth against not just standard networks with ReLU gates, but also convolutional networks with ReLU and maximization gates, sum-product networks, and boosted decision trees (in this last case with a stronger separation: $Ω(2^{k^3})$ total tree nodes are required).
+
+## TL;DR
+
+(stub)
+
+## Notes
+
+(stub)
+
+## Source
+
+- Raw markdown: [[raw/papers/1602.04485]]
+- PDF (gitignored): `raw/papers/1602.04485.pdf`
+- arXiv: <http://arxiv.org/abs/1602.04485v2>
+
+<!-- ks-crosslink -->
+**Writing-tier note:** [[../papers/2016-telgarsky-benefits-of-depth]]

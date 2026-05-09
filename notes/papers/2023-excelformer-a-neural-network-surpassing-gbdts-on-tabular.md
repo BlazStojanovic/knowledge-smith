@@ -1,0 +1,50 @@
+---
+arxiv: '2301.02819'
+authors:
+- Jintai Chen
+- Jiahuan Yan
+- Qiyuan Chen
+- Danny Ziyi Chen
+- Jian Wu
+- Jimeng Sun
+created: '2026-05-08'
+doi: null
+kind: paper
+parser: ar5iv
+raw_md: raw/papers/2301.02819.md
+raw_pdf: raw/papers/2301.02819.pdf
+read: false
+slug: excelformer-a-neural-network-surpassing-gbdts-on-tabular
+tags: []
+title: 'ExcelFormer: A neural network surpassing GBDTs on tabular data'
+type: note
+updated: '2026-05-09'
+url: http://arxiv.org/abs/2301.02819v8
+venue: null
+year: 2023
+---
+
+# ExcelFormer: A neural network surpassing GBDTs on tabular data
+
+> *Jintai Chen, Jiahuan Yan, Qiyuan Chen…* — arXiv 2301.02819, 2023
+
+## Abstract
+
+Data organized in tabular format is ubiquitous in real-world applications, and users often craft tables with biased feature definitions and flexibly set prediction targets of their interests. Thus, a rapid development of a robust, effective, dataset-versatile, user-friendly tabular prediction approach is highly desired. While Gradient Boosting Decision Trees (GBDTs) and existing deep neural networks (DNNs) have been extensively utilized by professional users, they present several challenges for casual users, particularly: (i) the dilemma of model selection due to their different dataset preferences, and (ii) the need for heavy hyperparameter searching, failing which their performances are deemed inadequate. In this paper, we delve into this question: Can we develop a deep learning model that serves as a "sure bet" solution for a wide range of tabular prediction tasks, while also being user-friendly for casual users? We delve into three key drawbacks of deep tabular models, encompassing: (P1) lack of rotational variance property, (P2) large data demand, and (P3) over-smooth solution. We propose ExcelFormer, addressing these challenges through a semi-permeable attention module that effectively constrains the influence of less informative features to break the DNNs' rotational invariance property (for P1), data augmentation approaches tailored for tabular data (for P2), and attentive feedforward network to boost the model fitting capability (for P3). These designs collectively make ExcelFormer a "sure bet" solution for diverse tabular datasets. Extensive and stratified experiments conducted on real-world datasets demonstrate that our model outperforms previous approaches across diverse tabular data prediction tasks, and this framework can be friendly to casual users, offering ease of use without the heavy hyperparameter tuning.
+
+## TL;DR
+
+(stub)
+
+## Notes
+
+(stub)
+
+## Source
+
+- Raw markdown: [[raw/papers/2301.02819]]
+- PDF: `raw/papers/2301.02819.pdf`
+- arXiv: <http://arxiv.org/abs/2301.02819v8>
+
+<!-- ks-crosslink -->
+**Writing-tier note:** [[../papers/2024-chen-excelformer]]

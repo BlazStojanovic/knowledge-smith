@@ -1,0 +1,51 @@
+---
+arxiv: '1708.04617'
+authors:
+- Jun Xiao
+- Hao Ye
+- Xiangnan He
+- Hanwang Zhang
+- Fei Wu
+- Tat-Seng Chua
+created: '2026-05-08'
+doi: null
+kind: paper
+parser: ar5iv
+raw_md: raw/papers/1708.04617.md
+raw_pdf: raw/papers/1708.04617.pdf
+read: false
+slug: attentional-factorization-machines-learning-the-weight-of
+tags: []
+title: 'Attentional Factorization Machines: Learning the Weight of Feature Interactions
+  via Attention Networks'
+type: note
+updated: '2026-05-09'
+url: http://arxiv.org/abs/1708.04617v1
+venue: null
+year: 2017
+---
+
+# Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks
+
+> *Jun Xiao, Hao Ye, Xiangnan He…* — arXiv 1708.04617, 2017
+
+## Abstract
+
+Factorization Machines (FMs) are a supervised learning approach that enhances the linear regression model by incorporating the second-order feature interactions. Despite effectiveness, FM can be hindered by its modelling of all feature interactions with the same weight, as not all feature interactions are equally useful and predictive. For example, the interactions with useless features may even introduce noises and adversely degrade the performance. In this work, we improve FM by discriminating the importance of different feature interactions. We propose a novel model named Attentional Factorization Machine (AFM), which learns the importance of each feature interaction from data via a neural attention network. Extensive experiments on two real-world datasets demonstrate the effectiveness of AFM. Empirically, it is shown on regression task AFM betters FM with a $8.6\%$ relative improvement, and consistently outperforms the state-of-the-art deep learning methods Wide&Deep and DeepCross with a much simpler structure and fewer model parameters. Our implementation of AFM is publicly available at: https://github.com/hexiangnan/attentional_factorization_machine
+
+## TL;DR
+
+(stub)
+
+## Notes
+
+(stub)
+
+## Source
+
+- Raw markdown: [[raw/papers/1708.04617]]
+- PDF: `raw/papers/1708.04617.pdf`
+- arXiv: <http://arxiv.org/abs/1708.04617v1>
+
+<!-- ks-crosslink -->
+**Writing-tier note:** [[../papers/2017-xiao-afm]]
