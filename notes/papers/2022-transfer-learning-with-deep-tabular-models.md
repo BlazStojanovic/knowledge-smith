@@ -1,0 +1,52 @@
+---
+arxiv: '2206.15306'
+authors:
+- Roman Levin 1 ‡ Valeriia Cherepanova ∗2 Avi Schwarzschild †2 Arpit Bansal †2 C.
+  Bayan Bruss 3 Tom Goldstein 2 Andrew Gordon Wilson 4 Micah Goldblum 4 1 University
+  of Washington 2 University of Maryland 3 Capital One 4 New York University rilevin@uw.edu,
+  vcherepa@umd.edu
+created: '2026-05-09'
+doi: null
+kind: paper
+parser: ar5iv
+raw_md: raw/papers/2206.15306.md
+raw_pdf: raw/papers/2206.15306.pdf
+read: false
+slug: transfer-learning-with-deep-tabular-models
+tags:
+- tabular
+- fine-tuning
+- self-supervised
+- ml
+title: Transfer Learning with Deep Tabular Models
+type: note
+updated: '2026-05-09'
+url: https://arxiv.org/abs/2206.15306
+venue: null
+year: 2022
+---
+
+# Transfer Learning with Deep Tabular Models
+
+> *Roman Levin 1 ‡ Valeriia Cherepanova ∗2 Avi Schwarzschild †2 Arpit Bansal †2 C. Bayan Bruss 3 Tom Goldstein 2 Andrew Gordon Wilson 4 Micah Goldblum 4 1 University of Washington 2 University of Maryland 3 Capital One 4 New York University rilevin@uw.edu, vcherepa@umd.edu* — arXiv 2206.15306, 2022
+
+## TL;DR
+
+(stub — fill in after reading)
+
+## Notes
+
+(your synthesis)
+
+## Source
+
+- Raw markdown: [[raw/papers/2206.15306]]
+- PDF: `raw/papers/2206.15306.pdf`
+- arXiv: <https://arxiv.org/abs/2206.15306>
+
+<!-- ks-harvest -->
+## Notes (imported from writings)
+
+*Imported 2026-05-09 from `papers/2023-levin-transfer-learning-tabular.md` before that tree was retired.*
+
+Deep tabular's representation advantage shows up only in low-data transfer settings.

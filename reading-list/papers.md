@@ -1,5 +1,5 @@
 ---
-generated: '2026-05-09T00:47:56+00:00'
+generated: '2026-05-09T01:22:35+00:00'
 kind: papers
 type: reading-list
 unread_count: 155
@@ -16,28 +16,27 @@ unread_count: 155
 
 ## 2024
 
-- [[notes/papers/2024-accelerated-training-of-deep-learning-surrogate-models-for|Accelerated training of deep learning surrogate models for surface displacement and flow, with application to MCMC-based history matching of CO2 storage operations]] — Yifu Han et al.
+- [[notes/papers/2024-a-data-centric-perspective-on-evaluating-machine-learning|A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data]] — Andrej Tschalzev University of Mannheim &Sascha Marton University of Mannheim &Stefan Lüdtke University of Rostock &Christian Bartelt University of Mannheim &Heiner Stuckenschmidt University of Mannheim
 - [[notes/papers/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees|Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data]] — David Holzmüller et al.
-- [[notes/papers/2024-deformable-image-registration-with-multi-scale-feature|Deformable Image Registration with Multi-scale Feature Fusion from Shared Encoder, Auxiliary and Pyramid Decoders]] — Hongchao Zhou & Shunbo Hu
-- [[notes/papers/2024-lasing-on-hybridized-soliton-frequency-combs|Lasing on hybridized soliton frequency combs]] — Theodore P. Letsou et al.
 - [[notes/papers/2024-mode-clip-data-experts-via-clustering|MoDE: CLIP Data Experts via Clustering]] — Jiawei Ma et al.
-- [[notes/papers/2024-on-the-efficiency-of-nlp-inspired-methods-for-tabular-deep|On the Efficiency of NLP-Inspired Methods for Tabular Deep Learning]] — Anton Frederik Thielmann & Soheila Samiee
 - [[notes/papers/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular|Revisiting Nearest Neighbor for Tabular Data: A Deep Tabular Baseline Two Decades Later]] — Han-Jia Ye et al.
+- [[notes/papers/2024-talent-a-tabular-analytics-and-learning-toolbox|TALENT: A Tabular Analytics and Learning Toolbox]] — \name Si-Yang Liu \email liusiyang@smail.nju.edu.cn \name Hao-Run Cai \email caihr@smail.nju.edu.cn \name Qi-Le Zhou \email zhouql@lamda.nju.edu.cn \name Han-Jia Ye \email yehj@lamda.nju.edu.cn \addr School of Artificial Intelligence, Nanjing University, China \addr National Key Laboratory for Novel Software Technology, Nanjing University, 210023, China
 - [[notes/papers/2024-tabm-advancing-tabular-deep-learning-with-parameter|TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling]] — Yury Gorishniy et al.
-- [[notes/papers/2024-the-equidistant-dimension-of-some-graphs-of-convex-polytopes|The equidistant dimension of some graphs of convex polytopes]] — Aleksandar Savić et al.
+- [[notes/papers/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular|TabReD: Analyzing Pitfalls and Filling the Gaps in Tabular Deep Learning Benchmarks]] — Ivan Rubachev Yandex, HSE University &Nikolay Kartashev HSE University, Yandex \AND Yury Gorishniy Yandex &Artem Babenko Yandex, HSE University
+- [[notes/papers/2024-tabular-data-is-deep-learning-all-you-need|Tabular Data: Is Deep Learning all you need?]] — Guri Zabërgja et al.
+- [[notes/papers/2024-what-is-a-good-imputation-under-mar-missingness|What Is a Good Imputation Under MAR Missingness?]] — Jeffrey Näf, Julie Josse Inria, PreMeDICaL Team, University of Montpellier
 
 ## 2023
 
 - [[notes/papers/2023-a-performance-driven-benchmark-for-feature-selection-in|A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning]] — Valeriia Cherepanova et al.
 - [[notes/papers/2023-beyazit-inductive-bias|An Inductive Bias for Tabular Deep Learning]] — Ege Beyazit et al.
 - [[notes/papers/2023-benchmarking-distribution-shift-in-tabular-data-with|Benchmarking Distribution Shift in Tabular Data with TableShift]] — Josh Gardner et al.
-- [[notes/papers/2023-borderline-hyperbolic-comet-c-2021-o3-panstarrs-was-fading|Borderline hyperbolic comet C/2021 O3 (PANSTARRS) was fading as it approached the Sun]] — M. Evangelista-Santana et al.
-- [[notes/papers/2023-dragd3d-realistic-mesh-editing-with-rigidity-control-driven|DragD3D: Realistic Mesh Editing with Rigidity Control Driven by 2D Diffusion Priors]] — Tianhao Xie et al.
 - [[notes/papers/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular|ExcelFormer: A neural network surpassing GBDTs on tabular data]] — Jintai Chen et al.
-- [[notes/papers/2023-gpt-4-vision-on-medical-image-classification-a-case-study|GPT-4 Vision on Medical Image Classification -- A Case Study on COVID-19 Dataset]] — Ruibo Chen et al.
+- [[notes/papers/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group|FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods]] — Xiaotian Han 1 Jianfeng Chi 2 Yu Chen 2 Qifan Wang 2 Han Zhao 3 Na Zou 1 Xia Hu 4 1 Texas A&M University 2 Meta AI 3 UIUC 4 Rice University {han, nzou1}@tamu.edu {jianfengchi, hugochen, wqfcr}@meta.com hanzhao@illinois.edu xia.hu@rice.edu
 - [[notes/papers/2023-grande-gradient-based-decision-tree-ensembles-for-tabular|GRANDE: Gradient-Based Decision Tree Ensembles for Tabular Data]] — Sascha Marton et al.
-- [[notes/papers/2023-ontology-revision-based-on-pre-trained-language-models|Ontology Revision based on Pre-trained Language Models]] — Qiu Ji et al.
 - [[notes/papers/2023-openp5-an-open-source-platform-for-developing-training-and|OpenP5: An Open-Source Platform for Developing, Training, and Evaluating LLM-based Recommender Systems]] — Shuyuan Xu et al.
+- [[notes/papers/2023-recontab-regularized-contrastive-representation-learning|ReConTab: Regularized Contrastive Representation Learning for Tabular Data]] — Suiyao Chen University of South Florida Tampa, FL 33620 suiyaochen@usf.edu &Jing Wu ∗ University of Illinois at Urbana-Champaign Champaign, IL 61820 jingwu6@illinois.edu Naira Hovakimyan University of Illinois at Urbana-Champaign Champaign, IL 61820 nhovakim@illinois.edu &Handong Yao University of Georgia Athens, GA 30602 handong.yao@uga.edu
+- [[notes/papers/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks|STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables]] — Jaehyun Nam 1 Jihoon Tack 1 Kyungmin Lee 1 Hankook Lee 2∗ Jinwoo Shin 1 1 Korea Advanced Institute of Science and Technology (KAIST) 2 LG AI Research { 𝚓𝚊𝚎𝚑𝚢𝚞𝚗 . 𝚗𝚊𝚖 , 𝚓𝚒𝚑𝚘𝚘𝚗𝚝𝚊𝚌𝚔 , 𝚔𝚢𝚞𝚗𝚐𝚖𝚗𝚕𝚎𝚎 , 𝚓𝚒𝚗𝚠𝚘𝚘𝚜 } @ 𝚔𝚊𝚒𝚜𝚝 . 𝚊𝚌 . 𝚔𝚛 \mathtt{\{jaehyun.nam,jihoontack,kyungmnlee,jinwoos\}\texttt{@}kaist.ac.kr} 𝚑𝚊𝚗𝚔𝚘𝚘𝚔 . 𝚕𝚎𝚎 ​ @ ​ 𝚕𝚐𝚛𝚎𝚜𝚎𝚊𝚛𝚌𝚑 . 𝚊𝚒 formulae-sequence 𝚑𝚊𝚗𝚔𝚘𝚘𝚔 𝚕𝚎𝚎 @ 𝚕𝚐𝚛𝚎𝚜𝚎𝚊𝚛𝚌𝚑 𝚊𝚒 \mathtt{hankook.lee\texttt{@}lgresearch.ai}
 - [[notes/papers/2023-tangos-regularizing-tabular-neural-networks-through|TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization]] — Alan Jeffares et al.
 - [[notes/papers/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023|TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023]] — Yury Gorishniy et al.
 - [[notes/papers/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data|Trompt: Towards a Better Deep Neural Network for Tabular Data]] — Kuan-Yu Chen et al.
@@ -46,28 +45,27 @@ unread_count: 155
 
 ## 2022
 
-- [[notes/papers/2022-a-near-optimal-best-of-both-worlds-algorithm-for-online|A Near-Optimal Best-of-Both-Worlds Algorithm for Online Learning with Feedback Graphs]] — Chloé Rouyer et al.
 - [[notes/papers/2022-amlb-an-automl-benchmark|AMLB: an AutoML Benchmark]] — Pieter Gijsbers et al.
-- [[notes/papers/2022-hyperimpute-generalized-iterative-imputation-with-automatic|HyperImpute: Generalized Iterative Imputation with Automatic Model Selection]] — Daniel Jarrett et al.
+- [[notes/papers/2022-benchmarking-missing-values-approaches-for-predictive|Benchmarking missing-values approaches for predictive models on health databases]] — Alexandre Perez-Lebel et al.
+- [[notes/papers/2022-hopular-modern-hopfield-networks-for-tabular-data|Hopular: Modern Hopfield Networks for Tabular Data]] — Bernhard Schäfl 2 2 footnotemark: 2 , , ~{}^{,} Lukas Gruber 2 2 footnotemark: 2 Angela Bitto-Nemling 2 2 footnotemark: 2 , , ~{}^{,} 3 3 footnotemark: 3 Sepp Hochreiter 2 2 footnotemark: 2 , , ~{}^{,} 3 3 footnotemark: 3 2 2 footnotemark: 2 ELLIS Unit Linz and LIT AI Lab, Institute for Machine Learning, Johannes Kepler University Linz, Austria 3 3 footnotemark: 3 Institute of Advanced Research in Artificial Intelligence (IARAI)
 - [[notes/papers/2022-molnar-interpretable-ml|Interpretable Machine Learning]] — Christoph Molnar
 - [[notes/papers/2022-on-embeddings-for-numerical-features-in-tabular-deep|On Embeddings for Numerical Features in Tabular Deep Learning]] — Yury Gorishniy et al.
 - [[notes/papers/2022-revisiting-pretraining-objectives-for-tabular-deep-learning|Revisiting Pretraining Objectives for Tabular Deep Learning]] — Ivan Rubachev et al.
 - [[notes/papers/2022-hajiramezanali-stab|STab: Self-supervised Learning for Tabular Data]] — Ehsan Hajiramezanali et al.
+- [[notes/papers/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline|Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation]] — Josh Gardner Zoran Popović Ludwig Schmidt Paul G. Allen School of Computer Science & Engineering University of Washington {jpgard, zoran, schmidt}@cs.washington.edu
 - [[notes/papers/2022-t2g-former-organizing-tabular-features-into-relation-graphs|T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction]] — Jiahuan Yan et al.
-- [[notes/papers/2022-to-smote-or-not-to-smote|To SMOTE, or not to SMOTE?]] — Yotam Elor & Hadar Averbuch-Elor
 - [[notes/papers/2022-transtab-learning-transferable-tabular-transformers-across|TransTab: Learning Transferable Tabular Transformers Across Tables]] — Zifeng Wang & Jimeng Sun
+- [[notes/papers/2022-transfer-learning-with-deep-tabular-models|Transfer Learning with Deep Tabular Models]] — Roman Levin 1 ‡ Valeriia Cherepanova ∗2 Avi Schwarzschild †2 Arpit Bansal †2 C. Bayan Bruss 3 Tom Goldstein 2 Andrew Gordon Wilson 4 Micah Goldblum 4 1 University of Washington 2 University of Maryland 3 Capital One 4 New York University rilevin@uw.edu, vcherepa@umd.edu
 - [[notes/papers/2022-why-do-tree-based-models-still-outperform-deep-learning-on|Why do tree-based models still outperform deep learning on tabular data?]] — Léo Grinsztajn et al.
 
 ## 2021
 
 - [[notes/papers/2021-a-gentle-introduction-to-conformal-prediction-and|A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty Quantification]] — Anastasios N. Angelopoulos & Stephen Bates
 - [[notes/papers/2021-arm-net-adaptive-relation-modeling-network-for-structured|ARM-Net: Adaptive Relation Modeling Network for Structured Data]] — Shaofeng Cai et al.
-- [[notes/papers/2021-construction-material-classification-on-imbalanced-datasets|Construction material classification on imbalanced datasets using Vision Transformer (ViT) architecture]] — Maryam Soleymani et al.
+- [[notes/papers/2021-contrastive-mixup-self-and-semi-supervised-learning-for|Contrastive Mixup: Self- and Semi-Supervised learning for Tabular Domain]] — Sajad Darabi UCLA sajad.darabi@cs.ucla.edu &Shayan Fazeli UCLA shayan.fazeli@cs.ucla.edu &Ali Pazokitoroudi UCLA alipazoki@cs.ucla.edu &Sriram Sankararaman UCLA sriram@cs.ucla.edu &Majid Sarrafzadeh UCLA majid@cs.ucla.edu
 - [[notes/papers/2021-danets-deep-abstract-networks-for-tabular-data|DANets: Deep Abstract Networks for Tabular Data Classification and Regression]] — Jintai Chen et al.
 - [[notes/papers/2021-deep-neural-networks-and-tabular-data-a-survey|Deep Neural Networks and Tabular Data: A Survey]] — Vadim Borisov et al.
-- [[notes/papers/2021-fourier-space-losses-for-efficient-perceptual-image-super|Fourier Space Losses for Efficient Perceptual Image Super-Resolution]] — Dario Fuoli et al.
 - [[notes/papers/2021-bojer-kaggle|Kaggle Forecasting Competitions: An Overview and Research Opportunities]] — Casper Sønderby Bojer & Jens Peder Meldgaard Madsen
-- [[notes/papers/2021-machine-learning-on-cloud-with-blockchain-a-secure|Machine Learning on Cloud with Blockchain: A Secure, Verifiable and Fair Approach to Outsource the Linear Regression for Data Analysis]] — Hanlin Zhang et al.
 - [[notes/papers/2021-retiring-adult-new-datasets-for-fair-machine-learning|Retiring Adult: New Datasets for Fair Machine Learning]] — Frances Ding et al.
 - [[notes/papers/2021-revisiting-deep-learning-models-for-tabular-data|Revisiting Deep Learning Models for Tabular Data]] — Yury Gorishniy et al.
 - [[notes/papers/2021-saint-improved-neural-networks-for-tabular-data-via-row|SAINT: Improved Neural Networks for Tabular Data via Row Attention and Contrastive Pre-Training]] — Gowthami Somepalli et al.
@@ -76,13 +74,13 @@ unread_count: 155
 - [[notes/papers/2021-shifts-a-dataset-of-real-distributional-shift-across|Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks]] — Andrey Malinin et al.
 - [[notes/papers/2021-subtab-subsetting-features-of-tabular-data-for-self|SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning]] — Talip Ucar et al.
 - [[notes/papers/2021-tabbie-pretrained-representations-of-tabular-data|TABBIE: Pretrained Representations of Tabular Data]] — Hiroshi Iida et al.
-- [[notes/papers/2021-the-world-in-a-grain-of-sand-condensing-the-string-vacuum|The World in a Grain of Sand: Condensing the String Vacuum Degeneracy]] — Yang-Hui He et al.
 - [[notes/papers/2021-well-tuned-simple-nets-excel-on-tabular-datasets|Well-tuned Simple Nets Excel on Tabular Datasets]] — Arlind Kadra et al.
+- [[notes/papers/2021-what-s-a-good-imputation-to-predict-with-missing-values|What's a good imputation to predict with missing values?]] — Marine Le Morvan 1,2 Julie Josse 4 Erwan Scornet 3 Gaël Varoquaux 1 1 Université Paris-Saclay, Inria, CEA, Palaiseau, 91120, France 2 Université Paris-Saclay, CNRS/IN2P3, IJCLab, 91405 Orsay, France 3 CMAP, UMR7641, Ecole Polytechnique, IP Paris, 91128 Palaiseau, France 4 Inria Sophia-Antipolis, Montpellier, France {marine.le-morvan, julie.josse, gael.varoquaux}@inria.fr erwan.scornet@polytechnique.edu
 
 ## 2020
 
 - [[notes/papers/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons|DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems]] — Ruoxi Wang et al.
-- [[notes/papers/2020-formulas-for-coefficients-of-polynomials-assigned-to|Formulas for coefficients of polynomials assigned to arithmetic functions]] — Bernhard Heim & Markus Neuhauser
+- [[notes/papers/2020-dnf-net-a-neural-architecture-for-tabular-data|DNF-Net: A Neural Architecture for Tabular Data]] — Ami Abutbul amramabutbul@cs.technion.ac.il et al.
 - [[notes/papers/2020-fourier-features-let-networks-learn-high-frequency|Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains]] — Matthew Tancik et al.
 - [[notes/papers/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform|Frequency Bias in Neural Networks for Input of Non-Uniform Density]] — Ronen Basri et al.
 - [[notes/papers/2020-gradient-boosting-neural-networks-grownet|Gradient Boosting Neural Networks: GrowNet]] — Sarkhan Badirli et al.
@@ -102,6 +100,7 @@ unread_count: 155
 - [[notes/papers/2019-can-you-trust-your-model-s-uncertainty-evaluating|Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift]] — Yaniv Ovadia et al.
 - [[notes/papers/2019-deep-learning-recommendation-model-for-personalization-and|Deep Learning Recommendation Model for Personalization and Recommendation Systems]] — Maxim Naumov et al.
 - [[notes/papers/2019-ke-deepgbm|DeepGBM: A Deep Learning Framework Distilled by GBDT for Online Prediction Tasks]] — Guolin Ke et al.
+- [[notes/papers/2019-encoding-high-cardinality-string-categorical-variables|Encoding high-cardinality string categorical variables]] — Patricio Cerda and Gaël Varoquaux
 - [[notes/papers/2019-explainable-ai-for-trees-from-local-explanations-to-global|Explainable AI for Trees: From Local Explanations to Global Understanding]] — Scott M. Lundberg et al.
 - [[notes/papers/2019-ngboost-natural-gradient-boosting-for-probabilistic|NGBoost: Natural Gradient Boosting for Probabilistic Prediction]] — Tony Duan et al.
 - [[notes/papers/2019-neural-oblivious-decision-ensembles-for-deep-learning-on|Neural Oblivious Decision Ensembles for Deep Learning on Tabular Data]] — Sergei Popov et al.
@@ -113,11 +112,11 @@ unread_count: 155
 - [[notes/papers/2018-ai-fairness-360-an-extensible-toolkit-for-detecting|AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating Unwanted Algorithmic Bias]] — Rachel K. E. Bellamy et al.
 - [[notes/papers/2018-adaptive-neural-trees|Adaptive Neural Trees]] — Ryutaro Tanno et al.
 - [[notes/papers/2018-autoint-automatic-feature-interaction-learning-via-self|AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks]] — Weiping Song et al.
-- [[notes/papers/2018-building-context-aware-clause-representations-for-situation|Building Context-aware Clause Representations for Situation Entity Type Classification]] — Zeyu Dai & Ruihong Huang
 - [[notes/papers/2018-deep-neural-decision-trees|Deep Neural Decision Trees]] — Yongxin Yang et al.
 - [[notes/papers/2018-learning-to-explain-an-information-theoretic-perspective-on|Learning to Explain: An Information-Theoretic Perspective on Model Interpretation]] — Jianbo Chen et al.
 - [[notes/papers/2018-on-the-spectral-bias-of-neural-networks|On the Spectral Bias of Neural Networks]] — Nasim Rahaman et al.
 - [[notes/papers/2018-predictive-uncertainty-estimation-via-prior-networks|Predictive Uncertainty Estimation via Prior Networks]] — Andrey Malinin & Mark Gales
+- [[notes/papers/2018-processing-of-missing-data-by-neural-networks|Processing of missing data by neural networks]] — Marek Śmieja marek.smieja@uj.edu.pl &Łukasz Struski lukasz.struski@uj.edu.pl &Jacek Tabor jacek.tabor@uj.edu.pl &Bartosz Zieliński bartosz.zielinski@uj.edu.pl &Przemysław Spurek przemyslaw.spurek@uj.edu.pl
 - [[notes/papers/2018-regularization-learning-networks-deep-learning-for-tabular|Regularization Learning Networks: Deep Learning for Tabular Datasets]] — Ira Shavitt & Eran Segal
 - [[notes/papers/2018-similarity-encoding-for-learning-with-dirty-categorical|Similarity encoding for learning with dirty categorical variables]] — Patricio Cerda et al.
 - [[notes/papers/2018-stop-explaining-black-box-machine-learning-models-for-high|Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead]] — Cynthia Rudin
@@ -134,10 +133,11 @@ unread_count: 155
 - [[notes/papers/2017-deep-interest-network-for-click-through-rate-prediction|Deep Interest Network for Click-Through Rate Prediction]] — Guorui Zhou et al.
 - [[notes/papers/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr|DeepFM: A Factorization-Machine based Neural Network for CTR Prediction]] — Huifeng Guo et al.
 - [[notes/papers/2017-distilling-a-neural-network-into-a-soft-decision-tree|Distilling a Neural Network Into a Soft Decision Tree]] — Nicholas Frosst & Geoffrey Hinton
-- [[notes/papers/2017-fairness-in-criminal-justice-risk-assessments-the-state-of|Fairness in Criminal Justice Risk Assessments: The State of the Art]] — Richard A. Berk et al.
+- [[notes/papers/2017-fair-prediction-with-disparate-impact-a-study-of-bias-in|Fair prediction with disparate impact: A study of bias in recidivism prediction instruments]] — Alexandra Chouldechova
 - [[notes/papers/2017-ke-lightgbm|LightGBM: A Highly Efficient Gradient Boosting Decision Tree]] — Guolin Ke et al.
 - [[notes/papers/2017-neural-factorization-machines-for-sparse-predictive|Neural Factorization Machines for Sparse Predictive Analytics]] — Xiangnan He & Tat-Seng Chua
 - [[notes/papers/2017-on-calibration-of-modern-neural-networks|On Calibration of Modern Neural Networks]] — Chuan Guo et al.
+- [[notes/papers/2017-openml-benchmarking-suites|OpenML Benchmarking Suites]] — Bernd Bischl 1 , Giuseppe Casalicchio 1 , Matthias Feurer 2 , Pieter Gijsbers 3 , Frank Hutter 2,4 , Michel Lang 5 , Rafael G. Mantovani 6 , Jan N. van Rijn 7 , Joaquin Vanschoren 3 1 Department of Statistics, LMU Munich, Germany 2 Department of Computer Science, University of Freiburg, Germany 3 Department of Computer Science, Eindhoven University of Technology, the Netherlands 4 Bosch Center for Artificial Intelligence 5 Department of Statistics, TU Dortmund University, Germany 6 Federal Technology University Paraná (UTFPR), Brazil 7 Leiden Institute of Advanced Computer Science (LIACS), Leiden University, the Netherlands
 - [[notes/papers/2017-self-normalizing-neural-networks|Self-Normalizing Neural Networks]] — Günter Klambauer et al.
 
 ## 2016
