@@ -1,0 +1,24 @@
+---
+author: null
+created: '2026-05-09'
+description: null
+kind: blog
+read: false
+slug: on-the-slow-death-of-scaling-sarah-hooker
+tags:
+- scaling-laws
+- llm
+- ml
+title: On the slow death of scaling (Sarah Hooker)
+type: note
+updated: '2026-05-09'
+url: https://download.ssrn.com/2026/1/6/5877662.pdf?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIQDIHJjyrYF2oY8p%2BGecT4MkYiItFgEzTCmRyNejkeWnmAIgYQyBTIbaz5W%2FOORElR1XuTfjhZymwfvW2mfpEay3fJsqxQUIhP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAEGgwzMDg0NzUzMDEyNTciDOU2cGhaDSKQAUviDCqZBY93wUORhdw9L5zuQl6cJdS%2FUHjbQnqHgGBlzebzSZ%2FqQD9LWPmLHQTugJ5Z9eQ4qp%2FGkNLK%2FshNrffGUmXI2o3MKNLMZXY86nE%2B5IGeOpG839%2Fiwv2dMvmlZlgHMoxHWsQ%2FPIYhxd0OQZbDK5z10XXqiCWxBShDGdUcQe2w5%2BXzJfruRHD9Ov7KJPy22JnO3bEb0SHnIYzAq4BygGJgs4k50hA%2Fp2nz9Mq9txI3%2BxwsA3YT4ymo7hiKcjK0yWVO%2FOQR3%2F%2Brq9Cwa8m62q7Wqyj7igK4tzy5swQyGMGkTCAIEcBxBbUt3iNQmUTR4o%2Fh7nF9d0eGwwYPt7cc01kb9MMYNrzZ20mE2c17ecfJvStV4kxj11HzBJ6x30XJiDonMazlnbuOPdvTfMLqjt6mwqgfZTGkE5wPNvjGsnF4%2B9PTb6hErnxzVXcpXEugGLjja0MmNXxYF4MFsfqi23%2FtIxlUQhLFLuiy8sgjxd%2Fia%2FiEVTsiRwz%2BGSik1CuTdNuA0uE1g5oN1zZ01EvsxL5BO0vbJs49yxxhsmoQaNnQnNBFe9VwZMNmYl9VblT4IwYBhGu0tjckKrjI42%2F9JdiIi3LSS5nb23c8aurBlOyQDrp9ywDxnhmGSvyjpK1G3L9aoevfQ%2Fpq43OuswxMyY8V%2FRafyyiL9ZB5HjcR14g0V18EU7tET2JdqbmWFn0JBcMQilXsaNjTE6RBfyjquoA%2F1h3xkewAshFmDA%2FD%2F%2F8jB3uaAX%2BH9wlAcDCA4M6leDdaWBbm%2F65OM5%2F3FezQ561s1EKQBmxvcRzzZk6G2N7ZzjweYieepggSJqSiJUXu52pKhhH5PbeG7xsp2iF%2FZ%2Bs9SM1zbtYaUZGAK2qFCDYQfdJhMysgNKjDTUPdMKbF%2FMoGOrEBjFHPCqlBQZt4z4CCvIlLL6MzvvQleKxiURWnSHTNnLeVz6YCsFknrvDDnkou0zqx076kGJ7YUlahcRj6uaswvSLfk8WBp5jNb%2FYcGGnEbyKqcLndK%2FSKF761vT1F0CcuiruTucU8PD9B9bH0rhmCtUV7xSzbaM0ZRBHR2cDgEvso3iklOmOAx4kW21Ei8sczb1gNJaWY%2FLYVGVuntjykTOIrHqNffIlbS1Q1d53BUSLY&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260108T033443Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAUPUUPRWE45NTNR3Z%2F20260108%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=a4ed0ba2a8641c80653f56ce5a4865242071498526961f8945551cdf84442397&abstractId=5877662
+---
+
+# On the slow death of scaling (Sarah Hooker)
+
+(no description)
+
+## Notes
+
+(stub)

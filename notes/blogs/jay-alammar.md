@@ -1,0 +1,25 @@
+---
+author: Jay Alammar
+created: '2026-05-09'
+description: Visual, illustrated guides to ML — Transformers, BERT, GPT, attention.
+kind: blog
+read: false
+slug: jay-alammar
+tags:
+- transformer
+- attention
+- nlp
+- interpretability
+title: Jay Alammar
+type: note
+updated: '2026-05-09'
+url: https://jalammar.github.io/
+---
+
+# Jay Alammar
+
+Visual, illustrated guides to ML — Transformers, BERT, GPT, attention.
+
+## Notes
+
+(stub)

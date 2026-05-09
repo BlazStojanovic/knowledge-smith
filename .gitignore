@@ -33,3 +33,6 @@ raw/youtube/*.wav
 # Python caches if scripts run from inside the vault
 __pycache__/
 *.pyc
+
+# Bulk-ingest sidecar log
+.ks-bulk-bookmark-progress.jsonl
