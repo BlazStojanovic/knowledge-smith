@@ -1,5 +1,5 @@
 ---
-generated: '2026-05-09T03:14:04+00:00'
+generated: '2026-05-09T04:18:55+00:00'
 kind: youtube
 type: reading-list
 unread_count: 0
