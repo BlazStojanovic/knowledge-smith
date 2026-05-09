@@ -39,7 +39,7 @@ year: 2017
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-fair-prediction-with-disparate-impact-a-study-of-bias-in]]
-- PDF: `raw/papers/pdf/2017-fair-prediction-with-disparate-impact-a-study-of-bias-in.pdf`
+- PDF: [[raw/papers/pdf/2017-fair-prediction-with-disparate-impact-a-study-of-bias-in.pdf]]
 - arXiv: <https://arxiv.org/abs/1703.00056>
 
 <!-- ks-harvest -->

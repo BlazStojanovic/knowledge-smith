@@ -51,7 +51,7 @@ Modern machine learning methods including deep learning have achieved great succ
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-can-you-trust-your-model-s-uncertainty-evaluating]]
-- PDF: `raw/papers/pdf/2019-can-you-trust-your-model-s-uncertainty-evaluating.pdf`
+- PDF: [[raw/papers/pdf/2019-can-you-trust-your-model-s-uncertainty-evaluating.pdf]]
 - arXiv: <http://arxiv.org/abs/1906.02530v2>
 
 <!-- ks-harvest -->

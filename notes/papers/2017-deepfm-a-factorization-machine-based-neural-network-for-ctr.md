@@ -46,7 +46,7 @@ Learning sophisticated feature interactions behind user behaviors is critical in
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr]]
-- PDF (gitignored): `raw/papers/pdf/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr.pdf]]
 - arXiv: <http://arxiv.org/abs/1703.04247v1>
 
 <!-- ks-harvest -->

@@ -39,7 +39,7 @@ year: 2024
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular]]
-- PDF: `raw/papers/pdf/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.pdf`
+- PDF: [[raw/papers/pdf/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.pdf]]
 - arXiv: <https://arxiv.org/abs/2406.19380>
 
 <!-- ks-harvest -->

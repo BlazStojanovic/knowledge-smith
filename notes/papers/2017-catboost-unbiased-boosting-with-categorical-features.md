@@ -46,7 +46,7 @@ This paper presents the key algorithmic techniques behind CatBoost, a new gradie
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-catboost-unbiased-boosting-with-categorical-features]]
-- PDF: `raw/papers/pdf/2017-catboost-unbiased-boosting-with-categorical-features.pdf`
+- PDF: [[raw/papers/pdf/2017-catboost-unbiased-boosting-with-categorical-features.pdf]]
 - arXiv: <http://arxiv.org/abs/1706.09516v5>
 
 <!-- ks-harvest -->

@@ -35,6 +35,10 @@ year: 1995
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1995-cortes-svm.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

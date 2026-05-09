@@ -42,7 +42,7 @@ Black box machine learning models are currently being used for high stakes decis
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-stop-explaining-black-box-machine-learning-models-for-high]]
-- PDF: `raw/papers/pdf/2018-stop-explaining-black-box-machine-learning-models-for-high.pdf`
+- PDF: [[raw/papers/pdf/2018-stop-explaining-black-box-machine-learning-models-for-high.pdf]]
 - arXiv: <http://arxiv.org/abs/1811.10154v3>
 
 <!-- ks-harvest -->

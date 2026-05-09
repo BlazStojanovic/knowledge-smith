@@ -47,7 +47,7 @@ Despite their success with unstructured data, deep neural networks are not yet a
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-tangos-regularizing-tabular-neural-networks-through]]
-- PDF: `raw/papers/pdf/2023-tangos-regularizing-tabular-neural-networks-through.pdf`
+- PDF: [[raw/papers/pdf/2023-tangos-regularizing-tabular-neural-networks-through.pdf]]
 - arXiv: <http://arxiv.org/abs/2303.05506v1>
 
 <!-- ks-harvest -->

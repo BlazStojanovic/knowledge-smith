@@ -42,7 +42,7 @@ Currently, deep neural networks are the state of the art on problems such as spe
 ## Source
 
 - Raw markdown: [[raw/papers/md/2013-do-deep-nets-really-need-to-be-deep]]
-- PDF (gitignored): `raw/papers/pdf/2013-do-deep-nets-really-need-to-be-deep.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2013-do-deep-nets-really-need-to-be-deep.pdf]]
 - arXiv: <http://arxiv.org/abs/1312.6184v7>
 
 <!-- ks-harvest -->

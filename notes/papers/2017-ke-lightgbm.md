@@ -41,6 +41,10 @@ year: 2017
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2017-ke-lightgbm.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

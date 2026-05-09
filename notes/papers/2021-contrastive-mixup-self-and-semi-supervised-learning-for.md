@@ -40,7 +40,7 @@ year: 2021
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-contrastive-mixup-self-and-semi-supervised-learning-for]]
-- PDF: `raw/papers/pdf/2021-contrastive-mixup-self-and-semi-supervised-learning-for.pdf`
+- PDF: [[raw/papers/pdf/2021-contrastive-mixup-self-and-semi-supervised-learning-for.pdf]]
 - arXiv: <https://arxiv.org/abs/2108.12296>
 
 <!-- ks-harvest -->

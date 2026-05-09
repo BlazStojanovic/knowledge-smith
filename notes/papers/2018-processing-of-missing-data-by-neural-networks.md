@@ -39,7 +39,7 @@ year: 2018
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-processing-of-missing-data-by-neural-networks]]
-- PDF: `raw/papers/pdf/2018-processing-of-missing-data-by-neural-networks.pdf`
+- PDF: [[raw/papers/pdf/2018-processing-of-missing-data-by-neural-networks.pdf]]
 - arXiv: <https://arxiv.org/abs/1805.07405>
 
 <!-- ks-harvest -->

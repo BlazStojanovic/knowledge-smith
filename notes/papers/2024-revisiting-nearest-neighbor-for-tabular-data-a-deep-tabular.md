@@ -46,7 +46,7 @@ The widespread enthusiasm for deep learning has recently expanded into the domai
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular]]
-- PDF: `raw/papers/pdf/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.pdf`
+- PDF: [[raw/papers/pdf/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.pdf]]
 - arXiv: <http://arxiv.org/abs/2407.03257v2>
 
 <!-- ks-harvest -->

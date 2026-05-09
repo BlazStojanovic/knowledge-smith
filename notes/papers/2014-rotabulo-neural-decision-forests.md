@@ -35,6 +35,10 @@ year: 2014
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2014-rotabulo-neural-decision-forests.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

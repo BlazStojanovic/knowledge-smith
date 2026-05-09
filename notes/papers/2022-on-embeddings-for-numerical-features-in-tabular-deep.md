@@ -44,7 +44,7 @@ Recently, Transformer-like deep architectures have shown strong performance on t
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-on-embeddings-for-numerical-features-in-tabular-deep]]
-- PDF: `raw/papers/pdf/2022-on-embeddings-for-numerical-features-in-tabular-deep.pdf`
+- PDF: [[raw/papers/pdf/2022-on-embeddings-for-numerical-features-in-tabular-deep.pdf]]
 - arXiv: <http://arxiv.org/abs/2203.05556v4>
 
 <!-- ks-harvest -->

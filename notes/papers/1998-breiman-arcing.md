@@ -34,6 +34,10 @@ year: 1998
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1998-breiman-arcing.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

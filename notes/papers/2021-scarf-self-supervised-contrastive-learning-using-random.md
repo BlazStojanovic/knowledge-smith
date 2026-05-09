@@ -45,7 +45,7 @@ Self-supervised contrastive representation learning has proved incredibly succes
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-scarf-self-supervised-contrastive-learning-using-random]]
-- PDF: `raw/papers/pdf/2021-scarf-self-supervised-contrastive-learning-using-random.pdf`
+- PDF: [[raw/papers/pdf/2021-scarf-self-supervised-contrastive-learning-using-random.pdf]]
 - arXiv: <http://arxiv.org/abs/2106.15147v2>
 
 <!-- ks-harvest -->

@@ -42,7 +42,7 @@ Estimating how uncertain an AI system is in its predictions is important to impr
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-predictive-uncertainty-estimation-via-prior-networks]]
-- PDF: `raw/papers/pdf/2018-predictive-uncertainty-estimation-via-prior-networks.pdf`
+- PDF: [[raw/papers/pdf/2018-predictive-uncertainty-estimation-via-prior-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1802.10501v4>
 
 <!-- ks-harvest -->

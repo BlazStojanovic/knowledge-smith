@@ -41,7 +41,7 @@ For any positive integer $k$, there exist neural networks with $Θ(k^3)$ layers,
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-benefits-of-depth-in-neural-networks]]
-- PDF (gitignored): `raw/papers/pdf/2016-benefits-of-depth-in-neural-networks.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-benefits-of-depth-in-neural-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1602.04485v2>
 
 <!-- ks-harvest -->

@@ -45,7 +45,7 @@ Deep Learning has revolutionized vision via convolutional neural networks (CNNs)
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-self-normalizing-neural-networks]]
-- PDF (gitignored): `raw/papers/pdf/2017-self-normalizing-neural-networks.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-self-normalizing-neural-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1706.02515v5>
 
 <!-- ks-harvest -->

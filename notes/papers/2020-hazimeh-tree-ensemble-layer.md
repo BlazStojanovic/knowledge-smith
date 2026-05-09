@@ -42,6 +42,10 @@ year: 2020
 
 *ArXiv ID 2003.14649 listed in writings note is suspect — verify before re-ingesting.*
 
+## Source
+
+- PDF: [[raw/papers/pdf/2020-hazimeh-tree-ensemble-layer.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

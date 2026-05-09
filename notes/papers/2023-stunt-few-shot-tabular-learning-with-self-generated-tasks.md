@@ -49,7 +49,7 @@ year: 2023
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks]]
-- PDF: `raw/papers/pdf/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.pdf`
+- PDF: [[raw/papers/pdf/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.pdf]]
 - arXiv: <https://arxiv.org/abs/2303.00918>
 
 <!-- ks-harvest -->

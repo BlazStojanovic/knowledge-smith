@@ -46,7 +46,7 @@ The existing literature on deep learning for tabular data proposes a wide range 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-revisiting-deep-learning-models-for-tabular-data]]
-- PDF: `raw/papers/pdf/2021-revisiting-deep-learning-models-for-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2021-revisiting-deep-learning-models-for-tabular-data.pdf]]
 - arXiv: <http://arxiv.org/abs/2106.11959v5>
 
 <!-- ks-harvest -->

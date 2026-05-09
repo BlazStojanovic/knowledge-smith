@@ -43,7 +43,7 @@ year: 2022
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-hopular-modern-hopfield-networks-for-tabular-data]]
-- PDF: `raw/papers/pdf/2022-hopular-modern-hopfield-networks-for-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2022-hopular-modern-hopfield-networks-for-tabular-data.pdf]]
 - arXiv: <https://arxiv.org/abs/2206.00664>
 
 <!-- ks-harvest -->

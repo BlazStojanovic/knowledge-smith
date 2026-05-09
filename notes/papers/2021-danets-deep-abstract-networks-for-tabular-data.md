@@ -45,7 +45,7 @@ Tabular data are ubiquitous in real world applications. Although many commonly-u
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-danets-deep-abstract-networks-for-tabular-data]]
-- PDF: `raw/papers/pdf/2021-danets-deep-abstract-networks-for-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2021-danets-deep-abstract-networks-for-tabular-data.pdf]]
 - arXiv: <http://arxiv.org/abs/2112.02962v4>
 
 <!-- ks-harvest -->

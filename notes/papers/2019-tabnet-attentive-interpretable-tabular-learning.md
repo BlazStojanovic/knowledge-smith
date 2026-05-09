@@ -43,7 +43,7 @@ We propose a novel high-performance and interpretable canonical deep tabular dat
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-tabnet-attentive-interpretable-tabular-learning]]
-- PDF: `raw/papers/pdf/2019-tabnet-attentive-interpretable-tabular-learning.pdf`
+- PDF: [[raw/papers/pdf/2019-tabnet-attentive-interpretable-tabular-learning.pdf]]
 - arXiv: <http://arxiv.org/abs/1908.07442v5>
 
 <!-- ks-harvest -->

@@ -47,7 +47,7 @@ Heterogeneous tabular data are the most commonly used form of data and are essen
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-deep-neural-networks-and-tabular-data-a-survey]]
-- PDF: `raw/papers/pdf/2021-deep-neural-networks-and-tabular-data-a-survey.pdf`
+- PDF: [[raw/papers/pdf/2021-deep-neural-networks-and-tabular-data-a-survey.pdf]]
 - arXiv: <http://arxiv.org/abs/2110.01889v3>
 
 <!-- ks-harvest -->

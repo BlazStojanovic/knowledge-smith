@@ -34,6 +34,10 @@ year: 1986
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1986-quinlan-id3.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

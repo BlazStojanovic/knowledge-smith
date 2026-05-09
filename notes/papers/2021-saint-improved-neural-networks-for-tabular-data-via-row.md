@@ -47,7 +47,7 @@ Tabular data underpins numerous high-impact applications of machine learning fro
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-saint-improved-neural-networks-for-tabular-data-via-row]]
-- PDF: `raw/papers/pdf/2021-saint-improved-neural-networks-for-tabular-data-via-row.pdf`
+- PDF: [[raw/papers/pdf/2021-saint-improved-neural-networks-for-tabular-data-via-row.pdf]]
 - arXiv: <http://arxiv.org/abs/2106.01342v1>
 
 <!-- ks-harvest -->

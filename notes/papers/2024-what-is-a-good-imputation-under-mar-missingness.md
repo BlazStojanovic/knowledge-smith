@@ -38,7 +38,7 @@ year: 2024
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-what-is-a-good-imputation-under-mar-missingness]]
-- PDF: `raw/papers/pdf/2024-what-is-a-good-imputation-under-mar-missingness.pdf`
+- PDF: [[raw/papers/pdf/2024-what-is-a-good-imputation-under-mar-missingness.pdf]]
 - arXiv: <https://arxiv.org/abs/2403.19196>
 
 <!-- ks-harvest -->

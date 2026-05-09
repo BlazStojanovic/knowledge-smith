@@ -45,7 +45,7 @@ We propose TabTransformer, a novel deep tabular data modeling architecture for s
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-tabtransformer-tabular-data-modeling-using-contextual]]
-- PDF: `raw/papers/pdf/2020-tabtransformer-tabular-data-modeling-using-contextual.pdf`
+- PDF: [[raw/papers/pdf/2020-tabtransformer-tabular-data-modeling-using-contextual.pdf]]
 - arXiv: <http://arxiv.org/abs/2012.06678v1>
 
 <!-- ks-harvest -->

@@ -36,6 +36,10 @@ year: 1997
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1997-freund-adaboost.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

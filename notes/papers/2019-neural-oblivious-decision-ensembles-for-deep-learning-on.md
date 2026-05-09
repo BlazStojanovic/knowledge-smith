@@ -44,7 +44,7 @@ Nowadays, deep neural networks (DNNs) have become the main instrument for machin
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-neural-oblivious-decision-ensembles-for-deep-learning-on]]
-- PDF: `raw/papers/pdf/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.pdf`
+- PDF: [[raw/papers/pdf/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.pdf]]
 - arXiv: <http://arxiv.org/abs/1909.06312v2>
 
 <!-- ks-harvest -->

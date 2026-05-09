@@ -48,7 +48,7 @@ We present Natural Gradient Boosting (NGBoost), an algorithm for generic probabi
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-ngboost-natural-gradient-boosting-for-probabilistic]]
-- PDF: `raw/papers/pdf/2019-ngboost-natural-gradient-boosting-for-probabilistic.pdf`
+- PDF: [[raw/papers/pdf/2019-ngboost-natural-gradient-boosting-for-probabilistic.pdf]]
 - arXiv: <http://arxiv.org/abs/1910.03225v4>
 
 <!-- ks-harvest -->

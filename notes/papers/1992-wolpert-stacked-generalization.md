@@ -34,6 +34,10 @@ year: 1992
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1992-wolpert-stacked-generalization.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

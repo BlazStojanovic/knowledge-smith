@@ -34,6 +34,10 @@ year: 2006
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2006-bishop-prml.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

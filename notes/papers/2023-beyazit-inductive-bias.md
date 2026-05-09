@@ -38,6 +38,10 @@ year: 2023
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2023-beyazit-inductive-bias.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

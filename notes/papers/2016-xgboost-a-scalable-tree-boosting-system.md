@@ -43,7 +43,7 @@ Tree boosting is a highly effective and widely used machine learning method. In 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-xgboost-a-scalable-tree-boosting-system]]
-- PDF (gitignored): `raw/papers/pdf/2016-xgboost-a-scalable-tree-boosting-system.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-xgboost-a-scalable-tree-boosting-system.pdf]]
 - arXiv: <http://arxiv.org/abs/1603.02754v3>
 
 <!-- ks-harvest -->

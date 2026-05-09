@@ -46,7 +46,7 @@ Recent deep learning models for tabular data currently compete with the traditio
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-revisiting-pretraining-objectives-for-tabular-deep-learning]]
-- PDF: `raw/papers/pdf/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.pdf`
+- PDF: [[raw/papers/pdf/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.pdf]]
 - arXiv: <http://arxiv.org/abs/2207.03208v2>
 
 <!-- ks-harvest -->

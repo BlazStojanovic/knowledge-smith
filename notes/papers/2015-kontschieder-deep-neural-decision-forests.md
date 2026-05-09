@@ -37,6 +37,10 @@ year: 2015
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2015-kontschieder-deep-neural-decision-forests.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

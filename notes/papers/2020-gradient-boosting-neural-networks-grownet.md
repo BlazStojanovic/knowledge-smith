@@ -47,7 +47,7 @@ A novel gradient boosting framework is proposed where shallow neural networks ar
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-gradient-boosting-neural-networks-grownet]]
-- PDF: `raw/papers/pdf/2020-gradient-boosting-neural-networks-grownet.pdf`
+- PDF: [[raw/papers/pdf/2020-gradient-boosting-neural-networks-grownet.pdf]]
 - arXiv: <http://arxiv.org/abs/2002.07971v2>
 
 <!-- ks-harvest -->

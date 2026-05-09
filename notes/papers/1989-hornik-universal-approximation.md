@@ -36,6 +36,10 @@ year: 1989
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1989-hornik-universal-approximation.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -42,7 +42,7 @@ year: 2022
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-benchmarking-missing-values-approaches-for-predictive]]
-- PDF: `raw/papers/pdf/2022-benchmarking-missing-values-approaches-for-predictive.pdf`
+- PDF: [[raw/papers/pdf/2022-benchmarking-missing-values-approaches-for-predictive.pdf]]
 - arXiv: <https://arxiv.org/abs/2202.10580>
 
 <!-- ks-harvest -->

@@ -44,7 +44,7 @@ Tabular data (or tables) are the most widely used data format in machine learnin
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-transtab-learning-transferable-tabular-transformers-across]]
-- PDF: `raw/papers/pdf/2022-transtab-learning-transferable-tabular-transformers-across.pdf`
+- PDF: [[raw/papers/pdf/2022-transtab-learning-transferable-tabular-transformers-across.pdf]]
 - arXiv: <http://arxiv.org/abs/2205.09328v2>
 
 <!-- ks-harvest -->

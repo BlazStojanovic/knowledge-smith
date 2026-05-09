@@ -35,6 +35,10 @@ year: 2015
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2015-lecun-deep-learning-nature.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

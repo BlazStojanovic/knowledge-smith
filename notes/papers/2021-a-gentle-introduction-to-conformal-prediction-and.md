@@ -45,7 +45,7 @@ Black-box machine learning models are now routinely used in high-risk settings, 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-a-gentle-introduction-to-conformal-prediction-and]]
-- PDF: `raw/papers/pdf/2021-a-gentle-introduction-to-conformal-prediction-and.pdf`
+- PDF: [[raw/papers/pdf/2021-a-gentle-introduction-to-conformal-prediction-and.pdf]]
 - arXiv: <http://arxiv.org/abs/2107.07511v6>
 
 <!-- ks-harvest -->

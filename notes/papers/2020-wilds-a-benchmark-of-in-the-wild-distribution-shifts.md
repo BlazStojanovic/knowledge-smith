@@ -64,7 +64,7 @@ Distribution shifts -- where the training distribution differs from the test dis
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts]]
-- PDF: `raw/papers/pdf/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts.pdf`
+- PDF: [[raw/papers/pdf/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts.pdf]]
 - arXiv: <http://arxiv.org/abs/2012.07421v3>
 
 <!-- ks-harvest -->

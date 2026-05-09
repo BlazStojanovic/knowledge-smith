@@ -48,7 +48,7 @@ Combinatorial features are essential for the success of many commercial models. 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-xdeepfm-combining-explicit-and-implicit-feature]]
-- PDF: `raw/papers/pdf/2018-xdeepfm-combining-explicit-and-implicit-feature.pdf`
+- PDF: [[raw/papers/pdf/2018-xdeepfm-combining-explicit-and-implicit-feature.pdf]]
 - arXiv: <http://arxiv.org/abs/1803.05170v3>
 
 <!-- ks-harvest -->

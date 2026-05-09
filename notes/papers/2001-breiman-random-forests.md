@@ -33,3 +33,7 @@ year: 2001
 ## Notes
 
 (your synthesis)
+
+## Source
+
+- PDF: [[raw/papers/pdf/2001-breiman-random-forests.pdf]]

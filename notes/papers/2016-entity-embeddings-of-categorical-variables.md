@@ -42,7 +42,7 @@ We map categorical variables in a function approximation problem into Euclidean 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-entity-embeddings-of-categorical-variables]]
-- PDF (gitignored): `raw/papers/pdf/2016-entity-embeddings-of-categorical-variables.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-entity-embeddings-of-categorical-variables.pdf]]
 - arXiv: <http://arxiv.org/abs/1604.06737v1>
 
 <!-- ks-harvest -->

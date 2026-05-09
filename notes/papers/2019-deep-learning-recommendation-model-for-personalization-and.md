@@ -65,7 +65,7 @@ With the advent of deep learning, neural network-based recommendation models hav
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-deep-learning-recommendation-model-for-personalization-and]]
-- PDF: `raw/papers/pdf/2019-deep-learning-recommendation-model-for-personalization-and.pdf`
+- PDF: [[raw/papers/pdf/2019-deep-learning-recommendation-model-for-personalization-and.pdf]]
 - arXiv: <http://arxiv.org/abs/1906.00091v1>
 
 <!-- ks-harvest -->

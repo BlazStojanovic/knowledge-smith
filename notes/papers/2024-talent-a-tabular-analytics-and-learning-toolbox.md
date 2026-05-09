@@ -41,7 +41,7 @@ year: 2024
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-talent-a-tabular-analytics-and-learning-toolbox]]
-- PDF: `raw/papers/pdf/2024-talent-a-tabular-analytics-and-learning-toolbox.pdf`
+- PDF: [[raw/papers/pdf/2024-talent-a-tabular-analytics-and-learning-toolbox.pdf]]
 - arXiv: <https://arxiv.org/abs/2407.04057>
 
 <!-- ks-harvest -->

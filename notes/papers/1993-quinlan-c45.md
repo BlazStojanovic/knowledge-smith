@@ -34,6 +34,10 @@ year: 1993
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1993-quinlan-c45.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -41,7 +41,7 @@ year: 2023
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-recontab-regularized-contrastive-representation-learning]]
-- PDF: `raw/papers/pdf/2023-recontab-regularized-contrastive-representation-learning.pdf`
+- PDF: [[raw/papers/pdf/2023-recontab-regularized-contrastive-representation-learning.pdf]]
 - arXiv: <https://arxiv.org/abs/2310.18541>
 
 <!-- ks-harvest -->

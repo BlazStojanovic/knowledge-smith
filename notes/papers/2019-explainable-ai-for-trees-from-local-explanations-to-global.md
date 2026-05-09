@@ -51,7 +51,7 @@ Tree-based machine learning models such as random forests, decision trees, and g
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-explainable-ai-for-trees-from-local-explanations-to-global]]
-- PDF: `raw/papers/pdf/2019-explainable-ai-for-trees-from-local-explanations-to-global.pdf`
+- PDF: [[raw/papers/pdf/2019-explainable-ai-for-trees-from-local-explanations-to-global.pdf]]
 - arXiv: <http://arxiv.org/abs/1905.04610v1>
 
 <!-- ks-harvest -->

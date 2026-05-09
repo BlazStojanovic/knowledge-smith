@@ -41,7 +41,7 @@ year: 2022
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-transfer-learning-with-deep-tabular-models]]
-- PDF: `raw/papers/pdf/2022-transfer-learning-with-deep-tabular-models.pdf`
+- PDF: [[raw/papers/pdf/2022-transfer-learning-with-deep-tabular-models.pdf]]
 - arXiv: <https://arxiv.org/abs/2206.15306>
 
 <!-- ks-harvest -->

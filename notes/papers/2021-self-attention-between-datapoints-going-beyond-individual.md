@@ -48,7 +48,7 @@ We challenge a common assumption underlying most supervised deep learning: that 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-self-attention-between-datapoints-going-beyond-individual]]
-- PDF: `raw/papers/pdf/2021-self-attention-between-datapoints-going-beyond-individual.pdf`
+- PDF: [[raw/papers/pdf/2021-self-attention-between-datapoints-going-beyond-individual.pdf]]
 - arXiv: <http://arxiv.org/abs/2106.02584v2>
 
 <!-- ks-harvest -->

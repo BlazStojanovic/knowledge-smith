@@ -48,7 +48,7 @@ Deep learning (DL) models for tabular data problems (e.g. classification, regres
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023]]
-- PDF: `raw/papers/pdf/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.pdf`
+- PDF: [[raw/papers/pdf/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.pdf]]
 - arXiv: <http://arxiv.org/abs/2307.14338v2>
 
 <!-- ks-harvest -->

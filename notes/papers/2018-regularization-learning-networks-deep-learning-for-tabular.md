@@ -43,7 +43,7 @@ Despite their impressive performance, Deep Neural Networks (DNNs) typically unde
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-regularization-learning-networks-deep-learning-for-tabular]]
-- PDF: `raw/papers/pdf/2018-regularization-learning-networks-deep-learning-for-tabular.pdf`
+- PDF: [[raw/papers/pdf/2018-regularization-learning-networks-deep-learning-for-tabular.pdf]]
 - arXiv: <http://arxiv.org/abs/1805.06440v3>
 
 <!-- ks-harvest -->

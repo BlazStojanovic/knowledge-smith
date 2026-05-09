@@ -43,7 +43,7 @@ Current deep learning models are mostly build upon neural networks, i.e., multip
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-deep-forest]]
-- PDF: `raw/papers/pdf/2017-deep-forest.pdf`
+- PDF: [[raw/papers/pdf/2017-deep-forest.pdf]]
 - arXiv: <http://arxiv.org/abs/1702.08835v4>
 
 <!-- ks-harvest -->

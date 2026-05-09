@@ -45,7 +45,7 @@ Self-supervised learning has been shown to be very effective in learning useful 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-subtab-subsetting-features-of-tabular-data-for-self]]
-- PDF: `raw/papers/pdf/2021-subtab-subsetting-features-of-tabular-data-for-self.pdf`
+- PDF: [[raw/papers/pdf/2021-subtab-subsetting-features-of-tabular-data-for-self.pdf]]
 - arXiv: <http://arxiv.org/abs/2110.04361v2>
 
 <!-- ks-harvest -->

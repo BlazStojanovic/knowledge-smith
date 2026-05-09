@@ -44,7 +44,7 @@ Confidence calibration -- the problem of predicting probability estimates repres
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-on-calibration-of-modern-neural-networks]]
-- PDF (gitignored): `raw/papers/pdf/2017-on-calibration-of-modern-neural-networks.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-on-calibration-of-modern-neural-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1706.04599v2>
 
 <!-- ks-harvest -->

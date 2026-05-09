@@ -42,7 +42,7 @@ Deep neural networks have proved to be a very effective way to perform classific
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-distilling-a-neural-network-into-a-soft-decision-tree]]
-- PDF (gitignored): `raw/papers/pdf/2017-distilling-a-neural-network-into-a-soft-decision-tree.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-distilling-a-neural-network-into-a-soft-decision-tree.pdf]]
 - arXiv: <http://arxiv.org/abs/1711.09784v1>
 
 <!-- ks-harvest -->

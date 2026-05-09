@@ -47,7 +47,7 @@ Deep neural networks are renowned for their ability to generalise well across di
 ## Source
 
 - Raw markdown: [[raw/papers/md/2025-characterising-the-inductive-biases-of-neural-networks-on]]
-- PDF: `raw/papers/pdf/2025-characterising-the-inductive-biases-of-neural-networks-on.pdf`
+- PDF: [[raw/papers/pdf/2025-characterising-the-inductive-biases-of-neural-networks-on.pdf]]
 - arXiv: <http://arxiv.org/abs/2505.24060v1>
 
 <!-- ks-harvest -->

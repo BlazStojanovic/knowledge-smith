@@ -49,7 +49,7 @@ Click-through rate (CTR) prediction, which aims to predict the probability of a 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-autoint-automatic-feature-interaction-learning-via-self]]
-- PDF: `raw/papers/pdf/2018-autoint-automatic-feature-interaction-learning-via-self.pdf`
+- PDF: [[raw/papers/pdf/2018-autoint-automatic-feature-interaction-learning-via-self.pdf]]
 - arXiv: <http://arxiv.org/abs/1810.11921v2>
 
 <!-- ks-harvest -->

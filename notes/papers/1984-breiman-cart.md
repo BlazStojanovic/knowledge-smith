@@ -37,6 +37,10 @@ year: 1984
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1984-breiman-cart.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

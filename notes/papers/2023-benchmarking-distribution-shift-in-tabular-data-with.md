@@ -45,7 +45,7 @@ Robustness to distribution shift has become a growing concern for text and image
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-benchmarking-distribution-shift-in-tabular-data-with]]
-- PDF: `raw/papers/pdf/2023-benchmarking-distribution-shift-in-tabular-data-with.pdf`
+- PDF: [[raw/papers/pdf/2023-benchmarking-distribution-shift-in-tabular-data-with.pdf]]
 - arXiv: <http://arxiv.org/abs/2312.07577v3>
 
 <!-- ks-harvest -->

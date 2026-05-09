@@ -46,7 +46,7 @@ Deep neural networks and decision trees operate on largely separate paradigms; t
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-adaptive-neural-trees]]
-- PDF: `raw/papers/pdf/2018-adaptive-neural-trees.pdf`
+- PDF: [[raw/papers/pdf/2018-adaptive-neural-trees.pdf]]
 - arXiv: <http://arxiv.org/abs/1807.06699v5>
 
 <!-- ks-harvest -->

@@ -44,7 +44,7 @@ Deep learning architectures for supervised learning on tabular data range from s
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-tabm-advancing-tabular-deep-learning-with-parameter]]
-- PDF: `raw/papers/pdf/2024-tabm-advancing-tabular-deep-learning-with-parameter.pdf`
+- PDF: [[raw/papers/pdf/2024-tabm-advancing-tabular-deep-learning-with-parameter.pdf]]
 - arXiv: <http://arxiv.org/abs/2410.24210v3>
 
 <!-- ks-harvest -->

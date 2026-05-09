@@ -46,7 +46,7 @@ Computers are increasingly used to make decisions that have significant impact i
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-a-comparative-study-of-fairness-enhancing-interventions-in]]
-- PDF: `raw/papers/pdf/2018-a-comparative-study-of-fairness-enhancing-interventions-in.pdf`
+- PDF: [[raw/papers/pdf/2018-a-comparative-study-of-fairness-enhancing-interventions-in.pdf]]
 - arXiv: <http://arxiv.org/abs/1802.04422v1>
 
 <!-- ks-harvest -->

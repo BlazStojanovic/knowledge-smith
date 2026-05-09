@@ -57,7 +57,7 @@ We introduce a modern Hopfield network with continuous states and a correspondin
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-hopfield-networks-is-all-you-need]]
-- PDF: `raw/papers/pdf/2020-hopfield-networks-is-all-you-need.pdf`
+- PDF: [[raw/papers/pdf/2020-hopfield-networks-is-all-you-need.pdf]]
 - arXiv: <http://arxiv.org/abs/2008.02217v3>
 
 <!-- ks-harvest -->

@@ -34,6 +34,10 @@ year: 2004
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2004-hooker-functional-anova.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

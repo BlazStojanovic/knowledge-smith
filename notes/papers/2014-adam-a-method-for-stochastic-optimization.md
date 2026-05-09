@@ -40,7 +40,7 @@ We introduce Adam, an algorithm for first-order gradient-based optimization of s
 ## Source
 
 - Raw markdown: [[raw/papers/md/2014-adam-a-method-for-stochastic-optimization]]
-- PDF (gitignored): `raw/papers/pdf/2014-adam-a-method-for-stochastic-optimization.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2014-adam-a-method-for-stochastic-optimization.pdf]]
 - arXiv: <http://arxiv.org/abs/1412.6980v9>
 
 <!-- ks-harvest -->

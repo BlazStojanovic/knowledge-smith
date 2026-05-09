@@ -35,6 +35,10 @@ year: 2021
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2021-bojer-kaggle.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -38,7 +38,7 @@ year: 2019
 ## Source
 
 - Raw markdown: [[raw/papers/md/2019-encoding-high-cardinality-string-categorical-variables]]
-- PDF: `raw/papers/pdf/2019-encoding-high-cardinality-string-categorical-variables.pdf`
+- PDF: [[raw/papers/pdf/2019-encoding-high-cardinality-string-categorical-variables.pdf]]
 - arXiv: <https://arxiv.org/abs/1907.01860>
 
 <!-- ks-harvest -->

@@ -41,7 +41,7 @@ year: 2020
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-dnf-net-a-neural-architecture-for-tabular-data]]
-- PDF: `raw/papers/pdf/2020-dnf-net-a-neural-architecture-for-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2020-dnf-net-a-neural-architecture-for-tabular-data.pdf]]
 - arXiv: <https://arxiv.org/abs/2006.06465>
 
 <!-- ks-harvest -->

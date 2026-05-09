@@ -33,6 +33,10 @@ year: 2011
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2011-pedregosa-scikit-learn.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

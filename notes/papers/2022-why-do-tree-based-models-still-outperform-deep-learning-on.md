@@ -44,7 +44,7 @@ While deep learning has enabled tremendous progress on text and image datasets, 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-why-do-tree-based-models-still-outperform-deep-learning-on]]
-- PDF: `raw/papers/pdf/2022-why-do-tree-based-models-still-outperform-deep-learning-on.pdf`
+- PDF: [[raw/papers/pdf/2022-why-do-tree-based-models-still-outperform-deep-learning-on.pdf]]
 - arXiv: <http://arxiv.org/abs/2207.08815v1>
 
 <!-- ks-harvest -->

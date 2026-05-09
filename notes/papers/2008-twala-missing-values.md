@@ -35,6 +35,10 @@ year: 2008
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2008-twala-missing-values.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

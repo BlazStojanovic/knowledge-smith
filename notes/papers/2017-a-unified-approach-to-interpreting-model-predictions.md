@@ -42,7 +42,7 @@ Understanding why a model makes a certain prediction can be as crucial as the pr
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-a-unified-approach-to-interpreting-model-predictions]]
-- PDF (gitignored): `raw/papers/pdf/2017-a-unified-approach-to-interpreting-model-predictions.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-a-unified-approach-to-interpreting-model-predictions.pdf]]
 - arXiv: <http://arxiv.org/abs/1705.07874v2>
 
 <!-- ks-harvest -->

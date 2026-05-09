@@ -45,7 +45,7 @@ In recent years, the integration of Large Language Models (LLMs) into recommende
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-openp5-an-open-source-platform-for-developing-training-and]]
-- PDF: `raw/papers/pdf/2023-openp5-an-open-source-platform-for-developing-training-and.pdf`
+- PDF: [[raw/papers/pdf/2023-openp5-an-open-source-platform-for-developing-training-and.pdf]]
 - arXiv: <http://arxiv.org/abs/2306.11134v2>
 
 <!-- ks-harvest -->

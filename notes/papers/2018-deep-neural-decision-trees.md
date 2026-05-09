@@ -44,7 +44,7 @@ Deep neural networks have been proven powerful at processing perceptual data, su
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-deep-neural-decision-trees]]
-- PDF: `raw/papers/pdf/2018-deep-neural-decision-trees.pdf`
+- PDF: [[raw/papers/pdf/2018-deep-neural-decision-trees.pdf]]
 - arXiv: <http://arxiv.org/abs/1806.06988v1>
 
 <!-- ks-harvest -->

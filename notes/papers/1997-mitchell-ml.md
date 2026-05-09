@@ -34,6 +34,10 @@ year: 1997
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1997-mitchell-ml.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

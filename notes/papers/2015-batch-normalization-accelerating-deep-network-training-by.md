@@ -43,7 +43,7 @@ Training Deep Neural Networks is complicated by the fact that the distribution o
 ## Source
 
 - Raw markdown: [[raw/papers/md/2015-batch-normalization-accelerating-deep-network-training-by]]
-- PDF (gitignored): `raw/papers/pdf/2015-batch-normalization-accelerating-deep-network-training-by.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2015-batch-normalization-accelerating-deep-network-training-by.pdf]]
 - arXiv: <http://arxiv.org/abs/1502.03167v3>
 
 <!-- ks-harvest -->

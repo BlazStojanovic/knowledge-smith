@@ -40,6 +40,10 @@ year: 2019
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2019-ke-deepgbm.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

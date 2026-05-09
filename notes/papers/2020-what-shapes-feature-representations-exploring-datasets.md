@@ -44,7 +44,7 @@ In naturalistic learning problems, a model's input contains a wide range of feat
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-what-shapes-feature-representations-exploring-datasets]]
-- PDF: `raw/papers/pdf/2020-what-shapes-feature-representations-exploring-datasets.pdf`
+- PDF: [[raw/papers/pdf/2020-what-shapes-feature-representations-exploring-datasets.pdf]]
 - arXiv: <http://arxiv.org/abs/2006.12433v2>
 
 <!-- ks-harvest -->

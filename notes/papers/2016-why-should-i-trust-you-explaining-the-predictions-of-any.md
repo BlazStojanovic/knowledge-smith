@@ -44,7 +44,7 @@ Despite widespread adoption, machine learning models remain mostly black boxes. 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-why-should-i-trust-you-explaining-the-predictions-of-any]]
-- PDF (gitignored): `raw/papers/pdf/2016-why-should-i-trust-you-explaining-the-predictions-of-any.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-why-should-i-trust-you-explaining-the-predictions-of-any.pdf]]
 - arXiv: <http://arxiv.org/abs/1602.04938v3>
 
 <!-- ks-harvest -->

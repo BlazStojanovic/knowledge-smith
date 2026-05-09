@@ -43,7 +43,7 @@ Deep neural networks (NNs) are powerful black box predictors that have recently 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-simple-and-scalable-predictive-uncertainty-estimation-using]]
-- PDF (gitignored): `raw/papers/pdf/2016-simple-and-scalable-predictive-uncertainty-estimation-using.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-simple-and-scalable-predictive-uncertainty-estimation-using.pdf]]
 - arXiv: <http://arxiv.org/abs/1612.01474v3>
 
 <!-- ks-harvest -->

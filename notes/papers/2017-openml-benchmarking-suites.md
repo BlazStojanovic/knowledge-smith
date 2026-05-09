@@ -45,7 +45,7 @@ year: 2017
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-openml-benchmarking-suites]]
-- PDF: `raw/papers/pdf/2017-openml-benchmarking-suites.pdf`
+- PDF: [[raw/papers/pdf/2017-openml-benchmarking-suites.pdf]]
 - arXiv: <https://arxiv.org/abs/1708.03731>
 
 <!-- ks-harvest -->

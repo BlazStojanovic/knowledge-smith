@@ -37,6 +37,10 @@ year: 2013
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2013-james-isl.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -45,7 +45,7 @@ Although the fairness community has recognized the importance of data, researche
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-retiring-adult-new-datasets-for-fair-machine-learning]]
-- PDF: `raw/papers/pdf/2021-retiring-adult-new-datasets-for-fair-machine-learning.pdf`
+- PDF: [[raw/papers/pdf/2021-retiring-adult-new-datasets-for-fair-machine-learning.pdf]]
 - arXiv: <http://arxiv.org/abs/2108.04884v3>
 
 <!-- ks-harvest -->

@@ -49,7 +49,7 @@ Neural networks are known to be a class of highly expressive functions able to f
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-on-the-spectral-bias-of-neural-networks]]
-- PDF: `raw/papers/pdf/2018-on-the-spectral-bias-of-neural-networks.pdf`
+- PDF: [[raw/papers/pdf/2018-on-the-spectral-bias-of-neural-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1806.08734v3>
 
 <!-- ks-harvest -->

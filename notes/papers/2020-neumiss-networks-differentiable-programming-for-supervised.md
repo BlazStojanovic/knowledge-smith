@@ -47,7 +47,7 @@ The presence of missing values makes supervised learning much more challenging. 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-neumiss-networks-differentiable-programming-for-supervised]]
-- PDF: `raw/papers/pdf/2020-neumiss-networks-differentiable-programming-for-supervised.pdf`
+- PDF: [[raw/papers/pdf/2020-neumiss-networks-differentiable-programming-for-supervised.pdf]]
 - arXiv: <http://arxiv.org/abs/2007.01627v4>
 
 <!-- ks-harvest -->

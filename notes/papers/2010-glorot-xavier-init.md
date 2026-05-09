@@ -35,6 +35,10 @@ year: 2010
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2010-glorot-xavier-init.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

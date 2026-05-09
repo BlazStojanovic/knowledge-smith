@@ -34,6 +34,10 @@ year: 2002
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2002-friedman-stochastic-gbm.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

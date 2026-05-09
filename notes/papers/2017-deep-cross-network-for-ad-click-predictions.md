@@ -45,7 +45,7 @@ Feature engineering has been the key to the success of many prediction models. H
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-deep-cross-network-for-ad-click-predictions]]
-- PDF (gitignored): `raw/papers/pdf/2017-deep-cross-network-for-ad-click-predictions.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-deep-cross-network-for-ad-click-predictions.pdf]]
 - arXiv: <http://arxiv.org/abs/1708.05123v1>
 
 <!-- ks-harvest -->

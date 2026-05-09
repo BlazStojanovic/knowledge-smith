@@ -47,7 +47,7 @@ Answering natural language questions over tables is usually seen as a semantic p
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-tapas-weakly-supervised-table-parsing-via-pre-training]]
-- PDF: `raw/papers/pdf/2020-tapas-weakly-supervised-table-parsing-via-pre-training.pdf`
+- PDF: [[raw/papers/pdf/2020-tapas-weakly-supervised-table-parsing-via-pre-training.pdf]]
 - arXiv: <http://arxiv.org/abs/2004.02349v2>
 
 <!-- ks-harvest -->

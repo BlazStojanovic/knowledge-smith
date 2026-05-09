@@ -35,6 +35,10 @@ year: 2001
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2001-micci-barreca-target-encoding.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -44,7 +44,7 @@ We introduce instancewise feature selection as a methodology for model interpret
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-learning-to-explain-an-information-theoretic-perspective-on]]
-- PDF: `raw/papers/pdf/2018-learning-to-explain-an-information-theoretic-perspective-on.pdf`
+- PDF: [[raw/papers/pdf/2018-learning-to-explain-an-information-theoretic-perspective-on.pdf]]
 - arXiv: <http://arxiv.org/abs/1802.07814v2>
 
 <!-- ks-harvest -->

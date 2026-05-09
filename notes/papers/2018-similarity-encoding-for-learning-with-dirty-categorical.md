@@ -43,7 +43,7 @@ For statistical learning, categorical variables in a table are usually considere
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-similarity-encoding-for-learning-with-dirty-categorical]]
-- PDF: `raw/papers/pdf/2018-similarity-encoding-for-learning-with-dirty-categorical.pdf`
+- PDF: [[raw/papers/pdf/2018-similarity-encoding-for-learning-with-dirty-categorical.pdf]]
 - arXiv: <http://arxiv.org/abs/1806.00979v1>
 
 <!-- ks-harvest -->

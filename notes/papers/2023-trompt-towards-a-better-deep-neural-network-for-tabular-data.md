@@ -46,7 +46,7 @@ Tabular data is arguably one of the most commonly used data structures in variou
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data]]
-- PDF: `raw/papers/pdf/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data.pdf]]
 - arXiv: <http://arxiv.org/abs/2305.18446v2>
 
 <!-- ks-harvest -->

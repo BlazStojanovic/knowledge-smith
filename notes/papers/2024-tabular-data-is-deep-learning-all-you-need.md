@@ -40,7 +40,7 @@ year: 2024
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-tabular-data-is-deep-learning-all-you-need]]
-- PDF: `raw/papers/pdf/2024-tabular-data-is-deep-learning-all-you-need.pdf`
+- PDF: [[raw/papers/pdf/2024-tabular-data-is-deep-learning-all-you-need.pdf]]
 - arXiv: <https://arxiv.org/abs/2402.03970>
 
 <!-- ks-harvest -->

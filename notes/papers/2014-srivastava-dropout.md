@@ -38,6 +38,10 @@ year: 2014
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2014-srivastava-dropout.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -36,6 +36,10 @@ year: 2009
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2009-hastie-esl.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

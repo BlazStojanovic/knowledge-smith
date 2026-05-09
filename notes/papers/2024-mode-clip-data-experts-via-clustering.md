@@ -49,7 +49,7 @@ The success of contrastive language-image pretraining (CLIP) relies on the super
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-mode-clip-data-experts-via-clustering]]
-- PDF: `raw/papers/pdf/2024-mode-clip-data-experts-via-clustering.pdf`
+- PDF: [[raw/papers/pdf/2024-mode-clip-data-experts-via-clustering.pdf]]
 - arXiv: <http://arxiv.org/abs/2404.16030v1>
 
 <!-- ks-harvest -->

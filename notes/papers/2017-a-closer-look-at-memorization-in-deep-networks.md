@@ -52,7 +52,7 @@ We examine the role of memorization in deep learning, drawing connections to cap
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-a-closer-look-at-memorization-in-deep-networks]]
-- PDF (gitignored): `raw/papers/pdf/2017-a-closer-look-at-memorization-in-deep-networks.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-a-closer-look-at-memorization-in-deep-networks.pdf]]
 - arXiv: <http://arxiv.org/abs/1706.05394v2>
 
 <!-- ks-harvest -->

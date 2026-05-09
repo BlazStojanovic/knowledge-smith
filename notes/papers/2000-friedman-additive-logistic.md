@@ -36,6 +36,10 @@ year: 2000
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2000-friedman-additive-logistic.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

@@ -41,7 +41,7 @@ year: 2024
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-a-data-centric-perspective-on-evaluating-machine-learning]]
-- PDF: `raw/papers/pdf/2024-a-data-centric-perspective-on-evaluating-machine-learning.pdf`
+- PDF: [[raw/papers/pdf/2024-a-data-centric-perspective-on-evaluating-machine-learning.pdf]]
 - arXiv: <https://arxiv.org/abs/2407.02112>
 
 <!-- ks-harvest -->

@@ -45,7 +45,7 @@ Despite the success of deep learning for text and image data, tree-based ensembl
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-grande-gradient-based-decision-tree-ensembles-for-tabular]]
-- PDF: `raw/papers/pdf/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.pdf`
+- PDF: [[raw/papers/pdf/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.pdf]]
 - arXiv: <http://arxiv.org/abs/2309.17130v3>
 
 <!-- ks-harvest -->

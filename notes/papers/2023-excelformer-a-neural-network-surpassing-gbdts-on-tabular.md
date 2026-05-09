@@ -47,7 +47,7 @@ Data organized in tabular format is ubiquitous in real-world applications, and u
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular]]
-- PDF: `raw/papers/pdf/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.pdf`
+- PDF: [[raw/papers/pdf/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.pdf]]
 - arXiv: <http://arxiv.org/abs/2301.02819v8>
 
 <!-- ks-harvest -->

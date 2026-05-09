@@ -60,7 +60,7 @@ Fairness is an increasingly important concern as machine learning models are use
 ## Source
 
 - Raw markdown: [[raw/papers/md/2018-ai-fairness-360-an-extensible-toolkit-for-detecting]]
-- PDF: `raw/papers/pdf/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.pdf`
+- PDF: [[raw/papers/pdf/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.pdf]]
 - arXiv: <http://arxiv.org/abs/1810.01943v1>
 
 <!-- ks-harvest -->

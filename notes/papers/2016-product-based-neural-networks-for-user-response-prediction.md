@@ -48,7 +48,7 @@ Predicting user responses, such as clicks and conversions, is of great importanc
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-product-based-neural-networks-for-user-response-prediction]]
-- PDF (gitignored): `raw/papers/pdf/2016-product-based-neural-networks-for-user-response-prediction.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-product-based-neural-networks-for-user-response-prediction.pdf]]
 - arXiv: <http://arxiv.org/abs/1611.00144v1>
 
 <!-- ks-harvest -->

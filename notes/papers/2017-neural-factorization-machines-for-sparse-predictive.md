@@ -45,7 +45,7 @@ Many predictive tasks of web applications need to model categorical variables, s
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-neural-factorization-machines-for-sparse-predictive]]
-- PDF (gitignored): `raw/papers/pdf/2017-neural-factorization-machines-for-sparse-predictive.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2017-neural-factorization-machines-for-sparse-predictive.pdf]]
 - arXiv: <http://arxiv.org/abs/1708.05027v1>
 
 <!-- ks-harvest -->

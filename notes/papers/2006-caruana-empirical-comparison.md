@@ -35,6 +35,10 @@ year: 2006
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2006-caruana-empirical-comparison.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

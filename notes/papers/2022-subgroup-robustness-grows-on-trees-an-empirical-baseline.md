@@ -39,7 +39,7 @@ year: 2022
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline]]
-- PDF: `raw/papers/pdf/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.pdf`
+- PDF: [[raw/papers/pdf/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.pdf]]
 - arXiv: <https://arxiv.org/abs/2211.12703>
 
 <!-- ks-harvest -->

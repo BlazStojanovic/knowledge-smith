@@ -34,6 +34,10 @@ year: 2022
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2022-molnar-interpretable-ml.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

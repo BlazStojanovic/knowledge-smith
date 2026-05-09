@@ -42,7 +42,7 @@ year: 2021
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-what-s-a-good-imputation-to-predict-with-missing-values]]
-- PDF: `raw/papers/pdf/2021-what-s-a-good-imputation-to-predict-with-missing-values.pdf`
+- PDF: [[raw/papers/pdf/2021-what-s-a-good-imputation-to-predict-with-missing-values.pdf]]
 - arXiv: <https://arxiv.org/abs/2106.00311>
 
 <!-- ks-harvest -->

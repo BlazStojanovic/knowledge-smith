@@ -34,6 +34,10 @@ year: 1996
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1996-breiman-bagging.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

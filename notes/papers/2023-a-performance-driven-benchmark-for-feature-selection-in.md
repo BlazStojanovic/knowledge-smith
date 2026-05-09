@@ -49,7 +49,7 @@ Academic tabular benchmarks often contain small sets of curated features. In con
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-a-performance-driven-benchmark-for-feature-selection-in]]
-- PDF: `raw/papers/pdf/2023-a-performance-driven-benchmark-for-feature-selection-in.pdf`
+- PDF: [[raw/papers/pdf/2023-a-performance-driven-benchmark-for-feature-selection-in.pdf]]
 - arXiv: <http://arxiv.org/abs/2311.05877v1>
 
 <!-- ks-harvest -->

@@ -38,6 +38,10 @@ year: 2020
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2020-yoon-vime.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

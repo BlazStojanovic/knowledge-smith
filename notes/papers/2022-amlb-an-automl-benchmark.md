@@ -48,5 +48,5 @@ Comparing different AutoML frameworks is notoriously challenging and often done 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-amlb-an-automl-benchmark]]
-- PDF: `raw/papers/pdf/2022-amlb-an-automl-benchmark.pdf`
+- PDF: [[raw/papers/pdf/2022-amlb-an-automl-benchmark.pdf]]
 - arXiv: <http://arxiv.org/abs/2207.12560v2>

@@ -40,7 +40,7 @@ year: 2023
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group]]
-- PDF: `raw/papers/pdf/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.pdf`
+- PDF: [[raw/papers/pdf/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.pdf]]
 - arXiv: <https://arxiv.org/abs/2306.09468>
 
 <!-- ks-harvest -->

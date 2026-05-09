@@ -45,7 +45,7 @@ Existing work on tabular representation learning jointly models tables and assoc
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-tabbie-pretrained-representations-of-tabular-data]]
-- PDF: `raw/papers/pdf/2021-tabbie-pretrained-representations-of-tabular-data.pdf`
+- PDF: [[raw/papers/pdf/2021-tabbie-pretrained-representations-of-tabular-data.pdf]]
 - arXiv: <http://arxiv.org/abs/2105.02584v1>
 
 <!-- ks-harvest -->

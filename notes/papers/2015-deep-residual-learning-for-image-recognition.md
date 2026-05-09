@@ -45,7 +45,7 @@ Deeper neural networks are more difficult to train. We present a residual learni
 ## Source
 
 - Raw markdown: [[raw/papers/md/2015-deep-residual-learning-for-image-recognition]]
-- PDF (gitignored): `raw/papers/pdf/2015-deep-residual-learning-for-image-recognition.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2015-deep-residual-learning-for-image-recognition.pdf]]
 - arXiv: <http://arxiv.org/abs/1512.03385v1>
 
 <!-- ks-harvest -->

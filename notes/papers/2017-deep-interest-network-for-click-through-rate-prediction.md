@@ -51,7 +51,7 @@ Click-through rate prediction is an essential task in industrial applications, s
 ## Source
 
 - Raw markdown: [[raw/papers/md/2017-deep-interest-network-for-click-through-rate-prediction]]
-- PDF: `raw/papers/pdf/2017-deep-interest-network-for-click-through-rate-prediction.pdf`
+- PDF: [[raw/papers/pdf/2017-deep-interest-network-for-click-through-rate-prediction.pdf]]
 - arXiv: <http://arxiv.org/abs/1706.06978v4>
 
 <!-- ks-harvest -->

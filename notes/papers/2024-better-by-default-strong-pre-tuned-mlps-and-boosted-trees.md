@@ -44,7 +44,7 @@ For classification and regression on tabular data, the dominance of gradient-boo
 ## Source
 
 - Raw markdown: [[raw/papers/md/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees]]
-- PDF: `raw/papers/pdf/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.pdf`
+- PDF: [[raw/papers/pdf/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.pdf]]
 - arXiv: <http://arxiv.org/abs/2407.04491v3>
 
 <!-- ks-harvest -->

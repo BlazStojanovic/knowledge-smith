@@ -45,6 +45,10 @@ year: 2025
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2025-erickson-tabarena.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

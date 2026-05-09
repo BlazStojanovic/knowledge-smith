@@ -34,6 +34,10 @@ year: 1990
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1990-schapire-boosting.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

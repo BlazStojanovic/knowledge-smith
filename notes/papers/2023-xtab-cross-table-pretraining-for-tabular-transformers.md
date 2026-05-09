@@ -47,7 +47,7 @@ The success of self-supervised learning in computer vision and natural language 
 ## Source
 
 - Raw markdown: [[raw/papers/md/2023-xtab-cross-table-pretraining-for-tabular-transformers]]
-- PDF: `raw/papers/pdf/2023-xtab-cross-table-pretraining-for-tabular-transformers.pdf`
+- PDF: [[raw/papers/pdf/2023-xtab-cross-table-pretraining-for-tabular-transformers.pdf]]
 - arXiv: <http://arxiv.org/abs/2305.06090v1>
 
 <!-- ks-harvest -->

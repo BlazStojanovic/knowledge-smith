@@ -48,7 +48,7 @@ Relational databases are the de facto standard for storing and querying structur
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-arm-net-adaptive-relation-modeling-network-for-structured]]
-- PDF: `raw/papers/pdf/2021-arm-net-adaptive-relation-modeling-network-for-structured.pdf`
+- PDF: [[raw/papers/pdf/2021-arm-net-adaptive-relation-modeling-network-for-structured.pdf]]
 - arXiv: <http://arxiv.org/abs/2107.01830v1>
 
 <!-- ks-harvest -->

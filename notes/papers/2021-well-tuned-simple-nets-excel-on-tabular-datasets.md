@@ -45,7 +45,7 @@ Tabular datasets are the last "unconquered castle" for deep learning, with tradi
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-well-tuned-simple-nets-excel-on-tabular-datasets]]
-- PDF: `raw/papers/pdf/2021-well-tuned-simple-nets-excel-on-tabular-datasets.pdf`
+- PDF: [[raw/papers/pdf/2021-well-tuned-simple-nets-excel-on-tabular-datasets.pdf]]
 - arXiv: <http://arxiv.org/abs/2106.11189v2>
 
 <!-- ks-harvest -->

@@ -60,7 +60,7 @@ There has been significant research done on developing methods for improving rob
 ## Source
 
 - Raw markdown: [[raw/papers/md/2021-shifts-a-dataset-of-real-distributional-shift-across]]
-- PDF: `raw/papers/pdf/2021-shifts-a-dataset-of-real-distributional-shift-across.pdf`
+- PDF: [[raw/papers/pdf/2021-shifts-a-dataset-of-real-distributional-shift-across.pdf]]
 - arXiv: <http://arxiv.org/abs/2107.07455v3>
 
 <!-- ks-harvest -->

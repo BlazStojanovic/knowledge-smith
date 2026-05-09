@@ -35,6 +35,10 @@ year: 1998
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/1998-hochreiter-vanishing-gradient.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

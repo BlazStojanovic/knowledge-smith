@@ -35,6 +35,10 @@ year: 2007
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2007-bennett-netflix.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

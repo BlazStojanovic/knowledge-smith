@@ -34,6 +34,10 @@ year: 2001
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2001-breiman-two-cultures.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

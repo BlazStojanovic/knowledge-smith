@@ -47,7 +47,7 @@ Recent development of deep neural networks (DNNs) for tabular learning has large
 ## Source
 
 - Raw markdown: [[raw/papers/md/2022-t2g-former-organizing-tabular-features-into-relation-graphs]]
-- PDF: `raw/papers/pdf/2022-t2g-former-organizing-tabular-features-into-relation-graphs.pdf`
+- PDF: [[raw/papers/pdf/2022-t2g-former-organizing-tabular-features-into-relation-graphs.pdf]]
 - arXiv: <http://arxiv.org/abs/2211.16887v2>
 
 <!-- ks-harvest -->

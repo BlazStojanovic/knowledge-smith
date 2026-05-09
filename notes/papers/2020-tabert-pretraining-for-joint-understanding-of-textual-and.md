@@ -45,7 +45,7 @@ Recent years have witnessed the burgeoning of pretrained language models (LMs) f
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-tabert-pretraining-for-joint-understanding-of-textual-and]]
-- PDF: `raw/papers/pdf/2020-tabert-pretraining-for-joint-understanding-of-textual-and.pdf`
+- PDF: [[raw/papers/pdf/2020-tabert-pretraining-for-joint-understanding-of-textual-and.pdf]]
 - arXiv: <http://arxiv.org/abs/2005.08314v1>
 
 <!-- ks-harvest -->

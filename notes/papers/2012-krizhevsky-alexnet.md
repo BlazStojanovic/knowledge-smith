@@ -36,6 +36,10 @@ year: 2012
 
 (your synthesis)
 
+## Source
+
+- PDF: [[raw/papers/pdf/2012-krizhevsky-alexnet.pdf]]
+
 <!-- ks-harvest -->
 ## Notes (imported from writings)
 

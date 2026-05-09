@@ -50,7 +50,7 @@ Learning effective feature crosses is the key behind building recommender system
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons]]
-- PDF: `raw/papers/pdf/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.pdf`
+- PDF: [[raw/papers/pdf/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.pdf]]
 - arXiv: <http://arxiv.org/abs/2008.13535v2>
 
 <!-- ks-harvest -->

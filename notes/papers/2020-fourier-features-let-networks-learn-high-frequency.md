@@ -51,7 +51,7 @@ We show that passing input points through a simple Fourier feature mapping enabl
 ## Source
 
 - Raw markdown: [[raw/papers/md/2020-fourier-features-let-networks-learn-high-frequency]]
-- PDF: `raw/papers/pdf/2020-fourier-features-let-networks-learn-high-frequency.pdf`
+- PDF: [[raw/papers/pdf/2020-fourier-features-let-networks-learn-high-frequency.pdf]]
 - arXiv: <http://arxiv.org/abs/2006.10739v1>
 
 <!-- ks-harvest -->

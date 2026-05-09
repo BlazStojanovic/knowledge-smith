@@ -57,7 +57,7 @@ Generalized linear models with nonlinear feature transformations are widely used
 ## Source
 
 - Raw markdown: [[raw/papers/md/2016-wide-deep-learning-for-recommender-systems]]
-- PDF (gitignored): `raw/papers/pdf/2016-wide-deep-learning-for-recommender-systems.pdf`
+- PDF (gitignored): [[raw/papers/pdf/2016-wide-deep-learning-for-recommender-systems.pdf]]
 - arXiv: <http://arxiv.org/abs/1606.07792v1>
 
 <!-- ks-harvest -->
