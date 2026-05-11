@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2002.07971
+  raw: '[[raw/papers/md/2020-gradient-boosting-neural-networks-grownet]]'
+  source: http://arxiv.org/abs/2002.07971v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-gradient-boosting-neural-networks-grownet.md
 raw_pdf: raw/papers/pdf/2020-gradient-boosting-neural-networks-grownet.pdf
 read: false
 slug: gradient-boosting-neural-networks-grownet
 tags:
+- type/paper
 - gradient-boosting
 - tabular
 - optimization
 - ml
+- status/stub
 title: 'Gradient Boosting Neural Networks: GrowNet'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2002.07971v2
 venue: null
 year: 2020
 ---

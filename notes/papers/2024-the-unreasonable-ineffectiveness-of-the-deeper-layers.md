@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2403.17887
+  raw: '[[raw/papers/md/2024-the-unreasonable-ineffectiveness-of-the-deeper-layers]]'
+  source: https://arxiv.org/abs/2403.17887
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-the-unreasonable-ineffectiveness-of-the-deeper-layers.md
 raw_pdf: raw/papers/pdf/2024-the-unreasonable-ineffectiveness-of-the-deeper-layers.pdf
 read: false
 slug: the-unreasonable-ineffectiveness-of-the-deeper-layers
 tags:
+- type/paper
 - transformer
 - interpretability
 - fine-tuning
+- status/stub
 title: The Unreasonable Ineffectiveness of the Deeper Layers
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2403.17887
 venue: null
 year: 2024
 ---

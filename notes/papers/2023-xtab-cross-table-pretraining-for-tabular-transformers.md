@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2305.06090
+  raw: '[[raw/papers/md/2023-xtab-cross-table-pretraining-for-tabular-transformers]]'
+  source: http://arxiv.org/abs/2305.06090v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-xtab-cross-table-pretraining-for-tabular-transformers.md
 raw_pdf: raw/papers/pdf/2023-xtab-cross-table-pretraining-for-tabular-transformers.pdf
 read: false
 slug: xtab-cross-table-pretraining-for-tabular-transformers
 tags:
+- type/paper
 - tabular
 - pretraining
 - transformer
 - self-supervised
+- status/stub
 title: 'XTab: Cross-table Pretraining for Tabular Transformers'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2305.06090v1
 venue: null
 year: 2023
 ---

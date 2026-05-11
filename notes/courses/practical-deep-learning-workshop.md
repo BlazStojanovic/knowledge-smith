@@ -4,16 +4,20 @@ description: Hands-on practical deep learning workshop materials.
 institution: null
 instructor: Justin Mo
 kind: course
+links:
+  source: https://jxmo.io/deep-learning-workshop/
+owner: blaz
 read: false
 slug: practical-deep-learning-workshop
 tags:
+- type/course
 - ml
 - fine-tuning
 - optimization
+- status/stub
 title: Practical Deep Learning Workshop
 type: note
 updated: '2026-05-09'
-url: https://jxmo.io/deep-learning-workshop/
 year: null
 ---
 

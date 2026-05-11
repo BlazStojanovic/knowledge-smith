@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2012-krizhevsky-alexnet
 tags:
+- type/paper
 - vision
 - deep-learning
 - cnn
+- status/stub
 title: ImageNet Classification with Deep Convolutional Neural Networks
 type: note
 updated: '2026-05-09'
-url: null
 venue: NeurIPS 2012
 year: 2012
 ---

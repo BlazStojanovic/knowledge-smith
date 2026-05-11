@@ -6,19 +6,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1711.09784
+  raw: '[[raw/papers/md/2017-distilling-a-neural-network-into-a-soft-decision-tree]]'
+  source: http://arxiv.org/abs/1711.09784v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-distilling-a-neural-network-into-a-soft-decision-tree.md
 raw_pdf: raw/papers/pdf/2017-distilling-a-neural-network-into-a-soft-decision-tree.pdf
 read: false
 slug: distilling-a-neural-network-into-a-soft-decision-tree
 tags:
+- type/paper
 - distillation
 - interpretability
 - decision-tree
+- status/stub
 title: Distilling a Neural Network Into a Soft Decision Tree
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1711.09784v1
 venue: null
 year: 2017
 ---

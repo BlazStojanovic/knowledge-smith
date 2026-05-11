@@ -8,19 +8,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2604.20614
+  raw: '[[raw/papers/md/2026-too-sharp-too-sure-when-calibration-follows-curvature]]'
+  source: https://arxiv.org/abs/2604.20614
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-too-sharp-too-sure-when-calibration-follows-curvature.md
 raw_pdf: raw/papers/pdf/2026-too-sharp-too-sure-when-calibration-follows-curvature.pdf
 read: false
 slug: too-sharp-too-sure-when-calibration-follows-curvature
 tags:
+- type/paper
 - calibration
 - uncertainty
 - optimization
+- status/stub
 title: 'Too Sharp, Too Sure: When Calibration Follows Curvature'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2604.20614
 venue: null
 year: 2026
 ---

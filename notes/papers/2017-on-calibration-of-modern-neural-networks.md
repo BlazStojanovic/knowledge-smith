@@ -8,19 +8,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1706.04599
+  raw: '[[raw/papers/md/2017-on-calibration-of-modern-neural-networks]]'
+  source: http://arxiv.org/abs/1706.04599v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-on-calibration-of-modern-neural-networks.md
 raw_pdf: raw/papers/pdf/2017-on-calibration-of-modern-neural-networks.pdf
 read: false
 slug: on-calibration-of-modern-neural-networks
 tags:
+- type/paper
 - calibration
 - uncertainty
 - ml
+- status/stub
 title: On Calibration of Modern Neural Networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1706.04599v2
 venue: null
 year: 2017
 ---

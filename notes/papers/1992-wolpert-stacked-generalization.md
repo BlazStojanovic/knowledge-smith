@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 1992-wolpert-stacked-generalization
 tags:
+- type/paper
 - ml
 - ensemble
 - generalization
+- status/stub
 title: Stacked Generalization
 type: note
 updated: '2026-05-09'
-url: null
 venue: Neural Networks
 year: 1992
 ---

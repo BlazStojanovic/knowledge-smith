@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-breiman-two-cultures
 tags:
+- type/paper
 - ml
 - survey
 - theory
+- status/stub
 title: 'Statistical Modeling: The Two Cultures'
 type: note
 updated: '2026-05-09'
-url: null
 venue: Statistical Science
 year: 2001
 ---

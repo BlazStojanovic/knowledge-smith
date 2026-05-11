@@ -6,19 +6,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 1995-cortes-svm
 tags:
+- type/paper
 - ml
 - theory
 - optimization
+- status/stub
 title: Support-Vector Networks
 type: note
 updated: '2026-05-09'
-url: null
 venue: Machine Learning
 year: 1995
 ---

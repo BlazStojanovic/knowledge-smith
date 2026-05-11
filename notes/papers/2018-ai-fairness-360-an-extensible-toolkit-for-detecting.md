@@ -22,20 +22,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1810.01943
+  raw: '[[raw/papers/md/2018-ai-fairness-360-an-extensible-toolkit-for-detecting]]'
+  source: http://arxiv.org/abs/1810.01943v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.md
 raw_pdf: raw/papers/pdf/2018-ai-fairness-360-an-extensible-toolkit-for-detecting.pdf
 read: false
 slug: ai-fairness-360-an-extensible-toolkit-for-detecting
 tags:
+- type/paper
 - fairness
 - benchmark
 - ml
+- status/stub
 title: 'AI Fairness 360: An Extensible Toolkit for Detecting, Understanding, and Mitigating
   Unwanted Algorithmic Bias'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1810.01943v1
 venue: null
 year: 2018
 ---

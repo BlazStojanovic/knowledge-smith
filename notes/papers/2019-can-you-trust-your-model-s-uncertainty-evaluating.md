@@ -13,21 +13,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1906.02530
+  raw: '[[raw/papers/md/2019-can-you-trust-your-model-s-uncertainty-evaluating]]'
+  source: http://arxiv.org/abs/1906.02530v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-can-you-trust-your-model-s-uncertainty-evaluating.md
 raw_pdf: raw/papers/pdf/2019-can-you-trust-your-model-s-uncertainty-evaluating.pdf
 read: false
 slug: can-you-trust-your-model-s-uncertainty-evaluating
 tags:
+- type/paper
 - uncertainty
 - calibration
 - benchmark
 - ml
+- status/stub
 title: Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under
   Dataset Shift
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1906.02530v2
 venue: null
 year: 2019
 ---

@@ -8,19 +8,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2014-fernandez-delgado-hundreds
 tags:
+- type/paper
 - benchmark
 - ml
 - evaluation
+- status/stub
 title: Do We Need Hundreds of Classifiers to Solve Real World Classification Problems?
 type: note
 updated: '2026-05-09'
-url: null
 venue: Journal of Machine Learning Research
 year: 2014
 ---

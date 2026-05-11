@@ -12,20 +12,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1708.03731
+  raw: '[[raw/papers/md/2017-openml-benchmarking-suites]]'
+  source: https://arxiv.org/abs/1708.03731
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-openml-benchmarking-suites.md
 raw_pdf: raw/papers/pdf/2017-openml-benchmarking-suites.pdf
 read: false
 slug: openml-benchmarking-suites
 tags:
+- type/paper
 - benchmark
 - reproducibility
 - ml
 - tabular
+- status/stub
 title: OpenML Benchmarking Suites
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/1708.03731
 venue: null
 year: 2017
 ---

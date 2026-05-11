@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1602.04938
+  raw: '[[raw/papers/md/2016-why-should-i-trust-you-explaining-the-predictions-of-any]]'
+  source: http://arxiv.org/abs/1602.04938v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-why-should-i-trust-you-explaining-the-predictions-of-any.md
 raw_pdf: raw/papers/pdf/2016-why-should-i-trust-you-explaining-the-predictions-of-any.pdf
 read: false
 slug: why-should-i-trust-you-explaining-the-predictions-of-any
 tags:
+- type/paper
 - interpretability
 - ml
 - lime
 - feature-encoding
+- status/stub
 title: '"Why Should I Trust You?": Explaining the Predictions of Any Classifier'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1602.04938v3
 venue: null
 year: 2016
 ---

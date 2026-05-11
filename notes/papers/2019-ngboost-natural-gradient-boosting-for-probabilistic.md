@@ -11,20 +11,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1910.03225
+  raw: '[[raw/papers/md/2019-ngboost-natural-gradient-boosting-for-probabilistic]]'
+  source: http://arxiv.org/abs/1910.03225v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-ngboost-natural-gradient-boosting-for-probabilistic.md
 raw_pdf: raw/papers/pdf/2019-ngboost-natural-gradient-boosting-for-probabilistic.pdf
 read: false
 slug: ngboost-natural-gradient-boosting-for-probabilistic
 tags:
+- type/paper
 - gradient-boosting
 - uncertainty
 - calibration
 - optimization
+- status/stub
 title: 'NGBoost: Natural Gradient Boosting for Probabilistic Prediction'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1910.03225v4
 venue: null
 year: 2019
 ---

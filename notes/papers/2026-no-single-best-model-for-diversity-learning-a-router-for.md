@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2604.02319
+  raw: '[[raw/papers/md/2026-no-single-best-model-for-diversity-learning-a-router-for]]'
+  source: https://arxiv.org/abs/2604.02319
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-no-single-best-model-for-diversity-learning-a-router-for.md
 raw_pdf: raw/papers/pdf/2026-no-single-best-model-for-diversity-learning-a-router-for.pdf
 read: false
 slug: no-single-best-model-for-diversity-learning-a-router-for
 tags:
+- type/paper
 - mixture-of-experts
 - llm
 - evaluation
+- status/stub
 title: 'No Single Best Model for Diversity: Learning a Router for Sample Diversity'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2604.02319
 venue: null
 year: 2026
 ---

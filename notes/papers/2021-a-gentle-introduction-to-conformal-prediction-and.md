@@ -6,21 +6,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2107.07511
+  raw: '[[raw/papers/md/2021-a-gentle-introduction-to-conformal-prediction-and]]'
+  source: http://arxiv.org/abs/2107.07511v6
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-a-gentle-introduction-to-conformal-prediction-and.md
 raw_pdf: raw/papers/pdf/2021-a-gentle-introduction-to-conformal-prediction-and.pdf
 read: false
 slug: a-gentle-introduction-to-conformal-prediction-and
 tags:
+- type/paper
 - uncertainty
 - calibration
 - distribution-free
 - survey
+- status/stub
 title: A Gentle Introduction to Conformal Prediction and Distribution-Free Uncertainty
   Quantification
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2107.07511v6
 venue: null
 year: 2021
 ---

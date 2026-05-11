@@ -9,21 +9,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.01342
+  raw: '[[raw/papers/md/2021-saint-improved-neural-networks-for-tabular-data-via-row]]'
+  source: http://arxiv.org/abs/2106.01342v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-saint-improved-neural-networks-for-tabular-data-via-row.md
 raw_pdf: raw/papers/pdf/2021-saint-improved-neural-networks-for-tabular-data-via-row.pdf
 read: false
 slug: saint-improved-neural-networks-for-tabular-data-via-row
 tags:
+- type/paper
 - tabular
 - attention
 - contrastive
 - pretraining
+- status/stub
 title: 'SAINT: Improved Neural Networks for Tabular Data via Row Attention and Contrastive
   Pre-Training'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2106.01342v1
 venue: null
 year: 2021
 ---

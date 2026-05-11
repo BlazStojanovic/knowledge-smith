@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2207.03208
+  raw: '[[raw/papers/md/2022-revisiting-pretraining-objectives-for-tabular-deep-learning]]'
+  source: http://arxiv.org/abs/2207.03208v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.md
 raw_pdf: raw/papers/pdf/2022-revisiting-pretraining-objectives-for-tabular-deep-learning.pdf
 read: false
 slug: revisiting-pretraining-objectives-for-tabular-deep-learning
 tags:
+- type/paper
 - tabular
 - pretraining
 - self-supervised
 - gradient-boosting
+- status/stub
 title: Revisiting Pretraining Objectives for Tabular Deep Learning
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2207.03208v2
 venue: null
 year: 2022
 ---

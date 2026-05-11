@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1908.07442
+  raw: '[[raw/papers/md/2019-tabnet-attentive-interpretable-tabular-learning]]'
+  source: http://arxiv.org/abs/1908.07442v5
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-tabnet-attentive-interpretable-tabular-learning.md
 raw_pdf: raw/papers/pdf/2019-tabnet-attentive-interpretable-tabular-learning.pdf
 read: false
 slug: tabnet-attentive-interpretable-tabular-learning
 tags:
+- type/paper
 - tabular
 - attention
 - interpretability
 - self-supervised
+- status/stub
 title: 'TabNet: Attentive Interpretable Tabular Learning'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1908.07442v5
 venue: null
 year: 2019
 ---

@@ -15,20 +15,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1706.05394
+  raw: '[[raw/papers/md/2017-a-closer-look-at-memorization-in-deep-networks]]'
+  source: http://arxiv.org/abs/1706.05394v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-a-closer-look-at-memorization-in-deep-networks.md
 raw_pdf: raw/papers/pdf/2017-a-closer-look-at-memorization-in-deep-networks.pdf
 read: false
 slug: a-closer-look-at-memorization-in-deep-networks
 tags:
+- type/paper
 - generalization
 - ml
 - theory
 - optimization
+- status/stub
 title: A Closer Look at Memorization in Deep Networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1706.05394v2
 venue: null
 year: 2017
 ---

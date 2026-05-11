@@ -9,20 +9,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2305.18446
+  raw: '[[raw/papers/md/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data]]'
+  source: http://arxiv.org/abs/2305.18446v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data.md
 raw_pdf: raw/papers/pdf/2023-trompt-towards-a-better-deep-neural-network-for-tabular-data.pdf
 read: false
 slug: trompt-towards-a-better-deep-neural-network-for-tabular-data
 tags:
+- type/paper
 - tabular
 - attention
 - benchmark
 - fine-tuning
+- status/stub
 title: 'Trompt: Towards a Better Deep Neural Network for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2305.18446v2
 venue: null
 year: 2023
 ---

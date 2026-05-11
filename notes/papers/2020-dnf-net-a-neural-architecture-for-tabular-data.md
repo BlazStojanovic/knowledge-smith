@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2006.06465
+  raw: '[[raw/papers/md/2020-dnf-net-a-neural-architecture-for-tabular-data]]'
+  source: https://arxiv.org/abs/2006.06465
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-dnf-net-a-neural-architecture-for-tabular-data.md
 raw_pdf: raw/papers/pdf/2020-dnf-net-a-neural-architecture-for-tabular-data.pdf
 read: false
 slug: dnf-net-a-neural-architecture-for-tabular-data
 tags:
+- type/paper
 - tabular
 - ml
 - interpretability
 - decision-tree
+- status/stub
 title: 'DNF-Net: A Neural Architecture for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2006.06465
 venue: null
 year: 2020
 ---

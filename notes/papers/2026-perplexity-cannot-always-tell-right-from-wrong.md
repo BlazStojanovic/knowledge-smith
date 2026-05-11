@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2601.22950
+  raw: '[[raw/papers/md/2026-perplexity-cannot-always-tell-right-from-wrong]]'
+  source: https://arxiv.org/abs/2601.22950
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-perplexity-cannot-always-tell-right-from-wrong.md
 raw_pdf: raw/papers/pdf/2026-perplexity-cannot-always-tell-right-from-wrong.pdf
 read: false
 slug: perplexity-cannot-always-tell-right-from-wrong
 tags:
+- type/paper
 - llm
 - evaluation
 - calibration
+- status/stub
 title: Perplexity Cannot Always Tell Right from Wrong
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2601.22950
 venue: null
 year: 2026
 ---

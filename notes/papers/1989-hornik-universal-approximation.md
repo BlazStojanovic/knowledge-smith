@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 1989-hornik-universal-approximation
 tags:
+- type/paper
 - ml
 - theory
 - optimization
+- status/stub
 title: Multilayer Feedforward Networks are Universal Approximators
 type: note
 updated: '2026-05-09'
-url: null
 venue: Neural Networks
 year: 1989
 ---

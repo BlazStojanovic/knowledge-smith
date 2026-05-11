@@ -10,21 +10,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.02584
+  raw: '[[raw/papers/md/2021-self-attention-between-datapoints-going-beyond-individual]]'
+  source: http://arxiv.org/abs/2106.02584v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-self-attention-between-datapoints-going-beyond-individual.md
 raw_pdf: raw/papers/pdf/2021-self-attention-between-datapoints-going-beyond-individual.pdf
 read: false
 slug: self-attention-between-datapoints-going-beyond-individual
 tags:
+- type/paper
 - attention
 - tabular
 - transformer
 - self-supervised
+- status/stub
 title: 'Self-Attention Between Datapoints: Going Beyond Individual Input-Output Pairs
   in Deep Learning'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2106.02584v2
 venue: null
 year: 2021
 ---

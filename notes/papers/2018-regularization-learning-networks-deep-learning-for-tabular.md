@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1805.06440
+  raw: '[[raw/papers/md/2018-regularization-learning-networks-deep-learning-for-tabular]]'
+  source: http://arxiv.org/abs/1805.06440v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-regularization-learning-networks-deep-learning-for-tabular.md
 raw_pdf: raw/papers/pdf/2018-regularization-learning-networks-deep-learning-for-tabular.pdf
 read: false
 slug: regularization-learning-networks-deep-learning-for-tabular
 tags:
+- type/paper
 - tabular
 - ml
 - generalization
 - gradient-boosting
+- status/stub
 title: 'Regularization Learning Networks: Deep Learning for Tabular Datasets'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1805.06440v3
 venue: null
 year: 2018
 ---

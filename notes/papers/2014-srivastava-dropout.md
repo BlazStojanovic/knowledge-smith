@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2014-srivastava-dropout
 tags:
+- type/paper
 - generalization
 - deep-learning
 - regularization
+- status/stub
 title: 'Dropout: A Simple Way to Prevent Neural Networks from Overfitting'
 type: note
 updated: '2026-05-09'
-url: null
 venue: Journal of Machine Learning Research
 year: 2014
 ---

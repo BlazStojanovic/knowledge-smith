@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1702.08835
+  raw: '[[raw/papers/md/2017-deep-forest]]'
+  source: http://arxiv.org/abs/1702.08835v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-deep-forest.md
 raw_pdf: raw/papers/pdf/2017-deep-forest.pdf
 read: false
 slug: deep-forest
 tags:
+- type/paper
 - deep-forest
 - decision-tree
 - tabular
 - ml
+- status/stub
 title: Deep Forest
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1702.08835v4
 venue: null
 year: 2017
 ---

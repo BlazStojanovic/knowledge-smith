@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2023-beyazit-inductive-bias
 tags:
+- type/paper
 - tabular
 - ml
 - generalization
+- status/stub
 title: An Inductive Bias for Tabular Deep Learning
 type: note
 updated: '2026-05-09'
-url: null
 venue: NeurIPS 2023
 year: 2023
 ---

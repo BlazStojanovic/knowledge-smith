@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2206.15306
+  raw: '[[raw/papers/md/2022-transfer-learning-with-deep-tabular-models]]'
+  source: https://arxiv.org/abs/2206.15306
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-transfer-learning-with-deep-tabular-models.md
 raw_pdf: raw/papers/pdf/2022-transfer-learning-with-deep-tabular-models.pdf
 read: false
 slug: transfer-learning-with-deep-tabular-models
 tags:
+- type/paper
 - tabular
 - fine-tuning
 - self-supervised
 - ml
+- status/stub
 title: Transfer Learning with Deep Tabular Models
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2206.15306
 venue: null
 year: 2022
 ---

@@ -11,19 +11,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2602.12413
+  raw: '[[raw/papers/md/2026-soft-contamination-means-benchmarks-test-shallow]]'
+  source: https://arxiv.org/abs/2602.12413
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-soft-contamination-means-benchmarks-test-shallow.md
 raw_pdf: raw/papers/pdf/2026-soft-contamination-means-benchmarks-test-shallow.pdf
 read: false
 slug: soft-contamination-means-benchmarks-test-shallow
 tags:
+- type/paper
 - benchmark
 - generalization
 - evaluation
+- status/stub
 title: Soft Contamination Means Benchmarks Test Shallow Generalization
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2602.12413
 venue: null
 year: 2026
 ---

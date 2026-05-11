@@ -6,21 +6,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2006.12433
+  raw: '[[raw/papers/md/2020-what-shapes-feature-representations-exploring-datasets]]'
+  source: http://arxiv.org/abs/2006.12433v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-what-shapes-feature-representations-exploring-datasets.md
 raw_pdf: raw/papers/pdf/2020-what-shapes-feature-representations-exploring-datasets.pdf
 read: false
 slug: what-shapes-feature-representations-exploring-datasets
 tags:
+- type/paper
 - interpretability
 - generalization
 - feature-encoding
 - ml
+- status/stub
 title: What shapes feature representations? Exploring datasets, architectures, and
   training
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2006.12433v2
 venue: null
 year: 2020
 ---

@@ -6,17 +6,24 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1412.6980
+  raw: '[[raw/papers/md/2014-adam-a-method-for-stochastic-optimization]]'
+  source: http://arxiv.org/abs/1412.6980v9
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2014-adam-a-method-for-stochastic-optimization.md
 raw_pdf: raw/papers/pdf/2014-adam-a-method-for-stochastic-optimization.pdf
 read: false
 slug: adam-a-method-for-stochastic-optimization
 tags:
+- type/paper
 - optimization
+- status/stub
 title: 'Adam: A Method for Stochastic Optimization'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1412.6980v9
 venue: null
 year: 2014
 ---

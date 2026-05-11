@@ -28,20 +28,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1906.00091
+  raw: '[[raw/papers/md/2019-deep-learning-recommendation-model-for-personalization-and]]'
+  source: http://arxiv.org/abs/1906.00091v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-deep-learning-recommendation-model-for-personalization-and.md
 raw_pdf: raw/papers/pdf/2019-deep-learning-recommendation-model-for-personalization-and.pdf
 read: false
 slug: deep-learning-recommendation-model-for-personalization-and
 tags:
+- type/paper
 - recsys
 - ctr-prediction
 - ml
 - feature-encoding
+- status/stub
 title: Deep Learning Recommendation Model for Personalization and Recommendation Systems
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1906.00091v1
 venue: null
 year: 2019
 ---

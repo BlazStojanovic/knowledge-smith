@@ -8,21 +8,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2407.03257
+  raw: '[[raw/papers/md/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular]]'
+  source: http://arxiv.org/abs/2407.03257v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.md
 raw_pdf: raw/papers/pdf/2024-revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular.pdf
 read: false
 slug: revisiting-nearest-neighbor-for-tabular-data-a-deep-tabular
 tags:
+- type/paper
 - tabular
 - contrastive
 - metric-learning
 - benchmark
+- status/stub
 title: 'Revisiting Nearest Neighbor for Tabular Data: A Deep Tabular Baseline Two
   Decades Later'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2407.03257v2
 venue: null
 year: 2024
 ---

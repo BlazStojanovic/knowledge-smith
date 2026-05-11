@@ -13,21 +13,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2006.10739
+  raw: '[[raw/papers/md/2020-fourier-features-let-networks-learn-high-frequency]]'
+  source: http://arxiv.org/abs/2006.10739v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-fourier-features-let-networks-learn-high-frequency.md
 raw_pdf: raw/papers/pdf/2020-fourier-features-let-networks-learn-high-frequency.pdf
 read: false
 slug: fourier-features-let-networks-learn-high-frequency
 tags:
+- type/paper
 - vision
 - ml
 - theory
 - optimization
+- status/stub
 title: Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional
   Domains
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2006.10739v1
 venue: null
 year: 2020
 ---

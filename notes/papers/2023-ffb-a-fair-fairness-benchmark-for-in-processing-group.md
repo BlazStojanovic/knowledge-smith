@@ -7,20 +7,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2306.09468
+  raw: '[[raw/papers/md/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group]]'
+  source: https://arxiv.org/abs/2306.09468
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.md
 raw_pdf: raw/papers/pdf/2023-ffb-a-fair-fairness-benchmark-for-in-processing-group.pdf
 read: false
 slug: ffb-a-fair-fairness-benchmark-for-in-processing-group
 tags:
+- type/paper
 - fairness
 - benchmark
 - ml
 - evaluation
+- status/stub
 title: 'FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2306.09468
 venue: null
 year: 2023
 ---

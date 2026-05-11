@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1708.05027
+  raw: '[[raw/papers/md/2017-neural-factorization-machines-for-sparse-predictive]]'
+  source: http://arxiv.org/abs/1708.05027v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-neural-factorization-machines-for-sparse-predictive.md
 raw_pdf: raw/papers/pdf/2017-neural-factorization-machines-for-sparse-predictive.pdf
 read: false
 slug: neural-factorization-machines-for-sparse-predictive
 tags:
+- type/paper
 - recsys
 - ctr-prediction
 - feature-encoding
 - tabular
+- status/stub
 title: Neural Factorization Machines for Sparse Predictive Analytics
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1708.05027v1
 venue: null
 year: 2017
 ---

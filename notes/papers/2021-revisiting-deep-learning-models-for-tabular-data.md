@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.11959
+  raw: '[[raw/papers/md/2021-revisiting-deep-learning-models-for-tabular-data]]'
+  source: http://arxiv.org/abs/2106.11959v5
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-revisiting-deep-learning-models-for-tabular-data.md
 raw_pdf: raw/papers/pdf/2021-revisiting-deep-learning-models-for-tabular-data.pdf
 read: false
 slug: revisiting-deep-learning-models-for-tabular-data
 tags:
+- type/paper
 - tabular
 - transformer
 - benchmark
 - gradient-boosting
+- status/stub
 title: Revisiting Deep Learning Models for Tabular Data
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2106.11959v5
 venue: null
 year: 2021
 ---

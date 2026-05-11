@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1805.07405
+  raw: '[[raw/papers/md/2018-processing-of-missing-data-by-neural-networks]]'
+  source: https://arxiv.org/abs/1805.07405
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-processing-of-missing-data-by-neural-networks.md
 raw_pdf: raw/papers/pdf/2018-processing-of-missing-data-by-neural-networks.pdf
 read: false
 slug: processing-of-missing-data-by-neural-networks
 tags:
+- type/paper
 - missing-data
 - ml
 - tabular
+- status/stub
 title: Processing of missing data by neural networks
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/1805.07405
 venue: null
 year: 2018
 ---

@@ -8,19 +8,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1512.03385
+  raw: '[[raw/papers/md/2015-deep-residual-learning-for-image-recognition]]'
+  source: http://arxiv.org/abs/1512.03385v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2015-deep-residual-learning-for-image-recognition.md
 raw_pdf: raw/papers/pdf/2015-deep-residual-learning-for-image-recognition.pdf
 read: false
 slug: deep-residual-learning-for-image-recognition
 tags:
+- type/paper
 - vision
 - deep-learning
 - cnn
+- status/stub
 title: Deep Residual Learning for Image Recognition
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1512.03385v1
 venue: null
 year: 2015
 ---

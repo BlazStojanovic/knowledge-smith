@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2301.02819
+  raw: '[[raw/papers/md/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular]]'
+  source: http://arxiv.org/abs/2301.02819v8
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.md
 raw_pdf: raw/papers/pdf/2023-excelformer-a-neural-network-surpassing-gbdts-on-tabular.pdf
 read: false
 slug: excelformer-a-neural-network-surpassing-gbdts-on-tabular
 tags:
+- type/paper
 - tabular
 - transformer
 - attention
 - gradient-boosting
+- status/stub
 title: 'ExcelFormer: A neural network surpassing GBDTs on tabular data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2301.02819v8
 venue: null
 year: 2023
 ---

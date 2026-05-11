@@ -20,20 +20,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1606.07792
+  raw: '[[raw/papers/md/2016-wide-deep-learning-for-recommender-systems]]'
+  source: http://arxiv.org/abs/1606.07792v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-wide-deep-learning-for-recommender-systems.md
 raw_pdf: raw/papers/pdf/2016-wide-deep-learning-for-recommender-systems.pdf
 read: false
 slug: wide-deep-learning-for-recommender-systems
 tags:
+- type/paper
 - recsys
 - ctr-prediction
 - feature-encoding
 - tabular
+- status/stub
 title: Wide & Deep Learning for Recommender Systems
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1606.07792v1
 venue: null
 year: 2016
 ---

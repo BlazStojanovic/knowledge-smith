@@ -12,20 +12,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2311.05877
+  raw: '[[raw/papers/md/2023-a-performance-driven-benchmark-for-feature-selection-in]]'
+  source: http://arxiv.org/abs/2311.05877v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-a-performance-driven-benchmark-for-feature-selection-in.md
 raw_pdf: raw/papers/pdf/2023-a-performance-driven-benchmark-for-feature-selection-in.pdf
 read: false
 slug: a-performance-driven-benchmark-for-feature-selection-in
 tags:
+- type/paper
 - tabular
 - benchmark
 - feature-selection
 - transformer
+- status/stub
 title: A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2311.05877v1
 venue: null
 year: 2023
 ---

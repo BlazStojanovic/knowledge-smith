@@ -6,20 +6,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2406.19380
+  raw: '[[raw/papers/md/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular]]'
+  source: https://arxiv.org/abs/2406.19380
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.md
 raw_pdf: raw/papers/pdf/2024-tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular.pdf
 read: false
 slug: tabred-analyzing-pitfalls-and-filling-the-gaps-in-tabular
 tags:
+- type/paper
 - tabular
 - benchmark
 - ml
 - evaluation
+- status/stub
 title: 'TabReD: Analyzing Pitfalls and Filling the Gaps in Tabular Deep Learning Benchmarks'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2406.19380
 venue: null
 year: 2024
 ---

@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2110.01889
+  raw: '[[raw/papers/md/2021-deep-neural-networks-and-tabular-data-a-survey]]'
+  source: http://arxiv.org/abs/2110.01889v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-deep-neural-networks-and-tabular-data-a-survey.md
 raw_pdf: raw/papers/pdf/2021-deep-neural-networks-and-tabular-data-a-survey.pdf
 read: false
 slug: deep-neural-networks-and-tabular-data-a-survey
 tags:
+- type/paper
 - tabular
 - survey
 - ml
 - benchmark
+- status/stub
 title: 'Deep Neural Networks and Tabular Data: A Survey'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2110.01889v3
 venue: null
 year: 2021
 ---

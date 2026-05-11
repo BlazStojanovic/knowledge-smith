@@ -7,21 +7,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2306.11134
+  raw: '[[raw/papers/md/2023-openp5-an-open-source-platform-for-developing-training-and]]'
+  source: http://arxiv.org/abs/2306.11134v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-openp5-an-open-source-platform-for-developing-training-and.md
 raw_pdf: raw/papers/pdf/2023-openp5-an-open-source-platform-for-developing-training-and.pdf
 read: false
 slug: openp5-an-open-source-platform-for-developing-training-and
 tags:
+- type/paper
 - recsys
 - llm
 - pretraining
 - benchmark
+- status/stub
 title: 'OpenP5: An Open-Source Platform for Developing, Training, and Evaluating LLM-based
   Recommender Systems'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2306.11134v2
 venue: null
 year: 2023
 ---

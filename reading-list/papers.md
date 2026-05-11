@@ -1,5 +1,5 @@
 ---
-generated: '2026-05-09T04:18:55+00:00'
+generated: '2026-05-11T05:17:26+00:00'
 kind: papers
 type: reading-list
 unread_count: 177
@@ -231,7 +231,7 @@ unread_count: 177
 ## 2004
 
 - [[notes/papers/2004-hooker-functional-anova|Discovering Additive Structure in Black Box Functions]] — Giles Hooker
-- [[notes/papers/2004-ng-feature-selection-l1|Feature Selection, L1 vs. L2 Regularization, and Rotational Invariance]]
+- [[notes/papers/2004-ng-feature-selection-l1|Feature Selection, L1 vs. L2 Regularization, and Rotational Invariance]] — Andrew Y. Ng
 
 ## 2002
 

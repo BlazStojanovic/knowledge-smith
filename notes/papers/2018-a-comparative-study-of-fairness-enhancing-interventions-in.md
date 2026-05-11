@@ -10,19 +10,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1802.04422
+  raw: '[[raw/papers/md/2018-a-comparative-study-of-fairness-enhancing-interventions-in]]'
+  source: http://arxiv.org/abs/1802.04422v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-a-comparative-study-of-fairness-enhancing-interventions-in.md
 raw_pdf: raw/papers/pdf/2018-a-comparative-study-of-fairness-enhancing-interventions-in.pdf
 read: false
 slug: a-comparative-study-of-fairness-enhancing-interventions-in
 tags:
+- type/paper
 - fairness
 - benchmark
 - ml
+- status/stub
 title: A comparative study of fairness-enhancing interventions in machine learning
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1802.04422v1
 venue: null
 year: 2018
 ---

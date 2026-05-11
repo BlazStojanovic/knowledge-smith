@@ -8,19 +8,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1802.07814
+  raw: '[[raw/papers/md/2018-learning-to-explain-an-information-theoretic-perspective-on]]'
+  source: http://arxiv.org/abs/1802.07814v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-learning-to-explain-an-information-theoretic-perspective-on.md
 raw_pdf: raw/papers/pdf/2018-learning-to-explain-an-information-theoretic-perspective-on.pdf
 read: false
 slug: learning-to-explain-an-information-theoretic-perspective-on
 tags:
+- type/paper
 - interpretability
 - ml
 - uncertainty
+- status/stub
 title: 'Learning to Explain: An Information-Theoretic Perspective on Model Interpretation'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1802.07814v2
 venue: null
 year: 2018
 ---

@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2004-hooker-functional-anova
 tags:
+- type/paper
 - interpretability
 - ml
 - feature-encoding
+- status/stub
 title: Discovering Additive Structure in Black Box Functions
 type: note
 updated: '2026-05-09'
-url: null
 venue: KDD 2004
 year: 2004
 ---

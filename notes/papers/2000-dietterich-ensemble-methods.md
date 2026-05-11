@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2000-dietterich-ensemble-methods
 tags:
+- type/paper
 - ml
 - ensemble
 - survey
+- status/stub
 title: Ensemble Methods in Machine Learning
 type: note
 updated: '2026-05-09'
-url: null
 venue: Multiple Classifier Systems (LNCS)
 year: 2000
 ---

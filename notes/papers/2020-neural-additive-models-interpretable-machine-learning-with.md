@@ -11,20 +11,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2004.13912
+  raw: '[[raw/papers/md/2020-neural-additive-models-interpretable-machine-learning-with]]'
+  source: http://arxiv.org/abs/2004.13912v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-neural-additive-models-interpretable-machine-learning-with.md
 raw_pdf: raw/papers/pdf/2020-neural-additive-models-interpretable-machine-learning-with.pdf
 read: false
 slug: neural-additive-models-interpretable-machine-learning-with
 tags:
+- type/paper
 - interpretability
 - tabular
 - ml
 - fairness
+- status/stub
 title: 'Neural Additive Models: Interpretable Machine Learning with Neural Nets'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2004.13912v2
 venue: null
 year: 2020
 ---

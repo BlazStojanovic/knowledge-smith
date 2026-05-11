@@ -5,16 +5,20 @@ description: Practical deep learning systems course covering training, deploymen
 institution: null
 instructor: Sergey Karayev et al.
 kind: course
+links:
+  source: https://fullstackdeeplearning.com
+owner: blaz
 read: false
 slug: full-stack-deep-learning
 tags:
+- type/course
 - ml
 - mlops
 - deployment
+- status/stub
 title: Full Stack Deep Learning
 type: note
 updated: '2026-05-09'
-url: https://fullstackdeeplearning.com
 year: null
 ---
 

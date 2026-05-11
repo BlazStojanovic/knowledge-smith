@@ -9,20 +9,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1703.04247
+  raw: '[[raw/papers/md/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr]]'
+  source: http://arxiv.org/abs/1703.04247v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr.md
 raw_pdf: raw/papers/pdf/2017-deepfm-a-factorization-machine-based-neural-network-for-ctr.pdf
 read: false
 slug: deepfm-a-factorization-machine-based-neural-network-for-ctr
 tags:
+- type/paper
 - ctr-prediction
 - recsys
 - feature-encoding
 - tabular
+- status/stub
 title: 'DeepFM: A Factorization-Machine based Neural Network for CTR Prediction'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1703.04247v1
 venue: null
 year: 2017
 ---

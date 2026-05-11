@@ -5,20 +5,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1811.10154
+  raw: '[[raw/papers/md/2018-stop-explaining-black-box-machine-learning-models-for-high]]'
+  source: http://arxiv.org/abs/1811.10154v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-stop-explaining-black-box-machine-learning-models-for-high.md
 raw_pdf: raw/papers/pdf/2018-stop-explaining-black-box-machine-learning-models-for-high.pdf
 read: false
 slug: stop-explaining-black-box-machine-learning-models-for-high
 tags:
+- type/paper
 - interpretability
 - fairness
 - ml
+- status/stub
 title: Stop Explaining Black Box Machine Learning Models for High Stakes Decisions
   and Use Interpretable Models Instead
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1811.10154v3
 venue: null
 year: 2018
 ---

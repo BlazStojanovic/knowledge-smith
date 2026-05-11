@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2312.07577
+  raw: '[[raw/papers/md/2023-benchmarking-distribution-shift-in-tabular-data-with]]'
+  source: http://arxiv.org/abs/2312.07577v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-benchmarking-distribution-shift-in-tabular-data-with.md
 raw_pdf: raw/papers/pdf/2023-benchmarking-distribution-shift-in-tabular-data-with.pdf
 read: false
 slug: benchmarking-distribution-shift-in-tabular-data-with
 tags:
+- type/paper
 - tabular
 - benchmark
 - generalization
 - fairness
+- status/stub
 title: Benchmarking Distribution Shift in Tabular Data with TableShift
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2312.07577v3
 venue: null
 year: 2023
 ---

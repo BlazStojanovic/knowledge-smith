@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2020-yoon-vime
 tags:
+- type/paper
 - tabular
 - self-supervised
 - semi-supervised
+- status/stub
 title: 'VIME: Extending the Success of Self- and Semi-supervised Learning to Tabular
   Domain'
 type: note
 updated: '2026-05-09'
-url: null
 venue: NeurIPS 2020
 year: 2020
 ---

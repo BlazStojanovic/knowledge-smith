@@ -11,21 +11,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1810.11921
+  raw: '[[raw/papers/md/2018-autoint-automatic-feature-interaction-learning-via-self]]'
+  source: http://arxiv.org/abs/1810.11921v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-autoint-automatic-feature-interaction-learning-via-self.md
 raw_pdf: raw/papers/pdf/2018-autoint-automatic-feature-interaction-learning-via-self.pdf
 read: false
 slug: autoint-automatic-feature-interaction-learning-via-self
 tags:
+- type/paper
 - attention
 - recsys
 - ctr-prediction
 - feature-encoding
+- status/stub
 title: 'AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural
   Networks'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1810.11921v2
 venue: null
 year: 2018
 ---

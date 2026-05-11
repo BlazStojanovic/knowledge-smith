@@ -6,19 +6,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2007-bennett-netflix
 tags:
+- type/paper
 - recsys
 - benchmark
 - ml
+- status/stub
 title: The Netflix Prize
 type: note
 updated: '2026-05-09'
-url: null
 venue: KDD Cup and Workshop
 year: 2007
 ---

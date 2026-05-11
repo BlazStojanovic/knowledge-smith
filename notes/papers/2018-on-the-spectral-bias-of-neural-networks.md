@@ -12,20 +12,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1806.08734
+  raw: '[[raw/papers/md/2018-on-the-spectral-bias-of-neural-networks]]'
+  source: http://arxiv.org/abs/1806.08734v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-on-the-spectral-bias-of-neural-networks.md
 raw_pdf: raw/papers/pdf/2018-on-the-spectral-bias-of-neural-networks.pdf
 read: false
 slug: on-the-spectral-bias-of-neural-networks
 tags:
+- type/paper
 - theory
 - generalization
 - optimization
 - ml
+- status/stub
 title: On the Spectral Bias of Neural Networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1806.08734v3
 venue: null
 year: 2018
 ---

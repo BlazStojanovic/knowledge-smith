@@ -6,19 +6,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1705.07874
+  raw: '[[raw/papers/md/2017-a-unified-approach-to-interpreting-model-predictions]]'
+  source: http://arxiv.org/abs/1705.07874v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-a-unified-approach-to-interpreting-model-predictions.md
 raw_pdf: raw/papers/pdf/2017-a-unified-approach-to-interpreting-model-predictions.pdf
 read: false
 slug: a-unified-approach-to-interpreting-model-predictions
 tags:
+- type/paper
 - interpretability
 - ml
 - feature-encoding
+- status/stub
 title: A Unified Approach to Interpreting Model Predictions
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1705.07874v2
 venue: null
 year: 2017
 ---

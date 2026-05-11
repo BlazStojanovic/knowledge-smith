@@ -7,21 +7,28 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2407.02112
+  raw: '[[raw/papers/md/2024-a-data-centric-perspective-on-evaluating-machine-learning]]'
+  source: https://arxiv.org/abs/2407.02112
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-a-data-centric-perspective-on-evaluating-machine-learning.md
 raw_pdf: raw/papers/pdf/2024-a-data-centric-perspective-on-evaluating-machine-learning.pdf
 read: false
 slug: a-data-centric-perspective-on-evaluating-machine-learning
 tags:
+- type/paper
 - tabular
 - benchmark
 - evaluation
 - ml
+- status/stub
 title: A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular
   Data
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2407.02112
 venue: null
 year: 2024
 ---

@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2309.17130
+  raw: '[[raw/papers/md/2023-grande-gradient-based-decision-tree-ensembles-for-tabular]]'
+  source: http://arxiv.org/abs/2309.17130v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.md
 raw_pdf: raw/papers/pdf/2023-grande-gradient-based-decision-tree-ensembles-for-tabular.pdf
 read: false
 slug: grande-gradient-based-decision-tree-ensembles-for-tabular
 tags:
+- type/paper
 - tabular
 - decision-tree
 - gradient-boosting
 - optimization
+- status/stub
 title: 'GRANDE: Gradient-Based Decision Tree Ensembles for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2309.17130v3
 venue: null
 year: 2023
 ---

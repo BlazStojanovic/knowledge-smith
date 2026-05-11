@@ -10,19 +10,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2512.10858
+  raw: '[[raw/papers/md/2025-scaling-behavior-of-discrete-diffusion-language-models]]'
+  source: https://arxiv.org/abs/2512.10858
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2025-scaling-behavior-of-discrete-diffusion-language-models.md
 raw_pdf: raw/papers/pdf/2025-scaling-behavior-of-discrete-diffusion-language-models.pdf
 read: false
 slug: scaling-behavior-of-discrete-diffusion-language-models
 tags:
+- type/paper
 - diffusion
 - llm
 - scaling-laws
+- status/stub
 title: Scaling Behavior of Discrete Diffusion Language Models
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2512.10858
 venue: null
 year: 2025
 ---

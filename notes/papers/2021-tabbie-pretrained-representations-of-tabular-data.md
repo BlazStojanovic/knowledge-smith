@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2105.02584
+  raw: '[[raw/papers/md/2021-tabbie-pretrained-representations-of-tabular-data]]'
+  source: http://arxiv.org/abs/2105.02584v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-tabbie-pretrained-representations-of-tabular-data.md
 raw_pdf: raw/papers/pdf/2021-tabbie-pretrained-representations-of-tabular-data.pdf
 read: false
 slug: tabbie-pretrained-representations-of-tabular-data
 tags:
+- type/paper
 - tabular
 - pretraining
 - transformer
 - self-supervised
+- status/stub
 title: 'TABBIE: Pretrained Representations of Tabular Data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2105.02584v1
 venue: null
 year: 2021
 ---

@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2407.04057
+  raw: '[[raw/papers/md/2024-talent-a-tabular-analytics-and-learning-toolbox]]'
+  source: https://arxiv.org/abs/2407.04057
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-talent-a-tabular-analytics-and-learning-toolbox.md
 raw_pdf: raw/papers/pdf/2024-talent-a-tabular-analytics-and-learning-toolbox.pdf
 read: false
 slug: talent-a-tabular-analytics-and-learning-toolbox
 tags:
+- type/paper
 - tabular
 - benchmark
 - ml
 - evaluation
+- status/stub
 title: 'TALENT: A Tabular Analytics and Learning Toolbox'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2407.04057
 venue: null
 year: 2024
 ---

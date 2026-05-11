@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2307.14338
+  raw: '[[raw/papers/md/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023]]'
+  source: http://arxiv.org/abs/2307.14338v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.md
 raw_pdf: raw/papers/pdf/2023-tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023.pdf
 read: false
 slug: tabr-tabular-deep-learning-meets-nearest-neighbors-in-2023
 tags:
+- type/paper
 - tabular
 - retrieval
 - attention
 - benchmark
+- status/stub
 title: 'TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2307.14338v2
 venue: null
 year: 2023
 ---

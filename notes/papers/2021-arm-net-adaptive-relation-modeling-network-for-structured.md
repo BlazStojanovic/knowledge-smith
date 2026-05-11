@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2107.01830
+  raw: '[[raw/papers/md/2021-arm-net-adaptive-relation-modeling-network-for-structured]]'
+  source: http://arxiv.org/abs/2107.01830v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-arm-net-adaptive-relation-modeling-network-for-structured.md
 raw_pdf: raw/papers/pdf/2021-arm-net-adaptive-relation-modeling-network-for-structured.pdf
 read: false
 slug: arm-net-adaptive-relation-modeling-network-for-structured
 tags:
+- type/paper
 - tabular
 - attention
 - feature-encoding
 - interpretability
+- status/stub
 title: 'ARM-Net: Adaptive Relation Modeling Network for Structured Data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2107.01830v1
 venue: null
 year: 2021
 ---

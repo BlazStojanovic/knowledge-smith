@@ -15,21 +15,28 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2303.00918
+  raw: '[[raw/papers/md/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks]]'
+  source: https://arxiv.org/abs/2303.00918
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.md
 raw_pdf: raw/papers/pdf/2023-stunt-few-shot-tabular-learning-with-self-generated-tasks.pdf
 read: false
 slug: stunt-few-shot-tabular-learning-with-self-generated-tasks
 tags:
+- type/paper
 - tabular
 - self-supervised
 - ml
 - few-shot
+- status/stub
 title: 'STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled
   Tables'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2303.00918
 venue: null
 year: 2023
 ---

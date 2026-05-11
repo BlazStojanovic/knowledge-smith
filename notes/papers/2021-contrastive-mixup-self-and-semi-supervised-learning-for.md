@@ -7,20 +7,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2108.12296
+  raw: '[[raw/papers/md/2021-contrastive-mixup-self-and-semi-supervised-learning-for]]'
+  source: https://arxiv.org/abs/2108.12296
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-contrastive-mixup-self-and-semi-supervised-learning-for.md
 raw_pdf: raw/papers/pdf/2021-contrastive-mixup-self-and-semi-supervised-learning-for.pdf
 read: false
 slug: contrastive-mixup-self-and-semi-supervised-learning-for
 tags:
+- type/paper
 - contrastive
 - self-supervised
 - tabular
 - ml
+- status/stub
 title: 'Contrastive Mixup: Self- and Semi-Supervised learning for Tabular Domain'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2108.12296
 venue: null
 year: 2021
 ---

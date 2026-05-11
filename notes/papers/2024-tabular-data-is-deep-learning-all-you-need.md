@@ -7,20 +7,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2402.03970
+  raw: '[[raw/papers/md/2024-tabular-data-is-deep-learning-all-you-need]]'
+  source: https://arxiv.org/abs/2402.03970
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-tabular-data-is-deep-learning-all-you-need.md
 raw_pdf: raw/papers/pdf/2024-tabular-data-is-deep-learning-all-you-need.pdf
 read: false
 slug: tabular-data-is-deep-learning-all-you-need
 tags:
+- type/paper
 - tabular
 - transformer
 - benchmark
 - gradient-boosting
+- status/stub
 title: 'Tabular Data: Is Deep Learning all you need?'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2402.03970
 venue: null
 year: 2024
 ---

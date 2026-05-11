@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2006-hinton-dbn
 tags:
+- type/paper
 - pretraining
 - ml
 - deep-learning
+- status/stub
 title: A Fast Learning Algorithm for Deep Belief Nets
 type: note
 updated: '2026-05-09'
-url: null
 venue: Neural Computation
 year: 2006
 ---

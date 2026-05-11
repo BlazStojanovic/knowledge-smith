@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.11189
+  raw: '[[raw/papers/md/2021-well-tuned-simple-nets-excel-on-tabular-datasets]]'
+  source: http://arxiv.org/abs/2106.11189v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-well-tuned-simple-nets-excel-on-tabular-datasets.md
 raw_pdf: raw/papers/pdf/2021-well-tuned-simple-nets-excel-on-tabular-datasets.pdf
 read: false
 slug: well-tuned-simple-nets-excel-on-tabular-datasets
 tags:
+- type/paper
 - tabular
 - optimization
 - generalization
 - gradient-boosting
+- status/stub
 title: Well-tuned Simple Nets Excel on Tabular Datasets
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2106.11189v2
 venue: null
 year: 2021
 ---

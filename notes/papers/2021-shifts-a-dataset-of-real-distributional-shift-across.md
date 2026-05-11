@@ -22,21 +22,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2107.07455
+  raw: '[[raw/papers/md/2021-shifts-a-dataset-of-real-distributional-shift-across]]'
+  source: http://arxiv.org/abs/2107.07455v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-shifts-a-dataset-of-real-distributional-shift-across.md
 raw_pdf: raw/papers/pdf/2021-shifts-a-dataset-of-real-distributional-shift-across.pdf
 read: false
 slug: shifts-a-dataset-of-real-distributional-shift-across
 tags:
+- type/paper
 - benchmark
 - uncertainty
 - tabular
 - generalization
+- status/stub
 title: 'Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale
   Tasks'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2107.07455v3
 venue: null
 year: 2021
 ---

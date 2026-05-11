@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2407.04491
+  raw: '[[raw/papers/md/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees]]'
+  source: http://arxiv.org/abs/2407.04491v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.md
 raw_pdf: raw/papers/pdf/2024-better-by-default-strong-pre-tuned-mlps-and-boosted-trees.pdf
 read: false
 slug: better-by-default-strong-pre-tuned-mlps-and-boosted-trees
 tags:
+- type/paper
 - tabular
 - gradient-boosting
 - benchmark
 - mlp
+- status/stub
 title: 'Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2407.04491v3
 venue: null
 year: 2024
 ---

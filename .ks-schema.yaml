@@ -1,0 +1,15 @@
+# Per-vault schema override for github.com/BlazStojanovic/knowledge-smith.
+#
+# Recursively merged onto the default schema in
+# bsrc/knowledge-smith/skill/scripts/_ks_schema.yaml.
+#
+# This vault contains hand-written notes for foundational pre-arxiv
+# papers (Breiman '96, Quinlan '93, LeCun '15 Nature, etc.) with no
+# canonical paper URL. The default schema's `required_links: [paper]`
+# would block them. Loosen it here; doctor still surfaces missing
+# links.paper as a soft signal via the `legacy 'url' present without
+# links` lint when applicable.
+
+kinds:
+  paper:
+    required_links: []

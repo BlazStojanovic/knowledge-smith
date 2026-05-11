@@ -20,20 +20,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2309.14322
+  raw: '[[raw/papers/md/2023-small-scale-proxies-for-large-scale-transformer-training]]'
+  source: https://arxiv.org/abs/2309.14322
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-small-scale-proxies-for-large-scale-transformer-training.md
 raw_pdf: raw/papers/pdf/2023-small-scale-proxies-for-large-scale-transformer-training.pdf
 read: false
 slug: small-scale-proxies-for-large-scale-transformer-training
 tags:
+- type/paper
 - transformer
 - pretraining
 - scaling-laws
 - optimization
+- status/stub
 title: Small-scale proxies for large-scale Transformer training instabilities
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2309.14322
 venue: null
 year: 2023
 ---

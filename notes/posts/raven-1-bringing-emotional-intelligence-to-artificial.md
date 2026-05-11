@@ -4,17 +4,21 @@ created: '2026-05-09'
 description: Multimodal perception system that interprets audio/visual/temporal signals
   so AI can grasp human intent and emotional context in real time.
 kind: post
+links:
+  source: https://www.tavus.io/post/raven-1-bringing-emotional-intelligence-to-artificial-intelligence
+owner: blaz
 read: false
 slug: raven-1-bringing-emotional-intelligence-to-artificial
 source: Tavus
 tags:
+- type/post
 - multimodal
 - vision
 - nlp
+- status/stub
 title: 'Raven-1: Bringing Emotional Intelligence to Artificial Intelligence'
 type: note
 updated: '2026-05-09'
-url: https://www.tavus.io/post/raven-1-bringing-emotional-intelligence-to-artificial-intelligence
 year: 2026
 ---
 

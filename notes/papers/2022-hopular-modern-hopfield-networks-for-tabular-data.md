@@ -10,20 +10,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2206.00664
+  raw: '[[raw/papers/md/2022-hopular-modern-hopfield-networks-for-tabular-data]]'
+  source: https://arxiv.org/abs/2206.00664
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-hopular-modern-hopfield-networks-for-tabular-data.md
 raw_pdf: raw/papers/pdf/2022-hopular-modern-hopfield-networks-for-tabular-data.pdf
 read: false
 slug: hopular-modern-hopfield-networks-for-tabular-data
 tags:
+- type/paper
 - tabular
 - attention
 - ml
 - gradient-boosting
+- status/stub
 title: 'Hopular: Modern Hopfield Networks for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2206.00664
 venue: null
 year: 2022
 ---

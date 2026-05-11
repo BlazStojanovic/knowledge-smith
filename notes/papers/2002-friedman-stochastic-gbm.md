@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2002-friedman-stochastic-gbm
 tags:
+- type/paper
 - gradient-boosting
 - optimization
 - decision-tree
+- status/stub
 title: Stochastic Gradient Boosting
 type: note
 updated: '2026-05-09'
-url: null
 venue: Computational Statistics & Data Analysis
 year: 2002
 ---

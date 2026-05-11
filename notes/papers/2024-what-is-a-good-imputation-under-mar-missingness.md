@@ -5,20 +5,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2403.19196
+  raw: '[[raw/papers/md/2024-what-is-a-good-imputation-under-mar-missingness]]'
+  source: https://arxiv.org/abs/2403.19196
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-what-is-a-good-imputation-under-mar-missingness.md
 raw_pdf: raw/papers/pdf/2024-what-is-a-good-imputation-under-mar-missingness.pdf
 read: false
 slug: what-is-a-good-imputation-under-mar-missingness
 tags:
+- type/paper
 - missing-data
 - tabular
 - theory
 - ml
+- status/stub
 title: What Is a Good Imputation Under MAR Missingness?
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2403.19196
 venue: null
 year: 2024
 ---

@@ -8,19 +8,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2604.19740
+  raw: '[[raw/papers/md/2026-generalization-at-the-edge-of-stability]]'
+  source: https://arxiv.org/abs/2604.19740
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-generalization-at-the-edge-of-stability.md
 raw_pdf: raw/papers/pdf/2026-generalization-at-the-edge-of-stability.pdf
 read: false
 slug: generalization-at-the-edge-of-stability
 tags:
+- type/paper
 - generalization
 - optimization
 - theory
+- status/stub
 title: Generalization at the Edge of Stability
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2604.19740
 venue: null
 year: 2026
 ---

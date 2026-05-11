@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2108.04884
+  raw: '[[raw/papers/md/2021-retiring-adult-new-datasets-for-fair-machine-learning]]'
+  source: http://arxiv.org/abs/2108.04884v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-retiring-adult-new-datasets-for-fair-machine-learning.md
 raw_pdf: raw/papers/pdf/2021-retiring-adult-new-datasets-for-fair-machine-learning.pdf
 read: false
 slug: retiring-adult-new-datasets-for-fair-machine-learning
 tags:
+- type/paper
 - fairness
 - benchmark
 - tabular
 - distribution-shift
+- status/stub
 title: 'Retiring Adult: New Datasets for Fair Machine Learning'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2108.04884v3
 venue: null
 year: 2021
 ---

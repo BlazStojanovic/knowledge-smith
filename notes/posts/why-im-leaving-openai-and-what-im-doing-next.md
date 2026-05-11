@@ -3,16 +3,20 @@ author: null
 created: '2026-05-09'
 description: null
 kind: post
+links:
+  source: https://milesbrundage.substack.com/p/why-im-leaving-openai-and-what-im?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true
+owner: blaz
 read: false
 slug: why-im-leaving-openai-and-what-im-doing-next
 source: null
 tags:
+- type/post
 - alignment
 - ai-industry
+- status/stub
 title: Why I’m Leaving OpenAI and What I’m Doing Next
 type: note
 updated: '2026-05-09'
-url: https://milesbrundage.substack.com/p/why-im-leaving-openai-and-what-im?utm_source=multiple-personal-recommendations-email&utm_medium=email&triedRedirect=true
 year: null
 ---
 

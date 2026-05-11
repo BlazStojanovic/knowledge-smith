@@ -8,19 +8,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2603.17074
+  raw: '[[raw/papers/md/2026-prism-demystifying-retention-and-interaction-in-mid-training]]'
+  source: https://arxiv.org/abs/2603.17074
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-prism-demystifying-retention-and-interaction-in-mid-training.md
 raw_pdf: raw/papers/pdf/2026-prism-demystifying-retention-and-interaction-in-mid-training.pdf
 read: false
 slug: prism-demystifying-retention-and-interaction-in-mid-training
 tags:
+- type/paper
 - llm
 - fine-tuning
 - pretraining
+- status/stub
 title: 'PRISM: Demystifying Retention and Interaction in Mid-Training'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2603.17074
 venue: null
 year: 2026
 ---

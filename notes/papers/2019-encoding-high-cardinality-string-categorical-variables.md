@@ -5,20 +5,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1907.01860
+  raw: '[[raw/papers/md/2019-encoding-high-cardinality-string-categorical-variables]]'
+  source: https://arxiv.org/abs/1907.01860
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-encoding-high-cardinality-string-categorical-variables.md
 raw_pdf: raw/papers/pdf/2019-encoding-high-cardinality-string-categorical-variables.pdf
 read: false
 slug: encoding-high-cardinality-string-categorical-variables
 tags:
+- type/paper
 - categorical-encoding
 - feature-encoding
 - tabular
 - ml
+- status/stub
 title: Encoding high-cardinality string categorical variables
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/1907.01860
 venue: null
 year: 2019
 ---

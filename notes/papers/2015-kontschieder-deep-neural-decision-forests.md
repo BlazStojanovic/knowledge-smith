@@ -8,19 +8,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2015-kontschieder-deep-neural-decision-forests
 tags:
+- type/paper
 - decision-tree
 - deep-learning
 - vision
+- status/stub
 title: Deep Neural Decision Forests
 type: note
 updated: '2026-05-09'
-url: null
 venue: ICCV 2015
 year: 2015
 ---

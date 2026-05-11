@@ -7,21 +7,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2110.04361
+  raw: '[[raw/papers/md/2021-subtab-subsetting-features-of-tabular-data-for-self]]'
+  source: http://arxiv.org/abs/2110.04361v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-subtab-subsetting-features-of-tabular-data-for-self.md
 raw_pdf: raw/papers/pdf/2021-subtab-subsetting-features-of-tabular-data-for-self.pdf
 read: false
 slug: subtab-subsetting-features-of-tabular-data-for-self
 tags:
+- type/paper
 - tabular
 - self-supervised
 - contrastive
 - feature-encoding
+- status/stub
 title: 'SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation
   Learning'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2110.04361v2
 venue: null
 year: 2021
 ---

@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.15147
+  raw: '[[raw/papers/md/2021-scarf-self-supervised-contrastive-learning-using-random]]'
+  source: http://arxiv.org/abs/2106.15147v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-scarf-self-supervised-contrastive-learning-using-random.md
 raw_pdf: raw/papers/pdf/2021-scarf-self-supervised-contrastive-learning-using-random.pdf
 read: false
 slug: scarf-self-supervised-contrastive-learning-using-random
 tags:
+- type/paper
 - tabular
 - self-supervised
 - contrastive
 - pretraining
+- status/stub
 title: 'SCARF: Self-Supervised Contrastive Learning using Random Feature Corruption'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2106.15147v2
 venue: null
 year: 2021
 ---

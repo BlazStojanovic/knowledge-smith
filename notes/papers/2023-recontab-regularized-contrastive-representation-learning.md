@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2310.18541
+  raw: '[[raw/papers/md/2023-recontab-regularized-contrastive-representation-learning]]'
+  source: https://arxiv.org/abs/2310.18541
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-recontab-regularized-contrastive-representation-learning.md
 raw_pdf: raw/papers/pdf/2023-recontab-regularized-contrastive-representation-learning.pdf
 read: false
 slug: recontab-regularized-contrastive-representation-learning
 tags:
+- type/paper
 - contrastive
 - tabular
 - self-supervised
 - ml
+- status/stub
 title: 'ReConTab: Regularized Contrastive Representation Learning for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2310.18541
 venue: null
 year: 2023
 ---

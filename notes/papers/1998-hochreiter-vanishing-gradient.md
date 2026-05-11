@@ -5,20 +5,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 1998-hochreiter-vanishing-gradient
 tags:
+- type/paper
 - ml
 - optimization
 - theory
+- status/stub
 title: The Vanishing Gradient Problem During Learning Recurrent Neural Nets and Problem
   Solutions
 type: note
 updated: '2026-05-09'
-url: null
 venue: International Journal of Uncertainty, Fuzziness and Knowledge-Based Systems
 year: 1998
 ---

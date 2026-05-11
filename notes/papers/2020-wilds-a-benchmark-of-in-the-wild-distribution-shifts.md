@@ -27,20 +27,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2012.07421
+  raw: '[[raw/papers/md/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts]]'
+  source: http://arxiv.org/abs/2012.07421v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts.md
 raw_pdf: raw/papers/pdf/2020-wilds-a-benchmark-of-in-the-wild-distribution-shifts.pdf
 read: false
 slug: wilds-a-benchmark-of-in-the-wild-distribution-shifts
 tags:
+- type/paper
 - benchmark
 - generalization
 - fairness
 - distribution-shift
+- status/stub
 title: 'WILDS: A Benchmark of in-the-Wild Distribution Shifts'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2012.07421v3
 venue: null
 year: 2020
 ---

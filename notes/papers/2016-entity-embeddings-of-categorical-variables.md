@@ -6,19 +6,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1604.06737
+  raw: '[[raw/papers/md/2016-entity-embeddings-of-categorical-variables]]'
+  source: http://arxiv.org/abs/1604.06737v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-entity-embeddings-of-categorical-variables.md
 raw_pdf: raw/papers/pdf/2016-entity-embeddings-of-categorical-variables.pdf
 read: false
 slug: entity-embeddings-of-categorical-variables
 tags:
+- type/paper
 - tabular
 - feature-encoding
 - deep-learning
+- status/stub
 title: Entity Embeddings of Categorical Variables
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1604.06737v1
 venue: null
 year: 2016
 ---

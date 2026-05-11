@@ -12,19 +12,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2017-ke-lightgbm
 tags:
+- type/paper
 - gradient-boosting
 - decision-tree
 - tabular
+- status/stub
 title: 'LightGBM: A Highly Efficient Gradient Boosting Decision Tree'
 type: note
 updated: '2026-05-09'
-url: null
 venue: NeurIPS 2017
 year: 2017
 ---

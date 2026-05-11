@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2604.08524
+  raw: '[[raw/papers/md/2026-what-drives-representation-steering-a-mechanistic-case]]'
+  source: https://arxiv.org/abs/2604.08524
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-what-drives-representation-steering-a-mechanistic-case.md
 raw_pdf: raw/papers/pdf/2026-what-drives-representation-steering-a-mechanistic-case.pdf
 read: false
 slug: what-drives-representation-steering-a-mechanistic-case
 tags:
+- type/paper
 - interpretability
 - alignment
 - llm
+- status/stub
 title: What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2604.08524
 venue: null
 year: 2026
 ---

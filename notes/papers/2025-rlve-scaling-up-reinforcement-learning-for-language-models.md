@@ -21,20 +21,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2511.07317
+  raw: '[[raw/papers/md/2025-rlve-scaling-up-reinforcement-learning-for-language-models]]'
+  source: https://arxiv.org/abs/2511.07317
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2025-rlve-scaling-up-reinforcement-learning-for-language-models.md
 raw_pdf: raw/papers/pdf/2025-rlve-scaling-up-reinforcement-learning-for-language-models.pdf
 read: false
 slug: rlve-scaling-up-reinforcement-learning-for-language-models
 tags:
+- type/paper
 - rl
 - llm
 - scaling-laws
+- status/stub
 title: 'RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive
   Verifiable Environments'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2511.07317
 venue: null
 year: 2025
 ---

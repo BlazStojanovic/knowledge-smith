@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1706.02515
+  raw: '[[raw/papers/md/2017-self-normalizing-neural-networks]]'
+  source: http://arxiv.org/abs/1706.02515v5
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-self-normalizing-neural-networks.md
 raw_pdf: raw/papers/pdf/2017-self-normalizing-neural-networks.pdf
 read: false
 slug: self-normalizing-neural-networks
 tags:
+- type/paper
 - ml
 - optimization
 - generalization
 - tabular
+- status/stub
 title: Self-Normalizing Neural Networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1706.02515v5
 venue: null
 year: 2017
 ---

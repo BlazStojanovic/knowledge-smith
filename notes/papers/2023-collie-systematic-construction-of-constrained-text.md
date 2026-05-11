@@ -9,19 +9,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2307.08689
+  raw: '[[raw/papers/md/2023-collie-systematic-construction-of-constrained-text]]'
+  source: https://arxiv.org/abs/2307.08689
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-collie-systematic-construction-of-constrained-text.md
 raw_pdf: raw/papers/pdf/2023-collie-systematic-construction-of-constrained-text.pdf
 read: false
 slug: collie-systematic-construction-of-constrained-text
 tags:
+- type/paper
 - nlp
 - benchmark
 - evaluation
+- status/stub
 title: 'COLLIE: Systematic Construction of Constrained Text Generation Tasks'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2307.08689
 venue: null
 year: 2023
 ---

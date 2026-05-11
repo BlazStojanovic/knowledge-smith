@@ -10,21 +10,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1708.04617
+  raw: '[[raw/papers/md/2017-attentional-factorization-machines-learning-the-weight-of]]'
+  source: http://arxiv.org/abs/1708.04617v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-attentional-factorization-machines-learning-the-weight-of.md
 raw_pdf: raw/papers/pdf/2017-attentional-factorization-machines-learning-the-weight-of.pdf
 read: false
 slug: attentional-factorization-machines-learning-the-weight-of
 tags:
+- type/paper
 - recsys
 - attention
 - ctr-prediction
 - feature-encoding
+- status/stub
 title: 'Attentional Factorization Machines: Learning the Weight of Feature Interactions
   via Attention Networks'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1708.04617v1
 venue: null
 year: 2017
 ---

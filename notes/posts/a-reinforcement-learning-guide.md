@@ -3,17 +3,21 @@ author: null
 created: '2026-05-09'
 description: null
 kind: post
+links:
+  source: https://naklecha.notion.site/a-reinforcement-learning-guide
+owner: blaz
 read: false
 slug: a-reinforcement-learning-guide
 source: null
 tags:
+- type/post
 - rl
 - ml
 - education
+- status/stub
 title: a reinforcement learning guide
 type: note
 updated: '2026-05-09'
-url: https://naklecha.notion.site/a-reinforcement-learning-guide
 year: null
 ---
 

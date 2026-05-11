@@ -10,19 +10,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2601.18778
+  raw: '[[raw/papers/md/2026-teaching-models-to-teach-themselves-reasoning-at-the-edge]]'
+  source: https://arxiv.org/abs/2601.18778
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-teaching-models-to-teach-themselves-reasoning-at-the-edge.md
 raw_pdf: raw/papers/pdf/2026-teaching-models-to-teach-themselves-reasoning-at-the-edge.pdf
 read: false
 slug: teaching-models-to-teach-themselves-reasoning-at-the-edge
 tags:
+- type/paper
 - llm
 - self-supervised
 - fine-tuning
+- status/stub
 title: 'Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2601.18778
 venue: null
 year: 2026
 ---

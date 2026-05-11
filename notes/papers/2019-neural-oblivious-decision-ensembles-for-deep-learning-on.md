@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1909.06312
+  raw: '[[raw/papers/md/2019-neural-oblivious-decision-ensembles-for-deep-learning-on]]'
+  source: http://arxiv.org/abs/1909.06312v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.md
 raw_pdf: raw/papers/pdf/2019-neural-oblivious-decision-ensembles-for-deep-learning-on.pdf
 read: false
 slug: neural-oblivious-decision-ensembles-for-deep-learning-on
 tags:
+- type/paper
 - tabular
 - decision-tree
 - gradient-boosting
 - ml
+- status/stub
 title: Neural Oblivious Decision Ensembles for Deep Learning on Tabular Data
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1909.06312v2
 venue: null
 year: 2019
 ---

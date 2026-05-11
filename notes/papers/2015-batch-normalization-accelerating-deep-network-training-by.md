@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1502.03167
+  raw: '[[raw/papers/md/2015-batch-normalization-accelerating-deep-network-training-by]]'
+  source: http://arxiv.org/abs/1502.03167v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2015-batch-normalization-accelerating-deep-network-training-by.md
 raw_pdf: raw/papers/pdf/2015-batch-normalization-accelerating-deep-network-training-by.pdf
 read: false
 slug: batch-normalization-accelerating-deep-network-training-by
 tags:
+- type/paper
 - optimization
 - deep-learning
 - generalization
+- status/stub
 title: 'Batch Normalization: Accelerating Deep Network Training by Reducing Internal
   Covariate Shift'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1502.03167v3
 venue: null
 year: 2015
 ---

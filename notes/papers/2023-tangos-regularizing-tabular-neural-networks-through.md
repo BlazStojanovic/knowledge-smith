@@ -9,21 +9,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2303.05506
+  raw: '[[raw/papers/md/2023-tangos-regularizing-tabular-neural-networks-through]]'
+  source: http://arxiv.org/abs/2303.05506v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-tangos-regularizing-tabular-neural-networks-through.md
 raw_pdf: raw/papers/pdf/2023-tangos-regularizing-tabular-neural-networks-through.pdf
 read: false
 slug: tangos-regularizing-tabular-neural-networks-through
 tags:
+- type/paper
 - tabular
 - interpretability
 - generalization
 - optimization
+- status/stub
 title: 'TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization
   and Specialization'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2303.05506v1
 venue: null
 year: 2023
 ---

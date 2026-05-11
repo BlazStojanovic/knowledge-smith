@@ -1,22 +1,30 @@
 ---
 arxiv: null
-authors: []
+authors:
+- Andrew Y. Ng
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: '[[raw/papers/md/2004-ng-feature-selection-l1]]'
+  source: null
+owner: blaz
 parser: docling
 raw_md: raw/papers/md/2004-ng-feature-selection-l1.md
 raw_pdf: raw/papers/pdf/2004-ng-feature-selection-l1.pdf
 read: false
 slug: 2004-ng-feature-selection-l1
 tags:
+- type/paper
 - optimization
 - generalization
 - tabular
+- status/stub
 title: Feature Selection, L1 vs. L2 Regularization, and Rotational Invariance
 type: note
 updated: '2026-05-09'
-url: null
 venue: ICML 2004 (Banff, Canada)
 year: 2004
 ---

@@ -8,18 +8,25 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2022-hajiramezanali-stab
 tags:
+- type/paper
 - tabular
 - self-supervised
+- status/stub
 title: 'STab: Self-supervised Learning for Tabular Data'
 type: note
 updated: '2026-05-09'
-url: null
 venue: NeurIPS 2022 First Table Representation Workshop
 year: 2022
 ---

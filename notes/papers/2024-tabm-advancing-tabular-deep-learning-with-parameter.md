@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2410.24210
+  raw: '[[raw/papers/md/2024-tabm-advancing-tabular-deep-learning-with-parameter]]'
+  source: http://arxiv.org/abs/2410.24210v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-tabm-advancing-tabular-deep-learning-with-parameter.md
 raw_pdf: raw/papers/pdf/2024-tabm-advancing-tabular-deep-learning-with-parameter.pdf
 read: false
 slug: tabm-advancing-tabular-deep-learning-with-parameter
 tags:
+- type/paper
 - tabular
 - mlp
 - distillation
 - benchmark
+- status/stub
 title: 'TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2410.24210v3
 venue: null
 year: 2024
 ---

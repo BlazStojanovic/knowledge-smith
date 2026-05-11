@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1708.05123
+  raw: '[[raw/papers/md/2017-deep-cross-network-for-ad-click-predictions]]'
+  source: http://arxiv.org/abs/1708.05123v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-deep-cross-network-for-ad-click-predictions.md
 raw_pdf: raw/papers/pdf/2017-deep-cross-network-for-ad-click-predictions.pdf
 read: false
 slug: deep-cross-network-for-ad-click-predictions
 tags:
+- type/paper
 - ctr-prediction
 - recsys
 - feature-encoding
 - tabular
+- status/stub
 title: Deep & Cross Network for Ad Click Predictions
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1708.05123v1
 venue: null
 year: 2017
 ---

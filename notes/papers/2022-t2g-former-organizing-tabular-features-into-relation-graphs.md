@@ -9,21 +9,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2211.16887
+  raw: '[[raw/papers/md/2022-t2g-former-organizing-tabular-features-into-relation-graphs]]'
+  source: http://arxiv.org/abs/2211.16887v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-t2g-former-organizing-tabular-features-into-relation-graphs.md
 raw_pdf: raw/papers/pdf/2022-t2g-former-organizing-tabular-features-into-relation-graphs.pdf
 read: false
 slug: t2g-former-organizing-tabular-features-into-relation-graphs
 tags:
+- type/paper
 - tabular
 - transformer
 - gnn
 - feature-encoding
+- status/stub
 title: 'T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous
   Feature Interaction'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2211.16887v2
 venue: null
 year: 2022
 ---

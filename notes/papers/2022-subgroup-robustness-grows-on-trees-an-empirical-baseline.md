@@ -6,20 +6,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2211.12703
+  raw: '[[raw/papers/md/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline]]'
+  source: https://arxiv.org/abs/2211.12703
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.md
 raw_pdf: raw/papers/pdf/2022-subgroup-robustness-grows-on-trees-an-empirical-baseline.pdf
 read: false
 slug: subgroup-robustness-grows-on-trees-an-empirical-baseline
 tags:
+- type/paper
 - fairness
 - tabular
 - benchmark
 - decision-tree
+- status/stub
 title: 'Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2211.12703
 venue: null
 year: 2022
 ---

@@ -5,20 +5,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-micci-barreca-target-encoding
 tags:
+- type/paper
 - feature-encoding
 - tabular
 - categorical-encoding
+- status/stub
 title: A Preprocessing Scheme for High-Cardinality Categorical Attributes in Classification
   and Prediction Problems
 type: note
 updated: '2026-05-09'
-url: null
 venue: SIGKDD Explorations
 year: 2001
 ---

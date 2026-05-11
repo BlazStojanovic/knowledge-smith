@@ -8,20 +8,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2408.15417
+  raw: '[[raw/papers/md/2024-implicit-geometry-of-next-token-prediction-from-language]]'
+  source: https://arxiv.org/abs/2408.15417
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-implicit-geometry-of-next-token-prediction-from-language.md
 raw_pdf: raw/papers/pdf/2024-implicit-geometry-of-next-token-prediction-from-language.pdf
 read: false
 slug: implicit-geometry-of-next-token-prediction-from-language
 tags:
+- type/paper
 - llm
 - interpretability
 - theory
+- status/stub
 title: 'Implicit Geometry of Next-token Prediction: From Language Sparsity Patterns
   to Model Representations'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2408.15417
 venue: null
 year: 2024
 ---

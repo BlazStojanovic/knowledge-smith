@@ -7,19 +7,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2000-friedman-additive-logistic
 tags:
+- type/paper
 - boosting
 - ml
 - theory
+- status/stub
 title: 'Additive Logistic Regression: A Statistical View of Boosting'
 type: note
 updated: '2026-05-09'
-url: null
 venue: Annals of Statistics
 year: 2000
 ---

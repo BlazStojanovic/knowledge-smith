@@ -17,18 +17,25 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2512.22857
+  raw: '[[raw/papers/md/2025-autoforge-automated-environment-synthesis-for-agentic]]'
+  source: https://arxiv.org/abs/2512.22857
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2025-autoforge-automated-environment-synthesis-for-agentic.md
 raw_pdf: raw/papers/pdf/2025-autoforge-automated-environment-synthesis-for-agentic.pdf
 read: false
 slug: autoforge-automated-environment-synthesis-for-agentic
 tags:
+- type/paper
 - agents
 - rl
+- status/stub
 title: 'AutoForge: Automated Environment Synthesis for Agentic Reinforcement Learning'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2512.22857
 venue: null
 year: 2025
 ---

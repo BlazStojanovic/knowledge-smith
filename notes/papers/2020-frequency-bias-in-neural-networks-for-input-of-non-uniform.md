@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2003.04560
+  raw: '[[raw/papers/md/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform]]'
+  source: http://arxiv.org/abs/2003.04560v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform.md
 raw_pdf: raw/papers/pdf/2020-frequency-bias-in-neural-networks-for-input-of-non-uniform.pdf
 read: false
 slug: frequency-bias-in-neural-networks-for-input-of-non-uniform
 tags:
+- type/paper
 - theory
 - generalization
 - ml
 - optimization
+- status/stub
 title: Frequency Bias in Neural Networks for Input of Non-Uniform Density
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2003.04560v1
 venue: null
 year: 2020
 ---

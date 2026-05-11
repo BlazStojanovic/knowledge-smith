@@ -5,19 +5,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1602.04485
+  raw: '[[raw/papers/md/2016-benefits-of-depth-in-neural-networks]]'
+  source: http://arxiv.org/abs/1602.04485v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-benefits-of-depth-in-neural-networks.md
 raw_pdf: raw/papers/pdf/2016-benefits-of-depth-in-neural-networks.pdf
 read: false
 slug: benefits-of-depth-in-neural-networks
 tags:
+- type/paper
 - theory
 - deep-learning
 - generalization
+- status/stub
 title: Benefits of depth in neural networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1602.04485v2
 venue: null
 year: 2016
 ---

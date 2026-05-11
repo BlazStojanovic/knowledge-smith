@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1603.02754
+  raw: '[[raw/papers/md/2016-xgboost-a-scalable-tree-boosting-system]]'
+  source: http://arxiv.org/abs/1603.02754v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-xgboost-a-scalable-tree-boosting-system.md
 raw_pdf: raw/papers/pdf/2016-xgboost-a-scalable-tree-boosting-system.pdf
 read: false
 slug: xgboost-a-scalable-tree-boosting-system
 tags:
+- type/paper
 - gradient-boosting
 - decision-tree
 - tabular
 - optimization
+- status/stub
 title: 'XGBoost: A Scalable Tree Boosting System'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1603.02754v3
 venue: null
 year: 2016
 ---

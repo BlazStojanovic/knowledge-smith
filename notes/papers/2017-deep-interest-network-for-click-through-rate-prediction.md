@@ -14,20 +14,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1706.06978
+  raw: '[[raw/papers/md/2017-deep-interest-network-for-click-through-rate-prediction]]'
+  source: http://arxiv.org/abs/1706.06978v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-deep-interest-network-for-click-through-rate-prediction.md
 raw_pdf: raw/papers/pdf/2017-deep-interest-network-for-click-through-rate-prediction.pdf
 read: false
 slug: deep-interest-network-for-click-through-rate-prediction
 tags:
+- type/paper
 - ctr-prediction
 - attention
 - recsys
 - feature-encoding
+- status/stub
 title: Deep Interest Network for Click-Through Rate Prediction
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1706.06978v4
 venue: null
 year: 2017
 ---

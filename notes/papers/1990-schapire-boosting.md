@@ -5,19 +5,26 @@ authors:
 created: 2026-05-09
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 1990-schapire-boosting
 tags:
+- type/paper
 - boosting
 - ml
 - theory
+- status/stub
 title: The Strength of Weak Learnability
 type: note
 updated: '2026-05-09'
-url: null
 venue: Machine Learning
 year: 1990
 ---

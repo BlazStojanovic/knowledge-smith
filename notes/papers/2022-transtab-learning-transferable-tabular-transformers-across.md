@@ -6,20 +6,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2205.09328
+  raw: '[[raw/papers/md/2022-transtab-learning-transferable-tabular-transformers-across]]'
+  source: http://arxiv.org/abs/2205.09328v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-transtab-learning-transferable-tabular-transformers-across.md
 raw_pdf: raw/papers/pdf/2022-transtab-learning-transferable-tabular-transformers-across.pdf
 read: false
 slug: transtab-learning-transferable-tabular-transformers-across
 tags:
+- type/paper
 - tabular
 - transformer
 - pretraining
 - fine-tuning
+- status/stub
 title: 'TransTab: Learning Transferable Tabular Transformers Across Tables'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2205.09328v2
 venue: null
 year: 2022
 ---

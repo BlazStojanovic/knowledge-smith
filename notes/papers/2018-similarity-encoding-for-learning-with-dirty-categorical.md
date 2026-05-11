@@ -7,19 +7,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1806.00979
+  raw: '[[raw/papers/md/2018-similarity-encoding-for-learning-with-dirty-categorical]]'
+  source: http://arxiv.org/abs/1806.00979v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-similarity-encoding-for-learning-with-dirty-categorical.md
 raw_pdf: raw/papers/pdf/2018-similarity-encoding-for-learning-with-dirty-categorical.pdf
 read: false
 slug: similarity-encoding-for-learning-with-dirty-categorical
 tags:
+- type/paper
 - tabular
 - feature-encoding
 - ml
+- status/stub
 title: Similarity encoding for learning with dirty categorical variables
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1806.00979v1
 venue: null
 year: 2018
 ---

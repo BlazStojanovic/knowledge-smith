@@ -6,19 +6,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1802.10501
+  raw: '[[raw/papers/md/2018-predictive-uncertainty-estimation-via-prior-networks]]'
+  source: http://arxiv.org/abs/1802.10501v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-predictive-uncertainty-estimation-via-prior-networks.md
 raw_pdf: raw/papers/pdf/2018-predictive-uncertainty-estimation-via-prior-networks.pdf
 read: false
 slug: predictive-uncertainty-estimation-via-prior-networks
 tags:
+- type/paper
 - uncertainty
 - calibration
 - ml
+- status/stub
 title: Predictive Uncertainty Estimation via Prior Networks
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1802.10501v4
 venue: null
 year: 2018
 ---

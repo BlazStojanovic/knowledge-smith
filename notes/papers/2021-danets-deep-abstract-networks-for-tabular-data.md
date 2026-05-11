@@ -9,19 +9,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2112.02962
+  raw: '[[raw/papers/md/2021-danets-deep-abstract-networks-for-tabular-data]]'
+  source: http://arxiv.org/abs/2112.02962v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-danets-deep-abstract-networks-for-tabular-data.md
 raw_pdf: raw/papers/pdf/2021-danets-deep-abstract-networks-for-tabular-data.pdf
 read: false
 slug: danets-deep-abstract-networks-for-tabular-data
 tags:
+- type/paper
 - tabular
 - ml
 - feature-encoding
+- status/stub
 title: 'DANets: Deep Abstract Networks for Tabular Data Classification and Regression'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2112.02962v4
 venue: null
 year: 2021
 ---

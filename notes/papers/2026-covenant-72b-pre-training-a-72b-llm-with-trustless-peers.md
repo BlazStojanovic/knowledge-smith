@@ -13,19 +13,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2603.08163
+  raw: '[[raw/papers/md/2026-covenant-72b-pre-training-a-72b-llm-with-trustless-peers]]'
+  source: https://arxiv.org/abs/2603.08163
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-covenant-72b-pre-training-a-72b-llm-with-trustless-peers.md
 raw_pdf: raw/papers/pdf/2026-covenant-72b-pre-training-a-72b-llm-with-trustless-peers.pdf
 read: false
 slug: covenant-72b-pre-training-a-72b-llm-with-trustless-peers
 tags:
+- type/paper
 - llm
 - pretraining
 - distributed-training
+- status/stub
 title: 'Covenant-72B: Pre-Training a 72B LLM with Trustless Peers Over-the-Internet'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2603.08163
 venue: null
 year: 2026
 ---

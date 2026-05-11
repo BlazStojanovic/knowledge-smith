@@ -11,20 +11,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1611.00144
+  raw: '[[raw/papers/md/2016-product-based-neural-networks-for-user-response-prediction]]'
+  source: http://arxiv.org/abs/1611.00144v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-product-based-neural-networks-for-user-response-prediction.md
 raw_pdf: raw/papers/pdf/2016-product-based-neural-networks-for-user-response-prediction.pdf
 read: false
 slug: product-based-neural-networks-for-user-response-prediction
 tags:
+- type/paper
 - ctr-prediction
 - recsys
 - feature-encoding
 - tabular
+- status/stub
 title: Product-based Neural Networks for User Response Prediction
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1611.00144v1
 venue: null
 year: 2016
 ---

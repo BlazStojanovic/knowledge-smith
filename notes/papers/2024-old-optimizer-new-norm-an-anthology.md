@@ -6,18 +6,25 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2409.20325
+  raw: '[[raw/papers/md/2024-old-optimizer-new-norm-an-anthology]]'
+  source: https://arxiv.org/abs/2409.20325
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2024-old-optimizer-new-norm-an-anthology.md
 raw_pdf: raw/papers/pdf/2024-old-optimizer-new-norm-an-anthology.pdf
 read: false
 slug: old-optimizer-new-norm-an-anthology
 tags:
+- type/paper
 - optimization
 - theory
+- status/stub
 title: 'Old Optimizer, New Norm: An Anthology'
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2409.20325
 venue: null
 year: 2024
 ---

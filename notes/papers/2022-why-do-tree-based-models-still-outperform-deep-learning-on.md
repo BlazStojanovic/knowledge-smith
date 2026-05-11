@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2207.08815
+  raw: '[[raw/papers/md/2022-why-do-tree-based-models-still-outperform-deep-learning-on]]'
+  source: http://arxiv.org/abs/2207.08815v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-why-do-tree-based-models-still-outperform-deep-learning-on.md
 raw_pdf: raw/papers/pdf/2022-why-do-tree-based-models-still-outperform-deep-learning-on.pdf
 read: false
 slug: why-do-tree-based-models-still-outperform-deep-learning-on
 tags:
+- type/paper
 - tabular
 - benchmark
 - gradient-boosting
 - decision-tree
+- status/stub
 title: Why do tree-based models still outperform deep learning on tabular data?
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2207.08815v1
 venue: null
 year: 2022
 ---

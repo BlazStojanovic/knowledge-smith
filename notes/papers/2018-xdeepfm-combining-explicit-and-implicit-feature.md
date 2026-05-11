@@ -10,21 +10,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1803.05170
+  raw: '[[raw/papers/md/2018-xdeepfm-combining-explicit-and-implicit-feature]]'
+  source: http://arxiv.org/abs/1803.05170v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-xdeepfm-combining-explicit-and-implicit-feature.md
 raw_pdf: raw/papers/pdf/2018-xdeepfm-combining-explicit-and-implicit-feature.pdf
 read: false
 slug: xdeepfm-combining-explicit-and-implicit-feature
 tags:
+- type/paper
 - recsys
 - ctr-prediction
 - feature-encoding
 - ml
+- status/stub
 title: 'xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender
   Systems'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1803.05170v3
 venue: null
 year: 2018
 ---

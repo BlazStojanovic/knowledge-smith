@@ -12,19 +12,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2207.12560
+  raw: '[[raw/papers/md/2022-amlb-an-automl-benchmark]]'
+  source: http://arxiv.org/abs/2207.12560v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-amlb-an-automl-benchmark.md
 raw_pdf: raw/papers/pdf/2022-amlb-an-automl-benchmark.pdf
 read: false
 slug: amlb-an-automl-benchmark
 tags:
+- type/paper
 - benchmark
 - tabular
 - automl
+- status/stub
 title: 'AMLB: an AutoML Benchmark'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2207.12560v2
 venue: null
 year: 2022
 ---

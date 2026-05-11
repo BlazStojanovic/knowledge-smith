@@ -4,16 +4,20 @@ description: Stanford's foundational deep learning for NLP course.
 institution: Stanford
 instructor: null
 kind: course
+links:
+  source: https://web.stanford.edu/class/cs224n/
+owner: blaz
 read: false
 slug: cs224n-natural-language-processing-with-deep-learning
 tags:
+- type/course
 - nlp
 - transformer
 - pretraining
+- status/stub
 title: 'CS224N: Natural Language Processing with Deep Learning'
 type: note
 updated: '2026-05-09'
-url: https://web.stanford.edu/class/cs224n/
 year: null
 ---
 

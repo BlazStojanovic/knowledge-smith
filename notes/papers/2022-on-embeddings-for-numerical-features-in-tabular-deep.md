@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2203.05556
+  raw: '[[raw/papers/md/2022-on-embeddings-for-numerical-features-in-tabular-deep]]'
+  source: http://arxiv.org/abs/2203.05556v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2022-on-embeddings-for-numerical-features-in-tabular-deep.md
 raw_pdf: raw/papers/pdf/2022-on-embeddings-for-numerical-features-in-tabular-deep.pdf
 read: false
 slug: on-embeddings-for-numerical-features-in-tabular-deep
 tags:
+- type/paper
 - tabular
 - feature-encoding
 - transformer
 - gradient-boosting
+- status/stub
 title: On Embeddings for Numerical Features in Tabular Deep Learning
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2203.05556v4
 venue: null
 year: 2022
 ---

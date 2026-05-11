@@ -13,20 +13,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2305.02997
+  raw: '[[raw/papers/md/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data]]'
+  source: http://arxiv.org/abs/2305.02997v4
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data.md
 raw_pdf: raw/papers/pdf/2023-when-do-neural-nets-outperform-boosted-trees-on-tabular-data.pdf
 read: false
 slug: when-do-neural-nets-outperform-boosted-trees-on-tabular-data
 tags:
+- type/paper
 - tabular
 - benchmark
 - gradient-boosting
 - decision-tree
+- status/stub
 title: When Do Neural Nets Outperform Boosted Trees on Tabular Data?
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2305.02997v4
 venue: null
 year: 2023
 ---

@@ -11,21 +11,28 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2008.13535
+  raw: '[[raw/papers/md/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons]]'
+  source: http://arxiv.org/abs/2008.13535v2
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.md
 raw_pdf: raw/papers/pdf/2020-dcn-v2-improved-deep-cross-network-and-practical-lessons.pdf
 read: false
 slug: dcn-v2-improved-deep-cross-network-and-practical-lessons
 tags:
+- type/paper
 - recsys
 - feature-encoding
 - ctr-prediction
 - tabular
+- status/stub
 title: 'DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale
   Learning to Rank Systems'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2008.13535v2
 venue: null
 year: 2020
 ---

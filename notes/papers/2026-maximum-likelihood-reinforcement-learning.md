@@ -14,19 +14,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2602.02710
+  raw: '[[raw/papers/md/2026-maximum-likelihood-reinforcement-learning]]'
+  source: https://arxiv.org/abs/2602.02710
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2026-maximum-likelihood-reinforcement-learning.md
 raw_pdf: raw/papers/pdf/2026-maximum-likelihood-reinforcement-learning.pdf
 read: false
 slug: maximum-likelihood-reinforcement-learning
 tags:
+- type/paper
 - rl
 - theory
 - optimization
+- status/stub
 title: Maximum Likelihood Reinforcement Learning
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2602.02710
 venue: null
 year: 2026
 ---

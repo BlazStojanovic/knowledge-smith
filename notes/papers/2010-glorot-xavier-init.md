@@ -6,19 +6,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2010-glorot-xavier-init
 tags:
+- type/paper
 - optimization
 - deep-learning
 - ml
+- status/stub
 title: Understanding the Difficulty of Training Deep Feedforward Neural Networks
 type: note
 updated: '2026-05-09'
-url: null
 venue: AISTATS 2010
 year: 2010
 ---

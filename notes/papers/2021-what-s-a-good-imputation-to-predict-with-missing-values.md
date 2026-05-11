@@ -9,20 +9,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2106.00311
+  raw: '[[raw/papers/md/2021-what-s-a-good-imputation-to-predict-with-missing-values]]'
+  source: https://arxiv.org/abs/2106.00311
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2021-what-s-a-good-imputation-to-predict-with-missing-values.md
 raw_pdf: raw/papers/pdf/2021-what-s-a-good-imputation-to-predict-with-missing-values.pdf
 read: false
 slug: what-s-a-good-imputation-to-predict-with-missing-values
 tags:
+- type/paper
 - missing-data
 - tabular
 - ml
 - theory
+- status/stub
 title: What's a good imputation to predict with missing values?
 type: note
 updated: '2026-05-09'
-url: https://arxiv.org/abs/2106.00311
 venue: null
 year: 2021
 ---

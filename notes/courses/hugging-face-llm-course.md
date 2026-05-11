@@ -6,17 +6,21 @@ institution: Hugging Face
 instructor: Abubakar Abid, Ben Burtenshaw, Matthew Carrigan, Lysandre Debut, Sylvain
   Gugger, Dawood Khan, Merve Noyan, Lucile Saulnier, Lewis Tunstall, Leandro von Werra
 kind: course
+links:
+  source: https://huggingface.co/learn/llm-course/chapter1/1
+owner: blaz
 read: false
 slug: hugging-face-llm-course
 tags:
+- type/course
 - llm
 - nlp
 - transformer
 - book
+- status/stub
 title: Hugging Face LLM Course
 type: note
 updated: '2026-05-09'
-url: https://huggingface.co/learn/llm-course/chapter1/1
 year: 2022
 ---
 

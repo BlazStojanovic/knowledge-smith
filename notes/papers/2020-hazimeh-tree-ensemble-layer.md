@@ -9,20 +9,27 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2020-hazimeh-tree-ensemble-layer
 tags:
+- type/paper
 - decision-tree
 - gradient-boosting
 - tabular
 - ml
+- status/stub
 title: 'Tree Ensemble Layer: Differentiability meets Conditional Computation'
 type: note
 updated: '2026-05-09'
-url: null
 venue: ICML 2020
 year: 2020
 ---

@@ -7,20 +7,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1806.06988
+  raw: '[[raw/papers/md/2018-deep-neural-decision-trees]]'
+  source: http://arxiv.org/abs/1806.06988v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2018-deep-neural-decision-trees.md
 raw_pdf: raw/papers/pdf/2018-deep-neural-decision-trees.pdf
 read: false
 slug: deep-neural-decision-trees
 tags:
+- type/paper
 - decision-tree
 - tabular
 - interpretability
 - ml
+- status/stub
 title: Deep Neural Decision Trees
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1806.06988v1
 venue: null
 year: 2018
 ---

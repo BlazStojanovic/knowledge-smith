@@ -5,19 +5,26 @@ authors:
 created: '2026-05-09'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: null
+  raw: null
+  source: null
+owner: blaz
 parser: none
 raw_md: null
 raw_pdf: null
 read: false
 slug: 2001-friedman-gbm
 tags:
+- type/paper
 - gradient-boosting
 - optimization
 - decision-tree
+- status/stub
 title: 'Greedy Function Approximation: A Gradient Boosting Machine'
 type: note
 updated: '2026-05-09'
-url: null
 venue: Annals of Statistics
 year: 2001
 ---

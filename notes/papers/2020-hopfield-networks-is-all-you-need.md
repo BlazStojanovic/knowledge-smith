@@ -20,20 +20,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2008.02217
+  raw: '[[raw/papers/md/2020-hopfield-networks-is-all-you-need]]'
+  source: http://arxiv.org/abs/2008.02217v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-hopfield-networks-is-all-you-need.md
 raw_pdf: raw/papers/pdf/2020-hopfield-networks-is-all-you-need.pdf
 read: false
 slug: hopfield-networks-is-all-you-need
 tags:
+- type/paper
 - attention
 - transformer
 - ml
 - theory
+- status/stub
 title: Hopfield Networks is All You Need
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2008.02217v3
 venue: null
 year: 2020
 ---

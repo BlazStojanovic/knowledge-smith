@@ -8,20 +8,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2012.06678
+  raw: '[[raw/papers/md/2020-tabtransformer-tabular-data-modeling-using-contextual]]'
+  source: http://arxiv.org/abs/2012.06678v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2020-tabtransformer-tabular-data-modeling-using-contextual.md
 raw_pdf: raw/papers/pdf/2020-tabtransformer-tabular-data-modeling-using-contextual.pdf
 read: false
 slug: tabtransformer-tabular-data-modeling-using-contextual
 tags:
+- type/paper
 - tabular
 - transformer
 - self-supervised
 - feature-encoding
+- status/stub
 title: 'TabTransformer: Tabular Data Modeling Using Contextual Embeddings'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2012.06678v1
 venue: null
 year: 2020
 ---

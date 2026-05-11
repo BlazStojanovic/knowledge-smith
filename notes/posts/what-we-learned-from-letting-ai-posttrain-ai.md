@@ -5,17 +5,21 @@ description: Frontier agents attempted autonomous post-training loops on a frog-
   puzzle; consistently failed due to weak research intuition, eval practices, and
   time management.
 kind: post
+links:
+  source: https://www.thoughtfullab.com/letting-ai-posttrain-ai.html
+owner: blaz
 read: false
 slug: what-we-learned-from-letting-ai-posttrain-ai
 source: Thoughtful Lab
 tags:
+- type/post
 - agents
 - rlhf
 - evaluation
+- status/stub
 title: What We Learned from Letting AI PostTrain AI
 type: note
 updated: '2026-05-09'
-url: https://www.thoughtfullab.com/letting-ai-posttrain-ai.html
 year: 2026
 ---
 

@@ -10,20 +10,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/2505.24060
+  raw: '[[raw/papers/md/2025-characterising-the-inductive-biases-of-neural-networks-on]]'
+  source: http://arxiv.org/abs/2505.24060v1
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2025-characterising-the-inductive-biases-of-neural-networks-on.md
 raw_pdf: raw/papers/pdf/2025-characterising-the-inductive-biases-of-neural-networks-on.pdf
 read: false
 slug: characterising-the-inductive-biases-of-neural-networks-on
 tags:
+- type/paper
 - theory
 - generalization
 - interpretability
 - ml
+- status/stub
 title: Characterising the Inductive Biases of Neural Networks on Boolean Data
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/2505.24060v1
 venue: null
 year: 2025
 ---

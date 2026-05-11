@@ -7,19 +7,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1612.01474
+  raw: '[[raw/papers/md/2016-simple-and-scalable-predictive-uncertainty-estimation-using]]'
+  source: http://arxiv.org/abs/1612.01474v3
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2016-simple-and-scalable-predictive-uncertainty-estimation-using.md
 raw_pdf: raw/papers/pdf/2016-simple-and-scalable-predictive-uncertainty-estimation-using.pdf
 read: false
 slug: simple-and-scalable-predictive-uncertainty-estimation-using
 tags:
+- type/paper
 - uncertainty
 - calibration
 - deep-learning
+- status/stub
 title: Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1612.01474v3
 venue: null
 year: 2016
 ---

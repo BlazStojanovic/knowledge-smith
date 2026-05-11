@@ -9,20 +9,27 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1706.09516
+  raw: '[[raw/papers/md/2017-catboost-unbiased-boosting-with-categorical-features]]'
+  source: http://arxiv.org/abs/1706.09516v5
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2017-catboost-unbiased-boosting-with-categorical-features.md
 raw_pdf: raw/papers/pdf/2017-catboost-unbiased-boosting-with-categorical-features.pdf
 read: false
 slug: catboost-unbiased-boosting-with-categorical-features
 tags:
+- type/paper
 - gradient-boosting
 - tabular
 - feature-encoding
 - decision-tree
+- status/stub
 title: 'CatBoost: unbiased boosting with categorical features'
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1706.09516v5
 venue: null
 year: 2017
 ---

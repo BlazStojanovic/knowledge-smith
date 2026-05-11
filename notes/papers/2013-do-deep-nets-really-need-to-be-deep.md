@@ -6,19 +6,26 @@ authors:
 created: '2026-05-08'
 doi: null
 kind: paper
+links:
+  code: null
+  paper: https://arxiv.org/abs/1312.6184
+  raw: '[[raw/papers/md/2013-do-deep-nets-really-need-to-be-deep]]'
+  source: http://arxiv.org/abs/1312.6184v7
+owner: blaz
 parser: ar5iv
 raw_md: raw/papers/md/2013-do-deep-nets-really-need-to-be-deep.md
 raw_pdf: raw/papers/pdf/2013-do-deep-nets-really-need-to-be-deep.pdf
 read: false
 slug: do-deep-nets-really-need-to-be-deep
 tags:
+- type/paper
 - distillation
 - deep-learning
 - generalization
+- status/stub
 title: Do Deep Nets Really Need to be Deep?
 type: note
 updated: '2026-05-09'
-url: http://arxiv.org/abs/1312.6184v7
 venue: null
 year: 2013
 ---
