@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2604.16027
 year: 2026
 ---
 
-[2604.16027] Where does output diversity collapse in post-training?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Where does output diversity collapse in post-training?
 
 Constantinos Karouzos
@@ -82,8 +39,7 @@ Yet, prior work attributes collapse to specific algorithms. DPO in narrative gen
 
 Two questions remain open: (1) does the diversity collapse co-vary with the post-training method or with the post-training data composition, and (2) does the CoT format itself constrain diversity at inference, or is the collapse embedded in the model weights?
 
-![Refer to caption](/html/2604.16027/assets/x1.png)
-
+!(/html/2604.16027/assets/x1.png)
 
 Figure 1: Study design. We trace output diversity through three parallel post-training lineages of Olmo 3, to identify where, why, and how much diversity is lost.
 
@@ -156,8 +112,7 @@ We present results around three questions. First, *where* does diversity collaps
 
 ### 4.1 Lineage-dependent diversity collapse
 
-![Refer to caption](/html/2604.16027/assets/x2.png)
-
+!(/html/2604.16027/assets/x2.png)
 
 Figure 2: SBERT, EAD, and Vendi Score across post-training stages. Think (orange) collapses at SFT; Instruct (blue) at DPO. Think w/o CoT (hollow) tracks Think.
 
@@ -173,8 +128,7 @@ Table 1: Stage-wise SBERT loss (% of Base, 15-task average).
 
 DPO asymmetry. DPO erases more diversity in Instruct than in Think, as Think has already collapsed at SFT, leaving little for DPO to remove. The effect is largest on summarization and code-reasoning tasks, where Instruct-SFT had preserved substantial diversity. On three math/code tasks, Think-DPO actually *increases* diversity slightly, and Instruct-DPO does the same on GSM8K, suggesting that DPO can partially correct a collapsed SFT distribution.
 
-![Refer to caption](/html/2604.16027/assets/x3.png)
-
+!(/html/2604.16027/assets/x3.png)
 
 Figure 3: NLI diversity.
 
@@ -187,15 +141,13 @@ The collapse is semantic, not lexical (Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Line
 Value-pluralism tasks suffer the steepest Think collapse (PRISM −78%-78\%, TruthfulQA −79%-79\%), as narrow two-teacher distillation cannot represent the range of perspectives these tasks require. On PRISM, Think’s NLI (Figure [3](#S4.F3 "Figure 3 ‣ 4.1 Lineage-dependent diversity collapse ‣ 4 Results ‣ Where does output diversity collapse in post-training?")) scores remain above 1.0 (net contradictions), meaning the model still samples contradictions despite converged phrasing, though we cannot determine whether this is genuine stance plurality or internal incoherence. Instruct drops NLI below 1.0, indicating homogenization of both form and stance (Figure [3](#S4.F3 "Figure 3 ‣ 4.1 Lineage-dependent diversity collapse ‣ 4 Results ‣ Where does output diversity collapse in post-training?")). Think’s NLI remains above the contradiction threshold on value-pluralism and creative tasks where Instruct’s drops below.
 Creative writing (WritingPrompts) shows the highest Base diversity (6.9 Vendi modes) and the sharpest quality–diversity tension. Think and Instruct both collapse to ∼{\sim}0.20 SBERT and ∼{\sim}2.6 modes (−63%-63\%), yet achieve >{>}97% pairwise win rate against Base, producing better stories at the cost of formulaic variation. RL-Zero retains ∼{\sim}100% of Base diversity, but wins only ∼{\sim}50%, consistent with the absence of a creative-writing reward signal. NLI diversity remains above 1.0 for all models on WritingPrompts (Think 1.12, Instruct 1.02, RL-Zero 1.15), meaning post-trained models still produce logically distinct narratives despite semantic convergence. Full per-task breakdowns are in Appendix [C](#A3 "Appendix C Per-task diversity results ‣ Where does output diversity collapse in post-training?").
 
-![Refer to caption](/html/2604.16027/assets/x4.png)
-
+!(/html/2604.16027/assets/x4.png)
 
 Figure 4: Quality of generations for Think, Think-not-thinking, and Instruct, across stages. Top: accuracy on eight verifiable tasks. Bottom: LLM-judge win rates on six tasks.
 
 ### 4.2 Think-not-thinking: CoT as reliability, not diversity
 
-![Refer to caption](/html/2604.16027/assets/x5.png)
-
+!(/html/2604.16027/assets/x5.png)
 
 Figure 5: WildBench Score.
 
@@ -207,11 +159,11 @@ Diversity collapse resides in the learned distribution, not the output format. N
 
 ### 4.3 Quality-filtered diversity decomposition
 
-![Refer to caption](/html/2604.16027/assets/x6.png)
+!(/html/2604.16027/assets/x6.png)
 
 Figure 6: Quality filtered Vendi Score on six verifiable tasks.
 
-![Refer to caption](/html/2604.16027/assets/x7.png)
+!(/html/2604.16027/assets/x7.png)
 
 Figure 7: Code diversity on correct outputs: AST subtree Jaccard (structural) and UniXcoder (semantic) for HumanEval and MBPP.
 
@@ -225,8 +177,7 @@ On HumanEval, Instruct surpasses Think at pass@16 (98.2 vs. 95.7) despite traili
 
 ### 4.4 Cross-cutting patterns
 
-![Refer to caption](/html/2604.16027/assets/x8.png)
-
+!(/html/2604.16027/assets/x8.png)
 
 Figure 8: Accuracy@1 vs. majority-voting gain.
 
@@ -363,8 +314,6 @@ Tables [3](#A3.T3 "Table 3 ‣ Appendix C Per-task diversity results ‣ Where 
 
 Table 3: Per-input SBERT diversity (all-mpnet-base-v2).
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | Summarization | | | Instruction F. | | Creative Wr. | Value Pluralism | |
@@ -409,8 +358,6 @@ Table 3: Per-input SBERT diversity (all-mpnet-base-v2).
 
 Table 4: Per-input EAD diversity.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | Summarization | | | Instruction. F. | | Creative Wr. | Value Pluralism | |
@@ -454,8 +401,6 @@ Table 4: Per-input EAD diversity.
 | RL-Zero-Code3.1 | 1.05 | 0.98 | 1.09 | 0.97 |
 
 Table 5: Per-input NLI diversity. Code tasks excluded.
-
-
 
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -530,8 +475,6 @@ For tasks without verifiable answers, we use LLM-as-judge evaluation with gpt-4.
 
 Table 7: Reasoning quality (%). acc: first correct. mv: majority vote. pass: any of K=16K{=}16 correct.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | HumanEval | | | | MBPP | | | |
@@ -555,8 +498,6 @@ Table 7: Reasoning quality (%). acc: first correct. mv: majority vote. pass: any
 
 Table 8: Code quality (pass@kk, %).
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 |  | strict@1 | loose@1 | pass@16 | consist |
@@ -578,8 +519,6 @@ Table 8: Code quality (pass@kk, %).
 | RL-Zero-Code3.1 | 46.4 | 58.5 | 73.6 | 46.7 |
 
 Table 9: IFEval constraint satisfaction (%).
-
-
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -603,8 +542,6 @@ Table 9: IFEval constraint satisfaction (%).
 
 Table 10: CruxEval output prediction quality (%). Accuracy@1, majority vote@16, and pass@16.
 
-
-
 |  |  |  |  |
 | --- | --- | --- | --- |
 |  | TL;DR | CNN/DM | XSum |
@@ -627,8 +564,6 @@ Table 10: CruxEval output prediction quality (%). Accuracy@1, majority vote@16, 
 
 Table 11: Summarization quality: pairwise win rate (%) against reference summaries, judged by gpt-4.1-mini.
 
-
-
 |  |  |  |  |
 | --- | --- | --- | --- |
 |  | Alpaca | PRISM | WritingPrompts |
@@ -650,8 +585,6 @@ Table 11: Summarization quality: pairwise win rate (%) against reference summari
 | RL-Zero-Code3.1 | 52.5 | 52.1 | 49.4 |
 
 Table 12: Open-ended quality: pairwise win rate (%) against Base model. Alpaca and PRISM use the MT-Bench pair-v2 prompt (zheng2023judging); WritingPrompts uses the Arena-Hard creative writing prompt (li2024arenahard) with position-swap debiasing. Judge: gpt-4.1-mini.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -835,83 +768,3 @@ HumanEval, CRUXEval, IFEval, MATH, and WildBench show elevated overlap (7–30%)
 | Inst.-DPO | 0.1 | 0.1 | 0.0 | 0.0 | 1.8 | 1.8 | 20.9 | 0.3 | 6.8 | 1.6 | 7.2 | 0.0 | 0.0 | 0.0 | 6.9 |
 
 Table 19: C13C\_{13} 13-gram overlap (%) between Dolci training sets and evaluation benchmarks. Values ≥ 5%{\geq}\,5\% are bolded.
-
-[◄](/html/2604.16025)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.16027)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.16027)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.16027)[►](/html/2604.16028)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 21:37:48 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

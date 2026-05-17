@@ -17,49 +17,6 @@ url: https://arxiv.org/abs/1701.06538
 year: 2017
 ---
 
-[1701.06538] Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer
 
 Noam Shazeer
@@ -120,8 +77,7 @@ In this work, we for the first time address all of the above challenges and fina
 
 Our approach to conditional computation is to introduce a new type of general purpose neural network component: a Sparsely-Gated Mixture-of-Experts Layer (MoE). The MoE consists of a number of experts, each a simple feed-forward neural network, and a trainable gating network which selects a sparse combination of the experts to process each input (see Figure [1](#S1.F1 "Figure 1 ‣ 1.2 Our Approach: The Sparsely-Gated Mixture-of-Experts Layer ‣ 1 Introduction and Related Work ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer")). All parts of the network are trained jointly by back-propagation.
 
-![Refer to caption](/html/1701.06538/assets/moe-bigpicture2.eps)
-
+!(/html/1701.06538/assets/moe-bigpicture2.eps)
 
 Figure 1: A Mixture of Experts (MoE) layer embedded within a recurrent language model. In this case, the sparse gating function selects two experts to perform computations. Their outputs are modulated by the outputs of the gating network.
 
@@ -245,14 +201,11 @@ To investigate the effects of adding capacity, we trained a series of MoE models
 
 The results of these models are shown in Figure [2](#S5.F2 "Figure 2 ‣ Low Computation, Varied Capacity: ‣ 5.1 1 Billion Word Language Modeling Benchmark ‣ 5 Experiments ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer")-left. The model with 4 always-active experts performed (unsurprisingly) similarly to the computationally-matched baseline models, while the largest of the models (4096 experts) achieved an impressive 24% lower perplexity on the test set.
 
-![Refer to caption](/html/1701.06538/assets/capacity.png)
+!(/html/1701.06538/assets/capacity.png)
 
-![Refer to caption](/html/1701.06538/assets/computation.png)
+!(/html/1701.06538/assets/computation.png)
 
 Figure 2: Model comparison on 1-Billion-Word Language-Modeling Benchmark. On the left, we plot test perplexity as a function of model capacity for models with similar computational budgets of approximately 8-million-ops-per-timestep. On the right, we plot test perplexity as a function of computational budget. The top line represents the LSTM models from (Jozefowicz et al., [2016](#bib.bib26)). The bottom line represents 4-billion parameter MoE models with different computational budgets.
-
-
-
 
 Table 1:  Summary of high-capacity MoE-augmented models with varying computational budgets, vs. best previously published results (Jozefowicz et al., [2016](#bib.bib26)). Details in Appendix [C](#Ax1.SS3 "C 1 Billion Word Language Modeling Benchmark - Experimental Details ‣ Appendices ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer").
 
@@ -278,8 +231,7 @@ For our baseline models wtih no MoE, observed computational efficiency ranged fr
 
 ### 5.2 100 Billion Word Google News Corpus
 
-![Refer to caption](/html/1701.06538/assets/gn11.png)
-
+!(/html/1701.06538/assets/gn11.png)
 
 Figure 3: Language modeling on a 100 billion word corpus. Models have similar computational budgets (8 million ops/timestep).
 
@@ -319,9 +271,6 @@ Table 2: Results on WMT’14 En→→\rightarrow Fr newstest2014 (bold values re
 | DeepAtt (Zhou et al., [2016](#bib.bib44)) |  | 37.7 |  |  |  |
 | DeepAtt+PosUnk (Zhou et al., [2016](#bib.bib44)) |  | 39.2 |  |  |  |
 
-
-
-
 Table 3: Results on WMT’14 En →→\rightarrow De newstest2014 (bold values represent best results).
 
 |  |  |  |  |  |  |
@@ -333,9 +282,6 @@ Table 3: Results on WMT’14 En →→\rightarrow De newstest2014 (bold values r
 | GNMT +RL (Wu et al., [2016](#bib.bib41)) | 8.08 | 24.66 | 214M | 278M | 1 day/96 k80s |
 | PBMT (Durrani et al., [2014](#bib.bib14)) |  | 20.7 |  |  |  |
 | DeepAtt (Zhou et al., [2016](#bib.bib44)) |  | 20.6 |  |  |  |
-
-
-
 
 Table 4: Results on the Google Production En→→\rightarrow Fr dataset (bold values represent best results).
 
@@ -868,9 +814,9 @@ We evaluated our models using the perplexity and the standard BLEU score metric.
 
 Tables [2](#S5.T2 "Table 2 ‣ Datasets: ‣ 5.3 Machine Translation (Single Language Pair) ‣ 5 Experiments ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer"), [3](#S5.T3 "Table 3 ‣ Datasets: ‣ 5.3 Machine Translation (Single Language Pair) ‣ 5 Experiments ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer") and [4](#S5.T4 "Table 4 ‣ Datasets: ‣ 5.3 Machine Translation (Single Language Pair) ‣ 5 Experiments ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer") in Section [5.3](#S5.SS3 "5.3 Machine Translation (Single Language Pair) ‣ 5 Experiments ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer") show comparisons of our results to other published methods. Figure [4](#Ax1.F4 "Figure 4 ‣ Results: ‣ E Machine Translation - Experimental Details ‣ Appendices ‣ Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer") shows test perplexity as a function of number of words in the (training data’s) source sentences processed for models with different numbers of experts. As can be seen from the Figure, as we increased the number of experts to approach 2048, the test perplexity of our model continued to improve.
 
-![Refer to caption](/html/1701.06538/assets/x1.png)
+!(/html/1701.06538/assets/x1.png)
 
-![Refer to caption](/html/1701.06538/assets/x2.png)
+!(/html/1701.06538/assets/x2.png)
 
 Figure 4: Perplexity on WMT’14 En→→\rightarrow Fr (left) and Google Production En→→\rightarrow Fr (right) datasets as a function of number of words processed. The large differences between models at the beginning of training are due to different batch sizes. All models incur the same computational budget (85M ops/timestep) except the one with no experts.
 
@@ -956,83 +902,3 @@ For performance reasons, in our models, we used a slightly different attention f
 |  | A​(xi,yj)=∑d=1nVd​t​a​n​h​((xi​U)d)​t​a​n​h​((yj​W)d)𝐴subscript𝑥𝑖subscript𝑦𝑗superscriptsubscript𝑑1𝑛subscript𝑉𝑑𝑡𝑎𝑛ℎsubscriptsubscript𝑥𝑖𝑈𝑑𝑡𝑎𝑛ℎsubscriptsubscript𝑦𝑗𝑊𝑑A(x\_{i},y\_{j})=\sum\_{d=1}^{n}V\_{d}tanh((x\_{i}U)\_{d})tanh((y\_{j}W)\_{d}) |  | (22) |
 
 With our attention function, we can simultaneously compute the attention function on multiple source time steps and multiple target time steps using optimized matrix multiplications. We found little difference in quality between the two functions.
-
-[◄](/html/1701.06537)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1701.06538)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1701.06538)
-[View original  
-on arXiv](https://arxiv.org/abs/1701.06538)[►](/html/1701.06539)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 7 04:09:21 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

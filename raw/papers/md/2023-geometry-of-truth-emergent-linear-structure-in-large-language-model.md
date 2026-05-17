@@ -12,53 +12,6 @@ url: https://arxiv.org/abs/2310.06824
 year: 2023
 ---
 
-[2310.06824] The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\quotingsetup
-
-rightmargin=0in
-
 # The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets
 
 Samuel Marks
@@ -83,8 +36,7 @@ We would like techniques which, given a language model M𝑀M and a statement s�
 
 However, the efficacy and interpretation of these results are controversial. For instance, Levinstein & Herrmann ([2023](#bib.bib19)) note that the probes of Azaria & Mitchell ([2023](#bib.bib4)) fail to generalize in basic ways, such as to statements containing the word “not.” The probes of Burns et al. ([2023](#bib.bib7)) have similar generalization issues, especially when using representations from autoregressive transformers. This suggests that these probes may be identifying not truth, but other features which correlate with truth on their training data.
 
-![Refer to caption](/html/2310.06824/assets/x1.png)
-
+!(/html/2310.06824/assets/x1.png)
 
 Figure 1: Projections of residual stream representations of our datasets onto their top two PCs.
 
@@ -141,8 +93,7 @@ We begin our investigation with a simple technique: visualizing LLMs representat
 
 For concreteness, we focus here on LLaMA-13B; see appendix [B](#A2 "Appendix B Results for LLaMA-2-13B ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") for LLaMA-2-13B results. We extract layer 13 residual stream activations over the final token of the input statement, which always ends with a period; this choice of hidden state is justified by the patching experiments in section [5.1](#S5.SS1 "5.1 Identifying the relevant hidden states with patching ‣ 5 Causal intervention experiments ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets"). We also center the representations in each dataset by subtracting off their mean. Our key observations are as follows.
 
-![Refer to caption](/html/2310.06824/assets/x2.png)
-
+!(/html/2310.06824/assets/x2.png)
 
 Figure 2: Projections of residual stream representations of datasets onto the top 2 PCs of cities.
 
@@ -150,8 +101,7 @@ True and false statements separate in the top few PCs (figures [1](#S1.F1 "Figu
 
 NTDs of different datasets often align, but sometimes do not. For instance, figure [2](#S3.F2 "Figure 2 ‣ 3 Visualizing LLM representations of true/false datasets ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") shows our datasets separating along the first PC of cities. On the other hand, in figure [3](#S3.F3 "Figure 3 ‣ 3 Visualizing LLM representations of true/false datasets ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") we see a stark failure of NTDs to align: the NTDs of cities and neg\_cities are approximately orthogonal, and the NTDs of larger\_than and smaller\_than are approximately antipodal. In section [4](#S4 "4 Probing and generalization experiments ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets"), these observations will be corroborated by the poor generalization of probes trained on cities and larger\_than to neg\_cities and smaller\_than.
 
-![Refer to caption](/html/2310.06824/assets/x3.png)
-
+!(/html/2310.06824/assets/x3.png)
 
 Figure 3: Top two PCs of datasets consisting of statements and their opposites. Inset shows NTDs. Representations are independently centered for each dataset. The orthogonality in the left and center plots emerges over layers; see appendix [C](#A3 "Appendix C Emergence of linear structure across layers ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets").
 
@@ -175,8 +125,7 @@ In this section we train probes on datasets of true/false statements and test th
 
 ### 4.1 Challenges with logistic regression, and mass-mean probing
 
-![Refer to caption](/html/2310.06824/assets/x4.png)
-
+!(/html/2310.06824/assets/x4.png)
 
 Figure 4: An illustration of a weakness of logistic regression.
 
@@ -226,8 +175,7 @@ Logistic regression on the validation set (oracle). This gives an upper-bound fo
 
 LLaMA-13B results are shown in figure [5](#S4.F5 "Figure 5 ‣ 4.3 Results ‣ 4 Probing and generalization experiments ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets"); see appendix [B](#A2 "Appendix B Results for LLaMA-2-13B ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") for LLaMA-2-13B. We highight some key observations.
 
-![Refer to caption](/html/2310.06824/assets/x5.png)
-
+!(/html/2310.06824/assets/x5.png)
 
 Figure 5: Generalization accuracy of probes trained on LLaMA-13B layer 13 residual stream activations. The x𝑥x-axis shows the train set, and the y𝑦y-axis shows the test set. All probes are trained on 80% of the data. When the train set and test set are the same, we evaluate on the held-out 20%. Otherwise, we evaluate on the full test set.
 
@@ -257,8 +205,7 @@ Figure [6](#S5.F6 "Figure 6 ‣ 5.1 Identifying the relevant hidden states with
 
 We note that, if this hypothesis is correct, it justifies our choice of layer 13 and token position for extracting activations in the previous two sections, as this is the most downstream hidden state in group (b) and is therefore likely to carry the model’s most enriched representation of truth. In the next section, we validate this hypothesis together with the truth directions of section [4](#S4 "4 Probing and generalization experiments ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") by intervening in our LLMs’ forward pass, shifting activations in group (b) along a truth direction.
 
-![Refer to caption](/html/2310.06824/assets/x6.png)
-
+!(/html/2310.06824/assets/x6.png)
 
 Figure 6: Difference P​D=P​(TRUE)−P​(FALSE)𝑃𝐷𝑃TRUE𝑃FALSEPD=P(\texttt{TRUE})-P(\texttt{FALSE}) after patching residual stream activations from the corrupted prompt p∗subscript𝑝p\_{\*} into the model’s forward pass when processing p𝑝p.
 
@@ -527,25 +474,21 @@ As with LLaMA-13B, we see that causally relevant information is stored over both
 
 Thus, when extracting activations for visualizations and probing experiments, we will now extract over the final token (the end-of-clause signifier) in layer 14. The dataset visualizations and probing results for LLaMA-2-13B are shown in figures [8](#A2.F8 "Figure 8 ‣ Appendix B Results for LLaMA-2-13B ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") and [9](#A2.F9 "Figure 9 ‣ Appendix B Results for LLaMA-2-13B ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets").
 
-![Refer to caption](/html/2310.06824/assets/x7.png)
-
+!(/html/2310.06824/assets/x7.png)
 
 Figure 7: Results of patching experiment for LLaMA-2-13B.
 
-![Refer to caption](/html/2310.06824/assets/x8.png)
-
+!(/html/2310.06824/assets/x8.png)
 
 Figure 8: Visualizations of LLaMA-2-13B representations of our datasets.
 
-![Refer to caption](/html/2310.06824/assets/x9.png)
-
+!(/html/2310.06824/assets/x9.png)
 
 Figure 9: Generalization accuracy of probes trained on LLaMA-2-13B layer 14 residual stream activations.
 
 ## Appendix C Emergence of linear structure across layers
 
-![Refer to caption](/html/2310.06824/assets/images/layer-sweep.png)
-
+!(/html/2310.06824/assets/images/layer-sweep.png)
 
 Figure 10: Top two principal components of representations of datasets in the LLaMA-13B residual stream at various layers.
 
@@ -555,15 +498,13 @@ Interestingly, the misalignment between cities and neg\_cities and between sp\_e
 
 This can be interpreted in light of the MCI hypothesis. MCI would explain figure [11](#A3.F11 "Figure 11 ‣ Appendix C Emergence of linear structure across layers ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") as follows: in layer 8, the top PC represents a feature which is correlated with truth on cities and anti-correlated with truth on neg\_cities; in layer 10, this feature remains the top PC, while a truth feature has emerged and is PC2. Since PC1 and PC2 have opposite correlations on cities and neg\_cities, the datasets appear to be orthogonal.
 
-![Refer to caption](/html/2310.06824/assets/images/ortho-emergent.png)
-
+!(/html/2310.06824/assets/images/ortho-emergent.png)
 
 Figure 11: Top PCs of datasets of statements and their opposites. The representations for the datasets are independently centered by subtracting off their means; without this centering there would also be a translational displacement between datasets of statements and their negations.
 
 ## Appendix D Nearly all linearly-accessible truth-relevant information is in the top PCs
 
-![Refer to caption](/html/2310.06824/assets/images/salience.png)
-
+!(/html/2310.06824/assets/images/salience.png)
 
 Figure 12: The solid lines show the validation accuracy of a linear probe trained with logistic regression on the dataset, after projecting the representations to the top d+1𝑑1d+1 through d+k𝑑𝑘d+k principal components. For comparison, we also show the accuracy of linear probes trained on random k𝑘k-dimensional projections (averaged over 50 random projections).
 
@@ -581,29 +522,25 @@ and record the validation accuracy of a linear probe trained with logistic regre
 
 Figure [13](#A5.F13 "Figure 13 ‣ Appendix E Further visualizations ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") shows PCA visualizations of all of our datsets. As shown, datasets some datasets saliently vary along features other than the true. For instance, the three clusters of statements in companies\_true\_false correspond to three different templates used in making the statements in that dataset. To give another example, if we were to include all comparisons between integers x∈{1,…,99}𝑥1…99x\in\{1,\dots,99\} in our larger\_than dataset, then the top principal components would be dominated by features representing the sizes of numbers in the statements.
 
-![Refer to caption](/html/2310.06824/assets/x10.png)
-
+!(/html/2310.06824/assets/x10.png)
 
 Figure 13: Visualizations of LLaMA-13B representations of our datasets.
 
 In figure [14](#A5.F14 "Figure 14 ‣ Appendix E Further visualizations ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") we also visualize our datasets in the PCA bases for other datsets, expanding figure [2](#S3.F2 "Figure 2 ‣ 3 Visualizing LLM representations of true/false datasets ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets"). We see that although our datasets do visually separate somewhat in the top PCs of the likely dataset, text liklihood does not account for all of the separation in the top PCs.
 
-![Refer to caption](/html/2310.06824/assets/images/all-cross-visualizations.png)
-
+!(/html/2310.06824/assets/images/all-cross-visualizations.png)
 
 Figure 14: Visualizations of datasets in PCA bases for other datasets. All columns contain the same data and all rows are in the same basis. See figure [2](#S3.F2 "Figure 2 ‣ 3 Visualizing LLM representations of true/false datasets ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets").
 
 One might ask what the top PC of the larger\_than dataset is, given that it’s not truth. Figure [15](#A5.F15 "Figure 15 ‣ Appendix E Further visualizations ‣ The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets") provides an interesting suggestion: it represents the absolute value of the difference between the two numbers being compared.
 
-![Refer to caption](/html/2310.06824/assets/images/abs-diff.png)
-
+!(/html/2310.06824/assets/images/abs-diff.png)
 
 Figure 15: PCA visualization of larger\_than. The point representing “x𝑥x is larger than y𝑦y” is colored according to x−y𝑥𝑦x-y.
 
 ## Appendix F Mass-mean probing in terms of Mahalanobis whitening
 
-![Refer to caption](/html/2310.06824/assets/images/whitening.png)
-
+!(/html/2310.06824/assets/images/whitening.png)
 
 Figure 16: Mass-mean probing is equivalent to taking the projection onto 𝜽mmsubscript𝜽mm{\bm{\theta}}\_{\mathrm{mm}} after applying a whitening transformation.
 
@@ -801,83 +738,3 @@ common\_claim\_true\_false:
 > Argentina has the second-highest human development index rating in Latin America after Chile. TRUE
 >   
 > Greece is the homeland of the Olympic Games. TRUE
-
-[◄](/html/2310.06823)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2310.06824)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2310.06824)
-[View original  
-on arXiv](https://arxiv.org/abs/2310.06824)[►](/html/2310.06825)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 01:54:11 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

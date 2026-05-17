@@ -16,50 +16,6 @@ url: https://arxiv.org/abs/2602.12413
 year: 2026
 ---
 
-[2602.12413] Soft Contamination Means Benchmarks Test Shallow Generalization
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Soft Contamination Means Benchmarks Test Shallow Generalization
 
 Ari Spiesberger
@@ -226,7 +182,7 @@ The model card of Olmo3 benchmarks the performance of Olmo3 Instruct after SFT t
 We do not find exact or semantic duplicates of ZebraLogic in the DPO dataset, so we ascribe the improvement between SFT training and DPO training to general logical reasoning improvement.
 However, the increase from 28.4% to 32.9% (possibly on harder problems) is likely due to directly training on ZebraLogic data.
 
-![Refer to caption](/html/2602.12413/assets/x1.png)
+!(/html/2602.12413/assets/x1.png)
 
 Figure 1: On the y-axis we plot the following statistic: for each ZebraLogic benchmark datapoint we check among the top 10 highest cosine similarity training datapoints if any of those samples is an exact duplicate, we then calculate the proportion of benchmark datapoints (of a given grid size) that have at least one exact duplicate. On the x-axis we plot puzzle grid size.
 
@@ -238,13 +194,11 @@ To acquire this plot we select the points in the top 0.1% cosine similarity (in 
 We then use a language model to assess the semantic duplicate status of these 100 datapoints.
 For both MBPP and CodeForces we find that even within the top 0.1% highest cosine similarity matches, semantic duplicates are far more common among the highest cosine similarity matches, see Figure [2](#S4.F2 "Figure 2 ‣ 4.2 Natural semantic duplicates in training corpora ‣ 4 Results ‣ Soft Contamination Means Benchmarks Test Shallow Generalization").
 
-![Refer to caption](/html/2602.12413/assets/x2.png)
-
+!(/html/2602.12413/assets/x2.png)
 
 (a) MBPP
 
-![Refer to caption](/html/2602.12413/assets/x3.png)
-
+!(/html/2602.12413/assets/x3.png)
 
 (b) CodeForces
 
@@ -254,12 +208,9 @@ On the x-axis we plot the cosine similarity. On the y-axis we plot the percentag
 The opaque graph shows the confidence interval: this interval widens when there are fewer samples of a given cosine similarity level.
 In red we plot semantic duplicates inclusive of exact duplicates, and in blue exclusive.
 
-
-
-![Refer to caption](/html/2602.12413/assets/x4.png)
+!(/html/2602.12413/assets/x4.png)
 
   
-
 
 Figure 3: Occurence by elo. On the y-axis we plot the following statistic: for each benchmark datapoint we check among the top 100 cosine similarity training datapoints if any of those samples is a semantic duplicate, we then calculate the proportion of all benchmark datapoints that have at least one semantic duplicate. We plot Elo scores on the x-axis.
 
@@ -272,13 +223,11 @@ We also find at least one semantic duplicate per benchmark datapoint when we ran
 For CodeForces we find that 77.5% of problems have at least one semantic duplicate in the top 100 cosine similarity matches.
 Figure [3](#S4.F3 "Figure 3 ‣ 4.2 Natural semantic duplicates in training corpora ‣ 4 Results ‣ Soft Contamination Means Benchmarks Test Shallow Generalization") considers the likelihood of a test point having a single semantic duplicate based on its elo, and find that problem difficulty (elo score) does not play a big role. We believe the above numbers are a lower bound: if we checked all the data and not just the top 100 cosine similarity matches, we would likely find more semantic duplicates for CodeForces.
 
-![Refer to caption](/html/2602.12413/assets/x5.png)
-
+!(/html/2602.12413/assets/x5.png)
 
 (a) MBPP
 
-![Refer to caption](/html/2602.12413/assets/x6.png)
-
+!(/html/2602.12413/assets/x6.png)
 
 (b) CodeForces
 
@@ -287,15 +236,11 @@ On the y-axis: for each benchmark datapoint we check among the top 100 cosine si
 On the x-axis we plot the different training datasets.
 The lines show the standard deviation.
 
-
-
-![Refer to caption](/html/2602.12413/assets/x7.png)
-
+!(/html/2602.12413/assets/x7.png)
 
 (a) MBPP
 
-![Refer to caption](/html/2602.12413/assets/x8.png)
-
+!(/html/2602.12413/assets/x8.png)
 
 (b) CodeForces
 
@@ -316,53 +261,43 @@ For example, for CodeForces this statistic drops to 28.4% if we only sample the 
 We suggest that the reason we found more semantic duplicates than previous work is that we investigated far more data. Both embedding very large amounts of training data and annotating cosine similarity matches with semantic duplicate status are computationally expensive, so scaling up investigations of this kind is challenging.
 See Appendix [B.2](#A2.SS2 "B.2 Semantic duplicates are hard to detect ‣ Appendix B Further Semantic Duplicates in the Wild Results ‣ Soft Contamination Means Benchmarks Test Shallow Generalization").
 
-![Refer to caption](/html/2602.12413/assets/x9.png)
-
+!(/html/2602.12413/assets/x9.png)
 
 (a) MBPP, Dolma
 
-![Refer to caption](/html/2602.12413/assets/x10.png)
-
+!(/html/2602.12413/assets/x10.png)
 
 (b) MBPP, Dolmino
 
-![Refer to caption](/html/2602.12413/assets/x11.png)
-
+!(/html/2602.12413/assets/x11.png)
 
 (c) MBPP, Dolci SFT
 
-![Refer to caption](/html/2602.12413/assets/x12.png)
-
+!(/html/2602.12413/assets/x12.png)
 
 (d) MBPP, Dolci DPO
 
-![Refer to caption](/html/2602.12413/assets/x13.png)
-
+!(/html/2602.12413/assets/x13.png)
 
 (e) MBPP, Dolci RL
 
-![Refer to caption](/html/2602.12413/assets/x14.png)
-
+!(/html/2602.12413/assets/x14.png)
 
 (f) CodeF, Dolma
 
-![Refer to caption](/html/2602.12413/assets/x15.png)
-
+!(/html/2602.12413/assets/x15.png)
 
 (g) CodeF, Dolmino
 
-![Refer to caption](/html/2602.12413/assets/x16.png)
-
+!(/html/2602.12413/assets/x16.png)
 
 (h) CodeF, Dolci SFT
 
-![Refer to caption](/html/2602.12413/assets/x17.png)
-
+!(/html/2602.12413/assets/x17.png)
 
 (i) CodeF, Dolci DPO
 
-![Refer to caption](/html/2602.12413/assets/x18.png)
-
+!(/html/2602.12413/assets/x18.png)
 
 (j) CodeF, Dolci RL
 
@@ -434,9 +369,6 @@ Table 4: MBPP
 | Exact Dupes | 63.0 | 48.8 | 49.2 |
 | Semantic Dupes (Py) | 55.1 | 53.6 | 67.0 |
 | Cos Sim sft |  | 48.8 | 53.1 |
-
-
-
 
 Table 5: We report on baseline (before finetuning) accuracy on MuSR. We then finetune on 10.000 datapoints.
 We either finetune on half of the level 2 & 3 semantic duplicates mixed in with regular data (contaminated model) or we finetune on clean data only (clean model).
@@ -821,28 +753,23 @@ Table 6: Datasets processed for contamination analysis. All text chunks are filt
 
 #### A.2.1 MuSR
 
-![Refer to caption](/html/2602.12413/assets/x19.png)
-
+!(/html/2602.12413/assets/x19.png)
 
 (a) MuSR, Dolma
 
-![Refer to caption](/html/2602.12413/assets/x20.png)
-
+!(/html/2602.12413/assets/x20.png)
 
 (b) MuSR, Dolmino
 
-![Refer to caption](/html/2602.12413/assets/x21.png)
-
+!(/html/2602.12413/assets/x21.png)
 
 (c) MuSR, DolciSFT
 
-![Refer to caption](/html/2602.12413/assets/x22.png)
-
+!(/html/2602.12413/assets/x22.png)
 
 (d) MuSR, DolciDPO
 
-![Refer to caption](/html/2602.12413/assets/x23.png)
-
+!(/html/2602.12413/assets/x23.png)
 
 (e) MuSR, DolciRL
 
@@ -850,28 +777,23 @@ Figure 7: Each plot shows cosine similarity distribution of pairs of the MuSR be
 
 #### A.2.2 ZebraLogic
 
-![Refer to caption](/html/2602.12413/assets/x24.png)
-
+!(/html/2602.12413/assets/x24.png)
 
 (a) ZebraLogic, Dolma
 
-![Refer to caption](/html/2602.12413/assets/x25.png)
-
+!(/html/2602.12413/assets/x25.png)
 
 (b) ZebraLogic, Dolmino
 
-![Refer to caption](/html/2602.12413/assets/x26.png)
-
+!(/html/2602.12413/assets/x26.png)
 
 (c) ZebraLogic, DolciSFT
 
-![Refer to caption](/html/2602.12413/assets/x27.png)
-
+!(/html/2602.12413/assets/x27.png)
 
 (d) ZebraLogic,DolciDPO
 
-![Refer to caption](/html/2602.12413/assets/x28.png)
-
+!(/html/2602.12413/assets/x28.png)
 
 (e) ZebraLogic, DolciRL
 
@@ -1319,18 +1241,15 @@ We compare the generated semantic duplicates against the original samples for MB
 
 Finding that in most cases, cosine similarity is better at separating semantic duplicate pairs than the other metrics. This motivates, in part, the use of embedding similarity for the other experiments.
 
-![Refer to caption](/html/2602.12413/assets/x29.png)
-
+!(/html/2602.12413/assets/x29.png)
 
 (a) MBPP sanitized test set (n=257n=257).
 
-![Refer to caption](/html/2602.12413/assets/x30.png)
-
+!(/html/2602.12413/assets/x30.png)
 
 (b) MuSR Murder Mystery task split (n=250n=250).
 
-![Refer to caption](/html/2602.12413/assets/x31.png)
-
+!(/html/2602.12413/assets/x31.png)
 
 (c) ZebraLogic dataset (n=1000n=1000).
 
@@ -1492,13 +1411,11 @@ If the corpus text is an exact substring of the test text (the corpus text appea
 
 ### B.1 Reporting on top 100 cosine similarity matches instead of 100 sampled from top 0.1%
 
-![Refer to caption](/html/2602.12413/assets/x32.png)
-
+!(/html/2602.12413/assets/x32.png)
 
 (a) Correlation of Similarity vs. Duplicates (including semantic and exact
 
-![Refer to caption](/html/2602.12413/assets/x33.png)
-
+!(/html/2602.12413/assets/x33.png)
 
 (b) Propensity of semantic duplicates by Training Scheme (excluding exact duplicates)
 
@@ -1548,9 +1465,6 @@ Table 8: Effect of finetuning Olmo3 on semantic duplicates of MuSR Murder Myster
 | Level 1 | 86.1 | 81.3 |
 | Level 2 | 85.8 | 81.6 |
 
-
-
-
 Table 9: No degradation effect of finetuning Olmo3 on semantic duplicates of MuSR Murder Mysteries reasoning traces. Olmo3 was finetuned for 3 epochs.
 
 |  |  |  |  |  |  |  |
@@ -1561,9 +1475,6 @@ Table 9: No degradation effect of finetuning Olmo3 on semantic duplicates of MuS
 | Level 0 | 50.3 | 78.6 | 76.0 | 56.4 | 75.7 | 64.8 |
 | Level 1 | 50.3 | 78.6 | 77.0 | 56.4 | 75.6 | 64.7 |
 | Level 2 | 50.6 | 78.9 | 77.1 | 56.5 | 75.6 | 65.1 |
-
-
-
 
 Table 10: No degradation effect of finetuning Olmo3 on semantic duplicates of ZebraLogic reasoning traces. Olmo3 was finetuned for 3 epochs.
 
@@ -1590,83 +1501,3 @@ We either finetune on half of the level 2 & 3 semantic duplicates mixed in with 
 | Finetuned | 66.4 | 54.4 | 51.2 | 48.8 |  |
 | Qwen3 | Baseline | 39.2 | 41.6 | 39.2 | 41.6 |  |
 | Finetuned | 65.6 | 52.0 | 48.0 | 59.2 |  |
-
-[◄](/html/2602.12412)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.12413)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.12413)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.12413)[►](/html/2602.12414)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 15:03:25 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

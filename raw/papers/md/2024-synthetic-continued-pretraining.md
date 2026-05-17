@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2409.07431
 year: 2024
 ---
 
-[2409.07431] Synthetic continued pretraining
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Synthetic continued pretraining
 
 Zitong Yang
@@ -125,8 +82,7 @@ We repeatedly rephrase a small corpus and find that the value of incremental syn
 We attribute this failure to the lack of diversity in paraphrasing alone.
 In the linear algebra example, online lecture notes and Stack Exchange discussions go beyond a simple rewrite of any textbook—they provide deeper analysis and application of the underlying concepts and techniques.
 
-![Refer to caption](/html/2409.07431/assets/x1.png)
-
+!(/html/2409.07431/assets/x1.png)
 
 Figure 1: Synthetic continued pretraining (synthetic CPT) converts a small source corpus into a large synthetic corpus that is amenable to learning via standard continued pretraining.
 We instantiate synthetic CPT using a synthetic data augmentation algorithm called EntiGraph, which forms a knowledge graph over entities extracted from documents, and then prompts an LM to synthesize a text-based representation of the graph.
@@ -368,8 +324,7 @@ In §[4.3](#S4.SS3 "4.3 Instruction following evaluations ‣ 4 Main experiments
 
 ### 4.1 Continued pretraining procedure
 
-![Refer to caption](/html/2409.07431/assets/x2.png)
-
+!(/html/2409.07431/assets/x2.png)
 
 Figure 2: 
 Accuracy on the QuALITY question set 𝒬testsubscript𝒬test{\mathcal{Q}}\_{\text{test}} (y𝑦y-axis) as a function of the synthetic token count (x𝑥x-axis).
@@ -465,8 +420,7 @@ Appendix [H.2](#A8.SS2 "H.2 Closed-book Summarization ‣ Appendix H Additional
 
 #### Results discussion.
 
-![Refer to caption](/html/2409.07431/assets/x3.png)
-
+!(/html/2409.07431/assets/x3.png)
 
 Figure 3: 
 Closed-book summarization: number of false claims (y𝑦y-axis) versus number of salient claims (x𝑥x-axis) normalized by the human summary.
@@ -637,8 +591,7 @@ Qualitatively, for a general representation of source documents 𝒟sourcesubscr
 | --- | --- | --- | --- |
 |  | 𝖠𝖼𝖼​(𝑴t)∼p+C​(1−∑k=1∞μ​(k)​(1−ak)t).similar-to𝖠𝖼𝖼subscript𝑴𝑡𝑝𝐶1superscriptsubscript𝑘1𝜇𝑘superscript1subscript𝑎𝑘𝑡\mathsf{Acc}({\bm{M}}\_{t})\sim p+C\left(1-\sum\_{k=1}^{\infty}\mu(k)\left(1-a\_{k}\right)^{t}\right). |  | (2) |
 
-![Refer to caption](/html/2409.07431/assets/x4.png)
-
+!(/html/2409.07431/assets/x4.png)
 
 Figure 4: A mixture-of-exponential functional form ([2](#S6.E2 "In 6.3 An analytical formula ‣ 6 Theoretical analysis of EntiGraph scaling ‣ Synthetic continued pretraining")) closely fits the scaling trend of EntiGraph CPT with respect to synthetic token count.
 
@@ -654,18 +607,15 @@ Intuitively, the edge (i,j)𝑖𝑗(i,j) will eventually be added if and only if
 
 #### Qualitative description.
 
-![Refer to caption](/html/2409.07431/assets/figures/Acc1.png)
-
+!(/html/2409.07431/assets/figures/Acc1.png)
 
 (a)  Linear regime
 
-![Refer to caption](/html/2409.07431/assets/figures/Acc2.png)
-
+!(/html/2409.07431/assets/figures/Acc2.png)
 
 (b)  Log-linear (t𝑡t in log scale)
 
-![Refer to caption](/html/2409.07431/assets/figures/Acc3.png)
-
+!(/html/2409.07431/assets/figures/Acc3.png)
 
 (c)  Plateau regime
 
@@ -1502,18 +1452,15 @@ We provide additional details on the QuALITY dataset below.
 For each book, we execute entity extraction (Step 1, §[2.2](#S2.SS2 "2.2 EntiGraph ‣ 2 Our method ‣ Synthetic continued pretraining")) and then analyze all pair-wise relations between entities and a subset of all triplet relations (Step 2, [2.2](#S2.SS2 "2.2 EntiGraph ‣ 2 Our method ‣ Synthetic continued pretraining")).
 We provide summary statistics for the Raw and EntiGraph corpora in Figure [6](#A2.F6 "Figure 6 ‣ Appendix B Details on the QuALITY dataset ‣ Synthetic continued pretraining").
 
-![Refer to caption](/html/2409.07431/assets/x5.png)
-
+!(/html/2409.07431/assets/x5.png)
 
 (a)  Raw article tokens
 
-![Refer to caption](/html/2409.07431/assets/x6.png)
-
+!(/html/2409.07431/assets/x6.png)
 
 (b)  Extracted entities
 
-![Refer to caption](/html/2409.07431/assets/x7.png)
-
+!(/html/2409.07431/assets/x7.png)
 
 (c)  EntiGraph corpus tokens
 
@@ -1579,8 +1526,7 @@ year, etc.
 We repeat this prompt many times at temperature 1.0, resulting in 28M tokens on synthetic question answer pairs.
 We perform the same continued pretraining procedure in §[4.1](#S4.SS1 "4.1 Continued pretraining procedure ‣ 4 Main experiments ‣ Synthetic continued pretraining") on Llama 3 8B and refer to this model as “QA SFT”.
 
-![Refer to caption](/html/2409.07431/assets/x8.png)
-
+!(/html/2409.07431/assets/x8.png)
 
 Figure 7: Accuracy on the QuALITY question set 𝒬testsubscript𝒬test{\mathcal{Q}}\_{\text{test}} (y𝑦y-axis) as a function of the synthetic token count (x𝑥x-axis).
 Comparison among EntiGraph CPT, Rephrase CPT, and QA SFT.
@@ -2285,8 +2231,7 @@ We perform a controlled comparison between EntiGraph and Rephrase CPT under subs
 Concretely, we apply the same instruction procedure described in §[4.3](#S4.SS3 "4.3 Instruction following evaluations ‣ 4 Main experiments ‣ Synthetic continued pretraining") to the Raw CPT and Rephrase CPT models from §[4.1](#S4.SS1 "4.1 Continued pretraining procedure ‣ 4 Main experiments ‣ Synthetic continued pretraining"), obtaining two additional instruction-tuned models that have knowledge about QuALITY books.
 In addition, we also subsample 29M tokens out of the 455M token EntiGraph corpus to token-match the Raw and Rephrase corpus, and refer to the corresponding instruction tuned model as EntiGraph-29M.
 
-![Refer to caption](/html/2409.07431/assets/x9.png)
-
+!(/html/2409.07431/assets/x9.png)
 
 Figure 8: Closed-book summarization: number of false claims (y𝑦y-axis) versus number of salient claims (x𝑥x-axis) normalized by the human summary.
 Same setup as in §[4.3](#S4.SS3 "4.3 Instruction following evaluations ‣ 4 Main experiments ‣ Synthetic continued pretraining").
@@ -2294,83 +2239,3 @@ Same setup as in §[4.3](#S4.SS3 "4.3 Instruction following evaluations ‣ 4 Ma
 Figure [8](#A8.F8 "Figure 8 ‣ H.3 Additional quantitative summary evaluation ‣ Appendix H Additional evaluation details of main experiments ‣ Synthetic continued pretraining") shows that EntiGraph summaries for the short prompt have significantly fewer false claims while having a comparable number of salient claims. The trend holds for the longer summary prompt, with clear separation in the error bars for the false claims gap between EntiGraph and Rephrase baselines, and overlap in the error bars for the salient claims count.
 
 Finally, we also see clear improvements in scaling from 29M to the full EntiGraph model, with significant reductions in false claims for both the short and long prompts, suggesting that much like in the QA case, EntiGraph could bring improvements to knowledge-intensive downstream tasks through additional scale.
-
-[◄](/html/2409.07430)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2409.07431)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2409.07431)
-[View original  
-on arXiv](https://arxiv.org/abs/2409.07431)[►](/html/2409.07432)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Oct 5 23:33:10 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

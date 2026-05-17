@@ -11,59 +11,6 @@ url: https://arxiv.org/abs/2409.20325
 year: 2024
 ---
 
-[2409.20325] Old Optimizer, New Norm: An Anthology
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\SetAlCapSkip
-
-1em
-\SetKwCommentComment##\# 
-\optauthor\NameJeremy Bernstein \Emailjbernstein@mit.edu
-  
-\NameLaker Newhouse \Emaillakern@mit.edu
-  
-\addrMIT CSAIL, United States
-
 # Old Optimizer, New Norm: An Anthology
 
 ###### Abstract
@@ -90,8 +37,7 @@ For any 𝐠∈ℝn𝐠superscriptℝ𝑛{\bm{g}}\in\mathbb{R}^{n} thought of as
 
 [Equation 1](#Sx1.E1 "In Proposition 1 (Steepest descent) ‣ Prologue ‣ Old Optimizer, New Norm: An Anthology") separates the solution of the steepest descent problem into two pieces: first computing the step size as the dual norm of the gradient divided by the sharpness, and second solving for the step direction as the unit vector that maximizes the inner product with the gradient. The proof of this proposition is given in [Appendix B](#A2.SSx1 "1: \nameref*prop:steepest ‣ Appendix B Proofs ‣ Old Optimizer, New Norm: An Anthology").
 
-![Refer to caption](/html/2409.20325/assets/x1.png)
-
+!(/html/2409.20325/assets/x1.png)
 
 Figure 1: Steepest descent considers the problem of minimizing a linear functional under a quadratic penalty: arg​minΔ​𝒘∈ℝn⁡[𝒈⊤​Δ​𝒘+λ2​‖Δ​𝒘‖2]subscriptargminΔ𝒘superscriptℝ𝑛superscript𝒈topΔ𝒘𝜆2superscriptnormΔ𝒘2\operatorname\*{arg\,min}\_{\Delta{\bm{w}}\in\mathbb{R}^{n}}\left[{\bm{g}}^{\top}\Delta{\bm{w}}+\frac{\lambda}{2}\,\|{\Delta{\bm{w}}}\|^{2}\right] for 𝒈∈ℝn𝒈superscriptℝ𝑛{\bm{g}}\in\mathbb{R}^{n}. Here we show how the solution varies with the sharpness λ>0𝜆0\lambda>0 and the choice of norm ∥⋅∥\|{\cdot}\|. We overlay different norm balls on top of a linear color gradient, and use arrows to denote the solution, meaning the member of the norm ball that “minimizes the color”. a) Increasing the sharpness decreases the size of the solution vector. b) Changing the norm can change the direction of the solution vector. For different ℓpsubscriptℓ𝑝\ell\_{p} norms, the solution direction changes because the gradient is not axis-aligned. In practice, we should pick the sharpness and norm to fit the geometry of our loss.
 
@@ -853,83 +799,3 @@ Next, let’s deal with the ℓp→ℓ∞→subscriptℓ𝑝subscriptℓ\ell\_{p
 |  |  | =maxi⁡‖rowi​(𝑴)‖p†.absentsubscript𝑖superscriptsubscriptnormsubscriptrow𝑖𝑴𝑝†\displaystyle=\max\_{i}\|{\mathrm{row}\_{i}({\bm{M}})}\|\_{p}^{\dagger}. |  | (62) |
 
 The proof is completed by recalling that the vector ℓpsubscriptℓ𝑝\ell\_{p} norm is dual to the vector ℓqsubscriptℓ𝑞\ell\_{q} norm for 1/p+1/q=11𝑝1𝑞11/p+1/q=1. In other words, ∥⋅∥p†=∥⋅∥pp−1\|{\cdot}\|\_{p}^{\dagger}=\|{\cdot}\|\_{\frac{p}{p-1}}.
-
-[◄](/html/2409.20324)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2409.20325)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2409.20325)
-[View original  
-on arXiv](https://arxiv.org/abs/2409.20325)[►](/html/2409.20326)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Oct 5 20:05:52 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -14,50 +14,6 @@ url: http://arxiv.org/abs/2305.18446v2
 year: 2023
 ---
 
-[2305.18446] Trompt: Towards a Better Deep Neural Network for Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Trompt: Towards a Better Deep Neural Network for Tabular Data
 
 Kuan-Yu Chen
@@ -82,23 +38,19 @@ The experimental results demonstrate that Trompt outperforms state-of-the-art de
 
 Tabular Data, Prompt Learning, Model Architecture Design
 
-![Refer to caption](/html/2305.18446/assets/figures/benchmark_classif_medium.jpg)
-
+!(/html/2305.18446/assets/figures/benchmark_classif_medium.jpg)
 
 (a) Medium-sized classification task.
 
-![Refer to caption](/html/2305.18446/assets/figures/benchmark_regression_medium.jpg)
-
+!(/html/2305.18446/assets/figures/benchmark_regression_medium.jpg)
 
 (b) Medium-sized regression task.
 
-![Refer to caption](/html/2305.18446/assets/figures/benchmark_classif_large.jpg)
-
+!(/html/2305.18446/assets/figures/benchmark_classif_large.jpg)
 
 (c) Large-sized classification task.
 
-![Refer to caption](/html/2305.18446/assets/figures/benchmark_regression_large.jpg)
-
+!(/html/2305.18446/assets/figures/benchmark_regression_large.jpg)
 
 (d) Large-sized regression task.
 
@@ -171,8 +123,7 @@ However, TabTransformer only fed categorical features to transformer blocks and 
 FT-Transformer (Gorishniy et al., [2021](#bib.bib16)) fixed this issue through feeding both categorical and numerical features to transformer blocks.
 SAINT (Somepalli et al., [2021](#bib.bib36)) further improved FT-Transformer through applying attentions on not only the feature dimensions but also the sample dimensions.
 
-![Refer to caption](/html/2305.18446/assets/x1.png)
-
+!(/html/2305.18446/assets/x1.png)
 
 Figure 2: Overall architecture of the proposed Trompt.
 
@@ -198,8 +149,7 @@ As far as our understanding, Trompt is the first prompt-inspired tabular neural 
 Compared to transformer-based models, Trompt learns separated column importances instead of focusing on the interactions among columns.
 Compared to TabNet and Net-DNF, Trompt handle multiple modalities by emulating prompt learning instead of the branch split of decision tree.
 
-![Refer to caption](/html/2305.18446/assets/x2.png)
-
+!(/html/2305.18446/assets/x2.png)
 
 Figure 3: Architecture of a Trompt Cell.
 
@@ -273,8 +223,7 @@ In addition, since column is the third axis, the shape is reduced from ℝB×P×
 | --- | --- | --- | --- |
 |  | 𝐎=∑i=1C(𝐄^feature⊙𝐌importance):,:,i,:∈ℝB×P×d𝐎superscriptsubscript𝑖1𝐶subscriptdirect-productsubscript^𝐄featuresubscript𝐌importance  ::𝑖:superscriptℝ𝐵𝑃𝑑\mathbf{O}=\sum\_{i=1}^{C}({\mathbf{\hat{E}}\_{\text{feature}}\odot\mathbf{M}\_{\text{importance}})\_{:,:,i,:}}\in\mathbb{R}^{B\times{P}\times{d}} |  | (5) |
 
-![Refer to caption](/html/2305.18446/assets/x3.png)
-
+!(/html/2305.18446/assets/x3.png)
 
 Figure 4: Architecture of a Trompt Downstream.
 
@@ -410,27 +359,21 @@ With the small hyperparameter search space, the curve of Trompt is relatively fl
 The flat curve also suggests that Trompt performs well with its default hyperparameters.
 Its performance after an exhausted search is worthy of future exploring.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_classif.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_classif.jpg)
 
 (a) Numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_classif.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_classif.jpg)
 
 (b) Heterogeneous features.
 
 Figure 5: Benchmark on medium-sized classification datasets.
 
-
-
-![Refer to caption](/html/2305.18446/assets/figures/numerical_classif-large.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_classif-large.jpg)
 
 (a) Numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_classif-large.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_classif-large.jpg)
 
 (b) Heterogeneous features.
 
@@ -450,27 +393,21 @@ In general, deep learning models are not good at handling categorical features.
 Trompt alleviates this weakness as shown in all tasks with heterogeneous features in [Figure 5](#S4.F5 "In 4.2.1 Classification ‣ 4.2 Evaluation Results ‣ 4 Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data")–[Figure 8](#S4.F8 "In 4.2.2 Regression ‣ 4.2 Evaluation Results ‣ 4 Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data").
 Trompt achieves superior performance over state-of-the-art deep neural networks except on the large-sized regression tasks with numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_regression_quantile.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_regression_quantile.jpg)
 
 (a) Numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_regression_quantile.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_regression_quantile.jpg)
 
 (b) Heterogeneous features.
 
 Figure 7: Benchmark on medium-sized regression datasets.
 
-
-
-![Refer to caption](/html/2305.18446/assets/figures/numerical_regression_quantile-large.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_regression_quantile-large.jpg)
 
 (a) Numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_regression_quantile-large.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_regression_quantile-large.jpg)
 
 (b) Heterogeneous features.
 
@@ -520,9 +457,6 @@ Table 4: The performance of with and without applying feature transformation on 
 | Classification | 81.81%percent81.8181.81\% | 80.76%percent80.7680.76\% |
 | Regression | 74.15%percent74.1574.15\% | 73.73%percent73.7373.73\% |
 
-
-
-
 Table 5: The top-3 importance score ratio on the mushroom dataset.
 
   
@@ -561,27 +495,21 @@ In the Syn2 dataset, features 2–5 are important ([Figure 9(a)](#S4.F9.sf1 "In
 In the Syn4 dataset, either features 0–1 or 2–5 could be important based on the value of feature 10 ([Figure 10(a)](#S4.F10.sf1 "In Figure 10 ‣ 4.4 Interpretability ‣ 4 Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data")).
 As [Figure 10](#S4.F10 "In 4.4 Interpretability ‣ 4 Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data") shows, Trompt still properly focuses on features 0–5 and discovers the influence of feature 10.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn2-real.png)
-
+!(/html/2305.18446/assets/figures/syn2-real.png)
 
 (a) Important features.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn2-mask.png)
-
+!(/html/2305.18446/assets/figures/syn2-mask.png)
 
 (b) Feature importances of Trompt.
 
 Figure 9: Attention mask on Syn2 dataset (synthetic).
 
-
-
-![Refer to caption](/html/2305.18446/assets/figures/syn4-real.png)
-
+!(/html/2305.18446/assets/figures/syn4-real.png)
 
 (a) Important features.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn4-mask.png)
-
+!(/html/2305.18446/assets/figures/syn4-mask.png)
 
 (b) Feature importances of Trompt.
 
@@ -1019,9 +947,6 @@ Table 6: Notation of medium-sized datasets (1).
 | B14 | pol |
 | B15 | wine |
 
-
-
-
 Table 7: Notation of medium-sized datasets (2).
 
   
@@ -1060,9 +985,6 @@ Table 7: Notation of medium-sized datasets (2).
 | D17 | superconduct |
 | D18 | wine\_quality |
 | D19 | year |
-
-
-
 
 Table 8: Notation of large-sized datasets.
 
@@ -1126,9 +1048,6 @@ Table 9: The performance of medium-sized classification task (*heterogeneous fea
 | RandomForest | 79.38%percent79.3879.38\% | 79.28%percent79.2879.28\% | 85.89%percent85.8985.89\% | 87.76%percent87.7687.76\% | 65.70%percent65.7065.70\% | 79.79%percent79.7979.79\% | 75.88%percent75.8875.88\% | 4.29±2.27plus-or-minus4.292.274.29\pm 2.27 |
 | GradientBoostingTree | 80.01%percent80.0180.01\% | 73.77%percent73.7773.77\% | 85.55%percent85.5585.55\% | 87.85%percent87.8587.85\% | 63.30%percent63.3063.30\% | 77.58%percent77.5877.58\% | 76.23%percent76.2376.23\% | 5.29±2.17plus-or-minus5.292.175.29\pm 2.17 |
 
-
-
-
 Table 10: The performance of medium-sized classification task (*numerical features only*) (1).
 
   
@@ -1156,9 +1075,6 @@ Table 10: The performance of medium-sized classification task (*numerical featur
 | XGBoost | 71.36%percent71.3671.36\% | 86.05%percent86.0586.05\% | 93.66%percent93.6693.66\% | 80.34%percent80.3480.34\% | 90.12%percent90.1290.12\% | 81.75%percent81.7581.75\% | 77.26%percent77.2677.26\% | 86.94%percent86.9486.94\% |
 | RandomForest | 70.76%percent70.7670.76\% | 85.41%percent85.4185.41\% | 92.65%percent92.6592.65\% | 79.82%percent79.8279.82\% | 89.21%percent89.2189.21\% | 82.73%percent82.7382.73\% | 77.25%percent77.2577.25\% | 86.14%percent86.1486.14\% |
 | GradientBoostingTree | 71.00%percent71.0071.00\% | 85.57%percent85.5785.57\% | 93.22%percent93.2293.22\% | 80.26%percent80.2680.26\% | 89.68%percent89.6889.68\% | 81.72%percent81.7281.72\% | 77.27%percent77.2777.27\% | 86.24%percent86.2486.24\% |
-
-
-
 
 Table 11: The performance of medium-sized classification task (*numerical features only*) (2).
 
@@ -1188,9 +1104,6 @@ Table 11: The performance of medium-sized classification task (*numerical featur
 | RandomForest | 65.04%percent65.0465.04\% | 87.80%percent87.8087.80\% | 77.27%percent77.2777.27\% | 87.95%percent87.9587.95\% | 88.45%percent88.4588.45\% | 98.20%percent98.2098.20\% | 78.96%percent78.9678.96\% | 5.33±1.88plus-or-minus5.331.885.33\pm 1.88 |
 | GradientBoostingTree | 63.04%percent63.0463.04\% | 88.22%percent88.2288.22\% | 77.17%percent77.1777.17\% | 88.32%percent88.3288.32\% | 86.68%percent86.6886.68\% | 98.06%percent98.0698.06\% | 78.56%percent78.5678.56\% | 5.07±1.77plus-or-minus5.071.775.07\pm 1.77 |
 
-
-
-
 Table 12: The performance of large-sized classification task (*heterogeneous features*).
 
   
@@ -1218,9 +1131,6 @@ Table 12: The performance of large-sized classification task (*heterogeneous fea
 | XGBoost | 93.07%percent93.0793.07\% | 79.91%percent79.9179.91\% | 4.00±2.18plus-or-minus4.002.184.00\pm 2.18 |
 | RandomForest | 93.30%percent93.3093.30\% | 78.13%percent78.1378.13\% | 6.00±2.47plus-or-minus6.002.476.00\pm 2.47 |
 | GradientBoostingTree | 92.99%percent92.9992.99\% | 78.59%percent78.5978.59\% | 6.00±1.76plus-or-minus6.001.766.00\pm 1.76 |
-
-
-
 
 Table 13: The performance of large-sized classification task (*numerical features only*).
 
@@ -1250,23 +1160,19 @@ Table 13: The performance of large-sized classification task (*numerical feature
 | RandomForest | 71.98%percent71.9871.98\% | 93.53%percent93.5393.53\% | 90.59%percent90.5990.59\% | 78.85%percent78.8578.85\% | 7.00±3.96plus-or-minus7.003.967.00\pm 3.96 |
 | GradientBoostingTree | 72.49%percent72.4972.49\% | 94.07%percent94.0794.07\% | 89.79%percent89.7989.79\% | 79.34%percent79.3479.34\% | 6.25±1.95plus-or-minus6.251.956.25\pm 1.95 |
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_classif-individual.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_classif-individual.jpg)
 
 Figure 11: Benchmark on *every* medium-sized classification dataset with heterogeneous features.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_classif-individual.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_classif-individual.jpg)
 
 Figure 12: Benchmark on *every* medium-sized classification dataset with numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_classif-individual-large.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_classif-individual-large.jpg)
 
 Figure 13: Benchmark on *every* large-sized classification dataset with heterogeneous features.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_classif-individual-large.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_classif-individual-large.jpg)
 
 Figure 14: Benchmark on *every* large-sized classification dataset with numerical features only.
 
@@ -1311,9 +1217,6 @@ Table 14: The performance of medium-sized regression task (*heterogeneous featur
 | RandomForest | 93.79%percent93.7993.79\% | 99.34%percent99.3499.34\% | 57.55%percent57.5557.55\% | 14.94%percent14.9414.94\% | 99.98%percent99.9899.98\% | 98.07%percent98.0798.07\% | 60.91%percent60.9160.91\% | 98.79%percent98.7998.79\% |
 | GradientBoostingTree | 94.07%percent94.0794.07\% | 99.46%percent99.4699.46\% | 57.53%percent57.5357.53\% | 15.27%percent15.2715.27\% | 99.98%percent99.9899.98\% | 98.13%percent98.1398.13\% | 61.54%percent61.5461.54\% | 98.98%percent98.9898.98\% |
 
-
-
-
 Table 15: The performance of medium-sized regression task (*heterogeneous features*) (2).
 
   
@@ -1341,9 +1244,6 @@ Table 15: The performance of medium-sized regression task (*heterogeneous featur
 | XGBoost | 89.65%percent89.6589.65\% | 57.82%percent57.8257.82\% | 69.08%percent69.0869.08\% | 100.00%percent100.00100.00\% | 8.01%percent8.018.01\% | 2.15±1.74plus-or-minus2.151.742.15\pm 1.74 |
 | RandomForest | 87.50%percent87.5087.50\% | 58.48%percent58.4858.48\% | 67.44%percent67.4467.44\% | 100.00%percent100.00100.00\% | 9.52%percent9.529.52\% | 4.31±2.80plus-or-minus4.312.804.31\pm 2.80 |
 | GradientBoostingTree | 89.05%percent89.0589.05\% | 57.29%percent57.2957.29\% | 68.30%percent68.3068.30\% | 100.00%percent100.00100.00\% | 5.54%percent5.545.54\% | 3.92±1.35plus-or-minus3.921.353.92\pm 1.35 |
-
-
-
 
 Table 16: The performance of medium-sized regression task (*numerical features only*) (1).
 
@@ -1373,9 +1273,6 @@ Table 16: The performance of medium-sized regression task (*numerical features o
 | RandomForest | 83.75%percent83.7583.75\% | 68.69%percent68.6968.69\% | 99.33%percent99.3399.33\% | 92.42%percent92.4292.42\% | 83.02%percent83.0283.02\% | 98.28%percent98.2898.28\% | 94.53%percent94.5394.53\% |
 | GradientBoostingTree | 84.25%percent84.2584.25\% | 68.94%percent68.9468.94\% | 99.60%percent99.6099.60\% | 92.43%percent92.4392.43\% | 84.48%percent84.4884.48\% | 98.51%percent98.5198.51\% | 94.47%percent94.4794.47\% |
 
-
-
-
 Table 17: The performance of medium-sized regression task (*numerical features only*) (2).
 
   
@@ -1403,9 +1300,6 @@ Table 17: The performance of medium-sized regression task (*numerical features o
 | XGBoost | 90.67%percent90.6790.67\% | 66.79%percent66.7966.79\% | 54.63%percent54.6354.63\% | 88.76%percent88.7688.76\% | 84.95%percent84.9584.95\% | 97.87%percent97.8797.87\% | 55.23%percent55.2355.23\% |
 | RandomForest | 83.82%percent83.8283.82\% | 65.47%percent65.4765.47\% | 49.15%percent49.1549.15\% | 87.10%percent87.1087.10\% | 82.77%percent82.7782.77\% | 97.89%percent97.8997.89\% | 56.04%percent56.0456.04\% |
 | GradientBoostingTree | 85.84%percent85.8485.84\% | 66.32%percent66.3266.32\% | 52.49%percent52.4952.49\% | 88.32%percent88.3288.32\% | 84.07%percent84.0784.07\% | 97.94%percent97.9497.94\% | 55.21%percent55.2155.21\% |
-
-
-
 
 Table 18: The performance of medium-sized regression task (*numerical features only*) (3).
 
@@ -1435,9 +1329,6 @@ Table 18: The performance of medium-sized regression task (*numerical features o
 | RandomForest | 98.87%percent98.8798.87\% | 85.64%percent85.6485.64\% | 90.89%percent90.8990.89\% | 50.43%percent50.4350.43\% | 24.09%percent24.0924.09\% | 5.58±2.33plus-or-minus5.582.335.58\pm 2.33 |
 | GradientBoostingTree | 98.91%percent98.9198.91\% | 81.31%percent81.3181.31\% | 90.36%percent90.3690.36\% | 45.55%percent45.5545.55\% | 26.94%percent26.9426.94\% | 4.58±1.69plus-or-minus4.581.694.58\pm 1.69 |
 
-
-
-
 Table 19: The performance of large-sized regression task (*heterogeneous features*).
 
   
@@ -1465,9 +1356,6 @@ Table 19: The performance of large-sized regression task (*heterogeneous feature
 | XGBoost | 99.98%percent99.9899.98\% | 63.90%percent63.9063.90\% | 99.32%percent99.3299.32\% | 64.79%percent64.7964.79\% | 71.22%percent71.2271.22\% | 1.20±2.80plus-or-minus1.202.801.20\pm 2.80 |
 | RandomForest | −- | −- | −- | −- | −- | −- |
 | GradientBoostingTree | 99.98%percent99.9899.98\% | 63.06%percent63.0663.06\% | 99.18%percent99.1899.18\% | 63.62%percent63.6263.62\% | 70.58%percent70.5870.58\% | 4.00±2.07plus-or-minus4.002.074.00\pm 2.07 |
-
-
-
 
 Table 20: The performance of large-sized regression task (*numerical features only*).
 
@@ -1497,23 +1385,19 @@ Table 20: The performance of large-sized regression task (*numerical features on
 | RandomForest | −- | −- | −- | −- |
 | GradientBoostingTree | 94.72%percent94.7294.72\% | 61.72%percent61.7261.72\% | 30.73%percent30.7330.73\% | 3.00±1.71plus-or-minus3.001.713.00\pm 1.71 |
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_regression_quantile-individual.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_regression_quantile-individual.jpg)
 
 Figure 15: Benchmark on *every* medium-sized regression dataset with heterogeneous features.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_regression_quantile-individual.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_regression_quantile-individual.jpg)
 
 Figure 16: Benchmark on *every* medium-sized regression dataset with numerical features only.
 
-![Refer to caption](/html/2305.18446/assets/figures/categorical_regression_quantile-individual-large.jpg)
-
+!(/html/2305.18446/assets/figures/categorical_regression_quantile-individual-large.jpg)
 
 Figure 17: Benchmark on *every* large-sized regression dataset with heterogeneous features.
 
-![Refer to caption](/html/2305.18446/assets/figures/numerical_regression_quantile-individual-large.jpg)
-
+!(/html/2305.18446/assets/figures/numerical_regression_quantile-individual-large.jpg)
 
 Figure 18: Benchmark on *every* large-sized regression dataset with numerical features only.
 
@@ -1708,27 +1592,21 @@ Furthermore, in [Section E.2](#A5.SS2 "E.2 Additional Real-world Datasets ‣ A
 As evident from the attention visualization in [Figures 19](#A5.F19 "In E.1 Feature Importances of Each Layer ‣ Appendix E More Interpretability Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data") and [20](#A5.F20 "Figure 20 ‣ E.1 Feature Importances of Each Layer ‣ Appendix E More Interpretability Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data"), Trompt effectively directs its attention towards important features in both the Syn2 and Syn4 datasets.
 It is worth noting that in our experiments, we employed default hyperparameters, as outlined in [Table 2](#S4.T2 "In 4.1.2 Implementation Details ‣ 4.1 Setup ‣ 4 Experiments ‣ Trompt: Towards a Better Deep Neural Network for Tabular Data"), resulting in Trompt being composed of six Trompt Cells.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn2-real.png)
-
+!(/html/2305.18446/assets/figures/syn2-real.png)
 
 (a) Important Features.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn2-mask-layer.png)
-
+!(/html/2305.18446/assets/figures/syn2-mask-layer.png)
 
 (b) Masks of Trompt.
 
 Figure 19: Attention masks of each layer on Syn2 dataset.
 
-
-
-![Refer to caption](/html/2305.18446/assets/figures/syn4-real.png)
-
+!(/html/2305.18446/assets/figures/syn4-real.png)
 
 (a) Important Features.
 
-![Refer to caption](/html/2305.18446/assets/figures/syn4-mask-layer.png)
-
+!(/html/2305.18446/assets/figures/syn4-mask-layer.png)
 
 (b) Masks of Trompt.
 
@@ -1755,9 +1633,6 @@ Table 28: The top-3 importance score ratio on the red wine quality dataset.
 | CatBoost | sulphates (16.29%percent16.2916.29\%) | alcohol (15.67%percent15.6715.67\%) | volatile acidity (10.40%percent10.4010.40\%) |
 | GradientBoostingTree | alcohol (26.27%percent26.2726.27\%) | sulphates (16.24%percent16.2416.24\%) | volatile acidity (11.12%percent11.1211.12\%) |
 | Trompt (ours) | alcohol (11.83%percent11.8311.83\%) | sulphates (10.94%percent10.9410.94\%) | total sulfur dioxide (9.78%percent9.789.78\%) |
-
-
-
 
 Table 29: The top-3 importance score ratio on the white wine quality dataset.
 
@@ -1805,9 +1680,6 @@ Table 30: Hyperparameter space of Trompt.
 | Feature Embeddings Residual Connection | [𝚝𝚛𝚞𝚎,𝚏𝚊𝚕𝚜𝚎]𝚝𝚛𝚞𝚎𝚏𝚊𝚕𝚜𝚎[\mathtt{true},\mathtt{false}] |
 | Minimal Batch Ratio | [0.1,0.01]0.10.01[0.1,0.01] |
 
-
-
-
 Table 31: Hyperparameter space of FT-Transformer.
 
   
@@ -1827,9 +1699,6 @@ Table 31: Hyperparameter space of FT-Transformer.
 | Learning Rate Scheduler | [𝚝𝚛𝚞𝚎,𝚏𝚊𝚕𝚜𝚎]𝚝𝚛𝚞𝚎𝚏𝚊𝚕𝚜𝚎[\mathtt{true},\mathtt{false}] |
 | Batch Size | [256,512,1024]  2565121024[256,512,1024] |
 
-
-
-
 Table 32: Hyperparameter space of ResNet.
 
   
@@ -1848,9 +1717,6 @@ Table 32: Hyperparameter space of ResNet.
 | Learning Rate Scheduler | [𝚝𝚛𝚞𝚎,𝚏𝚊𝚕𝚜𝚎]𝚝𝚛𝚞𝚎𝚏𝚊𝚕𝚜𝚎[\mathtt{true},\mathtt{false}] |
 | Batch Size | [256,512,1024]  2565121024[256,512,1024] |
 
-
-
-
 Table 33: Hyperparameter space of MLP.
 
   
@@ -1865,9 +1731,6 @@ Table 33: Hyperparameter space of MLP.
 | Learning Rate Scheduler | [𝚝𝚛𝚞𝚎,𝚏𝚊𝚕𝚜𝚎]𝚝𝚛𝚞𝚎𝚏𝚊𝚕𝚜𝚎[\mathtt{true},\mathtt{false}] |
 | Batch Size | [256,512,1024]  2565121024[256,512,1024] |
 
-
-
-
 Table 34: Hyperparameter space of SAINT.
 
   
@@ -1881,9 +1744,6 @@ Table 34: Hyperparameter space of SAINT.
 | Learning Rate | 𝚕𝚘𝚐​\_​𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[1​e−5,1​e−3]𝚕𝚘𝚐\_𝚞𝚗𝚒𝚏𝚘𝚛𝚖1𝑒51𝑒3\mathtt{log\\_uniform}[1e-5,1e-3] |
 | Batch Size | [128,256]128256[128,256] |
 
-
-
-
 Table 35: Hyperparameter space of CatBoost.
 
   
@@ -1896,9 +1756,6 @@ Table 35: Hyperparameter space of CatBoost.
 | Bagging Temperature | 𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[0,1]𝚞𝚗𝚒𝚏𝚘𝚛𝚖01\mathtt{uniform}[0,1] |
 | L2 Leaf Reg | 𝚕𝚘𝚐​\_​𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[1,10]𝚕𝚘𝚐\_𝚞𝚗𝚒𝚏𝚘𝚛𝚖110\mathtt{log\\_uniform}[1,10] |
 | Leaf Estimation Iteration | [1,2,3,4,5,6,7,8,9,10]  12345678910[1,2,3,4,5,6,7,8,9,10] |
-
-
-
 
 Table 36: Hyperparameter space of LightGBM.
 
@@ -1914,9 +1771,6 @@ Table 36: Hyperparameter space of LightGBM.
 | Feature Fraction | 𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[0.1,1.0]𝚞𝚗𝚒𝚏𝚘𝚛𝚖0.11.0\mathtt{uniform}[0.1,1.0] |
 | Num Estimators | 100010001000 |
 | Boosting | [𝚐𝚋𝚍𝚝,𝚛𝚏,𝚍𝚊𝚛𝚝]  𝚐𝚋𝚍𝚝𝚛𝚏𝚍𝚊𝚛𝚝[\mathtt{gbdt},\mathtt{rf},\mathtt{dart}] |
-
-
-
 
 Table 37: Hyperparameter space of XGBoost.
 
@@ -1935,9 +1789,6 @@ Table 37: Hyperparameter space of XGBoost.
 | Lambda | 𝚕𝚘𝚐​\_​𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[1,4]𝚕𝚘𝚐\_𝚞𝚗𝚒𝚏𝚘𝚛𝚖14\mathtt{log\\_uniform}[1,4] |
 | Alpha | 𝚕𝚘𝚐​\_​𝚞𝚗𝚒𝚏𝚘𝚛𝚖​[1​e−8,1​e​2]𝚕𝚘𝚐\_𝚞𝚗𝚒𝚏𝚘𝚛𝚖1𝑒81𝑒2\mathtt{log\\_uniform}[1e-8,1e2] |
 
-
-
-
 Table 38: Hyperparameter space of RandomForest.
 
   
@@ -1952,9 +1803,6 @@ Table 38: Hyperparameter space of RandomForest.
 | Min Samples Leaf | 𝚕𝚘𝚐​\_​𝚞𝚗𝚒𝚏𝚘𝚛𝚖​\_​𝚒𝚗𝚝​[1.5,50.5]𝚕𝚘𝚐\_𝚞𝚗𝚒𝚏𝚘𝚛𝚖\_𝚒𝚗𝚝1.550.5\mathtt{log\\_uniform\\_int}[1.5,50.5] |
 | Bootstrap | [𝚝𝚛𝚞𝚎,𝚏𝚊𝚕𝚜𝚎]𝚝𝚛𝚞𝚎𝚏𝚊𝚕𝚜𝚎[\mathtt{true},\mathtt{false}] |
 | Min Impurity Decrease | [0.0,0.01,0.02,0.05]​([0.85,0.05,0.05,0.05])  0.00.010.020.05  0.850.050.050.05[0.0,0.01,0.02,0.05]([0.85,0.05,0.05,0.05]) |
-
-
-
 
 Table 39: Hyperparameter space of GradientBoostingTree.
 
@@ -1972,9 +1820,6 @@ Table 39: Hyperparameter space of GradientBoostingTree.
 | Min Impurity Decrease | [0.0,0.01,0.02,0.05]​([0.85,0.05])  0.00.010.020.05 0.850.05[0.0,0.01,0.02,0.05]([0.85,0.05]) |
 | Max Leaf Nodes | [𝚗𝚘𝚗𝚎,5,10,15]​([0.85,0.5])  𝚗𝚘𝚗𝚎51015 0.850.5[\mathtt{none},5,10,15]([0.85,0.5]) |
 
-
-
-
 Table 40: Hyperparameter space of HistGradientBoosting.
 
   
@@ -1987,83 +1832,3 @@ Table 40: Hyperparameter space of HistGradientBoosting.
 | Min Depth | [𝚗𝚘𝚗𝚎,2,3,4]  𝚗𝚘𝚗𝚎234[\mathtt{none},2,3,4] |
 | Min Samples Leaf | 𝚗𝚘𝚛𝚖𝚊𝚕​\_​𝚒𝚗𝚝​[20,2]𝚗𝚘𝚛𝚖𝚊𝚕\_𝚒𝚗𝚝202\mathtt{normal\\_int}[20,2] |
 | Max Leaf Nodes | 𝚗𝚘𝚛𝚖𝚊𝚕​\_​𝚒𝚗𝚝​[31,5]𝚗𝚘𝚛𝚖𝚊𝚕\_𝚒𝚗𝚝315\mathtt{normal\\_int}[31,5] |
-
-[◄](/html/2305.18445)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2305.18446)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2305.18446)
-[View original  
-on arXiv](https://arxiv.org/abs/2305.18446)[►](/html/2305.18447)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Feb 26 20:46:43 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

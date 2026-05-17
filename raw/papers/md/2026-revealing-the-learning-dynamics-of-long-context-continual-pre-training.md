@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2604.02650
 year: 2026
 ---
 
-[2604.02650] Revealing the Learning Dynamics of Long-Context Continual Pre-training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Revealing the Learning Dynamics of Long-Context Continual Pre-trainingEqual contribution.Corresponding Author.
 
 Yupu Liang
@@ -103,7 +60,6 @@ Shaolei Wang1,
 Suncong Zheng1
 
 1Tencent Hunyuan, Beijing, China
-
 
 {yupuling, alexschen, waingwzhang, robertswang, congzheng}@tencent.com
 \textsuperscript{$\ast$}\textsuperscript{$\ast$}footnotetext: Equal contribution.
@@ -198,8 +154,7 @@ The model is trained using a constant learning rate of 1.2×10−51.2\times 10^{
 In this section, we utilize the SFT probe to assess the long-context capabilities of our pre-trained models.
 Following gao2025train, we perform lightweight SFT on intermediate checkpoints during the LCCP phase, and subsequently evaluate these SFT-adapted models on standard long-context benchmarks to analyze the advancements of their long-context understanding abilities.
 
-![Refer to caption](/html/2604.02650/assets/x1.png)
-
+!(/html/2604.02650/assets/x1.png)
 
 Figure 1: The performance on the RULER, MRCR, and LongBio benchmarks of different LCCP checkpoints of the Hunyuan-A13B model after lightweight SFT.
 
@@ -229,8 +184,7 @@ Specifically, we reformulate the test texts of the original NIAH task, and compu
 
 ### 5.1 Continuous NIAH
 
-![Refer to caption](/html/2604.02650/assets/x2.png)
-
+!(/html/2604.02650/assets/x2.png)
 
 Figure 2: The PPL distribution for NIAH tasks across different context lengths and depths for Hunyuan-A13B base model at different stages of LCCP. Each cell represents the average PPL of the answer tokens.
 
@@ -254,8 +208,7 @@ By controlling the context length before and after the needle text, we evaluate 
 
 ### 5.2 Deceptive Saturation in NIAH
 
-![Refer to caption](/html/2604.02650/assets/x3.png)
-
+!(/html/2604.02650/assets/x3.png)
 
 Figure 3: Average NIAH score and PPL across Hunyuan-A13B base model at different stages of LCCP.
 
@@ -277,16 +230,13 @@ Table 3: The Pearson correlation coefficients between NIAH metrics and performan
 
 ## 6 Mechanistic Level Analysis
 
-![Refer to caption](/html/2604.02650/assets/x4.png)
-
+!(/html/2604.02650/assets/x4.png)
 
 Figure 4: The retrieval scores of all attention heads across all layers of the Hunyuan-A13B base model at different stages of LCCP.
 
+!(/html/2604.02650/assets/x5.png)
 
-
-![Refer to caption](/html/2604.02650/assets/x5.png)
-
-![Refer to caption](/html/2604.02650/assets/x6.png)
+!(/html/2604.02650/assets/x6.png)
 
 Figure 5: The number of retrieval heads and the average retrieval score of the initial retrieval heads of the Hunyuan-A13B base model at different stages of LCCP.
 
@@ -326,8 +276,7 @@ In addition to our primary results, further investigation revealed several notew
 
 ### 7.1 PPL Scaling Dynamics
 
-![Refer to caption](/html/2604.02650/assets/x7.png)
-
+!(/html/2604.02650/assets/x7.png)
 
 Figure 6: The PPL curve as a function of the number of training tokens of Hunyuan-A13B base model. The left panel displays the standard scale, while the right panel presents the logarithmic scale.
 
@@ -354,20 +303,17 @@ For sequences with lengths between 16K and 64K, the answer PPL is particularly h
 As the number of training tokens increases, the PPL of the answer tokens for input sequences longer than 40K tokens gradually decreases, indicating a progressive improvement in the model’s retrieval capability.
 In addition, the PPL for samples in which the needle text is located in the middle of the context is also substantially reduced, suggesting that the "lost in the middle" phenomenon is effectively alleviated.
 
-![Refer to caption](/html/2604.02650/assets/x8.png)
-
+!(/html/2604.02650/assets/x8.png)
 
 Figure 7: Average PPL across different document depths for Hunyuan-A13B base model at different stages of LCCP.
 
-![Refer to caption](/html/2604.02650/assets/x9.png)
-
+!(/html/2604.02650/assets/x9.png)
 
 Figure 8: The PPL distribution for modified NIAH tasks across different context lengths and depths for Hunyuan-A13B base model at different stages of long-context continual pre-training. Each cell represents the average PPL of the answer tokens. Absolute Distance is the length of [Context After Needle Text] and Interference Context Length is the length of [Context Before Needle Text].
 
 ### 7.3 Robustness to Long-Context Interference
 
-![Refer to caption](/html/2604.02650/assets/x10.png)
-
+!(/html/2604.02650/assets/x10.png)
 
 Figure 9: Answer PPL under increasing interference context length at a fixed absolute distance of 16K.
 
@@ -454,83 +400,3 @@ Table 7: The p-vaue of Pearson correlation coefficients between retrieval head m
 | RULER | 0.0436 | 0.0158 |
 | MRCR | 0.0397 | 0.0334 |
 | LongBio | 0.2361 | 0.1882 |
-
-[◄](/html/2604.02649)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.02650)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.02650)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.02650)[►](/html/2604.02651)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 01:56:25 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

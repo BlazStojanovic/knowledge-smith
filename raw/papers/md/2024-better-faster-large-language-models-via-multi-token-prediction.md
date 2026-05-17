@@ -14,50 +14,6 @@ url: https://arxiv.org/abs/2404.19737
 year: 2024
 ---
 
-[2404.19737] Better & Faster Large Language Models via Multi-token Prediction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Better & Faster Large Language Models via Multi-token Prediction
 
 Fabian Gloeckle
@@ -89,8 +45,7 @@ Despite the recent wave of impressive achievements (OpenAI, [2023](#bib.bib39))
 More precisely, teacher forcing with next-token prediction latches on local patterns and overlooks “hard” decisions.
 Consequently, it remains a fact that state-of-the-art next-token predictors call for orders of magnitude more data than human children to arrive at the same level of fluency (Frank, [2023](#bib.bib16)).
 
-![Refer to caption](/html/2404.19737/assets/img/main_fig_col.png)
-
+!(/html/2404.19737/assets/img/main_fig_col.png)
 
 Figure 1: 
 Overview of multi-token prediction.
@@ -179,8 +134,7 @@ In sum, we have reduced the peak GPU memory utilization from O​(n​V+d)𝑂�
 During inference time, the most basic use of the proposed architecture is vanilla next-token autoregressive prediction using the next-token prediction head Pθ​(xt+1∣xt:1)subscript𝑃𝜃conditionalsubscript𝑥𝑡1subscript𝑥:𝑡1P\_{\theta}(x\_{t+1}\mid x\_{t:1}), while discarding all others.
 However, the additional output heads can be leveraged to speed up decoding from the next-token prediction head with *self-speculative decoding* methods such as blockwise parallel decoding (Stern et al., [2018](#bib.bib50))—a variant of speculative decoding (Leviathan et al., [2023](#bib.bib29)) without the need for an additional draft model—and speculative decoding with Medusa-like tree attention (Cai et al., [2024](#bib.bib5)).
 
-![Refer to caption](/html/2404.19737/assets/img/backward_order.png)
-
+!(/html/2404.19737/assets/img/backward_order.png)
 
 Figure 2: Order of the forward/backward in an n𝑛n-token prediction model with n=2𝑛2n=2 heads. By performing the forward/backward on the heads in sequential order, we avoid materializing all unembedding layer gradients in memory simultaneously and reduce peak GPU memory usage.
 
@@ -217,8 +171,7 @@ To allow fair comparisons between next-token predictors and n𝑛n-token predict
 That is, when we add n−1𝑛1n-1 layers in future prediction heads, we remove n−1𝑛1n-1 layers from the shared model trunk.
 Please refer to Table [S14](#A13.T14 "Table S14 ‣ Appendix M Training hyperparameters ‣ Better & Faster Large Language Models via Multi-token Prediction") for the model architectures and to Table [S13](#A13.T13 "Table S13 ‣ Appendix M Training hyperparameters ‣ Better & Faster Large Language Models via Multi-token Prediction") for an overview of the hyperparameters we use in our experiments.
 
-![Refer to caption](/html/2404.19737/assets/x1.png)
-
+!(/html/2404.19737/assets/x1.png)
 
 Figure 3: Results of n𝑛n-token prediction models on MBPP by model size. We train models of six sizes in the range or 300M to 13B total parameters on code,
 and evaluate pass@1,10,100 on the MBPP (Austin et al., [2021](#bib.bib1)) and HumanEval (Chen et al., [2021](#bib.bib7)) benchmark
@@ -257,8 +210,7 @@ Multi-token training still maintains an edge on next-token prediction when train
 
 Pretrained models with multi-token prediction loss also outperform next-token models for use in finetunings. We evaluate this by finetuning 7B parameter models from Section [3.3](#S3.SS3 "3.3 Learning global patterns with multi-byte prediction ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction") on the CodeContests dataset (Li et al., [2022](#bib.bib30)). We compare the 4-token prediction model with the next-token prediction baseline, and include a setting where the 4-token prediction model is stripped off its additional prediction heads and finetuned using the classical next-token prediction target. According to the results in Figure [4](#S3.F4 "Figure 4 ‣ 3.6 Finetuning multi-token predictors ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction"), both ways of finetuning the 4-token prediction model outperform the next-token prediction model on pass@k across k𝑘k. This means the models are both better at understanding and solving the task and at generating diverse answers. Note that CodeContests is the most challenging coding benchmark we evaluate in this study. Next-token prediction finetuning on top of 4-token prediction pretraining appears to be the best method overall, in line with the classical paradigm of pretraining with auxiliary tasks followed by task-specific finetuning. Please refer to Appendix [F](#A6 "Appendix F Details on CodeContests finetuning ‣ Better & Faster Large Language Models via Multi-token Prediction") for details.
 
-![Refer to caption](/html/2404.19737/assets/x2.png)
-
+!(/html/2404.19737/assets/x2.png)
 
 Figure 4: Comparison of finetuning performance on CodeContests.
 We finetune a 444-token prediction model on CodeContests (Li et al., [2022](#bib.bib30)) (train split) using n′superscript𝑛′n^{\prime}-token prediction as training loss with n′=4superscript𝑛′4n^{\prime}=4 or n′=1superscript𝑛′1n^{\prime}=1, and compare to a finetuning of the next-token prediction baseline model (n=n′=1𝑛superscript𝑛′1n=n^{\prime}=1). For evaluation, we generate 1000 samples per test problem for each temperature T∈{0.5,0.6,0.7,0.8,0.9}𝑇0.50.60.70.80.9T\in\{0.5,0.6,0.7,0.8,0.9\}, and compute pass@k for each value of k𝑘k and T𝑇T. Shown is k↦maxT⁡pass​\_​at​(k,T)maps-to𝑘subscript𝑇pass\_at𝑘𝑇k\mapsto\max\_{T}\mathrm{pass\\_at}(k,T), i.e. we grant access to a temperature oracle. We observe that both ways of finetuning the 4-token prediction model outperform the next-token prediction baseline. Intriguingly, using next-token prediction finetuning on top of the 4-token prediction model appears to be the best method overall.
@@ -267,8 +219,7 @@ We finetune a 444-token prediction model on CodeContests (Li et al., [2022](#bi
 
 To evaluate multi-token prediction training on natural language, we train models of size 7B parameters on 200B tokens of natural language with a 4-token, 2-token and next-token prediction loss, respectively. In Figure  [5](#S3.F5 "Figure 5 ‣ 3.7 Multi-token prediction on natural language ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction"), we evaluate the resulting checkpoints on 6 standard NLP benchmarks. On these benchmarks, the 2-future token prediction model performs on par with the next-token prediction baseline throughout training. The 4-future token prediction model suffers a performance degradation. Detailed numbers are reported in Appendix [G](#A7 "Appendix G Additional results on natural language benchmarks ‣ Better & Faster Large Language Models via Multi-token Prediction").
 
-![Refer to caption](/html/2404.19737/assets/x3.png)
-
+!(/html/2404.19737/assets/x3.png)
 
 Figure 5: Multi-token training with 7B models doesn’t improve performance on choice tasks. This figure shows the evolution of average accuracy of 6 standard NLP benchmarks. Detailed results in Appendix [G](#A7 "Appendix G Additional results on natural language benchmarks ‣ Better & Faster Large Language Models via Multi-token Prediction") for 7B models trained on 200B tokens of language data. The 2 future token model has the same performance as the baseline and the 4 future token model regresses a bit. Larger model sizes might be necessary to see improvements on these tasks.
 
@@ -278,8 +229,7 @@ For summarization, we use eight benchmarks where ROUGE metrics (Lin, [2004](#bib
 Figure [6](#S3.F6 "Figure 6 ‣ 3.7 Multi-token prediction on natural language ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction") shows that multi-token prediction models with both n=2𝑛2n=2 and n=4𝑛4n=4 improve over the next-token baseline in ROUGE-L F1subscript𝐹1F\_{1} scores for both training dataset sizes,
 with the performance gap shrinking with larger dataset size. All metrics can be found in Appendix [H](#A8 "Appendix H Additional results on abstractive text summarization ‣ Better & Faster Large Language Models via Multi-token Prediction").
 
-![Refer to caption](/html/2404.19737/assets/x4.png)
-
+!(/html/2404.19737/assets/x4.png)
 
 Figure 6: Performance on abstractive text summarization.
 Average ROUGE-L (longest common subsequence overlap) F1subscript𝐹1F\_{1} score for 7B models trained on 200B and 500B tokens of natural language on eight summarization benchmarks.
@@ -296,8 +246,7 @@ In particular, Section [4.1](#S4.SS1 "4.1 Induction capability ‣ 4 Ablations 
 
 ### 4.1 Induction capability
 
-![Refer to caption](/html/2404.19737/assets/x5.png)
-
+!(/html/2404.19737/assets/x5.png)
 
 Figure 7: Induction capability of n𝑛n-token prediction models.
 Shown is accuracy on the second token of two token names that have already been mentioned previously. Shown are numbers for models trained with a next-token and a 2-token prediction loss, respectively, with two independent runs each. The lines denote per-loss averages. For small model sizes, next-token prediction models learn practically no or significantly worse induction capability than 2-token prediction models, with their disadvantage disappearing at the size of 100M nonembedding parameters.
@@ -310,8 +259,7 @@ We interpret this finding as follows: multi-token prediction losses help models 
 
 ### 4.2 Algorithmic reasoning
 
-![Refer to caption](/html/2404.19737/assets/x6.png)
-
+!(/html/2404.19737/assets/x6.png)
 
 Figure 8: Accuracy on a polynomial arithmetic task with varying number of operations per expression. Training with multi-token prediction losses increases accuracy across task difficulties. In particular, it also significantly improves out-of-domain generalization performance, albeit at a low absolute level. Tripling the model size, on the other hand, has a considerably smaller effect than replacing next-token prediction with multi-token prediction loss (Figure [S16](#A11.F16 "Figure S16 ‣ Appendix K Additional results on algorithmic reasoning ‣ Better & Faster Large Language Models via Multi-token Prediction")). Shown are two independent runs per configuration with 100M parameter models.
 
@@ -327,8 +275,7 @@ We support this view with an illustrative argument on the *implicit weights* mul
 
 ### 5.1 Lookahead reinforces choice points
 
-![Refer to caption](/html/2404.19737/assets/img/implicit_weights.png)
-
+!(/html/2404.19737/assets/img/implicit_weights.png)
 
 Figure 9: Multi-token prediction loss assigns higher implicit weights to *consequential* tokens. Shown is a sequence in which all transitions except “5 →→\to A” are easy to predict, alongside the corresponding prediction targets in 3-token prediction. Since the consequences of the difficult transition “5 →→\to A” are likewise hard to predict, this transition receives a higher implicit weight in the overall loss via its correlates “3 →→\to A”, …, “5 →→\to C”.
 
@@ -738,14 +685,11 @@ We thank Jianyu Zhang, Léon Bottou, Emmanuel Dupoux, Pierre-Emmanuel Mazaré, Y
 
 ## Appendix A Additional results on self-speculative decoding
 
-![Refer to caption](/html/2404.19737/assets/x7.png)
+!(/html/2404.19737/assets/x7.png)
 
-![Refer to caption](/html/2404.19737/assets/x8.png)
+!(/html/2404.19737/assets/x8.png)
 
 Figure S10: Decoding speeds and latencies with self-speculative decoding relative to standard autoregressive decoding. We use k𝑘k heads of a 4-token prediction model and evaluate decoding speeds of a code model as explained in Table [S2](#A1.T2 "Table S2 ‣ Appendix A Additional results on self-speculative decoding ‣ Better & Faster Large Language Models via Multi-token Prediction"). All numbers are relative to the autoregressive (k=1𝑘1k=1) baseline with the same batch size.
-
-
-
 
 Table S2: Relative speedups with self-speculative decoding.
 For wikipedia and books we prompt a 7B parameter model trained on 500B tokens, and for code we prompt a 7B parameter model trained on 1T tokens of code on 4200 sequences of 512 tokens from a test dataset not seen during training, and generate completions consisting of 512 tokens using greedy self-speculative decoding [Stern et al., [2018](#bib.bib50)] using the indicated number of heads from a 4-token prediction model. Note that the maximal speedup that can be obtained with self-speculative decoding using k𝑘k heads is k𝑘k. The last column shows the average number of tokens retrieved from a forward containing this sequence (both verification and prediction). The speedup was evaluated at the maximal batch size of 42, but is constant across batch sizes (Figure [S10](#A1.F10 "Figure S10 ‣ Appendix A Additional results on self-speculative decoding ‣ Better & Faster Large Language Models via Multi-token Prediction")).
@@ -757,9 +701,6 @@ For wikipedia and books we prompt a 7B parameter model trained on 500B tokens, a
 | 2 | 1.79 | 1.88 | 1.77 | 1.87 | 1.85 | 1.94 |
 | 3 | 2.35 | 2.57 | 2.32 | 2.56 | 2.54 | 2.78 |
 | 4 | 2.74 | 3.12 | 2.67 | 3.09 | 3.05 | 3.50 |
-
-
-
 
 Table S3: Relative speedups with self-speculative decoding with byte-level models on code.
 We prompt the 7B parameter models from Section [3.3](#S3.SS3 "3.3 Learning global patterns with multi-byte prediction ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction") on 4096 sequences of 1024 bytes of code not seen during training, and generate completions consisting of 1024 bytes using greedy self-speculative decoding [Stern et al., [2018](#bib.bib50)] as in Table [S2](#A1.T2 "Table S2 ‣ Appendix A Additional results on self-speculative decoding ‣ Better & Faster Large Language Models via Multi-token Prediction"). The speedup was evaluated at a batch size of 16.
@@ -820,8 +761,7 @@ In another *anticausal* variant, the network starts by predicting the most dista
 
 These architectures likewise allow a sequential forward/backward order as the parallel architecture from Section [2](#S2 "2 Method ‣ Better & Faster Large Language Models via Multi-token Prediction"). This is described in Figure [S11](#A2.F11 "Figure S11 ‣ Causal and anticausal variant ‣ Appendix B Alternative architectures ‣ Better & Faster Large Language Models via Multi-token Prediction").
 
-![Refer to caption](/html/2404.19737/assets/x9.png)
-
+!(/html/2404.19737/assets/x9.png)
 
 Figure S11: Order of the forward/backward in a causal n𝑛n-token prediction model with n=2𝑛2n=2 heads. Like in the forward/backward depicted for parallel prediction heads in Figure [2](#S2.F2 "Figure 2 ‣ Inference ‣ 2 Method ‣ Better & Faster Large Language Models via Multi-token Prediction"), we avoid materializing all unembedding layer gradients in memory simultaneously and reduce peak GPU memory usage significantly. The iteration over the heads starts with the one furthest to the trunk. At each head, a gradient from the succeeding prediction heads and from the head’s own loss are accumulated for both the head’s output and its weights.
 
@@ -885,8 +825,7 @@ We use the Python subset of the CodeContests [Li et al., [2022](#bib.bib30)] tr
 
 We evaluate the models from Section [3.7](#S3.SS7 "3.7 Multi-token prediction on natural language ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction") on standard natural language processing benchmarks: ARC Challenge [Yadav et al., [2019](#bib.bib55)], COPA [Roemmele et al., [2011](#bib.bib44)], Hellaswag [Zellers et al., [2019](#bib.bib57)], Natural Questions [Kwiatkowski et al., [2019](#bib.bib25)], PIQA [Bisk et al., [2019](#bib.bib4)], SIQA [Sap et al., [2019](#bib.bib45)] and TriviaQA [Joshi et al., [2017](#bib.bib22)].
 
-![Refer to caption](/html/2404.19737/assets/x10.png)
-
+!(/html/2404.19737/assets/x10.png)
 
 Figure S12: Multiple token training with 7B models doesn’t improve performance on choice tasks. This figure shows the evolution of average accuracy of some standard NLP benchmarks (ARC Challenge COPA Hellaswag MMLU Natural Questions PIQA SIQA and TriviaQA. For the 7B models trained on 200B tokens of language data, the 2 future token model has the same performance as the baseline and the 4 future token model regresses a bit. Larger model sizes might be necessary to see improvements on these tasks.
 
@@ -958,9 +897,6 @@ Boldface for numbers within 0.05 difference to the best one for each dataset siz
 | XSum | 34.03 | +0.67 | +0.92 | 35.18 | +0.79 | +0.63 |
 | *Average* | 26.23 | +0.51 | +0.46 | 27.08 | +0.28 | +0.31 |
 
-
-
-
 Table S10: Summary statistics for abstractive text summarization evaluations.
 Reported are averages for ROUGE-n and ROUGE-L metrics across all datasets from Table [S8](#A8.T8 "Table S8 ‣ Appendix H Additional results on abstractive text summarization ‣ Better & Faster Large Language Models via Multi-token Prediction"), separately for precision, recall and F1subscript𝐹1F\_{1} score. Both 2-token and 4-token prediction models outperform the next-token prediction baseline. Trained on 500B tokens, 4-token prediction models appear better at recall metrics while 2-token prediction models appear better at precision metrics. Model checkpoints are selected as described in Table [S8](#A8.T8 "Table S8 ‣ Appendix H Additional results on abstractive text summarization ‣ Better & Faster Large Language Models via Multi-token Prediction"). Boldface for numbers within 0.05 difference to the best one for each dataset size separately.
 
@@ -984,8 +920,7 @@ Reported are averages for ROUGE-n and ROUGE-L metrics across all datasets from T
 
 ## Appendix I Additional results on mathematical reasoning in natural language
 
-![Refer to caption](/html/2404.19737/assets/x11.png)
-
+!(/html/2404.19737/assets/x11.png)
 
 Figure S13: Performance on the mathematical reasoning benchmark GSM8K [Cobbe et al., [2021](#bib.bib9)]. We evaluate pretrained next-token and multi-token prediction models trained on 200B and 500B tokens of natural language in 8-shot mode using nucleus sampling [Holtzman et al., [2020](#bib.bib20)] with probability mass 0.95 and various sampling temperatures. Reported are the frequencies of the correct final answer to appear among k𝑘k samples, for k=1,10,100𝑘
 
@@ -993,8 +928,7 @@ Figure S13: Performance on the mathematical reasoning benchmark GSM8K [Cobbe et�
 
 ## Appendix J Additional results on induction learning
 
-![Refer to caption](/html/2404.19737/assets/x12.png)
-
+!(/html/2404.19737/assets/x12.png)
 
 Figure S14: Induction capability of n𝑛n-token prediction models trained on higher-quality data.
 Shown is accuracy on the second token of two token names that have already been mentioned previously. Training on a 9:1 mix of a books dataset and the children storiy dataset, we observe that induction capability forms significantly earlier in training (not shown here) and to a higher degree. We believe that this is explained both because our evaluation dataset no longer contains out-of-distribution tokens (Section [4.1](#S4.SS1 "4.1 Induction capability ‣ 4 Ablations on synthetic data ‣ Better & Faster Large Language Models via Multi-token Prediction")) and because the higher-quality data contained in the books dataset makes induction necessary earlier on (especially for small models, cf. Singh et al. [[2023](#bib.bib47)]). In particular, by enforcing the formation of induction capability in the model by means of the dataset – instead of the loss – the advantage of 2-token prediction models on this task disappears except for the smallest models: feature learning converts the task into a pure next-token prediction task.
@@ -1009,25 +943,19 @@ To check the truth of this hypothesis, we augment the polynomial arithmetic task
 
 In Table [S11](#A11.T11 "Table S11 ‣ Appendix K Additional results on algorithmic reasoning ‣ Better & Faster Large Language Models via Multi-token Prediction"), we report results from another experiment in the same spirit: by adding spaces and newlines to HumanEval and MBPP prompts, we add “pause tokens” in a somewhat natural way. According to these results, multi-token prediction models have a slight advantage at using this additionally provided compute, but the effect is marginal.
 
-![Refer to caption](/html/2404.19737/assets/x13.png)
-
+!(/html/2404.19737/assets/x13.png)
 
 (a) 5 pause tokens
 
-![Refer to caption](/html/2404.19737/assets/x14.png)
-
+!(/html/2404.19737/assets/x14.png)
 
 (b) 10 pause tokens
 
 Figure S15: Accuracy on a polynomial arithmetic task with varying number of operations per expression and pause tokens. We train and evaluate models on the polynomial arithmetic task described in Section [4.2](#S4.SS2 "4.2 Algorithmic reasoning ‣ 4 Ablations on synthetic data ‣ Better & Faster Large Language Models via Multi-token Prediction"), modified by the addition of *pause tokens* [Goyal et al., [2023](#bib.bib18)]: between the question and the equality sign that indicates the beginning of the answer, we add a constant number of pause tokens both in training and evaluation. For both a variant with five and with ten pause tokens, respectively, we observe comparable improvements from using multi-token prediction to the ones obtained in the case without pause tokens (Figure [8](#S4.F8 "Figure 8 ‣ 4.2 Algorithmic reasoning ‣ 4 Ablations on synthetic data ‣ Better & Faster Large Language Models via Multi-token Prediction")).
 
-![Refer to caption](/html/2404.19737/assets/x15.png)
-
+!(/html/2404.19737/assets/x15.png)
 
 Figure S16: Accuracy on a polynomial arithmetic task for two model sizes. We train and evaluate models with 30M and 100M parameters on the polynomial arithmetic task described in Section [4.2](#S4.SS2 "4.2 Algorithmic reasoning ‣ 4 Ablations on synthetic data ‣ Better & Faster Large Language Models via Multi-token Prediction"). Tripling the model size has a smaller effect on performance than replacing next-token prediction loss by multi-token prediction. Shown are two independent runs per configuration and their means, the 100M parameter models being identical to the ones in Figure [8](#S4.F8 "Figure 8 ‣ 4.2 Algorithmic reasoning ‣ 4 Ablations on synthetic data ‣ Better & Faster Large Language Models via Multi-token Prediction").
-
-
-
 
 Table S11: Utilization of additional whitespace tokens in code benchmarks.
 
@@ -1161,8 +1089,7 @@ means minimizing the average number of additional bits needed to send data from 
 
 ### L.3 Lookahead reinforces choice points
 
-![Refer to caption](/html/2404.19737/assets/x16.png)
-
+!(/html/2404.19737/assets/x16.png)
 
 Figure S17: Example of a sequential prediction task with derailing.
 The goal is to go from the arrow to the trophy. Turning around is not allowed. Most transitions are unique, but there are two turns to be taken correctly, the *consequential decisions* (a) and (c). Turn (b) is an *inconsequential decision*: the paths join right after it. Next to transitions (a) and (b), we sketch how a 4-step prediction loss can place more emphasis on consequential transitions than inconsequential ones during teacher-forced training. Next to transition (c), we sketch how a 4-step lookahead can prevent models from taking irreversible suboptimal decisions during autoregressive decoding.
@@ -1257,9 +1184,6 @@ Table S13: Overview of all training hyperparameters used. We schedule all learni
 | CodeContests (Section [3.6](#S3.SS6 "3.6 Finetuning multi-token predictors ‣ 3 Experiments on real data ‣ Better & Faster Large Language Models via Multi-token Prediction")) | |  |  |  |  |  |  |
 | 7B | 0.25 | 13,000 | 3.6 | 400 | 5×10−55superscript1055\times 10^{-5} | 4096 | 0.004 |
 
-
-
-
 Table S14: Overview of model architectures used for scaling analyses.
 
 | Name | Dimension | Layers | Heads |
@@ -1277,83 +1201,3 @@ Table S14: Overview of model architectures used for scaling analyses.
 | 3B | 2560 | 36 | 20 |
 | 6.7B (“7B”) | 4096 | 32 | 32 |
 | 13B | 5120 | 40 | 40 |
-
-[◄](/html/2404.19736)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2404.19737)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2404.19737)
-[View original  
-on arXiv](https://arxiv.org/abs/2404.19737)[►](/html/2404.19738)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun May 5 19:07:59 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

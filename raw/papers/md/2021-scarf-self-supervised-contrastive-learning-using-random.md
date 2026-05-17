@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2106.15147v2
 year: 2021
 ---
 
-[2106.15147] Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption
 
 Dara Bahri, Heinrich Jiang, Yi Tay, Donald Metzler
@@ -77,9 +34,9 @@ A common theme of these advances is learning representations that are robust to 
 In this paper, we propose Scarf, a simple and versatile contrastive pre-training procedure. We generate a view for a given input by selecting a random subset of its features and replacing them by random draws from the features’ respective empirical marginal distributions.
 Experimentally, we test Scarf on the OpenML-CC18 benchmark (Vanschoren et al., [2013](#bib.bib68); Bischl et al., [2017](#bib.bib4); Feurer et al., [2019](#bib.bib16)), a collection of 72 real-world classification datasets. We show that not only does Scarf pre-training improve classification accuracy in the fully-supervised setting but does so also in the presence of label noise and in the semi-supervised setting where only a fraction of the available training data is labeled. Moreover, we show that combining Scarf pre-training with other solutions to these problems further improves them, demonstrating the versatility of Scarf and its ability to learn effective task-agnostic representations. We then conduct extensive ablation studies, showing the effects of various design choices and stability to hyperparameters. Our ablations show that Scarf’s way of constructing views is more effective than alternatives. We show that Scarf is less sensitive to feature scaling and is stable to various hyperparameters such as batch size, corruption rate, and softmax temperature.
 
-![Refer to caption](/html/2106.15147/assets/x1.png)
+!(/html/2106.15147/assets/x1.png)
 
-![Refer to caption](/html/2106.15147/assets/x2.png)
+!(/html/2106.15147/assets/x2.png)
 
 Figure 1:  Diagram showing unsupervised Scarf pre-training (Top) and subsequent supervised fine-tuning (Bottom). During pre-training, networks f𝑓f and g𝑔g are learned to produce good representations of the input data. After pre-training, g𝑔g is discarded and a classification head hℎh is applied on top of the learned f𝑓f and both f𝑓f and hℎh are subsequently fine-tuned for classification.
 
@@ -153,19 +110,19 @@ Model architecture and training.
 Unless specified otherwise, we use the following settings across all experiments.
 As described earlier, we decompose the neural network into an encoder f𝑓f, a pre-training head g𝑔g, and a classification head hℎh, where the inputs to g𝑔g and hℎh are the outputs of f𝑓f. We choose all three component models to be ReLU networks with hidden dimension 256256256. f𝑓f consists of 4 layers, whereas both g𝑔g and hℎh have 2 layers. Both Scarf and the autoencoder baselines use g𝑔g (for both pre-training and co-training, described later), but for autoencoders, the output dimensionality is the input feature dimensionality, and the mean-squared error reconstruction loss is applied. We train all models and their components with the Adam optimizer using the default learning rate of 0.0010.0010.001. For both pre-training and fine-tuning we use 128 batch size. Unsupervised pre-training methods all use early stopping with patience 3 on the validation loss, unless otherwise noted. Supervised fine-tuning uses this same criterion (and validation split), but classification error is used as the validation metric for early stopping, as it performs slightly better. We set a max number of fine-tune epochs of 200200200 and pre-train epochs of 100010001000, We use 10 epochs to build the static validation set. Unless otherwise noted, we use a corruption rate c𝑐c of 0.6 and a temperature τ𝜏\tau of 1, for Scarf-based methods. All runs are repeated 30 times using different train/validation/test splits. Experiments were run on a cloud cluster of CPUs, and we used about one million CPU core hours in total for the experiments.
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_win_raw.png)
+!(/html/2106.15147/assets/images/acc/acc_win_raw.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_win_incremental.png)
+!(/html/2106.15147/assets/images/acc/acc_win_incremental.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_scarf.png)
+!(/html/2106.15147/assets/images/acc/acc_scarf.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_scarf_disc.png)
+!(/html/2106.15147/assets/images/acc/acc_scarf_disc.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_auto.png)
+!(/html/2106.15147/assets/images/acc/acc_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_add_auto.png)
+!(/html/2106.15147/assets/images/acc/acc_add_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/acc/acc_scarf_auto.png)
+!(/html/2106.15147/assets/images/acc/acc_scarf_auto.png)
 
 Figure 2: Top: Win matrices comparing pre-training methods against each other, and their improvement to existing solutions. Bottom: Box plots showing the relative improvement of different pre-training methods over baselines (y-axis is zoomed in). We see that Scarf pre-training adds value *even* when used in conjunction with known techniques.
 
@@ -222,19 +179,19 @@ Baselines. We use the following baselines:
 Figure [2](#S4.F2 "Figure 2 ‣ 4 Experiments ‣ Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption") shows our results. From the first win matrix plot, we see that all five pre-training techniques considered improve over no pre-training (control), and that Scarf outperforms the others and has more statistically significant wins. The second win matrix shows that Scarf pre-training boosts the performance of mixup, label smoothing, distillation, and dropout, and it does so better than alternatives. In other words, pre-training *complements* existing solutions, suggesting that a distinct mechanism is at play here.
 The box plots expand on the second win matrix, showing the relative improvement that each of the pre-training strategies confers over the baselines. Table [1](#S4.T1 "Table 1 ‣ 4.2 Scarf pre-training improves performance in the presence to label noise ‣ 4 Experiments ‣ Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption") summarizes the box-plots by the average relative gain. We observe that Scarf generally outperforms the alternatives and adds a 1-2% relative gain across the board.
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_win_raw.png)
+!(/html/2106.15147/assets/images/noise30/noise30_win_raw.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_win_incremental.png)
+!(/html/2106.15147/assets/images/noise30/noise30_win_incremental.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_scarf.png)
+!(/html/2106.15147/assets/images/noise30/noise30_scarf.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_scarf_disc.png)
+!(/html/2106.15147/assets/images/noise30/noise30_scarf_disc.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_auto.png)
+!(/html/2106.15147/assets/images/noise30/noise30_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_add_auto.png)
+!(/html/2106.15147/assets/images/noise30/noise30_add_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/noise30/noise30_scarf_auto.png)
+!(/html/2106.15147/assets/images/noise30/noise30_scarf_auto.png)
 
 Figure 3: Scarf boosts baseline performance even when 30%percent3030\% of the training labels are corrupted. Notably, it improves state-of-the-art label noise solutions like Deep k𝑘k-NN.
 
@@ -868,27 +825,25 @@ We present more ablation results, where the metric is accuracy using 100%percent
 
 ### Impact of batch size and corruption rates
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_win_raw.png)
+!(/html/2106.15147/assets/images/se/se_win_raw.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_win_incremental.png)
+!(/html/2106.15147/assets/images/se/se_win_incremental.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_scarf.png)
+!(/html/2106.15147/assets/images/se/se_scarf.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_scarf_disc.png)
+!(/html/2106.15147/assets/images/se/se_scarf_disc.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_auto.png)
+!(/html/2106.15147/assets/images/se/se_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_add_auto.png)
+!(/html/2106.15147/assets/images/se/se_add_auto.png)
 
-![Refer to caption](/html/2106.15147/assets/images/se/se_scarf_auto.png)
+!(/html/2106.15147/assets/images/se/se_scarf_auto.png)
 
 Figure 4: Scarf shows even more significant gain in the semi-supervised setting where 25%percent2525\% of the data is labeled and the remaining 75%percent7575\% is not. Strikingly, pre-training with Scarf boosts the performance of self-training and tri-training by several percent.
 
+!(/html/2106.15147/assets/images/ablation/batch_size_ablation_win.png)
 
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/batch_size_ablation_win.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/rate_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/rate_ablation_win.png)
 
 Figure 5: Win matrix for various batch sizes (Left) and corruption rates (Right) for the fully labeled, noiseless setting.
 
@@ -896,9 +851,9 @@ Figure [5](#A1.F5 "Figure 5 ‣ Impact of batch size and corruption rates ‣ A
 
 ### Impact of corruption strategies
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/corruption_ablation_zscore_win.png)
+!(/html/2106.15147/assets/images/ablation/corruption_ablation_zscore_win.png)
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/corruption_ablation_min_norm_win.png)
+!(/html/2106.15147/assets/images/ablation/corruption_ablation_min_norm_win.png)
 
 Figure 6: Left: Win matrix comparing different corruption strategies when z-score feature normalization is used in the fully labeled, noiseless setting. Right: The same matrix but when min-max feature scaling is used. We see that Scarf is better than alternative corruption strategies for different types of feature scaling.
 
@@ -929,45 +884,37 @@ Figure [11](#A1.F11 "Figure 11 ‣ Alternative losses ‣ Impact of temperature
 
 Figure [8](#A1.F8 "Figure 8 ‣ Alternative losses ‣ Impact of temperature ‣ Appendix A Appendix ‣ Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption") shows the impact of using two recently-proposed alternatives to the InfoNCE loss: Uniform and Align (Wang & Isola, [2020](#bib.bib72)) and Barlow Twins (Zbontar et al., [2021](#bib.bib79)). We use 5e-3 for the hyperparameter in Barlow, and equal weighting between the align and uniform loss terms. We find no benefit in using these other losses.
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/pretrain_train_curve.png)
+!(/html/2106.15147/assets/images/ablation/pretrain_train_curve.png)
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/pretrain_val_curve.png)
+!(/html/2106.15147/assets/images/ablation/pretrain_val_curve.png)
 
 Figure 7: Training and validation loss curves for Scarf pre-training on Phonemes (dataset id 1489). We observe that both losses drop rapidly initially and then taper off. The training curve is jittery because of the random corruptions, but the validation curve isn’t because the validation dataset is built once before training and is static throughout training.
 
+!(/html/2106.15147/assets/images/ablation/loss_ablation_win.png)
 
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/loss_ablation_win.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/temperature_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/temperature_ablation_win.png)
 
 Figure 8: Left: Barlow Twins loss performs similar to InfoNCE while Uniform-Align performs worse. Right: InfoNCE softmax temperature 1 performs well.
 
+!(/html/2106.15147/assets/images/ablation/cotrain_ablation_win.png)
 
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/cotrain_ablation_win.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/cotrain_ablation_ae_win.png)
+!(/html/2106.15147/assets/images/ablation/cotrain_ablation_ae_win.png)
 
 Figure 9: Left: Pre-training with Scarf beats co-training for a range of weights on the co-training term. Right: The same is true for additive noise autoencoders.
 
+!(/html/2106.15147/assets/images/ablation/data_augment_ablation.png)
 
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/data_augment_ablation.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/pt_val_metric_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/pt_val_metric_ablation_win.png)
 
 Figure 10: Left: Using Scarf only for data augmentation during supervised training performs worse than using it for pre-training. Right: Using InfoNCE error instead of InfoNCE loss as the validation metric for early stopping degrades performance.
 
+!(/html/2106.15147/assets/images/ablation/do_right_only_ablation_win.png)
 
+!(/html/2106.15147/assets/images/ablation/is_batch_constant_ablation_win.png)
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/do_right_only_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/bernoulli_sampling_ablation_win.png)
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/is_batch_constant_ablation_win.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/bernoulli_sampling_ablation_win.png)
-
-![Refer to caption](/html/2106.15147/assets/images/ablation/single_batch_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/single_batch_ablation_win.png)
 
 Figure 11: Top left: Corrupting one view is better than corrupting both. Top right: Using different random feature indices for each example in the mini-batch is better than using a same set across the batch. Bottom left: Selecting a variable number of feature indices via coin flips performs similar to the method described in Algorithm [1](#alg1 "Algorithm 1 ‣ 3 Scarf ‣ Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption"). Bottom right: Corrupting by replacing the features by the features of a *single* drawn example for the whole mini-batch performs worse.
 
@@ -984,9 +931,9 @@ Figure [10](#A1.F10 "Figure 10 ‣ Alternative losses ‣ Impact of temperature
 
 Scarf uses the same loss function (InfoNCE) for training and validation. If we instead use the InfoNCE error for validation - where an error occurs when the model predicts an off-diagonal entry of the batch-size by batch-size similarity matrix - downstream performance degrades, as shown in Figure [10](#A1.F10 "Figure 10 ‣ Alternative losses ‣ Impact of temperature ‣ Appendix A Appendix ‣ Scarf: Self-Supervised Contrastive Learning using Random Feature Corruption").
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/corruption_ablation_mean_norm_win.png)
+!(/html/2106.15147/assets/images/ablation/corruption_ablation_mean_norm_win.png)
 
-![Refer to caption](/html/2106.15147/assets/images/ablation/uniform_align_ablation_win.png)
+!(/html/2106.15147/assets/images/ablation/uniform_align_ablation_win.png)
 
 Figure 12: Left: Scarf’s corruption strategy remains competitive for “mean” feature scaling, as was the case for both z-score and min-max scaling. Right: Comparison of different hyperparameters for the uniform-align loss. a𝑎a and u𝑢u are the weights on the align and uniform terms respectively.
 
@@ -1075,8 +1022,6 @@ Tables [2](#A1.T2 "Table 2 ‣ Absolute performance ‣ Impact of temperature �
 
 Table 2:  Absolute test accuracy (percent; averaged over 30 trials) for the 100% training data setting, for each dataset and every baseline, including a gradient-boosted decision tree (XGBoost) baseline (max depth of 3, 100 estimators).
 
-
-
 | dataset id | control | SCARF | SCARF AE | add. noise AE | no noise AE | SCARF disc. | XGBoost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 6 | 90.45 | 90.57 | 90.02 | 90.01 | 89.65 | 90.7 | 85.53 |
@@ -1150,8 +1095,6 @@ Table 2:  Absolute test accuracy (percent; averaged over 30 trials) for the 100%
 | 1049 | 88.95 | 87.48 | 88.53 | 88.69 | 88.93 | 88.58 | 89.2 |
 
 Table 3:  Absolute test accuracy (percent; averaged over 30 trials) for the 30% label noise setting, for each dataset and every baseline, including a gradient-boosted decision tree (XGBoost) baseline (max depth of 3, 100 estimators).
-
-
 
 | dataset id | control | SCARF | SCARF AE | add. noise AE | no noise AE | SCARF disc. | XGBoost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1306,83 +1249,3 @@ Table [5](#A1.T5 "Table 5 ‣ Training Speed ‣ Impact of temperature ‣ Appe
 | 1049 | 8.68 | 10.92 | 9.38 | 9.42 | 8.8 | 9.5 |
 
 Table 5:  Number of actual training epochs used (averaged over 30 trials) for the 100% training data setting, for each dataset and every baseline.
-
-[◄](/html/2106.15146)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2106.15147)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2106.15147)
-[View original  
-on arXiv](https://arxiv.org/abs/2106.15147)[►](/html/2106.15148)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 19 12:06:50 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

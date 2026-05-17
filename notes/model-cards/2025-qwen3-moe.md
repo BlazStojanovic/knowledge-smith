@@ -66,14 +66,14 @@ All variants share:
 | Activation | SiLU |
 | Tie embeddings | No |
 
-| MoE Property | 30B-A3B | 235B-A22B |
-|---|---|---|
-| Total experts | 128 | 128 |
-| Active experts | 8 | 8 |
-| Shared experts | 0 | 0 |
-| Expert intermediate dim | 768 | 1536 |
-| MoE frequency | Every layer | Every layer |
-| Routing aux loss coef | 0.001 | 0.001 |
+| MoE Property            | 30B-A3B     | 235B-A22B   |
+| ----------------------- | ----------- | ----------- |
+| Total experts           | 128         | 128         |
+| Active experts          | 8           | 8           |
+| Shared experts          | 0           | 0           |
+| Expert intermediate dim | 768         | 1536        |
+| MoE frequency           | Every layer | Every layer |
+| Routing aux loss coef   | 0.001       | 0.001       |
 
 ## Architecture Diagrams
 

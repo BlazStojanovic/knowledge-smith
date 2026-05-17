@@ -12,51 +12,6 @@ url: https://arxiv.org/abs/2509.04259
 year: 2025
 ---
 
-[2509.04259] RL’s Razor: Why Online Reinforcement Learning Forgets Less
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-11footnotetext: Equal contribution. Correspondence to: Jyothish Pari (jyop@mit.edu), Idan Shenfeld (idanshen@mit.edu).
-
 # RL’s Razor: Why Online Reinforcement Learning Forgets Less
 
 Idan Shenfeld∗  Jyothish Pari∗  Pulkit Agrawal
@@ -69,8 +24,7 @@ Idan Shenfeld∗  Jyothish Pari∗  Pulkit Agrawal
 
 Comparison of fine-tuning models with reinforcement learning (RL) and supervised fine-tuning (SFT) reveals that, despite similar performance at a new task, RL preserves prior knowledge and capabilities significantly better. We find that the degree of forgetting is determined by the distributional shift, measured as the KL-divergence between the fine-tuned and base policy evaluated on the new task. Our analysis reveals that on-policy RL is implicitly biased towards KL-minimal solutions among the many that solve the new task, whereas SFT can converge to distributions arbitrarily far from the base model. We validate these findings through experiments with large language models and robotic foundation models and further provide theoretical justification for why on-policy RL updates lead to a smaller KL change. We term this principle RL’s Razor: among all ways to solve a new task, RL prefers those closest in KL to the original model. Our website is available at <http://jyopari.github.io/posts/rl_razor>.
 
-![Refer to caption](/html/2509.04259/assets/x1.png)
-
+!(/html/2509.04259/assets/x1.png)
 
 Figure 1: Bias toward KL-minimal solutions reduces forgetting. *Left:* Among policies that solve the new task, RL converges to those closest in KL to the base model. *Right:* This KL bias yields higher prior-task retention at matched new-task performance compared to SFT.
 
@@ -131,8 +85,7 @@ Concurrently, Lai et al. ([2025](#bib.bib39)) reports that RL forgets less than
 
 ## 3 Reinforcement Learning Forgets Less than SFT
 
-![Refer to caption](/html/2509.04259/assets/x2.png)
-
+!(/html/2509.04259/assets/x2.png)
 
 Figure 2: Pareto frontiers of RL and SFT.
 Comparing the performance of a fine-tuned model on the new task (x-axis) and prior task (y-axis). Each point corresponds to a model trained with a different set of hyperparameters, and the curves trace the Pareto frontiers for the two methods. RL achieves new-task improvements while maintaining prior knowledge, whereas SFT improves new-task performance at the expense of forgetting the prior task.
@@ -183,8 +136,7 @@ RL is able to learn new tasks while incurring minimal forgetting, whereas SFT re
 
 ## 4 Smaller KL divergences lead to less forgetting
 
-![Refer to caption](/html/2509.04259/assets/x3.png)
-
+!(/html/2509.04259/assets/x3.png)
 
 Figure 3: KL divergence predicts catastrophic forgetting.
 (Left) Learning-Forgetting Trade-offs. SFT outperform RL only when an oracle distribution is used as a source of annotation.
@@ -224,8 +176,7 @@ Catastrophic forgetting in both SFT and RL is predicted by the KL divergence bet
 
 ## 5 On-policy methods leads to smaller KL divergence
 
-![Refer to caption](/html/2509.04259/assets/x4.png)
-
+!(/html/2509.04259/assets/x4.png)
 
 Figure 4: Comparison of algorithm classes. (Left) The four quadrants illustrate algorithm types, defined by whether they are on-policy or offline and whether they incorporate negative gradients.
 (Middle) On-policy methods retain prior knowledge more effectively.
@@ -282,8 +233,7 @@ Plotting KL divergence confirms this conclusion: on-policy methods (GRPO and 1�
 
 ### 5.2 Theoretical Perspective
 
-![Refer to caption](/html/2509.04259/assets/x5.png)
-
+!(/html/2509.04259/assets/x5.png)
 
 Figure 5: KL-minimal path to optimality. Alternating I-projection into the set of optimal policies and M-projection into Π\Pi carries π0\pi\_{0} into P∗P^{\*} while preferring the closest solution in KL.
 
@@ -960,12 +910,9 @@ To construct the learning–forgetting trade-off curves (e.g., Figure [2](#S3.F
 
    Curve fitting. An exponential function was fit to the filtered points to produce the trade-off curves.
 
-![Refer to caption](/html/2509.04259/assets/x6.png)
-
+!(/html/2509.04259/assets/x6.png)
 
 Figure 6: Example for the process of creating the pareto frontier plots
-
-
 
 |  |  |  |
 | --- | --- | --- |
@@ -1101,8 +1048,7 @@ To study how representations change between models, we compare their embeddings 
 Following prior work, we compare the relative geometry of the embeddings—that is, how different inputs relate to each other. This geometry can be summarized by a kernel (similarity) matrix, which encodes pairwise relationships among input embeddings.
 Centered Kernel Alignment (CKA) (Kornblith et al., [2019](#bib.bib38)) is a standard measure for comparing such kernels, providing a way to quantify representational similarity between models.
 
-![Refer to caption](/html/2509.04259/assets/x7.png)
-
+!(/html/2509.04259/assets/x7.png)
 
 Figure 7: CKA similarity to the base model during training. Although SFT and RL achieve comparable task performance, SFT models diverge substantially in their representations, whereas RL models remain more closely aligned with the base model.
 
@@ -1116,8 +1062,7 @@ Figure [7](#A3.F7 "Figure 7 ‣ Experimental Setup. ‣ C.1 Representation Pres
 
 Prior work has suggested that catastrophic forgetting diminishes as model size increases (Ramasesh et al., [2021](#bib.bib57); Luo et al., [2023](#bib.bib47); Cossu et al., [2024](#bib.bib12)). To evaluate this claim in our setting, we repeated the SFT experiments from Section [3](#S3 "3 Reinforcement Learning Forgets Less than SFT ‣ RL’s Razor: Why Online Reinforcement Learning Forgets Less") using Qwen 2.5 models with 3B, 7B, and 14B parameters on the Science Q&A task.
 
-![Refer to caption](/html/2509.04259/assets/x8.png)
-
+!(/html/2509.04259/assets/x8.png)
 
 Figure 8: Pareto frontiers for SFT on Qwen 2.5 Instruct models of size 3B, 7B, and 14B on the Science Q&A task. All sizes exhibit the same fundamental trade-off—gains on the new task require forgetting prior capabilities.
 
@@ -1136,104 +1081,20 @@ To examine the link between parameter updates and forgetting, we analyzed the op
 
 Plotting per-step KL change against the cosine similarity (Figure [10](#A3.F10 "Figure 10 ‣ C.3 Optimization Dynamics ‣ Appendix C Additional Results ‣ RL’s Razor: Why Online Reinforcement Learning Forgets Less")) revealed a strong correlation: steps producing larger KL shifts tended to align more with the forgetting gradient. This analysis demonstrates that at the level of optimization dynamics, catastrophic forgetting is driven by updates that induce larger distributional shifts on the new task.
 
-![Refer to caption](/html/2509.04259/assets/x9.png)
-
+!(/html/2509.04259/assets/x9.png)
 
 Figure 9: SFT distillation from an RL teacher.
 Accuracy trade-off between the new task (MNIST) and the prior task (FashionMNIST). Sweeping student hyperparameters shows that SFT can match the teacher within noise on both tasks. This suggests that what matters is not the optimization path, but the distribution of the final model.
 
+!(/html/2509.04259/assets/x10.png)
 
-
-![Refer to caption](/html/2509.04259/assets/x10.png)
-
-![Refer to caption](/html/2509.04259/assets/x11.png)
+!(/html/2509.04259/assets/x11.png)
 
 Figure 10: Gradient similarity versus KL change.
 (Left) On the new training task (ParityMNIST), gradient cosine similarity and KL change per step remain anti-correlated.
 (Right) On the prior task (FashionMNIST), the gradient similarity is more correlated with the KL change per step on the training task (ParityMNIST).
 Together, these plots show that taking a larger step on the current task induces gradients that are more similar in direction to the
 
-![Refer to caption](/html/2509.04259/assets/x12.png)
-
+!(/html/2509.04259/assets/x12.png)
 
 Figure 11: We plot the KL divergence between the base and fine-tuned model on the new task, alongside the corresponding forgetting performance across methods.
-
-[◄](/html/2509.04257)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2509.04259)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2509.04259)
-[View original  
-on arXiv](https://arxiv.org/abs/2509.04259)[►](/html/2509.04260)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Oct 6 20:25:58 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

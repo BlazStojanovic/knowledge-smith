@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2506.10943
 year: 2025
 ---
 
-[2506.10943] Self-Adapting Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Self-Adapting Language Models
 
 Adam Zweiger  Jyothish Pari111The reward may also be assigned to the single self-edit that yields the greatest improvement among sampled candidates, which we do in knowledge incorporation, rather than to all edits that yield a positive improvement. †  Han Guo  Ekin Akyürek  Yoon Kim  Pulkit Agrawal†
@@ -87,8 +44,7 @@ We evaluate SEAL on two applications. We first consider the task of integrating 
 
 We further evaluate SEAL on few-shot learning on a simplified subset of the ARC-AGI benchmark (Chollet, [2019](#bib.bib14)), where the model leverages a set of tools to autonomously select both synthetic data augmentations and optimization hyperparameters (e.g., learning rate, training epochs, selective loss computation over token types). Our experiments demonstrate that automatic selection and configuration of these tools using SEAL enhances performance compared to both standard in-context learning (ICL) and self-editing without RL training to use the tools effectively. These results collectively show that SEAL is a versatile framework for enabling language models to self-adapt.
 
-![Refer to caption](/html/2506.10943/assets/x1.png)
-
+!(/html/2506.10943/assets/x1.png)
 
 Figure 1: Overview of SEAL. In each RL outer loop iteration, the model generates candidate self-edits (SE)—directives on how to update the weights—applies updates, evaluates performance on a downstream task, and uses the resulting rewards to improve the self-edit generation policy.
 
@@ -186,8 +142,7 @@ We instantiate the SEAL framework in two distinct domains: knowledge incorporati
 
 Our goal is to efficiently incorporate the information provided in a passage into the model’s weights. A promising recent approach involves using a language model to generate content derived from the passage, followed by finetuning on both the original passage and the generated content (Yehudai et al., [2024](#bib.bib26); Akyürek et al., [2024](#bib.bib27); Yang et al., [2025](#bib.bib22); Lampinen et al., [2025](#bib.bib28); Park et al., [2025](#bib.bib29)). While the form of generated content may vary, we adopt what we consider the canonical format: implications derived from the passage. This approach, introduced in deductive closure training (Akyürek et al., [2024](#bib.bib27)), converts a given context CC into a set of implications SE={s1,s2,…,sn}\texttt{SE}=\{s\_{1},s\_{2},\dots,s\_{n}\} by prompting the model to “List several implications derived from the content.” The output may include inferences, logical consequences, or restatements of the original passage. In §[C](#A3 "Appendix C Prompting ‣ Self-Adapting Language Models"), we also explore alternative prompts such as “rewrite the passage in different ways” or “rewrite in a question-answer format” and show that our method improves performance by similar or greater margins regardless of the base prompt.
 
-![Refer to caption](/html/2506.10943/assets/x2.png)
-
+!(/html/2506.10943/assets/x2.png)
 
 Figure 2: Knowledge Incorporation Setup. Given a new passage, the model generates synthetic data (the self-edit) in the form of “implications” of the passage. We then finetune on these outputs using LoRA. The updated model is evaluated on questions about the passage without access to the original text, and the resulting accuracy serves as the reward signal for reinforcement learning.
 
@@ -197,8 +152,7 @@ During RL training, the adapted model’s accuracy on τ\tau defines the reward 
 
 #### Few-Shot Learning.
 
-![Refer to caption](/html/2506.10943/assets/x3.png)
-
+!(/html/2506.10943/assets/x3.png)
 
 Figure 3: Few-Shot Learning with SEAL. Left: example ARC demonstrations. Center: the model generates a self-edit specifying augmentations and training hyperparameters. Right: the adapted model is evaluated on a held-out test input.
 
@@ -269,8 +223,7 @@ We experiment with Qwen2.5-7B on incorporating novel factual content from SQuAD 
 
    Train on Passage + GPT-4.1 Synthetic Data: The model is trained on the passage along with model-generated implications collected from GPT-4.1 via the OpenAI API.
 
-![Refer to caption](/html/2506.10943/assets/x4.png)
-
+!(/html/2506.10943/assets/x4.png)
 
 Figure 4: Accuracy over RL iterations. Each iteration consists of a minibatch of 5050 contexts, each with 55 sampled self-edits. SEAL surpasses GPT-4.1 synthetic data after two iterations of ReSTEM{}^{\text{{EM}}} on the no-context SQuAD set.
 
@@ -290,15 +243,13 @@ Table 2: Knowledge Incorporation Performance across Passage Settings
 
 Figure [4](#S4.F4 "Figure 4 ‣ 4.2 Knowledge Incorporation ‣ 4 Results ‣ Self-Adapting Language Models") tracks accuracy after each outer RL iteration. Two iterations suffice for SEAL to overtake GPT-4.1 data; subsequent iterations yield diminishing returns, suggesting that the policy quickly converges to an edit style that distills the passage into easily learnable atomic facts (see qualitative examples in Figure [5](#S4.F5 "Figure 5 ‣ 4.2 Knowledge Incorporation ‣ 4 Results ‣ Self-Adapting Language Models")). All results use tuned hyperparameters (see §[B](#A2 "Appendix B Experimental Details: Knowledge Incorporation ‣ Self-Adapting Language Models")).
 
-![Refer to caption](/html/2506.10943/assets/x5.png)
-
+!(/html/2506.10943/assets/x5.png)
 
 Figure 5: Example Knowledge Incorporation Self-Edits Across RL Iterations. In this example, we see how RL leads to the generation of more detailed self-edits, which in turn results in better performance. While the progression is clear in this case, the differences across iterations are sometimes more subtle in other examples. We show in §[C](#A3 "Appendix C Prompting ‣ Self-Adapting Language Models") that prompting for longer self-edits is effective, and that RL training further improves performance by a similar margin.
 
 ## 5 Limitations
 
-![Refer to caption](/html/2506.10943/assets/x6.png)
-
+!(/html/2506.10943/assets/x6.png)
 
 Figure 6: Catastrophic forgetting from continual self-edits. We sequentially update the model on new passages and track degradation on prior tasks. Entry-wise standard errors are reported in §[B.6](#A2.SS6 "B.6 Standard Error of the Mean in Catastrophic Forgetting Experiment ‣ Appendix B Experimental Details: Knowledge Incorporation ‣ Self-Adapting Language Models").
 
@@ -1009,83 +960,3 @@ Passage:
 Question 1:
 
 Note: For self-qa, we apply additional formatting so that training documents consist of question–answer pairs, rather than using our standard approach of splitting by newline characters. Specifically, we split the output using occurrences of “Question n:” instead of newlines.
-
-[◄](/html/2506.10942)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2506.10943)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2506.10943)
-[View original  
-on arXiv](https://arxiv.org/abs/2506.10943)[►](/html/2506.10944)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Jul 5 16:16:25 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

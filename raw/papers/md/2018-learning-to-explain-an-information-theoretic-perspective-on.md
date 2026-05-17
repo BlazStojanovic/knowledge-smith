@@ -13,50 +13,6 @@ url: http://arxiv.org/abs/1802.07814v2
 year: 2018
 ---
 
-[1802.07814] Learning to Explain: An Information-Theoretic Perspective on Model Interpretation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Learning to Explain: An Information-Theoretic Perspective on Model Interpretation
 
 Jianbo Chen
@@ -196,8 +152,7 @@ model as a conditional distribution, ℙm(⋅∣x)\mathbb{P}\_{m}(\cdot\mid x), 
 the response variable Y𝑌Y given the realization of the input random
 variable X=x∈dX=x\in{}^{d}.
 
-![Refer to caption](/html/1802.07814/assets/x1.png)
-
+!(/html/1802.07814/assets/x1.png)
 
 Figure 1: The graphical model of obtaining XSsubscript𝑋𝑆X\_{S} from X𝑋X.
 
@@ -518,8 +473,7 @@ optimization. We also fix the step size to be 0.0010.0010.001 across
 experiments. The temperature for Gumbel-softmax approximation is fixed
 to be 0.10.10.1. Codes for reproducing the key results are available online at <https://github.com/Jianbo-Lab/L2X>.
 
-![Refer to caption](/html/1802.07814/assets/x2.png)
-
+!(/html/1802.07814/assets/x2.png)
 
 Figure 2: The clock time (in log scale) of explaining 10,000
 
@@ -544,19 +498,17 @@ We begin with experiments on four synthetic data sets:
 
   Switch feature. Generate X1subscript𝑋1X\_{1} from a mixture of two Gaussians centered at ±3plus-or-minus3\pm 3 respectively with equal probability. If X1subscript𝑋1X\_{1} is generated from the Gaussian centered at 333, the 2−5252-5th dimensions are used to generate Y𝑌Y like the orange skin model. Otherwise, the 6−9​t​h69𝑡ℎ6-9th dimensions are used to generate Y𝑌Y from the nonlinear additive model.
 
-![Refer to caption](/html/1802.07814/assets/x3.png)
+!(/html/1802.07814/assets/x3.png)
 
-![Refer to caption](/html/1802.07814/assets/x4.png)
+!(/html/1802.07814/assets/x4.png)
 
-![Refer to caption](/html/1802.07814/assets/x5.png)
+!(/html/1802.07814/assets/x5.png)
 
-![Refer to caption](/html/1802.07814/assets/x6.png)
+!(/html/1802.07814/assets/x6.png)
 
 Figure 3: The box plots for the median ranks of the influential features by each sample, over 10,000
 
 1000010,000 samples for each data set. The red line and the dotted blue line on each box is the median and the mean respectively. Lower median ranks are better. The dotted green lines indicate the optimal median rank.
-
-
 
 | Truth | Model | Key words |
 | --- | --- | --- |
@@ -717,49 +669,47 @@ The explainer of L2X is composed of a 100100100-dimensional word embedding follo
 Comparison is carried out with the same metrics. For human accuracy, one selected sentence for each review is shown to human annotators. The other experimental setups are kept the same as above. We observe that post-hoc accuracy reaches 84.4%percent84.484.4\% with one sentence selected by L2X, and human judgements using one sentence align with the original model prediction for 77.4%percent77.477.4\% of data.
 Table [3](#S4.T3 "Table 3 ‣ 4.1 Synthetic Data ‣ 4 Experiments ‣ Learning to Explain: An Information-Theoretic Perspective on Model Interpretation") shows the explanations from our model on four examples.
 
-![Refer to caption](/html/1802.07814/assets/figs/both_0.png)
+!(/html/1802.07814/assets/figs/both_0.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_2.png)
+!(/html/1802.07814/assets/figs/both_2.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_3.png)
+!(/html/1802.07814/assets/figs/both_3.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_5.png)
+!(/html/1802.07814/assets/figs/both_5.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_6.png)
+!(/html/1802.07814/assets/figs/both_6.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_8.png)
+!(/html/1802.07814/assets/figs/both_8.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_9.png)
+!(/html/1802.07814/assets/figs/both_9.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_13.png)
+!(/html/1802.07814/assets/figs/both_13.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_15.png)
+!(/html/1802.07814/assets/figs/both_15.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/both_16.png)
+!(/html/1802.07814/assets/figs/both_16.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_0.png)
+!(/html/1802.07814/assets/figs/explanation_0.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_2.png)
+!(/html/1802.07814/assets/figs/explanation_2.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_3.png)
+!(/html/1802.07814/assets/figs/explanation_3.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_5.png)
+!(/html/1802.07814/assets/figs/explanation_5.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_6.png)
+!(/html/1802.07814/assets/figs/explanation_6.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_8.png)
+!(/html/1802.07814/assets/figs/explanation_8.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_9.png)
+!(/html/1802.07814/assets/figs/explanation_9.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_13.png)
+!(/html/1802.07814/assets/figs/explanation_13.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_15.png)
+!(/html/1802.07814/assets/figs/explanation_15.png)
 
-![Refer to caption](/html/1802.07814/assets/figs/explanation_16.png)
+!(/html/1802.07814/assets/figs/explanation_16.png)
 
 Figure 4: The above figure shows ten randomly selected figures of 333 and 888 in the validation set. The first line include the original digits while the second line does not. The selected patches are colored with red if the pixel is activated (white) and blue otherwise.
-
-
 
 |  | IMDB-Word | IMDB-Sent | MNIST |
 | --- | --- | --- | --- |
@@ -1031,83 +981,3 @@ which is a contradiction.
   A sensitivity analysis of (and practitioners’ guide to) convolutional
   neural networks for sentence classification.
   *arXiv preprint arXiv:1510.03820*, 2015.
-
-[◄](/html/1802.07813)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1802.07814)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1802.07814)
-[View original  
-on arXiv](https://arxiv.org/abs/1802.07814)[►](/html/1802.07816)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 7 15:56:39 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

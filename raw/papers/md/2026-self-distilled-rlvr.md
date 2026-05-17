@@ -19,66 +19,6 @@ url: https://arxiv.org/abs/2604.03128
 year: 2026
 ---
 
-[2604.03128] Self-Distilled RLVR
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1,2,\*]Chenxu Yang
-1,2,\*]Chuanyu Qin
-3,\*]Qingyi Si
-1,2]Minghui Chen
-1,2]Naibin Gu
-1,2]Dingyu Yao
-1,2,†]Zheng Lin
-1]Weiping Wang
-3]Jiaqi Wang
-3]Nan Duan
-1]Institute of Information Engineering, Chinese Academy of Sciences, Beijing, China
-2]School of Cyber Security, University of Chinese Academy of Sciences, Beijing, China
-3]JD.COM
-\contribution[\*]Equal contribution.
-\contribution[†]Corresponding author.
-\checkdata[Email]; ;
-
 # Self-Distilled RLVR
 
 [
@@ -93,7 +33,7 @@ Email: [siqingyi.phoebus@jd.com](mailto:siqingyi.phoebus@jd.com)
 
 On-policy distillation (OPD) has become a popular training paradigm in the LLM community. This paradigm selects a larger model as the teacher to provide dense, fine-grained signals for each sampled trajectory, in contrast to reinforcement learning with verifiable rewards (RLVR), which only obtains sparse signals from verifiable outcomes in the environment. Recently, the community has explored on-policy self-distillation (OPSD), where the same model serves as both teacher and student, with the teacher receiving additional privileged information such as reference answers to enable self-evolution. This paper demonstrates that learning signals solely derived from the privileged teacher result in severe information leakage and unstable long-term training. Accordingly, we identify the optimal niche for self-distillation and propose RLSD (RLVR with Self-Distillation). Specifically, we leverage self-distillation to obtain token-level policy differences for determining fine-grained update magnitudes, while continuing to use RLVR to derive reliable update directions from environmental feedback (e.g., response correctness). This enables RLSD to simultaneously harness the strengths of both RLVR and OPSD, achieving a higher convergence ceiling and superior training stability.
 
-![Refer to caption](/html/2604.03128/assets/x1.png)
+!(/html/2604.03128/assets/x1.png)
 
 Figure 1: Performance on the trained Qwen3-VL-8B-Instruct model. In (a), OPSD reaches its peak performance early and degrades, whereas RLSD inherits the training stability of GRPO while achieving a higher convergence ceiling. In (b), GRPO and RLSD report results at 200 training steps, while GRPO (2×\timessteps) reports results at 400 steps; RLSD at 200 steps already surpasses GRPO trained for twice as many steps, demonstrating faster convergence.
 
@@ -189,9 +129,7 @@ I need to determine if the sample mean is within $​1\mathdollar 1 of the popul
 
 Figure 2: A representative example illustrating the privileged information leakage exhibited by the OPSD-trained model, where the model appeals to an invisible reference solution during inference.
 
-
-
-![Refer to caption](/html/2604.03128/assets/x2.png)
+!(/html/2604.03128/assets/x2.png)
 
 Figure 3: Leakage, KL divergence, and validation performance of OPSD and its ablated variants.
 
@@ -308,7 +246,7 @@ Given a student-sampled trajectory y=(y1,…,yT)y=(y\_{1},\dots,y\_{T}), we comp
 
 where sg denotes the stop-gradient operator. Since teacher and student share the same model, Δt\Delta\_{t} isolates the marginal contribution of the privileged information rr to the prediction of yty\_{t}. A large positive Δt\Delta\_{t} indicates that rr strongly supports this token; a negative value indicates that rr disfavors it. Crucially, Δt\Delta\_{t} provides a dense, token-level signal that naturally reflects how much each token is informed by the privileged information, making it a principled and lightweight basis for fine-grained credit assignment within a trajectory. The stop-gradient ensures that Δt\Delta\_{t} serves purely as a weighting signal and does not introduce auxiliary gradient pathways.
 
-![Refer to caption](/html/2604.03128/assets/x3.png)
+!(/html/2604.03128/assets/x3.png)
 
 Figure 4: An overview of our RLSD method.
 
@@ -447,9 +385,7 @@ Avg. is computed over the five selected benchmarks.
 | GRPO+OPSD | 63.22 | 75.90 | 48.52 | 22.16 | 54.76 | 52.91 |
 | RLSD (Ours) | 67.22 | 78.10 | 52.73 | 24.85 | 58.00 | 56.18 |
 
-
-
-![Refer to caption](/html/2604.03128/assets/x4.png)
+!(/html/2604.03128/assets/x4.png)
 
 Figure 5: Training dynamics on the multimodel reasoning tasks.
 
@@ -461,7 +397,7 @@ Figure [5](#S5.F5 "Figure 5 ‣ 5.2.1 Main Results ‣ 5.2 Experimental Results 
 
 #### 5.2.3 Case Study
 
-![Refer to caption](/html/2604.03128/assets/x5.png)
+!(/html/2604.03128/assets/x5.png)
 
 Figure 6: Token-level credit heatmaps under RLSD for two multimodal reasoning examples. Top: in a correct trajectory, larger credit is concentrated on the decisive counting and subtraction steps. Bottom: in an incorrect trajectory, the strongest blame is assigned to the misread bar-model relation and the derived wrong answer. Green denotes larger token-level credit magnitude and red denotes smaller token-level credit magnitude.
 
@@ -1059,83 +995,3 @@ Table 3: Comparison of OPSD parameter management strategies and RLSD across the 
 | (a) Objective stability | ✓\checkmark | ×\times | ✓\checkmark |
 | (b) Sustained improvement | ×\times | ✓\checkmark | ✓\checkmark |
 | (c) Leakage-free training | ×\times | ×\times | ✓\checkmark |
-
-[◄](/html/2604.03127)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.03128)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.03128)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.03128)[►](/html/2604.03129)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 02:51:35 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

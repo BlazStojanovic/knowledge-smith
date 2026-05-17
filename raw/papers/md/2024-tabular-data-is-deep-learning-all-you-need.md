@@ -12,50 +12,6 @@ url: https://arxiv.org/abs/2402.03970
 year: 2024
 ---
 
-[2402.03970] Tabular Data: Is Attention All You Need?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Tabular Data: Is Attention All You Need?
 
 Guri Zabërgja
@@ -154,14 +110,12 @@ Linear
 Sum
 x𝑥x
 
-
 Linear
 
 Act
 
 Linear
 ⋮Paths⋮ResNeXt Block+
-
 
 Figure 1: Our adapted ResNeXt architecture.
 
@@ -224,9 +178,9 @@ As state-of-the-art specialized deep learning architectures, we consider TabNet 
 
 Research Question 1: Are decision trees superior to neural networks in terms of the predictive performance?
 
-![Refer to caption](/html/2402.03970/assets/x1.png)
+!(/html/2402.03970/assets/x1.png)
 
-![Refer to caption](/html/2402.03970/assets/x2.png)
+!(/html/2402.03970/assets/x2.png)
 
 Figure 2: Comparison between all the methods across 68 datasets. Top: Using the default hyperparameter configuration, Bottom: Using the best-found hyperparameter configuration during 100 Optuna HPO trials. A lower rank indicates a better performance.
 
@@ -238,25 +192,21 @@ Based on the results, we conclude that decision trees are not superior to neural
 
 Research Question 2: Do attention-based networks outperform multilayer perceptrons with residual connections (ResNets, ResNeXts)?
 
-![Refer to caption](/html/2402.03970/assets/x3.png)
+!(/html/2402.03970/assets/x3.png)
 
-![Refer to caption](/html/2402.03970/assets/x4.png)
+!(/html/2402.03970/assets/x4.png)
 
 Figure 3: Comparative analysis of ResNeXt, ResNet, TabNet, SAINT, and FT-Transformer on 68 datasets under different configurations. Top: Using the default hyperparameter configuration, Bottom: Using the best-found hyperparameter configuration during 100 Optuna HPO trials. A lower rank indicates a better performance.
 
+!(/html/2402.03970/assets/x5.png)
 
-
-![Refer to caption](/html/2402.03970/assets/x5.png)
-
-![Refer to caption](/html/2402.03970/assets/x6.png)
+!(/html/2402.03970/assets/x6.png)
 
 Figure 4: Comparison between attention-based architectures and feed-forward neural networks with residual connections on 17 datasets that have less than 1000 example instances.
 
+!(/html/2402.03970/assets/x7.png)
 
-
-![Refer to caption](/html/2402.03970/assets/x7.png)
-
-![Refer to caption](/html/2402.03970/assets/x8.png)
+!(/html/2402.03970/assets/x8.png)
 
 Figure 5: Best performing methods on different datasets. Each marker represents the best-performing method on a dataset with tuned hyperparameters, Left: ResNeXt against CatBoost, Right: ResNeXt against FT-Transformer
 
@@ -276,11 +226,11 @@ Based on the results, we conclude that attention-based networks do not outperfor
 
 Given, the results, a question emerges, is there a method that works best for certain datasets?
 
-![Refer to caption](/html/2402.03970/assets/x9.png)
+!(/html/2402.03970/assets/x9.png)
 
-![Refer to caption]()
+!()
 
-![Refer to caption](/html/2402.03970/assets/x11.png)
+!(/html/2402.03970/assets/x11.png)
 
 Figure 6: Comparison of the top performing methods with each other. Each dot in the plots represents a dataset, the y𝑦y and x𝑥x axes show the error rate of the respective method.
 
@@ -312,8 +262,7 @@ Table 2: Algorithm performance comparison, inclusive of default-parameterized ve
 
 Research Question 3: How does the hyperparameter optimization (HPO) budget influence the performance of neural networks?
 
-![Refer to caption](/html/2402.03970/assets/x12.png)
-
+!(/html/2402.03970/assets/x12.png)
 
 Figure 7: Intra search space normalized average distance to the maximum over the number of HPO trials for the best-performing methods.
 
@@ -325,9 +274,9 @@ Investigating the results, all of the methods seem to benefit from the extended 
 
 Despite having a different experimental protocol compared to other works (McElfresh et al., [2023](#bib.bib20)), we analyze the performance of our experimental setup given fewer HPO trials. In particular, we identify the optimal hyperparameters after just 30 Optuna trials and investigate our results compared to prior work (McElfresh et al., [2023](#bib.bib20)).
 
-![Refer to caption](/html/2402.03970/assets/x13.png)
+!(/html/2402.03970/assets/x13.png)
 
-![Refer to caption](/html/2402.03970/assets/x14.png)
+!(/html/2402.03970/assets/x14.png)
 
 Figure 8: Comparative analysis of all the methods after only 30 Optuna trials. Top: Comparison of ResNet with all the other methods, Bottom: Comparison of ResNeXt with all the other methods. A lower rank indicates a better performance.
 
@@ -523,16 +472,15 @@ This paper presents work whose goal is to advance the field of Machine Learning.
 
 Analogous to Figure [7](#S6.F7 "Figure 7 ‣ 6 Experiments and Results ‣ Tabular Data: Is Attention All You Need?"), we present a plot of the normalized ADTM (Average Distance to the Maximum) values across trials for all methods in Figure [9](#A1.F9 "Figure 9 ‣ Appendix A Hyperparameter tuning analysis ‣ Tabular Data: Is Attention All You Need?"). The plot clearly illustrates that most deep learning methods require additional time to converge towards the incumbent values. This observation underscores the critical role of hyperparameter tuning in optimizing the performance of deep learning methods.
 
-![Refer to caption](/html/2402.03970/assets/x15.png)
-
+!(/html/2402.03970/assets/x15.png)
 
 Figure 9: Intra search space normalized average distance to the maximum over the number of HPO trials for all the methods.
 
 In Figure [10](#A1.F10 "Figure 10 ‣ Appendix A Hyperparameter tuning analysis ‣ Tabular Data: Is Attention All You Need?"), we present a comprehensive comparative analysis of all the leading methods across the full range of datasets. The plot reinforces the findings illustrated in Figure [5](#S6.F5 "Figure 5 ‣ 6 Experiments and Results ‣ Tabular Data: Is Attention All You Need?"), specifically highlighting the absence of a distinct winner within any specific dataset region. It is evident that the performance of various methods is comparably balanced, with no single method demonstrating consistent superiority across varying dataset sizes.
 
-![Refer to caption](/html/2402.03970/assets/x16.png)
+!(/html/2402.03970/assets/x16.png)
 
-![Refer to caption](/html/2402.03970/assets/x17.png)
+!(/html/2402.03970/assets/x17.png)
 
 Figure 10: Best performing methods on different datasets. Each marker represents the best-performing method on a dataset. Left: The best-performing methods with tuned hyperparameters. Right: With default hyperparameters.
 
@@ -836,9 +784,6 @@ Additionally, we include results featuring TabPFN (Hollmann et al., [2023](#bi
 
 Table 10: Comparison of average test ROC-AUC scores for all methods with tuned hyperparameters across 68 Datasets. When multiple methods exhibit identical performance, each method is awarded a point. Failed runs are represented by "-".
 
-
-
-
 Table 11: Comparison of average test ROC-AUC scores for all methods with default hyperparameters across 68 Datasets. When multiple methods exhibit identical performance, each method is awarded a point. Failed runs are represented by "-".
 
 |  |  |  |  |  |  |  |  |
@@ -914,9 +859,6 @@ Table 11: Comparison of average test ROC-AUC scores for all methods with default
 | wilt | 0.996748 | 0.994114 | 0.99654 | 0.996512 | 0.996185 | 0.996472 | 0.992241 |
 | Wins | 14 | 20 | 8 | 16 | 13 | 1 | 3 |
 
-
-
-
 Table 12: Comparison of average test ROC-AUC scores for all methods with tuned hyperparameters across 17 datasets where the number of instances is ≤\leq 1000
 
 |  |  |  |  |  |  |  |  |  |
@@ -940,9 +882,6 @@ Table 12: Comparison of average test ROC-AUC scores for all methods with tuned h
 | vehicle | 0.969355 | 0.945354 | 0.962139 | 0.971505 | 0.958966 | 0.926539 | 0.944572 | 0.969613 |
 | wdbc | 0.998001 | 0.994759 | 0.995538 | 0.998810 | 0.993021 | 0.991199 | 0.995735 | 0.992328 |
 | Wins | 4 | 2 | 3 | 5 | 1 | 1 | 2 | 1 |
-
-
-
 
 Table 13: Comparison of average test ROC-AUC scores for all methods with default hyperparameters across 17 datasets where the number of instances is ≤\leq 1000
 
@@ -971,83 +910,3 @@ Table 13: Comparison of average test ROC-AUC scores for all methods with default
 ## Appendix E Experimental details
 
 In our study, we prioritize efficiency and reproducibility through our experimental setup. Each cross-validation (CV) outer fold is executed in parallel to enhance computational efficiency. This parallel execution is achieved by specifying an outer\_fold argument within our running script, with values assigned from 0 to 9. In parallel, to ensure the reproducibility of our experiments, a consistent seed value of 0 is employed for every run.
-
-[◄](/html/2402.03969)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2402.03970)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2402.03970)
-[View original  
-on arXiv](https://arxiv.org/abs/2402.03970)[►](/html/2402.03971)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 5 17:53:30 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

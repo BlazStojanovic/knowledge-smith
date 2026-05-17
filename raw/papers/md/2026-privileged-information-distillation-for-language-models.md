@@ -15,55 +15,6 @@ url: https://arxiv.org/abs/2602.04942
 year: 2026
 ---
 
-[2602.04942] Privileged Information Distillation for Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1]ServiceNow
-2]Mila Quebec
-3]Université de Montréal
-4]McGill University
-5]HEC Montréal
-
 # Privileged Information Distillation for Language Models
 
 Emiliano Penaloza
@@ -96,16 +47,14 @@ We complement our results with extensive analysis that characterizes the factors
 
 \correspondence
 
-![Refer to caption](/html/2602.04942/assets/x1.png)
-
+!(/html/2602.04942/assets/x1.png)
 
 Figure 1: Overview of the π\pi-Distill framework.
 (1) Successful trajectories (not shown) are collected from a frontier agent that exposes only actions while hiding its Chain-of-Thought.
 (2) These trajectories are transformed into training-time privileged information (PI) and used to sample using a PI-conditioned teacher policy πθT​(𝐨∣s,𝐈){\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}\_{\theta}(\mathbf{o}\mid s,\mathbf{I})}.
 (3) The PI-conditioned teacher and an unconditioned student πθS​(𝐨|s){\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}\_{\theta}(\mathbf{o}|s)} share parameters and are trained jointly, enabling transfer of privileged knowledge to a test-time policy that acts without PI.
 
-![Refer to caption](/html/2602.04942/assets/x2.png)
-
+!(/html/2602.04942/assets/x2.png)
 
 Figure 2: Results for Qwen3-8B on TravelPlanner and τ\tau-Bench retail.
 The dashed line separating SFT w/ CoT + RL denotes that this method is not a required baseline, as all other methods do not rely on frontier-model CoT traces.
@@ -130,7 +79,6 @@ We find that π\pi-Distill is highly effective at mitigating the lack of CoT, ou
 Finally, we transform frontier model trajectories into three varying types of PI, each with different information density, providing varying amounts of utility and inducing different degrees of distributional shift between student and teacher. We use this variation to analyze the critical factors for training with PI, finding that for π\pi-Distill, maximizing PI utility while simultaneously mitigating the student-teacher distributional gap and preventing collapse is essential for effective learning. While information content is more important for OPSD.
 
 Contributions
-
 
 1.
 
@@ -265,8 +213,7 @@ To evaluate our approach, we first employ τ\tau-Bench (yao2024taubenchbenchmark
 
 To show the benefits of leveraging train-time PI, we aim to distill a frontier model using only its raw output trajectories. For this, we mine trajectories from DeepSeek-chat-v3.1 as it is open-source and allows access to its reasoning tokens. Having access to these tokens allows us to benchmark against standard settings that assume access to CoT. This is an important detail, as baselines that assume access to this information should act as a soft-upper bound.
 
-![Refer to caption](/html/2602.04942/assets/x3.png)
-
+!(/html/2602.04942/assets/x3.png)
 
 Figure 3: Deriving PI from frontier model traces. The left panel illustrates sampling trajectories from a frontier model, where full CoT reasoning is occluded (openai2024openaio1card). We transform these raw traces into three types of PI with varying information density: (1) Tool Calls & Arguments, retaining the exact actions invoked by the frontier model; (2) Tool Calls Only, where arguments are stripped; and (3) Self-Generated Hints, where the student model summarizes the frontier trajectory into a concise hint.
 
@@ -350,7 +297,6 @@ Finally, our results on R1-Distill-Llama-8B show that π\pi-Distill remains usef
 
 Takeaways:
 
-
 1.
 
 π\pi-Distill effectively substitutes for CoT: Our method consistently outperforms the standard SFT w/ CoT + RL baseline, demonstrating that raw actions can serve as a potent learning signal to distill frontier models even when reasoning traces are observable.
@@ -375,7 +321,6 @@ We find that for both Qwen3 models, π\pi-Distill variants consistently outperfo
 
 Takeaways: OOD Generalization
 
-
 1.
 
 Scaling Benefits for Stronger Reasoners: While SFT w/ CoT + RL is effective for Qwen3-4B, π\pi-Distill and OPSD significantly outperform SFT w/ CoT + RL on Qwen3-8B. This suggests that as model capacity grows, transfer can be enhanced by staying more on-policy.
@@ -384,8 +329,7 @@ Scaling Benefits for Stronger Reasoners: While SFT w/ CoT + RL is effective for 
 Prevention of RL Degradation: Across all benchmarks, standard RL consistently performs worse than the base model. In contrast, OPSD avoids degradation
 in stronger reasoners, with π\pi-Distill avoiding it in all cases.
 
-![Refer to caption](/html/2602.04942/assets/x5.png)
-
+!(/html/2602.04942/assets/x5.png)
 
 Figure 5: Impact of PI Types and Algorithms on Performance.
 We compare held-out performance on τ\tau-Bench (top row) and Travel Planner (bottom row) across three base models and three PI types (colors). The scatter plots map final scores against the initial teacher-student divergence (DKL​(πbaseT∥πbaseS)D\_{\mathrm{KL}}(\pi^{T}\_{\text{base}}\,\|\,\pi^{S}\_{\text{base}})), while the bar-charts display the PI utility (Δ\Delta) on training tasks. Key observations:
@@ -398,15 +342,13 @@ We compare held-out performance on τ\tau-Bench (top row) and Travel Planner (bo
 While prior sections focused on the best-performing configurations, here we analyze how varying the type of PI affects final performance. Our goal is to isolate the factors that determine success when training with PI. We identify two primary drivers: (i) the divergence between the conditioned and unconditioned base policies ( DKL​(πbaseT∥πbaseS)D\_{\mathrm{KL}}({\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}\_{\text{base}}}\,\|\,{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}\_{\text{base}}}) for π\pi-Distill and DKL​(πbaseS∥πbaseT)D\_{\mathrm{KL}}({\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}\_{\text{base}}}\,\|\,{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}\_{\text{base}}}) for OPSD), and (ii) the usefulness of the privileged signal, captured by the utility Δ=score​(πbaseT)−score​(πbaseS)\Delta=\text{score}({\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}\_{\text{base}}})-\text{score}({\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}\_{\text{base}}}) on training tasks.
 Additionally, in [figure˜6](#S7.F6 "In 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") we report the maximum attainable utility on Δmax=maxt⁡score​(πtPI)−maxt⁡score​(πtRL)\Delta\_{\max}=\max\_{t}\text{score}(\pi^{\text{PI}}\_{t})-\max\_{t}\text{score}(\pi^{\text{RL}}\_{t}), defined as the difference between the best scores on training tasks achieved with PI and without PI (pure RL), which measures how effectively each algorithm converts access to PI into performance gains.
 
-![Refer to caption](/html/2602.04942/assets/x6.png)
-
+!(/html/2602.04942/assets/x6.png)
 
 Figure 6: Maximum Improvement (Δmax\Delta\_{\text{max}}) across PI Types and Algorithms. We compare the peak performance gain over baselines for different PI variants (x-axis) and training configurations (α\alpha) on TravelPlanner (bottom) and τ\tau-Bench (top). We find that PI types which initially underperform (e.g., self-generated hints on Planner, Qwen3-8B) can yield substantial gains when the teacher is trained to utilize them (α>0\alpha>0), confirming that learning to leverage PI is an important factor in transferring from teacher πT{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}} to student πS{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}.
 
 ### 7.1 What matters for π\pi-Distill
 
-![Refer to caption](/html/2602.04942/assets/x7.png)
-
+!(/html/2602.04942/assets/x7.png)
 
 Figure 7: Training KL between πT{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}} and πS{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}} during training the teacher πS​(α=1){\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}(\alpha=1) on τ\tau-Bench. We observe an early KL collapse making πS≈πT{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}\approx{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}}. We attribute the underperformance of πT{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}} on low KL settings to this collapse.
 
@@ -430,7 +372,6 @@ Further, we find that PI utility Δ\Delta can play a large role in the success o
 
 Takeaways: Analysis on Privileged Information
 
-
 •
 
 Student only training. Useful-low KL PI is easy to learn from using πS​(α=0){\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}(\alpha=0). Higher KL or low utility PI leads to suboptimal performance.
@@ -443,8 +384,7 @@ Joint training. We find joint training, πS+πT​(α=0.5){\color[rgb]{0.9023437
 
 ### 7.2 What Matters for OPSD
 
-![Refer to caption](/html/2602.04942/assets/x8.png)
-
+!(/html/2602.04942/assets/x8.png)
 
 Figure 8: Performance and Stability Analysis of OPSD.
 We compare held-out performance on τ\tau-Bench (top row) and Travel Planner (bottom row) across three base models and three PI types (colors). The scatter plots map final scores against the student-teacher KL divergence (DKL​(πS∥πT)D\_{\text{KL}}({\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}\|{\color[rgb]{0.390625,0.2578125,0.828125}\definecolor[named]{pgfstrokecolor}{rgb}{0.390625,0.2578125,0.828125}\pi^{\mathrm{T}}})), while the bar-charts display the PI utility (Δ\Delta). Key observations:
@@ -466,8 +406,7 @@ In this section, we analyze β\beta, the term controlling the regularization bet
 
 [Figure˜9](#S8.F9 "In 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") shows a subset of the learning curves on held-out data for the best-performing PI type and α\alpha value in τ\tau-Bench Retail and Travel Planner, while [figure˜16](#A4.F16 "In D.3 Full 𝛽 Ablations ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") provides the full set for τ\tau-Bench. For π\pi-Distill, we consistently find that β>0\beta>0 aids in obtaining the best performance, particularly when the teacher is being trained (α>0\alpha>0). While β\beta can be sensitive, with no single value being the best in all settings, setting β\beta higher than 0 generally allows for better or matching performance, with only four cases showing inferior results. For OPSD, we find that the value of β\beta is less important with our results on [section˜7](#S7 "7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") showing that information granularity and student-teacher KL are more important factors.
 
-![Refer to caption](/html/2602.04942/assets/x9.png)
-
+!(/html/2602.04942/assets/x9.png)
 
 Figure 9:  Evaluation performance throughout training for π\pi-Distill variants across varying KL penalties (β\beta). Runs that deteriorate significantly early are truncated for visual clarity. We observe that for settings involving teacher updates (α>0\alpha>0), a non-zero penalty (β>0\beta>0) is crucial for stabilizing training and achieving peak performance. Here error bars indicate standard errors. Discrepancies between plot and table values are addressed in App. [F](#A6 "Appendix F Plot and Table Discrepancies ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models")
 
@@ -528,8 +467,7 @@ Traditional variational-EM aims to fit a parameterized distribution πS{\color[r
 
 ### A.1 Variational EM
 
-![Refer to caption](/html/2602.04942/assets/x10.png)
-
+!(/html/2602.04942/assets/x10.png)
 
 Figure 10: Illustration of the Variational EM procedure for policy optimization. The initial student policy, πθS\pi\_{\theta}^{S}, lacks support over trajectories with positive rewards (R​(𝐨,𝐬)>0R(\mathbf{o},\mathbf{s})>0), preventing direct improvement. To address this: (1) the teacher policy πθT\pi\_{\theta}^{T} is optimized via JTeacher​(θ)J\_{\text{Teacher}}(\theta) to sample successful traces and approximate the optimal policy π∗\pi^{\*}; (2) the student policy is then updated via JSFT​(θ)J\_{\text{SFT}}(\theta) to distill the knowledge from the teacher. While this two-step procedure is principled, it is computationally inefficient due to the requirement of maintaining dual parameter sets and distinct training phases. In contrast, π\pi-Distill simplifies this pipeline into a single-phase process, providing superior performance with reduced complexity.
 
@@ -584,8 +522,7 @@ Traditionally, one would either first fit πθT{\color[rgb]{0.390625,0.2578125,0
 
 ### A.2 Failures of Variational EM.
 
-![Refer to caption](/html/2602.04942/assets/x11.png)
-
+!(/html/2602.04942/assets/x11.png)
 
 Figure 11: Performance of Sequential EM variants on τ\tau-Bench Retail (Qwen3-8B). We compare these methods against SFT baselines. While standard EM RFT (light blue) fails to match SFT w/ CoT (yellow), replacing RFT with off-policy RL (EM Off-Pol, purple) successfully allows for EM to outperform SFT w CoT. The strongest performance comes from JTeacher​(θ)J\_{\text{Teacher}}(\theta) (dark blue), demonstrating that parameter sharing between the teacher and student yields the most effective transfer. Shaded regions indicate standard error across 3 seeds.
 
@@ -713,9 +650,6 @@ Algorithm 1  π\pi-Distill: Privileged Information Distillation for Language Mod
 
 24:  end while
 
-
-
-
 Algorithm 2  On-Policy Self-Distillation
 
 1:  Input: Dataset 𝒟={(s,𝐈)}\mathcal{D}=\{(s,\mathbf{I})\} where 𝐈\mathbf{I} is privileged information, Initial Policy πθ\pi\_{\theta}, β\beta, ϵ\epsilon, Learning rate η\eta
@@ -770,13 +704,11 @@ Algorithm 2  On-Policy Self-Distillation
 
 We measure privileged-information leakage with a simple keyword detector applied to each assistant message, using the keyword list [“privileged information”, “privileged info”, “priv info”, “secret information”, “secret info”, “correct tool calls”, “secret”, “privileged”, “hint”, “hints”]. For each occurrence, we assign a penalty of −0.1-0.1 and accumulate it over the trajectory, and we mark a trajectory as leaking if any of these appear. Fig [12](#A4.F12 "Figure 12 ‣ D.1 Privilege Information leakage Ablation ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") reports results at β=0.25\beta=0.25 and shows that enabling this leakage penalty does not change task performance in any noticeable way, since the learning curves with and without the penalty overlap closely. Fig [13](#A4.F13 "Figure 13 ‣ D.1 Privilege Information leakage Ablation ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") shows the corresponding leakage rate during training, and it rises as training progresses across all modes. The pattern with tool-calls showing the highest leakage, tool calls and arguments increasing more moderately, and self-generated hints starting lower but still increasing over time.
 
-![Refer to caption](/html/2602.04942/assets/x12.png)
-
+!(/html/2602.04942/assets/x12.png)
 
 Figure 12: Performance with and without leakage penalty for πT​(α=1)\pi^{\text{T}}(\alpha=1). We find that although the penalty does reduce the leakage of the privileged information (see [Figure˜13](#A4.F13 "In D.1 Privilege Information leakage Ablation ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models")) it does not affect performance.
 
-![Refer to caption]()
-
+!()
 
 Figure 13: Proportion of traces leaking privileged information as training progresses, we see that regardless PI type, the leakage increases with more gradient steps, finding using a leakage penalty reduces this proportion, but not substantially.
 
@@ -784,8 +716,7 @@ Figure 13: Proportion of traces leaking privileged information as training progr
 
 As an additional analysis, we analyze whether leakage increases as models are trained with privileged data when evaluating πS{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}}. [Figure˜14](#A4.F14 "In Test-time leakage. ‣ D.1 Privilege Information leakage Ablation ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") outlines this for Qwen3-8B for 300 gradient steps. We empirically validate that leakage does not significantly affect or increase when evaluating using πS{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}} as the presence of leaked words does not meaningfully increase as training continues.
 
-![Refer to caption](/html/2602.04942/assets/x14.png)
-
+!(/html/2602.04942/assets/x14.png)
 
 Figure 14: Proportion of traces leaking privileged information when evaluating πS{\color[rgb]{0.90234375,0.59765625,0}\definecolor[named]{pgfstrokecolor}{rgb}{0.90234375,0.59765625,0}\pi^{\text{S}}} as training progresses, we see that there is no increase in leakage when evaluated as training goes on.
 
@@ -793,8 +724,7 @@ Figure 14: Proportion of traces leaking privileged information when evaluating �
 
 We ablate the choice of reference policy used in the KL term by comparing a fixed base reference, πbase\pi\_{\text{base}}, against using the student itself as the reference, πθ\pi\_{\theta} (with stop-gradient on the reference branch). Fig.[15](#A4.F15 "Figure 15 ‣ D.2 Reference Model Ablation ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") shows a clear difference in training stability. When πbase\pi\_{\text{base}} is used as the reference, the performance degrades over training and can collapse most clearly in the πh\pi^{h} setting (α=1\alpha=1), where the policy is pushed to move far from the base while still being penalized for that same deviation. In contrast, using πθ\pi\_{\theta} as the reference (orange) yields stable learning across α∈{0,0.5,1}\alpha\in\{0,0.5,1\}, since the KL regularizer stays aligned with the current student distribution. Practically, this choice is also cheaper because using πθ\pi\_{\theta} as the reference avoids maintaining a separate frozen reference model on the GPU, reducing memory and compute overhead.
 
-![Refer to caption](/html/2602.04942/assets/x15.png)
-
+!(/html/2602.04942/assets/x15.png)
 
 Figure 15: Ablation between using reverse-Kl between the teacher and a prior. We ablate over two possible priors, πbase\pi\_{\text{base}} and πθS\pi^{\text{S}}\_{\theta}. We find that using πθS\pi^{\text{S}}\_{\theta} to be highly important in obtaining best performance.
 
@@ -802,11 +732,11 @@ Figure 15: Ablation between using reverse-Kl between the teacher and a prior. We
 
 [Figure˜16](#A4.F16 "In D.3 Full 𝛽 Ablations ‣ Appendix D Additional Ablations ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models") outlines the full suite of β\beta ablations for π\pi-Distill variants and self-distillation for Qwen3-4/8B. We sweep over β∈{0.1,0.25,0.5}\beta\in\{0.1,0.25,0.5\}.
 
-![Refer to caption](/html/2602.04942/assets/x16.png)
+!(/html/2602.04942/assets/x16.png)
 
 (a) Qwen3-8B
 
-![Refer to caption](/html/2602.04942/assets/x17.png)
+!(/html/2602.04942/assets/x17.png)
 
 (b)Qwen3-4B
 
@@ -859,8 +789,7 @@ Table 2: Hyperparameters used for each fine-tuned model. All models share identi
 
 In this Fig [17](#A6.F17 "Figure 17 ‣ Appendix F Plot and Table Discrepancies ‣ 13 Author Contributions ‣ 12 Acknowledgments ‣ 11 Conclusion ‣ 10 Limitations & Future Work ‣ Context Distillation. ‣ 9 Related Work ‣ 8 Ablation on 𝛽 ‣ Findings. ‣ 7.2 What Matters for OPSD ‣ 7 What Matters When Using Train-Time PI ‣ 6 Out of Domain Experiments (OOD) ‣ 5 Main Results ‣ Implementation Details. ‣ 4.3 Models and Baselines ‣ 4 Experimental Setting ‣ Privileged Information Distillation for Language Models"), the 31.11% number is computed from the three seed peaks in the right panel. Each seed reaches its best score at a different gradient step, roughly one around 70 steps, another around 95, and another around 150. We take those three peak values and average them, which gives 31.11%, and that is what is reported in the table. The left panel instead shows the mean score at each gradient step, averaging the seeds at the same step, so its peak corresponds to the best point of the averaged curve rather than the average of the three best points. This difference in aggregation means the table can be higher than the peak of the averaged curve shown in the left plot.
 
-![Refer to caption](/html/2602.04942/assets/x18.png)
-
+!(/html/2602.04942/assets/x18.png)
 
 Figure 17: Comparison aggregating training runs versus the individual training runs. The left figure displays the mean score across seeds at each gradient step, while the right panel highlights the individual trajectories where peaks occur at different intervals. The reported table value (31.11%31.11\%) represents the average of these individual seed peaks.
 
@@ -870,8 +799,7 @@ Our early experiments show that the model is able to consistently reward-hack th
 
 We address this issue by removing the requirement that all “easy” constraints must be satisfied before any “hard” constraint is checked. Instead, we evaluate each easy constraint individually and, only if it is satisfied, we then check its corresponding hard constraint.
 
-![Refer to caption](/html/2602.04942/assets/x19.png)
-
+!(/html/2602.04942/assets/x19.png)
 
 Figure 18: Training and testing curves for Travel Planner, using the original reward structure proposed in xie2024travelplannerbenchmarkrealworldplanning with Qwen3-4B. We find that while the model learns, the sequences generally converge on reward hacking. Where the entire score is dominated by the ”easy constraint score” as the model has learnt to satisfy some basic constraints, leading to the policy outputting the same response for all queries.
 
@@ -882,10 +810,8 @@ Role: Assistant
 <think>
 Okay, let’s tackle this travel planning query. The user wants a 7-day plan from Punta Gorda to three Wisconsin cities between March 16-22, 2022, with a $5,700 budget.
 
-
 First, I need to use the Planner tool to structure the itinerary. Check FlightSearch for available flights from Punta Gorda to Wisconsin cities. Maybe Milwaukee, Madison, and Green Bay? Use AccommodationSearch for each city. RestaurantSearch and AttractionSearch to suggest activities. Check GoogleDistanceMatrix for travel times between cities. Make sure the total costs are under budget. Use NotebookWrite to document the plan. Ensure the Planner incorporates all elements and stays within the budget. Avoid mentioning hints, just present the plan logically.
 </think>
-
 
 <action>Planner[Query: Craft a 7-day Wisconsin itinerary from Punta Gorda, including 3 cities, flights, accommodations, attractions, and budget adherence using available tools. Prioritize March 16-22, 2022.]</action>
 
@@ -1017,7 +943,6 @@ You need to act as an agent that use the above tools to help the user according 
 ...Few lines of reasoning
 </think>
 
-
 <action>
 {"name": <The name of the action>, "arguments": <The arguments to the action in json format>}
 </action>
@@ -1053,7 +978,6 @@ Step 1:
 ... Few lines of reasoning
 </think>
 
-
 <action>
 {"name": "get\_current\_weather", "arguments": {"location": "San Francisco, CA", "format": "fahrenheit"}}
 </action>
@@ -1063,7 +987,6 @@ Step 2:
 <think>
 ... Few lines of reasoning
 </think>
-
 
 <action>
 {"name": RESPOND\_ACTION\_NAME, "arguments": {"RESPOND\_ACTION\_FIELD\_NAME": "The current weather of San Francisco is 70F."}}
@@ -1196,36 +1119,28 @@ Conversation:
 [⬇](data:text/plain;base64,W3VzZXJdIEhpLCBJIG5lZWQgdG8gY2FuY2VsIGFuIG9yZGVyIEkgcGxhY2VkIGJ5IG1pc3Rha2UuCgpbYXNzaXN0YW50XSBBY3Rpb246IHsibmFtZSI6ICJyZXNwb25kIiwgImFyZ3VtZW50cyI6IHsiY29udGVudCI6CiJJIGNhbiBoZWxwIHlvdSBjYW5jZWwgeW91ciBvcmRlci4gRmlyc3QsIEkgbmVlZCB0byBhdXRoZW50aWNhdGUKeW91ciBpZGVudGl0eS4gQ291bGQgeW91IHBsZWFzZSBwcm92aWRlIHlvdXIgZW1haWwgYWRkcmVzcz8KQWx0ZXJuYXRpdmVseSwgeW91IGNhbiBwcm92aWRlIHlvdXIgZmlyc3QgbmFtZSwgbGFzdCBuYW1lLCBhbmQKemlwIGNvZGUuIn19CgpbdXNlcl0gU3VyZSwgbXkgZW1haWwgaXMgYW1lbGlhLndpbHNvbjE1OThAZXhhbXBsZS5jb20uCgpbYXNzaXN0YW50XSBBY3Rpb246IHsibmFtZSI6ICJmaW5kX3VzZXJfaWRfYnlfZW1haWwiLAoiYXJndW1lbnRzIjogeyJlbWFpbCI6ICJhbWVsaWEud2lsc29uMTU5OEBleGFtcGxlLmNvbSJ9fQoKW0FQSSBvdXRwdXRdIGFtZWxpYV93aWxzb25fNDYxNAoKW2Fzc2lzdGFudF0gQWN0aW9uOiB7Im5hbWUiOiAicmVzcG9uZCIsICJhcmd1bWVudHMiOiB7ImNvbnRlbnQiOgoiVGhhbmsgeW91IGZvciBwcm92aWRpbmcgeW91ciBlbWFpbC4gQ291bGQgeW91IHBsZWFzZSBzaGFyZSB0aGUKb3JkZXIgSUQgeW91J2QgbGlrZSB0byBjYW5jZWw/IFRoaXMgd2lsbCBoZWxwIG1lIHZlcmlmeSB0aGUgb3JkZXIKZGV0YWlscyBhbmQgcHJvY2VlZCB3aXRoIHRoZSBjYW5jZWxsYXRpb24uIn19CgpbdXNlcl0gWWVzLCB0aGUgb3JkZXIgSUQgaXMgVzMwNjIwOTYuCgpbYXNzaXN0YW50XSBBY3Rpb246IHsibmFtZSI6ICJnZXRfb3JkZXJfZGV0YWlscyIsCiJhcmd1bWVudHMiOiB7Im9yZGVyX2lkIjogIiNXMzA2MjA5NiJ9fQoKW0FQSSBvdXRwdXRdIHsib3JkZXJfaWQiOiAiI1czMDYyMDk2IiwKInVzZXJfaWQiOiAiYW1lbGlhX3dpbHNvbl80NjE0IiwgImFkZHJlc3MiOiB7ImFkZHJlc3MxIjoKIjM4OCBFbG0gQXZlbnVlIiwgImFkZHJlc3MyIjogIlN1aXRlIDM4NCIsICJjaXR5IjogIkRhbGxhcyIsCiJjb3VudHJ5IjogIlVTQSIsICJzdGF0ZSI6ICJUWCIsICJ6aXAiOiAiNzUyMTUifSwgIml0ZW1zIjoKW3sibmFtZSI6ICJULVNoaXJ0IiwgInByb2R1Y3RfaWQiOiAiOTUyMzQ1Njg3MyIsCiJpdGVtX2lkIjogIjMyMzQ4MDA2MDIiLCAicHJpY2UiOiA0Ni42NiwgIm9wdGlvbnMiOgp7ImNvbG9yIjogInJlZCIsICJzaXplIjogIkwiLCAibWF0ZXJpYWwiOiAiY290dG9uIiwKInN0eWxlIjogInYtbmVjayJ9fSwgeyJuYW1lIjogIlNtYXJ0IFdhdGNoIiwKInByb2R1Y3RfaWQiOiAiNjk0NTIzMjA1MiIsICJpdGVtX2lkIjogIjg3Mzk2MjY5NzIiLAoicHJpY2UiOiAzNzAuODcsICJvcHRpb25zIjogeyJjb2xvciI6ICJzaWx2ZXIiLAoiYmFuZCBtYXRlcmlhbCI6ICJzaWxpY29uZSIsICJkaXNwbGF5IjogIkFNT0xFRCJ9fSwKeyJuYW1lIjogIkppZ3NhdyBQdXp6bGUiLCAicHJvZHVjdF9pZCI6ICIxODA4NjExMDgzIiwKIml0ZW1faWQiOiAiOTM3MDMwMDU1NSIsICJwcmljZSI6IDQ1LjksICJvcHRpb25zIjoKeyJwaWVjZXMiOiAiMTAwMCIsICJ0aGVtZSI6ICJhcnQiLCAiZGlmZmljdWx0eSBsZXZlbCI6CiJleHBlcnQifX1dLCAiZnVsZmlsbG1lbnRzIjogW10sICJzdGF0dXMiOiAicGVuZGluZyIsCiJwYXltZW50X2hpc3RvcnkiOiBbeyJ0cmFuc2FjdGlvbl90eXBlIjogInBheW1lbnQiLAoiYW1vdW50IjogNDYzLjQzLCAicGF5bWVudF9tZXRob2RfaWQiOiAicGF5cGFsXzQxMDExNDMifV19CgpbYXNzaXN0YW50XSBBY3Rpb246IHsibmFtZSI6ICJyZXNwb25kIiwgImFyZ3VtZW50cyI6IHsiY29udGVudCI6CiJJIGNhbiBjYW5jZWwgeW91ciBvcmRlciAjVzMwNjIwOTYsIHdoaWNoIGluY2x1ZGVzIGEgVC1TaGlydCwKU21hcnQgV2F0Y2gsIGFuZCBKaWdzYXcgUHV6emxlLCB0b3RhbGluZyAkNDYzLjQzLiBUaGUgcmVhc29uIGZvcgpjYW5jZWxsYXRpb24gaXMgJ29yZGVyZWQgYnkgbWlzdGFrZScuIFRoZSByZWZ1bmQgd2lsbCBiZSBwcm9jZXNzZWQKYmFjayB0byB5b3VyIFBheVBhbCBhY2NvdW50IGluIDUtNyBidXNpbmVzcyBkYXlzLiBQbGVhc2UgY29uZmlybQp3aXRoICd5ZXMnIGlmIHlvdSdkIGxpa2UgdG8gcHJvY2VlZCB3aXRoIHRoZSBjYW5jZWxsYXRpb24uIn19CgpbdXNlcl0gWWVzLCBwbGVhc2UgZ28gYWhlYWQgYW5kIGNhbmNlbCBpdC4KClthc3Npc3RhbnRdIEFjdGlvbjogeyJuYW1lIjogImNhbmNlbF9wZW5kaW5nX29yZGVyIiwKImFyZ3VtZW50cyI6IHsib3JkZXJfaWQiOiAiI1czMDYyMDk2IiwKInJlYXNvbiI6ICJvcmRlcmVkIGJ5IG1pc3Rha2UifX0KCltBUEkgb3V0cHV0XSB7Im9yZGVyX2lkIjogIiNXMzA2MjA5NiIsCiJ1c2VyX2lkIjogImFtZWxpYV93aWxzb25fNDYxNCIsICJhZGRyZXNzIjogeyJhZGRyZXNzMSI6CiIzODggRWxtIEF2ZW51ZSIsICJhZGRyZXNzMiI6ICJTdWl0ZSAzODQiLCAiY2l0eSI6ICJEYWxsYXMiLAoiY291bnRyeSI6ICJVU0EiLCAic3RhdGUiOiAiVFgiLCAiemlwIjogIjc1MjE1In0sICJpdGVtcyI6Clt7Im5hbWUiOiAiVC1TaGlydCIsICJwcm9kdWN0X2lkIjogIjk1MjM0NTY4NzMiLAoiaXRlbV9pZCI6ICIzMjM0ODAwNjAyIiwgInByaWNlIjogNDYuNjYsICJvcHRpb25zIjoKeyJjb2xvciI6ICJyZWQiLCAic2l6ZSI6ICJMIiwgIm1hdGVyaWFsIjogImNvdHRvbiIsCiJzdHlsZSI6ICJ2LW5lY2sifX0sIHsibmFtZSI6ICJTbWFydCBXYXRjaCIsCiJwcm9kdWN0X2lkIjogIjY5NDUyMzIwNTIiLCAiaXRlbV9pZCI6ICI4NzM5NjI2OTcyIiwKInByaWNlIjogMzcwLjg3LCAib3B0aW9ucyI6IHsiY29sb3IiOiAic2lsdmVyIiwKImJhbmQgbWF0ZXJpYWwiOiAic2lsaWNvbmUiLCAiZGlzcGxheSI6ICJBTU9MRUQifX0sCnsibmFtZSI6ICJKaWdzYXcgUHV6emxlIiwgInByb2R1Y3RfaWQiOiAiMTgwODYxMTA4MyIsCiJpdGVtX2lkIjogIjkzNzAzMDA1NTUiLCAicHJpY2UiOiA0NS45LCAib3B0aW9ucyI6CnsicGllY2VzIjogIjEwMDAiLCAidGhlbWUiOiAiYXJ0IiwgImRpZmZpY3VsdHkgbGV2ZWwiOgoiZXhwZXJ0In19XSwgImZ1bGZpbGxtZW50cyI6IFtdLCAic3RhdHVzIjogImNhbmNlbGxlZCIsCiJwYXltZW50X2hpc3RvcnkiOiBbeyJ0cmFuc2FjdGlvbl90eXBlIjogInBheW1lbnQiLAoiYW1vdW50IjogNDYzLjQzLCAicGF5bWVudF9tZXRob2RfaWQiOiAicGF5cGFsXzQxMDExNDMifSwKeyJ0cmFuc2FjdGlvbl90eXBlIjogInJlZnVuZCIsICJhbW91bnQiOiA0NjMuNDMsCiJwYXltZW50X21ldGhvZF9pZCI6ICJwYXlwYWxfNDEwMTE0MyJ9XSwKImNhbmNlbF9yZWFzb24iOiAib3JkZXJlZCBieSBtaXN0YWtlIn0KClthc3Npc3RhbnRdIEFjdGlvbjogeyJuYW1lIjogInJlc3BvbmQiLCAiYXJndW1lbnRzIjogeyJjb250ZW50IjoKIllvdXIgb3JkZXIgI1czMDYyMDk2IGhhcyBiZWVuIHN1Y2Nlc3NmdWxseSBjYW5jZWxsZWQuIFRoZSByZWZ1bmQKb2YgJDQ2My40MyB3aWxsIGJlIHByb2Nlc3NlZCBiYWNrIHRvIHlvdXIgUGF5UGFsIGFjY291bnQgd2l0aGluCjUtNyBidXNpbmVzcyBkYXlzLiBJZiB5b3UgaGF2ZSBhbnkgZnVydGhlciBxdWVzdGlvbnMgb3IgbmVlZAphc3Npc3RhbmNlIHdpdGggYW55dGhpbmcgZWxzZSwgZmVlbCBmcmVlIHRvIGFzayEifX0KClt1c2VyXSBUaGFuayB5b3UsIHRoYXQncyBhbGwgSSBuZWVkZWQuICMjI1NUT1AjIyM=)
 [user] Hi, I need to cancel an order I placed by mistake.
 
-
 [assistant] Action: {"name": "respond", "arguments": {"content":
 "I can help you cancel your order. First, I need to authenticate
 your identity. Could you please provide your email address?
 Alternatively, you can provide your first name, last name, and
 zip code."}}
 
-
 [user] Sure, my email is amelia.wilson1598@example.com.
-
 
 [assistant] Action: {"name": "find\_user\_id\_by\_email",
 "arguments": {"email": "amelia.wilson1598@example.com"}}
 
-
 [API output] amelia\_wilson\_4614
-
 
 [assistant] Action: {"name": "respond", "arguments": {"content":
 "Thank you for providing your email. Could you please share the
 order ID you’d like to cancel? This will help me verify the order
 details and proceed with the cancellation."}}
 
-
 [user] Yes, the order ID is W3062096.
-
 
 [assistant] Action: {"name": "get\_order\_details",
 "arguments": {"order\_id": "#W3062096"}}
-
 
 [API output] {"order\_id": "#W3062096",
 "user\_id": "amelia\_wilson\_4614", "address": {"address1":
@@ -1245,7 +1160,6 @@ details and proceed with the cancellation."}}
 "payment\_history": [{"transaction\_type": "payment",
 "amount": 463.43, "payment\_method\_id": "paypal\_4101143"}]}
 
-
 [assistant] Action: {"name": "respond", "arguments": {"content":
 "I can cancel your order #W3062096, which includes a T-Shirt,
 Smart Watch, and Jigsaw Puzzle, totaling $463.43. The reason for
@@ -1253,14 +1167,11 @@ cancellation is ’ordered by mistake’. The refund will be processed
 back to your PayPal account in 5-7 business days. Please confirm
 with ’yes’ if you’d like to proceed with the cancellation."}}
 
-
 [user] Yes, please go ahead and cancel it.
-
 
 [assistant] Action: {"name": "cancel\_pending\_order",
 "arguments": {"order\_id": "#W3062096",
 "reason": "ordered by mistake"}}
-
 
 [API output] {"order\_id": "#W3062096",
 "user\_id": "amelia\_wilson\_4614", "address": {"address1":
@@ -1283,13 +1194,11 @@ with ’yes’ if you’d like to proceed with the cancellation."}}
 "payment\_method\_id": "paypal\_4101143"}],
 "cancel\_reason": "ordered by mistake"}
 
-
 [assistant] Action: {"name": "respond", "arguments": {"content":
 "Your order #W3062096 has been successfully cancelled. The refund
 of $463.43 will be processed back to your PayPal account within
 5-7 business days. If you have any further questions or need
 assistance with anything else, feel free to ask!"}}
-
 
 [user] Thank you, that’s all I needed. ###STOP###
 Hint Generation Prompt:
@@ -1342,83 +1251,3 @@ Reasoning Format
 Your reasoning traces will be used to train future agents that do not have access to privileged information. Please make sure your reasoning is clear and concise.
 Always start your outputs by thinking using <think> …</think>
 </Secret information>
-
-[◄](/html/2602.04941)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.04942)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.04942)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.04942)[►](/html/2602.04943)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 14:34:30 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

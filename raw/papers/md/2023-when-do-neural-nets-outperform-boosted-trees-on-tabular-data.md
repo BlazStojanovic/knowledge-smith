@@ -18,49 +18,6 @@ url: http://arxiv.org/abs/2305.02997v4
 year: 2023
 ---
 
-[2305.02997] When Do Neural Nets Outperform Boosted Trees on Tabular Data?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # When Do Neural Nets Outperform Boosted Trees on Tabular Data?
 
 Duncan McElfresh
@@ -128,8 +85,7 @@ Our work provides a large set of tools for researchers and practitioners working
 We provide the largest open-source codebase of algorithms and datasets in one interface, together with a set of the ‘hardest’ datasets, and raw results (over 500K trained models) at <https://github.com/naszilla/tabzilla> for researchers and practitioners to more easily compare methods.
 Finally, our metafeature insights can be used by researchers, to uncover the failure modes of tabular algorithms, and by practitioners, to help determine which algorithms will perform well on a new dataset.
 
-![Refer to caption](/html/2305.02997/assets/x1.png)
-
+!(/html/2305.02997/assets/x1.png)
 
 Figure 1: Overview of our work.
 We start by conducting the largest study on tabular data to date (left); we analyze the importance of algorithm selection (‘NNs vs. GBDTs’) as well as metafeatures (middle); and based on our study, we release TabZilla, a collection of the hardest tabular datasets.
@@ -314,8 +270,7 @@ Now, we find that TabPFN achieves the best average performance of all algorithms
 However, one caveat is that the *inference* time for TabPFN is 2.36 seconds per 1000 instances, which is higher than other algorithms.
 We give further discussion and results on TabPFN in [Section D.3](#A4.SS3 "D.3 Additional TabPFN Results ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?"), including an ablation study of randomly sampling either 1k or 3k training points, for both TabPFN and CatBoost.
 
-![Refer to caption](/html/2305.02997/assets/x2.png)
-
+!(/html/2305.02997/assets/x2.png)
 
 Figure 2: Median runtime vs. median normalized accuracy for each algorithm, over 98 datasets. The bars span the 20th to 80th percentile over all datasets.
 
@@ -326,8 +281,7 @@ Overall, neural nets require the longest runtime, and often outperform baseline 
 On the other hand, GBDTs simultaneously require little runtime while also achieving strong performance: they consistently outperform baseline methods, and consistently require less runtime than NNs.
 Once again, we see the impressive performance of TabPFN, which achieves top accuracy with less training time than any GBDT or NN.
 
-![Refer to caption](/html/2305.02997/assets/x3.png)
-
+!(/html/2305.02997/assets/x3.png)
 
 Figure 3: Critical difference plot comparing all algorithms according to their mean log loss rank over 98 datasets. Each algorithm’s average rank is shown as a horizontal line on the axis. Sets of algorithms which are *not significantly different* are connected by a horizontal black bar. Algorithm family is indicated by a marker next to the algorithm name: red “X” indicates a neural net, blue circle indicates a baseline algorithm, green triangles indicate GBDTs, and purple squares indicate a PFN.
 
@@ -343,9 +297,9 @@ In these figures, the average rank of each algorithm is shown on the horizontal 
 We find that TabPFN outperforms all other algorithms on average across 98 datasets, and this result is statistically significant.
 Note that the slight differences between [Figure 3](#S2.F3 "In Performance vs. runtime. ‣ 2.1 Relative Algorithm Performance ‣ 2 Analysis of Algorithms for Tabular Data ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?") and [Table 1](#S2.T1 "In Metafeatures. ‣ 2 Analysis of Algorithms for Tabular Data ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?") is that the former uses accuracy, while the latter uses log loss.
 
-![Refer to caption](/html/2305.02997/assets/x4.png)
+!(/html/2305.02997/assets/x4.png)
 
-![Refer to caption](/html/2305.02997/assets/x5.png)
+!(/html/2305.02997/assets/x5.png)
 
 Figure 4: 
 Left: Venn diagram of the number datasets where each algorithm is ‘high-performing’ for each algorithm class, over all 176 datasets. An algorithm is high-performing if its test accuracy after 0-1 scaling is at least 0.99 (we show 0.9999 in [Section D.2](#A4.SS2 "D.2 Additional experiments from Section 2.1 ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?")).
@@ -392,9 +346,9 @@ See [Figure 5](#S2.F5 "In 2.2 Metafeature Analysis ‣ 2 Analysis of Algorithms
 In order to show that these metafeatures are *predictive*, we train and evaluate a meta-learning model using a leave-one-out approach: one dataset is held out for testing, while the remaining 175 datasets are used for training, averaged across all 176 possible test sets; see [Section D.4](#A4.SS4 "D.4 Additional experiments from Section 2.2 ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?").
 In the rest of this section, we state and discuss the main findings of our metafeature analysis.
 
-![Refer to caption](/html/2305.02997/assets/x6.png)
+!(/html/2305.02997/assets/x6.png)
 
-![Refer to caption](/html/2305.02997/assets/x7.png)
+!(/html/2305.02997/assets/x7.png)
 
 Figure 5: Left: scatterplot of the best algorithm on all 176 datasets across metafeatures. The vertical axis indicates the dataset size, and the horizontal axis combines five dataset metafeatures related to irregularity. Right: scatterplot of the difference in normalized log loss between XGBoost and ResNet, by dataset size (middle subplot) and irregularity (right subplot). The irregularity feature is a linear combination of five standardized dataset attributes: the minimum eigenvalue of the feature covariance matrix (-0.33), the skewness of the standard deviation of all features (0.23), the skewness of the range of all features (0.22), the interquartile range of the harmonic mean of all features (0.21), and the standard deviation of the kurtosis of all features (0.21).
 
@@ -1360,9 +1314,6 @@ Columns show the rank over all datasets, the average normalized log loss (Mean L
 | KNN | base | 1 | 21 | 17.17 | 18 | 0.51 | 0.42 | 0.37 | 0.20 | 0.01 | 0.00 |
 | DecisionTree | base | 1 | 21 | 17.46 | 20 | 0.56 | 0.58 | 0.54 | 0.41 | 0.02 | 0.01 |
 
-
-
-
 Table 8: Performance of algorithms according to F1 score over 98 datasets.
 Columns show the rank over all datasets, the average normalized F1 score (Mean F1), the standard deviation of normalized F1 score across folds (Std. F1), and the train time per 1000 instances. Min/max/mean/median are taken over all datasets.
 
@@ -1389,9 +1340,6 @@ Columns show the rank over all datasets, the average normalized F1 score (Mean F
 | TabNet | NN | 1 | 21 | 14.22 | 16 | 0.56 | 0.60 | 0.38 | 0.26 | 34.82 | 29.16 |
 | KNN | base | 1 | 21 | 15.21 | 17 | 0.46 | 0.55 | 0.28 | 0.21 | 0.01 | 0.00 |
 | VIME | NN | 3 | 21 | 16.87 | 19 | 0.36 | 0.34 | 0.27 | 0.18 | 17.02 | 14.96 |
-
-
-
 
 Table 9: Performance of algorithms according to ROC-AUC, over 98 datasets.
 Columns show the rank over all datasets, the average normalized ROC-AUC score (Mean AUC), the standard deviation of normalized ROC-AUC score across folds (Std. AUC), and the train time per 1000 instances. Min/max/mean/median are taken over all datasets.
@@ -1537,9 +1485,6 @@ Table 12: Ranking of all algorithms over all 176 datasets, according to average 
 | NAM | 12 | 21 | 18.34 | 129.18 | 79 |
 | SAINT | 10 | 21 | 18.38 | 119.49 | 124 |
 
-
-
-
 Table 13: Ranking of all 22 algorithms over the 57 datasets of size less than or equal to 1250, according to average training time per 1 000 samples. Lower ranks indicate lower training times. Rank columns show min, max, and mean ranks over all datasets. Right columns show average training time per 1 000 samples over all 10 training folds, and the number of datasets considered for each algorithm.
 
 |  |  |  |  |  |  |
@@ -1604,9 +1549,6 @@ Table 14: Performance of algorithms across 98 datasets, where the algorithms inc
 | KNN | base | 1 | 21 | 15.32 | 17 | 0.45 | 0.51 | 0.29 | 0.21 | 0.01 | 0.0 |
 | VIME | NN | 3 | 21 | 16.73 | 19 | 0.37 | 0.32 | 0.27 | 0.18 | 16.81 | 14.86 |
 
-
-
-
 Table 15: Performance of algorithms across 98 datasets, where the algorithms include two modified versions of TabPFN. Columns show the algorithm family (GBDT, NN, baseline, or PFN), rank over all datasets, the average normalized log loss (Mean LL), the std. dev. of normalized LL across folds (Std. LL), and the train time in seconds per 1000 instances. Min/max/mean/median of these quantities are taken over all datasets.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -1634,9 +1576,6 @@ Table 15: Performance of algorithms across 98 datasets, where the algorithms inc
 | VIME | NN | 3 | 21 | 16.27 | 18 | 0.4 | 0.37 | 0.09 | 0.07 | 16.92 | 14.64 |
 | KNN | base | 1 | 21 | 17.17 | 18 | 0.51 | 0.42 | 0.37 | 0.2 | 0.01 | 0.0 |
 | DecisionTree | base | 1 | 21 | 17.46 | 20 | 0.56 | 0.58 | 0.54 | 0.41 | 0.02 | 0.01 |
-
-
-
 
 Table 16: Performance of algorithms across 98 datasets, where the algorithms include two modified versions of TabPFN. Columns show the algorithm family (GBDT, NN, baseline, or PFN), rank over all datasets, the average normalized F1 score loss (Mean F1), the std. dev. of normalized F1 across folds (Std. F1), and the train time in seconds per 1000 instances. Min/max/mean/median of these quantities are taken over all datasets.
 
@@ -1666,13 +1605,11 @@ Table 16: Performance of algorithms across 98 datasets, where the algorithms inc
 | KNN | base | 1 | 21 | 15.21 | 17 | 0.46 | 0.55 | 0.28 | 0.21 | 0.01 | 0.0 |
 | VIME | NN | 3 | 21 | 16.87 | 19 | 0.36 | 0.34 | 0.27 | 0.18 | 17.02 | 14.96 |
 
-![Refer to caption](/html/2305.02997/assets/x8.png)
-
+!(/html/2305.02997/assets/x8.png)
 
 Figure 6: Critical difference plot comparing all algorithms according to their mean accuracy rank over 98 datasets. Each algorithm’s average rank is shown as a horizontal line on the axis. Sets of algorithms which are *not significantly different* are connected by a horizontal black bar.
 
-![Refer to caption](/html/2305.02997/assets/x9.png)
-
+!(/html/2305.02997/assets/x9.png)
 
 Figure 7: Median runtime vs. median normalized accuracy for each algorithm, including two variants of TabPFN, over 98 datasets. The bars span the 20th to 80th percentile over all datasets.
 
@@ -1681,8 +1618,7 @@ Figure 7: Median runtime vs. median normalized accuracy for each algorithm, inc
 In [Figure 4](#S2.F4 "In Statistically significant performance differences. ‣ 2.1 Relative Algorithm Performance ‣ 2 Analysis of Algorithms for Tabular Data ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?"), we plotted the performance improvement of hyperparameter tuning on CatBoost, compared to the absolute performance difference between the best neural net and the best GBDT using default hyperparameters.
 Now, we also give the same plot for ResNet. See [Figure 8](#A4.F8 "In D.3.1 HPO Plot ‣ D.3 Additional TabPFN Results ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?").
 
-![Refer to caption](/html/2305.02997/assets/x10.png)
-
+!(/html/2305.02997/assets/x10.png)
 
 Figure 8: The performance improvement of hyperparameter tuning (horizontal axis) for CatBoost (left) and ResNet (right) compared to the absolute performance difference between the best neural net and the best GBDT, using default hyperparameters (vertical axis). Each point indicates a different dataset, and all values are in normalized log loss.
 Points on the dotted line indicate that the performance improvement due to hyperparameter tuning is identical to the difference due to NN-vs-GBDT algorithm selection.
@@ -1693,8 +1629,7 @@ Points on the dotted line indicate that the performance improvement due to hyper
 Note that we repeat the Friedman test four times with rankings of the same datasets and algorithms.
 However it is unlikely that our findings would change, given that p-values for these tests without correction are extremely small (p<10−20absentsuperscript1020<10^{-20}).
 
-![Refer to caption](/html/2305.02997/assets/x11.png)
-
+!(/html/2305.02997/assets/x11.png)
 
 Figure 9: Critical difference diagram comparing all algorithms according to F1 score. Each algorithm’s average rank is shown as a horizontal line on the axis. Algorithms which are *not significantly different* are connected by a horizontal black bar.
 
@@ -1703,13 +1638,11 @@ Here we use all 176 datasets.
 We use the same methodology here as in previous sections.
 See [Figure 10](#A4.F10 "In D.3.2 Critical difference diagrams ‣ D.3 Additional TabPFN Results ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?") (log loss) and [Figure 11](#A4.F11 "In D.3.2 Critical difference diagrams ‣ D.3 Additional TabPFN Results ‣ Appendix D Additional Experiments ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?") (F1 score).
 
-![Refer to caption](/html/2305.02997/assets/x12.png)
-
+!(/html/2305.02997/assets/x12.png)
 
 Figure 10: Critical difference plot comparing three algorithm types, according to log loss. Each algorithm’s average rank is shown as a horizontal line on the axis. Algorithms which are *not significantly different* are connected by a horizontal black bar.
 
-![Refer to caption](/html/2305.02997/assets/x13.png)
-
+!(/html/2305.02997/assets/x13.png)
 
 Figure 11: Critical difference plot comparing three algorithm types, according to F1 score. Each algorithm’s average rank is shown as a horizontal line on the axis. Algorithms which are *not significantly different* are connected by a horizontal black bar.
 
@@ -1722,8 +1655,7 @@ Now we compute the same Venn diagram, when tightening the definition of high-per
 In this case, GBDTs are the sole high-performing algorithm family for 42% of datasets, while NNs are the sole high-performing algorithm family for 30% of datasets.
 However, since these differences are smaller than 0.1%, they may not be significant to practitioners.
 
-![Refer to caption](/html/2305.02997/assets/x14.png)
-
+!(/html/2305.02997/assets/x14.png)
 
 Figure 12: Venn diagram of the number of datasets where an algorithm family is ‘high-performing’, over all 176 datasets.
 An algorithm is high-performing if its test accuracy after 0-1 scaling is above a certain threshold.
@@ -1741,20 +1673,15 @@ On the other hand, the center panel (CatBoost minus SAINT), indicates that both 
 The main takeaway from these findings is that practitioners should not focus on choosing an algorithm family, such as NNs or GBDTs, to focus on. For example, TabPFN and TabNet are both neural nets, but TabPFN does comparatively better on smaller datasets, while TabNet does comparatively better on larger datasets.
 Rather they can consult our metadataset of results to decide which algorithm is appropriate for their specific use case. General trends are helpful, but not sufficient, for selecting an effective algorithm.
 
-![Refer to caption](/html/2305.02997/assets/x15.png)
-
+!(/html/2305.02997/assets/x15.png)
 
 Figure 13: Difference in normalized log loss (lower is better), between three algorithms: CatBoost, SAINT, and TabNet, plotted with dataset size. Points above the dotted line indicate that the second algorithm has lower log loss, meaning better performance than the first.
 
 ### D.4 Additional experiments from [Section 2.2](#S2.SS2 "2.2 Metafeature Analysis ‣ 2 Analysis of Algorithms for Tabular Data ‣ When Do Neural Nets Outperform Boosted Trees on Tabular Data?")
 
-![Refer to caption](/html/2305.02997/assets/x16.png)
-
+!(/html/2305.02997/assets/x16.png)
 
 Figure 14: Difference in normalized log loss between the best NN and GBDT (Δℓ​ℓsubscriptΔℓℓ\Delta\_{\ell\ell}) by four dataset properties, for all 10 splits of all 176 datasets. Larger correlations mean that a larger value of the property corresponds to larger log loss (worse performance) for the best neural net compared to the best GBDT. All dataset properties are plotted on a log scale.
-
-
-
 
 Table 17: Selected metafeatures with the largest absolute correlation with the difference in normalized log loss between the best NN and GBDT (Δℓ​ℓsubscriptΔℓℓ\Delta\_{\ell\ell}), over all all 176 datasets. Higher correlation values indicate that *larger* values of the metafeature are associated with *worse* NN performance and *stronger* GBDT performance.
 
@@ -1790,11 +1717,9 @@ Table 18: The test accuracy of tree models for predicting whether the best neura
 | DT≤∞absent\leq\infty | 0.67 ±plus-or-minus\pm 0.30 | 685 |
 | XGBoost | 0.74 ±plus-or-minus\pm 0.33 | 675 |
 
+!(/html/2305.02997/assets/x17.png)
 
-
-![Refer to caption](/html/2305.02997/assets/x17.png)
-
-![Refer to caption](/html/2305.02997/assets/x18.png)
+!(/html/2305.02997/assets/x18.png)
 
 Figure 15: 
 Decision tree for picking the best algorithm, based on our experiments across 176 datasets.
@@ -2008,9 +1933,6 @@ Table 22: Dataset metafeatures that are most correlated with the difference in n
 | XGBoost | SAINT | -0.18 | Range of the skewness of all features. |
 | XGBoost | SAINT | 0.18 | Log of the range of the performance of a decision tree trained on a random attribute, over 10-fold CV. |
 
-
-
-
 Table 23: Dataset metafeatures that are most correlated with the difference in normalized log loss between pairs of algorithms (the loss of Alg. 1 minus Alg. 2). Correlations are taken over all 10 splits of all 133 datasets in which CatBoost, XGBoost, ResNet, and SAINT ran successfully. The 10 dataset attributes with the largest absolute correlation are listed for each pair of algorithms. Attribute names correspond to the naming convention used by PyMFE.
 
 | Alg. 1 | Alg. 2 | Corr. | Attribute Name |
@@ -2047,83 +1969,3 @@ Table 23: Dataset metafeatures that are most correlated with the difference in n
 | XGBoost | SAINT | -0.13 | Range of the relative frequency of all target classes. |
 | XGBoost | SAINT | -0.13 | Mean of the relative frequency of all target classes. |
 | XGBoost | SAINT | -0.12 | Median of the relative frequency of all target classes. |
-
-[◄](/html/2305.02996)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2305.02997)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2305.02997)
-[View original  
-on arXiv](https://arxiv.org/abs/2305.02997)[►](/html/2305.02998)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 09:41:07 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

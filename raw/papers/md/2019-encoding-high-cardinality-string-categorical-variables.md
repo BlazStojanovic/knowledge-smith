@@ -10,50 +10,6 @@ url: https://arxiv.org/abs/1907.01860
 year: 2019
 ---
 
-[1907.01860] Encoding high-cardinality string categorical variables
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Encoding high-cardinality string categorical variables
 
 Patricio Cerda
@@ -257,9 +213,9 @@ Crafting feature-engineering or
 data-cleaning rules can recover a small number of relevant categories.
 However, it is time consuming and often needs domain expertise.
 
-![Refer to caption](/html/1907.01860/assets/x1.png)
+!(/html/1907.01860/assets/x1.png)
 
-![Refer to caption](/html/1907.01860/assets/x2.png)
+!(/html/1907.01860/assets/x2.png)
 
 Figure 1: Number of categories
 versus number of samples. In general,
@@ -466,8 +422,7 @@ for dimensionality reduction are random projections, which give low-dimensional
 approximation of Euclidean distances
 [[20](#bib.bib20), [21](#bib.bib21)].
 
-![Refer to caption](/html/1907.01860/assets/x3.png)
-
+!(/html/1907.01860/assets/x3.png)
 
 Figure 2: Number of 3-gram
 versus number of samples (colors as in
@@ -751,8 +706,7 @@ shows that by performing a reduced number of splits in the min-hash dimensions,
 the space can be divided between the elements that contain
 and do not contain a given substring s𝑠s.
 
-![Refer to caption](/html/1907.01860/assets/x4.png)
-
+!(/html/1907.01860/assets/x4.png)
 
 Figure 3: The min-hash encoder transforms containment into
 inequality operations.
@@ -1174,9 +1128,6 @@ TABLE IV: Examples of simulated categorical variables.
 | Multi-label | lion chicken; horse eagle lion. |
 | Typos (10%) | itger; tiuger; tgier; tiegr; tigre; ttiger. |
 
-
-
-
 TABLE V: Recovery of categories for
 simulations: Normalized mutual
 information (NMI) for different encoders.
@@ -1225,19 +1176,17 @@ categorical variable.
 In this setting, the Gamma-Poisson gives much higher recovery
 results..
 
-![Refer to caption](/html/1907.01860/assets/x5.png)
+!(/html/1907.01860/assets/x5.png)
 
-![Refer to caption](/html/1907.01860/assets/x6.png)
+!(/html/1907.01860/assets/x6.png)
 
 (a) Employee Salaries dataset (Occupation)
 
-![Refer to caption](/html/1907.01860/assets/x7.png)
-
+!(/html/1907.01860/assets/x7.png)
 
 (b) Simulated typos
 
-![Refer to caption](/html/1907.01860/assets/x8.png)
-
+!(/html/1907.01860/assets/x8.png)
 
 (c) Simulated multi-label categories
 
@@ -1365,9 +1314,7 @@ tf-idf, FastText and Bert.
 | Bert | 0.001 |
 | One-hot | 0.717 |
 
-
-
-![Refer to caption](/html/1907.01860/assets/x9.png)![Refer to caption](/html/1907.01860/assets/x10.png)
+!(/html/1907.01860/assets/x9.png)!(/html/1907.01860/assets/x10.png)
 
 Figure 5: Encoding with subword information performs
 significantly better than one-hot. Classifier: XGBoost.
@@ -1422,10 +1369,7 @@ English-French p𝑝p=0.056,
 French-Hungarian p𝑝p=0.149,
 English-Hungarian p𝑝p=0.019.
 
-![Refer to caption](/html/1907.01860/assets/x11.png)
-
-
-
+!(/html/1907.01860/assets/x11.png)
 
 Figure 7: All encoders perform well
 for low-cardinality datasets. Classifier: XGBoost.
@@ -1438,7 +1382,7 @@ the black line indicates the
 median across datasets and the box gives
 the interquartile range. Differences are not significant.
 
-![Refer to caption](/html/1907.01860/assets/x12.png)![Refer to caption](/html/1907.01860/assets/x13.png)
+!(/html/1907.01860/assets/x12.png)!(/html/1907.01860/assets/x13.png)
 
 #### 4.3.3 Prediction with curated data
 
@@ -1471,8 +1415,7 @@ in the Employee Salaries dataset is the latent category
 Manager, Management, Property, which matches general
 intuitions on salaries.
 
-![Refer to caption](/html/1907.01860/assets/x14.png)
-
+!(/html/1907.01860/assets/x14.png)
 
 Figure 8: Gamma-Poisson enables interpretable data
 science.
@@ -1826,13 +1769,11 @@ the FUI Wendelin projects.
 
 |  |  |
 | --- | --- |
-| [Uncaptioned image] | Patricio Cerda Patricio holds a masters degree in applied mathematics from École Normale Supérieure Paris-Saclay and a PhD in computer science from Université Paris-Saclay. His research interests are natural language processing, econometrics and causality.s |
-
-
+|  | Patricio Cerda Patricio holds a masters degree in applied mathematics from École Normale Supérieure Paris-Saclay and a PhD in computer science from Université Paris-Saclay. His research interests are natural language processing, econometrics and causality.s |
 
 |  |  |
 | --- | --- |
-| [Uncaptioned image] | Gaël Varoquaux Gaël Varoquaux is a research director at Inria developing statistical learning for data science and scientific inference. He has pioneered machine learning on brain images. More generally, he develops tools to make machine learning easier, for real-life, uncurated data. He co-funded scikit-learn and helped build central tools for data analysis in Python. He has a PhD in quantum physics and graduated from École Normale Supérieure Paris. |
+|  | Gaël Varoquaux Gaël Varoquaux is a research director at Inria developing statistical learning for data science and scientific inference. He has pioneered machine learning on brain images. More generally, he develops tools to make machine learning easier, for real-life, uncurated data. He co-funded scikit-learn and helped build central tools for data analysis in Python. He has a PhD in quantum physics and graduated from École Normale Supérieure Paris. |
 
 ## Appendix A Reproducibility
 
@@ -2085,8 +2026,7 @@ The available encoders are compatible with the scikit-learn’s API.
 
 ## Appendix B Algorithmic considerations
 
-![Refer to caption](/html/1907.01860/assets/x17.png)
-
+!(/html/1907.01860/assets/x17.png)
 
 Figure 9: Number of dimensions required to identify inclusions.
 Grey lines are the proportion of false positives obtained
@@ -2128,49 +2068,41 @@ hashed version of the n-gram count matrix 𝐅𝐅\mathbf{F} in a reduced
 dimensionality (in order to speed-up convergence of the k-means algorithm)
 and then project back to the n-gram space with a nearest neighbors algorithm.
 
-![Refer to caption](/html/1907.01860/assets/x18.png)
+!(/html/1907.01860/assets/x18.png)
 
-![Refer to caption](/html/1907.01860/assets/x19.png)
+!(/html/1907.01860/assets/x19.png)
 
-![Refer to caption](/html/1907.01860/assets/x20.png)
+!(/html/1907.01860/assets/x20.png)
 
 Figure 10: Convergence for different discount factor values for the
 Gamma-Poisson model.
 In all experiments, the value ρ=0.95𝜌0.95\rho=0.95 is used, as it gives a good trade-off between convergence and stability of the solution across the number of epochs.
 
+!(/html/1907.01860/assets/x21.png)
 
+!(/html/1907.01860/assets/x22.png)
 
-![Refer to caption](/html/1907.01860/assets/x21.png)
-
-![Refer to caption](/html/1907.01860/assets/x22.png)
-
-![Refer to caption](/html/1907.01860/assets/x23.png)
+!(/html/1907.01860/assets/x23.png)
 
 Figure 11: Convergence for different initializations for the Gamma-Poisson model.
 In all experiments, the k-means strategy is used.
 
 ## Appendix C Additional figures and tables
 
-![Refer to caption](/html/1907.01860/assets/x24.png)
-
+!(/html/1907.01860/assets/x24.png)
 
 Figure 12: Overall permutation importances for every feature
 in the Employee Salaries dataset.
 
-
-
-![Refer to caption](/html/1907.01860/assets/x25.png)
-
+!(/html/1907.01860/assets/x25.png)
 
 (a) One-hot encoder
 
-![Refer to caption](/html/1907.01860/assets/x26.png)
-
+!(/html/1907.01860/assets/x26.png)
 
 (b) Gamma-Poisson factorization
 
-![Refer to caption](/html/1907.01860/assets/x27.png)
-
+!(/html/1907.01860/assets/x27.png)
 
 (c) Min-hash encoder
 
@@ -2184,21 +2116,17 @@ for rejecting the null hypothesis. The benchmarked classifiers are:
 XGBoost; Polynomial kernel approx. with the Nystroem method, followed by an ℓ​2ℓ2\ell 2 regularized linear/logistic regression (kernel approximation);
 a multilayer perceptron (1-2 layers); and a ℓ​2ℓ2\ell 2 regularized linear/logistic regression (linear model).
 
-
-
-![Refer to caption](/html/1907.01860/assets/x28.png)
-
+!(/html/1907.01860/assets/x28.png)
 
 (a) Employee Position Title (Employee Salaries dataset)
 
-![Refer to caption](/html/1907.01860/assets/x29.png)
-
+!(/html/1907.01860/assets/x29.png)
 
 (b) Simulated multi-label entries
 
-![Refer to caption](/html/1907.01860/assets/x30.png)
+!(/html/1907.01860/assets/x30.png)
 
-![Refer to caption](/html/1907.01860/assets/x31.png)
+!(/html/1907.01860/assets/x31.png)
 
 (c) Simulated entries with typos
 
@@ -2210,20 +2138,11 @@ obtained with different encoding methods for some categories
 The x𝑥x-axis shows the activations with their respective inferred
 feature names.
 
-
-
-
 TABLE IX: Median scores by dataset for XGBoost (d=30).
-
-
-
 
 TABLE X: Median training and encoding times, in seconds, for Gamma-Poisson with
 XGBoost (d=30, a single fit, no hyper-parameter
 selection procedure).
-
-
-
 
 TABLE XI: Recovering true categories for
 curated categorical variables. NMI for different encoders (d=|C|𝑑𝐶d{=}|C|).
@@ -2239,9 +2158,6 @@ curated categorical variables. NMI for different encoders (d=|C|𝑑𝐶d{=}|C|)
 | House Sales (70) | 0.29 | 0.03 | 0.26 | 0.07 | 0.03 |
 | Intrusion Detection (66) | 0.27 | 0.65 | 0.61 | 0.13 | 0.06 |
 
-
-
-
 TABLE XII: Recovering true categories for curated
 entries. NMI for different encoders (d𝑑d=10).
 
@@ -2256,9 +2172,6 @@ entries. NMI for different encoders (d𝑑d=10).
 | House Sales (70) | 0.49 | 0.04 | 0.11 | 0.05 | 0.02 |
 | Intrusion Detection (66) | 0.34 | 0.53 | 0.46 | 0.08 | 0.04 |
 
-
-
-
 TABLE XIII: Recovering true categories for curated
 entries. NMI for different encoders (d𝑑d=100).
 
@@ -2272,83 +2185,3 @@ entries. NMI for different encoders (d𝑑d=100).
 | House Prices (15) | 0.63 | 0.25 | 0.32 | 0.11 | 0.05 |
 | House Sales (70) | 0.21 | 0.03 | 0.26 | 0.07 | 0.03 |
 | Intrusion Detection (66) | 0.23 | 0.65 | 0.61 | 0.13 | 0.06 |
-
-[◄](/html/1907.01859)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1907.01860)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1907.01860)
-[View original  
-on arXiv](https://arxiv.org/abs/1907.01860)[►](/html/1907.01861)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 16:11:18 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

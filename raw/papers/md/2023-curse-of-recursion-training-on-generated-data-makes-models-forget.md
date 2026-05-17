@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2305.17493
 year: 2023
 ---
 
-[2305.17493] The Curse of Recursion: Training on Generated Data Makes Models Forget
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # The Curse of Recursion: Training on Generated Data Makes Models Forget
 
 Ilia Shumailov\*
@@ -96,8 +53,7 @@ The development of LLMs is quite involved and requires masses of training data. 
 
 We discover that learning from data produced by other models causes model collapse – a degenerative process whereby, over time, models forget the true underlying data distribution, even in the absence of a shift in the distribution over time. We give examples of model collapse for Gaussian Mixture Models (GMMs), Variational Autoencoders (VAE) and Large Language models (LLMs). We show that over time we start losing information about the true distribution, which first starts with tails disappearing, and over the generations learned behaviours start converging to a point estimate with very small variance. Furthermore, we show that this process is inevitable, even for cases with almost ideal conditions for long-term learning i.e. no function estimation error.
 
-![Refer to caption](/html/2305.17493/assets/images/infographics/timeline_2.png)
-
+!(/html/2305.17493/assets/images/infographics/timeline_2.png)
 
 Figure 1: Model Collapse refers to a degenerative learning process where models start forgetting improbable events over time, as the model becomes poisoned with its own projection of reality.
 
@@ -129,23 +85,13 @@ Example of text outputs of an OPT-125m model affected by Model Collapse– mode
 
 Input: some started before 1360 — was typically accomplished by a master mason and a small team of itinerant masons, supplemented by local parish labourers, according to Poyntz Wright. But other authors reject this model, suggesting instead that leading architects designed the parish church towers based on early examples of Perpendicular
 
-
-
 Outputs:
-
-
 
 Gen 0: Revival architecture such as St. John’s Cathedral in London. The earliest surviving example of Perpendicular Revival architecture is found in the 18th @-@ century Church of Our Lady of Guernsey, which dates from the late 19th century. There are two types of perpendicular churches : those
 
-
-
 Gen 1: architecture such as St. Peter’s Basilica in Rome or St. Peter’s Basilica in Buenos Aires. There is no evidence that any of these buildings were built during the reign of Pope Innocent III, but it is possible that they may have been built during the reign of his successor, Pope Innocent
 
-
-
 Gen 7: architecture in England. In an interview with The New York Times, Wright said : " I don ’t think there is anything wrong with me being able to do what I want to do. It just doesn ’t work for me. " He added : " I don ’t know if you can call it funny,
-
-
 
 Gen 9: architecture. In addition to being home to some of the world’s largest populations of black @-@ tailed jackrabbits, white @-@ tailed jackrabbits, blue @-@ tailed jackrabbits, red @-@ tailed jackrabbits, yellow @-
 
@@ -157,8 +103,7 @@ Poisoning attacks are crafted and inserted during training in order to degrade t
 
 ## 3 What is Model Collapse?
 
-![Refer to caption](/html/2305.17493/assets/images/infographics/timeline.png)
-
+!(/html/2305.17493/assets/images/infographics/timeline.png)
 
 Figure 2: The high-level description of the feedback mechanism in the learning process. Here, data are assumed to be human-curated and start off clean; then model 00 is trained and data are sampled from it; at step n𝑛n, data are added to the overall data from step n−1𝑛1n-1, and this ensemble is used to train model n𝑛n. Data obtained with Monte Carlo sampling should ideally be statistically close to the original, provided fitting and sampling procedures are perfect. This process depicts what happens in real life with the Internet – model-generated data become pervasive.
 
@@ -199,44 +144,37 @@ In this subsection we consider a discrete probability distribution, which is rep
 
 But how do we show directly that this process is going to turn our distribution into a delta function? By considering the process as going from 𝐗i→ℱθ→pi+1→𝐗i+1→superscript𝐗𝑖subscriptℱ𝜃→subscript𝑝𝑖1→superscript𝐗𝑖1\mathbf{X}^{i}\to\mathcal{F\_{\theta}}\to p\_{i+1}\to\mathbf{X}^{i+1}, we see that this forms a Markov Chain, as 𝐗i+1superscript𝐗𝑖1\mathbf{X}^{i+1} only depends on 𝐗isuperscript𝐗𝑖\mathbf{X}^{i}. Furthermore, if all the Xjisubscriptsuperscript𝑋𝑖𝑗X^{i}\_{j} have the same value, then at the next generation the approximated distribution will be exactly a delta function, and therefore all of Xji+1subscriptsuperscript𝑋𝑖1𝑗X^{i+1}\_{j} will also have the same value.
 
-![Refer to caption](/html/2305.17493/assets/x1.png)
-
+!(/html/2305.17493/assets/x1.png)
 
 Figure 3: Shown in the middle is a histogram plot of samples from a Gaussian mixture with means (−4,4)44(-4,4) and variances of 111. To the left of it is a similar distribution, but with ’fatter’ tails, and on the right the same histograms are shown, but with low probability events being cut off due to finite resampling. Although distributions 1 and 2 are very different, when resampled (only assuming the expected behaviour), the tails get cut off, leading to the same observed distribution. In this case this is all states with probability less than 1/M1𝑀1/M, or equivalently, bins with log⁡Count≤log⁡MCount𝑀\log{\texttt{Count}}\leq\log{M}.
 
 This implies that the Markov chain contains at least one absorbing state, and therefore with probability 1 it will converge to one of the absorbing states. This is a well-known fact, of which a proof is provided in [Section A.1](#A1.SS1 "A.1 Absorbing Markov Chain ‣ Appendix A Appendix ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget"). For this chain, the only absorbing states are those corresponding to delta functions. As a result, as we follow the progress of model collapse, we are guaranteed to end up in a constant state, having lost all the information of the original distribution when the chain is absorbed.333This argument also works in general due to floating point representations being discrete, making the Markov Chain over the parameters of the model discrete. Thus as long as the model parameterisation allows for delta functions, we will get to it, as due to sampling errors the only possible absorbing states are delta functions. Based on the discussion above we see how both early and late stage model collapse  must arise in the case of discrete distributions with perfect functional approximation.
 
-![Refer to caption](/html/2305.17493/assets/x2.png)
-
+!(/html/2305.17493/assets/x2.png)
 
 (a) Mean estimation
 
-![Refer to caption](/html/2305.17493/assets/x3.png)
-
+!(/html/2305.17493/assets/x3.png)
 
 (b) Standard Deviation
 
 Figure 4: Recursive fitting-sampling of a 1D Gaussian with different numbers of samples drawn. We find that unless sampled a very large number of times, i.e. <100000, both standard deviation and mean get significantly affected. Here we report a single run; while re-running the experiment changes the initial performance, both μ𝜇\mu and σ𝜎\sigma drift over time. The overall graph looks quite similar to that of a Gaussian random walk.
 
-![Refer to caption](/html/2305.17493/assets/x4.png)
-
+!(/html/2305.17493/assets/x4.png)
 
 (a) Mean estimation
 
-![Refer to caption](/html/2305.17493/assets/x5.png)
-
+!(/html/2305.17493/assets/x5.png)
 
 (b) Standard Deviation
 
 Figure 5: Recursive fitting-sampling of a 1D Gaussian with different numbers of samples drawn. In this plot data get accumulated in a pool, from which a fixed sample is drawn. In other words, a model n𝑛n gets data sampled, its output is mixed with data sampled from models 1​…​n1…𝑛1\dots n, and then the mix gets sampled to fit the model n+1𝑛1n+1. The uncertainty arising from all of the different modalities appearing in data causes the distribution parameters to jump around quite significantly.
 
-![Refer to caption](/html/2305.17493/assets/x6.png)
-
+!(/html/2305.17493/assets/x6.png)
 
 (a) Mean estimation
 
-![Refer to caption](/html/2305.17493/assets/x7.png)
-
+!(/html/2305.17493/assets/x7.png)
 
 (b) Standard Deviation
 
@@ -394,15 +332,13 @@ Overall, the message of this section can be summarised as follows:
 
 ### 5.1 Training from scratch with GMMs and VAEs
 
-![Refer to caption](/html/2305.17493/assets/x8.png)
-
+!(/html/2305.17493/assets/x8.png)
 
 Figure 7: An examples of GMM fitting data at iterations {0,50,100,150,200,350,2000}0501001502003502000\{0,50,100,150,200,350,2000\}. At first the model fits data very well as is shown on the left; yet even at generation 50 the perception of the underlying distribution completely changes. At generation 2000 it converges to a state with very little variance. GMM is sampled a thousand times.
 
 Gaussian Mixture Models. In this subsection we evaluate the performance of Gaussian Mixture Models (GMM) (Reynolds et al., [2009](#bib.bib22)). The underlying task here is that a given GMM tries to separate two artificially-generated Gaussians. [Figure 7](#S5.F7 "In 5.1 Training from scratch with GMMs and VAEs ‣ 5 Evaluation ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget") shows the progression of the GMM fitting process over time. The left-most plot shows the original two Gaussians with the ground truth labels. The next plot shows the GMM fitted on the original data with no cross-generational data used i.e. αi=γi=0subscript𝛼𝑖subscript𝛾𝑖0\alpha\_{i}=\gamma\_{i}=0, where the error is minimal. Yet, within 50 iterations of re-sampling we arrive to a point where the underlying distribution is mis-perceived. The performance worsens over time and by iteration 2000 we arrive at a point estimate of the distribution with very little variance. The L2 distance between the original GMM and its descendants is plotted in [Figure 13](#A1.F13 "In A.1 Absorbing Markov Chain ‣ Appendix A Appendix ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget").
 
-![Refer to caption](/html/2305.17493/assets/x9.png)
-
+!(/html/2305.17493/assets/x9.png)
 
 Figure 8: Changing distribution of latents over the learning process with generated data as perceived by the original encoder. Just as with the Gaussian case described above, the tails get washed away and the model arrives at the mean representation of the underlying data.
 
@@ -410,23 +346,19 @@ Variational Autoencoders. In this subsection we turn to Variational Autoencoders
 
 Having performed the process a number of times we arrive at a representation that has very little resemblance of the original classes learned from data. On the right, one sees the generated images from generation 20, which appear to be a mix of all of the different digits. Interestingly, the original encoder perceives the generated data from its descendant with ever-growing confidence – the encoder places such data closer and closer to the mean. [Figure 8](#S5.F8 "In 5.1 Training from scratch with GMMs and VAEs ‣ 5 Evaluation ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget") shows the density of the latent representation of the original model when presented with data generated by its descendants. As with single-dimensional Gaussians, tails disappear over time and all of the density shifts towards the mean.
 
-![Refer to caption](/html/2305.17493/assets/x10.png)
-
+!(/html/2305.17493/assets/x10.png)
 
 (a) Original model
 
-![Refer to caption](/html/2305.17493/assets/x11.png)
-
+!(/html/2305.17493/assets/x11.png)
 
 (b) Generation 5
 
-![Refer to caption](/html/2305.17493/assets/x12.png)
-
+!(/html/2305.17493/assets/x12.png)
 
 (c) Generation 10
 
-![Refer to caption](/html/2305.17493/assets/x13.png)
-
+!(/html/2305.17493/assets/x13.png)
 
 (d) Generation 20
 
@@ -440,13 +372,11 @@ In this subsection we explore what happens with language models when they are se
 
 We fine-tune the model on the wikitext2 dataset. For data generation from the trained models we use a 5-way beam-search. We block training sequences to be 64 tokens long; then for each token sequence in the training set, we ask the model to predict the next 64 tokens. We go through all of the original training dataset and produce an artificial dataset of the same size. Since we go though all of the original dataset and predict all of the blocks, if the model had 0.00.00.0 error it would produce the original wikitext2 dataset. Training for each of the generations starts with generation from the original training data. Each experiment is ran 5 times and the results are shown as 5 separate runs. The original model fine-tuned with real wikitext2 data gets 343434 mean perplexity, from the zero-shot baseline of 115115115, i.e. it successfully learns the task. Finally, to be as realistic as possible, we use the best performing model on the original task, evaluated using the original wikitext2 validation set, as the base model for the subsequent generations, meaning in practice observed Model Collapse can be even more pronounced.
 
-![Refer to caption](/html/2305.17493/assets/x14.png)
-
+!(/html/2305.17493/assets/x14.png)
 
 (a) No data preserved, 5 epochs
 
-![Refer to caption](/html/2305.17493/assets/x15.png)
-
+!(/html/2305.17493/assets/x15.png)
 
 (b) 10% data preserved, 10 epochs
 
@@ -460,13 +390,11 @@ Here we consider two different settings:
 
 Both training regimes lead to degraded performance in our models, yet we do find that learning with generated data is possible and models can successfully learn (some of) the underlying task. We now turn to consider the underlying perception of probable events for each generation of our models.
 
-![Refer to caption](/html/2305.17493/assets/x16.png)
-
+!(/html/2305.17493/assets/x16.png)
 
 (a) No data preserved
 
-![Refer to caption](/html/2305.17493/assets/x17.png)
-
+!(/html/2305.17493/assets/x17.png)
 
 (b) 10% data preserved
 
@@ -740,13 +668,11 @@ R(I\_{r}-Q)^{-1}&I\_{s}\\
 
 Since in the limit the transition probabilities to transient states are zero, we end up converging to absorbing states and staying there. In the case of discrete distributions, where we can perfectly approximate a zero-variance dataset (i.e. a delta function), the absorbing states are delta functions centered at any non-zero probability point from the original distribution. In practice, we would like to know the expected number of steps before being absorbed, which may be large. But without knowing our fitting procedure it is impossible to calculate the matrix Q𝑄Q and therefore the average length of time before collapse.
 
-![Refer to caption](/html/2305.17493/assets/x18.png)
-
+!(/html/2305.17493/assets/x18.png)
 
 Figure 12: Approximation of a single-dimensional Gaussian 𝒩​(0,1)𝒩01\mathcal{N}(0,1) as a function of number of points. The mean estimator and its standard deviation are calculated from running the procedure 10000 times.
 
-![Refer to caption](/html/2305.17493/assets/x19.png)
-
+!(/html/2305.17493/assets/x19.png)
 
 Figure 13: Progressive fitting of a GMM with different number of samples. On the y𝑦y-axis is shown the logarithm of L​2𝐿2L2 distance between the two GMM distributions. Over the generations the distance begins to grow and can become quite large. The jumps in the distance for large sample sizes occur due to the fixed number of iterations and precision for the expectation maximization algorithm.
 
@@ -802,108 +728,22 @@ Without knowledge of the specific values of K𝐾K, N𝑁N or Tr⁡ΣTrΣ\operat
 
 In particular, we find in the same way, that superlinear scaling would be required to minimise the lower bound on model collapse even in the case of more generic models of approximation, in which the mean at step i+1𝑖1i+1 can be separated into the sample mean and an extra bounded term of order at most 1/Mi1subscript𝑀𝑖1/M\_{i}.
 
-![Refer to caption](/html/2305.17493/assets/x20.png)
-
+!(/html/2305.17493/assets/x20.png)
 
 (a) Overlaid histograms
 
-![Refer to caption](/html/2305.17493/assets/x21.png)
-
+!(/html/2305.17493/assets/x21.png)
 
 (b) 3D view
 
 Figure 14: Histogram of perplexities of each individual data training sequence produced by different generations as is evaluated by the very first model trained with the real data. Over the generations models tend to produce samples that the original model (trained with real data) is more likely to produce. At the same time, a much longer tail appears for later generations – later generations start producing samples that would never be produced by the original model i.e. they start misperceiving reality based on errors introduced by their ancestors. Models here are explicitly forced to not repeat sequences with a penalty of 2.02.02.0.
 
-
-
-![Refer to caption](/html/2305.17493/assets/x22.png)
-
+!(/html/2305.17493/assets/x22.png)
 
 (a) [Figure 11](#S5.F11 "In 5.2 Language Models ‣ 5 Evaluation ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget").a in 3D. No data preserved.
 
-![Refer to caption](/html/2305.17493/assets/x23.png)
-
+!(/html/2305.17493/assets/x23.png)
 
 (b) [Figure 11](#S5.F11 "In 5.2 Language Models ‣ 5 Evaluation ‣ The Curse of Recursion: Training on Generated Data Makes Models Forget").b in 3D. 10% original data preserved.
 
 Figure 15: Histogram of perplexities of each individual data training sequence produced by different generations as is evaluated by the very first model trained with the real data. Over the generations models tend to produce samples that the original model (trained with real data) is more likely to produce. At the same time, a much longer tail appears for later generations – later generations start producing samples that would never be produced by the original model i.e. they start misperceiving reality based on errors introduced by their ancestors.
-
-[◄](/html/2305.17492)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2305.17493)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2305.17493)
-[View original  
-on arXiv](https://arxiv.org/abs/2305.17493)[►](/html/2305.17494)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 04:24:27 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

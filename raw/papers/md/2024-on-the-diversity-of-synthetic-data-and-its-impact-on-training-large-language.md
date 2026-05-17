@@ -17,55 +17,6 @@ url: https://arxiv.org/abs/2410.15226
 year: 2024
 ---
 
-[2410.15226] On the Diversity of Synthetic Data and its Impact on Training Large Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\etocdepthtag
-
-.tocmtchapter
-\etocsettagdepthmtchapternone
-\etocsettagdepthmtappendixnone
-
 # On the Diversity of Synthetic Data and its Impact on Training Large Language Models
 
 Hao Chen1,   Abdul Waheed1,   Xiang Li1,   Yidong Wang2
@@ -109,8 +60,7 @@ While the effectiveness of quantity of real data has been extensively verified o
 Some recent research studied different quality factors of real data and concluded that the quality of real data is more important than quantity (Soldaini et al., [2024](#bib.bib85); Penedo et al., [2023](#bib.bib71); Groeneveld et al., [2024](#bib.bib31); Tan & Wang, [2024a](#bib.bib87); Deitke et al., [2024](#bib.bib23)).
 However, it is still unclear whether these conclusions also apply to synthetic data pre-training.
 
-![Refer to caption](/html/2410.15226/assets/x1.png)
-
+!(/html/2410.15226/assets/x1.png)
 
 Figure 1: Linear regression of LLM cluster score and benchmark performance of (a) pre-trained 350M; (b) pre-trained 1.4B; (c) supervised fine-tuned 350M; and (d) supervised fine-tuned 1.4B models. Each scatter represents a synthetic dataset with size corresponding to the number of tokens.
 
@@ -167,8 +117,7 @@ However, there are two challenges that prevent LLMs from performing clustering d
 First, it is difficult to define the proper criteria for LLMs to cluster that captures the true distribution.
 Second, due to the limited context length of LLMs111Although LLMs nowadays can support 128K context length or even more, the quality of response usually degenerates as the context length increases., one cannot directly feed the entire text corpus to LLMs for clustering as in traditional clustering methods.
 
-![Refer to caption](/html/2410.15226/assets/x2.png)
-
+!(/html/2410.15226/assets/x2.png)
 
 Figure 2: Pipeline, prompt, and example outputs of the proposed LLM Cluster-agent. LLM Cluster-agent first generates metadata and metrics with attributes and scores that captures the underlying distribution and then uses these criteria to perform clustering with an extra self-verification step.
 
@@ -263,8 +212,7 @@ More details of the model architecture, training parameters, and evaluation data
 To ensure both reasonable quality and diversity of the synthetic data generation, we mainly adopt GPT-4o as the base model for the generation of synthetic text data and utilize a set of pre-defined topics as our generation seeds.
 The topic generation seeds are obtained by first scrawling
 
-![Refer to caption](/html/2410.15226/assets/x3.png)
-
+!(/html/2410.15226/assets/x3.png)
 
 Figure 3: Top topic seeds.
 
@@ -296,8 +244,7 @@ The detailed prompt template and output examples are shown in [Appendix F](#A6 
 We present the token count of the synthetic data generated using this prompt in [Table 2](#S3.T2 "In 3.3 On the Underlying Distribution of Synthetic Data ‣ 3 Synthetic Data Diversity in Pre-training ‣ On the Diversity of Synthetic Data and its Impact on Training Large Language Models").
 For fair comparison, we increase the sampling weight to make the effective synthetic tokens as 4.5B, and combine with the 34B real tokens for pre-training the models.
 
-![Refer to caption](/html/2410.15226/assets/x4.png)
-
+!(/html/2410.15226/assets/x4.png)
 
 Figure 4: Diversity results of varying underlying number of topics (𝒯𝒯\mathcal{T}) and number of generations per topic (𝒢𝒢\mathcal{G}) in synthetic data. (a) Average length of synthetic samples; (b) Self-repetition score; (c) Compression ratio; (d) N-gram diversity score; (e) Perplexity of GPT-2-L; (f) Perplexity gap between GPT-2-L and GPT-2-XL; (g) K-means cluster score of BERT-L embeddings; (g) LLM cluster score. Ours demonstrates the most significant difference in diversity, aligning with the underlying topic distribution. It also reflects the saturated and deteriorated diversity diversity as 𝒢𝒢\mathcal{G} increases.
 
@@ -308,8 +255,7 @@ Similar observations persist even for model-based metrics such as perplexity and
 One can also find that the traditional clustering method, i.e., K-means clustering, fails to capture the diversity of the underlying distributions, where the cluster score of synthetic tokens with 300300300K topics is measured to be smaller than that of 100100100K topics.
 More importantly, the diversity measured by both the heuristic-based and model-based baseline metrics demonstrates different trends, which is difficult to interpret.
 
-![Refer to caption](/html/2410.15226/assets/x5.png)
-
+!(/html/2410.15226/assets/x5.png)
 
 Figure 5: Benchmark average accuracy of pre-trained and supervised fine-tuned 350M and 1.4B models by varying underlying number of topics (𝒯𝒯\mathcal{T}) and number of generations per topic 𝒢𝒢\mathcal{G} in synthetic data. The performance of both pre-trained and supervised fine-tuned models well aligns with our LLM cluster diversity metric: first increases and then saturates or deteriorates with diversity.
 
@@ -359,13 +305,11 @@ We also find that the prompt template Multi-Topic Styles Persona in fact generat
 This is possibly due to we provide multiple topics to GPT-4o and prompt it to combine topics flexibly, which may introduce more redundancy.
 Our results suggest that adding personas (Chan et al., [2024](#bib.bib17)) for synthetic data generation in pre-training can significantly increase the underlying diversity, and thus, in turn, boost the performance.
 
-![Refer to caption](/html/2410.15226/assets/x6.png)
-
+!(/html/2410.15226/assets/x6.png)
 
 Figure 6: Diversity results of synthetic data generated by various prompt templates. (a) Average length of synthetic samples; (b) Self-repetition score; (c) Compression ratio; (d) N-gram diversity score; (e) Perplexity of GPT-2-L; (f) Perplexity gap between GPT-2-L and GPT-2-XL; (g) K-means cluster score of BERT-L embeddings; (g) LLM cluster score. The baseline metrics show inconsistent measures of diversity, whereas the proposed LLM cluster method well captures the diversity.
 
-![Refer to caption](/html/2410.15226/assets/x7.png)
-
+!(/html/2410.15226/assets/x7.png)
 
 Figure 7: Benchmark results of pre-trained and supervised fine-tuned models by varying the prompt templates for synthetic data generation. Persona and Styles improves diversity and performance.
 
@@ -390,8 +334,7 @@ We also set an additional variant with mixed synthetic data from all models.
 The output examples are shown in [Appendix F](#A6 "Appendix F Synthetic Data Generation ‣ On the Diversity of Synthetic Data and its Impact on Training Large Language Models").
 Here, we only pre-train and supervised fine-tune 350M models and report the LLM cluster score measurement mainly due to the computational limits.
 
-![Refer to caption](/html/2410.15226/assets/x8.png)
-
+!(/html/2410.15226/assets/x8.png)
 
 Figure 8: (a) LLM diversity score of synthetic data from different models. (b) Average performance of trained models.
 
@@ -404,8 +347,7 @@ Our results suggest that the use of synthetic data from more advanced models and
 
 ### 3.6 Ratio between Real and Synthetic Tokens
 
-![Refer to caption](/html/2410.15226/assets/x9.png)
-
+!(/html/2410.15226/assets/x9.png)
 
 Figure 9: Results of varying real-syn ratio.
 
@@ -444,8 +386,7 @@ Different LLMs.
 We perform an additional ablation on the models used in the proposed LLM clustering pipeline, i.e., GPT-4, GPT-4o, GPT-3.5, and Llama-3.1.
 From the results, we can observe that different LLMs often present consistent and robust clustering results using the proposed pipeline.
 
-![Refer to caption](/html/2410.15226/assets/x10.png)
-
+!(/html/2410.15226/assets/x10.png)
 
 Figure 10: Density estimation of (a) number of samples per cluster S𝑆S and (b) number of clusters C𝐶C from LLM cluster results on synthetic data generated with Topic prompt using 𝒯=300𝒯300\mathcal{T}=300K, and 𝒢∼{10,20,30}similar-to𝒢102030\mathcal{G}\sim\{10,20,30\}. LLM Cluster-agent can discriminate the diversity of the underlying distributions.
 
@@ -1166,9 +1107,6 @@ Table 6: Benchmark results of varying underlying distribution.
 | 20 | 58.65 | 34.00 | 65.32 | 60.75 | 42.48 | 59.20 | 74.73 | 74.00 | 58.68 |
 | 30 | 58.16 | 33.62 | 64.95 | 60.81 | 41.04 | 59.01 | 74.09 | 73.00 | 58.76 |
 
-
-
-
 Table 7: Benchmark results of varying prompt templates.
 
 | Model | Data | Average | Common Sense | | | | | Language Understanding | | |
@@ -1202,9 +1140,6 @@ Table 7: Benchmark results of varying prompt templates.
 | Topic Styles | 60.97 | 35.57 | 67.69 | 65.08 | 43.58 | 59.57 | 75.57 | 78.00 | 62.57 |
 | Topic Styles Persona | 61.32 | 35.78 | 68.04 | 65.19 | 44.10 | 60.39 | 76.17 | 78.00 | 62.57 |
 | Multi-Topic Styles Persona | 60.59 | 34.36 | 67.93 | 64.79 | 43.11 | 60.01 | 75.39 | 76.00 | 63.03 |
-
-
-
 
 Table 8: Benchmark results of varying synthetic data generation models.
 
@@ -1634,13 +1569,11 @@ Topic Seeds Example
 
 ### E.2 Visualization of the Topic Seeds
 
-![Refer to caption](/html/2410.15226/assets/x11.png)
-
+!(/html/2410.15226/assets/x11.png)
 
 Figure 11: Visualization on the clustering of topic seeds.
 
-![Refer to caption](/html/2410.15226/assets/x12.png)
-
+!(/html/2410.15226/assets/x12.png)
 
 Figure 12: Distribution of top-20 topics at each hierarchical level.
 
@@ -2464,83 +2397,3 @@ Which of the following is a strategy exhibited by a Type D personality in respon
 \* Befriend
 Key: Tend
 A Type D personality tends to seek social support and comfort from others in response to stress, which is the tend-and-befriend response. This is different from fight or flight responses, which involve either confronting or avoiding the stressor.
-
-[◄](/html/2410.15225)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2410.15226)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2410.15226)
-[View original  
-on arXiv](https://arxiv.org/abs/2410.15226)[►](/html/2410.15227)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Nov 5 23:43:16 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

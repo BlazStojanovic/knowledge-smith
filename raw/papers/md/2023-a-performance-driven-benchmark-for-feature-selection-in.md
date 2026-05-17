@@ -17,49 +17,6 @@ url: http://arxiv.org/abs/2311.05877v1
 year: 2023
 ---
 
-[2311.05877] A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning
 
 Valeriia Cherepanova
@@ -140,8 +97,7 @@ A few works evaluate feature selection methods on synthetic datasets (Bolón-Can
 
 In contrast, in this work we provide an extensive benchmark of feature selection methods for modern deep tabular models. We construct our feature selection benchmark on large-scale tabular datasets with different types of extraneous features and investigate a range of representative feature selectors, both classical and deep learning based. Our benchmark evaluates feature selection methods based on performance of the downstream deep tabular models.
 
-![Refer to caption](/html/2311.05877/assets/figures/random_exps_seed.png)
-
+!(/html/2311.05877/assets/figures/random_exps_seed.png)
 
 Figure 1: Performance of FT-Transformer, MLP and XGBoost models when trained on data with random extra features. The X-axes indicates the percentage of uninformative features in the dataset and the Y-axes depict accuracy for classification problems and negative RMSE for regression datasets, so higher values always indicate better performance. Overall, we find MLP models to be more susceptible to noise than either XGBoost or FT-Transformer models.
 
@@ -159,11 +115,11 @@ Recent contributions to the ongoing competition between tabular neural networks 
 
 We explore the influence of uninformative features on tabular neural networks and assess the performance of MLP and FT-Transformer models on datasets containing varying numbers of uninformative Gaussian noise features. For reference, we also include a GBDT model into our comparison as implemented in the popular XGBoost package (Chen and Guestrin, [2016](#bib.bib14)). Figure [1](#S2.F1 "Figure 1 ‣ 2.3 Feature Selection Benchmarks ‣ 2 Related Work ‣ A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning") illustrates the relationship between the performance of the three models and the proportion of uninformative features in these datasets. Similarly to Grinsztajn et al. ([2022](#bib.bib23)), we observe that the MLP architecture, on average, exhibits more overfitting to uninformative features compared to XGBoost, motivating the need for careful feature selection with tabular neural networks. Interestingly, as seen from the slope of the blue and green curves in Figure [1](#S2.F1 "Figure 1 ‣ 2.3 Feature Selection Benchmarks ‣ 2 Related Work ‣ A Performance-Driven Benchmark for Feature Selection in Tabular Deep Learning"), the FT-Transformer model is roughly as robust to noisy features as the XGBoost model. The fact that the performance of the FT-Transformer model is not as severely affected by noisy features could be attributed to the ability of the transformer architecture to filter out uninformative features through its attention mechanism. Inspired by this observation, we further investigate the effectiveness of utilizing the attention map importance within FT-Transformer Gorishniy et al. ([2021](#bib.bib21)) as a feature selection method in our benchmark study.
 
-![Refer to caption](/html/2311.05877/assets/figures/fdr_random.png)
+!(/html/2311.05877/assets/figures/fdr_random.png)
 
-![Refer to caption](/html/2311.05877/assets/figures/fdr_corrupted.png)
+!(/html/2311.05877/assets/figures/fdr_corrupted.png)
 
-![Refer to caption](/html/2311.05877/assets/figures/fdr_secondorder.png)
+!(/html/2311.05877/assets/figures/fdr_secondorder.png)
 
 Figure 2: Percent of random, corrupted, and second-order features selected by different feature selection algorithms. Importance rank correlation refers to pair-wise feature importance Spearman correlation averaged across all feature selection algorithms and datasets. Random features are less often ranked as important compared to corrupted and second-order features, and feature selection algorithms have higher agreement when selecting from random features.
 
@@ -302,9 +258,6 @@ Table 2: Benchmarking feature selection methods for MLP and FT-Transformer downs
 | 50 | XGBoost + FT | 0.963 | -0.422 | 0.97 | 0.706 | 0.564 | 0.392 | 0.821 | -0.548 | 0.735 | -0.897 | 0.816 | -0.790 | 2.42 |
 | 50 | Deep Lasso + FT | 0.961 | -0.422 | 0.968 | 0.725 | 0.577 | 0.393 | 0.821 | -0.561 | 0.736 | -0.898 | 0.809 | -0.788 | 2.67 |
 
-
-
-
 Table 3: Benchmarking feature selection methods for MLP and FT-Transformer downstream models on datasets with second-order extra features. We report performance of models trained on features selected by different FS algorithms in terms of accuracy for classification and negative RMSE for regression problems. % refers to percent of extra features in the dataset: either 50% or 75% features are second-order. Bold font indicates the best numbers dataset-wise and lower rank indicates better overall result.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -358,9 +311,9 @@ We focus on the setup involving second-order features, as we discovered the lowe
 
 We find related similarity patterns for both downstream models. In particular, we observe that Random Forest and XGBoost rankings exhibit high correlation, indicating a strong agreement between these both tree-based methods. We find that First-Layer Lasso is highly correlated with Adaptive Group Lasso, which is an extension of First-Layer Lasso. Additionally, Random Forest results are also correlated with results from the Univariate Test. Deep Lasso is most correlated with Lasso-based methods, such as classical Lasso, First-Layer Lasso and Adaptive Group Lasso and with Attention Map Importance.
 
-![Refer to caption](/html/2311.05877/assets/figures/similarity_secondorder_mlp.png)
+!(/html/2311.05877/assets/figures/similarity_secondorder_mlp.png)
 
-![Refer to caption](/html/2311.05877/assets/figures/similarity_secondorder_ft.png)
+!(/html/2311.05877/assets/figures/similarity_secondorder_ft.png)
 
 Figure 3: Similarity between feature selection methods tuned for downstream MLP and FT-Transformer models. Heatmap depicts pair-wise Spearman correlation of feature importances for the setup with second-order features. Correlations are averaged across the datasets.
 
@@ -904,9 +857,6 @@ Table 5: Optuna hyperparameter search space for MLP
 | Learning rate | LogUniform[1​e−5,1​e−2]1𝑒51𝑒2[1e-5,1e-2] |
 | Weight decay | {0,\{0, LogUniform[1e−6,1e−3]}[1e-6,1e-3]\} |
 
-
-
-
 Table 6: Optuna hyperparameter search space and default configuration for FT-Transformer
 
 | Parameter | Search Space | Default |
@@ -918,9 +868,6 @@ Table 6: Optuna hyperparameter search space and default configuration for FT-Tra
 | FFN factor | Uniform[2/3,8/3]2383[2/3,8/3] | 4/3434/3 |
 | Learning rate | LogUniform[1​e−5,1​e−3]1𝑒51𝑒3[1e-5,1e-3] | 1​e−31𝑒31e-3 |
 | Weight decay | LogUniform[1​e−6,1​e−3]1𝑒61𝑒3[1e-6,1e-3] | 2​e−42𝑒42e-4 |
-
-
-
 
 Table 7: Optuna hyperparameter search space for XGBoost
 
@@ -934,18 +881,12 @@ Table 7: Optuna hyperparameter search space for XGBoost
 | Gamma | {0,\{0, LogUniform[1e−8,1e2]}[1e-8,1e2]\} |
 | Lambda | {0,\{0, LogUniform[1e−8,1e2]}[1e-8,1e2]\} |
 
-
-
-
 Table 8: Optuna hyperparameter search space for Random Forest
 
 | Parameter | Search Space |
 | --- | --- |
 | Num estimators | UniformInt[10,2000]102000[10,2000] |
 | Max depth | UniformInt[3,10]310[3,10] |
-
-
-
 
 Table 9: Optuna hyperparameter search space for Feature Selection regularizers penalty weights
 
@@ -1074,9 +1015,6 @@ Table 11: ROC-AUC scores for feature selection methods trained on datasets with 
 | 75 | XGBoost | 0.945 | 1.0 | 0.948 | 0.946 | 1.0 | 1.0 | 0.700 | 0.997 | 0.737 | 1.0 | 0.981 | 0.999 | 2.92 |
 | 75 | Deep Lasso | 1.000 | 0.994 | 0.985 | 0.919 | 0.273 | 1.0 | 0.895 | 0.995 | 0.762 | 0.959 | 1.000 | 1.0 | 2.25 |
 
-
-
-
 Table 12: Precision scores for feature selection methods trained on datasets with random extraneous features Bold font indicates the best numbers dataset-wise and lower rank indicates better overall result.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -1117,9 +1055,6 @@ Table 13: Benchmarking Neural Networks with feature selection against XGBoost mo
 | 50 | No FS + FT | 0.959 | -0.432 | 0.966 | 0.673 | 0.500 | 0.384 | 0.817 | -0.577 | 0.730 | -0.902 | 0.813 | -0.792 | 2.08 |
 | 50 | Deep Lasso + FT | 0.962 | -0.419 | 0.969 | 0.703 | 0.504 | 0.392 | 0.817 | -0.56 | 0.733 | -0.900 | 0.817 | -0.788 | 1.17 |
 
-
-
-
 Table 14: Benchmarking Neural Networks with feature selection against XGBoost models on datasets with corrupted extra features.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -1134,9 +1069,6 @@ Table 14: Benchmarking Neural Networks with feature selection against XGBoost mo
 | 50 | No FS + FT | 0.960 | -0.430 | 0.967 | 0.686 | 0.576 | 0.386 | 0.818 | -0.574 | 0.731 | -0.901 | 0.809 | -0.793 | 2.17 |
 | 50 | Deep Lasso + FT | 0.961 | -0.422 | 0.968 | 0.725 | 0.577 | 0.393 | 0.821 | -0.561 | 0.736 | -0.898 | 0.809 | -0.788 | 1.25 |
 
-
-
-
 Table 15: Benchmarking Neural Networks with feature selection against XGBoost models on datasets with secondorder extra features.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -1150,9 +1082,6 @@ Table 15: Benchmarking Neural Networks with feature selection against XGBoost mo
 | 50 | XGBoost Baseline | 0.923 | -0.429 | 0.969 | 0.709 | 0.683 | 0.374 | 0.729 | -0.541 | 0.726 | -0.846 | 0.825 | -0.781 | 2.00 |
 | 50 | No FS + FT | 0.962 | -0.425 | 0.968 | 0.733 | 0.558 | 0.391 | 0.819 | -0.552 | 0.732 | -0.901 | 0.818 | -0.790 | 2.25 |
 | 50 | Deep Lasso + FT | 0.963 | -0.422 | 0.97 | 0.726 | 0.608 | 0.388 | 0.822 | -0.558 | 0.738 | -0.897 | 0.819 | -0.789 | 1.58 |
-
-
-
 
 Table 16: Benchmarking feature selection methods for MLP and FT-Transformer downstream models on datasets with random extra features. We report performance of models trained on features selected by different FS algorithms in terms of accuracy for classification and negative RMSE for regression problems. % refers to percent of extra features in the dataset: either 50% or 75% features are second-order. Bold font indicates the best numbers dataset-wise and lower rank indicates better overall result.
 
@@ -1190,9 +1119,6 @@ Table 16: Benchmarking feature selection methods for MLP and FT-Transformer down
 | 50 | XGBoost + FT | 0.963±0.001 | -0.42±0.002 | 0.969±0.001 | 0.725±0.012 | 0.572±0.012 | 0.392±0.001 | 0.82±0.001 | -0.558±0.008 | 0.734±0.003 | -0.898±0.005 | 0.82±0.002 | -0.789±0.001 | 1.91 |
 | 50 | Deep Lasso + FT | 0.962±0.001 | -0.419±0.003 | 0.969±0.001 | 0.703±0.011 | 0.504±0.011 | 0.392±0.002 | 0.817±0.005 | -0.56±0.012 | 0.733±0.002 | -0.9±0.005 | 0.817±0.002 | -0.788±0.002 | 3.66 |
 
-
-
-
 Table 17: Benchmarking feature selection methods for MLP and FT-Transformer downstream models on datasets with second-order extra features. We report performance of models trained on features selected by different FS algorithms in terms of accuracy for classification and negative RMSE for regression problems. % refers to percent of extra features in the dataset: either 50% or 75% features are second-order. Bold font indicates the best numbers dataset-wise and lower rank indicates better overall result.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -1229,9 +1155,6 @@ Table 17: Benchmarking feature selection methods for MLP and FT-Transformer down
 | 50 | XGBoost + FT | 0.963±0.001 | -0.422±0.002 | 0.97±0.0 | 0.706±0.011 | 0.564±0.009 | 0.392±0.001 | 0.821±0.001 | -0.548±0.003 | 0.735±0.001 | -0.897±0.003 | 0.816±0.001 | -0.79±0.001 | 2.42 |
 | 50 | Deep Lasso + FT | 0.961±0.001 | -0.422±0.004 | 0.968±0.001 | 0.725±0.008 | 0.577±0.014 | 0.393±0.002 | 0.821±0.001 | -0.561±0.013 | 0.736±0.002 | -0.898±0.004 | 0.809±0.003 | -0.788±0.001 | 2.67 |
 
-
-
-
 Table 18: Benchmarking feature selection methods for MLP and FT-Transformer downstream models on datasets with second-order extra features. We report performance of models trained on features selected by different FS algorithms in terms of accuracy for classification and negative RMSE for regression problems. % refers to percent of extra features in the dataset: either 50% or 75% features are second-order. Bold font indicates the best numbers dataset-wise and lower rank indicates better overall result.
 
 | % | FS method | AL | CH | CO | EY | GE | HE | HI | HO | JA | MI | OT | YE | rank |
@@ -1267,83 +1190,3 @@ Table 18: Benchmarking feature selection methods for MLP and FT-Transformer down
 | 50 | RF + FT | 0.963±0.001 | -0.422±0.006 | 0.97±0.001 | 0.733±0.007 | 0.615±0.008 | 0.365±0.008 | 0.822±0.001 | -0.6±0.013 | 0.738±0.001 | -0.895±0.004 | 0.816±0.002 | -0.793±0.002 | 3.67 |
 | 50 | XGBoost + FT | 0.871±0.001 | -0.424±0.003 | 0.962±0.001 | 0.737±0.014 | 0.594±0.013 | 0.379±0.002 | 0.822±0.001 | -0.587±0.014 | 0.736±0.001 | -0.896±0.002 | 0.812±0.003 | -0.792±0.001 | 4.33 |
 | 50 | Deep Lasso + FT | 0.963±0.001 | -0.422±0.008 | 0.97±0.001 | 0.726±0.011 | 0.608±0.012 | 0.388±0.002 | 0.822±0.001 | -0.558±0.005 | 0.738±0.001 | -0.897±0.003 | 0.819±0.001 | -0.789±0.001 | 2.42 |
-
-[◄](/html/2311.05876)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2311.05877)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2311.05877)
-[View original  
-on arXiv](https://arxiv.org/abs/2311.05877)[►](/html/2311.05879)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Feb 27 19:19:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

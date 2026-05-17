@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2407.02112
 year: 2024
 ---
 
-[2407.02112] A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data
 
 Andrej Tschalzev
@@ -130,8 +87,7 @@ Some studies have retrospectively compared the performance of new approaches in 
 
 ## 3 A Data-Centric Evaluation Framework for Tabular Machine Learning
 
-![Refer to caption](/html/2407.02112/assets/x1.png)
-
+!(/html/2407.02112/assets/x1.png)
 
 Figure 1: Illustration of the components of our evaluation framework.
 
@@ -152,12 +108,9 @@ This distinguishes our framework from related work that compares approaches to K
 An important insight from screening the competitions is that most tabular datasets had temporal characteristics – i.e., datasets with weak temporal correlations that benefit from time-sensitive feature engineering but not from models with temporal inductive biases (i.e., [[3](#bib.bib3)]).
 This finding will be further discussed in Subsection [4.4](#S4.SS4 "4.4 The Importance of Test-Time Adaptation and Temporal Characteristics ‣ 4 Experimental Evaluation ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data").
 
-![Refer to caption](/html/2407.02112/assets/x2.png)
-
+!(/html/2407.02112/assets/x2.png)
 
 Figure 2: Illustration of the dataset selection process. Details on the criteria and all screened datasets can be found in the Appendix. The Figure only lists the competitions as temporal, which were not already excluded for other reasons. Consistent with related work, we include competitions that have timestamps but can be approached without time-sensitive feature engineering. In total, we identified 46 competition datasets with temporal characteristics (i.e., timestamps as a feature).
-
-
 
 | Name | Year | N (Train) | N (Test) | D (Raw/FE) | Categorical | Metric | Model | TTA |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -218,8 +171,7 @@ Evaluation   
 We use the Kaggle API to automatically submit predictions and retrieve performance results after evaluating against the hidden targets. Each dataset is evaluated on the metric specified by the competition host.
 Instead of reporting this metric directly, we report the solution’s private leaderboard position as the percentile. This has the benefit that although different metrics are used to evaluate the model, comparisons across datasets are possible. In the Appendix, we additionally report performances on the actual metrics for each dataset. Throughout the paper, higher values represent a better performance (leaderboard position).
 
-![Refer to caption](/html/2407.02112/assets/x3.png)
-
+!(/html/2407.02112/assets/x3.png)
 
 Figure 3: Performance gains from different modeling components on the private Kaggle leaderboard by dataset and model. Higher values correspond to a better position. ’Default’ corresponds to the model performance with default hyperparameters in a standardized preprocessing pipeline. Light and extensive HPO correspond to tuning hyperparameters in the same preprocessing pipeline. Expert FE and FE-TTA correspond to the model performance with extensively tuned hyperparameters in the feature engineering and the test-time adaptation pipeline respectively.
 
@@ -229,8 +181,7 @@ Our framework allows us to assess the dataset-specific individual performance im
 
 ### 4.1 How Model Comparisons Change When Considering Dataset-specific Preprocessing
 
-![Refer to caption](/html/2407.02112/assets/x4.png)
-
+!(/html/2407.02112/assets/x4.png)
 
 Figure 4: Average leaderboard position of models with different preprocessing. Black horizontal lines denote the Spearman correlation between all experiments with the respective preprocessing.
 
@@ -241,8 +192,7 @@ Through the implemented modeling pipelines, it becomes possible to evaluate how 
 
 ### 4.2 Measurable Progress Through Recent Efforts
 
-![Refer to caption](/html/2407.02112/assets/x5.png)
-
+!(/html/2407.02112/assets/x5.png)
 
 Figure 5: Progress made through recent models, illustrated by retrospective comparison to the Kaggle leaderboard.
 
@@ -253,8 +203,7 @@ Although the progress in the tabular data field is clearly visible, top performa
 
 ### 4.3 Feature Engineering is Still the Most Important Factor for Top Performance
 
-![Refer to caption](/html/2407.02112/assets/x6.png)
-
+!(/html/2407.02112/assets/x6.png)
 
 Figure 6: Leaderboard performance gains from different modeling components per model. ’Default’ corresponds to the model with default hyperparameters. The results for Expert FE and FE-TTA are reported after extensively tuning hyperparameters.
 
@@ -1093,8 +1042,6 @@ All default hyperparameters and search spaces can be seen in Tables [6](#A2.T6 "
 
 Table 6: Hyperparameter configurations for XGBoost.
 
-
-
 | Hyperparameter | Default | Search distribution |
 | --- | --- | --- |
 | iterations | 4000 | - |
@@ -1110,8 +1057,6 @@ Table 6: Hyperparameter configurations for XGBoost.
 
 Table 7: Hyperparameter configurations for LightGBM. If max\_depth>=1, the possible num\_leaves ranges were adjusted to be in a space feasible with the respective depth.
 
-
-
 | Hyperparameter | Default | Search Distribution |
 | --- | --- | --- |
 | iterations | 4000 | - |
@@ -1123,8 +1068,6 @@ Table 7: Hyperparameter configurations for LightGBM. If max\_depth>=1, the possi
 | bagging\_temperature | 1 | Uniform[0,1] |
 
 Table 8: Hyperparameter configurations for CatBoost. In the default setting, the library automatically determines a dataset-specific learning rate.
-
-
 
 | Hyperparameter | Default | Search distribution |
 | --- | --- | --- |
@@ -1141,8 +1084,6 @@ Table 8: Hyperparameter configurations for CatBoost. In the default setting, the
 | Categorical embedding size | 8 | UniformInt[4, 512] |
 
 Table 9: Hyperparameter configurations for ResNet.
-
-
 
 | Hyperparameter | Default | Search distribution |
 | --- | --- | --- |
@@ -1162,8 +1103,6 @@ Table 9: Hyperparameter configurations for ResNet.
 
 Table 10: Hyperparameter configurations for FTTransformer. Note that weight decay is only applied to some layers of the model. For details, see [[34](#bib.bib34)].
 
-
-
 | Hyperparameter | Default | Search distribution |
 | --- | --- | --- |
 | epochs | 200 | - |
@@ -1179,8 +1118,6 @@ Table 10: Hyperparameter configurations for FTTransformer. Note that weight deca
 | frequency\_init\_scale | 0. | LogUniform[1e-2, 10.] |
 
 Table 11: Hyperparameter configurations for MLP-PLR.
-
-
 
 | Hyperparameter | Default | Search distribution |
 | --- | --- | --- |
@@ -1241,8 +1178,6 @@ In this Section, we provide the leaderboard position results for all the experim
 
 Table 13: Leaderboard position of models trained with varying hyperparameter optimization regimes on datasets after standardized preprocessing. The best model (+/- 0.01) is highlighted.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | XGBoost | LightGBM | CatBoost | ResNet | FTT | MLP-PLR | GRANDE |
@@ -1279,8 +1214,6 @@ Table 13: Leaderboard position of models trained with varying hyperparameter opt
 
 Table 14: Leaderboard position of models trained with varying hyperparameter optimization regimes on datasets after feature engineering. The best model (+/- 0.01) is highlighted.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | XGBoost | LightGBM | CatBoost | ResNet | FTT | MLP-PLR | GRANDE |
@@ -1305,8 +1238,6 @@ Table 14: Leaderboard position of models trained with varying hyperparameter opt
 
 Table 15: Leaderboard position of models trained with varying hyperparameter optimization regimes on datasets after test-time feature engineering as a preprocessing method for test-time adaptation. The best model (+/- 0.01) is highlighted.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | MBGM | SVPC | AEAC | OGPCC | SCS | BPCCM | SCTP | HQC | IFD | PSSDP |
@@ -1322,8 +1253,7 @@ Table 16: Leaderboard position of AutoGluon on the private Kaggle leaderboard af
 
 Figure [7](#A4.F7 "Figure 7 ‣ D.1 Comparison of Preprocessing Pipelines per Model and Dataset ‣ Appendix D Additional Results ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data") visualizes the comparison of different pipelines per model and dataset. It can be seen that almost all models benefit from feature engineering and test-time adaptation on almost all datasets. The only remarkable outlier is FTTransformer on the SCS dataset. The otherwise consistent results support our claim that feature engineering and test-time adaptation are important components of tabular machine learning competitions.
 
-![Refer to caption](/html/2407.02112/assets/x7.png)
-
+!(/html/2407.02112/assets/x7.png)
 
 Figure 7: Leaderboard positions of models and datasets in different preprocessing pipelines.
 
@@ -1332,8 +1262,7 @@ Figure 7: Leaderboard positions of models and datasets in different preprocessin
 In this Subsection we complement our analysis of modeling components in the main paper with additional analyses from different perspectives.
 Figure [8](#A4.F8 "Figure 8 ‣ D.2 Analysis of Modeling Components ‣ Appendix D Additional Results ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data") shows the distributions of the leaderboard positions of all our experiments, grouped by different modeling components. It can be seen that without expert feature engineering, most submissions are far from the top percentiles on the leaderboard, while after expert feature engineering, most submissions score top ranks. After test-time adaptation, the density of top submissions increases even more. Moreover, the importance of hyperparameter optimization can be seen. Regarding model selection, CatBoost clearly dominates, mainly due to the property of achieving robustly strong results with default hyperparameters.
 
-![Refer to caption](/html/2407.02112/assets/x8.png)
-
+!(/html/2407.02112/assets/x8.png)
 
 Figure 8: Kernel Density Estimation of all results grouped by different modeling components (Left: Preprocessing Pipelines, Center: HPO regimes, Right: Models).
 
@@ -1341,8 +1270,7 @@ These results are in line with common practice in ML competitions [[81](#bib.bib
 Predictive Machine Learning is a winner-takes-all game. Selecting another model than the one that is known to work best is only important if the default model fails or if ensembling is necessary. Hence, it makes sense to look at the problem from the winner-takes-all perspective and to evaluate performance gains from different modeling decisions w.r.t. a strong baseline. It is known from related work that CatBoost is the strongest model with default hyperparameters [[63](#bib.bib63)]. Hence, we evaluate performance gains over a CatBoost baseline. Figure [9](#A4.F9 "Figure 9 ‣ D.2 Analysis of Modeling Components ‣ Appendix D Additional Results ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data") illustrates average leaderboard position gains over the baseline for different modeling decisions. It can be seen that without feature engineering, the best average leaderboard position is the 14.5% percentile, while without model selection, it is the 3% percentile. Hence, one of the most important takeaways is that current tabular ML research overemphasizes model evaluation but underestimates data preprocessing especially feature engineering. While TTA increases the average leaderboard position by 8.3% in the default setting, its importance after model selection and hyperparameter optimization reduces. Without TTA, the best achievable average leaderboard position was 3.2% and 1.6% with TTA, indicating a relatively small but important effect.
 In this Figure, the average top position is the 1.6% percentile because we only considered single models. The missing component for scoring in the top 1% percentile is ensembling, which we have shown to achieve using AutoGluon in the main paper.
 
-![Refer to caption](/html/2407.02112/assets/x9.png)
-
+!(/html/2407.02112/assets/x9.png)
 
 Figure 9: Average Gains from different modeling choices from a winner-takes-all perspective with CatBoost as the default model. Lower values mean a higher leaderboard position (unlike the rest of the paper).
 
@@ -1397,8 +1325,7 @@ B) Develop a neural network capable of test-time adaptation to replace the often
 C) Create a universal model-agnostic automated feature engineering pipeline that surpasses expert feature engineering;
 D) Enhance AutoML solutions to outperform expert feature engineering pipelines;
 
-![Refer to caption](/html/2407.02112/assets/x10.png)
-
+!(/html/2407.02112/assets/x10.png)
 
 Figure 10: Challenges for further automating deep learning and AutoML for tabular data. Challenge A compares the best neural networks within the standardized and feature engineering pipelines after extensive HPO. Challenge B compares the best neural networks within the feature engineering and the test-time adaptation pipeline after extensive HPO. Challenge C compares the best model within the standardized pipeline to the best model within the feature engineering pipeline. Challenge D compares AutoGluon to the best model within the feature engineering pipeline.
 
@@ -1429,12 +1356,9 @@ The main goal of our experiments was to showcase the limitations of evaluation f
 
 This Section lists the main results using the original task metrics for all experiments. An overview of important components per dataset and model can be seen in Figure [11](#A6.F11 "Figure 11 ‣ Appendix F Evaluation on the Original Task Metrics ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data"). All experimental results on the original metrics can be seen in Tables [18](#A6.T18 "Table 18 ‣ Appendix F Evaluation on the Original Task Metrics ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data"), [19](#A6.T19 "Table 19 ‣ Appendix F Evaluation on the Original Task Metrics ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data"), [20](#A6.T20 "Table 20 ‣ Appendix F Evaluation on the Original Task Metrics ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data"), and [21](#A6.T21 "Table 21 ‣ Appendix F Evaluation on the Original Task Metrics ‣ A Data-Centric Perspective on Evaluating Machine Learning Models for Tabular Data"). Further results can be seen in our code. Overall, the evaluation using the original metrics aligns with our main findings.
 
-![Refer to caption](/html/2407.02112/assets/x11.png)
-
+!(/html/2407.02112/assets/x11.png)
 
 Figure 11: Performance gains from different modeling components on the original metrics of the Kaggle competitions. Higher values correspond to better performance. The original metric was reversed for SVPC, OGPCC, and BPCCM to align with the higher-is-better notation. ’Default’ corresponds to the model performance with default hyperparameters in a standardized preprocessing pipeline. Light and extensive HPO correspond to tuning hyperparameters in the same preprocessing pipeline. Expert FE and FE-TTA correspond to the model performance with extensively tuned hyperparameters in the feature engineering and the test-time adaptation pipeline respectively.
-
-
 
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1472,8 +1396,6 @@ Figure 11: Performance gains from different modeling components on the original 
 
 Table 18: Performance of models trained with varying hyperparameter optimization regimes on private test competition datasets after standardized preprocessing. Higher values correspond to better performance. The original metric was reversed for SVPC, OGPCC, and BPCCM to align with the higher-is-better notation. The best model is highlighted. A model is considered better if it achieves a score that is one leaderboard standard deviation (std) larger than the other. The std is determined based on all top 1% submissions to only focus on the best models.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | XGBoost | LightGBM | CatBoost | ResNet | FTT | MLP-PLR | GRANDE |
@@ -1510,8 +1432,6 @@ Table 18: Performance of models trained with varying hyperparameter optimization
 
 Table 19: Performance of models trained with varying hyperparameter optimization regimes on private test competition datasets after feature engineering. Higher values correspond to better performance. The original metric was reversed for SVPC, OGPCC, and BPCCM to align with the higher-is-better notation. The best model is highlighted. A model is considered better if it achieves a score that is one leaderboard standard deviation (std) larger than the other. The std is determined based on all top 1% submissions to only focus on the best models.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  | XGBoost | LightGBM | CatBoost | ResNet | FTT | MLP-PLR | GRANDE |
@@ -1536,8 +1456,6 @@ Table 19: Performance of models trained with varying hyperparameter optimization
 
 Table 20: Performance of models trained with varying hyperparameter optimization regimes on private test competition datasets after test-time adaptation. Higher values correspond to better performance. The original metric was reversed for SVPC, OGPCC, and BPCCM to align with the higher-is-better notation. The best model is highlighted. A model is considered better if it achieves a score that is one leaderboard standard deviation (std) larger than the other. The std is determined based on all top 1% submissions to only focus on the best models.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | MBGM | SVPC | AEAC | OGPCC | SCS | BPCCM | SCTP | HQC | IFD | PSSDP |
@@ -1546,83 +1464,3 @@ Table 20: Performance of models trained with varying hyperparameter optimization
 | TTA | - | - | 0.9194 | 0.5971 | 0.8292 | - | 0.9194 | - | 0.908 | 0.2894 |
 
 Table 21: Performance of AutoGluon on private test competition datasets after different preprocessing applied. Higher values correspond to better performance. The original metric was reversed for SVPC, OGPCC, and BPCCM to align with the higher-is-better notation. The best preprocessing is highlighted.
-
-[◄](/html/2407.02111)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2407.02112)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2407.02112)
-[View original  
-on arXiv](https://arxiv.org/abs/2407.02112)[►](/html/2407.02113)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Aug 5 16:46:26 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

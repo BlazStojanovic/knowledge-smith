@@ -11,49 +11,6 @@ url: http://arxiv.org/abs/1802.10501v4
 year: 2018
 ---
 
-[1802.10501] Predictive Uncertainty Estimation via Prior Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Predictive Uncertainty Estimation via Prior Networks
 
 Andrey Malinin and Mark Gales
@@ -131,13 +88,11 @@ subscript𝜇1⋯subscript𝜇𝐾
 𝙿𝑦subscript𝜔1⋯𝙿𝑦subscript𝜔𝐾
 𝑇\big{[}\mu\_{1},\ \cdots,\ \mu\_{K}\big{]}^{T}=\ \big{[}{\tt P}(y=\omega\_{1}),\ \cdots,\ {\tt P}(y=\omega\_{K})\big{]}^{T} over class labels y𝑦y conditioned on the input 𝒙∗superscript𝒙\bm{x}^{\*}, and can be visualized as a point on a simplex. For the same 𝒙∗superscript𝒙\bm{x}^{\*} this ensemble is a collection of points on a simplex (fig. 1a), which can be seen as samples of categorical distributions from an *implicit* conditional distribution over a simplex (fig. 1b) induced via the posterior over model parameters.
 
-![Refer to caption](/html/1802.10501/assets/dirichlet_implicit.png)
-
+!(/html/1802.10501/assets/dirichlet_implicit.png)
 
 (a) Ensemble
 
-![Refer to caption](/html/1802.10501/assets/dirichlet_explicit.png)
-
+!(/html/1802.10501/assets/dirichlet_explicit.png)
 
 (b) Distribution
 
@@ -162,18 +117,15 @@ This work proposes to instead *explicitly* parameterize a distribution over dist
 
 superscript𝒙𝜽{\tt p}(\bm{\mu}|\bm{x}^{\*},\bm{\theta}), using a DNN referred to as a *Prior Network* and train it to behave like the implicit distribution in the Bayesian approach. Specifically, when it is confident in its prediction a Prior Network should yield a sharp distribution centered on one of the corners of the simplex (fig. [2](#S3.F2 "Figure 2 ‣ 3 Prior Networks ‣ Predictive Uncertainty Estimation via Prior Networks")a). For an input in a region with high degrees of noise or class overlap (*data uncertainty*) a Prior Network should yield a sharp distribution focused on the center of the simplex, which corresponds to being confident in predicting a flat categorical distribution over class labels (known-unknown) (fig. [2](#S3.F2 "Figure 2 ‣ 3 Prior Networks ‣ Predictive Uncertainty Estimation via Prior Networks")b). Finally, for ’out-of-distribution’ inputs the Prior Network should yield a flat distribution over the simplex, indicating large uncertainty in the mapping 𝒙↦ymaps-to𝒙𝑦\bm{x}\mapsto y (unknown-unknown) (fig. [2](#S3.F2 "Figure 2 ‣ 3 Prior Networks ‣ Predictive Uncertainty Estimation via Prior Networks")c).
 
-![Refer to caption](/html/1802.10501/assets/dirichlet1.png)
-
+!(/html/1802.10501/assets/dirichlet1.png)
 
 (a) Confident Prediction
 
-![Refer to caption](/html/1802.10501/assets/dirichlet2.png)
-
+!(/html/1802.10501/assets/dirichlet2.png)
 
 (b) High data uncertainty
 
-![Refer to caption](/html/1802.10501/assets/dirichlet3.png)
-
+!(/html/1802.10501/assets/dirichlet3.png)
 
 (c) Out-of-distribution
 
@@ -315,33 +267,27 @@ A synthetic experiment was designed to illustrate the limitation of using uncert
 
 superscript𝒙𝒟{\tt P}(\omega\_{c}|\bm{x}^{\*};\mathcal{D}) [[22](#bib.bib22), [30](#bib.bib30)] to detect out-of-distribution samples. A simple dataset with 3 Gaussian distributed classes with equidistant means and tied isotropic variance σ𝜎\sigma is created. The classes are non-overlapping when σ=1𝜎1\sigma=1 (fig. [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")a) and overlap when σ=4𝜎4\sigma=4 (fig. [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")d). The entropy of the *true* posterior over class labels is plotted in blue in figures [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")a and [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")d, which show that when the classes are distinct the entropy is high only on the decision boundaries, but when the classes overlap the entropy is high also within the data region. A small DPN with 1 hidden layer of 50 neurons is trained on this data. Figures [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")b and [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")c show that when classes are distinct both the entropy of the DPN’s predictive posterior and the differential entropy of the DPN have identical behaviour - low in the region of data and high elsewhere, allowing in-distribution and out-of-distribution regions to be distinguished. Figures [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")e and [3](#S5.F3 "Figure 3 ‣ 5.1 Synthetic Experiments ‣ 5 Experiments ‣ Predictive Uncertainty Estimation via Prior Networks")f, however, show that when there is a large degree of class overlap the entropy and differential entropy have different behavior - entropy is high both in region of class overlap and far from training data, making difficult to distinguish out-of-distribution samples and in-distribution samples at a decision boundary. In contrast, the differential entropy is low over the whole region of training data and high outside, allowing the in-distribution region to be clearly distinguished from the out-of-distribution region.
 
-![Refer to caption](/html/1802.10501/assets/synthetic_1_0.png)
-
+!(/html/1802.10501/assets/synthetic_1_0.png)
 
 (a) σ=1𝜎1\sigma=1
 
-![Refer to caption](/html/1802.10501/assets/entropy_1.png)
-
+!(/html/1802.10501/assets/entropy_1.png)
 
 (b) Entropy σ=1𝜎1\sigma=1
 
-![Refer to caption](/html/1802.10501/assets/dentropy_1.png)
-
+!(/html/1802.10501/assets/dentropy_1.png)
 
 (c) Diff. Entropy σ=1𝜎1\sigma=1
 
-![Refer to caption](/html/1802.10501/assets/synthetic_4_0.png)
-
+!(/html/1802.10501/assets/synthetic_4_0.png)
 
 (d) σ=4𝜎4\sigma=4
 
-![Refer to caption](/html/1802.10501/assets/entropy_4.png)
-
+!(/html/1802.10501/assets/entropy_4.png)
 
 (e) Entropy σ=4𝜎4\sigma=4
 
-![Refer to caption](/html/1802.10501/assets/dentropy_4.png)
-
+!(/html/1802.10501/assets/dentropy_4.png)
 
 (f) Diff. Entropy σ=4𝜎4\sigma=4
 
@@ -367,7 +313,6 @@ Max.P
 Ent.
 M.I.
 D.Ent.
-
 
 MNIST
 DNN
@@ -458,7 +403,6 @@ Max.P
 Ent.
 M.I.
 D.Ent.
-
 
 MNIST
 OMNI
@@ -603,7 +547,6 @@ D.Ent.
 3.0
 0.0
 3.0
-
 
 DNN
 98.8
@@ -919,7 +862,6 @@ Valid
 Test
 Classes
 
-
 MNIST
 55000
 5000
@@ -949,7 +891,6 @@ Table 5: Additional Evaluation Datasets
 Dataset
 Size
 
-
 OMNIGLOT
 32460
 
@@ -974,7 +915,6 @@ Activation
 Conv Depth
 FC Layers
 FC units
-
 
 MNIST
 VGG-6
@@ -1010,7 +950,6 @@ Epochs
 α^0subscript^𝛼0\hat{\alpha}\_{0}
 CE weight
 OOD data
-
 
 MNIST
 DNN
@@ -1097,7 +1036,6 @@ Max.P
 Ent.
 M.I.
 D.Ent.
-
 
 SEMEION
 DNN
@@ -1214,7 +1152,6 @@ Ent.
 M.I.
 D.Ent.
 
-
 DNN
 90.1
 91.8
@@ -1265,7 +1202,6 @@ Max.P
 Ent.
 M.I.
 D.Ent.
-
 
 CIFAR10
 DNN
@@ -1413,7 +1349,6 @@ Ent.
 M.I.
 D.Ent.
 
-
 DNN
 92.4
 92.3
@@ -1465,7 +1400,6 @@ Max.P
 Ent.
 M.I.
 D.Ent.
-
 
 CIFAR100
 DNN
@@ -1642,83 +1576,3 @@ The KL divergence between two Dirichlet distributions 𝚙​(𝝁|𝜶)𝚙cond
 |  |  |  |
 | --- | --- | --- |
 |  | KL[𝚙(𝝁|𝜶)||𝚙(𝝁|𝜷)]=𝔼𝚙​(𝝁|𝜶)​[ln⁡𝚙​(𝝁|𝜶)−ln⁡𝚙​(𝝁|𝜷)]=ln⁡Γ​(α0)−ln⁡Γ​(β0)+∑c=1Kln⁡Γ​(βc)−ln⁡Γ​(αc)+∑c=1K(αc−βc)​𝙴𝚙​(𝝁|𝜶)​[ln⁡(μc)]=ln⁡Γ​(α0)−ln⁡Γ​(β0)+∑c=1Kln⁡Γ​(βc)−ln⁡Γ​(αc)+∑c=1K(αc−βc)​(ψ​(αc)−ψ​(α0))\displaystyle\begin{split}KL[{\tt p}(\bm{\mu}|\bm{\alpha})||{\tt p}(\bm{\mu}|\bm{\beta})]=&\ \mathbb{E}\_{{\tt p}(\bm{\mu}|\bm{\alpha})}[\ln{\tt p}(\bm{\mu}|\bm{\alpha})-\ln{\tt p}(\bm{\mu}|\bm{\beta})]\\ =&\ \ln\Gamma(\alpha\_{0})-\ln\Gamma(\beta\_{0})+\sum\_{c=1}^{K}\ln\Gamma(\beta\_{c})-\ln\Gamma(\alpha\_{c})\\ +&\ \sum\_{c=1}^{K}(\alpha\_{c}-\beta\_{c}){\tt E}\_{{\tt p}(\bm{\mu}|\bm{\alpha})}[\ln(\mu\_{c})]\\ =&\ \ln\Gamma(\alpha\_{0})-\ln\Gamma(\beta\_{0})+\sum\_{c=1}^{K}\ln\Gamma(\beta\_{c})-\ln\Gamma(\alpha\_{c})\\ +&\ \sum\_{c=1}^{K}(\alpha\_{c}-\beta\_{c})(\psi(\alpha\_{c})-\psi(\alpha\_{0}))\end{split} |  |
-
-[◄](/html/1802.10500)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1802.10501)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1802.10501)
-[View original  
-on arXiv](https://arxiv.org/abs/1802.10501)[►](/html/1802.10502)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 17 21:14:42 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

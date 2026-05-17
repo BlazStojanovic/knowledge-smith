@@ -14,49 +14,6 @@ url: http://arxiv.org/abs/1703.04247v1
 year: 2017
 ---
 
-[1703.04247] DeepFM: A Factorization-Machine based Neural Network for CTR Prediction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DeepFM: A Factorization-Machine based Neural Network for CTR Prediction
 
 Huifeng Guo1 , Ruiming Tang2, Yunming Ye1, Zhenguo Li2, Xiuqiang He2
@@ -79,8 +36,7 @@ Despite great progress, existing methods seem to have a strong bias towards low-
 
 The prediction of click-through rate (CTR) is critical in recommender system, where the task is to estimate the probability a user will click on a recommended item. In many recommender systems the goal is to maximize the number of clicks, and so the items returned to a user can be ranked by estimated CTR; while in other application scenarios such as online advertising it is also important to improve revenue, and so the ranking strategy can be adjusted as CTR×\timesbid across all candidates, where “bid” is the benefit the system receives if the item is clicked by a user. In either case, it is clear that the key is in estimating CTR correctly.
 
-![Refer to caption](/html/1703.04247/assets/img/architecture-deepfm.png)
-
+!(/html/1703.04247/assets/img/architecture-deepfm.png)
 
 Figure 1: Wide & deep architecture of DeepFM. The wide and deep component share the same input raw feature vector, which enables DeepFM to learn low- and high-order feature interactions simultaneously from the input raw features.
 
@@ -122,8 +78,7 @@ where y^∈(0,1)^𝑦01\hat{y}\in(0,1) is the predicted CTR, yF​Msubscript𝑦
 
 #### 2.1.1 FM Component
 
-![Refer to caption](/html/1703.04247/assets/img/architecture-fm.png)
-
+!(/html/1703.04247/assets/img/architecture-fm.png)
 
 Figure 2: The architecture of FM.
 
@@ -142,16 +97,14 @@ where w∈Rd𝑤superscript𝑅𝑑w\in R^{d} and Vi∈Rksubscript𝑉𝑖supers
 
 #### 2.1.2 Deep Component
 
-![Refer to caption](/html/1703.04247/assets/img/architecture-dnn.png)
-
+!(/html/1703.04247/assets/img/architecture-dnn.png)
 
 Figure 3: The architecture of DNN.
 
 The deep component is a feed-forward neural network, which is used to learn high-order feature interactions. As shown in Figure [3](#S2.F3 "Figure 3 ‣ 2.1.2 Deep Component ‣ 2.1 DeepFM ‣ 2 Our Approach ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), a data record (a vector) is fed into the neural network. Compared to neural networks with image He et al. ([2016](#bib.bib8)) or audio Boulanger-Lewandowski et
 al. ([2013](#bib.bib1)) data as input, which is purely continuous and dense, the input of CTR prediction is quite different, which requires a new network architecture design. Specifically, the raw feature input vector for CTR prediction is usually highly sparse333Only one entry is non-zero for each field vector., super high-dimensional444E.g., in an app store of billion users, the one field vector for user ID is already of billion dimensions., categorical-continuous-mixed, and grouped in fields (e.g., gender, location, age). This suggests an embedding layer to compress the input vector to a low-dimensional, dense real-value vector before further feeding into the first hidden layer, otherwise the network can be overwhelming to train.
 
-![Refer to caption](/html/1703.04247/assets/img/embedding.png)
-
+!(/html/1703.04247/assets/img/embedding.png)
 
 Figure 4: The structure of the embedding layer
 
@@ -176,8 +129,7 @@ It is worth pointing out that FM component and deep component share the same fea
 
 Inspired by the enormous success of deep learning in various applications, several deep models for CTR prediction are developed recently. This section compares the proposed DeepFM with existing deep models for CTR prediction.
 
-![Refer to caption](/html/1703.04247/assets/img/Other-model.png)
-
+!(/html/1703.04247/assets/img/Other-model.png)
 
 Figure 5: The architectures of existing deep models for CTR prediction: FNN, PNN, Wide & Deep Model
 
@@ -242,7 +194,7 @@ The efficiency of deep learning models is important to real-world applications. 
 2) Although the speed up of IPNN and PNN∗∗\ast on GPU is higher than the other models, they are still computationally expensive because of the inefficient inner product operations;
 3) The DeepFM achieves almost the most efficient in both tests.
 
-![Refer to caption](/html/1703.04247/assets/img/cpu-time.png)![Refer to caption](/html/1703.04247/assets/img/gpu-time.png)
+!(/html/1703.04247/assets/img/cpu-time.png)!(/html/1703.04247/assets/img/gpu-time.png)
 
 Figure 6: Time comparison.
 
@@ -285,7 +237,7 @@ We study the impact of different hyper-parameters of different deep models, on C
 
 According to Qu et al. ([2016](#bib.bib13)), *relu* and *tanh* are more suitable for deep models than *sigmoid*. In this paper, we compare the performance of deep models when applying *relu* and *tanh*. As shown in Figure [7](#S3.F7 "Figure 7 ‣ 3.3.1 Activation Function ‣ 3.3 Hyper-Parameter Study ‣ 3 Experiments ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), relu is more appropriate than tanh for all the deep models, except for IPNN. Possible reason is that relu induces sparsity.
 
-![Refer to caption](/html/1703.04247/assets/img/act-auc.png)![Refer to caption](/html/1703.04247/assets/img/act-logloss.png)
+!(/html/1703.04247/assets/img/act-auc.png)!(/html/1703.04247/assets/img/act-logloss.png)
 
 Figure 7: AUC and Logloss comparison of activation functions.
 
@@ -293,7 +245,7 @@ Figure 7: AUC and Logloss comparison of activation functions.
 
 Dropout Srivastava et al. ([2014](#bib.bib19)) refers to the probability that a neuron is kept in the network. Dropout is a regularization technique to compromise the precision and the complexity of the neural network. We set the dropout to be 1.0, 0.9, 0.8, 0.7, 0.6, 0.5. As shown in Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2 Dropout ‣ 3.3 Hyper-Parameter Study ‣ 3 Experiments ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), all the models are able to reach their own best performance when the dropout is properly set (from 0.6 to 0.9). The result shows that adding reasonable randomness to model can strengthen model’s robustness.
 
-![Refer to caption](/html/1703.04247/assets/img/drop-auc.png)![Refer to caption](/html/1703.04247/assets/img/drop-logloss.png)
+!(/html/1703.04247/assets/img/drop-auc.png)!(/html/1703.04247/assets/img/drop-logloss.png)
 
 Figure 8: AUC and Logloss comparison of dropout.
 
@@ -301,7 +253,7 @@ Figure 8: AUC and Logloss comparison of dropout.
 
 When other factors remain the same, increasing the number of neurons per layer introduces complexity. As we can observe from Figure [9](#S3.F9 "Figure 9 ‣ 3.3.3 Number of Neurons per Layer ‣ 3.3 Hyper-Parameter Study ‣ 3 Experiments ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), increasing the number of neurons does not always bring benefit. For instance, DeepFM performs stably when the number of neurons per layer is increased from 400 to 800; even worse, OPNN performs worse when we increase the number of neurons from 400 to 800. This is because an over-complicated model is easy to overfit. In our dataset, 200 or 400 neurons per layer is a good choice.
 
-![Refer to caption](/html/1703.04247/assets/img/neuron-auc.png)![Refer to caption](/html/1703.04247/assets/img/neuron-logloss.png)
+!(/html/1703.04247/assets/img/neuron-auc.png)!(/html/1703.04247/assets/img/neuron-logloss.png)
 
 Figure 9: AUC and Logloss comparison of number of neurons.
 
@@ -309,7 +261,7 @@ Figure 9: AUC and Logloss comparison of number of neurons.
 
 As presented in Figure [10](#S3.F10 "Figure 10 ‣ 3.3.4 Number of Hidden Layers ‣ 3.3 Hyper-Parameter Study ‣ 3 Experiments ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), increasing number of hidden layers improves the performance of the models at the beginning, however, their performance is degraded if the number of hidden layers keeps increasing. This phenomenon is also because of overfitting.
 
-![Refer to caption](/html/1703.04247/assets/img/layer-auc.png)![Refer to caption](/html/1703.04247/assets/img/layer-logloss.png)
+!(/html/1703.04247/assets/img/layer-auc.png)!(/html/1703.04247/assets/img/layer-logloss.png)
 
 Figure 10: AUC and Logloss comparison of number of layers.
 
@@ -317,7 +269,7 @@ Figure 10: AUC and Logloss comparison of number of layers.
 
 We test four different network shapes: constant, increasing, decreasing, and diamond. When we change the network shape, we fix the number of hidden layers and the total number of neurons. For instance, when the number of hidden layers is 3 and the total number of neurons is 600, then four different shapes are: constant (200-200-200), increasing (100-200-300), decreasing (300-200-100), and diamond (150-300-150). As we can see from Figure [11](#S3.F11 "Figure 11 ‣ 3.3.5 Network Shape ‣ 3.3 Hyper-Parameter Study ‣ 3 Experiments ‣ DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"), the “constant” network shape is empirically better than the other three options, which is consistent with previous studies Larochelle et al. ([2009](#bib.bib10)).
 
-![Refer to caption](/html/1703.04247/assets/img/shape-auc.png)![Refer to caption](/html/1703.04247/assets/img/shape-logloss.png)
+!(/html/1703.04247/assets/img/shape-auc.png)!(/html/1703.04247/assets/img/shape-logloss.png)
 
 Figure 11: AUC and Logloss comparison of network shape.
 
@@ -501,83 +453,3 @@ There are two interesting directions for future study. One is exploring some str
   Joint deep modeling of users and items using reviews for
   recommendation.
   In WSDM, pages 425–434, 2017.
-
-[◄](/html/1703.04246)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1703.04247)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1703.04247)
-[View original  
-on arXiv](https://arxiv.org/abs/1703.04247)[►](/html/1703.04248)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 06:00:33 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

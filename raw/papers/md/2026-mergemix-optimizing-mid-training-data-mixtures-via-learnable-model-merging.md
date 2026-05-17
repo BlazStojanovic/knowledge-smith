@@ -17,50 +17,6 @@ url: https://arxiv.org/abs/2601.17858
 year: 2026
 ---
 
-[2601.17858] MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging
 
 Jiapeng Wang
@@ -89,9 +45,8 @@ Machine Learning, ICML
 
 Data is the fundamental fuel for large language models (LLMs), with its strategic curation playing a critical role throughout the training lifecycle (Zhao et al., [2023](#bib.bib76); Albalak et al., [2024](#bib.bib3); Luo et al., [2025](#bib.bib38)). During pre-training, broad and unlabeled corpora establish foundational linguistic and world knowledge. In mid-training, carefully curated datasets are introduced to enhance specific capabilities, such as reasoning or coding. Finally, post-training stages employ instruction and preference data to align model outputs with human intentions and safety standards. At each stage, the composition of the data mixture directly shapes the model’s capabilities, safety, and overall performance (Yang et al., [2025](#bib.bib68); Hu et al., [2024](#bib.bib20); Basant et al., [2025](#bib.bib4); Team et al., [2025a](#bib.bib57); Olmo et al., [2025](#bib.bib44)).
 
-![Refer to caption](/html/2601.17858/assets/x1.png)
-![Refer to caption](/html/2601.17858/assets/x2.png)
-
+!(/html/2601.17858/assets/x1.png)
+!(/html/2601.17858/assets/x2.png)
 
 Figure 1: Cost-performance efficiency analysis. (Top) Comparison of estimated computational costs (log scale) and downstream benchmark accuracy across different data mixing strategies. Details on cost estimation are provided in Appendix [C](#A3 "Appendix C Baselines and Computational Cost Analysis ‣ MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging"). (Bottom) Conceptual illustration of the search dynamics. Conventional methods require increasing computational investment to asymptotically approach the optimal performance zone through iterative trials or fitting. In contrast, MergeMix leverages weight-space merging as an proxy, identifying the optimal mixtures with minimal cost.
 
@@ -241,13 +196,11 @@ To provide a holistic assessment of model capabilities, we consider a diverse su
 The core premise of MergeMix is that the performance landscape in model weight space mirrors the performance landscape in data mixture ratio space.
 To validate the MergeMix framework, we first conduct a controlled dual-capacity experiment to rigorously verify the correlation between model merging weights and data mixing ratios.
 
-![Refer to caption](/html/2601.17858/assets/x3.png)
-
+!(/html/2601.17858/assets/x3.png)
 
 Figure 2: Rank consistency between model merging and data mixture training. The high correlation indicates that weight interpolation accurately predicts the relative ranking of data mixtures. We also present the value of λ\lambda for each configure in percent.
 
-![Refer to caption](/html/2601.17858/assets/x4.png)
-
+!(/html/2601.17858/assets/x4.png)
 
 Figure 3: Performance trend comparison between model merging and actual mixture tuning on math and code benchmarks.
 
@@ -257,16 +210,12 @@ First, we train two domain-specialized expert models, Θmath\Theta\_{\text{math}
 Θα=α⋅Θmath+(1−α)⋅Θcode,α∈{0.1,0.2,…,0.9}\Theta\_{\alpha}=\alpha\cdot\Theta\_{\text{math}}+(1-\alpha)\cdot\Theta\_{\text{code}},\quad\alpha\in\{0.1,0.2,\dots,0.9\};
 (2) Data mixture trained models: Trained from scratch on mixed datasets 𝒟λ←λ⋅𝒟math+(1−λ)⋅𝒟code\mathcal{D}\_{\lambda}\leftarrow\lambda\cdot\mathcal{D}\_{\text{math}}+(1-\lambda)\cdot\mathcal{D}\_{\text{code}}111Without sacrificing clarity, we adopt the same interpolation formulation to represent the combined datasets sampled from 𝒟math\mathcal{D}\_{\text{math}} and 𝒟code\mathcal{D}\_{\text{code}}, with sampling ratio λ\lambda and 1−λ1-\lambda respectively. , with λ∈{0.1,0.2,…,0.9}\lambda\in\{0.1,0.2,\dots,0.9\}, for a total of 25B tokens per model.
 
-![Refer to caption](/html/2601.17858/assets/x5.png)
-
+!(/html/2601.17858/assets/x5.png)
 
 Figure 4: Training dynamics comparison across five domains.
 The light-colored curves (Pre-Anneal) track the performance of models trained with a constant learning rate.
 The dark-colored curves (Annealed) represent the performance after applying learning rate annealing (simulated by merging the most recent 20B tokens).
 The horizontal dashed lines denote the final performance by merging the top-16 checkpoints. The model trained with MergeMix-derived ratios consistently matches or outperforms the strong manually tuned baseline.
-
-
-
 
 Table 1: Performance comparison of different data mixing methods across domains.
 
@@ -302,20 +251,15 @@ Following the WSM schedule (Tian et al., [2025](#bib.bib60)), we train with a 
 (2) *Manual*: A manually tuned ratio derived from extensive ablation studies and heuristic tuning by our data team, which has already been deployed in production for our previous internal flagship model;
 (3) *Adapted RegMix* (Liu et al., [2025](#bib.bib34)): A regressor-based predictor trained on the full-scale exploration runs collected from the manual baseline to optimize optimal mixtures. More details about baselines are shown in Appendix [C](#A3 "Appendix C Baselines and Computational Cost Analysis ‣ MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging").
 
-![Refer to caption](/html/2601.17858/assets/x6.png)
-
+!(/html/2601.17858/assets/x6.png)
 
 Figure 5: Performance comparison between the MergeMix-optimized mixture, uni-domain baselines (100% single-domain data), and an aggressive specialization mixture.
 
-
-
-![Refer to caption](/html/2601.17858/assets/x7.png)
-
+!(/html/2601.17858/assets/x7.png)
 
 (a) Cross-scale transfer.
 
-![Refer to caption](/html/2601.17858/assets/x8.png)
-
+!(/html/2601.17858/assets/x8.png)
 
 (b) Dynamic vs. static schedule.
 
@@ -973,13 +917,11 @@ We compute the pairwise matrix Mk,j=γk​jM\_{k,j}=\gamma\_{kj} for four distin
 
 As visualized in Figure [7(a)](#A2.F7.sf1 "Figure 7(a) ‣ Figure 7 ‣ B.2 Empirical Observation of Task Orthogonality and Curvature ‣ Appendix B Analysis of the Weight Mixing Proxy ‣ MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging"), cross-domain interference is smaller than intra-domain dynamics, resulting in a relatively small approximation error. We also visualize the cosine similarity matrix of the task vectors Δ​Θk=Θk−Θ0\Delta\Theta\_{k}=\Theta\_{k}-\Theta\_{0} in Figure [7(b)](#A2.F7.sf2 "Figure 7(b) ‣ Figure 7 ‣ B.2 Empirical Observation of Task Orthogonality and Curvature ‣ Appendix B Analysis of the Weight Mixing Proxy ‣ MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging"), which further illustrates the near-orthogonality of domain-specific updates in parameter space.
 
-![Refer to caption](/html/2601.17858/assets/x9.png)
-
+!(/html/2601.17858/assets/x9.png)
 
 (a) Relative effective curvature matrix.
 
-![Refer to caption](/html/2601.17858/assets/x10.png)
-
+!(/html/2601.17858/assets/x10.png)
 
 (b) Task vector cosine similarity.
 
@@ -1041,33 +983,27 @@ For all these operations, we employ standard element-wise arithmetic averaging 
 
 ## Appendix E Capacity Landscape
 
-![Refer to caption](/html/2601.17858/assets/x11.png)
-
+!(/html/2601.17858/assets/x11.png)
 
 (a) Total Score
 
-![Refer to caption](/html/2601.17858/assets/x12.png)
-
+!(/html/2601.17858/assets/x12.png)
 
 (b) Math Score
 
-![Refer to caption](/html/2601.17858/assets/x13.png)
-
+!(/html/2601.17858/assets/x13.png)
 
 (c) Code Score
 
-![Refer to caption](/html/2601.17858/assets/x14.png)
-
+!(/html/2601.17858/assets/x14.png)
 
 (d) Knowledge Score
 
-![Refer to caption](/html/2601.17858/assets/x15.png)
-
+!(/html/2601.17858/assets/x15.png)
 
 (e) Language Score
 
-![Refer to caption](/html/2601.17858/assets/x16.png)
-
+!(/html/2601.17858/assets/x16.png)
 
 (f) Reasoning Score
 
@@ -1077,87 +1013,6 @@ Figure 8: Visualizing the performance landscape in the weight space. Since the w
 
 Figure [9](#A6.F9 "Figure 9 ‣ Appendix F Evaluation Details ‣ MergeMix: Optimizing Mid-Training Data Mixtures via Learnable Model Merging") reports the detailed training dynamics for each benchmark in the main experiment.
 
-![Refer to caption](/html/2601.17858/assets/x17.png)
-
+!(/html/2601.17858/assets/x17.png)
 
 Figure 9: Detailed training dynamics on each individual benchmark.
-
-[◄](/html/2601.17857)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.17858)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.17858)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.17858)[►](/html/2601.17859)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 15:02:11 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

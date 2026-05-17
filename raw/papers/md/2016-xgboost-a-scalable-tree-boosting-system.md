@@ -11,56 +11,6 @@ url: http://arxiv.org/abs/1603.02754v3
 year: 2016
 ---
 
-[1603.02754] XGBoost: A Scalable Tree Boosting System
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\setcopyright
-
-rightsretained
-\isbn
-\acmPrice
-
 # XGBoost: A Scalable Tree Boosting System
 
 Tianqi Chen
@@ -193,8 +143,7 @@ A similar regularization technique has been used in Regularized greedy forest (
 Our objective and the corresponding learning algorithm is simpler than RGF and easier to parallelize.
 When the regularization parameter is set to zero, the objective falls back to the traditional gradient tree boosting.
 
-![Refer to caption](/html/1603.02754/assets/tree_model.png)
-
+!(/html/1603.02754/assets/tree_model.png)
 
 Figure 1: Tree Ensemble Model. The final prediction for a given example is the sum of predictions from each tree.
 
@@ -242,8 +191,7 @@ and calculate the corresponding optimal value by
 | --- | --- | --- | --- |
 |  | ℒ~(t)​(q)=−12​∑j=1T(∑i∈Ijgi)2∑i∈Ijhi+λ+γ​T.superscript~ℒ𝑡𝑞12subscriptsuperscript𝑇𝑗1superscriptsubscript𝑖subscript𝐼𝑗subscript𝑔𝑖2subscript𝑖subscript𝐼𝑗subscriptℎ𝑖𝜆𝛾𝑇\tilde{\mathcal{L}}^{(t)}(q)=-\frac{1}{2}\sum^{T}\_{j=1}\frac{(\sum\_{i\in I\_{j}}g\_{i})^{2}}{\sum\_{i\in I\_{j}}h\_{i}+\lambda}+\gamma T. |  | (6) |
 
-![Refer to caption](/html/1603.02754/assets/struct_score.png)
-
+!(/html/1603.02754/assets/struct_score.png)
 
 Figure 2: Structure Score Calculation. We only need to sum up the gradient and second order gradient statistics on each leaf, then apply the scoring formula to get the quality score.
 
@@ -343,8 +291,7 @@ in Alg. [2](#alg2 "In 3.2 Approximate Algorithm ‣ 3 Split Finding Algorithms 
 To summarize, the algorithm first proposes candidate splitting points according to percentiles of feature distribution (a specific criteria will be given in Sec. [3.3](#S3.SS3 "3.3 Weighted Quantile Sketch ‣ 3 Split Finding Algorithms ‣ XGBoost: A Scalable Tree Boosting System")).
 The algorithm then maps the continuous features into buckets split by these candidate points, aggregates the statistics and finds the best solution among proposals based on the aggregated statistics.
 
-![Refer to caption](/html/1603.02754/assets/x1.png)
-
+!(/html/1603.02754/assets/x1.png)
 
 Figure 3: Comparison of test AUC convergence on Higgs 10M dataset.
 The eps parameter corresponds to the accuracy of the approximate sketch. This roughly translates to 1 / eps buckets in the proposal.
@@ -459,20 +406,17 @@ Output: Split and default directions with max gain
 
 Algorithm 3 Sparsity-aware Split Finding
 
-![Refer to caption](/html/1603.02754/assets/tree_default.png)
-
+!(/html/1603.02754/assets/tree_default.png)
 
 Figure 4: Tree structure with default directions.
 An example will be classified into the default direction when the feature needed for the split is missing.
 
-![Refer to caption](/html/1603.02754/assets/x2.png)
-
+!(/html/1603.02754/assets/x2.png)
 
 Figure 5: Impact of the sparsity aware algorithm on Allstate-10K.
 The dataset is sparse mainly due to one-hot encoding. The sparsity aware algorithm is more than 50 times faster than the naive version that does not take sparsity into consideration.
 
-![Refer to caption](/html/1603.02754/assets/data_layout.png)
-
+!(/html/1603.02754/assets/data_layout.png)
 
 Figure 6: Block structure for parallel learning. Each column in a block is sorted by the corresponding feature value.
 A linear scan over one column in the block is sufficient to enumerate all the split points.
@@ -493,23 +437,19 @@ More importantly, our method exploits the sparsity to make computation complexit
 Fig. [5](#S3.F5 "Figure 5 ‣ 3.4 Sparsity-aware Split Finding ‣ 3 Split Finding Algorithms ‣ XGBoost: A Scalable Tree Boosting System") shows the comparison of sparsity aware and a naive implementation on an Allstate-10K dataset (description of dataset given in Sec. [6](#S6 "6 End to End Evaluations ‣ XGBoost: A Scalable Tree Boosting System")). We find that the sparsity aware algorithm runs 50 times faster than the naive version.
 This confirms the importance of the sparsity aware algorithm.
 
-![Refer to caption](/html/1603.02754/assets/x3.png)
-
+!(/html/1603.02754/assets/x3.png)
 
 (a) Allstate 10M
 
-![Refer to caption](/html/1603.02754/assets/x4.png)
-
+!(/html/1603.02754/assets/x4.png)
 
 (b) Higgs 10M
 
-![Refer to caption](/html/1603.02754/assets/x5.png)
-
+!(/html/1603.02754/assets/x5.png)
 
 (c) Allstate 1M
 
-![Refer to caption](/html/1603.02754/assets/x6.png)
-
+!(/html/1603.02754/assets/x6.png)
 
 (d) Higgs 1M
 
@@ -552,21 +492,16 @@ Again we can save the additional log⁡q𝑞\log q factor in computation.
 
 ### 4.2 Cache-aware Access
 
-![Refer to caption](/html/1603.02754/assets/cache-miss.png)
-
+!(/html/1603.02754/assets/cache-miss.png)
 
 Figure 8: 
 Short range data dependency pattern that can cause stall due to cache miss.
 
-
-
-![Refer to caption](/html/1603.02754/assets/x7.png)
-
+!(/html/1603.02754/assets/x7.png)
 
 (a) Allstate 10M
 
-![Refer to caption](/html/1603.02754/assets/x8.png)
-
+!(/html/1603.02754/assets/x8.png)
 
 (b) Higgs 10M
 
@@ -736,13 +671,9 @@ In this experiment, we also find column subsamples gives slightly worse performa
 
 ### 6.4 Learning to Rank
 
-![Refer to caption](/html/1603.02754/assets/x9.png)
-
+!(/html/1603.02754/assets/x9.png)
 
 Figure 10: Comparison between XGBoost and pGBRT on Yahoo LTRC dataset.
-
-
-
 
 Table 4: Comparison of Learning to Rank with 500 trees on Yahoo! LTRC Dataset
 
@@ -752,8 +683,7 @@ Table 4: Comparison of Learning to Rank with 500 trees on Yahoo! LTRC Dataset
 | XGBoost (colsample=0.5) | 0.506 | 0.7913 |
 | pGBRT [[22](#bib.bib22)] | 2.576 | 0.7915 |
 
-![Refer to caption](/html/1603.02754/assets/x10.png)
-
+!(/html/1603.02754/assets/x10.png)
 
 Figure 11: Comparison of out-of-core methods on different subsets of criteo data.
 The missing data points are due to out of disk space.
@@ -762,15 +692,11 @@ Adding compression gives 3x speedup, and sharding into two disks gives another 2
 The system runs out of file cache start from 400M examples. The algorithm really has to rely on disk after this point.
 The compression+shard method has a less dramatic slowdown when running out of file cache, and exhibits a linear trend afterwards.
 
-
-
-![Refer to caption](/html/1603.02754/assets/x11.png)
-
+!(/html/1603.02754/assets/x11.png)
 
 (a) End-to-end time cost include data loading
 
-![Refer to caption](/html/1603.02754/assets/x12.png)
-
+!(/html/1603.02754/assets/x12.png)
 
 (b) Per iteration cost exclude data loading
 
@@ -781,8 +707,7 @@ XGBoost runs more 10x than spark per iteration and 2.2x as H2O’s optimized ver
 Note that spark suffers from drastic slow down when running out of memory.
 XGBoost runs faster and scales smoothly to the full 1.7 billion examples with given resources by utilizing out-of-core computation.
 
-![Refer to caption](/html/1603.02754/assets/x13.png)
-
+!(/html/1603.02754/assets/x13.png)
 
 Figure 13: 
 Scaling of XGBoost with different number of machines on criteo full 1.7 billion dataset.
@@ -1369,83 +1294,3 @@ Combining these inequalities gives
 |  |  |  |
 | --- | --- | --- |
 |  | r~𝒟+​(xi+1′)−ω~𝒟​(xi+1′)−r~𝒟−​(xi′)−ω~𝒟​(xi′)≤[ib​ω​(𝒟)+ϵ2​ω​(𝒟)]−[i−1b​ω​(𝒟)−ϵ2​ω​(𝒟)]=(1b+ϵ)​ω​(𝒟)superscriptsubscript~𝑟𝒟subscriptsuperscript𝑥′𝑖1subscript~𝜔𝒟subscriptsuperscript𝑥′𝑖1superscriptsubscript~𝑟𝒟subscriptsuperscript𝑥′𝑖subscript~𝜔𝒟subscriptsuperscript𝑥′𝑖delimited-[]𝑖𝑏𝜔𝒟italic-ϵ2𝜔𝒟delimited-[]𝑖1𝑏𝜔𝒟italic-ϵ2𝜔𝒟1𝑏italic-ϵ𝜔𝒟\begin{split}&\tilde{r}\_{\mathcal{D}}^{+}(x^{\prime}\_{i+1})-\tilde{\omega}\_{\mathcal{D}}(x^{\prime}\_{i+1})-\tilde{r}\_{\mathcal{D}}^{-}(x^{\prime}\_{i})-\tilde{\omega}\_{\mathcal{D}}(x^{\prime}\_{i})\\ \leq&[\frac{i}{b}\omega(\mathcal{D})+\frac{\epsilon}{2}\omega(\mathcal{D})]-[\frac{i-1}{b}\omega(\mathcal{D})-\frac{\epsilon}{2}\omega(\mathcal{D})]=(\frac{1}{b}+\epsilon)\omega(\mathcal{D})\end{split} |  |
-
-[◄](/html/1603.02753)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1603.02754)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1603.02754)
-[View original  
-on arXiv](https://arxiv.org/abs/1603.02754)[►](/html/1603.02755)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 8 16:17:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2604.27063
 year: 2026
 ---
 
-[2604.27063] Learning to Forget: Continual Learning with Adaptive Weight Decay
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Learning to Forget: Continual Learning with Adaptive Weight Decay
 
 Aditya A. Ramesh
@@ -225,8 +182,7 @@ Across all three experiments, we examine whether adaptive decay improves perform
 
 ### 3.1 Linear Tracking
 
-![Refer to caption](/html/2604.27063/assets/x1.png)
-
+!(/html/2604.27063/assets/x1.png)
 
 Figure 1: Evolution of FADE’s average decay rates for relevant and irrelevant weight groups on the linear tracking problem with zero noise, starting from λ0≈0.3​(γ0=−1.2)\lambda\_{0}\approx 0.3(\gamma\_{0}=-1.2), with α=0.1\alpha=0.1
 and θλ=0.01\theta\_{\lambda}=0.01.
@@ -328,30 +284,25 @@ Hyperparameter search details and selected hyperparameters are provided in Appen
 
 ##### Results.
 
-![Refer to caption](/html/2604.27063/assets/x2.png)
-
+!(/html/2604.27063/assets/x2.png)
 
 (a) Fast
 
-![Refer to caption](/html/2604.27063/assets/x3.png)
-
+!(/html/2604.27063/assets/x3.png)
 
 (b) Stable
 
-![Refer to caption](/html/2604.27063/assets/x4.png)
-
+!(/html/2604.27063/assets/x4.png)
 
 (c) Slow
 
-![Refer to caption](/html/2604.27063/assets/x5.png)
-
+!(/html/2604.27063/assets/x5.png)
 
 (d) Slow, zoomed in
 
 Figure 2: MSE by group on nonlinear tracking problem. With γ0=−9.2​(λ0≈0.0001)\gamma\_{0}=-9.2(\lambda\_{0}\approx 0.0001), comparing FADE+SGD (θλ=2\theta\_{\lambda}=2) with its fixed-decay counterpart FADE+SGD (θλ=0\theta\_{\lambda}=0).
 
-![Refer to caption](/html/2604.27063/assets/x6.png)
-
+!(/html/2604.27063/assets/x6.png)
 
 Figure 3: Evolution of FADE’s average per-group decay rates on the nonlinear tracking problem starting from a shared initialization λ0≈10−4\lambda\_{0}\approx 10^{-4} (dashed line), and θλ=2.0\theta\_{\lambda}=2.0.
 
@@ -388,9 +339,6 @@ Results are average MSE ±\pm standard deviation over the final 500K steps acros
 | γ0=−6.9​(λ0≈0.001)\gamma\_{0}=-6.9\ (\lambda\_{0}\approx 0.001) | 0.0099±0.00010.0099\pm 0.0001 | 0.0084±0.00010.0084\pm 0.0001 | 0.0082±0.00010.0082\pm 0.0001 | 0.0080±0.00010.0080\pm 0.0001 |
 | γ0=−9.2​(λ0≈0.0001)\gamma\_{0}=-9.2\ (\lambda\_{0}\approx 0.0001) | 0.0104±0.00020.0104\pm 0.0002 | 0.0083±0.00010.0083\pm 0.0001 | 0.0075±0.00010.0075\pm 0.0001 | 0.0073±0.0001\mathbf{0.0073\pm 0.0001} |
 
-
-
-
 Table 4: FADE + Adam sensitivity to initial decay rate γ0\gamma\_{0} and meta-step-size θλ\theta\_{\lambda} on the non-linear tracking problem. θλ=0\theta\_{\lambda}=0 corresponds to fixed weight decay on the head.
 Results are average MSE ±\pm standard deviation over the final 500K steps across 5 seeds.
 
@@ -424,14 +372,12 @@ Weight clipping (with SGD) was the best-performing approach on this problem in t
 For FADE, we again apply it to the final layer that produces the classification logits.
 See Appendix [A.3](#A1.SS3 "A.3 FADE with cross-entropy loss ‣ Appendix A Derivations ‣ Learning to Forget: Continual Learning with Adaptive Weight Decay") for FADE with the cross-entropy loss.
 
-![Refer to caption](/html/2604.27063/assets/x7.png)
-
+!(/html/2604.27063/assets/x7.png)
 
 Figure 4: Online accuracy on label-permuted EMNIST.
 FADE+SGD and FADE+Adam apply FADE to the final layer.
 
-![Refer to caption](/html/2604.27063/assets/x8.png)
-
+!(/html/2604.27063/assets/x8.png)
 
 Figure 5: Online accuracy on label-permuted EMNIST with FADE + Adam, starting from γ0=−11.5\gamma\_{0}=-11.5 (λ0≈10−5\lambda\_{0}\approx 10^{-5}).
 Despite an initial drop, FADE with θλ>0\theta\_{\lambda}>0 recovers strongly, with a final accuracy of over 0.70.7.
@@ -456,9 +402,6 @@ Table 5: Average online accuracy across 5M interactions (2000 tasks) in the stre
 | FADE + SGD | 0.807±0.001\mathbf{0.807\pm 0.001} |
 | FADE + Adam | 0.750±0.0010.750\pm 0.001 |
 
-
-
-
 Table 6: Impact of FADE’s adaptive decay on label-permuted EMNIST with SGD.
 Results are average online accuracy ±\pm standard deviation across 5 seeds, with step size α=0.005\alpha=0.005.
 θλ=0\theta\_{\lambda}=0 corresponds to fixed weight decay on the head.
@@ -469,9 +412,6 @@ Results are average online accuracy ±\pm standard deviation across 5 seeds, wit
 | γ0=−6.9​(λ0≈0.001)\gamma\_{0}=-6.9\ (\lambda\_{0}\approx 0.001) | 0.801±0.0010.801\pm 0.001 | 0.807±0.001\mathbf{0.807\pm 0.001} | 0.806±0.0010.806\pm 0.001 | 0.804±0.0010.804\pm 0.001 |
 | γ0=−9.2​(λ0≈0.0001)\gamma\_{0}=-9.2\ (\lambda\_{0}\approx 0.0001) | 0.779±0.0010.779\pm 0.001 | 0.801±0.0010.801\pm 0.001 | 0.801±0.0000.801\pm 0.000 | 0.798±0.0010.798\pm 0.001 |
 | γ0=−11.5​(λ0≈0.00001)\gamma\_{0}=-11.5\ (\lambda\_{0}\approx 0.00001) | 0.531±0.0050.531\pm 0.005 | 0.682±0.0030.682\pm 0.003 | 0.743±0.0020.743\pm 0.002 | 0.750±0.0020.750\pm 0.002 |
-
-
-
 
 Table 7: Impact of FADE’s adaptive decay on label-permuted EMNIST with Adam.
 Results are average online accuracy ±\pm standard deviation across 5 seeds, with step size α=0.0001\alpha=0.0001.
@@ -1304,8 +1244,7 @@ In this setting, SGD without weight decay outperforms SGD with weight decay
 (Table [8](#S3.T8 "Table 8 ‣ Analysis with partial label permutations. ‣ 3.3 Streaming image classification with label permutation ‣ 3 Experiments ‣ Learning to Forget: Continual Learning with Adaptive Weight Decay")).
 This further motivates weight-decay adaptation based on the problem.
 
-![Refer to caption](/html/2604.27063/assets/x9.png)
-
+!(/html/2604.27063/assets/x9.png)
 
 Figure 6: Online accuracy with partial label permutations.
 
@@ -1322,9 +1261,6 @@ Results are average online accuracy ±\pm standard deviation across 5 seeds, wit
 | γ0=−6.9​(λ0≈0.001)\gamma\_{0}=-6.9\ (\lambda\_{0}\approx 0.001) | 0.810±0.0010.810\pm 0.001 | 0.841±0.0010.841\pm 0.001 | 0.845±0.0020.845\pm 0.002 | 0.846±0.0030.846\pm 0.003 |
 | γ0=−9.2​(λ0≈0.0001)\gamma\_{0}=-9.2\ (\lambda\_{0}\approx 0.0001) | 0.830±0.0020.830\pm 0.002 | 0.845±0.0020.845\pm 0.002 | 0.846±0.0020.846\pm 0.002 | 0.845±0.0020.845\pm 0.002 |
 | γ0=−11.5​(λ0≈0.00001)\gamma\_{0}=-11.5\ (\lambda\_{0}\approx 0.00001) | 0.783±0.0060.783\pm 0.006 | 0.818±0.0030.818\pm 0.003 | 0.833±0.0030.833\pm 0.003 | 0.835±0.0020.835\pm 0.002 |
-
-
-
 
 Table 10: Impact of FADE’s adaptive decay on *partial label-permuted* EMNIST (24 stable classes which never change labels) with Adam.
 Results are average online accuracy ±\pm standard deviation across 5 seeds, with step size α=0.0001\alpha=0.0001.
@@ -1384,9 +1320,6 @@ Algorithm 2  IDBD: Incremental Delta-Bar-Delta (Sutton, [1992](#bib.bib44))
 
 16: end for
 
-
-
-
 Algorithm 3  IDBD + WD: Adaptive Step Size with Fixed Weight Decay (online linear regression)
 
 0: meta-step size θα\theta\_{\alpha}, initial step-size parameter β0∈ℝd\beta\_{0}\in\mathbb{R}^{d}, weight decay λ∈ℝ\lambda\in\mathbb{R}
@@ -1423,9 +1356,6 @@ Algorithm 3  IDBD + WD: Adaptive Step Size with Fixed Weight Decay (online linea
 
 16: end for
 
-
-
-
 Algorithm 4  FADE + IDBD: Adaptive Decay and Step Size (online linear regression)
 
 0: meta-step sizes θα,θλ\theta\_{\alpha},\theta\_{\lambda} (can be tied: θα=θλ=θ\theta\_{\alpha}=\theta\_{\lambda}=\theta), initial β0,γ0∈ℝd\beta\_{0},\gamma\_{0}\in\mathbb{R}^{d}
@@ -1461,83 +1391,3 @@ Algorithm 4  FADE + IDBD: Adaptive Decay and Step Size (online linear regression
 15:  end for
 
 16: end for
-
-[◄](/html/2604.27062)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.27063)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.27063)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.27063)[►](/html/2604.27064)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 22:29:46 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

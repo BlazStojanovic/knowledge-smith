@@ -15,50 +15,6 @@ url: http://arxiv.org/abs/2107.01830v1
 year: 2021
 ---
 
-[2107.01830] ARM-Net: Adaptive Relation Modeling Network for Structured Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # ARM-Net: Adaptive Relation Modeling Network for Structured Data
 
 Shaofeng Cai
@@ -165,8 +121,7 @@ Alemzadeh, [2017](#bib.bib54); Yuan
 et al., [2019](#bib.bib61)).
 In this light, explicitly modeling feature relations with a minimum set of constituent features adaptively would yield desirable inductive biases for effectiveness, efficiency and interpretability.
 
-![Refer to caption](/html/2107.01830/assets/x1.png)
-
+!(/html/2107.01830/assets/x1.png)
 
 Figure 1. The overview of ARMOR based on the relation modeling of ARM-Net for structured data analytics.
 
@@ -246,8 +201,7 @@ et al., [2008](#bib.bib57)):
 | --- | --- | --- | --- |
 | (1) |  | softmax​(𝐳)=argmax𝐩∈Δd{𝐩T​𝐳+𝐇𝐒​(𝐩)}softmax𝐳subscriptargmax𝐩superscriptΔ𝑑superscript𝐩𝑇𝐳superscript𝐇𝐒𝐩\mathrm{softmax}(\mathbf{z})=\mathop{\mathrm{argmax}}\_{\mathbf{p}\in\Delta^{d}}\{\mathbf{p}^{T}\mathbf{z}+\mathbf{H}^{\mathbf{S}}(\mathbf{p})\} |  |
 
-![Refer to caption](/html/2107.01830/assets/x2.png)
-
+!(/html/2107.01830/assets/x2.png)
 
 Figure 2. The overview of ARM-Net.
 
@@ -382,8 +336,7 @@ which is then forwarded to the final prediction layer:
 | --- | --- | --- | --- |
 | (8) |  | 𝐲^=𝐖p​𝐡+𝐛p^𝐲subscript𝐖𝑝𝐡subscript𝐛𝑝\hat{\mathbf{y}}=\mathbf{W}\_{p}\mathbf{h}+\mathbf{b}\_{p} |  |
 
-![Refer to caption](/html/2107.01830/assets/x3.png)
-
+!(/html/2107.01830/assets/x3.png)
 
 Figure 3. Adaptive Relation Modeling Module of ARM-Net.
 
@@ -471,8 +424,7 @@ Therefore, the overall parameter size and computational complexity for processin
 In this section, we evaluate the effectiveness, efficiency and interpretability of ARMOR.
 Figure [4](#S4.F4 "Figure 4 ‣ 4. Experiments ‣ ARM-Net: Adaptive Relation Modeling Network for Structured Data") illustrates the overview of the experimental studies on ARMOR using five real-world datasets.
 
-![Refer to caption](/html/2107.01830/assets/x4.png)
-
+!(/html/2107.01830/assets/x4.png)
 
 Figure 4. Predictive analytics using ARMOR.
 
@@ -662,8 +614,7 @@ We first compare ARM-Net with single baseline models that capture first-order, s
 In Table [2](#S4.T2 "Table 2 ‣ 4.1.2. Baseline Methods ‣ 4.1. Experimental Setup ‣ 4. Experiments ‣ ARM-Net: Adaptive Relation Modeling Network for Structured Data"), we summarize the overall experimental results measured in AUC with respective parameter sizes used during inference.
 Based on these results, we have the following findings.
 
-![Refer to caption](/html/2107.01830/assets/x5.png)
-
+!(/html/2107.01830/assets/x5.png)
 
 Figure 5. The effectiveness of cross features captured by ARM-Net in enhancing FM (0 to 8 features respectively).
 
@@ -705,16 +656,13 @@ In a nutshell, these results further confirm the effectiveness of ARM-Net in mod
 
 ### 4.3. Efficiency and Ablation Studies
 
-![Refer to caption](/html/2107.01830/assets/x6.png)
-
+!(/html/2107.01830/assets/x6.png)
 
 Figure 6. Sensitivity analysis of the number of attention heads and exponential neurons per head (α=1.7𝛼1.7\alpha=1.7).
 
+!(/html/2107.01830/assets/x7.png)
 
-
-![Refer to caption](/html/2107.01830/assets/x7.png)
-
-![Refer to caption](/html/2107.01830/assets/x8.png)
+!(/html/2107.01830/assets/x8.png)
 
 Figure 7. The impact of varying the sparsity α𝛼\alpha on the prediction performance of different K⋅o⋅𝐾𝑜K\cdot o configurations.
 
@@ -751,8 +699,7 @@ Table 4. Top Global Interaction Terms for Frappe.
 | 3.22 | 2 | (item\_id, is\_free) |
 | 3.00 | 3 | (user\_id, item\_id, weather) |
 
-![Refer to caption](/html/2107.01830/assets/x9.png)
-
+!(/html/2107.01830/assets/x9.png)
 
 Figure 8. Global feature attribution with Lime, Shape and ARM-Net respectively on Frappe and Diabetes130.
 
@@ -791,8 +738,7 @@ Table 5. Top Global Interaction Terms for Diabetes130.
 | 1.45 | 2 | (num\_diagnoses, diabetes\_med) |
 | 1.36 | 2 | (inpatient\_score, diabetes\_med) |
 
-![Refer to caption](/html/2107.01830/assets/x10.png)
-
+!(/html/2107.01830/assets/x10.png)
 
 Figure 9. The impact of increasing the input embedding size on the prediction performance of ARM-Net+.
 
@@ -812,9 +758,9 @@ Specifically, the interpretation results of Lime and Shap for Frappe and Diabete
 We then show the top interaction terms captured by ARM-Net with corresponding frequency and orders, which denote the average occurrence count per instance777Note that there are K⋅o⋅𝐾𝑜K\cdot o exponential neurons in ARM-Net, and each neuron captures a specific interaction term given the input instance dynamically. and the number of features captured for each interaction term respectively.
 We also illustrate local interpretation by showing feature interaction weights assigned by ARM-Module via aggregation, and again compare the local feature attribution results of ARM-Net with Lime and Shap.
 
-![Refer to caption](/html/2107.01830/assets/x11.png)
+!(/html/2107.01830/assets/x11.png)
 
-![Refer to caption](/html/2107.01830/assets/x12.png)![Refer to caption](/html/2107.01830/assets/x13.png)
+!(/html/2107.01830/assets/x12.png)!(/html/2107.01830/assets/x13.png)
 
 Figure 10. Local feature attribution with ARM-Net (left) and local feature importance weights given by Lime (right top) and Shap (right bottom) on Frappe.
 
@@ -827,9 +773,9 @@ Likewise, the features of the highest importance identified by ARM-Net for Diabe
 We can also notice that the global feature importance provided by ARM-Net is consistent with the two general interpretation approaches, namely Lime and Shap.
 However, we note that the interpretation results provided by ARM-Net are relatively more reliable since ARM-Net inherently supports global feature attribution and its modeling process is more transparent, whereas Lime and Shap are typically adopted as a medium to interpret other “black box” models via approximation.
 
-![Refer to caption](/html/2107.01830/assets/x14.png)
+!(/html/2107.01830/assets/x14.png)
 
-![Refer to caption](/html/2107.01830/assets/x15.png)![Refer to caption](/html/2107.01830/assets/x16.png)
+!(/html/2107.01830/assets/x15.png)!(/html/2107.01830/assets/x16.png)
 
 Figure 11. Local feature attribution with ARM-Net (left) and local feature importance weights given by Lime (right top) and Shap (right bottom) on Diabetes130.
 
@@ -1300,7 +1246,6 @@ Meihui Zhang’s work is supported by National Natural Science Foundation of Chi
   *Interpretable Machine Learning*.
   https://christophm.github.io/interpretable-ml-book/.
 
-
   <https://christophm.github.io/interpretable-ml-book/>.
 * Nikolic
   et al. (2020)
@@ -1548,83 +1493,3 @@ Meihui Zhang’s work is supported by National Natural Science Foundation of Chi
   Progression Modeling. In *Proceedings of the 2017
   ACM on Conference on Information and Knowledge Management* (Singapore,
   Singapore) *(CIKM ’17)*. 1579–1588.
-
-[◄](/html/2107.01829)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2107.01830)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2107.01830)
-[View original  
-on arXiv](https://arxiv.org/abs/2107.01830)[►](/html/2107.01831)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 23:10:37 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

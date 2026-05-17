@@ -60,59 +60,6 @@ url: https://arxiv.org/abs/2510.02387
 year: 2025
 ---
 
-[2510.02387] CWM: An Open-Weights LLM for Research on Code Generation with World Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\metadata
-
-[Inference Code][github.com/facebookresearch/cwm](https://github.com/facebookresearch/cwm)
-\metadata[Model Weights][ai.meta.com/resources/models-and-libraries/cwm-downloads](https://ai.meta.com/resources/models-and-libraries/cwm-downloads),
-  
-[huggingface.co/facebook/cwm](https://huggingface.co/facebook/cwm),
-[../cwm-sft](https://huggingface.co/facebook/cwm-sft),
-[../cwm-pretrain](https://huggingface.co/facebook/cwm-pretrain)
-
 # CWM: An Open-Weights LLM for Research on Code Generation with World Models
 
 Meta FAIR CodeGen Team
@@ -137,8 +84,7 @@ However, reliably generating high-quality code remains a challenge even for the 
 
 We believe that advancing code generation with LLMs may require new training and modeling paradigms. Typically, code is treated the same as any other text data during pre-training: the model learns to predict code line by line, from left to right and top to bottom. We think this is not sufficient – to master coding, one must understand not just what code *looks like* but what it *does* when executed. Such skill is instrumental to the everyday work of software engineers: at a local level, they understand how the execution of a line of code changes the state of the local variables, and, at a global level, they can make predictions about how changes to a codebase affect program outputs. Yet, teaching LLMs such *code world modeling* capabilities is typically not considered before post-training.
 
-![Refer to caption](/html/2510.02387/assets/x1.png)
-
+!(/html/2510.02387/assets/x1.png)
 
 Figure 1: Overview of the CWM training stages and the model checkpoints that we release. We generally report performance of the final CWM (instruct, RL trained) model, except where otherwise stated.
 
@@ -159,8 +105,7 @@ However, we believe the best is yet to come and hope to join forces with the ope
 To this end, we release both the final weights and intermediate checkpoints under a noncommercial research license.
 Given CWM’s competitive performance, we conducted a preparedness assessment which concluded that CWM is unlikely to increase catastrophic risks beyond those present in the current model ecosystem.111See [ai.meta.com/research/publications/cwm-preparedness](https://ai.meta.com/research/publications/cwm-preparedness) and [Section 8](#S8 "8 Transparency, Risks & Limitations ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models") for details.
 
-![Refer to caption](/html/2510.02387/assets/x2.png)
-
+!(/html/2510.02387/assets/x2.png)
 
 Figure 2: 
 On SWE-bench Verified, CWM outperforms open-weight models with similar parameter counts and is even competitive with much larger or closed-weight LLMs.
@@ -175,8 +120,7 @@ CWM is trained on a large variety of datasets across pre-, mid-, and post-traini
 
 ### 2.1 Executable repository images: building repositories at scale
 
-![Refer to caption](/html/2510.02387/assets/x3.png)
-
+!(/html/2510.02387/assets/x3.png)
 
 Figure 3: CWM format for Python traces. Given a source code context and a marker of the trace starting point, CWM predicts a series of stack frames representing the Program states and the actions (executed code).
 
@@ -380,8 +324,6 @@ bool is\_evenly\_separated(const string& s) {...
 
 Figure 4: Example of CWM solving a competitive programming problem in agentic fashion. The reasoning steps are shortened and some details are omitted due to space constraints. (Tool calls in purple, environment feedback in orange, and reasoning in blue.)
 
-
-
 [⬇](data:text/plain;base64,R2l2ZW4gYSBweXRob24gY29kZSBmdW5jdGlvbiBhbmQgYW4gYXNzZXJ0IHN0YXRlbWVudCBjb250YWluaW5nIGEgc3BlY2lmaWMgaW5wdXQsIHByb3ZpZGUgdGhlIGFzc2VydGlvbiB3aXRoIHRoZSBleGFjdCBsaXRlcmFsIG91dHB1dCB0aGF0IHRoZSBmdW5jdGlvbiByZXR1cm5zIHdpdGggdGhhdCBpbnB1dC4gRG8gbm90IGluY2x1ZGUgYW55IG1hdGhlbWF0aWNhbCBleHByZXNzaW9ucyBvciBmdW5jdGlvbiBjYWxscyAtLSBvbmx5IHRoZSBmaW5hbCBsaXRlcmFsIHZhbHVlLiBZb3VyIHJlc3BvbnNlIHNob3VsZCBiZSBzb2xlbHkgdGhlIGFzc2VydGlvbiwgZW5jbG9zZWQgd2l0aGluIFtBTlNXRVJdIGFuZCBbL0FOU1dFUl0gdGFncy4KWW91IGFyZSBhIGNvbXB1dGF0aW9uYWwgd29ybGQgbW9kZWwgYW5kIGNhbiBwcmVkaWN0IHRoZSBwcm9ncmFtIGV4ZWN1dGlvbi4KWW91ciBleGVjdXRpb24gdHJhY2UgcHJlZGljdGlvbiBmb3JtYXQgTVVTVCBmb2xsb3cgdGhpcyBzdHJ1Y3R1cmU6CjEuIFRoZSBleGVjdXRpb24gdHJhY2UgcHJlZGljdGlvbiBzdGFydHMgd2l0aCB0aGUgPHx0cmFjZV9jb250ZXh0X3N0YXJ0fD4gdG9rZW4gYW5kIGVuZHMgd2l0aCBhIGZpbmFsIDx8ZnJhbWVfc2VwfD4gdG9rZW4uCjIuIEZvciBlYWNoIGNvZGUgZXhlY3V0aW9uIHN0ZXA6Ci0gQmVnaW4gd2l0aCA8fGZyYW1lX3NlcHw+IGZvbGxvd2VkIGJ5IHRoZSBldmVudCB0b2tlbiB3aGljaCBjYW4gYmUgPHxjYWxsX3NlcHw+LCA8fGxpbmVfc2VwfD4sIDx8cmV0dXJuX3NlcHw+IG9yIDx8ZXhjZXB0aW9uX3NlcHw+LgotIEFmdGVyIDx8Y2FsbF9zZXB8PiBvciA8fGxpbmVfc2VwfD4gcHV0IHRoZSBsb2NhbCB2YXJpYWJsZSBzdGF0ZXMgYXMgZGljdGlvbmFyeSBpbiBKU09OIGZvcm1hdCBmb2xsb3dlZCBieSB0aGUgPHxhY3Rpb25fc2VwfD4gdG9rZW4gYW5kIHRoZSBjdXJyZW50IHNvdXJjZSBjb2RlIGxpbmUuCi0gQWZ0ZXIgPHxyZXR1cm5fc2VwfD4sIDx8ZXhjZXB0aW9uX3NlcHw+IGRpcmVjdGx5IHB1dCB0aGUgPHxhY3Rpb25fc2VwfD4gdG9rZW4gYW5kIHRoZSBjdXJyZW50IHNvdXJjZSBjb2RlIGxpbmUgZm9sbG93ZWQgYnkgYW4gPHxhcmdfc2VwfD4gdG9rZW4gYW5kIHRoZSByZXR1cm4gb3IgZXhjZXB0aW9uIGFyZ3VtZW50cy4KMy4gUHJvdmlkZSB0aGUgZnVsbCBhc3NlcnRpb24gd2l0aCB0aGUgY29ycmVjdCBvdXRwdXQgdGhhdCB5b3Ugb2J0YWluZWQgYWZ0ZXIgPHxyZXR1cm5fc2VwfD4gaW4gW0FOU1dFUl0gYW5kIFsvQU5TV0VSXSB0YWdzCkhlcmUgaXMgYW4gZXhhbXBsZSBvZiBob3cgeW91IHdvdWxkIHByZWRpY3QgdGhlIG91dHB1dCBvZiB0aGUgcHJvZ3JhbSB1c2luZyB5b3VyIHRyYWNlIHByZWRpY3Rpb24gY2FwYWJpbGl0eToKClB5dGhvbiBmdW5jdGlvbjoKZGVmIGYoYSxiKToKICAgIHkgPSBhCiAgICBmb3IgaSBpbiByYW5nZShiKToKICAgICAgICB5ICs9IHkgKiBpCiAgICByZXR1cm4geQphc3NlcnQgZigxLDMpID09ID8/Cjx0aGluaz4KeW91ciBpbnRlcm5hbCByZWFzb25pbmcKPC90aGluaz4KTGV0J3MgdmVyaWZ5IHRoaXMgYnkgcHV0dGluZyB0aGUgY29kZSBpbnRvIGEgdHJhY2UgY29udGV4dCBhbmQgY2FsbCB0aGUgZnVuY3Rpb24gaW4gdGhlIG1haW4oKSBmdW5jdGlvbiBhbmQgdGhlbiB0cmFjZSB0aGUgZXhlY3V0aW9uIG9mIHRoZSBtYWluIGZ1bmN0aW9uLgpXZSBpbmRpY2F0ZSB0aGUgZW50cnkgcG9pbnQgb2YgdGhlIGV4ZWN1dGlvbiB0cmFjZSB3aXRoIGEgICMgPDwgU1RBUlRfT0ZfVFJBQ0UgbWFya2VyLgpkZWYgZihhLGIpOgogICAgeSA9IGEKICAgIGZvciBpIGluIHJhbmdlKGIpOgogICAgICAgIHkgKz0geSAqIGkKICAgIHJldHVybiB5CmRlZiBtYWluKCk6ICMgPDwgU1RBUlRfT0ZfVFJBQ0UKICAgIHJldHVybiBmKDEsMykKPHxmcmFtZV9zZXB8Pjx8Y2FsbF9zZXB8Pnt9PHxhY3Rpb25fc2VwfD5kZWYgbWFpbigpOiAjIDw8IFNUQVJUX09GX1RSQUNFCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57fTx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBmKDEsMykKPHxmcmFtZV9zZXB8Pjx8Y2FsbF9zZXB8PnsiYSI6ICIxIiwgImIiOiAiMyJ9PHxhY3Rpb25fc2VwfD5kZWYgZihhLGIpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJhIjogIi4uIiwgImIiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIHkgPSBhCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57ImEiOiAiLi4iLCAiYiI6ICIuLiIsICJ5IjogIjEifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBpIGluIHJhbmdlKGIpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJhIjogIi4uIiwgImIiOiAiLi4iLCAieSI6ICIuLiIsICJpIjogIjAifTx8YWN0aW9uX3NlcHw+ICAgICAgICB5ICs9IHkgKiBpCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57ImEiOiAiLi4iLCAiYiI6ICIuLiIsICJ5IjogIi4uIiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBpIGluIHJhbmdlKGIpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJhIjogIi4uIiwgImIiOiAiLi4iLCAieSI6ICIuLiIsICJpIjogIjEifTx8YWN0aW9uX3NlcHw+ICAgICAgICB5ICs9IHkgKiBpCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57ImEiOiAiLi4iLCAiYiI6ICIuLiIsICJ5IjogIjIiLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGkgaW4gcmFuZ2UoYik6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57ImEiOiAiLi4iLCAiYiI6ICIuLiIsICJ5IjogIi4uIiwgImkiOiAiMiJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIHkgKz0geSAqIGkKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsiYSI6ICIuLiIsICJiIjogIi4uIiwgInkiOiAiNiIsICJpIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICBmb3IgaSBpbiByYW5nZShiKToKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsiYSI6ICIuLiIsICJiIjogIi4uIiwgInkiOiAiLi4iLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgcmV0dXJuIHkKPHxmcmFtZV9zZXB8Pjx8cmV0dXJuX3NlcHw+PHxhY3Rpb25fc2VwfD4gICAgcmV0dXJuIHkKPHxhcmdfc2VwfD4iNiI8fGZyYW1lX3NlcHw+PHxyZXR1cm5fc2VwfD48fGFjdGlvbl9zZXB8PiAgICByZXR1cm4gZigxLDMpCjx8YXJnX3NlcHw+IjYiPHxmcmFtZV9zZXB8PgpOb3cgbGV0IHVzIGFuYWx5emUgdGhlIHRyYWNlLiBUaGUgcmV0dXJuIGFyZ3VtZW50IG9mIHRoZSBmdW5jdGlvbiBjYWxsIGYoMSwzKSBpbiB0aGUgbWFpbigpIGZ1bmN0aW9uIGlzICI2IiBpbiBKU09OIGZvcm1hdCwgc28gdGhlIHJldHVybiB2YWx1ZSBpcyA2LgpbQU5TV0VSXQphc3NlcnQgZigxLDMpID09IDYKWy9BTlNXRVJdCgpQeXRob24gZnVuY3Rpb246CmRlZiBmKGQsIGspOgogICAgbmV3X2QgPSB7fQogICAgZm9yIGtleSwgdmFsIGluIGQuaXRlbXMoKToKICAgICAgICBpZiBrZXkgPCBrOgogICAgICAgICAgICBuZXdfZFtrZXldID0gdmFsCiAgICByZXR1cm4gbmV3X2QKYXNzZXJ0IGYoezE6IDIsIDI6IDQsIDM6IDN9LCAzKSA9PSA/Pw==)
 
 Given a python code function and an assert statement containing a specific input, provide the assertion with the exact literal output that the function returns with that input. Do not include any mathematical expressions or function calls -- only the final literal value. Your response should be solely the assertion, enclosed within [ANSWER] and [/ANSWER] tags.
@@ -582,13 +524,11 @@ Figure 5: Example with execution trace prediction and reasoning. In this example
 
 We refer to [Section˜11](#S11 "11 CWM Examples ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models") for additional example trajectories from CWM, including self-correcting SWE behavior, a comparison of the advantages and disadvantages of strict trace prediction compared to natural language (and why we think their combination is worth exploring), further demonstrations of how we can adapt trace prediction to elicit code generation, and an example of using CWM to predict program termination.
 
-![Refer to caption](/html/2510.02387/assets/x4.png)
-
+!(/html/2510.02387/assets/x4.png)
 
 (a) CWM architecture: GQA with alternating local (8 k8\text{\,}\mathrm{k}) and dynamic global (131 k131\text{\,}\mathrm{k}) sliding window attention.
 
-![Refer to caption](/html/2510.02387/assets/x5.png)
-
+!(/html/2510.02387/assets/x5.png)
 
 (b) Overview of the CWM training and inference types for inputs and outputs.
 
@@ -754,8 +694,7 @@ Early RL experiments on top of the SFT model showed long initial reasoning trace
 
 #### 5.3.1 Agentic SWE
 
-![Refer to caption](/html/2510.02387/assets/x6.png)
-
+!(/html/2510.02387/assets/x6.png)
 
 Figure 7: SWE RL design. An agent solves software engineering tasks end-to-end through long-horizon agent-environment interactions via reasoning and tool use (up to 128 turns and 131 k131\text{\,}\mathrm{k} context size). SWE RL employs a minimal toolset: bash as the core, with edit, create, and submit as lightweight bash plugins. The reward combines hidden test outcomes with patch similarity, where the similarity reward is applied when tests fail to provide auxiliary learning signals.
 
@@ -780,8 +719,7 @@ As shown in [Figure˜7](#S5.F7 "In 5.3.1 Agentic SWE ‣ 5.3 RL environments & d
 
 The runtime implementation of the tools follows SWE-agent (Yang et al., [2024](#bib.bib105)) and OpenHands (Wang et al., [2025](#bib.bib97)), where bash is a stateful shell session running in a persistent server process, and serves as the main component, while other customized tools are treated as plugins that can be “de-sugared” into simple bash commands. For example, the edit and create tools are two standalone Python scripts, and the submit tool, when used for file paths, reduces to cat <path> to retrieve the file content.
 
-![Refer to caption](/html/2510.02387/assets/x7.png)
-
+!(/html/2510.02387/assets/x7.png)
 
 Figure 8: SWE RL interaction example.
 The agent interacts extensively with the repository sandbox through reasoning, exploration, editing, and test execution, submitting a final patch using git diff along with a summary.
@@ -797,8 +735,7 @@ This also helps the model to gain more learning signals from difficult issues fo
 Data self-bootstrapping. In SWE RL, CWM is required to solve software issues as a *reasoning agent* (i.e., through both reasoning and tool use).
 However, such data does not exist in the public and the format is completely new to the model before RL and different to our ForagerAgent data, so early iterations of our model struggled to interact with the software environment across long horizons without making format errors. To address this, we perform an iterative self-bootstrapping process to collect high-quality agentic reasoning traces and supply them back to the joint SFT stage so that CWM can have a better prior distribution before RL. This process not only helps with format adherence but also significantly improves our model’s software engineering capability both before and after RL.
 
-![Refer to caption](/html/2510.02387/assets/x8.png)
-
+!(/html/2510.02387/assets/x8.png)
 
 Figure 9: SWE RL self-bootstrapping. Starting from a pre-RL checkpoint, we iteratively perform RL, rejection-sample high-quality reasoning traces, and feed them back into SFT. This process improves data quality and format adherence across iterations, raising success rates, and providing stronger initialization for joint RL.
 
@@ -815,8 +752,7 @@ We estimate the difficulty of each instance using the pass@1 score from CWM SFT,
 
 #### 5.3.2 Coding
 
-![Refer to caption](/html/2510.02387/assets/x9.png)
-
+!(/html/2510.02387/assets/x9.png)
 
 Figure 10: Prompt template for math (left path) and competitive programming (right path) RL tasks.
 
@@ -846,8 +782,7 @@ We use Llama-3.3-70B-Instruct to identify and remove poorly posed problems, such
 
 #### 5.3.3 Agentic coding
 
-![Refer to caption](/html/2510.02387/assets/x10.png)
-
+!(/html/2510.02387/assets/x10.png)
 
 Figure 11: Example interaction for the agentic coding RL environment. The agent uses reasoning and tools to solve competitive programming problems. Before generating a final solution, the agent summarizes the interaction.
 
@@ -882,8 +817,7 @@ Data sourcing and filtering. We gather math questions and answers from publicly 
 
 ### 5.4 Joint RL
 
-![Refer to caption](/html/2510.02387/assets/x11.png)
-
+!(/html/2510.02387/assets/x11.png)
 
 Figure 12: Async RL systems overview. Worker nodes generate trajectory batches from multiple RL environments and send them to trainer nodes via a transfer queue. Trainer nodes form training batches either from worker-provided data or the rehearsal mix, packing trajectories up to the maximum context length for a single gradient update. Environment execution and verification can occur locally on worker nodes or remotely on another cluster or in the cloud.
 
@@ -926,8 +860,7 @@ Length reward scheduling.
 In both the code and mathematics environments, we allow context lengths of up to 64 k64\text{\,}\mathrm{k}. We observe that, at the start of RL training, the model rapidly increases its response length, leading to inefficient token usage. To address this, we penalize the reward for correct but overlong solutions similar to DAPO (Yu et al., [2025](#bib.bib109)), but gradually phase out this penalty over training. Specifically, we linearly interpolate the reward between 11 and −1-1 for correct answers with a length that exceeds a soft maximum (8 k8\text{\,}\mathrm{k} at the beginning of training) but is lower than the hard maximum of 64 k64\text{\,}\mathrm{k}. This provides a dense reward signal to the model that incentivizes it to reduce its response length, while still providing a positive signal when the answer is correct.
 During training, we gradually increase the soft maximum in a continuous manner until it is equal to the hard maximum after 10 k10\text{\,}\mathrm{k} training steps. See [Figure˜13](#S5.F13 "In 5.4 Joint RL ‣ 5 Post-training: SFT, RL algorithms and environments ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models") for an illustration of this process.
 
-![Refer to caption](/html/2510.02387/assets/x12.png)
-
+!(/html/2510.02387/assets/x12.png)
 
 Figure 13: Length reward scheduling for RL training. The decaying threshold δ\delta starts at 8 k8\text{\,}\mathrm{k} at the start of training and linearly increases to its 64 k64\text{\,}\mathrm{k} limit over 10 00010\,000 steps.
 
@@ -972,8 +905,7 @@ As shown in [Figure˜14](#S6.F14 "In 6.2 RL systems ‣ 6 Code and infrastructur
 
   step: takes an action (sequence of tokens) leading to a state transition. The new observation includes all information visible to the agent and necessary during training or inference, such as the latest action, observation, and reward.
 
-![Refer to caption](/html/2510.02387/assets/x13.png)
-
+!(/html/2510.02387/assets/x13.png)
 
 Figure 14: Overview of how agents interact with RL environments to produce trajectories.
 
@@ -1014,8 +946,7 @@ Our training pipeline leverages an internal code execution service to safely exe
 
 Containerized execution for agentic RL. We use a custom tool-based execution environment for agentic reinforcement learning, enabling agents to interact with containerized environments through structured tool calls for agentic tasks. It features a core tool execution framework based on flexible container backends (e.g., Docker execution services or Modal ([Modal Team,](#bib.bib68) )), implementation of remote execution servers and clients as an interface to a persistent shell session, plugins that can be defined as standalone Python scripts invoked through bash, along with evaluation infrastructure for reward calculation or benchmarking.
 
-![Refer to caption](/html/2510.02387/assets/x14.png)
-
+!(/html/2510.02387/assets/x14.png)
 
 Figure 15: In CWM-RL, model weights can be updated at any time on the worker side: between trajectories, within a trajectory between steps, or even during token generation. Compared to traditional RL, this removes all synchronization overhead, maximizing worker throughput while minimizing idle time. In exchange for never blocking inference, we accept that trajectories will potentially use mixed weights, though frequent model updates ensure that generations remain reasonably on-policy. Different workers may not update their weights at the same time: the system waits for each worker to signal readiness before sending new weights to avoid memory overload.
 
@@ -1048,8 +979,7 @@ Table 4: Our ablation study reveals a positive impact on performance from introd
 
 SWE-bench Verified. [Figures˜2](#S1.F2 "In 1 Introduction ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models") and [16](#S7.F16 "Figure 16 ‣ 7.2 Agentic evaluation ‣ 7 Experimental results ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models") show results for SWE-bench Verified. CWM achieves pass@1 resolve rates of 65.8 %65.8\text{\,}\mathrm{\char 37\relax} with test-time-scaling and 53.9 %53.9\text{\,}\mathrm{\char 37\relax} without test-time scaling (averaged over 4 runs). With test-time scaling, CWM outperforms open-weight models at similar size and is competitive to larger and proprietary models. The base score without test-time scaling also surpasses open-weight models with similar parameter counts and remains respectable even when comparing to much larger models such as GPT-oss-120B (Agarwal et al., [2025](#bib.bib1)), Qwen3-Coder (Yang et al., [2025a](#bib.bib104)), and Kimi K2 (Kimi Team et al., [2025](#bib.bib49)).
 
-![Refer to caption](/html/2510.02387/assets/x15.png)
-
+!(/html/2510.02387/assets/x15.png)
 
 Figure 16: SWE-bench Verified pass@1 scores. CWM achieves best-in-class performance with and without test-time-scaling (tts), achieving 65.8 %65.8\text{\,}\mathrm{\char 37\relax} and 53.9 %53.9\text{\,}\mathrm{\char 37\relax} respectively. Note that GPT-oss scores are computed with respect to a limited subset of 477477 out of 500500 problems.
 
@@ -1060,13 +990,11 @@ Since candidate solutions are often similar in the number of *existing* tests th
 In [Figure˜16](#S7.F16 "In 7.2 Agentic evaluation ‣ 7 Experimental results ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models"), we report results for best@kk for k=16k=16, which achieves a 65.8 %65.8\text{\,}\mathrm{\char 37\relax} resolve rate. As a simple alternative to best@kk, we found that majority voting (Wang et al., [2022b](#bib.bib98)) of candidate patches, based on exact string matching and without any test generation or execution, leads to a pass rate of 58.4 %58.4\text{\,}\mathrm{\char 37\relax}. In [Figure˜17(a)](#S7.F17.sf1 "In Figure 17 ‣ 7.2 Agentic evaluation ‣ 7 Experimental results ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models"), we report best@kk and pass@kk across different values of kk.
 As expected, pass@k improves monotonically with larger kk, ultimately reaching a success rate of 80.4 %80.4\text{\,}\mathrm{\char 37\relax} at k=40k=40. For best@kk, performance improves sharply from k=2k=2 before plateauing around k=16k=16. For majority-voting, performance improves gradually from k=2k=2 and plateaus at k=24k=24.
 
-![Refer to caption](/html/2510.02387/assets/x16.png)
-
+!(/html/2510.02387/assets/x16.png)
 
 (a)
 
-![Refer to caption](/html/2510.02387/assets/x17.png)
-
+!(/html/2510.02387/assets/x17.png)
 
 (b)
 
@@ -1087,9 +1015,6 @@ Table 5: SWE-bench Verified resolve rates for alternative agentic harnesses are 
 |  | 500 turns | 40.8 |
 | Ours (bash-only) | 128 turns | 42.1 |
 | Ours | 128 turns | 53.9 |
-
-
-
 
 Table 6: Results on Aider Polyglot for CWM and baselines from the official leaderboard.
 
@@ -1132,9 +1057,6 @@ Table 7: Results on Terminal-Bench for CWM and baselines from the official leade
 | Gemini 2.5 Flash | Terminus 1 | 16.8 |
 | Qwen3-32B | TerminalAgent | 15.5 |
 
-
-
-
 Table 8: Execution trace prediction is competitive with reasoning for CruxEval-output pass@1 scores. For CWM, we use temperature 0.60.6, top-p 0.950.95, and 1010 generations, while for CWM SFT we use greedy decoding.
 
 | Budget | Mode | CWM SFT | CWM |
@@ -1147,8 +1069,6 @@ Table 8: Execution trace prediction is competitive with reasoning for CruxEval-o
 ### 7.3 Execution trace prediction
 
 Next, we analyze the ability of CWM to perform trace prediction, analyze its prediction, and explore this ability to predict program termination.
-
-
 
 CruxEval-O as execution trace prediction. The following experiment evaluates CWM’s ability to predict Python execution traces using the format introduced in [Section˜2.2](#S2.SS2 "2.2 Python tracing: neural code interpretation data ‣ 2 Code world model datasets ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models"). We prompt the model with functions and input arguments from the CruxEval test set, ask it to predict the function execution trace line-by-line, and then compare its output prediction to the ground truth. To elicit trace prediction, we construct prompts following our custom trace format, with the input containing the function as the code context, the call arguments as the state, and the line containing the function definition as the first action.
 In addition to this “full” execution trace prediction scenario, we also study a single-“step” scenario, for which we ask the model to directly predict the return value of the function. This is achieved by replacing the <|line\_sep|> token with <|return\_sep|>.
@@ -1287,15 +1207,11 @@ Table 13: Performance of CWM and CWMMid\textsc{CWM}\_{\textup{\tiny{Mid}}}, (CWM
 | MBPP | 73.4 | 67.8 | 78.2 | 73.6 | 68.4 | 66.2 | 68.6 |
 | CRUX-O | 83.4 | 78.9 | 72.5 | 67.8 | 60.0 | – | 61.9 |
 
-
-
-![Refer to caption](/html/2510.02387/assets/x18.png)
-
+!(/html/2510.02387/assets/x18.png)
 
 (a)
 
-![Refer to caption](/html/2510.02387/assets/x19.png)
-
+!(/html/2510.02387/assets/x19.png)
 
 (b)
 
@@ -2492,8 +2408,6 @@ sed -i ’898,900c\ # Fail\n return self.\_\_getattribute\_\_(attr)’ /testbed/
 
 Figure 11.19: Example intermediate turns in SWE RL (bash-only). The agent learns to correct indentation mistakes from wrong edits by restoring the original file state using git checkout, followed by applying a correct edit using sed.
 
-
-
 [⬇](data:text/plain;base64,VGhlIGNvZGUgcmFuIHdpdGhvdXQgZXJyb3JzLCBhbmQgYG1vZGVsLmR1YWxfY29lZl9gIHdhcyBwcmludGVkLCB3aGljaCBzaG91bGQgYmUgYW4gZW1wdHkgQ1NSIG1hdHJpeC4gSG93ZXZlciwgdGhlIG91dHB1dCBpcyBlbXB0eSwgd2hpY2ggc3VnZ2VzdHMgdGhhdCBgbW9kZWwuZHVhbF9jb2VmX2AgaXMgaW5kZWVkIGFuIGVtcHR5IG1hdHJpeC4KCk5vdywgSSBuZWVkIHRvIHZlcmlmeSB0aGF0IHRoaXMgZml4IGRvZXNuJ3QgYnJlYWsgYW55IG90aGVyIGZ1bmN0aW9uYWxpdHkuIFRvIGRvIHRoYXQsIEknbGwgcnVuIHRoZSB0ZXN0cyBmb3IgdGhlIFNWTSBtb2R1bGUgaW4gc2tsZWFybiB0byBlbnN1cmUgdGhhdCBhbGwgdGVzdHMgcGFzcy4=)
 
 The code ran without errors, and ‘model.dual\_coef\_‘ was printed, which should be an empty CSR matrix. However, the output is empty, which suggests that ‘model.dual\_coef\_‘ is indeed an empty matrix.
@@ -2616,8 +2530,6 @@ The issue was a ZeroDivisionError in the ‘\_sparse\_fit‘ method of the SVM c
 
 Figure 11.20: Example final turns in SWE RL, with details like budget notices omitted for brevity. The agent verifies that the patch does not break existing functionality, submits the patch, and produces a summary.
 
-
-
 [⬇](data:text/plain;base64,T2theSwgc28gdGhlIGdyZXAgY29tbWFuZCBzaG93cyB0aGF0IGluIGRqYW5nby9kYi9tb2RlbHMvZmllbGRzL2pzb24ucHksIHRoZXJlIGFyZSBzZXZlcmFsIGluc3RhbmNlcyBvZiBqc29uLmR1bXBzIGJlaW5nIHVzZWQuIFRoZSBvbmVzIGluIGxpbmVzIDg0IGFuZCA5NSBhcmUgdGhlIG9uZXMgaW4gdGhlIGdldF9wcmVwX3ZhbHVlIGFuZCB2YWxpZGF0ZSBtZXRob2RzLCByZXNwZWN0aXZlbHkuIFRoZXNlIGFyZSB0aGUgb25lcyB0aGF0IG1pZ2h0IG5lZWQgdG8gYmUgbW9kaWZpZWQgdG8gaW5jbHVkZSBlbnN1cmVfYXNjaWk9RmFsc2UgdG8gZml4IHRoZSBVbmljb2RlIGRpc3BsYXkgaXNzdWUgaW4gdGhlIGFkbWluLgoKSG93ZXZlciwgd2FpdCBhIG1pbnV0ZS4gVGhlIGdldF9wcmVwX3ZhbHVlIG1ldGhvZCBpcyB1c2VkIHRvIHByZXBhcmUgdGhlIHZhbHVlIGZvciB0aGUgZGF0YWJhc2UsIGJ1dCB0aGUgZGlzcGxheV9pbiB0aGUgYWRtaW4gdXNlcyB0aGlzIG1ldGhvZCBhcyB3ZWxsLiBJZiB3ZSBtb2RpZnkgZ2V0X3ByZXBfdmFsdWUgdG8gaW5jbHVkZSBlbnN1cmVfYXNjaWk9RmFsc2UsIHRoYXQgY291bGQgYWZmZWN0IGhvdyB0aGUgZGF0YSBpcyBzdG9yZWQgaW4gdGhlIGRhdGFiYXNlLCBidXQgSlNPTiBmaWVsZHMgc2hvdWxkIGhhbmRsZSBVbmljb2RlIGNvcnJlY3RseSByZWdhcmRsZXNzLiBIb3dldmVyLCAuLi4gQnV0IGxldCBtZSB0aGluayBhZ2Fpbi4gVGhlIGRpc3BsYXlfZm9yX2ZpZWxkIGZ1bmN0aW9uIGluIGRqYW5nby9jb250cmliL2FkbWluL3V0aWxzLnB5IGNhbGxzIGdldF9wcmVwX3ZhbHVlIG9uIHRoZSBKU09ORmllbGQgaW5zdGFuY2UuIElmIGdldF9wcmVwX3ZhbHVlIHJldHVybnMgYSBzdHJpbmcgd2l0aCBlbnN1cmVfYXNjaWk9RmFsc2UsIHRoZW4gdGhlIGRpc3BsYXllZCBKU09OIGRhdGEgd2lsbCBzaG93IFVuaWNvZGUgY2hhcmFjdGVycyBjb3JyZWN0bHkuCgpTbywgbW9kaWZ5aW5nIHRoZSBnZXRfcHJlcF92YWx1ZSBtZXRob2QgdG8gaW5jbHVkZSBlbnN1cmVfYXNjaWk9RmFsc2UgaW4gdGhlIGpzb24uZHVtcHMgY2FsbCBzaG91bGQgZml4IHRoZSBpc3N1ZS4gU2ltaWxhcmx5LCB0aGUgdmFsaWRhdGUgbWV0aG9kJ3MganNvbi5kdW1wcyBjYWxsIG1pZ2h0IG5vdCBuZWVkIHRvIGNoYW5nZSwgYnV0IHRvIGJlIGNvbnNpc3RlbnQsIG1heWJlIGl0J3MgYmV0dGVyIHRvIGluY2x1ZGUgZW5zdXJlX2FzY2lpPUZhbHNlIHRoZXJlIGFzIHdlbGwsIGFsdGhvdWdoIGl0J3MgbGVzcyBjcml0aWNhbCBmb3IgZGlzcGxheSBwdXJwb3Nlcy4gQWRkaXRpb25hbGx5LCB0aGUgbGluZXMgMTIyLCAzODMsIGFuZCA0MTYgdXNlIGpzb24uZHVtcHMsIGJ1dCB0aGVzZSBzZWVtIHRvIGJlIGZvciBkaWZmZXJlbnQgcHVycG9zZXMgKGNvbXBpbGluZyBKU09OIHBhdGhzLCBldGMuKS4gSG93ZXZlciwgaWYgdGhlc2UgYXJlIHBhcnQgb2YgdGhlIHNlcmlhbGl6YXRpb24gcHJvY2VzcyBmb3IgSlNPTkZpZWxkIHZhbHVlcywgdGhleSBtaWdodCBhbHNvIG5lZWQgdG8gaW5jbHVkZSBlbnN1cmVfYXNjaWk9RmFsc2UgdG8gZW5zdXJlIGNvbnNpc3RlbnQgYmVoYXZpb3IuIEJ1dCB3aXRob3V0IG1vcmUgY29udGV4dCwgaXQncyBoYXJkZXIgdG8gc2F5LiBUaGUgbWFpbiBpc3N1ZSBpcyB0aGUgYWRtaW4gZGlzcGxheSwgd2hpY2ggaXMgaGFuZGxlZCBieSBnZXRfcHJlcF92YWx1ZS4KCkxldCBtZSBjaGVjayB0aGUgcHVsbCByZXF1ZXN0IGFnYWluIChodHRwczovL2dpdGh1Yi5jb20vYWRhbWNoYWluei9kamFuZ28tbXlzcWwvcHVsbC83MTQpIHRvIHNlZSB3aGF0IGNoYW5nZXMgd2VyZSBtYWRlLiBTaW5jZSBJIGNhbid0IGFjY2VzcyB0aGUgbGluaywgSSdsbCBoYXZlIHRvIHJlbHkgb24gdGhlIGlzc3VlIGRlc2NyaXB0aW9uLCB3aGljaCBtZW50aW9ucyB0aGF0IHRoZSBwdWxsIHJlcXVlc3QgZml4ZWQgdGhlIHByb2JsZW0gYnkgbW9kaWZ5aW5nIGhvdyBKU09OIGRhdGEgaXMgc2VyaWFsaXplZC4gQXNzdW1pbmcgdGhhdCB0aGUgZml4IGludm9sdmVzIGFkZGluZyBlbnN1cmVfYXNjaWk9RmFsc2UgdG8gdGhlIGpzb24uZHVtcHMgY2FsbHMgaW4gdGhlIEpTT05GaWVsZCBjbGFzcywgSSBzaG91bGQgbW9kaWZ5IHRoZSBnZXRfcHJlcF92YWx1ZSBhbmQgcG9zc2libHkgb3RoZXIgcmVsZXZhbnQgbWV0aG9kcy4gQW5vdGhlciB0aGluZyB0byBjb25zaWRlcjogdGhlIGZvcm1zLkpTT05GaWVsZCBpbiBkamFuZ28vZm9ybXMvZmllbGRzLnB5IG1pZ2h0IGFsc28gbmVlZCBzaW1pbGFyIGNoYW5nZXMsIGVzcGVjaWFsbHkgaW4gaG93IGl0IHByZXBhcmVzIHZhbHVlcyBmb3IgZGlzcGxheS4gTGV0IG1lIGNoZWNrIHRoYXQgZmlsZSBhcyB3ZWxsLiBMb29raW5nIGF0IGRqYW5nby9mb3Jtcy9maWVsZHMucHksIHRoZSBKU09ORmllbGQgY2xhc3MgaGFzIGEgcHJlcGFyZV92YWx1ZSBtZXRob2Q6CgpkZWYgcHJlcGFyZV92YWx1ZShzZWxmLCB2YWx1ZSk6CiAgICBpZiB2YWx1ZSBpcyBOb25lOgogICAgICAgIHJldHVybiBOb25lCiAgICBpZiBpc2luc3RhbmNlKHZhbHVlLCBzdHIpOgogICAgICAgIHJldHVybiB2YWx1ZQogICAgcmV0dXJuIHNlbGYuZW5jb2Rlci5kdW1wcyh2YWx1ZSkKCkhlcmUsIHNlbGYuZW5jb2Rlci5kdW1wcyh2YWx1ZSkgaXMgdXNlZC4gSWYgdGhlIGVuY29kZXIgaXMgdGhlIGRlZmF1bHQgSlNPTkVuY29kZXIsIGl0IHdvdWxkIHN0aWxsIHVzZSBBU0NJSSBlbmNvZGluZy4gSG93ZXZlciwgdGhlIGVuY29kZXIgZm9yIEpTT05GaWVsZCBjYW4gYmUgY3VzdG9taXplZCwgYnV0IHRoZSBkZWZhdWx0IG1pZ2h0IG5vdCBzZXQgZW5zdXJlX2FzY2lpPUZhbHNlLiBUbyBlbnN1cmUgdGhhdCB0aGUgZm9ybSBmaWVsZCBkaXNwbGF5cyBVbmljb2RlIGNoYXJhY3RlcnMgY29ycmVjdGx5LCBtYXliZSB0aGlzIHNob3VsZCBhbHNvIGJlIG1vZGlmaWVkIHRvIGluY2x1ZGUgZW5zdXJlX2FzY2lpPUZhbHNlLCBidXQgc2luY2UgdGhlIGVuY29kZXIgaXMgcGFydCBvZiB0aGUgZmllbGQncyBjb25maWd1cmF0aW9uLCBpdCBtaWdodCBiZSBiZXR0ZXIgdG8gaGFuZGxlIGl0IHRoZXJlLiBBbHRlcm5hdGl2ZWx5LCBtYXliZSB0aGUgZGlzcGxheV9mb3JfZmllbGQgZnVuY3Rpb24gaW4gdGhlIGFkbWluIHNob3VsZCBoYW5kbGUgSlNPTkZpZWxkIHZhbHVlcyBkaWZmZXJlbnRseSwgYnV0IHRoYXQgbWlnaHQgYmUgbW9yZSBjb21wbGV4LiBHaXZlbiB0aGUgaW5mb3JtYXRpb24sIHRoZSBtb3N0IHN0cmFpZ2h0Zm9yd2FyZCBmaXggc2VlbXMgdG8gYmUgbW9kaWZ5aW5nIHRoZSBnZXRfcHJlcF92YWx1ZSBtZXRob2QgaW4gZGphbmdvL2RiL21vZGVscy9maWVsZHMvanNvbi5weSB0byBpbmNsdWRlIGVuc3VyZV9hc2NpaT1GYWxzZSBpbiB0aGUganNvbi5kdW1wcyBjYWxsLiBUaGlzIHdvdWxkIGFmZmVjdCBob3cgSlNPTiBkYXRhIGlzIGRpc3BsYXllZCBpbiB0aGUgYWRtaW4sIGFzIHRoYXQncyB3aGVyZSBnZXRfcHJlcF92YWx1ZSBpcyBjYWxsZWQuCgpMZXQgbWUgcHJvY2VlZCB3aXRoIHRoYXQgY2hhbmdlIGFuZCBzZWUgaWYgaXQgcmVzb2x2ZXMgdGhlIGlzc3VlLg==)
 
 Okay, so the grep command shows that in django/db/models/fields/json.py, there are several instances of json.dumps being used. The ones in lines 84 and 95 are the ones in the get\_prep\_value and validate methods, respectively. These are the ones that might need to be modified to include ensure\_ascii=False to fix the Unicode display issue in the admin.
@@ -2721,8 +2633,6 @@ File django/db/models/fields/json.py has been successfully updated at line 81 an
 Review the changes and make sure they are as expected.
 
 Figure 11.21: Example of the CWM SWE RL agent engaging in long reasoning before modifying the file with the edit tool. For conciseness, some details (e.g., budget notices) are omitted and reasoning paragraphs are merged.
-
-
 
 [⬇](data:text/plain;base64,PHxiZWdpbl9vZl90ZXh0fD48fHRyYWNlX2NvbnRleHRfc3RhcnR8PgpkZWYgZihuKToKICAgIHAgPSAnJwogICAgaWYgbiUKICAgICAgICBwKz0nc24nCiAgICBlbHNlOgogICAgICAgIHJldHVybiBuKm4KICAgIGZvciB4IGluIHJhbmdlKDEsIG4rMSk6CiAgICAgICAgaWYgeCUKICAgICAgICAgICAgcCs9J3RvJwogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHArPSd0cycKcmV0dXJuIHAKCmRlZiBtYWluKCk6ICAjIDw8IFNUQVJUX09GX1RSQUNFCiAgICByZXR1cm4gZigxKQo8fGZyYW1lX3NlcHw+PHxjYWxsX3NlcHw+e30KPHxhY3Rpb25fc2VwfD5kZWYgbWFpbigpOgo8fGZyYW1lX3NlcHw+KCpAXHRleHRjb2xvcntjd21fc3RyaW5nX2NvbG9yX2JyaWdodH17XHRleHR0dHs8fHJldHVyblxfc2VwfD59fUAqKQotLS0tRU5EIE9GIFBST01QVC0tLS0KPHxhY3Rpb25fc2VwfD4gICAgcmV0dXJuIGYoMSkKPHxhcmdfc2VwfD4iJ3NudHMnIjx8ZnJhbWVfc2VwfD4=)
 
@@ -2852,8 +2762,6 @@ return f(1)
 
 Figure 11.22: Python execution trace prediction for CruxEval output prediction in (a) single-step mode and (b) full, line-by-line, mode.
 The predictions shown are generated by CWM.
-
-
 
 [⬇](data:text/plain;base64,PHxiZWdpbl9vZl90ZXh0fD48fHRyYWNlX2NvbnRleHRfc3RhcnR8PgpkZWYgZihudW1zKToKICAgIGEgPSAwCiAgICBmb3IgaSBpbiByYW5nZShsZW4obnVtcykpOgogICAgICAgIG51bXMuaW5zZXJ0KGksIG51bXNbYV0pCiAgICAgICAgYSArPSAxCiAgICByZXR1cm4gbnVtcwoKZGVmIG1haW4oKTogICMgPDwgU1RBUlRfT0ZfVFJBQ0UKICAgIHJldHVybiBmKFsxLCAzLCAtMSwgMSwgLTIsIDZdKQo8fGZyYW1lX3NlcHw+PHxjYWxsX3NlcHw+e308fGFjdGlvbl9zZXB8PmRlZiBtYWluKCk6ICAjIDw8IFNUQVJUX09GX1RSQUNFCjx8ZnJhbWVfc2VwfD4KLS0tRU5EIE9GIFBST01QVC0tLQo8fGxpbmVfc2VwfD57fTx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBmKFsxLCAzLCAtMSwgMSwgLTIsIDZdKQo8fGZyYW1lX3NlcHw+PHxjYWxsX3NlcHw+eyJudW1zIjogIlsxLCAzLCAtMSwgMSwgLTIsIDZdIn08fGFjdGlvbl9zZXB8PmRlZiBmKG51bXMpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICBhID0gMAo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIiwgImEiOiAiMCJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGkgaW4gcmFuZ2UobGVuKG51bXMpKToKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICIuLiIsICJhIjogIi4uIiwgImkiOiAiMCJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIG51bXMuaW5zZXJ0KGksIG51bXNbYV0pCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiWzEsIDEsIDMsIC0xLCAxLCAtMiwgNl0iLCAiYSI6ICIuLiIsICJpIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICAgICAgYSArPSAxCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiLi4iLCAiYSI6ICIxIiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBpIGluIHJhbmdlKGxlbihudW1zKSk6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiLi4iLCAiYSI6ICIuLiIsICJpIjogIjEifTx8YWN0aW9uX3NlcHw+ICAgICAgICBudW1zLmluc2VydChpLCBudW1zW2FdKQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIlsxLCAxLCAxLCAzLCAtMSwgMSwgLTIsIDZdIiwgImEiOiAiLi4iLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIGEgKz0gMQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIiwgImEiOiAiMiIsICJpIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICBmb3IgaSBpbiByYW5nZShsZW4obnVtcykpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIiwgImEiOiAiLi4iLCAiaSI6ICIyIn08fGFjdGlvbl9zZXB8PiAgICAgICAgbnVtcy5pbnNlcnQoaSwgbnVtc1thXSkKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICJbMSwgMSwgMSwgMSwgMywgLTEsIDEsIC0yLCA2XSIsICJhIjogIi4uIiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgICAgICBhICs9IDEKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICIuLiIsICJhIjogIjMiLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGkgaW4gcmFuZ2UobGVuKG51bXMpKToKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICIuLiIsICJhIjogIi4uIiwgImkiOiAiMyJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIG51bXMuaW5zZXJ0KGksIG51bXNbYV0pCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiWzEsIDEsIDEsIDEsIDEsIDMsIC0xLCAxLCAtMiwgNl0iLCAiYSI6ICIuLiIsICJpIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICAgICAgYSArPSAxCjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiLi4iLCAiYSI6ICI0IiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBpIGluIHJhbmdlKGxlbihudW1zKSk6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57Im51bXMiOiAiLi4iLCAiYSI6ICIuLiIsICJpIjogIjQifTx8YWN0aW9uX3NlcHw+ICAgICAgICBudW1zLmluc2VydChpLCBudW1zW2FdKQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIlsxLCAxLCAxLCAxLCAxLCAxLCAzLCAtMSwgMSwgLTIsIDZdIiwgImEiOiAiLi4iLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIGEgKz0gMQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIiwgImEiOiAiNSIsICJpIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICBmb3IgaSBpbiByYW5nZShsZW4obnVtcykpOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJudW1zIjogIi4uIiwgImEiOiAiLi4iLCAiaSI6ICI1In08fGFjdGlvbl9zZXB8PiAgICAgICAgbnVtcy5pbnNlcnQoaSwgbnVtc1thXSkKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICJbMSwgMSwgMSwgMSwgMSwgMSwgMSwgMywgLTEsIDEsIC0yLCA2XSIsICJhIjogIi4uIiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgICAgICBhICs9IDEKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICIuLiIsICJhIjogIjYiLCAiaSI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGkgaW4gcmFuZ2UobGVuKG51bXMpKToKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsibnVtcyI6ICIuLiIsICJhIjogIi4uIiwgImkiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBudW1zCjx8ZnJhbWVfc2VwfD48fHJldHVybl9zZXB8Pjx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBudW1zPHxhcmdfc2VwfD4iWzEsIDEsIDEsIDEsIDEsIDEsIDEsIDMsIC0xLCAxLCAtMiwgNl0iCjx8ZnJhbWVfc2VwfD48fHJldHVybl9zZXB8Pjx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBmKFsxLCAzLCAtMSwgMSwgLTIsIDZdKTx8YXJnX3NlcHw+IlsxLCAxLCAxLCAxLCAxLCAxLCAxLCAzLCAtMSwgMSwgLTIsIDZdIjx8ZnJhbWVfc2VwfD4=)
 
@@ -3033,8 +2941,6 @@ assert f([1, 3, -1, 1, -2, 6]) == [1, 1, 1, 1, 3, 1, -1, 3, -1, 1, -2, 6]
 
 Figure 11.23: CWM execution trace prediction (correct) vs. natural language reasoning trace (wrong). In this CruxEval example, a list is modified while iterating over it. In execution trace prediction mode the CWM model generates the correct answer [1, 1, 1, 1, 1, 1, 1, 3, -1, 1, -2, 6]. During reasoning in natural language, even though the CWM model recognizes the modification, it still predicts the wrong output.
 
-
-
 [⬇](data:text/plain;base64,PHxiZWdpbl9vZl90ZXh0fD48fHRyYWNlX2NvbnRleHRfc3RhcnR8PgpkZWYgZihzZXF1ZW5jZSwgdmFsdWUpOgogICAgaSA9IG1heChzZXF1ZW5jZS5pbmRleCh2YWx1ZSkgLSBsZW4oc2VxdWVuY2UpIC8vIDMsIDApCiAgICByZXN1bHQgPSAnJwogICAgZm9yIGosIHYgaW4gZW51bWVyYXRlKHNlcXVlbmNlW2k6XSk6CiAgICAgICAgaWYgdiA9PSAnKyc6CiAgICAgICAgICAgIHJlc3VsdCArPSB2YWx1ZQogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlc3VsdCArPSBzZXF1ZW5jZVtpICsgal0KICAgIHJldHVybiByZXN1bHQKCmRlZiBtYWluKCk6ICAjIDw8IFNUQVJUX09GX1RSQUNFCiAgICByZXR1cm4gZignaG9zdScsICdvJyk8fGZyYW1lX3NlcHw+PHxjYWxsX3NlcHw+e308fGFjdGlvbl9zZXB8PmRlZiBtYWluKCk6ICAjIDw8IFNUQVJUX09GX1RSQUNFCjx8ZnJhbWVfc2VwfD4KLS0tRU5EIE9GIFBST01QVC0tLQo8fGxpbmVfc2VwfD57fTx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiBmKCdob3N1JywgJ28nKQo8fGZyYW1lX3NlcHw+PHxjYWxsX3NlcHw+eyJzZXF1ZW5jZSI6ICInaG9zdSciLCAidmFsdWUiOiAiJ28nIn08fGFjdGlvbl9zZXB8PmRlZiBmKHNlcXVlbmNlLCB2YWx1ZSk6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57InNlcXVlbmNlIjogIi4uIiwgInZhbHVlIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICBpID0gbWF4KHNlcXVlbmNlLmluZGV4KHZhbHVlKSAtIGxlbihzZXF1ZW5jZSkgLy8gMywgMCkKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8Pnsic2VxdWVuY2UiOiAiLi4iLCAidmFsdWUiOiAiLi4iLCAoKkBcdGV4dGNvbG9ye2N3bV9zdHJpbmdfY29sb3JfYnJpZ2h0fXtcdGV4dHR0eyJpIjogIjEifX1AKil9PHxhY3Rpb25fc2VwfD4gICAgcmVzdWx0ID0gJycKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8Pnsic2VxdWVuY2UiOiAiLi4iLCAidmFsdWUiOiAiLi4iLCAiaSI6ICIuLiIsICJyZXN1bHQiOiAiJycifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBqLCB2IGluIGVudW1lcmF0ZShzZXF1ZW5jZVtpOl0pOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICIuLiIsICJqIjogIjAiLCAidiI6ICInbycifTx8YWN0aW9uX3NlcHw+ICAgICAgICBpZiB2ID09ICcrJzoKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8Pnsic2VxdWVuY2UiOiAiLi4iLCAidmFsdWUiOiAiLi4iLCAiaSI6ICIuLiIsICJyZXN1bHQiOiAiLi4iLCAiaiI6ICIuLiIsICJ2IjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICAgICAgICAgIHJlc3VsdCArPSBzZXF1ZW5jZVtpICsgal0KPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8Pnsic2VxdWVuY2UiOiAiLi4iLCAidmFsdWUiOiAiLi4iLCAiaSI6ICIuLiIsICJyZXN1bHQiOiAiJ28nIiwgImoiOiAiLi4iLCAidiI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGosIHYgaW4gZW51bWVyYXRlKHNlcXVlbmNlW2k6XSk6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57InNlcXVlbmNlIjogIi4uIiwgInZhbHVlIjogIi4uIiwgImkiOiAiLi4iLCAicmVzdWx0IjogIi4uIiwgImoiOiAiMSIsICJ2IjogIidzJyJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIGlmIHYgPT0gJysnOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICIuLiIsICJqIjogIi4uIiwgInYiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgICAgICAgICAgcmVzdWx0ICs9IHNlcXVlbmNlW2kgKyBqXQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICInb3MnIiwgImoiOiAiLi4iLCAidiI6ICIuLiJ9PHxhY3Rpb25fc2VwfD4gICAgZm9yIGosIHYgaW4gZW51bWVyYXRlKHNlcXVlbmNlW2k6XSk6Cjx8ZnJhbWVfc2VwfD48fGxpbmVfc2VwfD57InNlcXVlbmNlIjogIi4uIiwgInZhbHVlIjogIi4uIiwgImkiOiAiLi4iLCAicmVzdWx0IjogIi4uIiwgImoiOiAiMiIsICJ2IjogIid1JyJ9PHxhY3Rpb25fc2VwfD4gICAgICAgIGlmIHYgPT0gJysnOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICIuLiIsICJqIjogIi4uIiwgInYiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgICAgICAgICAgcmVzdWx0ICs9IHNlcXVlbmNlW2kgKyBqXQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICInb3N1JyIsICJqIjogIi4uIiwgInYiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIGZvciBqLCB2IGluIGVudW1lcmF0ZShzZXF1ZW5jZVtpOl0pOgo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+eyJzZXF1ZW5jZSI6ICIuLiIsICJ2YWx1ZSI6ICIuLiIsICJpIjogIi4uIiwgInJlc3VsdCI6ICIuLiIsICJqIjogIi4uIiwgInYiOiAiLi4ifTx8YWN0aW9uX3NlcHw+ICAgIHJldHVybiByZXN1bHQKPHxmcmFtZV9zZXB8Pjx8cmV0dXJuX3NlcHw+PHxhY3Rpb25fc2VwfD4gICAgcmV0dXJuIHJlc3VsdDx8YXJnX3NlcHw+Iidvc3UnIgo8fGZyYW1lX3NlcHw+PHxyZXR1cm5fc2VwfD48fGFjdGlvbl9zZXB8PiAgICByZXR1cm4gZignaG9zdScsICdvJyk8fGFyZ19zZXB8PiInb3N1JyI8fGZyYW1lX3NlcHw+)
 
 <|begin\_of\_text|><|trace\_context\_start|>
@@ -3188,8 +3094,6 @@ assert f(’hosu’, ’o’) == ’hosu’
 Figure 11.24: CWM execution trace prediction (wrong) vs. CWM natural language reasoning trace (correct). In this CruxEval example, the CWM model with reasoning in natural language predicts the correct output ’hosu’.
 In execution trace prediction mode, the CWM model predicts ’osu’, because it fails to predict the value of the variable i in the first line correctly. It predicts 1, instead of the true value 0.
 
-
-
 [⬇](data:text/plain;base64,PT09PT0gQ09OVEVYVCA9PT09PQoKZGVmIGNvdW50X2xldHRlcnMocywgbGV0dGVyKToKICAgIG4gPSAwCiAgICBmb3IgYyBpbiBzOgogICAgICAgIG4gKz0gaW50KGMgPT0gbGV0dGVyKQogICAgcmV0dXJuIG4KCmRlZiBmb3JtYXRfYW5zd2VyKHdvcmQsIGxldHRlciwgY291bnQpOgogICAgcGFydHMgPSBbCiAgICAgICAgIkZvdW5kIiwKICAgICAgICBmIntjb3VudDowNGR9IiwKICAgICAgICAib2NjdXJyZW5jZXMgb2YgdGhlIGxldHRlciIsCiAgICAgICAgbGV0dGVyLAogICAgICAgICJpbiIsCiAgICAgICAgd29yZAogICAgXQogICAgcmV0dXJuICIgIi5qb2luKHBhcnRzKQoKZGVmIGYoYyk6ICAjIDw8IFNUQVJUX09GX1RSQUNFCiAgICB3b3JkID0gInN0cmF3YmVycnkiCiAgICBudW0gPSBjb3VudF9sZXR0ZXJzKHdvcmQsIGMpCiAgICBhbnMgPSBmb3JtYXRfYW5zd2VyKHdvcmQsIGMsIG51bSkKICAgIHJldHVybiBhbnMKCgo9PT09PSBTRVNTSU9OIFNUQVJUID09PT09CgotPiBkZWYgZihjKToKPj4gcHJpbnQKeydjJzogIidyJyJ9Cj4+IG5leHQKLT4gICAgIHdvcmQgPSAic3RyYXdiZXJyeSIKPj4gbmV4dAotPiAgICAgbnVtID0gY291bnRfbGV0dGVycyh3b3JkLCAiciIpCj4+IHN0ZXAKLT4gZGVmIGNvdW50X2xldHRlcnMocywgbGV0dGVyKToKPj4gbmV4dAotPiAgICAgbiA9IDAKPj4gbmV4dAotPiAgICAgZm9yIGMgaW4gczoKPj4gbmV4dAotPiAgICAgICAgIG4gKz0gaW50KGMgPT0gbGV0dGVyKQo+PiBwcmludAp7J3MnOiAiJ3N0cmF3YmVycnknIiwgJ2xldHRlcic6ICInciciLCAnbic6ICcwJywgJ2MnOiAiJ3MnIn0KPj4gbmV4dAotPiAgICAgZm9yIGMgaW4gczoKPj4gbmV4dAotPiAgICAgICAgIG4gKz0gaW50KGMgPT0gbGV0dGVyKQo+PiBwcmludAp7J3MnOiAiJ3N0cmF3YmVycnknIiwgJ2xldHRlcic6ICInciciLCAnbic6ICcwJywgJ2MnOiAiJ3QnIn0KPj4gb3V0Ci0+ICAgICBhbnMgPSBmb3JtYXRfYW5zd2VyKHdvcmQsICJyIiwgbnVtKQo+PiBuZXh0Ci0+ICAgICByZXR1cm4gYW5zCj4+IG5leHQKLT4gICAgIHJldHVybiBhbnMKJ0ZvdW5kIDAwMDMgb2NjdXJyZW5jZXMgb2YgdGhlIGxldHRlciByIGluIHN0cmF3YmVycnkn)
 
 ===== CONTEXT =====
@@ -3298,8 +3202,6 @@ return ans
 
 Figure 11.25: Interactive Python code debugging with CWM. As a show-case of CWM’s execution tracing capabilities ([Section˜2.2](#S2.SS2 "2.2 Python tracing: neural code interpretation data ‣ 2 Code world model datasets ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models")), we present an interactive debugger to steer execution trace predictions. From a given code context, CWM predicts the initial state of the trace (we selected this example based on the prediction of the c parameter). We can then prompt the model to generate the program state at the next line, or to directly predict the return value after a function is entered. In this example, we step into the count\_letters function, step out of it after a few steps (implemented via continuous predictions until the function returns), and finally use next to predict the return value of format\_answer without line-by-line unrolling. In-between, we print the local variables as generated by CWM.
 
-
-
 [⬇](data:text/plain;base64,PHxiZWdpbl9vZl90ZXh0fD48fHRyYWNlX2NvbnRleHRfc3RhcnR8PmZyb20gbXlzdGVyaW91c19saWJyYXJ5IGltcG9ydCBmCmFzc2VydCBmKDIsIDIpID09IDQKYXNzZXJ0IGYoMywgNykgPT0gMTAKYXNzZXJ0IGYoLTEsIC04KSA9PSAtOQphc3NlcnQgZigxLCAxKSA9PSAyCmYoNSwgNSkgICMgPDwgU1RBUlRfT0ZfVFJBQ0UKPHxmcmFtZV9zZXB8PgotLS0tRU5EIE9GIFBST01QVC0tLQo8fGNhbGxfc2VwfD57fTx8YWN0aW9uX3NlcHw+Zig1LCA1KSAgIyA8PCBTVEFSVF9PRl9UUkFDRQo8fGZyYW1lX3NlcHw+PHxsaW5lX3NlcHw+e308fGFjdGlvbl9zZXB8PmYoNSwgNSkgICMgPDwgU1RBUlRfT0ZfVFJBQ0UKPHxmcmFtZV9zZXB8Pjx8Y2FsbF9zZXB8PnsiYSI6ICI1IiwgImIiOiAiNSJ9PHxhY3Rpb25fc2VwfD5kZWYgZihhLCBiKToKPHxmcmFtZV9zZXB8Pjx8bGluZV9zZXB8PnsiYSI6ICIuLiIsICJiIjogIi4uIn08fGFjdGlvbl9zZXB8PiAgICByZXR1cm4gYSArIGIKPHxmcmFtZV9zZXB8Pjx8cmV0dXJuX3NlcHw+PHxhY3Rpb25fc2VwfD4gICAgcmV0dXJuIGEgKyBiCjx8YXJnX3NlcHw+IjEwIjx8ZnJhbWVfc2VwfD4=)
 
 <|begin\_of\_text|><|trace\_context\_start|>from mysterious\_library import f
@@ -3331,8 +3233,6 @@ f(5, 5) # << START\_OF\_TRACE
 <|arg\_sep|>"10"<|frame\_sep|>
 
 Figure 11.26: CWM predicting the execution traces of an unseen function f, imported from a library not included in the context. The expected semantics of f can be inferred from the assertions in the context. CWM correctly generates the traces of a function that sums two numbers. It is possible that the model acquired this capability of jointly tracing and generating code because for some tracing data we do not include the source context of third-party libraries.
-
-
 
 [⬇](data:text/plain;base64,R2l2ZW4gdGhlIGZvbGxvd2luZyBwcm9ibGVtOiBUaHJlZSBsaXR0bGUgcGlncyBmcm9tIGFsbCBvdmVyIHRoZSB3b3JsZCBhcmUgbWVldGluZyBmb3IgYSBjb252ZW50aW9uISBFdmVyeSBtaW51dGUsIGEgdHJpcGxlIG9mIDMgbmV3IHBpZ3MgYXJyaXZlcyBvbiB0aGUgY29udmVudGlvbiBmbG9vci4gQWZ0ZXIgdGhlIG4tdGggbWludXRlLCB0aGUgY29udmVudGlvbiBlbmRzLgpUaGUgYmlnIGJhZCB3b2xmIGhhcyBsZWFybmVkIGFib3V0IHRoaXMgY29udmVudGlvbiwgYW5kIGhlIGhhcyBhbiBhdHRhY2sgcGxhbi4gQXQgc29tZSBtaW51dGUgaW4gdGhlIGNvbnZlbnRpb24sIGhlIHdpbGwgYXJyaXZlIGFuZCBlYXQgZXhhY3RseSB4IHBpZ3MuIFRoZW4gaGUgd2lsbCBnZXQgYXdheS4KVGhlIHdvbGYgd2FudHMgR3JlZ29yIHRvIGhlbHAgaGltIGZpZ3VyZSBvdXQgdGhlIG51bWJlciBvZiBwb3NzaWJsZSBhdHRhY2sgcGxhbnMgdGhhdCBpbnZvbHZlIGVhdGluZyBleGFjdGx5IHggcGlncyBmb3IgdmFyaW91cyB2YWx1ZXMgb2YgeCAoMSA8PSB4IDw9IDNuKS4gVHdvIGF0dGFjayBwbGFucyBhcmUgY29uc2lkZXJlZCBkaWZmZXJlbnQsIGlmIHRoZXkgb2NjdXIgYXQgZGlmZmVyZW50IHRpbWVzIG9yIGlmIHRoZSBzZXRzIG9mIGxpdHRsZSBwaWdzIHRvIGVhdCBhcmUgZGlmZmVyZW50LgpOb3RlIHRoYXQgYWxsIHF1ZXJpZXMgYXJlIGluZGVwZW5kZW50LCB0aGF0IGlzLCB0aGUgd29sZiBkb2VzIG5vdCBlYXQgdGhlIGxpdHRsZSBwaWdzLCBoZSBvbmx5IG1ha2VzIHBsYW5zIQpJbnB1dApUaGUgZmlyc3QgbGluZSBvZiBpbnB1dCBjb250YWlucyB0d28gaW50ZWdlcnMgbiBhbmQgcSAoMSA8PSBuIDw9IDEwXjYsIDEgPD0gcSA8PSAyKiAxMF41KSwgdGhlIG51bWJlciBvZiBtaW51dGVzIHRoZSBjb252ZW50aW9uIGxhc3RzIGFuZCB0aGUgbnVtYmVyIG9mIHF1ZXJpZXMgdGhlIHdvbGYgYXNrcy4KRWFjaCBvZiB0aGUgbmV4dCBxIGxpbmVzIGNvbnRhaW5zIGEgc2luZ2xlIGludGVnZXIgeF9pICgxIDw9IHhfaSA8PSBiM24pLCB0aGUgbnVtYmVyIG9mIHBpZ3MgdGhlIHdvbGYgd2lsbCBlYXQgaW4gdGhlIGktdGggcXVlcnkuCk91dHB1dApZb3Ugc2hvdWxkIHByaW50IHEgbGluZXMsIHdpdGggbGluZSBpIHJlcHJlc2VudGluZyB0aGUgbnVtYmVyIG9mIGF0dGFjayBwbGFucyBpZiB0aGUgd29sZiB3YW50cyB0byBlYXQgeF9pIHBpZ3MuIFNpbmNlIGVhY2ggcXVlcnkgYW5zd2VyIGNhbiBiZSBsYXJnZSwgb3V0cHV0IGVhY2ggYW5zd2VyIG1vZHVsbyAxMF45KzcuCkV4YW1wbGVzCklucHV0CjIgMwoxCjUKNgpPdXRwdXQKOQo2CjEKSW5wdXQKLi4uCk5vdGUKSW4gdGhlIGV4YW1wbGUgdGVzdCwgbj0yLiBUaHVzLCB0aGVyZSBhcmUgMyBwaWdzIGF0IG1pbnV0ZSAxLCBhbmQgNiBwaWdzIGF0IG1pbnV0ZSAyLiBUaGVyZSBhcmUgdGhyZWUgcXVlcmllczogeD0xLCB4PTUsIGFuZCB4PTYuCklmIHRoZSB3b2xmIHdhbnRzIHRvIGVhdCAxIHBpZywgaGUgY2FuIGRvIHNvIGluIDMrNj05IHBvc3NpYmxlIGF0dGFjayBwbGFucywgZGVwZW5kaW5nIG9uIHdoZXRoZXIgaGUgYXJyaXZlcyBhdCBtaW51dGUgMSBvciAyLgpJZiB0aGUgd29sZiB3YW50cyB0byBlYXQgNSBwaWdzLCB0aGUgd29sZiBjYW5ub3QgYXJyaXZlIGF0IG1pbnV0ZSAxLCBzaW5jZSB0aGVyZSBhcmVuJ3QgZW5vdWdoIHBpZ3MgYXQgdGhhdCB0aW1lLiBUaGVyZWZvcmUsIHRoZSB3b2xmIGhhcyB0byBhcnJpdmUgYXQgbWludXRlIDIsIGFuZCB0aGVyZSBhcmUgNiBwb3NzaWJsZSBhdHRhY2sgcGxhbnMuCklmIHRoZSB3b2xmIHdhbnRzIHRvIGVhdCA2IHBpZ3MsIGhpcyBvbmx5IHBsYW4gaXMgdG8gYXJyaXZlIGF0IHRoZSBlbmQgb2YgdGhlIGNvbnZlbnRpb24gYW5kIGRldm91ciBldmVyeWJvZHkuClJlbWVtYmVyIHRvIG91dHB1dCB5b3VyIGFuc3dlcnMgbW9kdWxvIDEwXjkrNyEKR2VuZXJhdGUgdGhlIGNvZGUgc3RlcCBieSBzdGVwLiBZb3UgTVVTVCBGSVJTVCBnZW5lcmF0ZSB0aGUgZXhlY3V0aW9uIHRyYWNlcyBmb3IgdGhlIGNvZGUgeW91IHdhbnQgdG8gZ2VuZXJhdGUgZ2l2ZW4gYSBzcGVjaWZpYyBpbnB1dCwgYW5kIHRoZW4gaWYgaXQncyBjb3JyZWN0IGV4dHJhY3QgdGhlIGNvZGUuCllvdXIgY29kZSBpbiB0aGUgZmluYWwgYW5zd2VyIHNob3VsZCBiZSBlbmNsb3NlZCBpbiB0cmlwbGUgYmFja3RpY2tzIGxpa2Ugc286IHB5dGhvbiBZT1VSIENPREUgSEVSRS4gVXNlIHRoZSBiYWNrdGlja3MgZm9yIHlvdXIgY29kZSBvbmx5Lgo8fGVvdF9pZHw+PHxzdGFydF9oZWFkZXJfaWR8PmFzc2lzdGFudA==)
 
@@ -3498,8 +3398,6 @@ return ans
 
 Figure 11.27: CWM interspersing code generation and execution tracing.
 As indicated by “…”, we have omitted parts of CWM reasoning for clarity here.
-
-
 
 [⬇](data:text/plain;base64,WW91IHdpbGwgYmUgZ2l2ZW4gYSBmdW5jdGlvbiBmIGFuZCBhIGNhbGwgdG8gdGhhdCBmdW5jdGlvbiBpbiB0aGUgZm9ybSBmKD8/KS4gVGhpcyBmdW5jdGlvbiBtaWdodCBlaXRoZXIgdGVybWluYXRlIGZvciBhbGwgaW5wdXRzIG9yIGRpdmVyZ2UgZm9yIHNvbWUgaW5wdXQuIElmIGl0IHRlcm1pbmF0ZXMgZm9yIGFsbCBpbnB1dHMsIHRoZW4gYW5zd2VyICIjIFQiLiBPdGhlcndpc2UsIGlmIGl0IGRpdmVyZ2VzLCBwcm92aWRlIGFuIGlucHV0IHN1Y2ggdGhhdCBleGVjdXRpbmcgZiBvbiB0aGUgaW5wdXQgbGVhZHMgdG8gYSBkaXZlcmdpbmcgZXhlY3V0aW9uIChpLmUuLCBmIGRvZXMgTk9UIGhhbHQgd2l0aCB0aGF0IGlucHV0KSwgZm9sbG93ZWQgYnkgdGhlIGNvbW1lbnQgIiMgTlQiLiBJbiBjYXNlIG5vbi10ZXJtaW5hdGluZyBpbnB1dHMgZXhpc3QsIHRoZXJlIG1heSBiZSBtdWx0aXBsZSBwb3NzaWJsZSBhbnN3ZXJzLCBidXQgeW91IHNob3VsZCBvbmx5IG91dHB1dCBvbmUuIEV4cHJlc3MgeW91ciBmaW5hbCBhbnN3ZXIgd2l0aCBlaXRoZXIgIiMgVCIsIGlmIHRoZSBmdW5jdGlvbiB0ZXJtaW5hdGVzIGZvciBhbGwgaW5wdXRzLCBvciBhcyBmdW5jdGlvbiBjYWxsIHRvIGYgY29udGFpbmluZyB0aGUgaW5wdXQgdGhhdCBsZWFkcyB0byB0aGUgbm9uLXRlcm1pbmF0aW5nIGV4ZWN1dGlvbiBmb2xsb3dlZCBieSB0aGUgY29tbWVudCAiIyBOVCIuCmBgYApkZWYgZih4KToKICAgIGRlZiBnKGkpOgogICAgICAgIGlmIGkgPD0gMDoKICAgICAgICAgICAgcmV0dXJuIDAKICAgICAgICByZXR1cm4gZyhnKGcoaS0yKSAtIDEpKSArIDEKICAgIGRlZiBoKGopOgogICAgICAgIGlmIGogPD0gMDoKICAgICAgICAgICAgcmV0dXJuIDAKICAgICAgICByZXR1cm4gaChnKGopLTEpIC0gMQogICAgaCh4KQogICAgcmV0dXJuIE5vbmUKCmYoPz8pICAjIFRlcm1pbmF0ZXM/CmBgYAotLS0tRU5EIE9GIFBST01QVC0tLQoKT2theSwgSSBuZWVkIHRvIGZpZ3VyZSBvdXQgaWYgdGhlIGZ1bmN0aW9uIGYoeCkgdGVybWluYXRlcyBmb3IgYWxsIGlucHV0cyBvciBpZiB0aGVyZSdzIHNvbWUgaW5wdXQgd2hlcmUgaXQgZGl2ZXJnZXMuIExldCdzIHN0YXJ0IGJ5IHVuZGVyc3RhbmRpbmcgd2hhdCB0aGUgZnVuY3Rpb24gZG9lcy4KVGhlIGZ1bmN0aW9uIGYoeCkgZGVmaW5lcyB0d28gaGVscGVyIGZ1bmN0aW9ucywgZyhpKSBhbmQgaChqKS4gSXQgdGhlbiBjYWxscyBoKHgpIGFuZCByZXR1cm5zIE5vbmUuIFNvLCB0aGUgdGVybWluYXRpb24gb2YgZih4KSBkZXBlbmRzIGVudGlyZWx5IG9uIHRoZSBiZWhhdmlvciBvZiBoKHgpLCB3aGljaCBpbiB0dXJuIGRlcGVuZHMgb24gZyhpKS4KTGV0IG1lIGJyZWFrIGRvd24gdGhlIGhlbHBlciBmdW5jdGlvbnM6CkZpcnN0LCBnKGkpOgpJZiBpIGlzIGxlc3MgdGhhbiBvciBlcXVhbCB0byAwLCByZXR1cm4gMC4KT3RoZXJ3aXNlLCByZXR1cm4gZyhnKGcoaS0yKSAtIDEpKSArIDEuCkhtbSwgdGhhdCdzIGEgcmVjdXJzaXZlIGZ1bmN0aW9uLiBMZXQncyBzZWUgd2hhdCBoYXBwZW5zIHdoZW4gd2UgY2FsbCBnIHdpdGggc29tZSBwb3NpdGl2ZSBpbnRlZ2VyLiBGb3IgZXhhbXBsZSwgaWYgaSBpcyAxOgpnKDEpIHdvdWxkIGNhbGwgZyhnKGcoLTEpIC0gMSkpICsgMS4gU2luY2UgZygtMSkgaXMgMCwgdGhpcyBiZWNvbWVzIGcoZygtMSkgLTEpID0gZygwIC0xKSA9IGcoLTEpID0gMC4gVGhlbiwgYWRkaW5nIDEgZ2l2ZXMgMS4gV2FpdCwgc28gZygxKSB3b3VsZCByZXR1cm4gMT8gTGV0IG1lIGNoZWNrIHRoYXQgYWdhaW4uCldhaXQsIGxldCdzIHN0ZXAgdGhyb3VnaCBnKDEpOgpnKDEpIGNhbGxzIGcoZyhnKDEtMikgLSAxKSkgKyAxCjEtMiBpcyAtMSwgc28gZygtMSkgaXMgMC4gVGhlbiwgMCAtMSBpcyAtMS4gU28gZygtMSkgaXMgMCBhZ2Fpbi4gVGhlbiwgdGhlIGlubmVybW9zdCBnIGlzIDAsIHNvIHdlIGhhdmUgZygwKSArMS4gV2FpdCwgbm8sIGxldCBtZSByZS1leHByZXNzIHRoaXMuCldhaXQsIHRoZSBleHByZXNzaW9uIGlzIGcoZyhnKGktMikgLSAxKSkgKyAxLiBTbyBmb3IgaT0xOgppLTIgPSAtMS4gU28gZygtMSkgaXMgMC4gVGhlbiwgc3VidHJhY3QgMTogMCAtMSA9IC0xLiBUaGVuLCBjYWxsIGcoLTEpIGFnYWluLCB3aGljaCBpcyAwLiBUaGVuLCBjYWxsIGcoMCkgd2hpY2ggaXMgMC4gVGhlbiBhZGQgMS4gV2FpdCwgbm8sIG1heWJlIEknbSBnZXR0aW5nIHRoZSBvcmRlciB3cm9uZy4KV2FpdCwgdGhlIGlubmVybW9zdCBjYWxsIGlzIGcoaS0yKS4gU28gZm9yIGk9MSwgaS0yIGlzIC0xLiBTbyBnKC0xKSByZXR1cm5zIDAuIFRoZW4gc3VidHJhY3QgMTogMCAtMSA9IC0xLiBUaGVuLCBjYWxsIGcoLTEpIGFnYWluLCB3aGljaCByZXR1cm5zIDAuIFRoZW4sIGNhbGwgZygwKSwgd2hpY2ggcmV0dXJucyAwLiBUaGVuIGFkZCAxLiBXYWl0LCB0aGF0IHNlZW1zIG9mZi4gTGV0IG1lIHdyaXRlIGl0IHN0ZXAgYnkgc3RlcDoKZygxKSA9IGcoZyhnKDEtMikgLSAxKSkgKyAxCj0gZyhnKGcoLTEpIC0gMSkpICsgMQo9IGcoZygwIC0gMSkpICsgMSAoc2luY2UgZygtMSkgaXMgMCkKPSBnKGcoLTEpKSArIDEKPSBnKDApICsgMSAoc2luY2UgZygtMSkgaXMgMCkKPSAwICsgMQo9IDEKU28gZygxKSByZXR1cm5zIDEuIFRoYXQncyBpbnRlcmVzdGluZy4gV2hhdCBhYm91dCBnKDIpPwpnKDIpID0gZyhnKGcoMCkgLSAxKSkgKyAxCmcoMCkgaXMgMCwgc28gMCAtMSA9IC0xLiBUaGVuIGcoLTEpIGlzIDAuIFRoZW4gZygwKSBpcyAwLiBTbyAwICsxID0gMS4gU28gZygyKSBpcyAxLgpXYWl0LCB0aGF0J3MgdGhlIHNhbWUgYXMgZygxKS4gV2hhdCBhYm91dCBnKDMpPwpnKDMpID0gZyhnKGcoMSkgLSAxKSkgKyAxCmcoMSkgaXMgMSwgc28gMSAtMSA9IDAuIFRoZW4gZygwKSBpcyAwLiBUaGVuIGcoMCkgaXMgMC4gU28gMCArMSA9IDEuIFNvIGcoMykgaXMgMS4KSG1tLCBzbyBmb3IgaT0xLDIsMywgZyhpKSByZXR1cm5zIDEuIFdoYXQgYWJvdXQgaT00PwpnKDQpID0gZyhnKGcoMikgLSAxKSkgKyAxCmcoMikgaXMgMSwgc28gMSAtMSA9IDAuIFRoZW4gZygwKSBpcyAwLiBUaGVuIGcoMCkgaXMgMC4gU28gMCArMSA9IDEuIFNvIGcoNCkgaXMgMS4KV2FpdCwgc28gaXQgc2VlbXMgbGlrZSBmb3IgYW55IGkgPiAwLCBnKGkpIHJldHVybnMgMS4gSXMgdGhhdCBwb3NzaWJsZT8gTGV0IG1lIGNoZWNrIGk9NS4KZyg1KSA9IGcoZyhnKDMpIC0gMSkpICsgMQpnKDMpIGlzIDEsIHNvIDEgLTEgPSAwLiBUaGVuIGcoMCkgaXMgMC4gVGhlbiBnKDApIGlzIDAuIFNvIDAgKzEgPSAxLiBZZXAsIHNhbWUgcmVzdWx0LgpTbywgaW4gZ2VuZXJhbCwgZm9yIGFueSBpID4gMCwgZyhpKSB3aWxsIGNvbXB1dGUgdG8gMS4gQmVjYXVzZSBubyBtYXR0ZXIgd2hhdCBpIGlzLCB3aGVuIHlvdSBzdWJ0cmFjdCAyIGVub3VnaCB0aW1lcywgeW91IGdldCB0byBhIHBvaW50IHdoZXJlIHRoZSBpbm5lciBnIGNhbGwgcmV0dXJucyAwLCBsZWFkaW5nIHRvIGEgY2hhaW4gdGhhdCBlbmRzIHVwIHdpdGggMCArMSA9IDEuCldhaXQsIGJ1dCB3aGF0IGlmIGkgaXMgZXZlbiBvciBvZGQ/IExldCdzIHNlZS4gTGV0J3MgdGFrZSBpPTY6CmcoNikgPSBnKGcoZyg0KSAtIDEpKSArIDEKZyg0KSBpcyAxLCBzbyAxIC0xID0gMC4gVGhlbiBnKDApIGlzIDAuIFRoZW4gZygwKSBpcyAwLiBTbyAwICsxID0gMS4gU2FtZSByZXN1bHQuClNvIHJlZ2FyZGxlc3Mgb2YgdGhlIGlucHV0IGkgKGFzIGxvbmcgYXMgaXQncyBwb3NpdGl2ZSksIGcoaSkgcmV0dXJucyAxLiBUaGF0J3MgYSBrZXkgaW5zaWdodC4gU28gZyhpKSBpcyBhIGZ1bmN0aW9uIHRoYXQgcmV0dXJucyAwIGlmIGkgPD0wLCBhbmQgMSBvdGhlcndpc2UuCk5vdywgbW92aW5nIG9uIHRvIGgoaik6CmgoaikgaXMgZGVmaW5lZCBhczoKSWYgaiA8PSAwLCByZXR1cm4gMC4KT3RoZXJ3aXNlLCByZXR1cm4gaChnKGopIC0gMSkgLSAxLgpCdXQgc2luY2UgZyhqKSBpcyAxIGZvciBhbnkgaiA+IDAsIHRoZW4gZyhqKSAtMSBpcyAwLiBTbyBmb3IgYW55IGogPiAwLCBoKGopIGJlY29tZXMgaCgwKSAtMS4gQnV0IGgoMCkgaXMgMCwgc28gaChqKSA9IDAgLTEgPSAtMS4gV2FpdCwgYnV0IHRoZW4gaChqKSBmb3IgaiA+IDAgd291bGQgYmUgLTEuIEJ1dCB0aGVuLCBpZiB3ZSBjYWxsIGggYWdhaW4gd2l0aCB0aGF0IHZhbHVlPwpXYWl0LCBsZXQncyBzdGVwIHRocm91Z2ggaChqKSBmb3IgaiA+IDAuIExldCdzIHRha2Ugaj0xOgpoKDEpID0gaChnKDEpIC0gMSkgLTEKZygxKSBpcyAxLCBzbyAxIC0xID0gMC4gVGhlbiBoKDApIGlzIDAuIFNvIDAgLTEgPSAtMS4gU28gaCgxKSByZXR1cm5zIC0xLgpXaGF0IGFib3V0IGo9Mj8KaCgyKSA9IGgoZygyKSAtMSkgLTEKZygyKSBpcyAxLCBzbyAxIC0xID0gMC4gaCgwKSBpcyAwLiAwIC0xID0gLTEuIFNvIGgoMikgaXMgLTEuClNhbWUgZm9yIGFueSBqID4gMC4gU28gaChqKSBmb3IgaiA+IDAgaXMgYWx3YXlzIC0xLiBTbyB3aGVuIGYoeCkgY2FsbHMgaCh4KSwgaWYgeCBpcyBwb3NpdGl2ZSwgaCh4KSByZXR1cm5zIC0xLCBhbmQgdGhlbiBmIHJldHVybnMgTm9uZS4gSWYgeCBpcyAwIG9yIG5lZ2F0aXZlLCBoKHgpIHJldHVybnMgMCwgYW5kIHRoZW4gZiByZXR1cm5zIE5vbmUuCldhaXQsIGJ1dCB0aGlzIHNlZW1zIHRvbyBzdHJhaWdodGZvcndhcmQuIFNvIGluIGFsbCBjYXNlcywgaCh4KSB0ZXJtaW5hdGVzLiBCZWNhdXNlIGV2ZW4gaWYgeCBpcyBhIHZlcnkgbGFyZ2UgbnVtYmVyLCBoKHgpIGp1c3QgZG9lcyBhIGNvbnN0YW50IG51bWJlciBvZiBzdGVwcy4gRm9yIGV4YW1wbGUsIGgoMTAwMCkgd291bGQgY29tcHV0ZSBnKDEwMDApIHdoaWNoIGlzIDEsIHN1YnRyYWN0IDEgdG8gZ2V0IDAsIHRoZW4gY2FsbCBoKDApIHdoaWNoIGlzIDAsIHN1YnRyYWN0IDEgdG8gZ2V0IC0xLiBTbyBpdCdzIGEgZmluaXRlIG51bWJlciBvZiBzdGVwcy4gVGhlcmVmb3JlLCBoKHgpIGFsd2F5cyB0ZXJtaW5hdGVzLCByZWdhcmRsZXNzIG9mIHRoZSBpbnB1dCB4LgpUaGVyZWZvcmUsIHRoZSBmdW5jdGlvbiBmKHgpIHdpbGwgYWx3YXlzIHRlcm1pbmF0ZSwgbm8gbWF0dGVyIHdoYXQgaW5wdXQgeCBpcyBnaXZlbi4gU28gdGhlIGFuc3dlciBzaG91bGQgYmUgIiMgVCIuCjwvdGhpbms+IDxhbnN3ZXI+CiMgVAo=)
 
@@ -3682,8 +3580,7 @@ Thus, the PPO loss can be understood as a clipped version of this.
 
 The Activ pipeline, shown in Figure [13.29](#S13.F29 "Figure 13.29 ‣ 13 Activ image-building pipeline ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models"), automatically builds executable repository images at scale by modifying their GitHub Actions workflows and running them locally using the act (Lee, [2019](#bib.bib52)) library within a virtual environment. Our approach builds on the insight that the execution environment of a GitHub Actions workflow running CI tests is a fully built environment with dependencies, and can therefore be captured as a standalone Docker image for later execution.
 
-![Refer to caption](/html/2510.02387/assets/x20.png)
-
+!(/html/2510.02387/assets/x20.png)
 
 Figure 13.29: Activ image building pipeline for a single repository. After cloning from GitHub, the repository’s GitHub Actions workflows and pytest conftest.py files (in Python repositories) are modified and copied into the outer Docker (or virtual machine) for isolated CI execution via act. Modified workflow jobs are executed in parallel within individual containers, until the container\_id and built-environment state are captured from the target container that holds repository dependencies. Framework executability detection precedes capture to ensure targeting the correct container: for pytest repositories, this occurs implicitly when injected conftest.py code executes within a session-scoped fixture, with an optional function-scoped fixture available for Python execution tracing. Non-Python repositories use modified workflow steps to verify framework executability (such as Jest) before capture. Upon successful capture, an early exit is triggered and the resulting container is committed and pushed for standalone execution.
 
@@ -3713,8 +3610,7 @@ To estimate the optimal batch size (BS) and learning rate (LR) range, and how it
 
 In Figure [14.30](#S14.F30 "Figure 14.30 ‣ 14.2 Quasi-random search for batch size and learning rate ‣ 14 Hyper-parameter scaling laws ‣ CWM: An Open-Weights LLM for Research on Code Generation with World Models"), the gray points correspond to all BS/LR candidates evaluated at each scale, while the blue points indicate those within 1%1\% of the best validation loss at that scale.
 
-![Refer to caption](/html/2510.02387/assets/assets/hyperparams_vs_flops_gqa.png)
-
+!(/html/2510.02387/assets/assets/hyperparams_vs_flops_gqa.png)
 
 Figure 14.30: Optimal range for batch size and learning rate across scales is quite large. However going beyond that range leads to rapidly degrading performance.
 
@@ -3954,94 +3850,12 @@ Second, through RL training the agent learns to better localize files relevant t
 
 LABEL:{fig:swerl\_recall} shows that the agent’s average recall increases from 58% at the start of RL training to over 66% after only 4,000 steps.
 
-![Refer to caption](/html/2510.02387/assets/x21.png)
-
+!(/html/2510.02387/assets/x21.png)
 
 (a) Percentage of trajectories where SWE RL performs tests on at least one turn increases over the course of RL training.
 
-![Refer to caption](/html/2510.02387/assets/x22.png)
-
+!(/html/2510.02387/assets/x22.png)
 
 (b) SWE RL learns to localize the relevant files over the course of RL training.
 
 Figure 20.31: Agentic capabilities learnt during CWM RL training.
-
-[◄](/html/2510.02386)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.02387)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.02387)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.02387)[►](/html/2510.02388)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 16:56:35 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

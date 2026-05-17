@@ -17,49 +17,6 @@ url: https://arxiv.org/abs/2404.05875
 year: 2024
 ---
 
-[2404.05875] CodecLM: Aligning Language Models with Tailored Synthetic Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # CodecLM: Aligning Language Models with Tailored Synthetic Data
 
 Zifeng Wang†, Chun-Liang Li†, Vincent Perot∗, Long T. Le†,
@@ -94,8 +51,7 @@ jinmiao, zizhaoz, chenyulee, tpfister}@google.com
 
 ## 1 Introduction
 
-![Refer to caption](/html/2404.05875/assets/x1.png)
-
+!(/html/2404.05875/assets/x1.png)
 
 Figure 1: Overview of CodecLM. We first encode seed instructions into metadata to capture the underlying distribution of instructions. This metadata is then decoded through Self-Rubrics and Contrastive Filtering to tailor high-quality synthetic instructions that are aligned with the target instruction distribution. Intermediate instructions and responses are omitted in the figure for clarity.
 
@@ -129,8 +85,7 @@ Distillation. Alternatively, tuning the target LLM with responses generated from
 
 Finally, we discuss some of the most relevant recent work. AttrPrompt (Yu et al., [2023](#bib.bib52)) leverages LLM as attributed data generator by extracting attributes within instructions. However, it focuses solely on classification tasks and requires human intervention for attribute selection. In contrast, our work focuses on the broader context of aligning LLMs to follow open-domain instructions, eliminating the need for human efforts. MSP (Chen et al., [2023a](#bib.bib7)) utilizes trainable soft prompts to control generation, but requires gradient access to the LLM. Our method, on the other hand, is readily compatible with black-box LLMs that only offer API access for high-quality data generation. SteerLM (Dong et al., [2023](#bib.bib11)) analyzes quality-related aspects of responses, instead of the instructions, to capture human preference. Therefore, SteerLM can be used alongside CodecLM as a parallel approach for enhancing response quality.
 
-![Refer to caption](/html/2404.05875/assets/x2.png)
-
+!(/html/2404.05875/assets/x2.png)
 
 Figure 2: Overview of the proposed CodecLM. First, the strong LLM fssubscript𝑓𝑠f\_{s} encodes the seed instruction into instruction metadata, specifying its use case and skills required for responses. Next, fssubscript𝑓𝑠f\_{s} decodes metadata into basic instructions. Meanwhile, Self-Rubrics leverages fssubscript𝑓𝑠f\_{s} to generate rubrics and actions to improve the basic instruction, tailoring them for the downstream task. Finally, Contrastive Filtering uses a scoring function S𝑆S to compares fssubscript𝑓𝑠f\_{s} and ftsubscript𝑓𝑡f\_{t}’s responses. The most effective pairs are selected for aligning the LLM, while less effective instructions are sent for further improvement. In this figure, the strong LLM’s response is winning against the target one’s, so we select the corresponding pair for instruction tuning the target LLM.
 
@@ -259,21 +214,18 @@ We show component-wise contributions in our framework in Table [3](#S5.T3 "Tabl
 
 Effect of Number of Iterations. We demonstrate the effect of number of CodecLM iterations in Figure [3](#S5.F3 "Figure 3 ‣ 5.5 Ablation Study ‣ 5 Experiments ‣ CodecLM: Aligning Language Models with Tailored Synthetic Data"). In particular, we count the proportion of data from each iteration in all synthesized data 𝒟gsubscript𝒟𝑔\mathcal{D}\_{g} and show it in the blue bar chart with left y-axis. We also draw the target model performance in CRR after training on the synthetic data up until the current iteration in the yellow line chart with right y-axis. From the data proportion bar chart, we observe that more than 70%percent7070\% of the data comes from the first iteration. This indicates Contrastive Filtering successfully collects less complex yet challenging instructions, which are critical for building up the instruction-following ability of the target LLM. Starting from the second iteration, the data proportion gets increasingly small. However, similar to the *less is more for alignment* observation (Zhou et al., [2023a](#bib.bib55)), high-quality and more complex instructions indeed contribute to the final performance despite less in quantity.
 
-![Refer to caption](/html/2404.05875/assets/x3.png)
-
+!(/html/2404.05875/assets/x3.png)
 
 Figure 3: Data proportion from each iteration and the corresponding CRR performance at each iteration.
 
-![Refer to caption](/html/2404.05875/assets/x4.png)
-
+!(/html/2404.05875/assets/x4.png)
 
 Figure 4: Metadata matching proportion vs. CRR.
 
 Exploration on Distribution Matching. As shown by previous results, generating metadata extracted from the downstream instruction distribution indeed helps. However, in practice, the extracted or human-written metadata may not be able to precisely characterize the instruction distribution. Therefore, it is necessary to explore the performance of CodecLM when the distribution represented by instruction metadata does not fully match the test distribution. As the true test distribution is complicated and not known as a prior, we approximate various extent of distribution matching by random subsampling from the set of metadata ℳℳ\mathcal{M}.
 To control the effect of data quantity, we keep the total number of instruction-response pairs the same for each case. For example, when subsampling 20%percent2020\% of ℳℳ\mathcal{M}, we prompt the strong LLM to generate 5 times more instructions for each metadata accordingly. The result is shown in the upper part of Figure [4](#S5.F4 "Figure 4 ‣ 5.5 Ablation Study ‣ 5 Experiments ‣ CodecLM: Aligning Language Models with Tailored Synthetic Data"), and we did observe the trend that the better instruction metadata captures the underlying distribution, the better performance the target LLM can achieve. Moreover, when the metadata matching proportion is equal or greater than 60%percent6060\%, we obtain close performance as the fully-matched result. This observation highlights CodecLM’s robustness under potential instruction metadata mismatch.
 
-![Refer to caption](/html/2404.05875/assets/x5.png)
-
+!(/html/2404.05875/assets/x5.png)
 
 Figure 5: Scaling with model size and data quantity.
 
@@ -781,8 +733,7 @@ In the main paper, we use ChatGPT as the LLM judge for final evaluation, for its
 
 To complement the performance result using LLM-based automatic evaluator, we also evaluate LLMs tuned with the top methods presented in Section [5.4](#S5.SS4 "5.4 Open-Domain Instruction Following ‣ 5 Experiments ‣ CodecLM: Aligning Language Models with Tailored Synthetic Data") on standard NLP benchmarks, MMLU (Hendrycks et al., [2020](#bib.bib18)) and BBH (Suzgun et al., [2022](#bib.bib40)). We follow the same settings introduced in (Wang et al., [2023](#bib.bib46)) without demonstrations or CoT (Wei et al., [2022](#bib.bib49)) prompt for evaluating the target models based on LLaMA-7B. For our method, we follow the same setting as in Evol-Instruction benchmark evaluation. We present the evaluation results in Table [4](#A1.T4 "Table 4 ‣ A.4 Training Details ‣ Appendix A Appendix ‣ CodecLM: Aligning Language Models with Tailored Synthetic Data") and use the performance of vanilla LLaMA-7B as a reference. We observe the same performance ranking of all methods as that in Table [1](#S5.T1 "Table 1 ‣ 5.3 Experiment and Evaluation Details ‣ 5 Experiments ‣ CodecLM: Aligning Language Models with Tailored Synthetic Data") where we use LLM-based automatic evaluator. The consistency between two different evaluation approaches indicates the reliability of LLM-based evaluator in terms of demonstrating relative performance of competing methods.
 
-![Refer to caption](/html/2404.05875/assets/x6.png)
-
+!(/html/2404.05875/assets/x6.png)
 
 Figure 6: Case study on the instruction improvement process of CodecLM. Repetitive instructions are omitted to save space.
 
@@ -867,8 +818,6 @@ Skills: academic writing, machine learning
 
 Figure 7: Prompt template to encode the input into metadata, consisting of its use case and transferable skills.
 
-
-
 [⬇](data:text/plain;base64,Ckkgd2FudCB5b3UgdG8gYWN0IGFzIGFuIGluc3RydWN0aW9uIHdyaXRlci4KWW91ciBvYmplY3RpdmUgaXMgdG8gd3JpdGUgPG51bWJlciBvZiBpbnN0cnVjdGlvbnM+IGluc3RydWN0aW9ucyB0aGF0IG11c3QgYmUgcmVhc29uYWJsZQphbmQgbXVzdCBiZSB1bmRlcnN0b29kIGFuZCByZXNwb25kZWQgYnkgaHVtYW5zLgpUaGUgZ2VuZXJhdGVkIGluc3RydWN0aW9ucyBzaG91bGQgYmUgZGl2ZXJzZSBlbm91Z2ggd2hpbGUgZm9sbG93aW5nIHRoZSBjb25zdHJhaW50cyBiZWxvdzoKXHBhclVzZSBjYXNlIG9mIHRoZSBpbnN0cnVjdGlvbnM6IDx1c2UgY2FzZT4KU2tpbGxzIHJlcXVpcmVkIHRvIHJlc3BvbmQgdG8gdGhlIGluc3RydWN0aW9uczogPHNraWxscz4KXHBhckdlbmVyYXRlIHRoZSBpbnN0cnVjdGlvbnMgd2l0aG91dCBhbnN3ZXJpbmcgaW4gbnVtYmVyZWQgYnVsbGV0aW4gcG9pbnRzLgpccGFyPG91dHB1dCBpbnN0cnVjdGlvbnM+Cg==)
 
 I want you to act as an instruction writer.
@@ -888,8 +837,6 @@ Skills required to respond to the instructions: <skills>
 \par<output instructions>
 
 Figure 8: Prompt template to generate instructions from metadata.
-
-
 
 [⬇](data:text/plain;base64,Ckkgd2FudCB5b3UgdG8gYWN0IGFzIGEgaW5zdHJ1Y3Rpb24ganVkZ2Ugd2l0aCBkb21haW4gZXhwZXJ0aXNlLgpZb3VyIGpvYiBpcyB0byBnZW5lcmF0ZSA8bnVtYmVyX29mX3J1YnJpY3M+IGRvbWFpbiBzcGVjaWZpYyBydWJyaWNzIHRvIGFzc2VzcyB0aGUgZGlmZmljdWx0eSBhbmQKY29tcGxleGl0eSBiYXNlZCBvbiB0aGUgdXNlIGNhc2Ugb2YgdGhlIGluc3RydWN0aW9uLCBhbmQgc2tpbGxzIHJlcXVpcmVkIHRvIHJlc3BvbmQgdG8gaXQuClRoZSBnZW5lcmF0ZWQgcnVicmljcyBzaG91bGQgYmUgY2xlYXIsIGNvbmNpc2UgYW5kIHVuYW1iaWd1b3VzLgpCYXNlZCBvbiB0aGUgZ2VuZXJhdGVkIHJ1YnJpY3MsIGdlbmVyYXRlIGNvcnJlc3BvbmRpbmcgYWN0aW9ucyB0byBpbXByb3ZlIGFuIGluc3RydWN0aW9uIGJ5Cm1ha2luZyBpdCBtb3JlIGNoYWxsZW5naW5nLgpccGFyVGhlIHVzZSBjYXNlIG9mIHRoZSBpbnN0cnVjdGlvbjogPHVzZSBjYXNlPi4KVGhlIHNraWxscyByZXF1aXJlZCB0byBzb2x2ZSB0aGUgaW5zdHJ1Y3Rpb246IDxza2lsbHM+LgpccGFyR2VuZXJhdGUgdGhlIGRvbWFpbi1zcGVjaWZpYyBydWJyaWNzIGFuZCBhY3Rpb25zIHdpdGhvdXQgZXhwbGFuYXRpb24gaW4gbnVtYmVyZWQgYnVsbGV0aW4gcG9pbnRzOgpccGFyPG91dHB1dCBydWJyaWNzPgo8b3V0cHV0IGFjdGlvbnM+Cg==)
 
@@ -917,8 +864,6 @@ The skills required to solve the instruction: <skills>.
 
 Figure 9: Prompt template to generate actions to improve instructions based on instruction metadata.
 
-
-
 [⬇](data:text/plain;base64,Ckkgd2FudCB5b3UgdG8gYWN0IGFzIGEgaW5zdHJ1Y3Rpb24gaW1wcm92ZXIgd2l0aCBkb21haW4gZXhwZXJ0aXNlLgpZb3VyIGpvYiBpcyB0byBtYWtlIHRoZSBnaXZlbiBpbnN0cnVjdGlvbiBtb3JlIGNoYWxsZW5naW5nIGZvbGxvd2luZyB0aGUgZ2l2ZW4gaW1wcm92aW5nIGFjdGlvbgppdGVtLCBhbmQgdGhlIGdlbmVyYXRlZCBpbnN0cnVjdGlvbiBzaG91bGQgYmUgcmVhc29uYWJsZSBhbmQgc2VsZi1jb25zaXN0ZW50LgpEbyBub3QgZGlyZWN0bHkgY29weSB3b3JkcyBvciBwaHJhc2VzIGluIHRoZSBhY3Rpb24uClxwYXJJbXByb3ZpbmcgYWN0aW9uOiA8YWN0aW9uPgpJbnB1dCBpbnN0cnVjdGlvbjogPGlucHV0IGluc3RydWN0aW9uPgpccGFySW1wcm92ZWQgaW5zdHJ1Y3Rpb246IDxvdXRwdXQgaW5zdHJ1Y3Rpb24+Cg==)
 
 I want you to act as a instruction improver with domain expertise.
@@ -936,8 +881,6 @@ Input instruction: <input instruction>
 \parImproved instruction: <output instruction>
 
 Figure 10: Prompt template to improve instructions following generated actions.
-
-
 
 [⬇](data:text/plain;base64,CllvdSBhcmUgYSBoZWxwZnVsIGFuZCBwcmVjaXNlIGFzc2lzdGFudCBmb3IgY2hlY2tpbmcgdGhlIHF1YWxpdHkgb2YgdGhlIGFuc3dlci4KXHBhcjxRdWVzdGlvbj4KW1RoZSBTdGFydCBvZiBBc3Npc3RhbnQgMSdzIEFuc3dlcl0KPGFuc3dlcl8xPgpbVGhlIEVuZCBvZiBBc3Npc3RhbnQgMSdzIEFuc3dlcl0KW1RoZSBTdGFydCBvZiBBc3Npc3RhbnQgMidzIEFuc3dlcl0KPGFuc3dlcl8yPgpbVGhlIEVuZCBvZiBBc3Npc3RhbnQgMidzIEFuc3dlcl0KXHBhcldlIHdvdWxkIGxpa2UgdG8gcmVxdWVzdCB5b3VyIGZlZWRiYWNrIG9uIHRoZSBwZXJmb3JtYW5jZSBvZiB0d28gQUkgYXNzaXN0YW50cyBpbiByZXNwb25zZSB0bwp0aGUgdXNlciBxdWVzdGlvbiBkaXNwbGF5ZWQgYWJvdmUuClBsZWFzZSByYXRlIHRoZSBoZWxwZnVsbmVzcywgcmVsZXZhbmNlLCBhY2N1cmFjeSwgbGV2ZWwgb2YgZGV0YWlscyBvZiB0aGVpciByZXNwb25zZXMuIEVhY2gKYXNzaXN0YW50IHJlY2VpdmVzIGFuIG92ZXJhbGwgc2NvcmUgb24gYSBzY2FsZSBvZiAxIHRvIDEwLCB3aGVyZSBhIGhpZ2hlciBzY29yZSBpbmRpY2F0ZXMKYmV0dGVyIG92ZXJhbGwgcGVyZm9ybWFuY2UuClBsZWFzZSBvbmx5IG91dHB1dCBhIHNpbmdsZSBsaW5lIGNvbnRhaW5pbmcgb25seSB0d28gdmFsdWVzIGluZGljYXRpbmcgdGhlIHNjb3JlcyBmb3IgQXNzaXN0YW50IDEKYW5kIDIsIHJlc3BlY3RpdmVseS4gVGhlIHR3byBzY29yZXMgYXJlIHNlcGFyYXRlZCBieSBhIHNwYWNlLgpQbGVhc2UgYXZvaWRpbmcgYW55IHBvdGVudGlhbCBiaWFzIGFuZCBlbnN1cmluZyB0aGF0IHRoZSBvcmRlciBpbiB3aGljaCB0aGUgcmVzcG9uc2VzIHdlcmUKcHJlc2VudGVkIGRvZXMgbm90IGFmZmVjdCB5b3VyIGp1ZGdtZW50Lgo=)
 
@@ -976,8 +919,6 @@ Please avoiding any potential bias and ensuring that the order in which the resp
 presented does not affect your judgment.
 
 Figure 11: Prompt template used in Contrastive Filtering to compare the responses of the strong and the target LLMs. We directly use the strong LLM with this template as the scorer S𝑆S to avoid additional costs from calling a third-party LLM.
-
-
 
 [⬇](data:text/plain;base64,ClN5c3RlbTogWW91IGFyZSBhIGhlbHBmdWwgYW5kIHByZWNpc2UgYXNzaXN0YW50IGZvciBjaGVja2luZyB0aGUgcXVhbGl0eSBvZiB0aGUgYW5zd2VyLgpccGFyVXNlcjoKPFF1ZXN0aW9uPgpbVGhlIFN0YXJ0IG9mIEFzc2lzdGFudCAxJ3MgQW5zd2VyXQo8YW5zd2VyXzE+CltUaGUgRW5kIG9mIEFzc2lzdGFudCAxJ3MgQW5zd2VyXQpbVGhlIFN0YXJ0IG9mIEFzc2lzdGFudCAyJ3MgQW5zd2VyXQo8YW5zd2VyXzI+CltUaGUgRW5kIG9mIEFzc2lzdGFudCAyJ3MgQW5zd2VyXQpccGFyV2Ugd291bGQgbGlrZSB0byByZXF1ZXN0IHlvdXIgZmVlZGJhY2sgb24gdGhlIHBlcmZvcm1hbmNlIG9mIHR3byBBSSBhc3Npc3RhbnRzIGluIHJlc3BvbnNlIHRvCnRoZSB1c2VyIHF1ZXN0aW9uIGRpc3BsYXllZCBhYm92ZS4KUGxlYXNlIHJhdGUgdGhlIGhlbHBmdWxuZXNzLCByZWxldmFuY2UsIGFjY3VyYWN5LCBsZXZlbCBvZiBkZXRhaWxzIG9mIHRoZWlyIHJlc3BvbnNlcy4gRWFjaAphc3Npc3RhbnQgcmVjZWl2ZXMgYW4gb3ZlcmFsbCBzY29yZSBvbiBhIHNjYWxlIG9mIDEgdG8gMTAsIHdoZXJlIGEgaGlnaGVyIHNjb3JlIGluZGljYXRlcwpiZXR0ZXIgb3ZlcmFsbCBwZXJmb3JtYW5jZS4KUGxlYXNlIGZpcnN0IG91dHB1dCBhIHNpbmdsZSBsaW5lIGNvbnRhaW5pbmcgb25seSB0d28gdmFsdWVzIGluZGljYXRpbmcgdGhlIHNjb3JlcyBmb3IgQXNzaXN0YW50IDEKYW5kIDIsIHJlc3BlY3RpdmVseS4KVGhlIHR3byBzY29yZXMgYXJlIHNlcGFyYXRlZCBieSBhIHNwYWNlLiBJbiB0aGUgc3Vic2VxdWVudCBsaW5lLCBwbGVhc2UgcHJvdmlkZSBhIGNvbXByZWhlbnNpdmUKZXhwbGFuYXRpb24gb2YgeW91ciBldmFsdWF0aW9uLCBhdm9pZGluZyBhbnkgcG90ZW50aWFsIGJpYXMgYW5kIGVuc3VyaW5nIHRoYXQgdGhlIG9yZGVyIGluIHdoaWNoCnRoZSByZXNwb25zZXMgd2VyZSBwcmVzZW50ZWQgZG9lcyBub3QgYWZmZWN0IHlvdXIganVkZ21lbnQuCg==)
 
@@ -1020,83 +961,3 @@ explanation of your evaluation, avoiding any potential bias and ensuring that th
 the responses were presented does not affect your judgment.
 
 Figure 12: Prompt template for automatic evaluation using LLM (e.g., ChatGPT, GPT-4) as the judge.
-
-[◄](/html/2404.05874)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2404.05875)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2404.05875)
-[View original  
-on arXiv](https://arxiv.org/abs/2404.05875)[►](/html/2404.05876)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun May 5 16:42:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -38,50 +38,6 @@ url: https://arxiv.org/abs/2510.19338
 year: 2025
 ---
 
-[2510.19338] Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning
 
 Ling Team
@@ -99,8 +55,7 @@ In this technical report, we present the Ring-linear model series, specifically 
 [Hugging Face]https://huggingface.co/inclusionAI/Ring-flash-linear-2.0
 \gtechdata[Hugging Face]https://huggingface.co/inclusionAI/Ring-mini-linear-2.0
 
-![Refer to caption](/html/2510.19338/assets/x1.png)
-
+!(/html/2510.19338/assets/x1.png)
 
 Figure 1: Benchmark results of Ring-flash-linear-2.0 versus counterparts on representative metrics.
 
@@ -154,8 +109,7 @@ Guided by the principles of Ling Scaling Laws (Tian et al., [2025a](#bib.bib33))
 
 Currently, two models based on the Ring-linear architecture have been open-sourced. These are the Ring-mini-linear-2.0, with a total of 16 billion parameters and 1.6 billion activated parameters (957M without embedding parameters), and the Ring-flash-linear-2.0, with a total of 104 billion parameters and 7.4 billion activated parameters (6.1B without embedding parameters). The detailed architectural settings of these two models are presented in Table [1](#S2.T1 "Table 1 ‣ 2 Model Architecture ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning").
 
-![Refer to caption](/html/2510.19338/assets/x2.png)
-
+!(/html/2510.19338/assets/x2.png)
 
 Figure 2: Model architecture of Ring-linear
 
@@ -195,9 +149,9 @@ The matrix kvt∈ℝd×d\textbf{k}\textbf{v}\_{t}\in\mathbb{R}^{d\times d} defin
 
 #### 2.2.2 Hybrid Architecture
 
-![Refer to caption](/html/2510.19338/assets/x3.png)
+!(/html/2510.19338/assets/x3.png)
 
-![Refer to caption](/html/2510.19338/assets/x4.png)
+!(/html/2510.19338/assets/x4.png)
 
 Figure 3: Scaling law curves. (Left) Curves fitted with different runs of the hybrid linear architecture (M=1M=1) and the softmax attention architecture. (Right) Curves comparing different layer group size (MM) configurations.
 
@@ -227,8 +181,7 @@ Our experiments found that the performance of the hybrid linear model is particu
 
 In practical LLM applications and reinforcement learning (RL) training, decoding efficiency often serves as a critical bottleneck for model test-time scaling. During the LLM decoding process, the limited memory bandwidth of accelerators such as GPUs makes the size of the attention mechanism’s KV cache access a key factor affecting decoding speed. Existing approaches, such as GQA (Ainslie et al., [2023](#bib.bib2)) and MLA (Liu et al., [2024a](#bib.bib19)), similarly aim to improve decoding efficiency by optimizing KV cache memory access. In Figure [4](#S2.F4 "Figure 4 ‣ 2.2.4 Cost Analysis for Decoding ‣ 2.2 Hybrid Linear Attention ‣ 2 Model Architecture ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning"), we present how the KV cache/State memory access size of our proposed architecture scales with sequence length, along with a comparison against other related methods.
 
-![Refer to caption](/html/2510.19338/assets/x5.png)
-
+!(/html/2510.19338/assets/x5.png)
 
 Figure 4: Variation of KV cache/State memory access size with increasing sequence length.
 
@@ -237,8 +190,7 @@ Figure 4: Variation of KV cache/State memory access size with increasing sequenc
 To fully demonstrate the computational efficiency advantages of the hybrid linear model, we conducted comprehensive performance optimizations from both training and inference perspectives. The core component of these optimizations lies in kernel fusion and optimization. Additionally, for training, we further implemented kernel fusion and introduced more fine-grained recomputation strategies tailored for the FP8 mixed precision training, significantly improving the training efficiency. On the inference side, we introduced speculative decoding tailored for hybrid linear models, effectively reducing the response latency under low concurrency scenarios.
 The overall optimization architecture is illustrated in Figure [5](#S3.F5 "Figure 5 ‣ 3 Computation Optimization ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning").
 
-![Refer to caption](/html/2510.19338/assets/x6.png)
-
+!(/html/2510.19338/assets/x6.png)
 
 Figure 5: Overview of computation optimization
 
@@ -267,8 +219,7 @@ Quantization Fusion: Quantizaiton layers are usually placed after activation or 
 
 State-aware recompute: We further optimized fine-grained recomputation. In the forward pass, the quantized x is needed to compute y=x​wy=xw. However, in the backward pass, the transposed quantized xTx^{T} is required to compute d​w=xT​ydw=x^{T}y. Therefore, the forward pass in recomputation can have different computation and quantization logic compared to the regular forward pass. Leveraging this insight, we designed the forward pass to compute and output only the quantized x when not in recomputation, and only the quantized xTx^{T} when in recomputation, thereby reducing redundant computation.
 
-![Refer to caption](/html/2510.19338/assets/x7.png)
-
+!(/html/2510.19338/assets/x7.png)
 
 Figure 6: Speedup of LingHe and optimized parameters
 
@@ -287,27 +238,21 @@ Using the SGLang framework, we conduct a comprehensive evaluation of the inferen
 
 During the prefill phase, Ring-linear begins to outperform Ring-2.0 once the context length exceeds 8K, after which its throughput scales rapidly. Ultimately, it achieves more than 2.5 times the throughput of Ring-2.0 and over 8 times that of the baseline models for context lengths beyond 128K. In the decode phase, the Ring-linear models maintain strong performance, surpassing Ring-2.0 when generation length exceeds 4K. At 64K context length, they deliver more than twice the throughput of Ring-2.0 and exceed baseline performance by over tenfold.
 
-![Refer to caption](/html/2510.19338/assets/x8.png)
-
+!(/html/2510.19338/assets/x8.png)
 
 (a) The normalized prefill throughput.
 
-![Refer to caption](/html/2510.19338/assets/x9.png)
-
+!(/html/2510.19338/assets/x9.png)
 
 (b) The normalized decode throughput.
 
 Figure 7: The inference efficiency of Ring-mini-linear-2.0 (TP=1, 1×H20).
 
-
-
-![Refer to caption](/html/2510.19338/assets/x10.png)
-
+!(/html/2510.19338/assets/x10.png)
 
 (a) The normalized prefill throughput.
 
-![Refer to caption](/html/2510.19338/assets/x11.png)
-
+!(/html/2510.19338/assets/x11.png)
 
 (b) The normalized decode throughput.
 
@@ -329,13 +274,11 @@ It follows the same strategy as Ling-mini-base-2.0 and Ling-flash-base-2.0. To p
 
 During the above training process, we reuse the critical hyperparameters from Ling-base-2.0 and substitute the standard Warmup-Stable-Decay (WSD) learning rate scheduler (Hu et al., [2024b](#bib.bib15)) with the Warmup-Stable-Merge (WSM) scheduler (Tian et al., [2025b](#bib.bib34)). By merging mid-training checkpoints to simulate learning rate decay strategy, the resulting Ring-linear-base-2.0 models perform on par with Ling-base-2.0 models trained on 20T tokens across various benchmarks. Figure [9](#S4.F9 "Figure 9 ‣ Mid-training Stage ‣ 4 Continued Pre-Training ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning") illustrates the performance of Ring-linear-base-2.0 on different capabilities, including coding, mathematics, reasoning, knowledge, and Natural Language Understanding (NLU). The normalized performance refers to the normalized scores of Ring-linear-base-2.0 relative to Ling-base-2.0. As demonstrated in the figure, Ring-linear-base-2.0 models restore more than 98% of the original models’ performance in most categories. However, the models exhibit minor deficiencies in reasoning and professional knowledge tasks, which may be attributed to the knowledge forgetting problem (Ibrahim et al., [2024](#bib.bib16)) during the continued pre-training process.
 
-![Refer to caption](/html/2510.19338/assets/x12.png)
-
+!(/html/2510.19338/assets/x12.png)
 
 (a) Ring-mini-linear-base-2.0
 
-![Refer to caption](/html/2510.19338/assets/x13.png)
-
+!(/html/2510.19338/assets/x13.png)
 
 (b) Ring-flash-linear-base-2.0
 
@@ -371,8 +314,7 @@ Moreover, two prevalent factors notably exacerbate this training-inference dispa
 
   Long-CoT Models: Longer model outputs lead to greater cumulative errors.
 
-![Refer to caption](/html/2510.19338/assets/x14.png)
-
+!(/html/2510.19338/assets/x14.png)
 
 Figure 10: The ablation experimental results of the RL long-term training curves after correcting the training-inference disparity in different modules of the hybrid linear model.
 
@@ -396,13 +338,11 @@ To align training and inference, the same input must be provided to both the tra
 
 To ensure consistency between training and inference, our efforts generally focus on three aspects: ensure identical implementation, maintaining appropriate precision, and eliminating non-determinism. Given the complexity of the full alignment workflow, the following paragraphs highlight specific points within critical modules that are particularly prone to training-inference disparity.
 
-![Refer to caption](/html/2510.19338/assets/figs/rl_prob_diff_before.jpg)
-
+!(/html/2510.19338/assets/figs/rl_prob_diff_before.jpg)
 
 (a) Before
 
-![Refer to caption](/html/2510.19338/assets/figs/rl_prob_diff_after.jpg)
-
+!(/html/2510.19338/assets/figs/rl_prob_diff_after.jpg)
 
 (b) After
 
@@ -448,9 +388,9 @@ Equation [5](#S5.E5 "Equation 5 ‣ 5.2.2 From the Algorithmic Perspective ‣ 5
 
 However, Equation [6](#S5.E6 "Equation 6 ‣ 5.2.2 From the Algorithmic Perspective ‣ 5.2 Reinforcement Learning ‣ 5 Post-Training ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning") is biased because it totally ignores the training-inference disparity. Consequently, the most reliable path forward is to use the rollout probabilities directly, as in Equation [5](#S5.E5 "Equation 5 ‣ 5.2.2 From the Algorithmic Perspective ‣ 5.2 Reinforcement Learning ‣ 5 Post-Training ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning"), but only after the training-inference disparity has been systematically corrected.
 
-![Refer to caption](/html/2510.19338/assets/x15.png)
+!(/html/2510.19338/assets/x15.png)
 
-![Refer to caption](/html/2510.19338/assets/x16.png)
+!(/html/2510.19338/assets/x16.png)
 
 Figure 12: Comparison of PPO clip using rollout probabilities versus training probabilities. (Left) Reward. (Right) Proportion of tokens with an absolute training-inference probability difference greater than 0.80.8.
 
@@ -460,25 +400,19 @@ After systematic training-inference alignment, using rollout probabilities inste
 
 Based on the aforementioned improvements, the model demonstrates consistent growth in both training reward and test score throughout the RL process, as shown in Figure [13](#S5.F13 "Figure 13 ‣ 5.2.3 Experimental Results of Reinforcement Learning ‣ 5.2 Reinforcement Learning ‣ 5 Post-Training ‣ Every Attention Matters: An Efficient Hybrid Architecture for Long-Context Reasoning").
 
-![Refer to caption](/html/2510.19338/assets/x17.png)
-
+!(/html/2510.19338/assets/x17.png)
 
 (a) Training Reward.
 
-![Refer to caption](/html/2510.19338/assets/x18.png)
-
+!(/html/2510.19338/assets/x18.png)
 
 (b) Test Score on AIME’25.
 
-![Refer to caption](/html/2510.19338/assets/x19.png)
-
+!(/html/2510.19338/assets/x19.png)
 
 (c) Test Score on LCB (sampled).
 
 Figure 13: RL training curves of Ring-mini-linear-2.0.
-
-
-
 
 Table 2: Performance of Ring-flash-mini-2.0 versus counterparts on various reasoning benchmarks.
 
@@ -796,83 +730,3 @@ Moving forward, we will continue to explore more efficient model architectures t
   Group sequence policy optimization.
   2025.
   <https://arxiv.org/abs/2507.18071>.
-
-[◄](/html/2510.19337)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.19338)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.19338)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.19338)[►](/html/2510.19339)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 15:22:42 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

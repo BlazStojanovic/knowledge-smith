@@ -17,49 +17,6 @@ url: https://arxiv.org/abs/1708.03731
 year: 2017
 ---
 
-[1708.03731] OpenML Benchmarking Suites
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # OpenML Benchmarking Suites
 
 Bernd Bischl1 , Giuseppe Casalicchio1, Matthias Feurer2, Pieter Gijsbers3, Frank Hutter2,4,
@@ -126,8 +83,7 @@ Although for many years machine learning researchers have benchmarked their algo
 
 OpenML is a collaborative platform that allows anyone to share new datasets, and enables anyone to easily import these datasets and subsequently share their own models and experiments run on them. It organizes everything based on four fundamental, machine-readable building blocks: (1) the data, (2) the machine learning task to be solved, specifying the dataset, the task type (e.g., classification or regression), the target feature (in the case of supervised problems), the evaluation procedure (e.g., k-fold CV, hold-out), the specific splits for that procedure, and the target performance metric (3) the flow which specifies a machine learning pipeline that solves the task, and (4) the run that contains experiment results (e.g., predictions and performance evaluations) when a flow is executed on a task (see Vanschoren et al. ([2013](#bib.bib53)) for more details). OpenML goes beyond the platforms mentioned in Section [2](#S2 "2 A Brief History of Benchmarking Suites ‣ OpenML Benchmarking Suites"), as it includes extensive programmatic access to all datasets, tasks, flows, and runs, comprehensive logging of experiments, and automated sharing of results, which have enabled the collection of millions of publicly shared and reproducible experiments, linked to the exact datasets, machine learning pipelines and hyperparameter settings. OpenML offers bindings with the Java, Python and R ecosystems (van Rijn, [2016](#bib.bib50); Feurer et al., [2021b](#bib.bib20); Casalicchio et al., [2017](#bib.bib10)) to provide easy integration in common machine learning tools, workflows, and environments. An introduction and detailed information can be found on <https://docs.openml.org>.
 
-![Refer to caption](/html/1708.03731/assets/OpenMLWebsite2.png)
-
+!(/html/1708.03731/assets/OpenMLWebsite2.png)
 
 Figure 1: OpenML website showing a list of benchmark studies on the left, and interactive exploration of the results of the AutoML Benchmark (see Section [7.1](#S7.SS1 "7.1 The AutoML Benchmark Suite ‣ 7 Further OpenML Benchmarking Suites ‣ OpenML Benchmarking Suites")) on the right. Can be viewed online at <https://www.openml.org/s/226>.
 
@@ -233,8 +189,6 @@ Using a set of tasks instead of a set of datasets makes experiments performed on
 
 32print(f"Results are stored at {benchmark\_study.openml\_url}")
 
-
-
 (a) Python, available as pypi package [OpenML](https://pypi.org/project/openml/)
 
 [⬇](data:text/plain;base64,cHVibGljIHN0YXRpYyB2b2lkIHJ1blRhc2tzQW5kVXBsb2FkKCkgdGhyb3dzIEV4Y2VwdGlvbiB7CiAgT3Blbm1sQ29ubmVjdG9yIG9wZW5tbCA9IG5ldyBPcGVubWxDb25uZWN0b3IoIkZJTExfSU5fT1BFTk1MX0FQSV9LRVkiKTsKICBTdHVkeSBiZW5jaG1hcmtzdWl0ZSA9IG9wZW5tbC5zdHVkeUdldCgiT3Blbk1MLUNDMTgiLCAidGFza3MiKTsgICAgICAgICAgIC8vIG9idGFpbiB0aGUgYmVuY2htYXJrIHN1aXRlCiAgQ2xhc3NpZmllciB0cmVlID0gbmV3IFJFUFRyZWUoKTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAvLyBidWlsZCBhIFdla2EgY2xhc3NpZmllcgogIGZvciAoSW50ZWdlciB0YXNrSWQgOiBiZW5jaG1hcmtzdWl0ZS5nZXRUYXNrcygpKSB7ICAgICAgICAgICAgICAgICAgICAgICAgLy8gaXRlcmF0ZSBvdmVyIGFsbCB0YXNrcwogICAgVGFzayB0ID0gb3Blbm1sLnRhc2tHZXQodGFza0lkKTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLy8gZG93bmxvYWQgdGhlIE9wZW5NTCB0YXNrCiAgICBJbnN0YW5jZXMgZCA9IEluc3RhbmNlc0hlbHBlci5nZXREYXRhc2V0RnJvbVRhc2sob3Blbm1sLCB0KTsgICAgICAgICAgICAvLyBvYnRhaW4gdGhlIGRhdGFzZXQKICAgIFBhaXI8SW50ZWdlciwgUnVuPiByZXN1bHQgPSBSdW5PcGVubWxKb2IuZXhlY3V0ZVRhc2sob3Blbm1sLCBuZXcgV2VrYUNvbmZpZygpLCB0YXNrSWQsIHRyZWUpOwogICAgUnVuIHJ1biA9IG9wZW5tbC5ydW5HZXQocmVzdWx0LmdldExlZnQoKSk7CiAgfSAgICAKfQ==)
@@ -260,8 +214,6 @@ Using a set of tasks instead of a set of datasets makes experiments performed on
 10 }
 
 11}
-
-
 
 (b) Java, available on Maven Central with artifact id [org.openml.openmlweka](https://mvnrepository.com/artifact/org.openml/openmlweka)
 
@@ -290,8 +242,6 @@ Using a set of tasks instead of a set of datasets makes experiments performed on
 11 upload = uploadOMLRun(run) # upload and tag the run
 
 12}
-
-
 
 (c) R, available on CRAN via package [OpenML](https://CRAN.R-project.org/package=OpenML)
 
@@ -346,8 +296,7 @@ We first describe the design criteria of the OpenML-CC18 before discussing uses 
 
 [1](#footnote1 "footnote 1 ‣ 1 Introduction ‣ OpenML Benchmarking Suites"){}^{\ref{footnote-arxiv},}666The OpenML-CC18 is the successor of a preliminary benchmarking study called OpenML100, containing 100 classification datasets, and fixes several issues we encountered when working with the OpenML100.
 
-![Refer to caption](/html/1708.03731/assets/CC18-joyplot.png)
-
+!(/html/1708.03731/assets/CC18-joyplot.png)
 
 Figure 3: Distribution of the scores (average area under ROC curve, weighted by class support) of 3.8 million experiments with thousands of machine learning pipelines, shared on the CC18 benchmark tasks. Some tasks prove harder than others, some have wide score ranges, and for all there exist models that perform poorly (0.5 AUC). Code to reproduce this figure (for any metric) is available on GitHub.[4](#footnote4 "footnote 4 ‣ 5.1 Creating New Suites ‣ 5 How to Use OpenML Benchmarking Suites ‣ OpenML Benchmarking Suites")[4](#footnote4 "footnote 4 ‣ 5.1 Creating New Suites ‣ 5 How to Use OpenML Benchmarking Suites ‣ OpenML Benchmarking Suites"){}^{\ref{footnote-notebook}}
 
@@ -872,7 +821,6 @@ p
 n
 MinMaj
 
-
 3
 3
 kr-vs-kp
@@ -1169,7 +1117,6 @@ cl
 p
 n
 MinMaj
-
 
 1464
 10101
@@ -1530,83 +1477,3 @@ In this section we give an exemplary curation protocol for constructing new benc
    5. (e)
 
       Check that all remaining datasets feature a reference.
-
-[◄](/html/1708.03730)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1708.03731)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1708.03731)
-[View original  
-on arXiv](https://arxiv.org/abs/1708.03731)[►](/html/1708.03732)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 3 15:41:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

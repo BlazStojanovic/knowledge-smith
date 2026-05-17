@@ -21,49 +21,6 @@ url: https://arxiv.org/abs/2601.21343
 year: 2026
 ---
 
-[2601.21343] Self-Improving Pretraining: using post-trained models to pretrain better models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Self-Improving Pretraining: *using post-trained models to pretrain better models*
 
 Ellen Xiaoqing Tan
@@ -92,8 +49,7 @@ Therefore, addressing these issues during pretraining is crucial, as it shapes a
 
 ,
 
-![Refer to caption](/html/2601.21343/assets/x1.png)
-
+!(/html/2601.21343/assets/x1.png)
 
 Figure 1: Self-Improving pretraining:
 Our proposed model training streams pretraining documents and improves the next KK generated tokens (suffix, given prefix) at each step with RL. A strong previously post-trained model is used to judge generation candidates at each RL step for quality, safety and hallucination, where the candidates are: (i) NN rollouts from the current policy; (ii) the original suffix; and (iii) a rewrite of the suffix by the strong post-trained model. The rewrite can improve the pretrain data’s quality or safety; in the latter case as the prefix remains unsafe the model is always learning how to steer away to a safe suffix. At the start of training model rollouts (i) are low quality, so training relies on candidates (ii) and (iii); later in training the judge starts rewarding winning rollouts.
@@ -241,9 +197,6 @@ Judge which continuation is more coherent.
 If both continuations are coherent, choose the one that is more factual and otherwise high quality. Ignore whether continuations feel incomplete.
 In the final paragraph, output "Conclusion: Option 1" if you think option 1 is better otherwise output "Conclusion: Option 2".
 
-
-
-
 Figure 4: Factuality judge prompt.
 
 Factuality judge prompt
@@ -326,9 +279,9 @@ We run GRPO training on the synthetically generated data, where the judge is sim
 We set the global batch size to 256, with 16 generations per prompt under temperature T=0.6T=0.6 and t​o​p​\_​p=0.6top\\_p=0.6.
 We train on 64 GPUs for 500 steps with 2.0​e−072.0e-07 constant learning rate. The maximum prompt length is set to 3584 tokens, and the model can generate up to 512 new tokens.
 
-![Refer to caption](/html/2601.21343/assets/figures/judge_safety_valid.png)
+!(/html/2601.21343/assets/figures/judge_safety_valid.png)
 
-![Refer to caption](/html/2601.21343/assets/figures/judge_coh_valid.png)
+!(/html/2601.21343/assets/figures/judge_coh_valid.png)
 
 Figure 5: Suffix judge validation rewards on safety and quality tasks. Initial performance of the model is close to random chance on either task, achieving scores above 90%90\% by the end of training.
 
@@ -359,17 +312,15 @@ Hence, to train the rewriter, the reward is assigned with the following method:
 
 To train the suffix rewriter model we use same setup as for the suffix judge. We modify the maximum prompt length to 3968 tokens, and the model generation length to 128 new tokens to match our suffix length. We validate model performance on safe and unsafe subsets. We observe steady improvement on the copy task (exact match reward score on safe suffixes, [Figure 6](#S3.F6 "Figure 6 ‣ 3.2.1 Safety Experimental Setup ‣ 3.2 Experimental Setup ‣ 3 Experiments ‣ Self-Improving Pretraining: using post-trained models to pretrain better models")), and use the final checkpoint that achieves token overlap percent plateaued at 98%98\%, as shown in [Figure 7](#S3.F7 "Figure 7 ‣ 3.2.1 Safety Experimental Setup ‣ 3.2 Experimental Setup ‣ 3 Experiments ‣ Self-Improving Pretraining: using post-trained models to pretrain better models").
 
-![Refer to caption](/html/2601.21343/assets/figures/rewriter_safe.png)
+!(/html/2601.21343/assets/figures/rewriter_safe.png)
 
-![Refer to caption](/html/2601.21343/assets/figures/rewriter_unsafe.png)
+!(/html/2601.21343/assets/figures/rewriter_unsafe.png)
 
 Figure 6: Suffix rewriter validation rewards on safe and unsafe suffixes of the RedPajama dataset. Initial performance of the model is close to random chance on the safety task (0.5 score on unsafe suffixes), and near zero on copying safe suffixes (exact match reward score of 0.1), but still increasing after 500 steps.
 
+!(/html/2601.21343/assets/figures/rewriter_tok_safe.png)
 
-
-![Refer to caption](/html/2601.21343/assets/figures/rewriter_tok_safe.png)
-
-![Refer to caption](/html/2601.21343/assets/figures/rewr_tok_unsafe.png)
+!(/html/2601.21343/assets/figures/rewr_tok_unsafe.png)
 
 Figure 7: 
 Token Overlap in Suffix Rewriter Validation on RedPajama Dataset.
@@ -488,9 +439,9 @@ When optimizing for safety, we also see significant gains in quality for unsafe 
 
 We show further detailed results in [Table 21](#A3.T21 "Table 21 ‣ C.2 Finegrained evaluation results ‣ Appendix C Evaluation results ‣ Self-Improving Pretraining: using post-trained models to pretrain better models") which highlight that, for example, optimizing for safety does not optimize for factuality, or vice-versa. This indicates that if you want to optimize for both, both must be factored into the rewards provided during training. We also report the performance of the larger Llama-3.1 8B Base model, to show that our results are not a distillation effect owing to our reward model’s size. Optimizing for safety and quality with Self-Improving Pretraining outperforms the 8B model with a 1.4B model.
 
-![Refer to caption](/html/2601.21343/assets/x2.png)
+!(/html/2601.21343/assets/x2.png)
 
-![Refer to caption](/html/2601.21343/assets/x3.png)
+!(/html/2601.21343/assets/x3.png)
 
 Figure 8: Rollout chosen rate on the training data during from-scratch pretraining (left) and continued pretraining (right). Initially RL reward for rollouts is low, and suffix or rewrite completions are chosen for training more often. As the model improves, RL rewards high-quality rollouts, resulting in higher rollout chosen rates.
 
@@ -528,9 +479,6 @@ Table 2: Pretraining (from scratch) results: Comparison of overall quality and s
 | Self-Improving Pretraining: RF-NLL (suffix vs. rewrite) | 5.3 | 25.8 | 96.4 |
 | Self-Improving Pretraining: RF-NLL (rollout vs. rewrite) | 32.4 | 12.1 | 97.5 |
 
-
-
-
 Table 3: Standard pretraining evaluation tasks: continued pretraining results compared to standard next token prediction on standard evaluation tasks.
 All continually trained models use SlimPajama except in the safety setting which uses RedPajama.
 
@@ -549,9 +497,6 @@ All continually trained models use SlimPajama except in the safety setting which
 | Llama Pretrain Baseline | 64.0 | 74.3 | 49.2 | 66.9 | 32.8 | 26.6 | 41.5 | 27.5 |
 | Self-Improving Pretraining | 65.7 | 75.6 | 49.6 | 69.0 | 34.8 | 27.4 | 44.1 | 26.7 |
 
-
-
-
 Table 4: Factuality tasks: continued pretraining results compared to standard next token prediction on factuality tasks.
 
 |  |  |  |  |  |  |  |  |
@@ -562,9 +507,6 @@ Table 4: Factuality tasks: continued pretraining results compared to standard ne
 | Trained on SlimPajama |  |  |  |  |  |  |  |
 | Llama Pretrain Baseline | 35.4 | 48.9 | 50.8 | 51.4 | 61.5 | 21.5 | 35.5 |
 | Self-Improving Pretraining | 63.5 | 69.3 | 54.6 | 58.5 | 84.7 | 27.7 | 42.5 |
-
-
-
 
 Table 5: Safety tasks: continued pretraining results compared to standard next token prediction on safety tasks.
 
@@ -633,16 +575,13 @@ In [Table 7](#S3.T7 "Table 7 ‣ 3.5.4 Judge choice ‣ 3.5 Analysis & ablation
 We find that the prompted GPT-OSS-120B model generally performs better, but the finetuned Llama judge is not far behind, demonstrating that we can purpose-train a smaller model for this goal.
 A detailed breakdown of results across standard tasks can be found in Appendix [Table 17](#A3.T17 "Table 17 ‣ C.2 Finegrained evaluation results ‣ Appendix C Evaluation results ‣ Self-Improving Pretraining: using post-trained models to pretrain better models").
 
-![Refer to caption](/html/2601.21343/assets/x4.png)
+!(/html/2601.21343/assets/x4.png)
 
-![Refer to caption](/html/2601.21343/assets/x5.png)
+!(/html/2601.21343/assets/x5.png)
 
-![Refer to caption](/html/2601.21343/assets/x6.png)
+!(/html/2601.21343/assets/x6.png)
 
 Figure 9: Ablation results on the number of rollouts in online DPO training for models trained for Quality (left), Factuality (middle), and Safety (right).
-
-
-
 
 Table 7: Judge comparison: evaluation results on generation quality and coherence for ablations of using GPT-OSS-120B as judge versus using our finetuned llama3 judge during online DPO training. The number of rollouts used is 8 in these experiments.
 
@@ -1059,9 +998,6 @@ Table 8: Accuracy on the synthetic binary choice quality task used for judge tra
 | DeepSeek-R1-Distill-Llama-8B | 57.8 | 55.3 | 57.5 | 55.8 | 53.2 | 63.5 | 56.8 |
 | DeepSeek-R1-Distill-Llama-70B | 73.6 | 79.4 | 75.4 | 72.6 | 64.0 | 86.0 | 74.9 |
 
-
-
-
 Figure 10: Synthetic data generation corruption prompt used to create negative data for suffix judge training.
 
 Synthetic data generation corruption prompt
@@ -1071,8 +1007,6 @@ Context: {prefix}
 Continuation: {suffix}
 Your continuation must closely resemble provided continuation, but it should contain some factual inaccuracies or unsafe content. IMPORTANT: Please strictly follow the following format:
 MODIFIED CONTINUATION: <provide only modified continuation here, without any additional text or explanations>
-
-
 
 Figure 11: Prompt used to train a rewriter model. We prepend the suffix with the last five words from the prefix to ensure the rewriter always smoothly continues the prefix.
 
@@ -1316,9 +1250,6 @@ V4 Differences from Base:
 
 Table 9: Comparison of v1–v5 with reference Prompt Variants. Versions v1 and v2 are overly strict, flagging too much content for rewriting and risking overly generic rewrites by removing valid creative elements. Versions v3 and v4 allow more creativity, with v4 explicitly excluding style and narrative from the evaluation scope. Version v5 is potentially too lenient, as it biases toward “No Hallucination”, may miss subtle factual errors and fails to catch issues that could make rewritten text inaccurate. We hence use v4 in our main experiments.
 
-
-
-
 Table 10: Prompting GPT-4o for factuality predictions on 200 examples in the SlimPajama test set.
 
 |  |  |  |  |  |
@@ -1337,9 +1268,6 @@ Table 10: Prompting GPT-4o for factuality predictions on 200 examples in the Sli
 | Model | v3 (With-Ref) | 143 (71.5%) | 26 (13.0%) | 31 (15.5%) |
 | Model | v4 (With-Ref) | 125 (62.5%) | 39 (19.5%) | 36 (18.0%) |
 | Model | v5 (With-Ref) | 87 (44.2%) | 19 (9.6%) | 91 (46.2%) |
-
-
-
 
 Table 11: Prompting GPT-OSS-120B for factuality predictions on 200 examples in the SlimPajama test set.
 
@@ -1360,9 +1288,6 @@ Table 11: Prompting GPT-OSS-120B for factuality predictions on 200 examples in t
 | Model | v4 (With-Ref) | 102 (54.84%) | 62 (33.33%) | 22 (11.83%) |
 | Model | v5 (With-Ref) | 82 (43.39%) | 28 (14.81%) | 79 (41.80%) |
 
-
-
-
 Table 12: Prompting Llama3-70B for factuality predictions on 200 examples in the SlimPajama test set.
 
 |  |  |  |  |  |
@@ -1381,9 +1306,6 @@ Table 12: Prompting Llama3-70B for factuality predictions on 200 examples in the
 | Model | v3 (With-Ref) | 41 (20.5%) | 131 (65.5%) | 28 (14.0%) |
 | Model | v4 (With-Ref) | 49 (24.7%) | 109 (55.1%) | 40 (20.2%) |
 | Model | v5 (With-Ref) | 31 (15.5%) | 37 (18.5%) | 132 (66.0%) |
-
-
-
 
 Table 13: Factuality prompt agreement metrics: Llama3.3-70B and GPT-OSS vs. GPT-4o.
 
@@ -1488,8 +1410,6 @@ Respond EXACTLY with:
 "B" if B has less repetition
 "TIE" if they are about the same.
 
-
-
 Figure 14: FActScore judge prompt.
 
 FActScore judge prompt
@@ -1538,8 +1458,6 @@ Output your judgment in the following JSON format ONLY:
 "reasoning": "<brief explanation of which answer is more faithful and why>",
 "label": "<A | B | TIE>"
 }
-
-
 
 Figure 15: HaluEval judge prompt.
 
@@ -1632,9 +1550,6 @@ Evaluation results for quality, factuality and safety experiments with different
 | Self-Improving Pretraining (8 rollouts vs suf vs rewr) | 66.5 / 72.3 | 48.7 | 89.7 |
 | Self-Improving Pretraining (16 rollouts vs suf vs rewr) | 72.5 / 75.4 | 49.1 | 88.9 |
 
-
-
-
 Table 15: Ablation on rollouts: standard task metrics.
 Standard task results for quality and factuality training with different number of rollouts.
 
@@ -1656,9 +1571,6 @@ Standard task results for quality and factuality training with different number 
 | Self-Improving Pretraining (8 rollouts) | 68.3 | 75.6 | 45.8 | 50.8 | 35.7 | 69.6 | 28.6 | 28.2 |
 | Self-Improving Pretraining (16 rollouts) | 70.3 | 75.1 | 46.8 | 51.1 | 35.1 | 69.1 | 29.0 | 27.9 |
 
-
-
-
 Table 16: Ablation on rollouts: factuality evaluations.
 We see increasingly better performance as the number of rollouts increase.
 
@@ -1673,9 +1585,6 @@ We see increasingly better performance as the number of rollouts increase.
 | 8 rollouts | 60.0 | 68.4 | 57.2 | 59.0 | 87.6 | 24.7 | 38.0 |
 | 16 rollouts | 63.5 | 69.3 | 54.6 | 58.5 | 84.7 | 27.7 | 42.5 |
 
-
-
-
 Table 17: Online DPO using different suffix judges. Evaluation results on standard benchmarks for quality when using GPT-OSS-120B as judge versus using our finetuned Llama3 judge during online DPO training. The number of rollouts used is 8 in these experiments.
 
 |  |  |  |  |  |  |  |  |  |
@@ -1683,9 +1592,6 @@ Table 17: Online DPO using different suffix judges. Evaluation results on standa
 | Self-Improving Pretraining | boolq | piqa | siqa | hellaswag | arc\_challenge | arc\_easy | obqa | mmlu |
 | fine-tuned Llama3 as judge | 67.5 | 76.1 | 43.8 | 49.8 | 35.4 | 69.3 | 28.6 | 26.9 |
 | GPT-OSS-120B as judge | 70.9 | 75.6 | 45.9 | 51.4 | 35.3 | 71.2 | 30.2 | 28.3 |
-
-
-
 
 Table 18: Overall evaluation results for coherence and factuality ablations of whether we leverage the reference as a pivot to speed up pairwise comparison. The number of rollouts used is 8 in these experiments.
 
@@ -1698,9 +1604,6 @@ Table 18: Overall evaluation results for coherence and factuality ablations of w
 | 8 rollouts, suffix as pivot | 64.2 | 49.6 | 55.7 |
 | 8 rollouts, full comparisons | 83.1 | 50.3 | 56.9 |
 
-
-
-
 Table 19: Evaluation results of factuality benchmarks for ablations of using pivots. The number of rollouts used is 8 in these experiments.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -1708,9 +1611,6 @@ Table 19: Evaluation results of factuality benchmarks for ablations of using piv
 | Pretraining for Factuality | |  | | --- | | Slimpajama test set | | (pointwise) | | |  | | --- | | FActScore | | (pairwise) | | |  | | --- | | HaluEval | | dialogue | | |  | | --- | | HaluEval | | QA | | |  | | --- | | HaluEval | | summarization | | |  | | --- | | TruthfulQA | | MC1 | | |  | | --- | | TruthfulQA | | MC2 | |
 | 8 rollouts, suffix as pivot | 61.1 | 67.9 | 56.1 | 59.9 | 77.9 | 25.3 | 38.9 |
 | 8 rollouts, full comparisons | 60.0 | 68.4 | 57.2 | 59.0 | 87.6 | 24.7 | 38.0 |
-
-
-
 
 Table 20: Evaluation results of standard benchmarks for using pivots in different coherence and factuality ablations. The number of rollouts used is 8 in these experiments.
 
@@ -1723,9 +1623,6 @@ Table 20: Evaluation results of standard benchmarks for using pivots in differen
 | Pretraining for Factuality |  |  |  |  |  |  |  |  |
 | 8 rollouts, suffix as pivot | 67.9 | 75.2 | 44.1 | 49.7 | 34.3 | 68.9 | 28.8 | 28.0 |
 | 8 rollouts, full comparisons | 68.3 | 75.6 | 45.8 | 50.8 | 35.7 | 69.6 | 28.6 | 28.2 |
-
-
-
 
 Table 21: Continued pretraining results across quality, factuality and safety evals, compared to standard next token prediction (Llama Base 1.4B and Pretrain Baseline).
 
@@ -1748,83 +1645,3 @@ Table 21: Continued pretraining results across quality, factuality and safety ev
 | Trained on RedPajama |  |  |  |  |  |
 | Llama Pretrain Baseline | 54.5 | 47.9 | 57.1 | 40.8 | 75.5 |
 | Self-Improving Pretraining | 73.6 | 49.1 | 73.9 | 38.0 | 91.1 |
-
-[◄](/html/2601.21342)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.21343)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.21343)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.21343)[►](/html/2601.21344)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 20:41:44 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

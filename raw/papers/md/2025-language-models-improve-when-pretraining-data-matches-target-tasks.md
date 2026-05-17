@@ -19,49 +19,6 @@ url: https://arxiv.org/abs/2507.12466
 year: 2025
 ---
 
-[2507.12466] Language Models Improve When Pretraining Data Matches Target Tasks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Language Models Improve When Pretraining Data Matches Target Tasks
 
 David Mizrahi1   Anders Boesen Lindbo Larsen1   Jesse Allardice1
@@ -80,8 +37,7 @@ Every data selection method inherently has a target. In practice, these targets 
   
 We compare data selection methods by training over 500 models spanning 101910^{19} to 102210^{22} FLOPs and fitting scaling laws to them. From this, we find that simply aligning pretraining data to evaluation benchmarks using BETR achieves a 2.1x compute multiplier over DCLM-Baseline (4.7x over unfiltered data) and improves performance on 9 out of 10 tasks across all scales. BETR also generalizes well: when targeting a diverse set of benchmarks disjoint from our evaluation suite, it still matches or outperforms baselines. Our scaling analysis further reveals a clear trend: larger models require less aggressive filtering. Overall, our findings show that directly matching pretraining data to target tasks precisely shapes model capabilities and highlight that optimal selection strategies must adapt to model scale.
 
-![Refer to caption](/html/2507.12466/assets/x1.png)
-
+!(/html/2507.12466/assets/x1.png)
 
 Figure 1: Benchmark-targeted ranking (BETR) achieves a 1.8x–2.8x compute multiplier over strong baselines. Scaling curves show accuracy on Core (10 standard benchmarks) at compute-optimality from 101910^{19} to 102210^{22} FLOPs. Target-Core directly optimizes for evaluated benchmarks, while Target-Noncore targets distinct benchmarks. Both outperform DCLM-Baseline at all scales.
 
@@ -125,8 +81,7 @@ Comparing datasets at scale presents unique challenges since pretraining loss al
 
 ### 3.1 Motivation and problem setting
 
-![Refer to caption](/html/2507.12466/assets/x2.png)
-
+!(/html/2507.12466/assets/x2.png)
 
 Figure 2: BETR method overview. We embed benchmark examples and a small sample of pretraining documents (∼\sim0.1% of pool) in a shared space, score the sampled documents by their similarity to benchmarks, then train a classifier on these scores to efficiently rank and filter the entire document pool.
 
@@ -165,8 +120,7 @@ The choice of the value function v​(r)v(r) and aggregation method creates a sp
 
 In practice: We use max aggregation, which scores documents by their best rank across all benchmark examples (see Section [5.5](#S5.SS5 "5.5 What factors drive performance? ‣ 5 Results ‣ Language Models Improve When Pretraining Data Matches Target Tasks") and Figure [3](#S3.F3 "Figure 3 ‣ 3.4 Scoring documents by similarity to benchmarks ‣ 3 Method ‣ Language Models Improve When Pretraining Data Matches Target Tasks")).
 
-![Refer to caption](/html/2507.12466/assets/x3.png)
-
+!(/html/2507.12466/assets/x3.png)
 
 Figure 3: BETR scoring distributions in practice.
 Left: Best rank assigned by any benchmark example (BE). With >14,000 benchmark examples competing to score documents, only those ranked in the top 0.002% by some benchmark example reach the top 10% of BETR scores.
@@ -206,8 +160,7 @@ Nemotron-CC [Su et al., [2024a](#bib.bib98)]. This data pool also processes Co
 
 Baselines. We compare against two baseline filtering methods. DCLM-Baseline [Li et al., [2024](#bib.bib55)] is a FastText classifier trained on Reddit ELI5 + OpenHermes-2.5 as positive examples and RefinedWeb as negatives. When applying it to Nemotron-CC, we retrain the classifier using Nemotron data as negatives instead. For Nemotron-CC, we also compare against Nemotron-CC HQ [Su et al., [2024a](#bib.bib98)], which consists of documents classified as high-quality by an ensemble of classifiers555We use all documents labeled as high-quality for Nemotron-CC HQ, while Su et al. [[2024a](#bib.bib98)] only use a subset (actual documents and synthetic QA). Appendix [E.3](#A5.SS3 "E.3 Nemotron-CC HQ dataset definition ‣ Appendix E Additional experiments & analysis ‣ Language Models Improve When Pretraining Data Matches Target Tasks") shows their subset performs slightly better, but not enough to change method rankings.. To ensure fair comparison across methods, we filter all datasets to retain the top 10% of tokens, except for Nemotron-CC HQ where we use all high-quality documents (as the quality tiers are discrete).
 
-![Refer to caption](/html/2507.12466/assets/x4.png)
-
+!(/html/2507.12466/assets/x4.png)
 
 Figure 4: Comparing datasets using scaling laws. For each dataset, we use a two-stage scaling law approach to predict per-benchmark accuracy [Gadre et al., [2024](#bib.bib37); Meta AI, [2024](#bib.bib66); Bhagia et al., [2024](#bib.bib14)]. 1) Fit a loss scaling law as a function of model size and training tokens (color coding indicates training FLOPs, darker blues for more compute used). 2) Map task loss to accuracy for each benchmark. 3) Combine the two to predict accuracy at any configuration, including compute-optimal settings. 4) Repeat for each dataset to compare performance across compute budgets.
 
@@ -231,33 +184,23 @@ We provide a detailed overview of our scaling law methodology in Appendix [C](#
 
 Method
 
-
 ARC-E
-
 
 ARC-C
 
-
 HellaS
-
 
 Lamb.
 
-
 MMLU
-
 
 PIQA
 
-
 SciQ
-
 
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
@@ -266,132 +209,92 @@ Data pool: DCLM-RefinedWeb
 
 No Filter
 
-
 77.8
-
 
 47.7
 
-
 60.5
-
 
 74.3
 
-
 54.6
-
 
 80.7
 
-
 94.5
-
 
 43.8
 
-
 25.6
-
 
 73.2
 63.3
 
 DCLM-Baseline
 
-
 81.4
-
 
 50.7
 
-
 60.4
-
 
 75.0
 
-
 63.1
-
 
 80.3
 
-
 95.9
-
 
 43.4
 
-
 24.4
-
 
 73.4
 64.8
 
 BETR Target-Noncore
 
-
 81.9
-
 
 51.3
 
-
 58.3
-
 
 75.5
 
-
 63.1
-
 
 79.4
 
-
 95.4
-
 
 46.1
 
-
 25.0
-
 
 73.8
 65.0
 
 BETR Target-Core
 
-
 82.9
-
 
 53.3
 
-
 63.1
-
 
 75.8
 
-
 62.6
-
 
 83.2
 
-
 96.7
-
 
 47.9
 
-
 26.0
-
 
 74.0
 66.5
@@ -400,165 +303,115 @@ Data pool: Nemotron-CC
 
 No Filter
 
-
 82.2
-
 
 51.5
 
-
 60.9
-
 
 71.5
 
-
 60.8
-
 
 80.9
 
-
 95.8
-
 
 45.3
 
-
 27.6
-
 
 72.1
 64.9
 
 Nemotron-CC HQ
 
-
 83.5
-
 
 54.3
 
-
 61.1
-
 
 69.7
 
-
 67.2
-
 
 80.8
 
-
 96.1
-
 
 45.8
 
-
 24.7
-
 
 73.6
 65.7
 
 DCLM-Baseline
 
-
 82.4
-
 
 53.5
 
-
 60.8
-
 
 72.3
 
-
 67.3
-
 
 80.4
 
-
 97.0
-
 
 44.2
 
-
 27.5
-
 
 74.7
 65.9
 
 BETR Target-Noncore
 
-
 83.4
-
 
 55.1
 
-
 58.7
-
 
 74.0
 
-
 68.7
-
 
 79.1
 
-
 96.1
-
 
 49.2
 
-
 26.9
-
 
 75.2
 66.6
 
 BETR Target-Core
 
-
 84.0
-
 
 54.7
 
-
 64.1
-
 
 74.9
 
-
 68.3
-
 
 83.0
 
-
 96.4
-
 
 50.2
 
-
 25.5
-
 
 74.0
 67.5
@@ -577,33 +430,23 @@ Takeaway: Directly targeting benchmarks achieves a 1.8-2.8x compute multiplier o
 
 Target
 
-
 ARC-E
-
 
 ARC-C
 
-
 HellaS
-
 
 Lamb.
 
-
 MMLU
-
 
 PIQA
 
-
 SciQ
-
 
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
@@ -613,324 +456,234 @@ ARC-Easy
 \cellcolor
 ontarget81.11
 
-
 49.83
-
 
 58.45
 
-
 63.28
-
 
 48.14
 
-
 81.05
-
 
 95.52
 
-
 25.74
 
-
 11.86
-
 
 66.48
 58.13
 
 ARC-Challenge
 
-
 80.33
 
 \cellcolor
 ontarget51.41
 
-
 58.16
-
 
 63.37
 
-
 48.43
-
 
 80.46
 
-
 95.34
-
 
 25.36
 
-
 9.69
-
 
 68.76
 58.14
 
 HellaSwag
 
-
 74.18
-
 
 40.38
 
 \cellcolor
 ontarget61.51
 
-
 68.24
-
 
 28.77
 
-
 82.02
-
 
 93.57
 
-
 15.611
 
-
 7.810
-
 
 69.05
 54.18
 
 Lambada
 
-
 63.711
 
-
 31.111
-
 
 53.18
 
 \cellcolor
 ontarget75.52
 
-
 26.211
-
 
 74.49
 
-
 89.611
-
 
 25.55
 
-
 11.77
-
 
 70.63
 52.111
 
 MMLU
 
-
 78.65
-
 
 47.25
 
-
 50.89
-
 
 59.210
 
 \cellcolor
 ontarget53.01
 
-
 74.110
-
 
 95.25
 
-
 25.37
 
-
 15.64
-
 
 69.74
 56.96
 
 PIQA
 
-
 75.37
-
 
 41.87
 
-
 60.52
 
-
 65.06
-
 
 27.010
 
 \cellcolor
 ontarget82.61
 
-
 91.88
-
 
 17.310
 
-
 6.911
-
 
 66.87
 53.510
 
 SciQ
 
-
 80.62
-
 
 51.22
 
-
 57.67
-
 
 57.911
 
-
 47.65
-
 
 80.17
 
 \cellcolor
 ontarget95.91
 
-
 24.88
 
-
 13.35
-
 
 66.29
 57.55
 
 TriviaQA
 
-
 76.66
-
 
 43.76
 
-
 50.410
-
 
 67.05
 
-
 42.26
 
-
 75.18
-
 
 94.26
 
 \cellcolor
 ontarget48.81
 
-
 23.12
-
 
 65.710
 58.72
 
 WebQs
 
-
 68.810
-
 
 34.510
 
-
 46.311
-
 
 63.19
 
-
 28.18
-
 
 71.411
 
-
 91.79
-
 
 41.82
 
 \cellcolor
 ontarget27.61
 
-
 64.711
 53.89
 
 WinoGrande
 
-
 69.29
-
 
 37.09
 
-
 59.84
-
 
 75.71
 
-
 27.79
-
 
 81.14
 
-
 91.410
 
-
 21.79
-
 
 10.28
 
@@ -940,33 +693,23 @@ ontarget72.21
 
 All (i.e. Core)
 
-
 79.74
-
 
 49.74
 
-
 59.93
-
 
 74.03
 
-
 48.92
-
 
 81.33
 
-
 95.43
-
 
 40.43
 
-
 22.53
-
 
 71.02
 \cellcolorontarget62.31
@@ -996,10 +739,9 @@ Takeaway: Individual benchmark targeting enables precise control but produces sp
 
 Table 3: Benchmark vs. domain targeting. Targeting diverse benchmarks (Noncore) outperforms targeting specific domains on held-out tasks (Core).
 
-![Refer to caption](/html/2507.12466/assets/x5.png)
+!(/html/2507.12466/assets/x5.png)
 
   
-
 
 Figure 5: Performance scales with benchmark diversity. After an initial plateau, targeting additional diverse benchmarks (Noncore) consistently improves performance on held-out tasks (Core).
 
@@ -1015,14 +757,12 @@ Takeaway: Targeting diverse benchmarks yields generally capable models that perf
 
 ### 5.4 What are the consequences of optimizing for a limited set of benchmarks?
 
-![Refer to caption](/html/2507.12466/assets/x6.png)
-
+!(/html/2507.12466/assets/x6.png)
 
 Figure 6: Core vs Noncore performance.
 At 7B-10x scale, BETR Target-Core achieves the highest Core performance but falls to third place on held-out Noncore tasks, showing the trade-off of targeted optimization.
 
-![Refer to caption](/html/2507.12466/assets/x7.png)
-
+!(/html/2507.12466/assets/x7.png)
 
 Figure 7: Document overlap analysis. Top 10% document agreement on DCLM-RefinedWeb poorly correlates with model capabilities: similar-performing methods show different selection patterns.
 
@@ -1040,7 +780,7 @@ Takeaway: Standard pretraining benchmarks (Core) represent a narrow slice of cap
 
 (a) Target granularity
 
-![Refer to caption](/html/2507.12466/assets/x8.png)
+!(/html/2507.12466/assets/x8.png)
 
 (b) Embedding model
 
@@ -1055,7 +795,7 @@ Takeaway: Standard pretraining benchmarks (Core) represent a narrow slice of cap
 
 (c) Scoring function
 
-![Refer to caption](/html/2507.12466/assets/x9.png)
+!(/html/2507.12466/assets/x9.png)
 
 (d) Elementwise scoring model (DFN)
 
@@ -1110,8 +850,7 @@ Our scaling analysis reveals additional insights about data selection that only 
 
 ### 6.1 Tasks vary in how much they benefit from data selection
 
-![Refer to caption](/html/2507.12466/assets/x10.png)
-
+!(/html/2507.12466/assets/x10.png)
 
 Figure 9: Per-benchmark scaling laws. We compare BETR Target-Core against no filtering across all Core benchmarks on Nemotron-CC, showing compute-optimal performance from 101910^{19} to 102210^{22} FLOPs. The scaling laws use two-stage fitting: first from model size and training tokens to per-benchmark bits-per-byte, then from bits-per-byte to accuracy. Compute multipliers (CM) vary by over 5x: from 10.4x for ARC-Easy to 1.8x for Winogrande.
 
@@ -1125,8 +864,7 @@ Takeaway: Data selection benefits tasks unevenly. For BETR Target-Core, knowledg
 
 ### 6.2 Optimal filtering rate depends strongly on scale
 
-![Refer to caption](/html/2507.12466/assets/x11.png)
-
+!(/html/2507.12466/assets/x11.png)
 
 Figure 10: Optimal data filtering rate scaling. Left: Compute-optimal Core accuracy for varying BETR Target-Core filtering rates on Nemotron-CC, along with scaling law fits. Center: Probability that each filtering rate is optimal at a given compute scale, estimated from bootstrap distributions of scaling law fits. Right: Optimal filtering rate (top-x%x\%) as a function of compute, shown both for the best observed model and the best model predicted via scaling laws. The scaling law fit Fopt​(C)=4×10−5​C0.25F\_{\mathrm{opt}}(C)=4\times 10^{-5}C^{0.25} is overlaid for comparison.
 
@@ -1834,8 +1572,7 @@ MMLU reformulation for stable scaling. In standard MMLU evaluation [Hendrycks e
 
 Figure [11](#A3.F11 "Figure 11 ‣ C.1 Scaling experiments setup ‣ Appendix C Scaling law methodology ‣ Language Models Improve When Pretraining Data Matches Target Tasks") shows the impact of this reformulation. The original (i.e. by reference) MMLU format yields irregular accuracy-to-BPB relationships (left), while MMLU-Direct shows smooth, predictable scaling (center). The two formats remain strongly correlated (right), confirming that MMLU-Direct preserves the benchmark’s discriminative power while enabling cleaner scaling analysis. However, MMLU-Direct typically produces lower absolute accuracy scores for models above 102110^{21} FLOPs. All subsequent references to MMLU in our scaling analysis use this reformulated version.
 
-![Refer to caption](/html/2507.12466/assets/x12.png)
-
+!(/html/2507.12466/assets/x12.png)
 
 Figure 11: MMLU task accuracy vs. bits-per-byte scaling. Comparison between the original MMLU evaluation format (i.e. by reference)and the reformulated MMLU-Direct variant. Left: Original MMLU accuracy as a function of bits-per-byte shows irregular patterns. Middle: MMLU-Direct accuracy as a function of bits-per-byte shows a clean, predictable relationship. Right: Direct comparison of accuracy between the original and reformulated versions, showing a strong monotonic relationship. We use MMLU-Direct in all scaling law analyses for its cleaner scaling properties.
 
@@ -1849,8 +1586,7 @@ Large batch sizes hurt model performance beyond a critical threshold [McCandlish
 
 where γ=−0.47\gamma=-0.47 and d=22.91d=22.91 based on their empirical measurements. To remain safely below the critical threshold, we apply a 20% reduction from B∗B^{\*}, then round down to the nearest power of 2 for implementation convenience. Figure [12](#A3.F12 "Figure 12 ‣ C.2 Batch size selection ‣ Appendix C Scaling law methodology ‣ Language Models Improve When Pretraining Data Matches Target Tasks") illustrates this selection procedure across our range of training tokens (1B to 152B).
 
-![Refer to caption](/html/2507.12466/assets/x13.png)
-
+!(/html/2507.12466/assets/x13.png)
 
 Figure 12: Batch size selection for scaling experiments. The dashed gray line shows the critical batch size B∗B^{\*} as a function of training tokens following Zhang et al. [[2024a](#bib.bib119)]. The light gray region indicates our 20% safety buffer below B∗B^{\*}. Blue circles mark our selected batch sizes, which are rounded down to the nearest power of 2 from the buffer threshold. This ensures all models train below their critical batch size.
 
@@ -1880,18 +1616,15 @@ Since our grid sampling creates higher density in mid-range FLOPs, we apply inve
 
 We repeat this fitting procedure for validation loss and each benchmark’s BPB across all datasets. Figure [15](#A3.F15 "Figure 15 ‣ C.3 Loss scaling with model size and training tokens ‣ Appendix C Scaling law methodology ‣ Language Models Improve When Pretraining Data Matches Target Tasks") compares these fits across different data selection methods. Table [12](#A6.T12 "Table 12 ‣ Appendix F Full tables ‣ Language Models Improve When Pretraining Data Matches Target Tasks") provides selected fitted parameters.
 
-![Refer to caption](/html/2507.12466/assets/x14.png)
-
+!(/html/2507.12466/assets/x14.png)
 
 Figure 13: Validation loss scaling with model size and training tokens. Left: Validation loss surface as a function of model size and training FLOPs for models trained on BETR Target-Core (Nemotron-CC, top 10% filtering). Contours show fitted scaling law values; the blue curve shows the compute-optimal model size Nopt​(C)N\_{\text{opt}}(C). Right: Validation loss along the compute-optimal path: gray dots show all trained models, blue highlights those closest to compute-optimal, and the line shows our fitted scaling curve L​(Nopt,C)L(N\_{\text{opt}},C).
 
-![Refer to caption](/html/2507.12466/assets/x15.png)
-
+!(/html/2507.12466/assets/x15.png)
 
 Figure 14: Task loss scaling with model size and training tokens. Bits-per-byte loss surfaces for individual benchmarks and pretraining validation loss (bottom right) for BETR Target-Core (Nemotron-CC, top 10% filtering). Each panel shows how we fit scaling laws to every benchmark individually, with blue curves showing compute-optimal trajectories Nopt​(C)N\_{\text{opt}}(C). These benchmark-specific fits enable the accuracy predictions shown in the main paper.
 
-![Refer to caption](/html/2507.12466/assets/x16.png)
-
+!(/html/2507.12466/assets/x16.png)
 
 Figure 15: Task loss scaling comparison across data selection methods. Compute-optimal performance on each benchmark for models trained on Nemotron-CC with different data selection methods. Lines show fitted scaling laws with 95% confidence intervals (shaded). These per-benchmark fits show how each data selection method scales differently across tasks.
 
@@ -1911,13 +1644,11 @@ Importantly, we perform these fits independently per benchmark and per dataset, 
 
 Following Bhagia et al. [[2024](#bib.bib14)], we combine our loss Li​(N,D)L\_{i}(N,D) and accuracy Acci​(Li)\mathrm{Acc}\_{i}(L\_{i}) fits into two-step scaling law predictions of benchmark accuracy directly from model size and training tokens, as visualized in Figure [9](#S6.F9 "Figure 9 ‣ 6.1 Tasks vary in how much they benefit from data selection ‣ 6 Insights from scaling laws ‣ Language Models Improve When Pretraining Data Matches Target Tasks").
 
-![Refer to caption](/html/2507.12466/assets/x17.png)
-
+!(/html/2507.12466/assets/x17.png)
 
 Figure 16: Task accuracy as a function of bits-per-byte. Scaling law fits from the second stage of our two-step prediction pipeline, relating benchmark accuracy to task loss (in bits-per-byte) for models trained on the Nemotron-CC BETR Target-Core dataset. Each subplot shows data points colored by model size and the corresponding sigmoid fit with 95% bootstrap confidence intervals (blue band). These fits capture the saturating behavior of task accuracy as loss improves and are critical for translating loss scaling predictions into accuracy estimates.
 
-![Refer to caption](/html/2507.12466/assets/x18.png)
-
+!(/html/2507.12466/assets/x18.png)
 
 Figure 17: Impact of data selection methods and filtering intensity on accuracy-to-loss scaling. Each plot shows the fitted relationship between TriviaQA bits-per-byte (BPB) and TriviaQA accuracy for models trained on Nemotron-CC with varying selection approaches. Left: Comparison across data selection methods. Right: Comparison across filtering intensities (Top 3% to 100%) for BETR Target-Core. Bands denote 95% bootstrap confidence intervals for the sigmoid fits.
 
@@ -1959,33 +1690,23 @@ Table [5](#A3.T5 "Table 5 ‣ C.6 Compute multipliers ‣ Appendix C Scaling la
 
 Method
 
-
 ARC-E
-
 
 ARC-C
 
-
 HellaS
-
 
 Lamb.
 
-
 MMLU
-
 
 PIQA
 
-
 SciQ
-
 
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
@@ -1994,132 +1715,92 @@ Data pool: DCLM-RefinedWeb
 
 No Filter
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
-
 1.0
-
-
-1.0
-
-
-1.0
-
-
-1.0
-
-
-1.0
-
 
 1.0
 1.0
 
 DCLM-Baseline
 
-
 10.2
-
 
 8.7
 
-
 1.2
 
-
 1.9
-
 
 5.7
 
-
 1.0
-
 
 3.2
 
-
 1.9
 
-
 1.1
-
 
 1.7
 2.6
 
 BETR Target-Noncore
 
-
 13.5
-
 
 10.2
 
-
 0.7
-
 
 2.8
 
-
 7.9
-
 
 0.5
 
-
 5.7
-
 
 3.4
 
-
 1.4
-
 
 1.5
 3.1
 
 BETR Target-Core
 
-
 17.9
-
 
 13.8
 
-
 3.1
-
 
 3.6
 
-
 5.7
-
 
 9.7
 
-
 5.3
-
 
 3.0
 
-
 1.3
-
 
 1.9
 4.7
@@ -2128,165 +1809,115 @@ Data pool: Nemotron-CC
 
 No Filter
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
+1.0
 
 1.0
 
-
 1.0
-
-
-1.0
-
-
-1.0
-
-
-1.0
-
-
-1.0
-
 
 1.0
 1.0
 
 Nemotron-CC HQ
 
-
 3.7
-
 
 3.5
 
-
 1.3
-
 
 0.7
 
-
 3.8
-
 
 1.2
 
-
 2.7
-
 
 2.0
 
-
 1.0
-
 
 1.3
 1.7
 
 DCLM-Baseline
 
-
 3.2
-
 
 3.1
 
-
 1.1
-
 
 2.2
 
-
 3.3
-
 
 0.9
 
-
 2.9
-
 
 1.3
 
-
 1.0
-
 
 1.9
 1.9
 
 BETR Target-Noncore
 
-
 6.1
-
 
 5.2
 
-
 0.6
-
 
 3.3
 
-
 6.6
-
 
 0.4
 
-
 5.0
-
 
 4.4
 
-
 3.2
-
 
 1.5
 3.0
 
 BETR Target-Core
 
-
 10.4
-
 
 8.2
 
-
 2.7
-
 
 4.5
 
-
 5.2
-
 
 9.5
 
-
 6.9
-
 
 3.6
 
-
 2.8
-
 
 1.8
 4.7
@@ -2301,8 +1932,7 @@ Figure [18](#A4.F18 "Figure 18 ‣ D.1 Compute-optimal token-to-parameter ratios
 
 This ratio remains stable: we observe no significant trends with increasing compute, and different data selection methods yield similar ratios within uncertainty bounds. This indicates that a constant token-to-parameter ratio may suffice across the compute scales we study, regardless of the data selection method used.
 
-![Refer to caption](/html/2507.12466/assets/x19.png)
-
+!(/html/2507.12466/assets/x19.png)
 
 Figure 18: Optimal training token to model size ratio D/NoptD/N\_{\text{opt}} across compute scales. Ratio of training tokens DD to compute-optimal model size Nopt​(C)N\_{\text{opt}}(C) as a function of compute (FLOPs) for models trained on DCLM-RefinedWeb (left) and Nemotron-CC (right) data pools. Lines show the ratio for each data selection method, with shaded regions denoting 95% confidence intervals from bootstrap resampling. The dashed horizontal line marks the Chinchilla ratio of D/N≈20D/N\approx 20 [Hoffmann et al., [2022](#bib.bib45)] All methods yield ratios around 10-12 tokens per parameter.
 
@@ -2310,13 +1940,11 @@ Figure 18: Optimal training token to model size ratio D/NoptD/N\_{\text{opt}} ac
 
 Figures [19](#A4.F19 "Figure 19 ‣ D.2 Per-benchmark scaling laws ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") and [20](#A4.F20 "Figure 20 ‣ D.2 Per-benchmark scaling laws ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") show per-benchmark accuracy scaling for compute-optimal models on DCLM-RefinedWeb and Nemotron-CC data pools, respectively. Across nearly all benchmarks, BETR Target-Core consistently achieves the highest performance.
 
-![Refer to caption](/html/2507.12466/assets/x20.png)
-
+!(/html/2507.12466/assets/x20.png)
 
 Figure 19: Per-benchmark accuracy scaling on DCLM-RefinedWeb. Compute-optimal task accuracy for models trained on DCLM-RefinedWeb with different data selection methods.
 
-![Refer to caption](/html/2507.12466/assets/x21.png)
-
+!(/html/2507.12466/assets/x21.png)
 
 Figure 20: Per-benchmark accuracy scaling on Nemotron-CC. Compute-optimal task accuracy for models trained on Nemotron-CC with different data selection methods.
 
@@ -2324,8 +1952,7 @@ Figure 20: Per-benchmark accuracy scaling on Nemotron-CC. Compute-optimal task a
 
 Figure [21](#A4.F21 "Figure 21 ‣ D.3 Data pool comparison ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") directly compares Core average accuracy across both data pools. Without filtering, Nemotron-CC consistently outperforms DCLM-RefinedWeb at all compute budgets. BETR Target-Core filtering improves both data pools, with Nemotron-CC + BETR achieving the best overall performance. The scaling laws suggest the gap between data pools may narrow at higher compute budgets.
 
-![Refer to caption](/html/2507.12466/assets/x22.png)
-
+!(/html/2507.12466/assets/x22.png)
 
 Figure 21: Data pool comparison with and without BETR filtering. Mean benchmark accuracy (Core average) as a function of compute for models trained on DCLM-RefinedWeb (orange) and Nemotron-CC (blue), with (solid) and without (dashed) BETR Target-Core filtering. Lines show scaling law predictions with 95% confidence intervals; markers indicate actual trained models closest to compute-optimal.
 
@@ -2333,8 +1960,7 @@ Figure 21: Data pool comparison with and without BETR filtering. Mean benchmark 
 
 Figure [22](#A4.F22 "Figure 22 ‣ D.4 Optimal filtering rates on DCLM-RefinedWeb ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") extends our filtering rate analysis to the DCLM-RefinedWeb data pool. As with Nemotron-CC (Figure [10](#S6.F10 "Figure 10 ‣ 6.2 Optimal filtering rate depends strongly on scale ‣ 6 Insights from scaling laws ‣ Language Models Improve When Pretraining Data Matches Target Tasks")), we observe a shift from aggressive filtering (Top 3%) toward lighter filtering (Top 10%) as compute increases. However, the transition is less pronounced: the optimal filtering rate scales as Fopt∝C0.14F\_{\text{opt}}\propto C^{0.14}, compared to C0.25C^{0.25} for Nemotron-CC. At 102310^{23} FLOPs, the optimal filtering rate is predicted to be Top 10%, compared to Top 30% for Nemotron-CC at the same compute budget.
 
-![Refer to caption](/html/2507.12466/assets/x23.png)
-
+!(/html/2507.12466/assets/x23.png)
 
 Figure 22: Optimal filtering rate scaling on DCLM-RefinedWeb. Left: Mean task accuracy (Core average) for models trained with different BETR Target-Core filtering rates, with scaling law fits and 95% confidence intervals. Middle: Probability that each filtering rate is optimal at a given compute scale, estimated from bootstrap distributions. Right: Optimal filtering rate (top-x%x\%) as a function of compute for observed models (orange) and scaling law predictions (gray). The fitted relationship Fopt​(C)=6×10−3​C0.14F\_{\mathrm{opt}}(C)=6\times 10^{-3}C^{0.14} is shown.
 
@@ -2342,15 +1968,13 @@ Figure 22: Optimal filtering rate scaling on DCLM-RefinedWeb. Left: Mean task ac
 
 Figure [23](#A4.F23 "Figure 23 ‣ D.5 Fixed model size scaling ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") compares mean benchmark accuracy across data selection methods for a fixed model size of 6.6B parameters as a function of training tokens. This analysis extends to the overtraining regime commonly used in production LLMs. The results show that the performance ranking observed under compute-optimal scaling persists at fixed model size: BETR Target-Core consistently achieves the highest performance, outperforming DCLM-Baseline, Nemotron-CC HQ, and unfiltered data across all training budgets.
 
-![Refer to caption](/html/2507.12466/assets/x24.png)
-
+!(/html/2507.12466/assets/x24.png)
 
 Figure 23: Performance comparison at fixed model size. Mean benchmark accuracy (Core average) as a function of training tokens for 6.6B parameter models trained on DCLM-RefinedWeb (left) and Nemotron-CC (right) with various data selection methods. Lines show scaling law fits; markers indicate measured performance. BETR Target-Core consistently outperforms baselines across all token counts. Inset plots magnify the high-token regime to highlight performance differences.
 
 Figure [24](#A4.F24 "Figure 24 ‣ D.5 Fixed model size scaling ‣ Appendix D Additional scaling law findings ‣ Language Models Improve When Pretraining Data Matches Target Tasks") investigates how optimal filtering rates change with training tokens at fixed 6.6B model size. Unlike compute-optimal scaling, we do not observe a transition from 10% to 30% filtering within the sub-102410^{24} FLOPs range. However, a transition from 3% to 10% filtering still occurs as training progresses. The optimal filtering rate scales as Fopt​(D)∝D0.13F\_{\text{opt}}(D)\propto D^{0.13}, slower than the Fopt​(C)∝C0.25F\_{\text{opt}}(C)\propto C^{0.25} observed under compute-optimal conditions. This shows that optimal filtering strategies differ between fixed model size scaling and compute-optimal scaling.
 
-![Refer to caption](/html/2507.12466/assets/x25.png)
-
+!(/html/2507.12466/assets/x25.png)
 
 Figure 24: Optimal data filtering rate scaling at fixed model size. Left: Mean task accuracy (Core average) for 6.6B models trained with different BETR Target-Core filtering rates on Nemotron-CC, along with scaling law fits. Center: Probability that each filtering rate is optimal at a given number of training tokens, estimated from bootstrap distributions of scaling law fits. Right: Optimal filtering rate (top-x%x\%) as a function of training tokens, shown both for the best observed model and the best model predicted via scaling laws. The scaling law fit Fopt​(D)=0.26×D0.13F\_{\mathrm{opt}}(D)=0.26\times D^{0.13} is overlaid for comparison.
 
@@ -2369,18 +1993,13 @@ Noncore Subcategories
 Method
 Noncore (Avg)
 
-
 Commonsense Reasoning
-
 
 Language Understanding
 
-
 Reading Comprehension
 
-
 Symbolic Problem Solving
-
 
 World     Knowledge
 
@@ -2389,72 +2008,52 @@ Data pool: DCLM-RefinedWeb
 No Filter
 44.2
 
-
 69.1
-
 
 44.2
 
-
 62.5
 
-
 22.5
-
 
 34.7
 
 DCLM-Baseline
 46.3
 
-
 71.4
-
 
 49.8
 
-
 65.2
 
-
 23.4
-
 
 36.6
 
 BETR Target-Noncore
 46.4
 
-
 71.2
-
 
 47.7
 
-
 65.9
 
-
 23.6
-
 
 37.6
 
 BETR Target-Core
 44.2
 
-
 69.8
-
 
 47.7
 
-
 62.8
 
-
 20.8
-
 
 35.8
 
@@ -2463,90 +2062,65 @@ Data pool: Nemotron-CC
 No Filter
 45.0
 
-
 70.8
-
 
 47.2
 
-
 62.2
 
-
 22.7
-
 
 37.3
 
 Nemotron-CC HQ
 47.7
 
-
 72.8
-
 
 50.4
 
-
 68.2
 
-
 23.7
-
 
 39.9
 
 DCLM-Baseline
 50.4
 
-
 73.4
-
 
 53.6
 
-
 70.0
 
-
 28.7
-
 
 40.0
 
 BETR Target-Noncore
 50.6
 
-
 74.1
-
 
 54.1
 
-
 70.6
 
-
 28.1
-
 
 40.3
 
 BETR Target-Core
 48.5
 
-
 73.9
-
 
 50.9
 
-
 67.9
 
-
 25.5
-
 
 38.5
 
@@ -2558,33 +2132,23 @@ For completeness, we also report Core performance at 7B-1x scale for BETR varian
 
 Method
 
-
 ARC-E
-
 
 ARC-C
 
-
 HellaS
-
 
 Lamb.
 
-
 MMLU
-
 
 PIQA
 
-
 SciQ
-
 
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
@@ -2593,132 +2157,92 @@ Data pool: DCLM-RefinedWeb
 
 No Filter
 
-
 72.3
-
 
 39.0
 
-
 56.1
-
 
 71.2
 
-
 27.4
-
 
 78.2
 
-
 94.0
-
 
 33.7
 
-
 19.8
-
 
 68.4
 56.0
 
 DCLM-Baseline
 
-
 79.4
-
 
 48.1
 
-
 57.0
-
 
 72.7
 
-
 52.8
-
 
 77.7
 
-
 95.2
-
 
 35.7
 
-
 20.1
-
 
 71.4
 61.0
 
 BETR Target-Noncore
 
-
 79.2
-
 
 48.0
 
-
 55.0
-
 
 73.0
 
-
 53.3
-
 
 77.0
 
-
 94.7
-
 
 38.3
 
-
 22.2
-
 
 68.4
 60.9
 
 BETR Target-Core
 
-
 79.7
-
 
 49.7
 
-
 59.9
-
 
 74.0
 
-
 48.9
-
 
 81.3
 
-
 95.4
-
 
 40.4
 
-
 22.5
-
 
 71.0
 62.3
@@ -2727,165 +2251,115 @@ Data pool: Nemotron-CC
 
 No Filter
 
-
 78.8
-
 
 44.9
 
-
 56.3
-
 
 65.9
 
-
 50.7
-
 
 78.2
 
-
 95.1
-
 
 36.3
 
-
 21.1
-
 
 67.9
 59.5
 
 Nemotron-CC HQ
 
-
 81.0
-
 
 51.6
 
-
 56.8
-
 
 63.6
 
-
 58.0
-
 
 79.4
 
-
 95.2
-
 
 36.5
 
-
 17.5
-
 
 68.2
 60.8
 
 DCLM-Baseline
 
-
 79.9
-
 
 51.9
 
-
 57.2
-
 
 69.6
 
-
 56.7
-
 
 78.9
 
-
 96.5
-
 
 36.1
 
-
 22.2
-
 
 72.7
 62.2
 
 BETR Target-Noncore
 
-
 83.0
-
 
 54.8
 
-
 55.2
-
 
 70.0
 
-
 59.9
-
 
 77.8
 
-
 96.2
-
 
 43.1
 
-
 22.1
-
 
 69.0
 63.1
 
 BETR Target-Core
 
-
 83.4
-
 
 54.1
 
-
 59.9
-
 
 71.5
 
-
 59.4
-
 
 81.6
 
-
 95.8
-
 
 43.0
 
-
 25.3
-
 
 72.2
 64.6
@@ -2900,198 +2374,138 @@ To understand the impact of this difference, we compare these two versions along
 
 Nemotron-CC Subset
 
-
 ARC-E
-
 
 ARC-C
 
-
 HellaS
-
 
 Lamb.
 
-
 MMLU
-
 
 PIQA
 
-
 SciQ
-
 
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
 
 All
 
-
 78.8
-
 
 44.9
 
-
 56.3
-
 
 65.9
 
-
 50.7
-
 
 78.2
 
-
 95.1
-
 
 36.3
 
-
 21.1
-
 
 67.9
 59.5
 
 Actual Only
 
-
 75.3
-
 
 40.7
 
-
 56.3
-
 
 67.2
 
-
 28.8
-
 
 77.8
 
-
 93.9
-
 
 32.5
 
-
 16.7
-
 
 67.1
 55.6
 
 Synthetic Only
 
-
 80.5
-
 
 49.6
 
-
 55.9
-
 
 62.8
 
-
 55.4
-
 
 78.8
 
-
 95.7
-
 
 38.7
 
-
 21.5
-
 
 67.6
 60.6
 
 HQ (Actual + Synthetic QA)†
 
-
 81.5
-
 
 51.0
 
-
 57.2
-
 
 64.2
 
-
 58.6
-
 
 78.5
 
-
 95.4
-
 
 37.3
 
-
 19.9
-
 
 69.5
 61.3
 
 HQ (All)‡
 
-
 81.0
-
 
 51.6
 
-
 56.8
-
 
 63.6
 
-
 58.0
-
 
 79.4
 
-
 95.2
-
 
 36.5
 
-
 17.5
-
 
 68.2
 60.8
@@ -3104,63 +2518,44 @@ To estimate the natural variation in benchmark performance, we trained 10 models
 
 ARC-E
 
-
 ARC-C
-
 
 HellaS
 
-
 Lamb.
-
 
 MMLU
 
-
 PIQA
-
 
 SciQ
 
-
 TrQA
 
-
 WebQs
-
 
 Wino.
 Core (Avg)
 
 Std. Dev.
 
-
 0.49
-
 
 0.85
 
-
 0.18
-
 
 0.48
 
-
 1.10
-
 
 0.44
 
-
 0.32
-
 
 0.84
 
-
 1.33
-
 
 1.15
 0.24
@@ -3192,8 +2587,7 @@ Table 10: Benchmark contribution to BETR document selection. Percentage of top-1
 
 To show the content composition of different data selection methods, we compute topic and format distributions using WebOrganizer [Wettig et al., [2025](#bib.bib109)] models. These are computed on a subsample of 1M documents from DCLM-RefinedWeb filtered to the top 10% of tokens. Figure [25](#A5.F25 "Figure 25 ‣ E.6 Topic and format distributions ‣ Appendix E Additional experiments & analysis ‣ Language Models Improve When Pretraining Data Matches Target Tasks") shows these distributions, providing a high-level view of content differences between methods.
 
-![Refer to caption](/html/2507.12466/assets/x26.png)
-
+!(/html/2507.12466/assets/x26.png)
 
 Figure 25: Topic and format distributions on DCLM-RefinedWeb. We show the WebOrganizer [Wettig et al., [2025](#bib.bib109)] topic and format distributions for four datasets: unfiltered DCLM-RefinedWeb, DCLM-Baseline, BETR Target-Noncore, and BETR Target-Core (the latter three filtered to top 10% of tokens).
 
@@ -3443,15 +2837,12 @@ Patel et al. [[2021](#bib.bib74)]
 
 Table 11: List of the 39 Noncore benchmarks (from DCLM-Core and DCLM-Extended [Li et al., [2024](#bib.bib55)], excluding overlap with Core). Order A and Order B indicate each benchmark’s position in two random orderings used to test how performance scales with benchmark diversity (1, 2, 5, 10, 20, and 39 benchmarks) in Figure [5](#S5.F5 "Figure 5 ‣ 5.3 Does targeting diverse benchmarks generalize to held-out tasks? ‣ 5 Results ‣ Language Models Improve When Pretraining Data Matches Target Tasks"). Commonsense R. = Commonsense Reasoning, Lang. Und. = Language Understanding, Reading Comp. = Reading Comprehension, Symbolic PS = Symbolic Problem Solving.
 
-
-
 Dataset
 a
 b
 e
 α\alpha
 β\beta
-
 
 MAE
 
@@ -3464,7 +2855,6 @@ ARC-Easy
 0.2454 (0.1992, 0.3478)
 0.3628 (0.2961, 0.4821)
 
-
 0.018
 
 ARC-Challenge
@@ -3473,7 +2863,6 @@ ARC-Challenge
 -0.7305 (-1.246, -0.5034)
 0.2407 (0.1572, 0.3377)
 0.3764 (0.2668, 0.4456)
-
 
 0.016
 
@@ -3484,7 +2873,6 @@ HellaSwag
 0.3519 (0.3092, 0.4071)
 0.3864 (0.3794, 0.3965)
 
-
 0.005
 
 Lambada
@@ -3493,7 +2881,6 @@ Lambada
 -1.787 (-12.92, -1.340)
 0.3399 (0.2196, 0.4161)
 0.4089 (0.2746, 0.5129)
-
 
 0.012
 
@@ -3504,7 +2891,6 @@ MMLU
 0.3157 (0.1740, 0.3851)
 0.3034 (0.2514, 0.4412)
 
-
 0.015
 
 PIQA
@@ -3513,7 +2899,6 @@ PIQA
 -0.3418 (-0.3790, -0.3068)
 0.3999 (0.3489, 0.4389)
 0.3624 (0.3477, 0.4064)
-
 
 0.006
 
@@ -3524,7 +2909,6 @@ SciQ
 0.1940 (0.1538, 0.2474)
 0.2707 (0.1831, 0.4357)
 
-
 0.043
 
 TriviaQA
@@ -3533,7 +2917,6 @@ TriviaQA
 0.1640 (-2.863, 0.3539)
 0.1962 (0.07290, 0.3200)
 0.3339 (0.2390, 0.3828)
-
 
 0.023
 
@@ -3544,7 +2927,6 @@ WebQs
 0.3526 (0.2759, 0.4494)
 0.4299 (0.3079, 0.4704)
 
-
 0.018
 
 WinoGrande
@@ -3554,7 +2936,6 @@ WinoGrande
 0.3424 (0.3384, 0.3478)
 0.3738 (0.3713, 0.3782)
 
-
 0.002
 
 Val Loss
@@ -3563,7 +2944,6 @@ Val Loss
 0.5218 (0.4453, 0.6148)
 0.3037 (0.2518, 0.3945)
 0.3282 (0.3029, 0.3780)
-
 
 0.022
 
@@ -3576,7 +2956,6 @@ ARC-Easy
 0.2954 (0.2310, 0.3834)
 0.4472 (0.3341, 0.4739)
 
-
 0.012
 
 ARC-Challenge
@@ -3585,7 +2964,6 @@ ARC-Challenge
 -0.6484 (-0.7877, -0.5992)
 0.3095 (0.2503, 0.3578)
 0.4150 (0.3631, 0.4409)
-
 
 0.009
 
@@ -3596,7 +2974,6 @@ HellaSwag
 0.3614 (0.3172, 0.4105)
 0.3943 (0.3842, 0.4013)
 
-
 0.004
 
 Lambada
@@ -3605,7 +2982,6 @@ Lambada
 -1.650 (-1.832, -1.482)
 0.4176 (0.3431, 0.4697)
 0.5401 (0.4650, 0.6120)
-
 
 0.011
 
@@ -3616,7 +2992,6 @@ MMLU
 0.2830 (0.2308, 0.3919)
 0.3424 (0.3021, 0.4326)
 
-
 0.012
 
 PIQA
@@ -3625,7 +3000,6 @@ PIQA
 -0.3924 (-0.4109, -0.3776)
 0.3858 (0.3821, 0.4247)
 0.4083 (0.4018, 0.4102)
-
 
 0.006
 
@@ -3636,7 +3010,6 @@ SciQ
 0.3992 (0.1906, 0.5964)
 0.7822 (0.4912, 0.9972)
 
-
 0.045
 
 TriviaQA
@@ -3645,7 +3018,6 @@ TriviaQA
 0.2570 (-0.4100, 0.3792)
 0.2174 (0.1025, 0.3161)
 0.3809 (0.2996, 0.4103)
-
 
 0.021
 
@@ -3656,7 +3028,6 @@ WebQs
 0.4591 (0.3637, 0.5053)
 0.4383 (0.3803, 0.4862)
 
-
 0.013
 
 WinoGrande
@@ -3666,7 +3037,6 @@ WinoGrande
 0.3379 (0.3315, 0.3420)
 0.3810 (0.3774, 0.3849)
 
-
 0.002
 
 Val Loss
@@ -3675,7 +3045,6 @@ Val Loss
 0.2539 (0.1408, 0.3988)
 0.2980 (0.2462, 0.4099)
 0.3127 (0.2662, 0.3873)
-
 
 0.022
 
@@ -3688,7 +3057,6 @@ ARC-Easy
 0.3626 (0.2611, 0.4485)
 0.5026 (0.4441, 0.5757)
 
-
 0.013
 
 ARC-Challenge
@@ -3697,7 +3065,6 @@ ARC-Challenge
 -0.6004 (-0.7120, -0.5320)
 0.3151 (0.2497, 0.3758)
 0.4953 (0.4523, 0.5308)
-
 
 0.010
 
@@ -3708,7 +3075,6 @@ HellaSwag
 0.3656 (0.3337, 0.4128)
 0.3838 (0.3758, 0.3979)
 
-
 0.004
 
 Lambada
@@ -3717,7 +3083,6 @@ Lambada
 -1.620 (-2.073, -1.502)
 0.4110 (0.3230, 0.4468)
 0.5171 (0.4049, 0.5663)
-
 
 0.008
 
@@ -3728,7 +3093,6 @@ MMLU
 0.3295 (0.2812, 0.3948)
 0.3847 (0.3263, 0.4587)
 
-
 0.011
 
 PIQA
@@ -3737,7 +3101,6 @@ PIQA
 -0.3808 (-0.4032, -0.3677)
 0.4104 (0.3488, 0.4149)
 0.4019 (0.3942, 0.4065)
-
 
 0.006
 
@@ -3748,7 +3111,6 @@ SciQ
 0.3180 (0.2140, 0.3593)
 0.6231 (0.4914, 0.7901)
 
-
 0.030
 
 TriviaQA
@@ -3757,7 +3119,6 @@ TriviaQA
 0.1363 (-0.6256, 0.3053)
 0.2305 (0.1093, 0.3098)
 0.2873 (0.2378, 0.3837)
-
 
 0.023
 
@@ -3768,7 +3129,6 @@ WebQs
 0.4332 (0.3758, 0.4633)
 0.4754 (0.4060, 0.4961)
 
-
 0.012
 
 WinoGrande
@@ -3778,7 +3138,6 @@ WinoGrande
 0.3541 (0.3515, 0.3610)
 0.3681 (0.3651, 0.3720)
 
-
 0.002
 
 Val Loss
@@ -3787,7 +3146,6 @@ Val Loss
 0.4046 (0.3156, 0.5033)
 0.3093 (0.2536, 0.4027)
 0.3300 (0.2981, 0.3835)
-
 
 0.021
 
@@ -3800,7 +3158,6 @@ ARC-Easy
 0.3800 (0.2805, 0.4242)
 0.4258 (0.3319, 0.4834)
 
-
 0.013
 
 ARC-Challenge
@@ -3809,7 +3166,6 @@ ARC-Challenge
 -0.6142 (-0.7315, -0.5305)
 0.2883 (0.2471, 0.3668)
 0.4129 (0.3369, 0.4543)
-
 
 0.011
 
@@ -3820,7 +3176,6 @@ HellaSwag
 0.3577 (0.3252, 0.3999)
 0.3968 (0.3879, 0.4030)
 
-
 0.004
 
 Lambada
@@ -3829,7 +3184,6 @@ Lambada
 -1.558 (-2.021, -1.357)
 0.4061 (0.2953, 0.4571)
 0.4882 (0.4441, 0.6004)
-
 
 0.012
 
@@ -3840,7 +3194,6 @@ MMLU
 0.2874 (0.2582, 0.3623)
 0.3959 (0.3494, 0.4307)
 
-
 0.011
 
 PIQA
@@ -3849,7 +3202,6 @@ PIQA
 -0.3681 (-0.4037, -0.3592)
 0.3904 (0.3380, 0.3935)
 0.3944 (0.3809, 0.4002)
-
 
 0.005
 
@@ -3860,7 +3212,6 @@ SciQ
 0.2092 (0.1697, 0.3603)
 0.3958 (0.2607, 0.5617)
 
-
 0.032
 
 TriviaQA
@@ -3869,7 +3220,6 @@ TriviaQA
 0.007347 (-1.014, 0.3278)
 0.1819 (0.1058, 0.3435)
 0.3026 (0.2081, 0.4092)
-
 
 0.025
 
@@ -3880,7 +3230,6 @@ WebQs
 0.3666 (0.3012, 0.4707)
 0.4063 (0.3482, 0.4963)
 
-
 0.017
 
 WinoGrande
@@ -3889,7 +3238,6 @@ WinoGrande
 -1.299 (-1.304, -1.287)
 0.3148 (0.3133, 0.3195)
 0.4550 (0.4519, 0.4597)
-
 
 0.001
 
@@ -3900,19 +3248,15 @@ Val Loss
 0.2975 (0.2482, 0.3881)
 0.3362 (0.3103, 0.3757)
 
-
 0.022
 
 Table 12: Loss scaling law parameters for BETR Target-Core and no filtering baseline on the Nemotron-CC data pool. Each column contains the estimated value and the 95% confidence range (lower bound, upper bound). The last column shows the mean average error (MAE) for the fit evaluated on the training date.
-
-
 
 Dataset
 c1c\_{1}
 c2c\_{2}
 kk
 L0L\_{0}
-
 
 MAE
 
@@ -3924,7 +3268,6 @@ ARC-Easy
 -3.749 (-5.239, -2.582)
 0.8376 (0.6798, 0.9131)
 
-
 0.0096
 
 ARC-Challenge
@@ -3932,7 +3275,6 @@ ARC-Challenge
 0.1800 (0.1646, 0.1920)
 -5.792 (-6.887, -5.026)
 0.6264 (0.5699, 0.7293)
-
 
 0.0075
 
@@ -3942,7 +3284,6 @@ HellaSwag
 -10.01 (-14.43, -9.628)
 0.6357 (0.6342, 0.7124)
 
-
 0.0024
 
 Lambada
@@ -3950,7 +3291,6 @@ Lambada
 0.1774 (0.1505, 0.1954)
 -3.977 (-4.774, -3.690)
 0.3516 (0.3386, 0.4691)
-
 
 0.0061
 
@@ -3960,7 +3300,6 @@ MMLU
 -4.207 (-6.040, -3.954)
 0.4197 (0.3755, 0.7764)
 
-
 0.0022
 
 PIQA
@@ -3968,7 +3307,6 @@ PIQA
 0.5683 (0.5206, 0.6025)
 -4.951 (-7.662, -3.036)
 0.8075 (0.4770, 0.9077)
-
 
 0.0038
 
@@ -3978,7 +3316,6 @@ SciQ
 -1.634 (-3.935, -1.472)
 2.113 (1.262, 2.162)
 
-
 0.0081
 
 TriviaQA
@@ -3986,7 +3323,6 @@ TriviaQA
 3.4328e-10 (4.9324e-26, 0.01807)
 -4.385 (-7.159, -4.275)
 1.492 (1.482, 1.789)
-
 
 0.0053
 
@@ -3996,7 +3332,6 @@ WebQs
 -5.668 (-6.308, -4.309)
 0.5104 (0.4521, 0.7950)
 
-
 0.0071
 
 WinoGrande
@@ -4004,7 +3339,6 @@ WinoGrande
 0.4950 (0.4852, 0.5137)
 -57.76 (-153.8, -49.01)
 0.2862 (0.2833, 0.3135)
-
 
 0.0087
 
@@ -4016,7 +3350,6 @@ ARC-Easy
 -3.278 (-6.289, -2.741)
 0.9709 (0.7953, 1.051)
 
-
 0.0083
 
 ARC-Challenge
@@ -4024,7 +3357,6 @@ ARC-Challenge
 0.1709 (0.1401, 0.2321)
 -5.470 (-9.441, -4.811)
 0.6166 (0.5647, 0.7427)
-
 
 0.0095
 
@@ -4034,7 +3366,6 @@ HellaSwag
 -9.501 (-13.19, -9.210)
 0.6385 (0.6375, 0.6984)
 
-
 0.0022
 
 Lambada
@@ -4042,7 +3373,6 @@ Lambada
 0.2017 (0.1620, 0.2287)
 -3.924 (-4.896, -3.614)
 0.3181 (0.2999, 0.4411)
-
 
 0.0062
 
@@ -4052,7 +3382,6 @@ MMLU
 -4.363 (-6.527, -4.132)
 0.4603 (0.4360, 0.7552)
 
-
 0.0020
 
 PIQA
@@ -4060,7 +3389,6 @@ PIQA
 0.5733 (0.4199, 0.6569)
 -4.576 (-10.40, -2.461)
 0.7951 (0.6157, 0.8970)
-
 
 0.0038
 
@@ -4070,7 +3398,6 @@ SciQ
 -4.286 (-6.197, -0.8398)
 0.9061 (0.09884, 1.101)
 
-
 0.0077
 
 TriviaQA
@@ -4078,7 +3405,6 @@ TriviaQA
 3.9441e-10 (1.2915e-26, 0.02202)
 -3.800 (-6.027, -3.684)
 1.557 (1.544, 1.856)
-
 
 0.0074
 
@@ -4088,7 +3414,6 @@ WebQs
 -5.305 (-9.153, -4.109)
 0.4699 (0.4552, 0.9828)
 
-
 0.0111
 
 WinoGrande
@@ -4096,7 +3421,6 @@ WinoGrande
 0.4980 (0.4868, 0.5146)
 -63.36 (-118.8, -56.24)
 0.2870 (0.2859, 0.3067)
-
 
 0.0080
 
@@ -4108,7 +3432,6 @@ ARC-Easy
 -4.606 (-8.508, -2.683)
 0.7961 (0.6818, 0.8509)
 
-
 0.0102
 
 ARC-Challenge
@@ -4116,7 +3439,6 @@ ARC-Challenge
 0.1719 (0.1474, 0.2133)
 -5.509 (-8.254, -4.763)
 0.6191 (0.5671, 0.7461)
-
 
 0.0077
 
@@ -4126,7 +3448,6 @@ HellaSwag
 -9.204 (-13.58, -8.814)
 0.6378 (0.6363, 0.7027)
 
-
 0.0026
 
 Lambada
@@ -4134,7 +3455,6 @@ Lambada
 0.2078 (0.1751, 0.2381)
 -4.002 (-4.967, -3.747)
 0.3159 (0.3027, 0.4204)
-
 
 0.0060
 
@@ -4144,7 +3464,6 @@ MMLU
 -5.136 (-7.202, -4.511)
 0.5086 (0.4367, 0.7988)
 
-
 0.0029
 
 PIQA
@@ -4152,7 +3471,6 @@ PIQA
 0.5786 (0.3826, 0.6342)
 -4.622 (-7.839, -2.030)
 0.7883 (0.4165, 0.8748)
-
 
 0.0041
 
@@ -4162,7 +3480,6 @@ SciQ
 -3.241 (-4.881, -0.8278)
 1.036 (0.5095, 1.965)
 
-
 0.0068
 
 TriviaQA
@@ -4170,7 +3487,6 @@ TriviaQA
 1.0469e-23 (8.9296e-29, 0.01735)
 -4.015 (-6.040, -3.908)
 1.525 (1.515, 1.784)
-
 
 0.0080
 
@@ -4180,7 +3496,6 @@ WebQs
 -5.364 (-7.112, -4.443)
 0.4882 (0.4753, 0.8897)
 
-
 0.0100
 
 WinoGrande
@@ -4188,7 +3503,6 @@ WinoGrande
 0.4995 (0.4897, 0.5147)
 -67.61 (-122.1, -59.93)
 0.2864 (0.2849, 0.3032)
-
 
 0.0087
 
@@ -4200,7 +3514,6 @@ ARC-Easy
 -4.516 (-5.633, -2.713)
 0.8159 (0.6307, 0.8790)
 
-
 0.0103
 
 ARC-Challenge
@@ -4208,7 +3521,6 @@ ARC-Challenge
 0.1872 (0.1673, 0.2067)
 -6.502 (-7.797, -5.560)
 0.6432 (0.5874, 0.7043)
-
 
 0.0086
 
@@ -4218,7 +3530,6 @@ HellaSwag
 -9.501 (-13.31, -9.114)
 0.6376 (0.6363, 0.6998)
 
-
 0.0024
 
 Lambada
@@ -4226,7 +3537,6 @@ Lambada
 0.1868 (0.1665, 0.2015)
 -4.063 (-4.723, -3.857)
 0.3451 (0.3337, 0.4367)
-
 
 0.0066
 
@@ -4236,7 +3546,6 @@ MMLU
 -5.488 (-6.374, -4.907)
 0.5351 (0.4602, 0.7061)
 
-
 0.0022
 
 PIQA
@@ -4244,7 +3553,6 @@ PIQA
 0.5406 (0.2289, 0.5993)
 -4.204 (-5.392, -1.901)
 0.8265 (0.4495, 1.012)
-
 
 0.0043
 
@@ -4254,7 +3562,6 @@ SciQ
 -3.410 (-4.347, -0.8965)
 0.9745 (0.09342, 1.157)
 
-
 0.0075
 
 TriviaQA
@@ -4262,7 +3569,6 @@ TriviaQA
 1.9465e-23 (2.3055e-29, 0.01879)
 -4.214 (-6.792, -4.084)
 1.500 (1.488, 1.767)
-
 
 0.0084
 
@@ -4272,7 +3578,6 @@ WebQs
 -5.567 (-8.836, -4.952)
 0.5043 (0.4865, 0.8482)
 
-
 0.0078
 
 WinoGrande
@@ -4281,87 +3586,6 @@ WinoGrande
 -65.29 (-109.2, -57.86)
 0.2865 (0.2852, 0.3054)
 
-
 0.0090
 
 Table 13: Accuracy scaling law parameters for BETR Target-Core and no filtering baseline on the Nemotron-CC data pool. Each column contains the estimated value and the 95% confidence range (lower bound, upper bound). The last column shows the mean average error (MAE) for the fit evaluated on the training data.
-
-[◄](/html/2507.12465)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2507.12466)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2507.12466)
-[View original  
-on arXiv](https://arxiv.org/abs/2507.12466)[►](/html/2507.12467)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Aug 5 13:25:13 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

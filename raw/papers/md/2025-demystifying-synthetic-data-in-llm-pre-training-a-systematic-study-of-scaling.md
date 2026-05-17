@@ -20,59 +20,6 @@ url: https://arxiv.org/abs/2510.01631
 year: 2025
 ---
 
-[2510.01631] Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\useunder
-
-\ul
-1]FAIR at Meta
-2]Virginia Tech
-3]Cerebras Systems
-4]Independent consultant
-\contribution[\*]Work done at Meta
-
 # Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls
 
 Feiyang Kang
@@ -235,9 +182,9 @@ where ℒ\mathcal{L} is validation loss, DD is training data budget, and B,β,EB
 We trained 1B-parameter models on various data mixtures with data budgets from 1B up to 200B tokens. The scaling formula was fitted using data points up to 100B tokens; predictions were then validated on runs trained with 200B tokens. Six data mixtures (CommonCrawl, 33% HQ + 67% CC, 33% QA + 67% CC, Textbook (TXBK), 67% TXBK + 33% CC, and 33% TXBK + 67% CC) were trained to 200B tokens for this validation, as our HQ and QA synthetic datasets were limited to 100B tokens each.
 The fit demonstrated high precision, as shown in Fig. [1](#S4.F1 "Figure 1 ‣ 4.1.3 Data Scaling ‣ 4.1 Experimental Setup ‣ 4 Empirical Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls") (left), achieving a low Relative Mean Absolute Error (RMABE) of 0.41% when predicting for 200B tokens.
 
-![Refer to caption](/html/2510.01631/assets/figs/dataval4.png)
+!(/html/2510.01631/assets/figs/dataval4.png)
 
-![Refer to caption](/html/2510.01631/assets/figs/datascale4.png)
+!(/html/2510.01631/assets/figs/datascale4.png)
 
 Figure 1: Data Scaling. Left: Validation of the data scaling formula. Predictions for 200B tokens (fitted using up to 100B tokens) achieve an RMABE of 0.41%. Solid dots display actual loss values while the fitted curves shows predicted loss. Validation datapoints are illustrated by diamond marks. Right: Extrapolated data scaling performance for 1B-parameter models across various data mixtures.
 
@@ -265,9 +212,9 @@ where NN is model parameter size, and A,α,EA,\alpha,E are fitted coefficients.
 We trained models from 100M to 3B parameters for 50B tokens on all 10 data mixtures. The formula was fitted using models up to 2B parameters and validated on 3B-parameter models. This fit also proved highly precise (Fig. [2](#S4.F2 "Figure 2 ‣ 4.1.4 Model Scaling ‣ 4.1 Experimental Setup ‣ 4 Empirical Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls"), left), with an RMABE of 0.30% for 3B-parameter model predictions.
 Extrapolating model scaling (fitted with models up to 3B parameters) to predict performance for larger models (up to 400B parameters) on a 50B token budget (Fig. [2](#S4.F2 "Figure 2 ‣ 4.1.4 Model Scaling ‣ 4.1 Experimental Setup ‣ 4 Empirical Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls"), right) revealed several differences from data scaling patterns:
 
-![Refer to caption](/html/2510.01631/assets/figs/modelval4.png)
+!(/html/2510.01631/assets/figs/modelval4.png)
 
-![Refer to caption](/html/2510.01631/assets/figs/modelscale4.png)
+!(/html/2510.01631/assets/figs/modelscale4.png)
 
 Figure 2: Model Scaling. Left: Validation of the model scaling formula. Predictions for 3B-parameter models (fitted using up to 2B-parameter models) achieve an RMABE of 0.30% on validation datapoints illustrated with diamond marks. Solid dots display actual loss values while the fitted curves shows predicted loss. Right: Extrapolated model scaling performance for training on 50B tokens across various data mixtures.
 
@@ -292,8 +239,7 @@ An example loss landscape for CC data is shown in Fig. [6](#A4.F6 "Figure 6 ‣ 
 Estimations of EE for each data mixture (Fig. [3](#S4.F3 "Figure 3 ‣ 4.1.5 Compute Scaling and Irreducible Loss ‣ 4.1 Experimental Setup ‣ 4 Empirical Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls")) indicate their ultimate potential. Notably, any mixture involving synthetic data, or pure synthetic data (except pure QA), is projected to achieve a lower irreducible loss than training only on CommonCrawl. This empirically challenges theoretical concerns about “model collapse” in single-round training, which predict any synthetic data inclusion would ultimately degrade performance (Dohmatob et al., [2024a](#bib.bib7)).
 Among the studied mixtures, 33% HQ rephrased data + 67% CC shows the lowest projected irreducible loss. Conversely, pure QA rephrased data exhibits a high irreducible loss, second only to pure CommonCrawl.
 
-![Refer to caption](/html/2510.01631/assets/figs/irred4.png)
-
+!(/html/2510.01631/assets/figs/irred4.png)
 
 Figure 3: Estimated irreducible loss (EE) for different data mixtures. Lower values are better.
 
@@ -311,8 +257,7 @@ Our main scaling law analysis tested limited discrete mixture ratios (0%, 33%, 6
 
 We trained approximately 400 additional LLMs (200M to 1B parameters) on data budgets from 1B to 50B tokens. For each synthetic data type (HQ, QA, TXBK) and each (model size, data budget) configuration, we varied the percentage of synthetic data mixed with CommonCrawl across ten exponentially spaced points: 0%, 0.5%, 1%, 2%, 5%, 10%, 15%, 20%, 50%, and 100%. The “good” ratio was defined as the mixture yielding the lowest validation loss on the evaluation sets.
 
-![Refer to caption](/html/2510.01631/assets/figs/allratio_h.png)
-
+!(/html/2510.01631/assets/figs/allratio_h.png)
 
 Figure 4: Best-found mixture ratios (percentage of synthetic data with CommonCrawl) from grid search for HQ (Left), QA (Middle), and TXBK (Right) synthetic data types across different model sizes and data budgets. Best-found ratios are all below 50%50\% appear to converge ∼30%\sim 30\%.
 
@@ -361,8 +306,7 @@ The results, illustrated by trends similar to those shown in Figure [5](#S5.F5 "
 
 This suggests that factors beyond sheer generator scale—such as instruction following fidelity at different scales, the diversity of generated outputs, or potential introduction of stylistic artifacts—play a crucial role in determining the utility of synthetic data for pre-training. Simply employing the largest available generator may not be the most effective or efficient strategy.
 
-![Refer to caption](/html/2510.01631/assets/x1.png)
-
+!(/html/2510.01631/assets/x1.png)
 
 Figure 5: Generator model capability ablation. Compares validation loss of 1B-parameter models trained for trained for 5B tokens using mixtures of HQ/QA rephrased data from Llama3-3B/8B/70B generators with CommonCrawl. The percentage of synthetic data in these mixtures was varied across seven exponentially spaced points from 0.5% to 20%.
 
@@ -1090,8 +1034,7 @@ experiments and studies in Sections [4](#S4 "4 Empirical Results ‣ Demystifyin
 
 Figure [6](#A4.F6 "Figure 6 ‣ D.1 Additional Results on Section 4.1.5 ‣ Appendix D Additional Experiment Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls") shows joint fitted scaling law predictions for models trained only on CommonCrawl (CC) with visualization for loss contours.
 
-![Refer to caption](/html/2510.01631/assets/figs/sljtfit.png)
-
+!(/html/2510.01631/assets/figs/sljtfit.png)
 
 Figure 6: Joint fitted scaling law predictions for models trained only on CommonCrawl (CC). Yellow lines are loss contours.
 
@@ -1099,104 +1042,20 @@ Figure 6: Joint fitted scaling law predictions for models trained only on Common
 
 Figure [7](#A4.F7 "Figure 7 ‣ D.2 Additional Results on Section 5.3 ‣ Appendix D Additional Experiment Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls") shows analyses of token distributions across datasets and methods. Figure [8](#A4.F8 "Figure 8 ‣ D.2 Additional Results on Section 5.3 ‣ Appendix D Additional Experiment Results ‣ Demystifying Synthetic Data in LLM Pre-training: A Systematic Study of Scaling Laws, Benefits, and Pitfalls") visualizes per-token loss and rolling avergage in evaluation for models trained on respective corpus.
 
-![Refer to caption](/html/2510.01631/assets/x2.png)
-
+!(/html/2510.01631/assets/x2.png)
 
 (a) Unigram analysis with Zipf function fitting for unigram (token) frequencies of different training data corpora. CC appears to have wider and slight more uniform coverage of tokens than other training corpora, whereas the test corpora have wider coverage of tokens than training corpora.
 
-![Refer to caption](/html/2510.01631/assets/x3.png)
-
+!(/html/2510.01631/assets/x3.png)
 
 (b) KL-divergence beween unigram distributions of the test dataset and each training corpus. CC appears to have the smallest KL-divergence from test data, suggesting the highest distribution similarities, but does not yield high dowmstream model performance.
 
-![Refer to caption](/html/2510.01631/assets/x4.png)
-
+!(/html/2510.01631/assets/x4.png)
 
 (c) All estimated token frequencies for each training and test corpus, sorted by the frequency of test tokens. Some methods have relatively lower representation of certain tokens (e.g., CC’s “.\n\n”) and others increase certain token frequencies (e.g., QA’s “:”).
 
 Figure 7: Analysis of token distributions across datasets and methods.
 
-![Refer to caption](/html/2510.01631/assets/x5.png)
-
+!(/html/2510.01631/assets/x5.png)
 
 Figure 8: Visualization of per-token loss (dots) and rolling average (curves) in evaluation for 1B-parameter models trained for 100B tokens on respective corpus. The model trained on CC, which has a low frequency for the token “.\n\n”, shows high loss in evaluation when encountering this token, though the rolling average remains stable.
-
-[◄](/html/2510.01630)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.01631)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.01631)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.01631)[►](/html/2510.01632)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 17:51:31 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

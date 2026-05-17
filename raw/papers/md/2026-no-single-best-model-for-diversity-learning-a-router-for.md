@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2604.02319
 year: 2026
 ---
 
-[2604.02319] No Single Best Model for Diversity: Learning a Router for Sample Diversity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # No Single Best Model for Diversity: Learning a Router for Sample Diversity
 
 Yuhan Liu  Fangyuan Xu  Vishakh Padmakumar
@@ -96,8 +53,7 @@ We train a router that scores the diversity and quality of each candidate model 
 
    We further investigate the effect of training data size, prompting strategies as well as inference efficiency of using a diversity router. More broadly, our findings highlight the potential of multi-LLM systems, where models with complementary strengths are combined to produce more diverse and high-quality solutions.
 
-![Refer to caption](/html/2604.02319/assets/x1.png)
-
+!(/html/2604.02319/assets/x1.png)
 
 Figure 1: 
 Left: LLMs exhibit different diversity coverage. Right: There is no universal best model on *NB-WildChat*. A model is only considered to be the best model if its diversity scores are 5%5\% higher than the second most best candidate. Queries without a model satisfying this margin are labeled as “No dominant single models”. On *Simple Questions*, all models perform similarly, resulting in 100%100\% of “No dominant single models”. On *NB-WildChat*, there is no model that consistently dominates all queries.
@@ -319,8 +275,7 @@ binary routers with model-specific query encodings bring the greatest gains (26.
 
 Table 4: Performance of ensembling two models per query. We report the performance of the best single model router (Binary MLP (spec)) in [Table 3](#S4.T3 "Table 3 ‣ Router Models ‣ 4.2 Experiment settings ‣ 4 Learning to ensemble multiple models for diverse outputs ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") by ensembling the top 2 models ranked by the prediction scores. ∗∗ indicating significantly better compared to *Top 2 overall*.
 
-![Refer to caption](/html/2604.02319/assets/x2.png)
-
+!(/html/2604.02319/assets/x2.png)
 
 Figure 2: Scaling training data improves router performance on *Infinity-Chat*.
 
@@ -336,8 +291,7 @@ Would training on a larger data set improve performance? On *Infinity-Chat*, we 
 
 In Figure [3](#S5.F3 "Figure 3 ‣ 5.2 Efficiency Evaluation ‣ 5 Results ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity"), we show the inference time efficiency of generating an answer set of various methods on *NB-WildChat*. We use 2H200 GPUs for answer sampling666We assume no parallelization in sampling generations. If two models are selected, the process is performed sequentially (i.e. model by model). and 1 H200 GPU for diversity coverage calculation. We compare the latency of three methods: Top (*Top overall*), Router, which is the Binary MLP classifier (spec), and Oracle (*Top model per query*).
 
-![Refer to caption](/html/2604.02319/assets/x3.png)
-
+!(/html/2604.02319/assets/x3.png)
 
 Figure 3: Efficiency analysis comparing the time (seconds per query) across routing (Router), *Top overall* (Top) and *Top model per query* (Oracle). We include routing to one model per query and routing to 2 models per query.
 Samplen denotes sample nn answers. Oracle incurs the highest cost, as the routing requires exhaustively comparing all candidate models or model pairs.
@@ -389,8 +343,7 @@ Should we always use G-All prompt?
 Figure [5](#S6.F5 "Figure 5 ‣ Degrading Answer Quality While Listing Multiple Answers ‣ 6 Discussions: Different Prompt Templates ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") plots average answer quality under two prompt strategies (G-1 and G-All). For generate-all prompt, we plot the quality of answers at different location within the same generation. For generate-one prompt producing one answer per generation, the quality is plotted as one dashed line.
 We find two trends: (1) G-1 prompt consistently generates answers with higher average answer quality than G-All prompt and (2) In G-All prompt, as the generation continues, the answer quality decreases and the variance of quality scores increases. Therefore, when individual answer quality is more important, G-1 prompt, while harder to elicit diverse answers, can be more appropriate.
 
-![Refer to caption](/html/2604.02319/assets/x4.png)
-
+!(/html/2604.02319/assets/x4.png)
 
 Figure 5: Generate-one prompt has higher answer quality. Under the generate-all prompts, as more answers are listed, the quality decreases with large variations if using generate-all prompt.
 
@@ -422,8 +375,7 @@ This work was supported in part through the NYU IT High Performance Computing re
 
 We attach in Figure [6](#A1.F6 "Figure 6 ‣ Appendix A The distribution of most diverse models ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") the freauency of each model being the best model if threshold set to 10%10\%.
 
-![Refer to caption](/html/2604.02319/assets/x5.png)
-
+!(/html/2604.02319/assets/x5.png)
 
 Figure 6: Frequency(%) of each LLM being the most diverse model.A model is only considered to be the best model if its diversity coverage is 10%10\% higher than the second best candidate. Queries with no meaningful gap are labeled as “No dominant single models”. On *NB-WildChat*, there is no model that consistently dominates all queries. On *Simple Questions*, all models have similar diversity coverage.
 
@@ -439,11 +391,7 @@ like this: {day}.
 Don’t output code.
 ```
 
-
-
 Figure 7: Prompt, generate one, simple questions
-
-
 
 Prompt for generate two, simple questions
 
@@ -455,11 +403,7 @@ like this: {answer_1,answer_2}.
 Don’t output code.
 ```
 
-
-
 Figure 8: Prompt, generate two, simple questions
-
-
 
 Prompt for generate all, simple questions
 
@@ -470,8 +414,6 @@ Output only the days between two curly braces,
 like this: {day_1, day_2, ...}.
 Don’t output code.
 ```
-
-
 
 Figure 9: Prompt, generate all, simple questions
 
@@ -489,11 +431,7 @@ Please use the following format:
 }
 ```
 
-
-
 Figure 10: Prompt, generate one, open-ended questions
-
-
 
 Prompt for generate two, open-ended questions
 
@@ -512,11 +450,7 @@ Please use the following format:
 }
 ```
 
-
-
 Figure 11: Prompt, generate two, open-ended questions
-
-
 
 Prompt for generate all, open-ended questions
 
@@ -535,8 +469,6 @@ Please use the following format:
 }
 ```
 
-
-
 Figure 12: Prompt, generate all, open-ended questions
 
 Prompt\_verbalized\_all, simple questions
@@ -550,11 +482,7 @@ Output only the days and probabilities between two curly braces, like this:
 {(day_1,probability_1), (day_2,probability_2) ...}. Don’t output code."
 ```
 
-
-
 Figure 13: Prompt\_verbalized\_all, simple questions
-
-
 
 Prompt\_verbalized\_all, open-ended questions
 
@@ -578,23 +506,17 @@ Please use the following format:
 }
 ```
 
-
-
 Figure 14: Prompt\_verbalized\_all, open-ended questions
 
 System prompt for system\_vanilla, simple questions and open-ended questions
 
 You are a helpful assistant. For each query, please generate all possible responses, each within a separate <response> tag. Responses should each include a <text>.
 
-
 Figure 15: System\_vanilla, simple questions and open-ended questions
-
-
 
 System prompt for system\_verbalized\_all, simple questions and open-ended questions
 
 You are a helpful assistant. For each query, please generate all possible responses, each within a separate <response> tag. Responses should each include a <text> and a numeric <probability>. Please sample at random from the full distribution.
-
 
 Figure 16: System\_verbalized\_all, simple questions and open-ended questions
 
@@ -742,8 +664,7 @@ We ablate the prompting strategies, retrain routers, and evaluate them on all ty
 
 Table 8: Oracle divresity coverage (Cov.) and answer lengths (Len) for different prompt temlates on *NB-Curated* Questions.
 
-![Refer to caption](/html/2604.02319/assets/x6.png)
-
+!(/html/2604.02319/assets/x6.png)
 
 Figure 17: Average answer quality for responses generated from different prompts on *NB-Curated* questions.
 
@@ -788,8 +709,6 @@ by comparing average answer quality among different prompting methods in Figure�
 
 Table 9: Exploring different ratios while varying models per question. Performance is reported on 10 questions sampled from *NB-WildChat*. Top 2 models are olmo-2-0425-1b and olmo-2-0325-32b.
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Strategy | #Unq | Qual | Unq Qual | Cov. |
@@ -828,8 +747,6 @@ Under the same setting of sampling 50 answers from two models, we experiment wit
 
 Table 11: Oracle models: fix NN models to select for all questions and vary model choices per question.
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | NN | #Unq | Qual | Unq Qual | Cov. |
@@ -854,8 +771,6 @@ Table 11: Oracle models: fix NN models to select for all questions and vary mode
 
 Table 12: Top NN models: fix NN models to select for all questions and vary model choices per question.
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | NN | #Unq | Qual | Unq Qual | Cov. |
@@ -879,8 +794,6 @@ Table 12: Top NN models: fix NN models to select for all questions and vary mode
 | 18 | 36.60 | 3.67 | 3.56 | 24.32% |
 
 Table 13: Random models: fix NN models to select for all questions and vary model choices per question.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -932,8 +845,6 @@ Similar to our baselines, Verbalized Sampling is a recent prompting technique th
 
 Table 15: Compared results with verbalized sampling on *Simple Questions* generating up to 1,10,20,…​10001,10,20,...1000 answers. Prompt\_vanilla is the existing generate-all prompt. System\_verbalized\_all is the original prompt proposed in verbalized sampling.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Prompt | Model | Cov. % | | | | | | |
@@ -951,15 +862,14 @@ Table 16: Compared results with verbalized sampling on *NB-Curated* generating u
 
 ## Appendix K Generating diverse outputs out of a single model
 
-![Refer to caption](/html/2604.02319/assets/x7.png)
+!(/html/2604.02319/assets/x7.png)
 
-![Refer to caption](/html/2604.02319/assets/x8.png)
+!(/html/2604.02319/assets/x8.png)
 
 Figure 18: Comparing different prompts for generating diverse outputs. The number of samples (x-axis) vs. the diversity coverage scores (y-axis).
 We compare three prompts on *Simple Questions* (top) and *NB-Curated* (bottom) datasets.
 
-![Refer to caption](/html/2604.02319/assets/x9.png)
-
+!(/html/2604.02319/assets/x9.png)
 
 Figure 19: The number of unique answers on *NB-Curated*. The X-axis is the log of the number of answers generated. Y-axis measures the diversity coverage of all the unique answers divided by the max possible score(generate 200 different good answers).
 
@@ -976,8 +886,7 @@ For each prompting strategy and desired number of answers NN, we repeatedly samp
 Figure [18](#A11.F18 "Figure 18 ‣ Appendix K Generating diverse outputs out of a single model ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") shows how different prompting strategies affect the diversity of combined answers.
 For all models on both datasets, sequential generation enables a lot more answer diversity than parallel methods. With the best prompt, models on *Simple Questions* saturate to more than 90%90\% of coverage rate. This suggests that for easy diversity questions, nearly all models have good knowledge of the full answer space. On *NB-Curated*, answer diversity keeps growing as more generations are inferred. This reveals large diversity potential in uncovering more unique and high-quality responses to open-ended queries.
 
-![Refer to caption](/html/2604.02319/assets/x10.png)
-
+!(/html/2604.02319/assets/x10.png)
 
 Figure 20: 
 Smaller models generate more unique answers. As number of inferred answers increases,
@@ -987,83 +896,3 @@ Llama models have better output uniqueness than Qwen, but also have more within-
 
 According to Figure [18](#A11.F18 "Figure 18 ‣ Appendix K Generating diverse outputs out of a single model ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity"), most models’ performances are pretty similar on *Simple Questions*, except for the smallest model Qwen 0.6B). On *NB-Curated*, medium-sized models (Llama 8B and Qwen 14B) consistently have higher overall diversity than extremely large or small ones. We hypothesize that these models balance answer distinctness and quality best, therefore achieving the highest diversity performance. Figure [20](#A11.F20 "Figure 20 ‣ Compare different prompting strategies ‣ K.2 Results ‣ Appendix K Generating diverse outputs out of a single model ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") shows answer uniqueness is inversely proportional to the model sizes. And Figure [17](#A8.F17 "Figure 17 ‣ Routing improves diversity for all prompts, yet a router trained on one prompt does not generalize to others. ‣ H.1 Different Prompt Templates ‣ Appendix H Discussion ‣ No Single Best Model for Diversity: Learning a Router for Sample Diversity") shows answer quality is proportional to model size.
 Finally, we also noticed that model rankings are largely unchanged regardless of the number of collected answers.
-
-[◄](/html/2604.02318)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.02319)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.02319)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.02319)[►](/html/2604.02320)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 01:55:48 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

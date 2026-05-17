@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2604.06829
 year: 2026
 ---
 
-[2604.06829] WRAP++: Web Discovery Amplified Pretraining
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # WRAP++: Web Discovery Amplified Pretraining
 
 Jiang Zhou
@@ -96,8 +53,7 @@ Thus, the *document selection* mechanism is critical: cross-document synthesis o
 Web hyperlinks provide a broad relevance signal by encoding human-curated judgments of importance (zhou2022hyperlink).
 For example, the Wikipedia pages of composers Hans Zimmer and Ludwig Göransson are topologically linked through shared collaborations with director Christopher Nolan. While single-document synthesis might only extract isolated facts (e.g., ”Göransson won an Oscar for Oppenheimer”), WRAP++ pairs these connected documents to synthesize multi-hop relational QA. As illustrated in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ WRAP++: Web Discovery Amplified Pretraining"), the model is forced to explicitly reason across both texts—deducing that Zimmer left Tenet to score Dune (his second Oscar), leading to Göransson’s hiring and subsequent second Oscar for Oppenheimer. This explicit relational supervision provides vital disambiguation cues and diverse retrieval paths absent from single-document synthesis, saving the LLM from having to implicitly infer these complex connections from massive unstructured text.
 
-![Refer to caption](/html/2604.06829/assets/x1.png)
-
+!(/html/2604.06829/assets/x1.png)
 
 Figure 1: Overview of the WRAP++ pipeline. Unlike single-document WRAP, which rewrites individual documents, WRAP++ *discovers* cross-document entity relationships from web topology and *amplifies* them into pretraining data through joint QA synthesis.
 
@@ -246,13 +202,11 @@ In contrast, because the number of valid cross-document entity pairs grows combi
 
 ### 3.4 Scaling and Training Dynamics
 
-![Refer to caption](/html/2604.06829/assets/x2.png)
-
+!(/html/2604.06829/assets/x2.png)
 
 Figure 2: SimpleQA pass@128 vs. training tokens. Single-document recipes (WRAP and Extended WRAP) reach a data bottleneck early, limiting further knowledge acquisition. In contrast, the combinatorial nature of WRAP++ allows it to scale effectively up to 80B tokens, improving performance without obviously plateauing.
 
-![Refer to caption](/html/2604.06829/assets/x3.png)
-
+!(/html/2604.06829/assets/x3.png)
 
 Figure 3: Evolution of pass@kk performance during training. The curves illustrate the unbiased pass@kk of OLMo-3-7B (a) and OLMo-3-32B (b) on SimpleQA (k∈[1,128]k\in[1,128] in log scale). The color gradient (from light to dark blue) tracks the accumulation of consumed WRAP++ tokens (from 10B to 80B). The strictly monotonic upward shift across all values of kk indicates robust, unsaturated knowledge internalization.
 
@@ -537,8 +491,7 @@ Table 7: Per-benchmark breakdown for mid-training integration (OLMo-3-7B, full 1
 | TriviaQA | 62.42 | 61.01 | 62.23 |
 | Average | | 57.79 | 68.24 | 68.16 |
 
-![Refer to caption](/html/2604.06829/assets/x4.png)
-
+!(/html/2604.06829/assets/x4.png)
 
 Figure 4: Per-benchmark score trajectories during mid-training with the WRAP++ Mix (100B tokens) on OLMo-3-7B. Each subplot tracks one of the 12 evaluation tasks over the course of training. All benchmarks exhibit a clear upward trend, with knowledge-intensive tasks (e.g., HellaSwag, GSM8K, CSQA) showing the most pronounced gains.
 
@@ -579,13 +532,9 @@ Table 9: Composition of the WRAP++ synthesized QA dataset by relation type.
 
 Table [10](#A8.T10 "Table 10 ‣ Length Distributions. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") reports the distributional statistics of the synthesized QA text. Questions are concise (median 203 characters, 32 words), while answers are substantially longer (median 1,386 characters, 212 words), reflecting the explicit factual chaining constraint that requires step-by-step reasoning before stating the final conclusion. The overall QA length is concentrated in the 1,000–2,000 character range (56.1% of all instances), with 27.6% in the 2,000–5,000 range and 16.0% in the 500–1,000 range. Fewer than 0.3% of instances fall outside the 500–5,000 character window, indicating a well-controlled generation process. Figure [5](#A8.F5 "Figure 5 ‣ Length Distributions. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") visualizes the question and answer length distributions at both character and word levels.
 
-![Refer to caption](/html/2604.06829/assets/x5.png)
-
+!(/html/2604.06829/assets/x5.png)
 
 Figure 5: Question vs. answer length distributions at character level (left) and word level (right). Questions are tightly concentrated around a median of 203 characters (32 words), while answers exhibit a broader, right-skewed distribution with a median of 1,386 characters (212 words), reflecting the explicit factual chaining required by the synthesis prompt.
-
-
-
 
 Table 10: Length statistics of WRAP++ synthesized QA data (aggregated over all 240.7M instances). “Chars” denotes character count; “Words” denotes whitespace-delimited token count.
 
@@ -604,13 +553,9 @@ Table 10: Length statistics of WRAP++ synthesized QA data (aggregated over all 2
 
 Table [11](#A8.T11 "Table 11 ‣ Comparison Across Relation Types. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") compares the QA length characteristics between the two relation motifs. Dual-link instances produce slightly shorter answers (median 1,210 vs. 1,394 characters), likely because mutual references tend to encode more focused bilateral relationships, whereas co-mention pairs often involve broader categorical or analogical connections that require more elaboration. Despite these differences, both subsets maintain similar question lengths and overall distributional shape. Figure [6](#A8.F6 "Figure 6 ‣ Comparison Across Relation Types. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") overlays the QA length histograms for both relation types, and Figure [7](#A8.F7 "Figure 7 ‣ Comparison Across Relation Types. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") provides a violin plot comparison across three length dimensions.
 
-![Refer to caption](/html/2604.06829/assets/x6.png)
-
+!(/html/2604.06829/assets/x6.png)
 
 Figure 6: Synthesized QA length distribution by relation type. Both subsets exhibit a similar unimodal shape, with the co-mention distribution (blue) shifted slightly rightward relative to dual-link (red), consistent with the longer factual chains required to bridge co-mentioned entities.
-
-
-
 
 Table 11: Median QA lengths (characters) by relation type. Word-level medians are shown in parentheses.
 
@@ -620,8 +565,7 @@ Table 11: Median QA lengths (characters) by relation type. Word-level medians ar
 | Dual-link | 197 (32 words) | 1,210 (189 words) | 1,428 |
 | Overall | 203 (32 words) | 1,386 (212 words) | 1,610 |
 
-![Refer to caption](/html/2604.06829/assets/x7.png)
-
+!(/html/2604.06829/assets/x7.png)
 
 Figure 7: Violin plot comparison of question length, answer length, and answer word count between co-mention and dual-link subsets. Black horizontal lines indicate medians. Both motifs produce similarly distributed questions, while co-mention answers are moderately longer, reflecting the additional elaboration needed to bridge indirectly related entities.
 
@@ -629,8 +573,7 @@ Figure 7: Violin plot comparison of question length, answer length, and answer w
 
 The input Wikipedia passages exhibit substantial length variation. The first passage (text\_a) has a median length of 4,458 characters (P5–P95: 519–27,963), while the second passage (text\_b) is generally longer with a median of 9,575 characters (P5–P95: 943–50,004, where 50,004 indicates truncation at the maximum context window). This asymmetry arises because co-mention pairs order documents by the directed edge A→BA\rightarrow B, where BB (the referenced entity) tends to be a more prominent article. Figure [8](#A8.F8 "Figure 8 ‣ Source Document Lengths. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") visualizes this distributional asymmetry.
 
-![Refer to caption](/html/2604.06829/assets/x8.png)
-
+!(/html/2604.06829/assets/x8.png)
 
 Figure 8: Source document length distributions for the two input passages. Passage A (the referencing entity) is typically shorter (median ≈\approx4,700 chars), while Passage B (the referenced entity) tends to be longer and more prominent (median ≈\approx9,500 chars), with a visible mass accumulation at the 50K truncation boundary.
 
@@ -638,13 +581,9 @@ Figure 8: Source document length distributions for the two input passages. Passa
 
 Table [12](#A8.T12 "Table 12 ‣ QA Length Bucketed Distribution. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") and Figure [9](#A8.F9 "Figure 9 ‣ QA Length Bucketed Distribution. ‣ Appendix H Synthesized QA Data Statistics ‣ WRAP++: Web Discovery Amplified Pretraining") provide a bucketed view of the combined QA and answer length distributions. The synthesis process produces a unimodal distribution with the majority of instances in the 1,000–2,000 character range. No instances have empty answers, and fewer than 0.01% of answers are shorter than 200 characters, confirming that the explicit factual chaining constraint effectively prevents degenerate outputs.
 
-![Refer to caption](/html/2604.06829/assets/x9.png)
-
+!(/html/2604.06829/assets/x9.png)
 
 Figure 9: Bucketed length distributions computed over the full dataset of 240.7M instances. Left: combined QA length; right: answer-only length. The 1K–2K character bucket dominates both distributions (>>55%), with a secondary concentration in the 2K–5K range for QA and the 500–1K range for answers. Extreme lengths (>>5K or <<200) are negligible.
-
-
-
 
 Table 12: Bucketed length distributions for the combined QA text and answer text (character-level).
 
@@ -675,83 +614,3 @@ Table 13: Qualitative comparison between single-document WRAP and cross-document
 | Q: Who is Ludwig Göransson? A: Ludwig Göransson is a Swedish composer known for film scores. Q: What films has Göransson scored? A: He has scored *Black Panther*, *Tenet*, and *Oppenheimer*. | Q: What films earned Nolan’s original Tenet composer and his replacement their second Oscars? A: Hans Zimmer turned down Tenet for Dune, which earned his second Oscar (after The Lion King). His replacement, Ludwig Göransson, later won his second Oscar for Oppenheimer (after Black Panther). Therefore, the answer is Dune and Oppenheimer. |
 
 As shown in Table [13](#A9.T13 "Table 13 ‣ Example: WRAP vs. WRAP++ Synthesis. ‣ Appendix I Qualitative Analysis ‣ WRAP++: Web Discovery Amplified Pretraining"), the WRAP++ output creates richer associative context: it contrasts with a commonly confused entity (Zimmer), provides cross-film comparisons, and generates reverse-direction queries—all contributing to more robust knowledge encoding.
-
-[◄](/html/2604.06828)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.06829)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.06829)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.06829)[►](/html/2604.06830)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 01:32:34 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

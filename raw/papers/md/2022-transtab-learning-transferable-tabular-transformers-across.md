@@ -11,49 +11,6 @@ url: http://arxiv.org/abs/2205.09328v2
 year: 2022
 ---
 
-[2205.09328] TransTab: Learning Transferable Tabular Transformers Across Tables
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TransTab: Learning Transferable Tabular Transformers Across Tables
 
 Zifeng Wang
@@ -97,8 +54,7 @@ The key contributions behind TransTab are
 
 As shown by Fig. [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ TransTab: Learning Transferable Tabular Transformers Across Tables"), due to the fixed-column assumption, all existing works only handle supervised learning or pretraining on the same-structure tables. On the contrary, TransTab relaxes this assumption and applies to four additional scenarios, which we will elaborate on in §[2.1](#S2.SS1 "2.1 Application scenarios of TransTab ‣ 2 Method ‣ TransTab: Learning Transferable Tabular Transformers Across Tables").
 
-![Refer to caption](/html/2205.09328/assets/x1.png)
-
+!(/html/2205.09328/assets/x1.png)
 
 Figure 1: The demonstration of ML modeling on different tabular data settings. Previous tabular methods only do vanilla supervised training or pretraining on the same table due to they only accept fixed-column tables. By contrast, TransTab covers more new tasks (1) to (4) as it accepts variable-column tables. Details are presented in §[2.1](#S2.SS1 "2.1 Application scenarios of TransTab ‣ 2 Method ‣ TransTab: Learning Transferable Tabular Transformers Across Tables").
 
@@ -106,8 +62,7 @@ Figure 1: The demonstration of ML modeling on different tabular data settings. P
 
 In this section, we present the details of TransTab. Fig. [2](#S2.F2 "Figure 2 ‣ 2 Method ‣ TransTab: Learning Transferable Tabular Transformers Across Tables") illustrates its workflow including the following key components: 1) The input processor featurizes and embeds arbitrary tabular inputs to token-level embeddings; 2) The stacked gated transformer layers further encode the token-level embeddings; 3) Finally, the learning module includes a classifier trained on labeled data and a projector for contrastive learning. Next we will present the details of each component.
 
-![Refer to caption](/html/2205.09328/assets/x2.png)
-
+!(/html/2205.09328/assets/x2.png)
 
 Figure 2: The demonstration of TransTab framework. the input processor encodes the sample into the token-level embedding 𝐄𝐄{\mathbf{E}}; the [cls] embedding 𝐳[c​l​s]superscript𝐳delimited-[]𝑐𝑙𝑠\mathbf{z}^{[cls]} in the representation 𝐙Lsuperscript𝐙𝐿{\mathbf{Z}}^{L} after L𝐿L gated transformer layers is used for prediction and learning. In supervised learning, 𝐳[c​l​s]superscript𝐳delimited-[]𝑐𝑙𝑠\mathbf{z}^{[cls]} is leveraged by a classifier to make predictions of target y𝑦y; in contrastive learning, the projected 𝐳^[c​l​s]superscript^𝐳delimited-[]𝑐𝑙𝑠\hat{\mathbf{z}}^{[cls]} is is used for self or supervised contrastive loss.
 
@@ -178,8 +133,7 @@ overlapping regions which are justified by the percentage of columns of the part
 
 where B𝐵B is the batch size; ψ​(⋅,⋅)𝜓⋅⋅\psi(\cdot,\cdot) is the cosine similarity function. ψ𝜓\psi applies to 𝐳^[c​l​s]superscript^𝐳delimited-[]𝑐𝑙𝑠\hat{\mathbf{z}}^{[cls]} which is the linear projection of partition 𝐯𝐯\mathbf{v}’s embedding 𝐳[c​l​s]superscript𝐳delimited-[]𝑐𝑙𝑠\mathbf{z}^{[cls]}. Compared with vanilla CL like SCARF [[11](#bib.bib11)], Self-VPCL significantly expand the positive and negative sampling for learning more robust and rich embeddings. What is more, this vertical partition sampling is extremely friendly to column-oriented databases [[25](#bib.bib25)] which support the fast querying a subset of columns from giant data warehouses. For the sake of computational efficiency, when K>2𝐾2K>2, we randomly sample two partitions.
 
-![Refer to caption](/html/2205.09328/assets/x3.png)
-
+!(/html/2205.09328/assets/x3.png)
 
 Figure 3: The demonstration of contrastive learning methods (different pieces can either be distinct or be overlapped partially). Self-VPCL: Positive pairs are partitions of the same sample; VPCL: Positive pairs are partitions of the sample belonging to the same class.
 
@@ -246,9 +200,6 @@ Table 2: Test AUROC results on clinical trial mortality datasets the under super
 | VIME | 0.6397 | 0.8533 | 0.7227 | 0.6790 | 0.7232 | 7.00(3.08) |
 | SCARF | 0.6248 | 0.9310 | 0.7267 | 0.7176 | 0.7103 | 6.60(3.91) |
 | TransTab | 0.6408 | 0.9428 | 0.7770 | 0.7281 | 0.7648 | 1.00(0.00) |
-
-
-
 
 Table 3: Test AUROC results on clinical trial datasets under feature incremental learning.
 
@@ -961,9 +912,6 @@ Table 7: Statistics of the used public datasets. All are binary classification t
 | insurance-co (IO) | 5822 | 2 | 0 | 83 | 0.06 |
 | 1995-income (IC) | 32561 | 8 | 0 | 6 | 0.24 |
 
-
-
-
 Table 8: Test AUROC results on public datasets the under supervised learning setting. The dataset name is abbreviated referring to Table [7](#A2.T7 "Table 7 ‣ Appendix B Baseline architecture and implementation ‣ TransTab: Learning Transferable Tabular Transformers Across Tables").
 
 |  |  |  |  |  |  |  |  |  |  |
@@ -982,9 +930,6 @@ Table 8: Test AUROC results on public datasets the under supervised learning set
 | SCARF | 0.733 | 0.861 | 0.663 | 0.911 | 0.719 | 0.833 | 0.758 | 0.905 | 6.75(2.12) |
 | TransTab | 0.768 | 0.881 | 0.643 | 0.907 | 0.851 | 0.845 | 0.822 | 0.919 | 3.00(1.93) |
 
-
-
-
 Table 9: Test AUROC results on public datasets the under feature incremental learning setting. The dataset name is abbreviated referring to Table [7](#A2.T7 "Table 7 ‣ Appendix B Baseline architecture and implementation ‣ TransTab: Learning Transferable Tabular Transformers Across Tables").
 
 |  |  |  |  |  |  |  |  |  |  |
@@ -1002,9 +947,6 @@ Table 9: Test AUROC results on public datasets the under feature incremental lea
 | VIME | 0.621 | 0.697 | 0.571 | 0.892 | 0.769 | 0.803 | 0.683 | 0.881 | 7.00(3.01) |
 | SCARF | 0.651 | 0.753 | 0.556 | 0.891 | 0.703 | 0.829 | 0.680 | 0.887 | 6.56(1.32) |
 | TransTab | 0.741 | 0.879 | 0.665 | 0.894 | 0.791 | 0.841 | 0.739 | 0.897 | 1.12(0.35) |
-
-
-
 
 Table 10: Test AUROC results on public datasets under transfer learning across tables.
 
@@ -1025,9 +967,6 @@ Table 10: Test AUROC results on public datasets under transfer learning across t
 | SCARF | 0.69 | 0.72 | 0.82 | 0.85 | 0.55 | 0.64 | 0.88 | 0.89 | 0.77 | 0.73 | 0.78 | 0.83 | 0.71 | 0.75 | 0.90 | 0.89 | 5.47(2.42) |
 | TransTab | 0.74 | 0.76 | 0.87 | 0.89 | 0.55 | 0.66 | 0.88 | 0.90 | 0.80 | 0.80 | 0.79 | 0.84 | 0.73 | 0.82 | 0.91 | 0.91 | 2.33(2.10) |
 
-
-
-
 Table 11: Test AUROC results on public datasets under zero-shot learning setting.
 
 | TransTab | CG | CA | DS | AD | CB | BL | IO | IC |
@@ -1035,9 +974,6 @@ Table 11: Test AUROC results on public datasets under zero-shot learning setting
 | Supervised | 0.581 | 0.635 | 0.571 | 0.898 | 0.733 | 0.822 | 0.702 | 0.875 |
 | Transfer | 0.719 | 0.758 | 0.561 | 0.900 | 0.854 | 0.831 | 0.761 | 0.880 |
 | Zero-shot | 0.685 | 0.721 | 0.538 | 0.892 | 0.710 | 0.804 | 0.742 | 0.874 |
-
-
-
 
 Table 12: Test AUROC on public datasets under the across-table pretraining plus finetuning setting. Supervised: baseline supervised model; Transfer: vanilla supervised transfer learning. Red shows the one worse than the baseline Supervised.
 
@@ -1048,20 +984,13 @@ Table 12: Test AUROC on public datasets under the across-table pretraining plus 
 | Self-VPCL | 0.777 | 0.837 | 0.626 | 0.907 | 0.819 | 0.843 | 0.823 | 0.919 |
 | VPCL | 0.776 | 0.858 | 0.637 | 0.907 | 0.862 | 0.844 | 0.819 | 0.919 |
 
-
-
-![Refer to caption](/html/2205.09328/assets/x4.png)
-
+!(/html/2205.09328/assets/x4.png)
 
 Figure 4: Analysis of the number of partitions for VPCL and self-VPCL on the clinical trial datasets.
 
-![Refer to caption](/html/2205.09328/assets/x5.png)
-
+!(/html/2205.09328/assets/x5.png)
 
 Figure 5: Analysis of the number of partitions for VPCL and self-VPCL on the public datasets
-
-
-
 
 Table 13: Benchmark dataset links.
 
@@ -1076,15 +1005,13 @@ Table 13: Benchmark dataset links.
 | insurance-co | <https://archive.ics.uci.edu/ml/datasets/Insurance+Company+Benchmark+%28COIL+2000%29> |
 | 1995-income | <https://www.kaggle.com/datasets/lodetomasi1995/income-classification> |
 
+!(/html/2205.09328/assets/x6.png)
 
+!()
 
-![Refer to caption](/html/2205.09328/assets/x6.png)
+!(/html/2205.09328/assets/x8.png)
 
-![Refer to caption]()
-
-![Refer to caption](/html/2205.09328/assets/x8.png)
-
-![Refer to caption](/html/2205.09328/assets/x9.png)
+!(/html/2205.09328/assets/x9.png)
 
 Figure 6: Evaluate how the overlap ratio of two tables’ columns influences zero-shot learning (ZSL) performance of TransTab, on public data CG, CA, CB, and DS. x𝑥x-axis: the ratio of test table columns exist in the training table (0: no test table column appears in training table; 1: all test table columns in training table); y𝑦y-axis: the test AUC when making ZSL.
 
@@ -1110,83 +1037,3 @@ For experiments in §[3.2](#S3.SS2 "3.2 Q2. Feature incremental learning ‣ 3 E
 
   Zeroshot learning. The columns are splitted into three distinct parts v1,v2,v3
   subscript𝑣1subscript𝑣2subscript𝑣3{v\_{1},v\_{2},v\_{3}}. Set1 contains v1subscript𝑣1v\_{1}, set2 contains v2subscript𝑣2v\_{2}, set3 contains v3subscript𝑣3v\_{3}. Three sets have the equal number of samples.
-
-[◄](/html/2205.09327)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2205.09328)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2205.09328)
-[View original  
-on arXiv](https://arxiv.org/abs/2205.09328)[►](/html/2205.09329)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 15:01:01 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,50 +15,6 @@ url: http://arxiv.org/abs/2301.02819v8
 year: 2023
 ---
 
-[2301.02819] ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data
 
 Jintai Chen
@@ -110,8 +66,7 @@ Our main contributions are summarized as follows.
 
   We propose two tabular-data-specific Mixup variants, Hidden-Mix and Feat-Mix, which are superior to the vanilla input Mixup approach on tabular data.
 
-![Refer to caption](/html/2301.02819/assets/x1.png)
-
+!(/html/2301.02819/assets/x1.png)
 
 Figure 1: Illustrating our proposed ExcelFormer model. AiuM and DiaM denote the attentive intra-feature update module and directed inter-feature attention module, respectively. “Norm” denotes a LayerNorm layer (Ba et al., [2016](#bib.bib3)). Before being fed into the model, the input features are sorted according to a feature importance metric (e.g., mutual information).
 
@@ -158,8 +113,7 @@ Wq,Wk
 subscript𝑊𝑞subscript𝑊𝑘W\_{q},W\_{k}, Wv∈ℝd×dsubscript𝑊𝑣superscriptℝ𝑑𝑑W\_{v}\in\mathbb{R}^{d\times d} are all learnable matrices, ⊕direct-sum\oplus is element-wise addition, and σ𝜎\sigma is the softmax operating along the last dimension. The elements in the lower triangle portion of M∈ℝf×f𝑀superscriptℝ𝑓𝑓M\in\mathbb{R}^{f\times f} are all set to zeros, and the remaining elements of M𝑀M are all set as negative infinity (using −105superscript105-10^{5} in our implementation as default). This makes the elements in the upper triangle portion (except for the diagonal elements) of the attention map all zeros after softmax activation.
 In practice, Eq. ([2](#S3.E2 "Equation 2 ‣ 3.3 Directed Inter-feature Attention Module (DiaM) ‣ 3 ExcelFormer ‣ ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data")) is extended to a multi-head self-attention version, with 32 heads by default.
 
-![Refer to caption](/html/2301.02819/assets/x2.png)
-
+!(/html/2301.02819/assets/x2.png)
 
 Figure 2: Decision boundaries of k𝑘k-Nearest Neighbors (k𝑘kNN, k=8𝑘8k=8) for the 2 most important features (by mutual information) of a zoomed-in part of the Higgs dataset. The convex combinations (points on the black line) of two samples x1subscript𝑥1x\_{1} and x2subscript𝑥2x\_{2} of two different categories likely are in conflict with the irregular target function.
 
@@ -195,8 +149,7 @@ where z(L)superscript𝑧𝐿z^{(L)} is the output of the top-most AiuM, Wf∈�
 
 Our proposed AiuM and DiaM satisfy both the two keys (i) and (ii) given in Sec. [1](#S1 "1 Introduction ‣ ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data") respectively. Further, we argue that their effectiveness can be improved by using tailored training methodology since vanilla neural network training strategies were considered inefficient for tabular data (Ng, [2004](#bib.bib27); Rahaman et al., [2019](#bib.bib32)). Mixup (Zhang et al., [2018](#bib.bib51)) is one of the most effective regularization approaches for neural networks, but our tests showed that it cannot well cooperate with some cutting-edge approaches like (Gorishniy et al., [2021](#bib.bib15); Somepalli et al., [2021](#bib.bib34)). Besides, such element-wise convex interpolation operations are intuitively in conflict with irregular target functions of tabular datasets. Fig. [2](#S3.F2 "Figure 2 ‣ 3.3 Directed Inter-feature Attention Module (DiaM) ‣ 3 ExcelFormer ‣ ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data") shows an example of an irregular target function of tabular data, and obviously the data synthesized by the original Mixup (i.e., convex combination) conflict with the target function. To address this issue, we introduce two Mixup variants, Hidden-Mix and Feat-Mix, for tabular data, which can enhance the model performances and avoid the conflicts shown in Fig. [2](#S3.F2 "Figure 2 ‣ 3.3 Directed Inter-feature Attention Module (DiaM) ‣ 3 ExcelFormer ‣ ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data"). Besides, we propose an attenuated initialization approach for these two modules. For easier understanding, we first introduce Hidden-Mix and Feat-Mix, and then the attenuated initialization approach.
 
-![Refer to caption](/html/2301.02819/assets/x3.png)
-
+!(/html/2301.02819/assets/x3.png)
 
 Figure 3: Examples for the Hidden-Mix and Feat-Mix operations, where “rep.” means “representations”.
 
@@ -530,8 +483,7 @@ Compared Models. Since Grinsztajn et al. ([2022](#bib.bib17)) have proved that 
 
 Evaluation. For each fixed or tuned configuration, we run the codes for 5 times with different random seeds and report the average performance on the test set. For our proposed ExcelFormer, we do not use any ensemble strategy. For binary classification (binclass) tasks, we compute the area under the ROC Curve (AUC) for evaluation. We use accuracy (ACC) for multi-class classification (multiclass) tasks, and the negative root mean square error (nRMSE) for regression tasks. On all these metrics, the higher the result values are, the better the performances are.
 
-![Refer to caption](/html/2301.02819/assets/Figures/box-plot.png)
-
+!(/html/2301.02819/assets/Figures/box-plot.png)
 
 Figure 4: Model performances for different types of tasks. “Cat.”, “XGb.”, and “Exc.” denote “Catboost”, “XGboost”, and “ExcelFormer”, while “M.T.” and “F.T.” in the brackets indicate the “Mix Tuned” and “Fully Tuned” versions of ExcelFormer.
 
@@ -540,8 +492,7 @@ Figure 4: Model performances for different types of tasks. “Cat.”, “XGb.�
 Performances of Untuned ExcelFormer. ExcelFormer-Feat-Mix (resp., ExcelFormer-Hidden-Mix) uses only our Feat-Mix (resp., Hidden-Mix) but not Hidden-Mix (resp., Feat-Mix). Their performances on all the 28 datasets are reported in Table [1](#S4.T1 "Table 1 ‣ 4.3 An Attenuated Initialization ‣ 4 Training Methodology ‣ ExcelFormer: A Neural Network Surpassing GBDTs on Tabular Data"). Both ExcelFormer-Feat-Mix and ExcelFormer-Hidden-Mix are trained with pre-specified hyper-parameters,
 without any hyper-parameter tuning. The average performance rank of ExcelFormer-Feat-Mix is 4.61, which is quite close to Catboost’s 4.36. The average rank of ExcelFormer-Hidden-Mix is 3.75, which falls between those of Catboost (4.36) and XGboost (3.43). In pairwise comparison, ExcelFormer-Feat-Mix beats the extensively tuned XGboost on 11 out of 28 datasets, while ExcelFormer-Hidden-Mix beats XGboost on 14 out of 28 datasets. In comparison with extensively tuned Catboost, ExcelFormer-Feat-Mix obtains better performances on 11 out of 28 datasets while ExcelFormer-Hidden-Mix obtains better performances on 15 out of 28 datasets. These results suggest that, by directly using ExcelFormer with the default hyper-parameters, one can easily obtain GBDT-level performances on tabular datasets. Due to the diversity of tabular datasets, a foolproof well-performed approach without tuning is very user-friendly and has a great potential for practical applications, as most users are not proficient in conducting hyper-parameter tuning.
 
-![Refer to caption](/html/2301.02819/assets/x4.png)
-
+!(/html/2301.02819/assets/x4.png)
 
 Figure 5: Ablation study on our proposed ingredients of ExcelFormer using six datasets. “–” denotes removal and “+” denotes inclusion. The bars colored in “ purple” indicate worse performances compared with the baseline, while the bars in “ orange” indicate better performances. Note that the lower “RMSE”, the better; the higher “ACCURACY”, the better.
 
@@ -931,9 +882,6 @@ Table 3: The hyper-parameter tuning space for ExcelFormer. The items marked with
 | (\*) Mixup type | {Feat-Mix, Hidden-Mix } |
 | (\*) α𝛼\alpha of ℬ​e​t​aℬ𝑒𝑡𝑎\mathcal{B}eta distribution | Uniform[0.1, 3.0] |
 
-
-
-
 Table 4: The hyper-parameter tuning space for XGboost.
 
 | Hyper-parameter | Distribution |
@@ -952,9 +900,6 @@ Table 4: The hyper-parameter tuning space for XGboost.
 | Alpha | {0, LogUniform[10−8,102  superscript108superscript10210^{-8},10^{2}]} |
 | # Tuning iterations | 500 |
 
-
-
-
 Table 5: The hyper-parameter tuning space for Catboost.
 
 |  |  |
@@ -969,83 +914,3 @@ Table 5: The hyper-parameter tuning space for Catboost.
 | L2 leaf reg | LogUniform[1, 10] |
 | Leaf estimation iterations | UniformInt[1, 10] |
 | # Tuning iterations | 500 |
-
-[◄](/html/2301.02818)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2301.02819)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2301.02819)
-[View original  
-on arXiv](https://arxiv.org/abs/2301.02819)[►](/html/2301.02820)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 07:37:32 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

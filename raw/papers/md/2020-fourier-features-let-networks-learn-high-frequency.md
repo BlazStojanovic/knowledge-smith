@@ -19,51 +19,6 @@ url: http://arxiv.org/abs/2006.10739v1
 year: 2020
 ---
 
-[2006.10739] Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\doparttoc\faketableofcontents
-
 # Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains
 
 Matthew Tancik1\*
@@ -235,8 +190,7 @@ We first visualize how modifying the Fourier feature mapping changes the compose
 We use p=∞𝑝p=\infty to denote the mapping γ​(v)=[cos⁡2​π​v,sin⁡2​π​v]T𝛾𝑣superscript2𝜋𝑣2𝜋𝑣T\gamma(v)=\left[\cos 2\pi v,\sin 2\pi v\right]^{\mathrm{T}} that simply wraps [0,1)01[0,1) around the unit circle (this is referred to as the “basic” mapping in later experiments).
 Figure [2](#S5.F2 "Figure 2 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") demonstrates the effect of varying p𝑝p on the composed NTK. By construction, lower p𝑝p values result in a slower falloff in the frequency domain and a correspondingly narrower kernel in the spatial domain.
 
-![Refer to caption](/html/2006.10739/assets/x5.png)
-
+!(/html/2006.10739/assets/x5.png)
 
 Figure 2: 
 Adding a Fourier feature mapping can improve the poor conditioning of a coordinate-based MLP’s neural tangent kernel (NTK).
@@ -254,8 +208,7 @@ We generate ground truth 1D functions by sampling c​n𝑐𝑛cn values from a 
 In Figure [3](#S5.F3 "Figure 3 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"), we train MLPs (4 layers, 1024 channels, ReLU activations) to fit a bandlimited 1/f11superscript𝑓11/f^{1} noise signal (c=8,n=32formulae-sequence𝑐8𝑛32c=8,n=32) using Fourier feature mappings with different p𝑝p values. Figures [3](#S5.F3 "Figure 3 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")b and [3](#S5.F3 "Figure 3 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")d show that the NTK linear dynamics model accurately predict the effects of modifying the Fourier feature mapping parameters. Separating different frequency components of the training error in Figure [3](#S5.F3 "Figure 3 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")c reveals that networks with narrower NTK spectra converge faster for low frequency components but essentially never converge for high frequency components, whereas networks with wider NTK spectra successfully converge across all components.
 The Fourier feature mapping p=1𝑝1p=1 has adequate power across frequencies present in the target signal (so the network converges rapidly during training) but limited power in higher frequencies (preventing overfitting or aliasing).
 
-![Refer to caption](/html/2006.10739/assets/x6.png)
-
+!(/html/2006.10739/assets/x6.png)
 
 Figure 3: Combining a network with a Fourier feature mapping has dramatic effects on convergence and generalization.
 Here we train a network on 32 sampled points from a 1D function (a) using mappings shown in Fig. [2](#S5.F2 "Figure 2 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"). A mapping with a smaller p𝑝p value yields a composed NTK with more power in higher frequencies, enabling the corresponding network to learn a higher frequency function.
@@ -271,8 +224,7 @@ In real-world problems, especially in multiple dimensions, it is not feasible to
 Figure [4](#S5.F4 "Figure 4 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") demonstrates this point using hyperparameter sweeps for a variety of sampling distributions. In each subfigure, we draw 1D target signals (c=2,n=1024formulae-sequence𝑐2𝑛1024c=2,n=1024) from a fixed 1/fα1superscript𝑓𝛼1/f^{\alpha} distribution and train networks to learn them. We use random Fourier feature mappings (of length 16) sampled from different distribution families (Gaussian, uniform, uniform in log space, and Laplacian) and sweep over each distribution’s scale.
 Perhaps surprisingly, the standard deviation of the sampled frequencies alone is enough to predict test set performance, regardless of the underlying distribution’s shape. We show that this holds for higher-dimensional tasks in Appendix [A.4](#A1.SS4 "A.4 Visualizing underfitting and overfitting in 2D ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"). We also observe that passing this sparse sampling of Fourier features through an MLP matches the performance of using a dense set of Fourier features with the same MLP, suggesting a strategy for scaling to higher dimensions. We proceed with a Gaussian distribution for our higher-dimensional experiments in Section [6](#S6 "6 Experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") and treat the scale as a hyperparameter to tune on a validation dataset.
 
-![Refer to caption](/html/2006.10739/assets/x7.png)
-
+!(/html/2006.10739/assets/x7.png)
 
 Figure 4: 
 We find that a sparse random sampling of Fourier features can perform as well as a dense set of features and that the width of the distribution matters more than the shape.
@@ -642,8 +594,7 @@ where 𝐊valsubscript𝐊val\mathbf{K}\_{\mathrm{val}} is the composed NTK eval
 
 In Figure [5](#A1.F5 "Figure 5 ‣ A.1 Optimizing validation error through the NTK linear dynamics ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"), we show the results of minimizing Eqn. [10](#A1.E10 "In A.1 Optimizing validation error through the NTK linear dynamics ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") by gradient descent on ajsubscript𝑎𝑗a\_{j} values (with fixed corresponding “densely sampled” bj=jsubscript𝑏𝑗𝑗b\_{j}=j) for validation sets sampled from three different 1/fα1superscript𝑓𝛼1/f^{\alpha} noise families. Note that gradient descent on this theoretical loss approximation produces ajsubscript𝑎𝑗a\_{j} values which are able to perform as well as the best “power law” ajsubscript𝑎𝑗a\_{j} values for each respective signal class (compared dashed lines versus ×\times markers in Figure [5](#A1.F5 "Figure 5 ‣ A.1 Optimizing validation error through the NTK linear dynamics ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")b). As mentioned in the main text, we find that this optimization strategy is only viable for small 1D regression problems. In our multidimensional tasks, using densely sampled 𝐛jsubscript𝐛𝑗\mathbf{b}\_{j} values is not tractable due to memory constraints. In addition, the theoretical approximation only holds when training the network using SGD, and in practice we train using the Adam optimizer [[19](#bib.bib19)].
 
-![Refer to caption](/html/2006.10739/assets/x8.png)
-
+!(/html/2006.10739/assets/x8.png)
 
 Figure 5: The Fourier feature mappings can be optimized for better performance on a class of target signals by using the linearized network approximation. Here we consider target signals sampled from three different power law distributions. In (a) we show the spectrum for composed kernels corresponding to different optimized feature mappings, where the feature mappings are initialized to match the “Power ∞\infty” distribution. In (b) we take an alternative approach where we sweep over "power law" settings for our Fourier features. We find that tuning this simple parameterization is able to perform on par with the optimized feature maps.
 
@@ -655,12 +606,11 @@ Again drawing on NTK theory, we understand this tradeoff as an effect of frequen
 but when composed with the NTK, the influence of each discrete frequency “spreads” over its local neighborhood in the final spectrum. We find that the “spread” around each frequency feature increases for deeper networks.
 For an MLP to learn all of the frequency components in the target signal, its corresponding composed NTK must contain adequate power across the frequency support of the target signal. This is accomplished either by including more frequencies in the Fourier features or by spreading those frequencies through sufficient NTK depth.
 
-![Refer to caption](/html/2006.10739/assets/x9.png)
+!(/html/2006.10739/assets/x9.png)
 
 Figure 6: In a 2D image regression task (explained in Section [E.1](#A5.SS1 "E.1 2D image ‣ Appendix E Task details ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")) we find that shallower networks require more Fourier features than deeper networks. This is explained by the frequency spreading effect shown in Figure [7](#A1.F7 "Figure 7 ‣ A.2 Feature sparsity and network depth ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"). In this experiment we use the *Natural* image dataset and a Gaussian mapping. All of the network layers have 256 channels, and the networks are trained using an Adam [[19](#bib.bib19)] optimizer with a learning rate of 10−3superscript10310^{-3}.
 
-![Refer to caption](/html/2006.10739/assets/x10.png)
-
+!(/html/2006.10739/assets/x10.png)
 
 Figure 7: Each frequency included in a Fourier embedding is “spread” by the NTK, with deeper NTKs causing more frequency spreading. We posit that this frequency spreading is what enables an MLP with a sparse set of Fourier features to faithfully reconstruct a complex signal, which would be poorly reconstructed by either sparse Fourier feature regression or a plain coordinate-based MLP.
 
@@ -672,8 +622,7 @@ We performed an experiment in which the aj,𝐛j
 subscript𝑎𝑗subscript𝐛𝑗a\_{j},\mathbf{b}\_{j} values are treated as trainable variables (along with the weights of the network) and optimize all variables with Adam to minimize training loss.
 Figure [8](#A1.F8 "Figure 8 ‣ A.3 Gradient descent does not optimize Fourier features ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") shows that jointly optimizing these parameters does not improve performance compared to leaving them fixed.
 
-![Refer to caption](/html/2006.10739/assets/x11.png)
-
+!(/html/2006.10739/assets/x11.png)
 
 Figure 8: “Training” the Fourier feature mapping parameters ajsubscript𝑎𝑗a\_{j} and 𝐛jsubscript𝐛𝑗\mathbf{b}\_{j} along with the network weights using Adam does not improve performance, as the 𝐛jsubscript𝐛𝑗\mathbf{b}\_{j} values do not deviate significantly from their initial values. We show that this holds when 𝐛jsubscript𝐛𝑗\mathbf{b}\_{j} are initialized at three different scales of Gaussian Fourier features in the case of the 2D image task (ajsubscript𝑎𝑗a\_{j} are always initialized as 111).
 
@@ -682,20 +631,16 @@ Figure 8: “Training” the Fourier feature mapping parameters ajsubscript𝑎�
 Figure [4](#S5.F4 "Figure 4 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") in the main text shows (in a 1D setting) that as the scale of the Fourier feature sampling distribution increases, the trained network’s error traces out a curve that starts in an underfitting regime (only low frequencies are learned) and ends in an overfitting regime (the learned function includes high-frequency detail not present in the training data). In Figure [9](#A1.F9 "Figure 9 ‣ A.4 Visualizing underfitting and overfitting in 2D ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"), we show analogous behavior for 2D image regression, demonstrating that the same phenomenon holds in a multidimensional problem.
 In Figure [10](#A1.F10 "Figure 10 ‣ A.4 Visualizing underfitting and overfitting in 2D ‣ Appendix A Further experiments ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"), we show how changing the scale for Gaussian Fourier features qualitatively affects the final result in the 2D image regression task.
 
-![Refer to caption](/html/2006.10739/assets/x12.png)
-
+!(/html/2006.10739/assets/x12.png)
 
 (a) Test error for 2D image task
 
-![Refer to caption](/html/2006.10739/assets/x13.png)
-
+!(/html/2006.10739/assets/x13.png)
 
 (b) Train and test error for 2D image task
 
 Figure 9: An alternate version of Figure [4](#S5.F4 "Figure 4 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") from the main text where the underlying signal is a 2D image (see 2D image task details in Section [E.1](#A5.SS1 "E.1 2D image ‣ Appendix E Task details ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains")) instead of 1D signal.
 This multi-dimensional case exhibits the same behavior as was seen in the 1D case: we see the same underfitting/overfitting pattern for four different isotropic Fourier feature distributions, and the distribution shape matters less than the scale of sampled bisubscript𝑏𝑖b\_{i} values.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -707,8 +652,7 @@ Low values of σ𝜎\sigma underfit, resulting in oversmoothed interpolation, an
 
 ### A.5 Failures of positional encoding (axis-aligned bias)
 
-![Refer to caption](/html/2006.10739/assets/x14.png)
-
+!(/html/2006.10739/assets/x14.png)
 
 Figure 11: We train a coordinate-based MLP to fit target 2D images consisting of simple sinusoids at different frequencies and angles. The positional encoding mapping performs well at on-axis angles and performs worse on off-axis angles, while the Gaussian RFF mapping performs similarly well across all angles (results are averaged over radii). Error bars are plotted over runs with different randomly-sampled frequencies for the Gaussian RFF mapping, while positional encoding is deterministic.
 
@@ -724,8 +668,7 @@ In Figure [12](#A2.F12 "Figure 12 ‣ B.1 Main text Figure 3 (effect of feature
 
 1…𝑛2j=1,\ldots,n/2.
 
-![Refer to caption](/html/2006.10739/assets/x15.png)
-
+!(/html/2006.10739/assets/x15.png)
 
 Figure 12: An extension of Figure [3](#S5.F3 "Figure 3 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") from the main paper, showing more values of p𝑝p. In (c) we see that mappings with more gradual frequency falloff (lower p𝑝p) converge significantly faster in mid and high frequencies, resulting in faster overall training convergence (d). In (b) we see that p=1𝑝1p=1 achieves a lower test error than the other mappings.
 
@@ -760,8 +703,7 @@ This shows that the randomized equivalent of positional encoding is sampling fro
 
 Table 2: Different distributions used for sampling frequencies, where σ𝜎\sigma is each distribution’s “scale”.
 
-![Refer to caption](/html/2006.10739/assets/x16.png)
-
+!(/html/2006.10739/assets/x16.png)
 
 Figure 13: An alternate version of Figure [4](#S5.F4 "Figure 4 ‣ 5 Manipulating the Fourier Feature Mapping ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains") from the main text showing both training error and test error for a variety of different Fourier feature sampling distributions. Adding training error to the plot clearly distinguishes between the underfitting regime with low frequency bisubscript𝑏𝑖b\_{i} (where train and test error are similar) versus the overfitting regime with high frequency bisubscript𝑏𝑖b\_{i} (where the test error increases but training error approaches machine precision).
 
@@ -781,8 +723,7 @@ superscriptℝ𝑑\mathbf{u},\mathbf{v}\in\mathbb{R}^{d} for small d𝑑d, γ�
 
 This effect is illustrated in a simple 1D example in Figure [14](#A3.F14 "Figure 14 ‣ Appendix C Stationary kernels ‣ Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains"), which shows that the benefits of a stationary composed NTK indeed appear in the MLP setting with a basic Fourier featurization (using a single frequency). We train MLPs with and without this basic Fourier embedding to learn a set of shifted 1D Gaussian probability density functions. The plain MLP successfully fits a zero-centered function but struggles to fit shifted functions, while the MLP with basic Fourier embedding exhibits stationary behavior, with good performance regardless of shifts.
 
-![Refer to caption](/html/2006.10739/assets/x17.png)
-
+!(/html/2006.10739/assets/x17.png)
 
 Figure 14: A plain coordinate-based MLP can learn a centered function (in this case a Gaussian density) but struggles to model shifts of the same function. Adding a basic Fourier embedding (with a single frequency) enables the MLP to fit the target function equally well regardless of shifts. The NTK corresponding to the plain MLP is based on dot products between inputs, whereas the NTK corresponding to the NTK with Fourier embedding is based on Euclidean distances between inputs, making it shift-invariant. In this experiment we train an MLP (4 layers, 256 channels, ReLU activation) for 500 iterations using the Adam [[19](#bib.bib19)] optimizer with a learning rate of 10−4superscript10410^{-4}. We report mean and standard deviation performance over 20 random network initializations.
 
@@ -966,8 +907,6 @@ Table 7: 3D NeRF results (mean and standard deviation of PSNR). Error is calcula
 
 Figure 15: Additional results for the 2D image regression task, for three images from our *Natural* dataset (top) and two images from our *Text* dataset (bottom).
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Refer to caption | Refer to caption | Refer to caption | Refer to caption | Refer to caption |
@@ -978,8 +917,6 @@ Figure 15: Additional results for the 2D image regression task, for three images
 
 Figure 16: Additional results for the 3D shape occupancy task [[24](#bib.bib24)].
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Refer to caption | Refer to caption | Refer to caption | Refer to caption | Refer to caption |
@@ -988,16 +925,12 @@ Figure 16: Additional results for the 3D shape occupancy task [[24](#bib.bib24)
 
 Figure 17: Results for the 2D CT task.
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Refer to caption | Refer to caption | Refer to caption | Refer to caption | Refer to caption |
 | (a) Ground Truth | (b) No mapping | (c) Basic | (d) Positional enc. | (e) Gaussian |
 
 Figure 18: Additional results for the 3D MRI task.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -1007,83 +940,3 @@ Figure 18: Additional results for the 3D MRI task.
 | (a) Ground Truth | (b) No mapping | (c) Basic | (d) Positional enc. | (e) Gaussian |
 
 Figure 19: Additional results for the inverse rendering task [[27](#bib.bib27)].
-
-[◄](/html/2006.10738)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2006.10739)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2006.10739)
-[View original  
-on arXiv](https://arxiv.org/abs/2006.10739)[►](/html/2006.10740)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 12:38:52 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

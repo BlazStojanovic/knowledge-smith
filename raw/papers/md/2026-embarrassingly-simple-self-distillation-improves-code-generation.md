@@ -15,54 +15,6 @@ url: https://arxiv.org/abs/2604.01193
 year: 2026
 ---
 
-[2604.01193] Embarrassingly Simple Self-Distillation Improves Code Generation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\metadata
-
-[Correspondence]{yizzhang,ruixiangz,richardbai,huangjie.zheng}@apple.com
-
 # Embarrassingly Simple Self-Distillation Improves Code Generation
 
 Ruixiang Zhang∗
@@ -75,7 +27,7 @@ Yizhe Zhang∗
 Affiliation: 
 Apple
   
-![[Uncaptioned image]](/html/2604.01193/assets/store/github-logo.png) <https://github.com/apple/ml-ssd>
+ <https://github.com/apple/ml-ssd>
 
 (May 5, 2026 ∗ Equal contribution)
 
@@ -83,8 +35,6 @@ Apple
 
 Can a large language model (LLM) improve at code generation using only its own raw outputs, without a verifier, a teacher model, or reinforcement learning? We answer in the affirmative with simple self-distillation (SSD): sample solutions from the model with certain temperature and truncation configurations, then fine-tune on those samples with standard supervised fine-tuning. SSD improves Qwen3-30B-Instruct from 42.4% to 55.3% pass@1 on LiveCodeBench v6, with gains concentrating on harder problems, and it generalizes across Qwen and Llama models at 4B, 8B, and 30B scale, including both instruct and thinking variants.
 To understand why such a simple method can work, we trace these gains to a *precision-exploration conflict* in LLM decoding and show that SSD reshapes token distributions in a context-dependent way, suppressing distractor tails where precision matters while preserving useful diversity where exploration matters. Taken together, SSD offers a complementary post-training direction for improving LLM code generation.
-
-![[Uncaptioned image]](/html/2604.01193/assets/x1.png)
 
 Figure 1: Simple self-distillation (SSD) is embarrassingly simple, yet yields substantial LiveCodeBench v6 gains across five models spanning two families, three scales, with both instruct and thinking variants.
 Left: SSD samples from the base model with training-time decoding temperature TtrainT\_{\textsf{train}}, fine-tunes on its own raw outputs, and then decodes at evaluation time with TevalT\_{\textsf{eval}}; it uses no RL, verifier, teacher, or code execution environment.
@@ -98,8 +48,6 @@ As LLMs are deployed to increasingly difficult coding tasks, the supply of high-
 We show the answer is yes. Our method, *simple self-distillation* (SSD), is embarrassingly simple: sample solutions from the base model with specified temperature and truncation, then fine-tune on those raw, unverified samples via standard cross-entropy loss. This method requires only a set of problem prompts and the model itself: no human-labeled solutions, no reference answers, no teacher model, no reward model, no verifier, no execution environment, and no reinforcement learning of any kind.
 
 Table 1: Comparison of training paradigms.
-
-![[Uncaptioned image]](/html/2604.01193/assets/x2.png)
 
 Surprisingly, it works. SSD improves Qwen3-30B-Instruct from 42.4% to 55.3% pass@1 on LiveCodeBench v6 (Jain et al., [2024](#bib.bib26)), with especially large gains on hard problems. Coverage improvements are larger still: hard-problem pass@5 rises from 31.1% to 54.1%, suggesting that SSD preserves useful exploration across solution branches instead of only sharpening a single dominant mode. These gains are not model-specific: SSD generalizes across five models spanning two families, three scales, and both instruct and thinking models.
 
@@ -172,8 +120,6 @@ Base-model results use each model’s officially recommended sampling parameters
 
 Table 2: SSD improves every evaluated model on LiveCodeBench, with the largest gains on medium and hard problems. Results on LCB v6 and LCB v5, broken down by difficulty and grouped by reasoning style (thinking vs. instruct). Within each model pair, the first row is the base model and the second is +SSD; cell shading encodes the change relative to the base row (green = improvement, red = decrease).
 
-![[Uncaptioned image]](/html/2604.01193/assets/x3.png)
-
 SSD yields large gains on LiveCodeBench.
 On LCB v6, SSD improves Qwen3-30B-Instruct from 42.4% to 55.3% pass@1 (+12.9pp, +30.4% relative).
 The gains are broad across the evaluated models: Llama-8B improves by +3.5pp, Qwen3-4B-Instruct by +7.5pp, Qwen3-4B-Thinking by +3.3pp, and Qwen3-30B-Thinking by +2.1pp.
@@ -196,8 +142,7 @@ Because SSD is trained only on competitive-programming data, a natural concern i
 
 ### 3.3 Global Decoding Policies Cannot Match SSD
 
-![Refer to caption](/html/2604.01193/assets/x4.png)
-
+!(/html/2604.01193/assets/x4.png)
 
 Figure 2: SSD outperforms the best point in the evaluated base-model decoding sweep within standard global decoding policies.
 Each panel shows one model (30B-Instruct, 4B-Instruct, 4B-Thinking) and one metric (pass@1 or pass@5); amber curves sweep base-model evaluation temperature while blue horizontal lines mark SSD results from [Table˜2](#S3.T2 "In 3.2 SSD Improves Code Generation Across the Board ‣ 3 Experiments ‣ Embarrassingly Simple Self-Distillation Improves Code Generation"). Solid shading marks the margin over all problems; outlined (dashed-border) shading marks the margin on hard problems.
@@ -219,8 +164,7 @@ These persistent margins indicate that SSD produces changes in the model itself 
 To understand the best configuration of training and inference hyperparameters for SSD, we performed a grid search over TtrainT\_{\textsf{train}}, and evaluated each checkpoint at multiple TevalT\_{\textsf{eval}}, with Qwen3-30B-Instruct on LCB v6.
 We compare two regimes: a no-truncation ablation, where temperature composition is cleanest, and the full truncated setting, where training-time truncation provides an additional gain channel. Full details are in [Section˜C.2](#A3.SS2 "C.2 How SSD Hyperparameters Interact: Full Sweeps ‣ Appendix C Experimental Details and Additional Analyses ‣ Embarrassingly Simple Self-Distillation Improves Code Generation").
 
-![Refer to caption](/html/2604.01193/assets/x5.png)
-
+!(/html/2604.01193/assets/x5.png)
 
 Figure 3: Training and evaluation temperatures compose through a broad effective-temperature band, while truncation raises the achievable pass@1 within that band.
 (a) Representative Qwen3-30B-Instruct sweeps on LCB v6 against Teff=Ttrain​TevalT\_{\textsf{eff}}=T\_{\textsf{train}}T\_{\textsf{eval}}: gray = no truncation, amber/green = truncated training-time sampling. Dots are runs, curves are quadratic fits, and the dashed line marks the 42.4% baseline.
@@ -245,8 +189,7 @@ Our hypothesis is that the answer lies in a structural conflict in generation.
 Some tokens demand precision, others demand exploration, and any fixed decoding configuration must compromise between them.
 SSD helps by reshaping token distributions in a way that alleviates this conflict. We validate this mechanism in three steps: a controlled toy simulation, real model analysis, and theoretical decomposition.
 
-![Refer to caption](/html/2604.01193/assets/x6.png)
-
+!(/html/2604.01193/assets/x6.png)
 
 Figure 4: A single evaluation temperature cannot satisfy both exploration at forks and precision at locks.
 Left: a sorting example in which the algorithm-choice token is a *fork* position (rust-orange), while the later uses of mid are *lock* positions (blue); gray ghost branches indicate other valid algorithms that could have been taken at the fork.
@@ -285,8 +228,7 @@ Even in this minimal setting, the same dilemma appears. Sweeping a single global
 
 In the toy, SSD changes that compromise by reshaping the two regimes differently ([Figure˜5](#S4.F5 "In Controlled simulation. ‣ 4.2 How SSD Reshapes a Model: Toy Simulation and Real-Model Analysis ‣ 4 Why SSD Works ‣ Embarrassingly Simple Self-Distillation Improves Code Generation")). At lock-like states, the low-probability tail is stripped away, so the dominant token becomes much harder to dislodge. At fork-like states, several plausible continuations remain near the top, but the useless tail is reduced and the surviving options become more even. These local changes widen the viable decoding regime itself: after SSD, the best decoding temperature shifts much higher, and success probability rises substantially.
 
-![Refer to caption](/html/2604.01193/assets/x7.png)
-
+!(/html/2604.01193/assets/x7.png)
 
 Figure 5: SSD turns forks into plateaus and locks into spikes.
 Tokens are ranked by probability. Hatched bars and dashed curves show the base model; solid bars and solid curves show the model after SSD; the red dashed cutoff marks the support retained during SSD.
@@ -305,8 +247,7 @@ We now look for the same pattern from the base Qwen3-30B-Instruct model and its 
 
 [Figure˜6b–d](#S4.F6 "Figure 6 ‣ Real-model evidence. ‣ 4.2 How SSD Reshapes a Model: Toy Simulation and Real-Model Analysis ‣ 4 Why SSD Works ‣ Embarrassingly Simple Self-Distillation Improves Code Generation") show the second effect. Under the same evaluation-time decoding temperature and truncation (Teval,ρeval)(T\_{\textsf{eval}},\rho\_{\textsf{eval}}), raising TevalT\_{\textsf{eval}} changes the base model much less: the surviving set stays close to a singleton, so temperature has limited leverage. SSD behaves differently. As temperature rises, several top continuations remain viable, and the probabilities among those surviving options spread out much more strongly. This advantage persists even when the two models place similar probability mass in their top 20 tokens. The real-model evidence therefore matches the toy: SSD removes distractor mass where commitment matters and enlarges the region in which temperature can be used for exploration.
 
-![Refer to caption](/html/2604.01193/assets/x8.png)
-
+!(/html/2604.01193/assets/x8.png)
 
 Figure 6: Real-model evidence that SSD both compresses distractor tails and makes TevalT\_{\textsf{eval}} more effective near the head.
 Amber: base Qwen3-30B-Instruct; blue: after SSD.
@@ -347,8 +288,7 @@ Appendix [Section˜B.5](#A2.SS5 "B.5 Why Decode-Only Tuning Cannot Match SSD ‣
 
 ### 4.4 A Surprising Case: Bad Data, Good Results
 
-![Refer to caption](/html/2604.01193/assets/x9.png)
-
+!(/html/2604.01193/assets/x9.png)
 
 Figure 7: Bad data, good results.
 (a) At Ttrain=2.0T\_{\textsf{train}}{=}2.0 without truncation, a representative sample degrades into gibberish; ∼62%{\sim}62\% of outputs contain no extractable code.
@@ -467,8 +407,7 @@ used throughout the theory ([Section˜B.1](#A2.SS1 "B.1 Notation and Setup ‣ A
 
 The implementation confirms that the order is *temper →\to top-kk →\to top-pp →\to sample*: temperature scaling is applied to logits first, top-kk filters on the tempered distribution, and top-pp operates within the top-kk retained set (renormalized via softmax over survivors before computing the cumulative threshold).
 
-![Refer to caption](/html/2604.01193/assets/x10.png)
-
+!(/html/2604.01193/assets/x10.png)
 
 Figure 8: The vLLM v0.11.0 decoding pipeline used throughout this paper.
 The pipeline applies four steps in sequence: (1) temperature scaling divides all logits by TT; (2) top-kk filtering keeps the kk largest tempered logits and sets the rest to −∞-\infty; (3) top-pp filtering further prunes from the bottom of the surviving set until cumulative mass reaches the chosen top-pp threshold; and (4) Gumbel-max sampling draws a token from the resulting distribution without synchronization between CPU and GPU.
@@ -1051,8 +990,7 @@ This subsection expands the temperature-interaction results from [Section˜3.4](
 Qwen3-30B-Instruct full sweep.
 [Figure˜9](#A3.F9 "In C.2 How SSD Hyperparameters Interact: Full Sweeps ‣ Appendix C Experimental Details and Additional Analyses ‣ Embarrassingly Simple Self-Distillation Improves Code Generation") expands the main-text scatter plots by showing the broader search over training-time and evaluation-time decoding configurations for Qwen3-30B-Instruct.
 
-![Refer to caption](/html/2604.01193/assets/x11.png)
-
+!(/html/2604.01193/assets/x11.png)
 
 Figure 9: Across the full sweep, truncated and no-truncation settings occupy similar broad operating bands, but truncation reaches a higher pass@1 ceiling. SSD hyperparameter search on LCB v6 for Qwen3-30B-Instruct (baseline: 42.4% pass@1 and 53.5% pass@5). Panels show representative configurations against effective temperature TeffT\_{\textsf{eff}}; curves are per-group quadratic fits, and the dashed line marks the frozen instruct baseline.
 
@@ -1065,13 +1003,11 @@ No-truncation results and effective temperature.
 Thinking-model confirmation.
 [Figure˜11](#A3.F11 "In C.2 How SSD Hyperparameters Interact: Full Sweeps ‣ Appendix C Experimental Details and Additional Analyses ‣ Embarrassingly Simple Self-Distillation Improves Code Generation") shows that the same qualitative structure appears in Qwen3-4B-Thinking. The best-performing region again lies on a moderate diagonal band rather than at isolated values of either temperature alone. This matters because it shows that the temperature-composition pattern is not confined to instruct-style models. Taken together, the full sweeps support the two-part claim from [Section˜3.4](#S3.SS4 "3.4 How SSD Hyperparameters Interact ‣ 3 Experiments ‣ Embarrassingly Simple Self-Distillation Improves Code Generation"): without training-time truncation, performance is largely organized by effective temperature, while truncation preserves that broad structure and lifts the achievable ceiling.
 
-![Refer to caption](/html/2604.01193/assets/x12.png)
-
+!(/html/2604.01193/assets/x12.png)
 
 Figure 10: Without training-time truncation, performance is largely organized by the effective temperature Teff=Ttrain​TevalT\_{\textsf{eff}}=T\_{\textsf{train}}T\_{\textsf{eval}}. Qwen3-30B-Instruct without top-kk/top-pp truncation during SSD data generation. Panels show best pass@1 (left) and pass@5 (right) across the full grid of (Ttrain,Teval)(T\_{\textsf{train}},T\_{\textsf{eval}}) settings.
 
-![Refer to caption](/html/2604.01193/assets/x13.png)
-
+!(/html/2604.01193/assets/x13.png)
 
 Figure 11: The same effective-temperature structure appears in Qwen3-4B-Thinking. Best pass@1 (left) and pass@5 (right) across the full grid of (Ttrain,Teval)(T\_{\textsf{train}},T\_{\textsf{eval}}) settings without training-time truncation.
 
@@ -1123,13 +1059,11 @@ The three state types instantiate a fail-dominated root, a broad fork-like head,
 | Fork (×1\times 1 per path) | [0.148, 0.280, 0.140, 0.144,…][0.148,\;0.280,\;0.140,\;0.144,\;\ldots] | Correct at rank-2; four head tokens are near-tied |
 | Root (×1\times 1) | [0.200, 0.190, 0.329, 0.126,…][0.200,\;0.190,\;0.329,\;0.126,\;\ldots] | FAIL token (tok2) dominates; the two correct paths begin at ranks 2 and 3 |
 
-![Refer to caption](/html/2604.01193/assets/x14.png)
-
+!(/html/2604.01193/assets/x14.png)
 
 Figure 12: The toy FSM makes the lock/fork conflict explicit. (a) The root branches into two symmetric successful paths, each of which traverses one fork and three locks before PASS. At non-root states, tok0 is the correct continuation and all other tokens lead to FAIL; at the root, the highest-probability token is incorrect. (b) The associated token-distribution archetypes instantiate a broad fork-like head and a sharp lock-like head with a distractor tail.
 
-![Refer to caption](/html/2604.01193/assets/x15.png)
-
+!(/html/2604.01193/assets/x15.png)
 
 Figure 13: SSD reshapes lock distributions and flattens fork policies.
 (a) Lock training reshaping: hatched bars show the teacher base distribution p0p\_{0}, solid bars show the student pθp\_{\theta} after SSD. The correct token absorbs nearly all mass (94.8%).
@@ -1147,8 +1081,7 @@ We evaluate the toy by sweeping a single global decoding temperature while fixin
 
 where each qq denotes the operational (post-truncation, post-temperature) probability of the correct continuation at the corresponding state. The teacher’s best global success probability is 8.32% at T=0.639T{=}0.639; the student reaches 13.77% at T=2.091T{=}2.091, a gain of +5.4 pp with the optimal temperature shifting roughly 3×3\times upward. At their respective optima, both models retain a four-token fork nucleus, but the teacher’s is steeply descending ([48.2, 17.8, 17.0, 17.0]%[48.2,\,17.8,\,17.0,\,17.0]\%) while the student’s is a near-uniform plateau ([32.1, 22.9, 22.5, 22.5]%[32.1,\,22.9,\,22.5,\,22.5]\%), allocating substantially more mass to the correct lower-ranked continuation. This is the toy analogue of the mechanism claim in the main text: after SSD, lock states become more resistant to evaluation-time temperature, so decoding can spend more of its budget on useful exploration at the fork. [Figure˜14](#A3.F14 "In C.4 Toy Simulation: Full Specification and Additional Analyses ‣ Appendix C Experimental Details and Additional Analyses ‣ Embarrassingly Simple Self-Distillation Improves Code Generation") shows this shift directly across three temperature regimes.
 
-![Refer to caption](/html/2604.01193/assets/x16.png)
-
+!(/html/2604.01193/assets/x16.png)
 
 Figure 14: After SSD, the toy’s globally optimal decoding regime shifts upward because locks become more temperature-inert while forks remain exploitable.
 The figure presents a complete view of the V19 toy simulation across three temperature regimes (columns: Low, Medium, High), organized as butterfly charts where teacher bars extend upward from the midline and student bars extend downward, with tokens ranked by descending teacher probability.
@@ -1173,8 +1106,7 @@ We generate one sample per prompt from Qwen3-30B-Instruct at Ttrain=2.0T\_{\text
 The student still improves across a broad region.
 Despite the poor training corpus, the resulting student improves materially. We evaluate every saved checkpoint from iterations 250 through 2,500 across ten values of Teval∈[0.6,1.5]T\_{\textsf{eval}}\in[0.6,1.5], always using evaluation-time top-k=20k{=}20 and top-p=0.95p{=}0.95. This yields 100 checkpoint and temperature configurations in total, each evaluated with 10 repetitions. Of these, 62 exceed the 42.4% frozen-base pass@1 baseline. The best configuration reaches 48.1% pass@1 and 64.0% pass@5, and the gains again concentrate on the hard subset. The key qualitative point is that the optimum is not a single isolated lucky cell: it lies inside a contiguous late-training ridge at low-to-moderate TevalT\_{\textsf{eval}}.
 
-![Refer to caption](/html/2604.01193/assets/x17.png)
-
+!(/html/2604.01193/assets/x17.png)
 
 Figure 15: Expanded view of the high-temperature stress test (Ttrain=2.0T\_{\textsf{train}}{=}2.0, no truncation) on Qwen3-30B-Instruct.
 (a) A representative training sample: the first 12 lines contain coherent Python, but the output degrades into multilingual gibberish by line 13; approximately 62% of synthesized outputs contain no extractable code at all.
@@ -1603,83 +1535,3 @@ The stress test remains visibly weaker than the standard truncated SSD recipe, a
   Yuxin Zuo, Kaiyan Zhang, Li Sheng, et al.
   TTRL: Test-Time Reinforcement Learning.
   *arXiv preprint arXiv:2504.16084*, 2025.
-
-[◄](/html/2604.01192)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.01193)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.01193)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.01193)[►](/html/2604.01194)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:45:33 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

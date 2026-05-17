@@ -15,51 +15,6 @@ url: https://arxiv.org/abs/2409.17115
 year: 2024
 ---
 
-[2409.17115] Programming Every Example: Lifting Pre-training Data Quality Like Experts at Scale
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\noptcrule\doparttoc\faketableofcontents
-
 # Programming Every Example: Lifting Pre-training Data Quality Like Experts at Scale
 
 Fan Zhou  αμ   Zengzhi Wang∗αμ   Qian Lius   Junlong Liα   Pengfei Liu‡αμδ
@@ -95,14 +50,14 @@ We are open-sourcing ProX with ≥𝟏𝟎𝟎absent100\mathbf{\geq 100}B corpus
 
 * •
 
-  ![[Uncaptioned image]](/html/2409.17115/assets/x1.png) HF Repo: <https://huggingface.co/gair-prox>
+   HF Repo: <https://huggingface.co/gair-prox>
 * •
 
-  ![[Uncaptioned image]](/html/2409.17115/assets/x2.png) Code: <https://github.com/GAIR-NLP/ProX>
+   Code: <https://github.com/GAIR-NLP/ProX>
 
-![Refer to caption](/html/2409.17115/assets/x3.png)
+!(/html/2409.17115/assets/x3.png)
 
-![Refer to caption](/html/2409.17115/assets/x4.png)
+!(/html/2409.17115/assets/x4.png)
 
 Figure 1: Training FLOPs v.s. average downstream performance. Although these corpora have gone through expert-crafted rules, applying ProX still yields significant improvements over these baseline models trained with original data corpus. Moreover, with much less training FLOPs,
 model trained on ProX curated data show comparable performance with existing models.
@@ -154,10 +109,9 @@ normalize()
 is our normalization function that maps certain strings to their normalized versions.
 Moreover, the document filtering process can be regarded as a special case of such refining transformation where executing on 𝒵filtersubscript𝒵filter\mathcal{Z}\_{\text{filter}} will lead to removing the whole document, *i.e.*, ℰ​(𝒵filter,d)=∅ℰsubscript𝒵filter𝑑\mathcal{E}(\mathcal{Z}\_{\text{filter}},d)=\varnothing.
 
-![Refer to caption](/html/2409.17115/assets/x5.png)
+!(/html/2409.17115/assets/x5.png)
 
-
-Figure 2: An overview of ProX framework: (1) we adapt a base language model to perform data refinement; (2) ProX refining models are able to generate complex programs for each document, including document level filtering and more fine-grained chunk level refining; (3) A ![Refer to caption](/html/2409.17115/assets/pics/python.png) Python executor will execute the programs with the docs, producing the refined high-quality corpora.
+Figure 2: An overview of ProX framework: (1) we adapt a base language model to perform data refinement; (2) ProX refining models are able to generate complex programs for each document, including document level filtering and more fine-grained chunk level refining; (3) A !(/html/2409.17115/assets/pics/python.png) Python executor will execute the programs with the docs, producing the refined high-quality corpora.
 
 In this manner, data quality improvement operations, such as data cleaning or normalizing, can be unified into the standardized function that applies a specific transformation or cleaning process to the document.
 These operations can be represented as various instantiations of the general executor ℰ​(𝒵,d)ℰ𝒵𝑑\mathcal{E}(\mathcal{Z},d), where 𝒵𝒵\mathcal{Z} encodes the function calling snippets or heuristics for the specific task.
@@ -216,8 +170,7 @@ We believe this sequential approach ensures a structured and effective refinemen
 
 #### 2.3 Model Adaptation for ProX
 
-![Refer to caption](/html/2409.17115/assets/x6.png)
-
+!(/html/2409.17115/assets/x6.png)
 
 Figure 3: 
 The illustration of the model adaptation in ProX. We employ powerful LLMs (Llama-3) to annotate random seed documents with valid programs, and use this doc-program pairs to fine-tune a small base model, obtaining the refining model suitable for fine-grained data refining tasks.
@@ -334,10 +287,7 @@ Bolded entries represent the best results.
 | ProX-D | 26.6 | 49.7 | 30.1 | 40.5 | 29.4 | 30.4 | 66.3 | 39.0 | 51.2 | 71.6 | 43.5 | 2 / 10 |
 | ProX-D+C | 26.4 | 51.9 | 30.9 | 42.4 | 29.4 | 31.6 | 67.9 | 40.0 | 52.2 | 73.5 | 44.6 | 5 / 10 |
 
-
-
-![Refer to caption](/html/2409.17115/assets/x7.png)
-
+!(/html/2409.17115/assets/x7.png)
 
 Figure 4: Downstream zero-shot performance w.r.t. different training steps: first 0.50.50.5K, then evenly from 2.52.52.5K to 12.512.512.5K. Rule: the best performing FineWeb rule in Table [2](#S3.T2 "Table 2 ‣ Verifying Effectiveness for Each ProX Operation ‣ 3.2 Verifying ProX’s effectiveness ‣ 3 Experiments ‣ Programming Every Example: Lifting Pre-training Data Quality Like Experts at Scale").
 
@@ -393,13 +343,12 @@ Table 4: Refining model’s performance on valid set and token retention ratio o
 | TLM-s | 81.3 | 75.6 | 25.6% |
 | TLM-m | 83.7 | 77.3 | 28.8% |
 
-![Refer to caption](/html/2409.17115/assets/x8.png)
+!(/html/2409.17115/assets/x8.png)
 
 Figure 5: ProX’s effect over different model sizes.
 
-![Refer to caption](/html/2409.17115/assets/x9.png)
+!(/html/2409.17115/assets/x9.png)
   
-
 
 Figure 6: Performance of original data and ProX curated data trained models across different datasets using ≈50absent50\approx 50B tokens and comparison with existing models trained using different techniques.
 Inst-LM represents InstructionLM-1.3B; Cosmo represents Cosmo-1.8B; S-Llama represents ShearedLlama-1.3B.
@@ -481,23 +430,19 @@ One possible reason for this outlier is that the OpenWebMath corpus is collected
 The noises of these sources can be quite different from general domains.
 Further case studies on these documents are provided in § [E.1](#A5.SS1 "E.1 Case Studies ‣ Appendix E Analysis ‣ Programming Every Example: Lifting Pre-training Data Quality Like Experts at Scale").
 
-![Refer to caption](/html/2409.17115/assets/x10.png)
-
+!(/html/2409.17115/assets/x10.png)
 
 RedPajama-V2
 
-![Refer to caption](/html/2409.17115/assets/x11.png)
-
+!(/html/2409.17115/assets/x11.png)
 
 C4
 
-![Refer to caption](/html/2409.17115/assets/x12.png)
-
+!(/html/2409.17115/assets/x12.png)
 
 FineWeb
 
-![Refer to caption](/html/2409.17115/assets/x13.png)
-
+!(/html/2409.17115/assets/x13.png)
 
 OpenWebMath
 
@@ -511,8 +456,7 @@ As calculated in § [E.2](#A5.SS2 "E.2 Computing Overhead Analysis ‣ Appendix
 if we utilize ProX-XS for both two refining stages, the additional computational overhead will amount to approximately C=5×1019𝐶5superscript1019C=5\times 10^{19} FLOPs,
 which is equivalent to training an additional 121212B tokens on TLM-s and 555B tokens on TLM-m. It is noteworthy that this overhead ratio keeps decreasing as model size increases, meaning that the relative computational cost diminishes for larger models.
 
-![Refer to caption](/html/2409.17115/assets/x14.png)
-
+!(/html/2409.17115/assets/x14.png)
 
 Figure 8: FLOPs comparison for comparable downstream performance with/without ProX refining: 0.3B(Avg.Perf = 40.5), 0.7B (41.6), and 1.7B (42.9).222The train FLOPs for the base model (approximately 5.3×10195.3superscript10195.3\times 10^{19}) used to create the refining model are excluded. This is because any pre-trained LLM can theoretically serve as the base for refinement. This also reflects ProX’s flexibility.
 
@@ -1113,8 +1057,6 @@ Table 6: Comparing FineWeb-Edu with our strategy on TLM-s.
 | FineWeb-Edu | 8.6% | 30.3 | 58.7 | 29.0 | 42.0 | 30.4 | 31.8 | 67.7 | 38.1 | 50.4 | 73.3 | 45.2 | 5/10 |
 | FineWeb-ProX | 28.0% | 27.7 | 55.7 | 30.4 | 44.2 | 29.5 | 31.0 | 68.8 | 39.3 | 52.2 | 72.8 | 45.2 | 5/10 |
 
-
-
 Edu Scoring Prompts [Penedo et al., [2024a](#bib.bib11)]
 
 Below is an extract from a web page. Evaluate whether the page has a high educational value and could be useful in an educational setting for teaching from primary school to grade school levels using the additive 5-point scoring system described below. Points are accumulated based on the satisfaction of each criterion:
@@ -1146,8 +1088,6 @@ After examining the extract:
 
 Figure 9: Edu scoring prompts used in FineWeb [Penedo et al., [2024a](#bib.bib11)] and newly proposed “format scoring” prompts for ProX.
 
-
-
 Navigation Removal Prompts
 
 You’re tasked with generating Python programs to clean web text strings by removing navigation bars. The web text will be presented with line numbers starting from `‘[000]‘`. Your task is to use the following pre-defined functions to clean the text:
@@ -1159,7 +1099,6 @@ You’re tasked with generating Python programs to clean web text strings by rem
 [⬇](data:text/plain;base64,ZGVmIHVudG91Y2hfZG9jKCk6CiAgICAiIiJsZWF2ZSB0aGUgY2xlYW4gZG9jIHVudG91Y2hlZCwgZm9yIHRhZ2dpbmcgY2xlYW4gYW5kIGhpZ2ggcXVhbGl0eSBkb2MuIiIiCgpkZWYgcmVtb3ZlX2xpbmVzKHN0YXJ0OiBpbnQsIGVuZDogaW50KToKICAgICIiInJlbW92ZSBub2lzeSBsaW5lcyBmcm9tIGBzdGFydGAgdW50aWwgYGVuZGAsIGluY2x1ZGluZyBgZW5kYC4iIiI=)
 def untouch\_doc():
  """leave␣the␣clean␣doc␣untouched,␣for␣tagging␣clean␣and␣high␣quality␣doc."""
-
 
 def remove\_lines(start: int, end: int):
  """remove␣noisy␣lines␣from␣‘start‘␣until␣‘end‘,␣including␣‘end‘."""
@@ -1249,10 +1188,7 @@ After examining the web text:
 - When the whole line is navigation bar, call `‘remove_lines‘`; if the line contains other information, call `‘normalize‘` to remove part of it.
 - Give your program using the same format: `‘‘‘python[your code]‘‘‘`
 
-
 Figure 10: Few-shot navigation bar removal prompts.
-
-
 
 URL Removal Prompts
 
@@ -1266,10 +1202,8 @@ You’re tasked with generating Python programs to clean web text strings by rem
 def untouch\_doc():
  """leave␣the␣clean␣doc␣untouched,␣for␣tagging␣clean␣and␣high␣quality␣doc."""
 
-
 def remove\_lines(start: int, end: int):
  """remove␣noisy␣lines␣from␣‘start‘␣until␣‘end‘,␣including␣‘end‘."""
-
 
 def normalize(source\_str: str, target\_str: str=""):
  """turn␣noisy␣strings␣into␣normalized␣strings."""
@@ -1340,10 +1274,7 @@ After examining the web text:
 - note line number starts with 0. make accurate annotations about line number. put the exact int line number of the given line. do not add 1 or minus 1.
 - Give your program using the same format: `‘‘‘python[your code]‘‘‘`
 
-
 Figure 11: Few-shot URL removal prompts.
-
-
 
 Footer Removal Prompts
 
@@ -1355,14 +1286,11 @@ You’re tasked with generating Python programs to clean web text strings by rem
 
 [⬇](data:text/plain;base64,CmRlZiB1bnRvdWNoX2RvYygpOgogICAgIiIibGVhdmUgdGhlIGNsZWFuIGRvYyB1bnRvdWNoZWQsIGZvciB0YWdnaW5nIGNsZWFuIGFuZCBoaWdoIHF1YWxpdHkgZG9jLiIiIgoKZGVmIHJlbW92ZV9saW5lcyhzdGFydDogaW50LCBlbmQ6IGludCk6CiAgICAiIiJyZW1vdmUgbm9pc3kgbGluZXMgZnJvbSBgc3RhcnRgIHVudGlsIGBlbmRgLCBpbmNsdWRpbmcgYGVuZGAuIiIiCgpkZWYgbm9ybWFsaXplKHNvdXJjZV9zdHI6IHN0ciwgdGFyZ2V0X3N0cjogc3RyPSIiKToKICAgICIiInR1cm4gbm9pc3kgc3RyaW5ncyBpbnRvIG5vcm1hbGl6ZWQgc3RyaW5ncy4iIiI=)
 
-
 def untouch\_doc():
  """leave␣the␣clean␣doc␣untouched,␣for␣tagging␣clean␣and␣high␣quality␣doc."""
 
-
 def remove\_lines(start: int, end: int):
  """remove␣noisy␣lines␣from␣‘start‘␣until␣‘end‘,␣including␣‘end‘."""
-
 
 def normalize(source\_str: str, target\_str: str=""):
  """turn␣noisy␣strings␣into␣normalized␣strings."""
@@ -1429,7 +1357,6 @@ After examining the web text:
 - The program should only contain sequences of function calls and comments, no other code.
 - Note that line numbers start with 0. Make accurate annotations about line numbers. Put the exact int line number of the given line. Do not add 1 or subtract 1.
 - Give your program using the same format: `‘‘‘python[your code]‘‘‘`
-
 
 Figure 12: Few-shot footer removal prompts.
 
@@ -1647,9 +1574,6 @@ Table 8: The details of the pre-training experiments’ model architecture.
 | CodeLlama-7B | 4,096 | 11,008 | 4,096 | 32 | 32 | 32,016 | 6,738,546,688 (6,607,409,152) |
 | Mistral-7B | 4,096 | 14,336 | 4,096 | 32/8 (GQA) | 32 | 32,000 | 7,241,732,096 (7,110,660,096) |
 
-
-
-
 Table 9: Training hyper-parameters of all base models.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -1866,8 +1790,7 @@ Table 11: Detailed evaluation results for different data selection methods.
 | MATES | 26.8 | 46.1 | 44.8 | 25.2 | 30.6 | 68.7 | 51.6 | 75.7 | 46.2 |
 | ProX | 27.3 | 54.5 | 46.2 | 26.6 | 32.2 | 69.0 | 53.9 | 77.4 | 48.4 |
 
-![Refer to caption](/html/2409.17115/assets/x15.png)
-
+!(/html/2409.17115/assets/x15.png)
 
 Figure 13: Visualization of dynamic performance on ten benchmarks.
 
@@ -1906,9 +1829,6 @@ Table 12: Full evaluation results of TLM-xs trained on different ProX model cura
 | 10000 | 26.0 | 46.6 | 28.8 | 37.3 | 27.6 | 30.6 | 63.3 | 38.7 | 51.6 | 70.3 | 42.1 |
 | 12500 | 26.5 | 46.4 | 29.1 | 37.6 | 28.1 | 29.4 | 64.1 | 38.7 | 51.5 | 68.0 | 41.9 |
 
-
-
-
 Table 13: Full evaluation results of TLM-s trained on different ProX model curated data.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -1938,9 +1858,6 @@ Table 13: Full evaluation results of TLM-s trained on different ProX model curat
 | 7500 | 27.1 | 47.5 | 30.6 | 41.0 | 28.6 | 29.2 | 66.8 | 39.3 | 51.1 | 69.9 | 43.1 |
 | 10000 | 26.7 | 50.5 | 30.7 | 41.5 | 28.4 | 30.2 | 67.0 | 40.1 | 49.9 | 70.9 | 43.6 |
 | 12500 | 27.4 | 50.7 | 30.6 | 42.0 | 28.8 | 30.2 | 67.4 | 39.4 | 48.8 | 70.1 | 43.5 |
-
-
-
 
 Table 14: Full evaluation results of TLM-m trained on different ProX model curated data.
 
@@ -2003,9 +1920,6 @@ Table 15: Full evaluation results on scaling pre-training to about 505050B token
 | 22500 | 32.0 | 61.7 | 30.2 | 51.4 | 31.4 | 34.0 | 70.0 | 39.9 | 53.2 | 79.5 | 48.3 |
 | 25000 | 31.1 | 60.7 | 29.8 | 51.0 | 31.7 | 33.2 | 70.9 | 39.2 | 53.3 | 79.1 | 48.0 |
 
-
-
-
 Table 16: Full evaluation results on scaling pre-training to about 505050B tokens on C4.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2034,9 +1948,6 @@ Table 16: Full evaluation results on scaling pre-training to about 505050B token
 | 22500 | 30.1 | 56.7 | 28.6 | 55.2 | 31.4 | 37.2 | 73.8 | 41.6 | 53.3 | 77.7 | 48.6 |
 | 25000 | 31.1 | 56.0 | 28.4 | 55.2 | 31.1 | 36.2 | 74.0 | 41.0 | 54.1 | 76.8 | 48.4 |
 
-
-
-
 Table 17: Full evaluation results on scaling pre-training to about 505050B tokens on FineWeb.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2064,9 +1975,6 @@ Table 17: Full evaluation results on scaling pre-training to about 505050B token
 | 20000 | 33.2 | 62.5 | 32.5 | 51.6 | 32.4 | 34.6 | 72.4 | 39.7 | 51.7 | 80.7 | 49.1 |
 | 22500 | 34.7 | 63.6 | 32.9 | 53.3 | 32.9 | 34.8 | 73.1 | 40.3 | 54.2 | 80.5 | 50.0 |
 | 25000 | 34.4 | 63.9 | 32.6 | 53.0 | 33.1 | 34.4 | 73.1 | 39.3 | 52.7 | 81.5 | 49.8 |
-
-
-
 
 Table 18: Detailed evaluation results of existing base models trained on different corpora and trained using different techniques.
 
@@ -2168,9 +2076,6 @@ Table 20: Full evaluation results of TinyLlama-1.1B continual pre-training on Op
 | 7000 | 6.1 | 4.6 | 22.2 | 36.6 | 46.9 | 19.4 | 12.0 | 21.5 | 21.9 | 21.2 |
 | 7500 | 6.2 | 4.8 | 22.3 | 36.2 | 47.6 | 19.3 | 11.6 | 20.7 | 25.0 | 21.5 |
 
-
-
-
 Table 21: Full evaluation results of TinyLlama-1.1B continual pre-training on OpenWebMath with data after rule-based filtering. Note that about 1B tokens are trained per 500 steps.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2193,9 +2098,6 @@ Table 21: Full evaluation results of TinyLlama-1.1B continual pre-training on Op
 | 7000 | 4.0 | 4.0 | 16.2 | 29.6 | 37.9 | 16.0 | 13.8 | 17.8 | 21.9 | 17.9 |
 | 7500 | 4.5 | 2.8 | 17.5 | 29.4 | 39.3 | 15.1 | 12.4 | 19.4 | 25.0 | 18.4 |
 
-
-
-
 Table 22: Full evaluation results of TinyLlama-1.1B continual pre-training on OpenWebMath with data after ProX-D. Note that about 1B tokens are trained per 500 steps.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2217,9 +2119,6 @@ Table 22: Full evaluation results of TinyLlama-1.1B continual pre-training on Op
 | 6500 | 9.4 | 5.6 | 24.4 | 40.2 | 54.5 | 20.3 | 13.0 | 24.9 | 31.2 | 24.8 |
 | 7000 | 9.2 | 5.8 | 25.8 | 40.6 | 55.3 | 22.5 | 12.5 | 24.5 | 21.9 | 24.2 |
 | 7500 | 9.3 | 7.4 | 23.4 | 41.9 | 55.6 | 22.1 | 14.6 | 24.1 | 25.0 | 24.8 |
-
-
-
 
 Table 23: Full evaluation results of TinyLlama-1.1B continual pre-training on OpenWebMath with data after ProX-D+C. Note that about 1B tokens are trained per 500 steps.
 
@@ -2260,9 +2159,6 @@ Table 24: Full evaluation results of Llama-2 continual pre-training on OpenWebMa
 | 9k | 26.1 | 12.8 | 48.8 | 59.9 | 74.3 | 35.0 | 28.3 | 39.2 | 50.0 | 41.6 |
 | 10k | 29.6 | 13.6 | 49.2 | 61.9 | 78.4 | 36.3 | 31.9 | 40.5 | 43.8 | 42.8 |
 
-
-
-
 Table 25: Full evaluation results of Llama-2 continual pre-training on OpenWebMath with ProX-D. Note that about 1B tokens are trained per 1000 steps.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2279,9 +2175,6 @@ Table 25: Full evaluation results of Llama-2 continual pre-training on OpenWebMa
 | 8k | 30.3 | 13.8 | 51.9 | 63.7 | 80.6 | 38.3 | 36.1 | 41.3 | 59.4 | 46.2 |
 | 9k | 30.6 | 14.0 | 52.7 | 62.6 | 78.7 | 37.5 | 36.1 | 43.2 | 43.8 | 44.4 |
 | 10k | 30.3 | 16.0 | 54.2 | 63.8 | 79.5 | 37.3 | 37.2 | 44.2 | 46.9 | 45.5 |
-
-
-
 
 Table 26: Full evaluation results of Llama-2 continual pre-training on OpenWebMath with ProX-D+C. Note that about 1B tokens are trained per 1000 steps.
 
@@ -2317,9 +2210,6 @@ Table 27: Full evaluation results of CodeLlama-7B continual pre-training on Open
 | 2250 | 27.7 | 13.6 | 48.9 | 62.2 | 80.3 | 32.5 | 28.9 | 39.1 | 59.4 | 43.6 |
 | 2500 | 31.1 | 14.8 | 51.4 | 62.1 | 81.2 | 33.6 | 30.4 | 40.5 | 43.8 | 43.2 |
 
-
-
-
 Table 28: Full evaluation results of CodeLlama continual pre-training on OpenWebMath with ProX-D. Note that about 1B tokens are trained per 250 steps.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2336,9 +2226,6 @@ Table 28: Full evaluation results of CodeLlama continual pre-training on OpenWeb
 | 2000 | 35.7 | 17.6 | 53.3 | 65.4 | 83.5 | 42.4 | 37.1 | 42.4 | 56.2 | 48.2 |
 | 2250 | 37.2 | 18.8 | 54.5 | 65.4 | 83.2 | 41.9 | 41.0 | 44.9 | 71.9 | 51.0 |
 | 2500 | 38.1 | 17.0 | 54.2 | 67.0 | 83.1 | 40.9 | 39.8 | 43.7 | 50.0 | 48.2 |
-
-
-
 
 Table 29: Full evaluation results of CodeLlama continual pre-training on OpenWebMath with ProX-D+C. Note that about 1B tokens are trained per 250 steps.
 
@@ -2374,9 +2261,6 @@ Table 30: Full evaluation results of Mistral-7B continual pre-training on OpenWe
 | 9k | 43.9 | 19.4 | 63.7 | 69.7 | 87.6 | 44.9 | 42.9 | 51.0 | 62.5 | 54.0 |
 | 10k | 44.4 | 19.2 | 65.2 | 69.6 | 88.4 | 46.6 | 43.1 | 50.8 | 65.6 | 54.8 |
 
-
-
-
 Table 31: Full evaluation results of Mistral-7B continual pre-training on OpenWebMath with ProX-D. Note that about 1B tokens are trained per 1000 steps.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -2393,9 +2277,6 @@ Table 31: Full evaluation results of Mistral-7B continual pre-training on OpenWe
 | 8k | 44.6 | 23.8 | 63.2 | 70.8 | 87.7 | 47.6 | 49.1 | 54.1 | 65.6 | 56.3 |
 | 9k | 46.6 | 24.6 | 61.6 | 72.3 | 86.4 | 46.9 | 49.8 | 53.2 | 65.6 | 56.3 |
 | 10k | 46.7 | 22.6 | 63.5 | 72.4 | 88.9 | 48.3 | 48.2 | 54.1 | 62.5 | 56.4 |
-
-
-
 
 Table 32: Full evaluation results of Mistral-7B continual pre-training on OpenWebMath with ProX-D+C. Note that about 1B tokens are trained per 1000 steps.
 
@@ -2430,9 +2311,6 @@ Table 33: Cases from RedPajama-V2 after applying ProX. Text in red indicates con
 | Case 2 |
 | Home > Staff > Staff search > Dr Tim Overton    Dr Tim Overton BSc PhD    School of Chemical EngineeringSenior Lecturer    Telephone (+44) (0) 121 414 5306Emailt.w.overton@bham.ac.uk    AddressSchool of Chemical EngineeringUniversity of Birmingham    B15 2TT    Dr Tim Overton is a biochemist and molecular microbiologist who is interested in applying molecular biology and single-cell techniques to understand and develop bioprocesses. He is active in microbial flow cytometry research and collaborates widely with bioprocess engineers, molecular microbiologists, cell biologists and environmental microbiologists to develop new methods of answering fundamental questions on a single-cell level.    His research also focuses on using bacteria to make useful products such as protein drugs and small molecules, and the bacterial responses to stress encountered in such processes. Current and recent research funding has come from the BBSRC, TSB and EU FP7. He is the director of the MSc in Biochemical Engineering. Pages: 1 3 4 ... Google scholar: http://scholar.google.co.uk/citations?user=tF\_eBKEAAAAJ ... |
 | Output by ProX: keep\_doc() remove\_lines(line\_start=0, line\_end=5) normalize(source\_str="http://scholar.google.co.uk/citations?user", target\_str="") normalize(source\_str="Pages: 1 3 4", target\_str="") ... |
-
-
-
 
 Table 34: Cases from OpenWebMath after applying ProX. Text in red indicates content to be removed or replaced. “...” denotes omitted content due to limited space.
 
@@ -2489,83 +2367,3 @@ In general, we use refining models with same sizes, so the final inference overh
 |  | CProX≈2⋅Nrefine​(Draw+Ddoc).subscript𝐶ProX⋅2subscript𝑁refinesubscript𝐷rawsubscript𝐷docC\_{\text{{ProX}}}\approx 2\cdot N\_{\text{refine}}(D\_{\text{raw}}+D\_{\text{doc}}). |  | (14) |
 
 Additionally, we omit the FLOPs for fine-tuning since they are negligible compared to the large-scale pre-training and inference FLOPs.
-
-[◄](/html/2409.17113)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2409.17115)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2409.17115)
-[View original  
-on arXiv](https://arxiv.org/abs/2409.17115)[►](/html/2409.17116)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Oct 6 01:24:13 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

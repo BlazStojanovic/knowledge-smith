@@ -14,53 +14,6 @@ url: https://arxiv.org/abs/2307.08689
 year: 2023
 ---
 
-[2307.08689] Collie: Systematic Construction of Constrained Text Generation Tasks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\newfloatcommand
-
-capbtabboxtable[][\FBwidth]
-
 # Collie: Systematic Construction of Constrained Text Generation Tasks
 
 Shunyu Yao111Equal contribution. Project site with code and data: <https://collie-benchmark.github.io>. Collie is a herding dog that can help guide domesticated animals like llamas and alpacas.  Howard Chen111Equal contribution. Project site with code and data: <https://collie-benchmark.github.io>. Collie is a herding dog that can help guide domesticated animals like llamas and alpacas.  Austin W. Hanjie111Equal contribution. Project site with code and data: <https://collie-benchmark.github.io>. Collie is a herding dog that can help guide domesticated animals like llamas and alpacas.  Runzhe Yang111Equal contribution. Project site with code and data: <https://collie-benchmark.github.io>. Collie is a herding dog that can help guide domesticated animals like llamas and alpacas.  Karthik Narasimhan
@@ -82,8 +35,7 @@ This raises a natural question — ‘what should be the next iteration of text 
 In this paper, we propose Collie, a grammar-based framework that enables systematic construction of compositional constraints over diverse generation levels (e.g., words, sentences, paragraphs) and semantic requirements (e.g., language understanding, logical reasoning, counting). Operationally, Collie allows researchers to 1) easily specify constraint templates, and then automatically 2) extract constraint values from language corpora, 3) render them into natural language instructions, and 4) evaluate model generations against the constraint instructions.
 The modular and extensible design of Collie allows the broader NLP community to contribute additional constraints that can co-evolve with LLM capabilities over time, as well as provide a convenient endpoint for users that only want to evaluate their model without developing their own constraints.
 
-![Refer to caption](/html/2307.08689/assets/x1.png)
-
+!(/html/2307.08689/assets/x1.png)
 
 Figure 1: 
 Our Collie framework for constraint structure specification, ground truth extraction, instruction rendering, and evaluation. First, the user specifies the constraint structure without a specific target value (expressed in ∗\*). Second, the constraint structure is used to extract ground truth examples from text corpora that contain the target values. Third, the constraint structure and target values are rendered into a natural language instruction. Finally, the model’s generation is evaluated against the constraint and the ground truth. The model (gpt-3.5-turbo) violates the constraints by exceeding word limits and leaving the word ‘mankind’ at the end instead of the specified position.
@@ -212,8 +164,7 @@ All in all, our approach ensures that (1) there exists a natural language string
 
 ### 4.2 Data sources
 
-![Refer to caption](/html/2307.08689/assets/x2.png)
-
+!(/html/2307.08689/assets/x2.png)
 
 Figure 2: Data statistics. (a) Number of constraints from each constraint structure. (b) Fraction of strings removed by automated filtering. (c) Length statistics for different levels for each data source.
 
@@ -233,23 +184,18 @@ The fraction of strings filtered for each data source and level is presented in 
 
 ## 5 Results & Analysis
 
-![Refer to caption](/html/2307.08689/assets/x3.png)
-
+!(/html/2307.08689/assets/x3.png)
 
 Figure 3: Model comparison. (a) Overall model performance summarized by weighted average across all constraint groups. (b) -(f) Constraint satisfaction rates of generated texts by GPT-4, GPT-3.5, PaLM, Vicuna-7B, and Alpaca-7B across various constraint groups. Error bars represent standard error. Constraint group names are in Table [1](#S3.T1 "Table 1 ‣ 3 Collie: A Grammar-based Framework for Constrained Text Generation ‣ Collie: Systematic Construction of Constrained Text Generation Tasks"). Sample sizes are reported in Figure [10](#A3.F10 "Figure 10 ‣ C.2 Constraint satisfaction rates ‣ Appendix C Additional Experimental Results ‣ Collie: Systematic Construction of Constrained Text Generation Tasks").
-
-
 
 {floatrow}\ffigbox
 
 [\FBwidth]
-![Refer to caption](/html/2307.08689/assets/x4.png)
+!(/html/2307.08689/assets/x4.png)
 \ffigbox[\FBwidth]
-![Refer to caption](/html/2307.08689/assets/x5.png)
+!(/html/2307.08689/assets/x5.png)
 
 Figure 4: Pass@k performance. We sample the model-generated text 20 times for all instruction prompts in the dataset. The curves represent the average pass rate across all instruction prompts up to k𝑘k samples. The shaded areas indicate the standard errors.
-
-
 
 Figure 5: Position effect. Satisfaction rates of LMs on tasks involving pos​(ξ,level,i)pos𝜉level𝑖\texttt{pos}(\xi,\text{level},i). The tasks word02 and sent02 impose constraints on characters and words at arbitrary positions. The task para01 constrains the first word. The tasks word03, para05, and pass01 constrain the last characters, words, and sentences.
 
@@ -276,8 +222,7 @@ Performance consistency across data sources. We observe a high degree of consist
 
 Position effect. As depicted in Figure [5](#S5.F5 "Figure 5 ‣ 5 Results & Analysis ‣ Collie: Systematic Construction of Constrained Text Generation Tasks"), the pos​(ξ,level,i)pos𝜉level𝑖\texttt{pos}(\xi,\text{level},i) function, constraining the i𝑖i-th sub-string (letter, word, or sentence), exhibits varying levels of difficulty depending on the value of i𝑖i. Models generally perform well when the positional constraint is applied to the first sub-string (i=1𝑖1i=1, task para01). However, only GPT-4 displays partial success with the last positional constraints (i=−1𝑖1i=-1, tasks word03, para05, pass01). Notably, all models encounter difficulties when generating text that satisfies positional constraints at arbitrary positions i𝑖i. Additionally, we find that the position effect exhibits a lower sensitivity to constraint levels.
 
-![Refer to caption](/html/2307.08689/assets/x6.png)
-
+!(/html/2307.08689/assets/x6.png)
 
 Figure 6: Counting level effect. Satisfaction rates for LMs on tasks involving count​(ξ,level,φ)count𝜉level𝜑\texttt{count}(\xi,\text{level},\varphi). Task word01 sets a minimum word length of a𝑎a. Task sent01 requires exactly a𝑎a characters in a sentence. Task sent03 asks a sentence to contain at least b𝑏b words, with each word no longer than a𝑎a letters. Task para04 asks a paragraph to consist of at least b𝑏b sentences, each containing a minimum of a𝑎a words. Task para03 further imposes an upper limit on the number of words per sentence.
 
@@ -287,8 +232,7 @@ Increased difficulty with logical composition. The incorporation of logical comp
 
 Performance enhancement through feedback and interaction. We utilize Collie to generate automated natural language feedback for previous generations, prompting the model to generate text in subsequent rounds. This approach resembles a pass@k setup but incorporates additional feedback. In Figure [7](#S5.F7 "Figure 7 ‣ 5.2 Analysis ‣ 5 Results & Analysis ‣ Collie: Systematic Construction of Constrained Text Generation Tasks"), we observe a significant 20% improvement in GPT-4 performance after the second round of feedback. However, the model’s performance plateaus at 66% even after three additional rounds of feedback, comparable to pass@5. The extent of performance improvement varies across tasks, with word03’s constraint satisfaction rate increasing from 62.1% to 10%. Conversely, word02, sent01, and sent02 tasks remain challenging for the model. These findings suggest that there is still room for improvement, highlighting the difficulty of our dataset, and emphasizing the need for further research on better ways to incorporate natural language feedback.
 
-![Refer to caption](/html/2307.08689/assets/x7.png)
-
+!(/html/2307.08689/assets/x7.png)
 
 Figure 7: GPT-4 interactive generation performance. (a) Constraint satisfaction rate of GPT-4 generated texts in the 4th round across various constraint groups. (b) GPT-4 overall performance in different feedback rounds. The 1st round is zero-shot, and the 2nd - 4th rounds are with feedback.
 
@@ -759,8 +703,7 @@ Table 2: 0 vs. 1-shot results across all constraints (%).
 
 ### C.2 Constraint satisfaction rates
 
-![Refer to caption](/html/2307.08689/assets/x8.png)
-
+!(/html/2307.08689/assets/x8.png)
 
 Figure 8: Model performance on different constraints and datasets. (a)-(e) Constraint satisfaction rates of texts generated by GPT-4, GPT-3.5, PaLM, Vicuna-7B, and Alpaca-7B across various constraints and datasets. Error bars indicate standard error. The constraint group names can be found in Table [1](#S3.T1 "Table 1 ‣ 3 Collie: A Grammar-based Framework for Constrained Text Generation ‣ Collie: Systematic Construction of Constrained Text Generation Tasks"). Sample sizes are reported in supplementary Figure [9](#A3.F9 "Figure 9 ‣ C.2 Constraint satisfaction rates ‣ Appendix C Additional Experimental Results ‣ Collie: Systematic Construction of Constrained Text Generation Tasks"). (f) Summary heatmap of model performance on different constraint groups. (g) Summary heatmap of model performance on different constraints and datasets.
 
@@ -768,13 +711,11 @@ Figure [8](#A3.F8 "Figure 8 ‣ C.2 Constraint satisfaction rates ‣ Appendix C
 
 Figures [9](#A3.F9 "Figure 9 ‣ C.2 Constraint satisfaction rates ‣ Appendix C Additional Experimental Results ‣ Collie: Systematic Construction of Constrained Text Generation Tasks") and [10](#A3.F10 "Figure 10 ‣ C.2 Constraint satisfaction rates ‣ Appendix C Additional Experimental Results ‣ Collie: Systematic Construction of Constrained Text Generation Tasks") provide detailed information about the dataset size and sample size for each model in the study. Specifically, we conducted 20 trials for each instruction prompt in the case of GPT-4 and GPT-3.5. For PaLM, a total of 30 trials were conducted for each instruction prompt. However, due to a certain failure rate, the number of generated texts may not be a multiple of the number of instruction prompts. Vicuna-7B and Alpaca-7B were each run for 10 trials, and they also experienced some low failure rates during the experiments.
 
-![Refer to caption](/html/2307.08689/assets/x9.png)
-
+!(/html/2307.08689/assets/x9.png)
 
 Figure 9: Dataset and sample sizes. (a) Dataset sizes for each constraint and data source. (b)-(f) Total sample sizes of generated texts from different models for each constraint and data source.
 
-![Refer to caption](/html/2307.08689/assets/x10.png)
-
+!(/html/2307.08689/assets/x10.png)
 
 Figure 10: Grouped dataset and sample sizes. (a) Dataset sizes for each constraint group. (b)-(f) Total sample sizes of generated texts from different models for each constraint group.
 
@@ -792,96 +733,14 @@ Regarding task word03, only GPT-4 is capable of generating words that satisfy th
 {floatrow}\ffigbox
 
 [\FBwidth]
-![Refer to caption](/html/2307.08689/assets/x11.png)
+!(/html/2307.08689/assets/x11.png)
 \ffigbox[\FBwidth]
-![Refer to caption](/html/2307.08689/assets/x12.png)
+!(/html/2307.08689/assets/x12.png)
 
 Figure 11: Word validity. Percentage of generated words that are “valid" words for a given English vocabulary list. Language models can sometimes generate plausible words, such as “coordinasor" and “adventudposis", but those are not common or valid words in modern English.
-
-
 
 Figure 12: Passage coherence. Average passage coherence scores rated by GPT-4. Each generated passage was evaluated through three independent runs, while roughly one trial was taken for each model. GT-examples are ground truth. The error bars represent the standard error across the dataset.
 
 Passage coherence evaluation. In order to assess the coherence and flow of content within the generated paragraphs, we utilize GPT-4 as a third-party judge to provide coherence scores. For this evaluation, we employ the following prompt: "Analyze the following passage, then conclude with the statement ’Thus, the coherency score is s𝑠s,’ where s𝑠s is an integer ranging from 1 to 10." We conduct three separate samplings of coherence scores for each generated text and calculate the average score. This methodology allows us to quantitatively measure the overall coherence of the generated paragraphs and gauge their coherence in a relatively consistent and reliable manner.
 
 Figure [12](#A3.F12 "Figure 12 ‣ C.3 Additional evaluations ‣ Appendix C Additional Experimental Results ‣ Collie: Systematic Construction of Constrained Text Generation Tasks") presents the coherence scores of generated passages for task pass01. Notably, both GPT-4 and GPT-3.5 consistently outperform the other models in terms of coherence. Furthermore, GPT-4 achieves a level of coherence that is comparable to the ground truth passages in the dataset.
-
-[◄](/html/2307.08688)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2307.08689)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2307.08689)
-[View original  
-on arXiv](https://arxiv.org/abs/2307.08689)[►](/html/2307.08690)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 18:00:29 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

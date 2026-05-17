@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2604.08524
 year: 2026
 ---
 
-[2604.08524] What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal
 
 Stephen Cheng
@@ -81,15 +38,13 @@ Stephen Cheng  and Sarah Wiegreffe∗  and Dinesh Manocha∗
 
 University of Maryland, College Park
 
-
 Correspondence: [scheng03@umd.edu](mailto:email@domain)†
 
 ††footnotetext: ∗Equal contribution.††footnotetext: †Code will be released upon publication.
 
 ## 1 Introduction
 
-![Refer to caption](/html/2604.08524/assets/x1.png)
-
+!(/html/2604.08524/assets/x1.png)
 
 Figure 1: 
 We analyze which components in language models are responsible for propagating refusal steering.
@@ -219,8 +174,7 @@ After assigning importance scores to each edge via EAP-IG, we can obtain CC foll
 
 ## 4 Circuit Discovery on Open Generation
 
-![Refer to caption](/html/2604.08524/assets/x2.png)
-
+!(/html/2604.08524/assets/x2.png)
 
 Figure 2: Faithfulness on Gemma 2 2B and Llama 3.2 3B for different circuit sizes |C||C|. Approximately 10% (Gemma 2) and 11% (Llama 3) of total edges |M||M| suffice to recover 85% of the model’s steered refusal behavior.
 
@@ -261,8 +215,7 @@ This gives us four prompt-response datasets for activation patching. Details on 
 
 ### 4.2 Circuit Faithfulness
 
-![Refer to caption](/html/2604.08524/assets/x3.png)
-
+!(/html/2604.08524/assets/x3.png)
 
 Figure 3: Left Average faithfulness across circuit sizes for each steering method on Gemma 2 2B.
 Right For each steering method, we compute faithfulness using its own minimum-faithful circuit as well as circuits of the same size obtained from the *other* vectors. We also compare against random circuits at 2x the minimum-faithful size, which performs poorly.
@@ -301,13 +254,11 @@ Details on formulation and training are in Appendix [B.3](#A2.SS3 "B.3 Datasets 
 We obtain circuits for NTP and PO vectors following [Section˜4.1](#S4.SS1 "4.1 Adapting Circuit Discovery to Steering ‣ 4 Circuit Discovery on Open Generation ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal").
 Using each steering vector’s respective generations on JailbreakBench and Alpaca, we evaluate circuit faithfulness and compare against DIM in [Figure 3](#S4.F3 "Figure 3 ‣ 4.2 Circuit Faithfulness ‣ 4 Circuit Discovery on Open Generation ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal") (left) and [Figure 9](#A3.F9 "Figure 9 ‣ C.4 Sparsity ‣ Appendix C Additional Llama Results ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal") (left). It takes slightly more edges for PO to achieve high faithfulness compared to DIM and NTP, but the difference is small, indicating that refusal steering requires relatively similar circuit sizes regardless of methodology. This leads us to investigate the similarities between the circuits.
 
-![Refer to caption](/html/2604.08524/assets/x4.png)
-
+!(/html/2604.08524/assets/x4.png)
 
 Figure 4: Gemma 2 2B overlap between smaller and larger circuits of DIM, NTP, and PO vectors is nearly 100%, suggesting a shared backbone. The axis labels indicate the number of circuit edges (3.4%, 6.8%, 10.2%, and 13.7% of |M||M|, respectively).
 
-![Refer to caption](/html/2604.08524/assets/x5.png)
-
+!(/html/2604.08524/assets/x5.png)
 
 Figure 5: 
 For each steering method on Gemma 2 2B, we use logit lens on the raw steering vector (SV), the svv of top attention heads (notated LayerXHeadY) obtained from [Equation 5](#S6.E5 "Equation 5 ‣ 6.2 Steering Value Vectors ‣ 6 Steering Effect on Attention ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), and the sum of all svvs (SUM). We prepend the names of sign-flipped svvs with (-). We select tokens from the top 20 tokens and display their logit values. svvs surface semantically interpretable tokens related to harmfulness/refusal, even when the raw SV does not (NTP).
@@ -376,8 +327,7 @@ This suggests that steering vectors possess inefficiencies, where effectively re
 
 Table 1: Ablated Generations on Alpaca (A) and JailbreakBench (JBB), evaluated with ASR. We record the average % change in ASR across the models and datasets per ablation type (Avg %). Freezing the QK circuit at every layer has a minimal effect on performance (8.75%) compared to other ablations.
 
-![Refer to caption](/html/2604.08524/assets/x6.png)
-
+!(/html/2604.08524/assets/x6.png)
 
 Figure 6: We sparsify 𝐬\mathbf{s} at thresholds ri<τ={0.0,0.1,0.3,0.5,1.0,1.5,2.0,2.5}r\_{i}<\tau=\{0.0,0.1,0.3,0.5,1.0,1.5,2.0,2.5\}, marked by x’s, and average ASR across the DIM, NTP, and PO vectors. On Gemma 2 2B, gradient-based sparsification retains ASR up to ~90% sparsity, outperforming other methods.
 
@@ -427,13 +377,11 @@ Random dropout surprisingly retains ASR up to ~40% sparsity, suggesting that the
 Similarly, bottom k retains ASR up to ~80%.
 However, the divergence in performance at >80%>80\% sparsity indicates that activation patching-based sparsification best recovers the subsets of dimensions most important for steering.
 
-![Refer to caption](/html/2604.08524/assets/x7.png)
-
+!(/html/2604.08524/assets/x7.png)
 
 (a) Gemma 2 2B
 
-![Refer to caption](/html/2604.08524/assets/x8.png)
-
+!(/html/2604.08524/assets/x8.png)
 
 (b) Llama 3.2 3B
 
@@ -1100,25 +1048,19 @@ The main paper shows the individual faithfulness curves for JailbreakBench and A
 
 Table 4: Training Hyperparameters for Gemma 2 2B NTP and PO vectors
 
-
-
-![Refer to caption](/html/2604.08524/assets/x9.png)
-
+!(/html/2604.08524/assets/x9.png)
 
 (a) Gemma 2 2B, NTP
 
-![Refer to caption](/html/2604.08524/assets/x10.png)
-
+!(/html/2604.08524/assets/x10.png)
 
 (b) Gemma 2 2B, PO
 
-![Refer to caption](/html/2604.08524/assets/x11.png)
-
+!(/html/2604.08524/assets/x11.png)
 
 (c) Llama 3.2 3B, NTP
 
-![Refer to caption](/html/2604.08524/assets/x12.png)
-
+!(/html/2604.08524/assets/x12.png)
 
 (d) Llama 3.2 3B, PO
 
@@ -1147,24 +1089,20 @@ Although the DIM steering vector itself does not exhibit tokens related to refus
 
 Following gradient-based sparsification in Section [7](#S7.SS0.SSS0.Px1 "Activation Patching-Based Sparsification ‣ 7 Sparsity ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), we evaluate the attack success rate of Llama 3.2’s DIM vector at varying sparsity thresholds. We compare this against random dropout and plot results in [Figure 11](#A3.F11 "Figure 11 ‣ C.4 Sparsity ‣ Appendix C Additional Llama Results ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal").
 
-![Refer to caption](/html/2604.08524/assets/x13.png)
-
+!(/html/2604.08524/assets/x13.png)
 
 Figure 9: Left Average faithfulness across circuit sizes for each steering method on Llama 3.2 3B.
 Right For each steering method, we compute faithfulness using its own circuit as well as the circuits obtained from *other* methods. We also compare against a random circuit at 2x the minimum-faithful size, which performs poorly.
 
-![Refer to caption](/html/2604.08524/assets/x14.png)
-
+!(/html/2604.08524/assets/x14.png)
 
 Figure 10: Overlap between DIM, NTP, and PO circuits on Gemma 2 2B. Circuit overlap is near 100% between smaller and larger circuits of different methods, suggesting a shared backbone.
 
-![Refer to caption](/html/2604.08524/assets/x15.png)
-
+!(/html/2604.08524/assets/x15.png)
 
 Figure 11: We sparsify 𝐬\mathbf{s} at thresholds ri<τ={0.0,0.1,0.3,0.5,1.0,1.5,2.0,2.5}r\_{i}<\tau=\{0.0,0.1,0.3,0.5,1.0,1.5,2.0,2.5\}, marked by x’s, and average ASR across the DIM, NTP, and PO vectors. On Llama 3.2 3B, gradient-based sparsification retains ASR up to ~99% sparsity, outperforming other methods.
 
-![Refer to caption](/html/2604.08524/assets/x16.png)
-
+!(/html/2604.08524/assets/x16.png)
 
 Figure 12: For each steering method on Llama 3.2 3B, we use logit lens on the raw steering vector (SV), the SVV of top attention heads (LayerXHeadY), and the sum of all svvs (SUM). We prepend the names of sign-flipped svvs with (-). We select tokens from the top 20 tokens and display their logit values. svvs surface semantically interpretable tokens related to harmfulness/refusal, even when the raw SV does not (DIM).
 
@@ -1189,33 +1127,27 @@ In practice, we find that this algorithm obtains nearly the same circuits as the
 We visualize 100-edge circuit graphs for Gemma 2 2B using the DIM, NTP, and PO vectors in Figures [13](#A4.F13 "Figure 13 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), [14](#A4.F14 "Figure 14 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), and [15](#A4.F15 "Figure 15 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal") respectively. We visualize a 100-edge circuit graph for the DIM, NTP, and PO vectors on Llama 3.2 3B in Figures [16](#A4.F16 "Figure 16 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), [17](#A4.F17 "Figure 17 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal"), and [18](#A4.F18 "Figure 18 ‣ D.3 Graphs Visualized ‣ Appendix D Graph Details ‣ What Drives Representation Steering? A Mechanistic Case Study on Steering Refusal") respectively.
 Blue edges and nodes indicate positive I​EIE, while red indicates negative I​EIE. The color intensity is directly proportional to the magnitude of the I​EIE.
 
-![Refer to caption](/html/2604.08524/assets/x17.png)
-
+!(/html/2604.08524/assets/x17.png)
 
 Figure 13: 100 edge circuit for Gemma 2 2B and DIM vector
 
-![Refer to caption](/html/2604.08524/assets/x18.png)
-
+!(/html/2604.08524/assets/x18.png)
 
 Figure 14: 100 edge circuit for Gemma 2 2B and NTP vector
 
-![Refer to caption](/html/2604.08524/assets/x19.png)
-
+!(/html/2604.08524/assets/x19.png)
 
 Figure 15: 100 edge circuit for Gemma 2 2B and PO vector
 
-![Refer to caption](/html/2604.08524/assets/x20.png)
-
+!(/html/2604.08524/assets/x20.png)
 
 Figure 16: 100 edge circuit for Llama 3.2 3B and DIM vector
 
-![Refer to caption](/html/2604.08524/assets/x21.png)
-
+!(/html/2604.08524/assets/x21.png)
 
 Figure 17: 100 edge circuit for Llama 3.2 3B and NTP vector
 
-![Refer to caption](/html/2604.08524/assets/x22.png)
-
+!(/html/2604.08524/assets/x22.png)
 
 Figure 18: 100 edge circuit for Llama 3.2 3B and PO vector
 
@@ -1255,8 +1187,6 @@ When looking at the outgoing nodes of top edges in
 
 Table 5: Outgoing edges on 900-edge circuits from Gemma 2 2B and 13500-edge circuits for Llama 3.2 3B.
 
-
-
 | Model | Learn Type | ONode | % Top K |
 | --- | --- | --- | --- |
 | Llama | DIM | Attn | 65.7% |
@@ -1279,8 +1209,6 @@ Table 5: Outgoing edges on 900-edge circuits from Gemma 2 2B and 13500-edge circ
 | Resid | 23.0% |
 
 Table 6: Outgoing Edges Distribution. We select the top 100 edges from 900-edge circuits from Gemma 2 2B and top 1000 edges from 13500-edge circuit from Llama 3.2 3B.
-
-
 
 | Model | Learn Type | INode | % Circuit |
 | --- | --- | --- | --- |
@@ -1316,8 +1244,6 @@ Table 6: Outgoing Edges Distribution. We select the top 100 edges from 900-edge 
 | Head | 10.2% |
 
 Table 7: Incoming edge distribution on full circuits: We display the distribution of the 900-edge circuits from Gemma 2 2B and 13500-edge circuits from Llama 3.2 3B.
-
-
 
 | Model | Learn Type | INode | % Top K |
 | --- | --- | --- | --- |
@@ -1363,9 +1289,9 @@ As shown in [Figure 19](#A5.F19 "Figure 19 ‣ E.1 Dataset-Specific Activation 
 individual datasets are largely capable of achieving circuit faithfulness, and in some cases, outperforms circuits obtained from all datasets.
 Since no one dataset type consistently leads to the highest faithfulness, we opt to use circuits obtained through all datasets, effectively smoothing the variance of the activation patching results.
 
-![Refer to caption](/html/2604.08524/assets/x23.png)
+!(/html/2604.08524/assets/x23.png)
 
-![Refer to caption](/html/2604.08524/assets/x24.png)
+!(/html/2604.08524/assets/x24.png)
 
 Figure 19: Faithfulness on circuits obtained from individual datasets for Llama 3.2 3B and Gemma 2 2B. The “all" dataset represents using all four datasets.
 
@@ -1402,11 +1328,9 @@ Since the differences are marginal and logit difference is more established in t
 
 Table 9: Number of positions evaluated across all four prompt-completion datasets for Gemma 2 2B Instruct on the DIM vector.
 
+!(/html/2604.08524/assets/x25.png)
 
-
-![Refer to caption](/html/2604.08524/assets/x25.png)
-
-![Refer to caption](/html/2604.08524/assets/x26.png)
+!(/html/2604.08524/assets/x26.png)
 
 Figure 20: Evaluation of the importance metrics logit difference and directional KL divergence at thresholds 0, 1, 5 on Gemma 2 2B and Llama 3.2 3B with the DIM vector. Evaluations are shown per eval dataset.
 
@@ -1497,9 +1421,6 @@ Table 10: Sparsification results for gradient-based (notated Grad.), IE, random 
 | 98.4 | 0.120 | 0.115 | 0.975 | 0.925 | 0.440 | 0.390 | 0.040 | 0.120 | 0.534 | 0.447 | 0.032 | 0.125 |
 | 99.6 | 0.910 | 0.890 | 0.970 | 0.980 | 0.030 | 0.060 | 0.010 | 0.030 | 0.070 | 0.077 | 0.006 | 0.010 |
 
-
-
-
 Table 11: Sparsification results for gradient-based (notated Grad.), IE, random dropout (Drop.), and bottom-kk (Bot-kk) on Llama 3.2 3B. ASR reported across three datasets. Sparsity percentage is notated as S (%).
 ↓\downarrow = lower is better (Alpaca); ↑\uparrow = higher is better (JailbreakBench, StrongReject).
 
@@ -1530,83 +1451,3 @@ Table 11: Sparsification results for gradient-based (notated Grad.), IE, random 
 | 92.1 | 0.000 | 0.000 | 0.925 | 0.400 | 0.780 | 0.810 | 0.520 | 0.760 | 0.802 | 0.831 | 0.639 | 0.751 |
 | 97.6 | 0.125 | 0.010 | 0.995 | 0.975 | 0.770 | 0.820 | 0.160 | 0.530 | 0.719 | 0.850 | 0.272 | 0.518 |
 | 99.4 | 0.980 | 0.850 | 0.995 | 0.985 | 0.550 | 0.370 | 0.030 | 0.090 | 0.521 | 0.403 | 0.083 | 0.102 |
-
-[◄](/html/2604.08523)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.08524)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.08524)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.08524)[►](/html/2604.08525)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:38:07 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

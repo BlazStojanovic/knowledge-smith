@@ -18,49 +18,6 @@ url: https://arxiv.org/abs/2511.11346
 year: 2025
 ---
 
-[2511.11346] Fast and Expressive Multi-Token Prediction with Probabilistic Circuits
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Fast and Expressive Multi-Token Prediction with Probabilistic Circuits
 
 Andreas Grivas11footnotemark: 1 &Lorenzo Loconte11footnotemark: 1 &Emile van Krieken11footnotemark: 1 &Piotr Nawrot11footnotemark: 1 &Yu Zhao11footnotemark: 1 &Euan Wielewski◇ &Pasquale Minervini11footnotemark: 1 &Edoardo Ponti11footnotemark: 1 &Antonio Vergari11footnotemark: 1 &∗School of Informatics, University of Edinburgh  ◇\Diamond NatWest Group
@@ -111,7 +68,7 @@ C3) we empirically demonstrate the effectiveness of MtPC by repurposing EvaByte�
 The choice of this use case is motivated by the fact that existing byte-level LLMs (pagnoni2024blt; wang2024mambabyte) obviate the limitations of sub-word tokenisers—including uneven efficiency (ahia-etal-2023-languages; dagan2024getting), lack of interoperability  (minixhofer2025crosstokenizer), and vulnerabilities  (rumbelow2023; land2024magikarp; geiping2024coercing; salesky-etal-2021-robust)—at the cost of significantly slowing down generation.
 We find that MtPC increases the throughput of EvaByte by 5.47×5.47\times with respect to AR generation and 1.22×1.22\times with respect to MTP with independence assumptions.
 
-![Refer to caption](/html/2511.11346/assets/x1.png)
+!(/html/2511.11346/assets/x1.png)
 
 Figure 1: MtPC allows for exploring the trade-off between efficiency (latency) and expressiveness (token acceptance) with different MTP designs in terms of 1) choice of PC architecture ([FF](#S2.Ex1 "Equation FF ‣ 2 Speeding up Generation with MTP and Speculative Decoding ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits"), [CP](#S2.Ex2 "Equation CP ‣ 2 Speeding up Generation with MTP and Speculative Decoding ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits"), [HMM](#S3.Ex3 "Equation HMM ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits"), [BTree](#S3.Ex4 "Equation BTree ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits")); 2) choice of layers shared between draft and verifier models in self-speculative decoding. Dotted lines indicate iso-throughput (tokens generated per second) regions, highlighting configurations such as [BTree](#S3.Ex4 "Equation BTree ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") for n=16n=16 tokens and 22 LoRA layers that achieve the best throughput.
 
@@ -174,11 +131,11 @@ The idea behind MtPCs is to further decompose the joint distribution in [Eq. 1]
 
 ### 3.1 Probabilistic Circuits
 
-![Refer to caption](/html/2511.11346/assets/x2.png)
+!(/html/2511.11346/assets/x2.png)
 
-![Refer to caption](/html/2511.11346/assets/x3.png)![Refer to caption](/html/2511.11346/assets/x4.png)
+!(/html/2511.11346/assets/x3.png)!(/html/2511.11346/assets/x4.png)
 
-![Refer to caption](/html/2511.11346/assets/x5.png)
+!(/html/2511.11346/assets/x5.png)
 
 Figure 2: PCs allow for modelling a spectrum of dependency structures over sequences of tokens, as shown for the known [FF](#S2.Ex1 "Equation FF ‣ 2 Speeding up Generation with MTP and Speculative Decoding ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") and [CP](#S2.Ex2 "Equation CP ‣ 2 Speeding up Generation with MTP and Speculative Decoding ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") and the novel [HMM](#S3.Ex3 "Equation HMM ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") and [BTree](#S3.Ex4 "Equation BTree ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") MTP variants.
 Input units are grouped in coloured layers, one for each token, while sum and product layers encoding (hierarchies of) latent
@@ -394,7 +351,6 @@ Since r=32r=32 worked best, we keep this fixed for the remaining experiments.
 
   
 
-
 Table 1: Increasing the mixture components (rr) increases the throughput (μtok/s\mu\_{\text{tok/s}}) as seen for MtPC-cp (n=8n=8) over our baseline, EvaByte-MTP (FF) (in gray) where
 we report the mean ±\pm std over three sets of 250250 prompts.
 MtPC-cp increases throughput: it has a larger acceptance rate (μacc\mu\_{\text{acc}}) while latency (μlat\mu\_{\text{lat}}) is almost constant in rr.
@@ -425,7 +381,6 @@ This is because EvaByte has not been trained to produce representations that are
 | 32 | [BTree](#S3.Ex4 "Equation BTree ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") | 6.71 ±\pm 0.01 | 0.0337 ±\pm 0.0000 | 203.5 ±\pm 0.1 | 5.08 |
 
   
-
 
 Table 2: More expressive architectures such as MtPC-btree outperform MtPC-cp in terms of throughput for n=8n=8 and n=16n=16 windows on an L40S GPU. For this experiment, we trained only model heads (no LoRAs layers). The shaded baselines are EvaByte-STP and the EvaByte-MTP (FF) models, trained for the same number of steps as our circuits for a fair comparison.
 
@@ -460,7 +415,6 @@ While increasing the mixture components rr in CP is initially beneficial, it soo
 | 4 | 7.58 ±\pm 0.14 | 0.0373 ±\pm 0.0003 | 210.2 ±\pm 5.0 | 5.25 |
 
   
-
 
 Table 3: Fine-tuning separate layers in the draft model with LoRA adapters can increase the acceptance rate and speed up [BTree](#S3.Ex4 "Equation BTree ‣ 3.2 PC Architectures for MTP ‣ 3 Probabilistic Circuits for Multi-Token Prediction ‣ Fast and Expressive Multi-Token Prediction with Probabilistic Circuits") MtPCs for n=16n=16 and two LoRA layers by 5.47 over STP on an L40s GPU. Nevertheless, the increased acceptance rate comes at increased latency, making further throughput boosts via more LoRA layers unviable for EvaByte. We shade the STP baseline in gray and ablated models trained for the additional epoch without LoRA in brown.
 
@@ -763,12 +717,9 @@ Moreover, we have that 𝐱t+1:t+s∼p​(xt+1,…,xt+s∣𝐱≤t)\bm{\mathrm{x
 
   
 
-
 Table 4: Increasing the mixture components (rr) increases the throughput (μtok/s\mu\_{\text{tok/s}}) as seen for MtPC-cp (n=8n=8) over our baseline on an RTX 3090, EvaByte-MTP (FF) (in gray) where
 we report the mean ±\pm std over three sets of 250250 prompts.
 MtPC-cp increases throughput as it has a larger acceptance rate (μacc\mu\_{\text{acc}}) and a latency (μlat\mu\_{\text{lat}}) that is constant in rr.
-
-
 
 | nn | rr | model | μacc\mu\_{\text{acc}} ↑\uparrow | μlat\mu\_{\text{lat}} ↓\downarrow | μtok/s\mu\_{\text{tok/s}} ↑\uparrow | speed-up ↑\uparrow |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -784,10 +735,7 @@ MtPC-cp increases throughput as it has a larger acceptance rate (μacc\mu\_{\tex
 
   
 
-
 Table 5: More expressive architectures such as MtPC-btree outperform MtPC-cp on longer windows in terms of throughput for n=8n=8 and n=16n=16 for no LoRA models on an RTX 3090 GPU. We shade the baselines in gray, these are EvaByte-STP and the FF models trained for the same steps as our circuits.
-
-
 
 | nn | model | # LoRA | μacc\mu\_{\text{acc}} ↑\uparrow | μlat\mu\_{\text{lat}} ↓\downarrow | μtok/s\mu\_{\text{tok/s}} ↑\uparrow | speed-up↑\uparrow |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -933,83 +881,3 @@ This modelling choice is possible due to the small vocabulary size of byte-level
 In their training from scratch scenario,  basharin2024faster use different unembedding layers 𝐖a(s)\mathbf{W}^{(s)}\_{a} in order to predict xt+sx\_{t+s} for the mixture component with index aa.
 As such, they parameterise s×|a|s\times|a| unembedding matrices. This seems non-ideal, since the last layer in LLMs can have a large number of parameters, i.e. (V×dV\times d).
 In their distillation scenario they use a shared unembedding matrix.
-
-[◄](/html/2511.11345)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2511.11346)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2511.11346)
-[View original  
-on arXiv](https://arxiv.org/abs/2511.11346)[►](/html/2511.11347)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Dec 5 19:35:43 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

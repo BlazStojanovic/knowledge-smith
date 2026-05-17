@@ -25,49 +25,6 @@ url: https://arxiv.org/abs/2309.14322
 year: 2023
 ---
 
-[2309.14322] Small-scale proxies for large-scale Transformer training instabilities
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Small-scale proxies for large-scale Transformer training instabilities
 
 Mitchell Wortsman   
@@ -108,8 +65,7 @@ Finally, to conclude our exploration we study two cases where instabilities can 
 
 ## 1 Introduction
 
-![Refer to caption](/html/2309.14322/assets/x1.png)
-
+!(/html/2309.14322/assets/x1.png)
 
 Figure 1: Qk-layernorm [[11](#bib.bib11)] enables stable training across three orders of magnitude of learning rate (LR) variation.
 (Top) For transformers with N𝑁N parameters, we plot the effect of learning rate on final evaluation loss.
@@ -213,20 +169,17 @@ Section [3.3](#S3.SS3 "3.3 Predicting attention logit growth instability from s
 
 ### 3.1 Reproducing two known instabilities at small scale
 
-![Refer to caption](/html/2309.14322/assets/x2.png)
-
+!(/html/2309.14322/assets/x2.png)
 
 Figure 2: The attention logit growth instability [[11](#bib.bib11), [51](#bib.bib51)] appears in small models at high learning rates.
 The mitigation of applying qk-layernorm proposed by Dehghani et al. [[11](#bib.bib11)] is equally effective in the small-scale regime.
 The max attention logit is reported for layer 0, which we typically observe to have the largest logit values.
 
-![Refer to caption](/html/2309.14322/assets/x3.png)
-
+!(/html/2309.14322/assets/x3.png)
 
 Figure 3: The effect of the output logit divergence instability [[6](#bib.bib6)] and the z-loss mitigation [[6](#bib.bib6)] (Section [3.1.2](#S3.SS1.SSS2 "3.1.2 Output logit divergence ‣ 3.1 Reproducing two known instabilities at small scale ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities")). Models in this experiment have qk-layernorm [[11](#bib.bib11)].
 
-![Refer to caption](/html/2309.14322/assets/x4.png)
-
+!(/html/2309.14322/assets/x4.png)
 
 Figure 4: An example of the output logit divergence instability [[6](#bib.bib6)] (Section [3.1.2](#S3.SS1.SSS2 "3.1.2 Output logit divergence ‣ 3.1 Reproducing two known instabilities at small scale ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities")) in a 2.4M parameter Transformer at learning rate 0.1.
 
@@ -284,29 +237,25 @@ This is most clear for the larger models, which are not stable at LR 3e-1 withou
 The number of total steps is fixed to 1e5 in this experiment, and all models use qk-layernorm.
 The importance of warm-up for stability has previously been highlighted [[17](#bib.bib17), [42](#bib.bib42), [30](#bib.bib30)], although these works do not measure scaling behavior.
 
-![Refer to caption](/html/2309.14322/assets/x5.png)
-
+!(/html/2309.14322/assets/x5.png)
 
 Figure 5: The effect of warm-up length for different model sizes.
 Longer warm-up reduces LR sensitivity and loss, especially for the larger models we test.
 Models in this experiment use qk-layernorm [[11](#bib.bib11)].
 
-![Refer to caption](/html/2309.14322/assets/x6.png)
-
+!(/html/2309.14322/assets/x6.png)
 
 Figure 6: Independently scaling LR without also scaling weight decay reduces LR sensitivity.
 While this was recommended by Loshchilov and Hutter [[33](#bib.bib33)], it is not common practice in the default AdamW implementations in popular libraries.
 Refer to Section [3.2.2](#S3.SS2.SSS2 "3.2.2 Independent weight decay ‣ 3.2 Measuring the effect of other known interventions ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities") for more information.
 Models in this experiment use qk-layernorm [[11](#bib.bib11)].
 
-![Refer to caption](/html/2309.14322/assets/x7.png)
-
+!(/html/2309.14322/assets/x7.png)
 
 Figure 7: Independently scaling depth increases LR sensitivity at a faster rate than scaling width, though also produces a model with lower loss at the largest scale we test.
 Refer to Appendix Figure [E.2](#A5.F2 "Figure E.2 ‣ Appendix E Additional figures ‣ Small-scale proxies for large-scale Transformer training instabilities") for this experiment without qk-layernorm.
 
-![Refer to caption](/html/2309.14322/assets/x8.png)
-
+!(/html/2309.14322/assets/x8.png)
 
 Figure 8: Measuring the effect of μ𝜇\muParam on LR sensitivity for models with qk-layernorm [[11](#bib.bib11)].
 In our setting μ𝜇\muParam succeeds in stabilizing the optimal LR, though it does not improve loss or reduce LR sensitivity.
@@ -393,15 +342,13 @@ Corresponding figures are displayed in the appendix.
 
 ### 3.3 Predicting attention logit growth instability from scaling behavior of model characteristics
 
-![Refer to caption](/html/2309.14322/assets/x9.png)
-
+!(/html/2309.14322/assets/x9.png)
 
 Figure 9: Predicting the attention logit growth instability via scaling behavior of model characteristics.
 We extrapolate to predict that a larger model will become unstable at LR 1e-2, and run an experiment to confirm the prediction.
 Refer to Section [3.3](#S3.SS3 "3.3 Predicting attention logit growth instability from scaling behavior of model characteristics ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities") for more information.
 
-![Refer to caption](/html/2309.14322/assets/x10.png)
-
+!(/html/2309.14322/assets/x10.png)
 
 Figure 10: Enforcing a max attention logit of approximately κ𝜅\kappa in a small model to determine which value of κ𝜅\kappa inhibits learning.
 
@@ -423,8 +370,7 @@ For different constants κ𝜅\kappa we pass the queries and keys through g​(z
 Results are illustrated in Figure [10](#S3.F10 "Figure 10 ‣ 3.3 Predicting attention logit growth instability from scaling behavior of model characteristics ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities").
 Loss deteriorates around κ=𝜅absent\kappa=1e3, and by κ=𝜅absent\kappa=1e4 the loss exceeds that of a zero-layer bigram model consisting of the Transformer we use without any self-attention or MLP layers.
 
-![Refer to caption](/html/2309.14322/assets/x11.png)
-
+!(/html/2309.14322/assets/x11.png)
 
 Figure 11: Predicting a potential instability from the scaling behavior of model characteristics. The gradient root mean square (RMS) decreases with num params (left) and learning rate (middle).
 These trends indicate that hyperparameter adjustment may be required to successfully scale further, as the RMS is approaching the default AdamW ϵitalic-ϵ\epsilon hyperparameter.
@@ -457,15 +403,13 @@ Although we identified the instability above by empirically measuring the scalin
 For larger networks and learning rates, the Transformer output RMS entering the final layernorm may grow. Since the layernorm gradients are scaled by the inverse of their input RMS, the gradient received by the Transformer will shrink.
 Refer to Appendix [C](#A3 "Appendix C Output norm growth ‣ Small-scale proxies for large-scale Transformer training instabilities") for a more detailed discussion.
 
-![Refer to caption](/html/2309.14322/assets/x12.png)
-
+!(/html/2309.14322/assets/x12.png)
 
 Figure 12: Decreasing the AdamW ϵitalic-ϵ\epsilon from its default value of 1e-8 to 1e-15 improves loss for a 4.8B parameter model at LR 0.3.
 When increasing ϵitalic-ϵ\epsilon to 1e-6, loss diverged.
 Grad RMS is averaged over the final 500 steps for the first layer in the MLP; refer to Figure [13](#S3.F13 "Figure 13 ‣ 3.4 Searching for new instabilities via scaling trends of model characteristics ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities") for data throughout training.
 
-![Refer to caption](/html/2309.14322/assets/x13.png)
-
+!(/html/2309.14322/assets/x13.png)
 
 Figure 13: The top row displays the root mean square (RMS) of the gradient for the first MLP layer at different blocks throughout the network. When the grad RMS drops below the AdamW ϵitalic-ϵ\epsilon hyperparameter, the magnitude of the update decreases, as illustrated by the bottom row.
 Experiment conducted with a 4.8B parameter model trained with LR 0.3.
@@ -954,8 +898,7 @@ Equivalently,
 | --- | --- | --- | --- |
 |  | ∇x=1m1/2​(α⊙∇z−⟨∇z,α⊙x⟩n​m1/2⊙x).subscript∇𝑥1superscript𝑚12direct-product𝛼subscript∇𝑧direct-product  subscript∇𝑧direct-product𝛼𝑥 𝑛superscript𝑚12𝑥\displaystyle\nabla\_{x}=\frac{1}{m^{1/2}}\left(\alpha\odot\nabla\_{z}-\frac{\left\langle\nabla\_{z},\alpha\odot x\right\rangle}{nm^{1/2}}\odot x\right). |  | (6) |
 
-![Refer to caption](/html/2309.14322/assets/x14.png)
-
+!(/html/2309.14322/assets/x14.png)
 
 Figure C.1: The root mean square (RMS) of the Transformer block outputs are roughly consistent with scale (left) but increase with learning rate (center).
 RMS increases deeper in the transformer because of the residual connections, which is shown for very high learning rates (right).
@@ -981,32 +924,27 @@ Simon Kornblith was the lead advisor on the project, contributing substantially 
 
 This Section contains the additional Figures referenced in the main text.
 
-![Refer to caption](/html/2309.14322/assets/x15.png)
-
+!(/html/2309.14322/assets/x15.png)
 
 Figure E.1: The logit growth instability [[11](#bib.bib11), [51](#bib.bib51)] occurs when the norm of the query and keys increases, not due to an increase in their cosine similarity.
 
-![Refer to caption](/html/2309.14322/assets/x16.png)
-
+!(/html/2309.14322/assets/x16.png)
 
 Figure E.2: The effect of scaling width vs. scaling depth without qk-layernorm [[11](#bib.bib11)].
 
-![Refer to caption](/html/2309.14322/assets/x17.png)
-
+!(/html/2309.14322/assets/x17.png)
 
 Figure E.3: Jointly scaling width and depth leads to lower loss than independently scaling depth or width at the largest scale we test.
 It also leads to a more reliable scaling prediction when extrapolating from models with less than 1e8 parameters.
 Best loss is reported in a sweep over learning rates.
 
-![Refer to caption](/html/2309.14322/assets/x18.png)
-
+!(/html/2309.14322/assets/x18.png)
 
 Figure E.4: The effect of μ𝜇\muParam on LR sensitivity for models without qk-layernorm [[11](#bib.bib11)].
 μ𝜇\muParam succeeds in stabilizing the optimal LR, but does not alleviate the need for qk-layernorm.
 For more information refer to Section [3.2.4](#S3.SS2.SSS4 "3.2.4 𝜇Param ‣ 3.2 Measuring the effect of other known interventions ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities").
 
-![Refer to caption](/html/2309.14322/assets/x19.png)
-
+!(/html/2309.14322/assets/x19.png)
 
 Figure E.5: Comparing μ𝜇\muParam (full), which implements μ𝜇\muParam as described in Yang et al. [[50](#bib.bib50)] with and without qk-layernorm, with μ𝜇\muParam (simple) and μ𝜇\muParam (intermediate).
 There are four changes in μ𝜇\muParam (full),
@@ -1018,144 +956,54 @@ There are four changes in μ𝜇\muParam (full),
 With μ𝜇\muParam (full) and qk-layernorm, the model trains without diverging at LR 1.
 However at the best LR there is no measurable improvement over μ𝜇\muParam (simple) at the largest scale we test.
 
-![Refer to caption](/html/2309.14322/assets/x20.png)
-
+!(/html/2309.14322/assets/x20.png)
 
 Figure E.6: Measuring the effect of changing the 1/dh1subscript𝑑ℎ1/\sqrt{d\_{h}} term in attention to 1/dh1subscript𝑑ℎ1/d\_{h}, where dhsubscript𝑑ℎd\_{h} is head dimension.
 Vaswani et al. [[45](#bib.bib45)] use 1/dh1subscript𝑑ℎ1/\sqrt{d\_{h}} while Yang et al. [[50](#bib.bib50)] use 1/dh1subscript𝑑ℎ1/d\_{h}.
 
-![Refer to caption](/html/2309.14322/assets/x21.png)
-
+!(/html/2309.14322/assets/x21.png)
 
 Figure E.7: Changing the number of total training steps from 1e5 to 5e4 or 2e5 does not have a large effect of the shape of the learning rate vs. loss curves at the scales we test.
 
-![Refer to caption](/html/2309.14322/assets/x22.png)
-
+!(/html/2309.14322/assets/x22.png)
 
 Figure E.8: We achieve slightly better performance when applying qk-layernorm individually per-head instead of across the model dimension.
 The per-head variant has only head-dim learnable parameters instead of model-dim parameters.
 We use the per-head variant as the default in this paper, and we never use biases.
 
-![Refer to caption](/html/2309.14322/assets/x23.png)
-
+!(/html/2309.14322/assets/x23.png)
 
 Figure E.9: Increasing the batch size from 256 to 512 or 1024 does not have a large effect on the shape of the learning rate vs. loss curves at the scales we test.
 Each batch element contains 512 tokens, and we use 256 as the default.
 
-![Refer to caption](/html/2309.14322/assets/x24.png)
-
+!(/html/2309.14322/assets/x24.png)
 
 Figure E.10: The effect of weight decay on LR sensitivity. We use independent weight decay as described in Section [3.2.2](#S3.SS2.SSS2 "3.2.2 Independent weight decay ‣ 3.2 Measuring the effect of other known interventions ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities") and recommended by [[33](#bib.bib33)].
 
-![Refer to caption](/html/2309.14322/assets/x25.png)
-
+!(/html/2309.14322/assets/x25.png)
 
 Figure E.11: The logit growth instability occurs even without softmax.
 For the pointwise variant of attention here, we replace softmax with squared-relu as described by [[23](#bib.bib23)]. As recommended in [[46](#bib.bib46)] we add a scaling factor which depends on sequence length. In this case, we use inverse square root.
 
-![Refer to caption](/html/2309.14322/assets/x26.png)
-
+!(/html/2309.14322/assets/x26.png)
 
 Figure E.12: 
 Recreating Figure [11](#S3.F11 "Figure 11 ‣ 3.3 Predicting attention logit growth instability from scaling behavior of model characteristics ‣ 3 Results ‣ Small-scale proxies for large-scale Transformer training instabilities") with the kernel projection instead of the first MLP layer.
 
-![Refer to caption](/html/2309.14322/assets/x27.png)
-
+!(/html/2309.14322/assets/x27.png)
 
 Figure E.13: For various learning rates and model sizes we display the gradient root mean square (RMS), and the unscaled update RMS.
 The unscaled udpate is the update returned by the optimizer before scaling by learning rate.
 The gradient and update are shown here for the first MLP layer of the Transformer.
 The update RMS falls when the grad RMS approaches the AdamW ϵitalic-ϵ\epsilon of 1e-8.
 
-![Refer to caption](/html/2309.14322/assets/x28.png)
-
+!(/html/2309.14322/assets/x28.png)
 
 Figure E.14: The effect of scaling the learning rate for parameters p𝑝p by max⁡(RMS​(p),1e-3)RMS𝑝1e-3\max\left(\text{RMS}(p),\text{1e-3}\right) as in AdaFactor [[42](#bib.bib42)].
 As discussed by Appendix [B](#A2 "Appendix B When is learning rate sensitivity a useful metric ‣ Small-scale proxies for large-scale Transformer training instabilities"), it is not meaningful to compare LR sensitivity in this case as this intervention modifies the meaning of learning rate.
 Just as in μ𝜇\muParam [[50](#bib.bib50)], RMS scaling appears to stabilize the optimal LR in the range we test.
 
-![Refer to caption](/html/2309.14322/assets/x29.png)
-
+!(/html/2309.14322/assets/x29.png)
 
 Figure E.15: Increasing the AdamW ϵitalic-ϵ\epsilon from its default value of 1e-8 to 1e-6 causes a loss divergence for a 4.8B parameter model at LR 0.3.
 Grad RMS is for the first layer in the MLP.
-
-[◄](/html/2309.14321)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2309.14322)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2309.14322)
-[View original  
-on arXiv](https://arxiv.org/abs/2309.14322)[►](/html/2309.14324)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 04:36:47 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

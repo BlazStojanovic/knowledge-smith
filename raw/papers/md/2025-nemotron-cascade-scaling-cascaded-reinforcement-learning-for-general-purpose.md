@@ -22,76 +22,23 @@ url: https://arxiv.org/abs/2512.13607
 year: 2025
 ---
 
-[2512.13607] Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models
 
 Boxin Wang111Equal technical contribution, with author names ordered alphabetically by first name.
 
-
  Chankyu Lee∗
-
 
  Nayeon Lee∗
 
-
  Sheng-Chieh Lin∗
-
 
  Wenliang Dai∗
 
-
  Yang Chen∗
-
 
  Yangyi Chen∗
 
-
-
 Zhuolin Yang∗
-
-
 
  Zihan Liu∗, Mohammad Shoeybi, Bryan Catanzaro,
 Wei Ping∗222Leads the effort. Correspondence to: ¡wping@nvidia.com¿.
@@ -107,8 +54,6 @@ Our 14B model, after RL, outperforms its SFT teacher, DeepSeek-R1-0528, on LiveC
 We transparently share our training and data recipes.
 
 \abscontent
-
-![[Uncaptioned image]](/html/2512.13607/assets/x1.png)
 
   
 
@@ -191,7 +136,7 @@ We transparently share our training and data recipes.
 
 ## 1 Introduction
 
-![Refer to caption]()
+!()
 
 Figure 1: The LiveCodeBench v6 (08/24–05/25) performance of the Nemotron-Cascade-14B-Thinking model throughout the Cascade RL process. Note that DeepSeek-R1-0528 (671B) serves as the teacher model for SFT data curation.
 
@@ -224,7 +169,7 @@ An overview of the training pipeline is shown in Figure [2](#S1.F2 "Fig. 2 ‣ 1
 Cascade RL trains models sequentially across domains, in contrast to approaches such as DeepSeek-R1 (Guo et al., [2025](#bib.bib26)) and Qwen3 (Yang et al., [2025a](#bib.bib106)), which blend diverse prompt distributions from all (reasoning) domains for joint RL training.
 Moreover, we show that a *unified reasoning model* can operate effectively in both *thinking* and *non-thinking* modes, closing the reasoning gap with the dedicated *thinking* model while ensuring transparency via open data and training recipes.
 
-![Refer to caption](/html/2512.13607/assets/x3.png)
+!(/html/2512.13607/assets/x3.png)
 
 Figure 2: 
 Cascade RL applies sequential, domain-wise reinforcement learning after SFT, leading to substantial improvements across the corresponding domains.
@@ -274,30 +219,23 @@ When comparing with our inital SFT models in Table [2](#S3.T2 "Tab. 2 ‣ 3.4 Re
 Benchmark
 Metric: pass@1
 
-
 Qwen3
 8B
-
 
 Nemotron-Nano
 9B-v2
 
-
 Qwen3
 14B
-
 
 DeepSeek-R1
 0528 671B
 
-
 Gemini-2.5
 Flash-Thinking
 
-
 Nemotron
 Cascade-8B
-
 
 Nemotron-Cascade
 14B-Thinking
@@ -489,7 +427,7 @@ The SFT curriculum is outlined as follows:
 
 The SFT training hyperparamters can be found in Appendix [D](#A4 "Appendix D Training Hyperparameters ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models").
 
-![Refer to caption](/html/2512.13607/assets/x4.png)
+!(/html/2512.13607/assets/x4.png)
 
 Figure 3: (Left) The chat template employs the */think* and */no\_think* tags in the user prompt to control whether the model operates in the *thinking* or *non-thinking* generation mode.
 (Right) For tool calling, the available tools are listed in the system prompt. The model is instructed to call tools within the *<tool\_call>* and *</tool\_call>* tags.
@@ -1069,8 +1007,7 @@ Easy problems are re-sampled into the dataset with a 1% probability to stabilize
 This ensures that ∼\sim90% of training samples contribute meaningful learning signals and significantly stabilizes model accuracy during training, especially at later training stage when more problems are 100% solved.
 Note that this epoch-based dynamic filtering can be viewed as a more efficient alternative to batch-based dynamic sampling (Yu et al., [2025](#bib.bib109); Xiaomi et al., [2025](#bib.bib101)), as the latter requires substantially more rollouts to construct a fixed-size batch free of overly simple or unsolvable prompts.
 
-![Refer to caption](/html/2512.13607/assets/x5.png)
-
+!(/html/2512.13607/assets/x5.png)
 
 Figure 4: Training curve of math RL for 8B *unified* model on AIME24 and AIME25 (max response length 64K, avg@64).
 
@@ -1526,8 +1463,7 @@ After each round, we update each subtask’s generation prompt to incorporate th
 
 Beyond submission history, we also bring cross-subtask insights: once a subtask is solved, its correct solution code is appended as *insight* when prompting the model for other unsolved subtasks with different constraints of the same problem. This encourages the model to reason about relationships between constraints and to transfer good insights across subtasks. The complete prompt template is provided in Appendix [C.3](#A3.SS3 "C.3 Prompt Templates for Test-Time Scaling on IOI 2025 ‣ Appendix C Prompt Templates ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models").
 
-![Refer to caption](/html/2512.13607/assets/x6.png)
-
+!(/html/2512.13607/assets/x6.png)
 
 Figure 5: IOI 2025: Nemotron-Cascade-14B-Thinking’s score on (Left) Full problem set; (Right) Problem 2 *Triples* after rounds of our proposed test-time scaling pipeline.
 
@@ -1535,9 +1471,9 @@ With this effective and explicitly self-improving test-time scaling strategy, ou
 
 We further analyze Code-RL training through the following ablations:
 
-![Refer to caption](/html/2512.13607/assets/x7.png)
+!(/html/2512.13607/assets/x7.png)
 
-![Refer to caption](/html/2512.13607/assets/x8.png)
+!(/html/2512.13607/assets/x8.png)
 
 Figure 6: (Left) Average Token Entropy (Right) Model accuracy curves of our 8B *unified* model during Code RL training under different temperatures {0.6, 0.8, 1.0}. Training with high temperature yields better model accuracy but may suffer from training instability.
 
@@ -1552,15 +1488,13 @@ To assess the progressive effectiveness of our Cascade RL pipeline, we analyze t
 
 We further observe that performance on easy problems saturates (>99%) after the initial stages, shifting the room for improvement to the medium and hard splits. Math RL enhances reasoning by increasing token usage, improving accuracy on medium problems, while Code-RL provides the final performance lift on both medium and hard problems through substantially expanded reasoning traces.
 
-![Refer to caption](/html/2512.13607/assets/x9.png)
-
+!(/html/2512.13607/assets/x9.png)
 
 Figure 7: Topic-wise accuracy of unified Nemotron-Cascade-8B after Cascade RL stages on LCB v6 set. DS refers to Data Structure and Geo refers to Geometry.
 
 Additionally, we conduct ablation experiments to analyze how Cascade RL improves coding capability at the topic level. We annotate the LiveCodeBench v6 problems with five sub-categories—Math, String, Graph, Data Structure, Geometry—and report the topic-wise accuracy of our unified 8B model after each Cascade RL stage in Figure [7](#S5.F7 "Fig. 7 ‣ 5.3 How Cascade RL Improves Code Reasoning ‣ 5 Deep Dive on Competitive Coding ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models"). While RLHF provides strong initial gains across all sub-categories, Math RL primarily benefits math-related topics (Math, Graph, Geometry) and yields limited improvements on more computer-science-oriented ones (String, Data Structure). Code RL delivers the largest accuracy boost, improving performance across nearly all topics.
 
-![Refer to caption](/html/2512.13607/assets/x10.png)
-
+!(/html/2512.13607/assets/x10.png)
 
 Figure 8: Nemotron-Cascade-8B accuracy (avg@8) and average reasoning token counts after cascade RL stages on each difficulty splits of LiveCodeBench v6 (2408-2505). Curves indicate the improvements of reasoning capability on solving algorithmic coding problems after each stage.
 
@@ -1581,16 +1515,14 @@ and the “Half-Half” setting splits each batch evenly between the two modes.
 The results, shown in Figure [9](#S6.F9 "Fig. 9 ‣ 6.1 RLHF Training Strategies for Unified Models ‣ 6 Deep Dive on RLHF ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models"), reveal a clear trend: although ArenaHard, AIME, and LiveCodeBench are all evaluated in the thinking mode, training in the “Half-Half” setting provides the strongest overall performance, yielding the highest ArenaHard scores as well as improved performance on math and code benchmarks.
 This indicates that including samples in the non-thinking mode during RLHF can improve cross-mode transfer and alignment, leading to stronger general capabilities across both reasoning and non-reasoning settings.
 
-![Refer to caption](/html/2512.13607/assets/x11.png)
-
+!(/html/2512.13607/assets/x11.png)
 
 Figure 9: 
 RLHF training results for unified 8B SFT model using the 72B reward model with different training strategies. Training RLHF in both non-thinking and thinking modes, with an equal split of prompts allocated to each mode within every batch (“Half-Half”), is significantly better than training the unified model in the non-thinking mode only (“Non-thinking”) and the thinking mode only (“Thinking”), although the evaluation of ArenaHard, AIME, and LiveCodeBench is in the thinking mode only.
 
 ### 6.2 Impact of Reward Model Size on RLHF Performance
 
-![Refer to caption](/html/2512.13607/assets/x12.png)
-
+!(/html/2512.13607/assets/x12.png)
 
 Figure 10: 
 RLHF training results for AceReason-Nemotron-1.0-7B (Chen et al., [2025b](#bib.bib13)) using reward models ranging from 7B to 72B. Corresponding RewardBench scores for the reward models are provided in Table [3](#S4.T3 "Tab. 3 ‣ Ablation studies on RM: ‣ 4.2.2 Training Recipe ‣ 4.2 Reward Modeling ‣ 4 Cascade RL ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models"). Using the largest reward model yields the best ArenaHard performance under style control, while smaller reward models lead to noticeable degradation in ArenaHard scores as well as math and code capabilities.
@@ -1663,9 +1595,6 @@ KL=1e-3 + Seq-level loss + Reward shaping
 65.05
 51.20
 
-
-
-
 Table 11: RLHF training results for our unified 8B SFT model (performance reported in Table [2](#S3.T2 "Tab. 2 ‣ 3.4 Results after SFT ‣ 3 Supervised Fine-Tuning ‣ Nemotron-Cascade: Scaling Cascaded Reinforcement Learning for General-Purpose Reasoning Models")) using the 72B reward model. ArenaHard (SC) refers to ArenaHard score with style control. We select the best checkpoint for each method from its training trajectory before collapse and report the corresponding training step.
 
 Techniques
@@ -1710,13 +1639,11 @@ However, this generation-based approach only has access to the repository struct
 To complement this, we employ a code embedding model, NV-Embed-Code (Sohrabizadeh et al., [2025](#bib.bib89)), to retrieve candidate files whose code contents are semantically similar to the problem context.444<https://build.nvidia.com/nvidia/nv-embedcode-7b-v1>
 The final set of relevant files is then determined by aggregating the results from both approaches using reciprocal rank fusion (Cormack et al., [2009](#bib.bib15)) with the hyperparameter kk set to 0, which effectively integrates the complementary strengths of the two localization signals.
 
-![Refer to caption](/html/2512.13607/assets/x13.png)
-
+!(/html/2512.13607/assets/x13.png)
 
 (a) Nemotron-Cascade-8B
 
-![Refer to caption](/html/2512.13607/assets/x14.png)
-
+!(/html/2512.13607/assets/x14.png)
 
 (b) Nemotron-Cascade-14B-Thinking
 
@@ -1799,13 +1726,11 @@ To further improve code-repair accuracy, we employ a test-time scaling (TTS) str
 
 For SWE-bench Verified benchmark, our TTS pipeline generates kk candidate repair patches along with 40 reproduction tests per instance, then filters and ranks these candidates by first assessing how many existing regression tests each patch passes, followed by executing a curated subset of generated reproduction tests to identify the most promising repairs. The patch with the highest combined pass rate is ultimately selected, with ties resolved first by majority voting and then by minimal solution length. We refer to this ranking and selection procedure as best@kk. This approach broadens the solution search space, enhances robustness by exploring multiple reasoning trajectories, and substantially increases the likelihood of producing a correct repair.
 
-![Refer to caption](/html/2512.13607/assets/x15.png)
-
+!(/html/2512.13607/assets/x15.png)
 
 (a) Nemotron-Cascade-8B
 
-![Refer to caption](/html/2512.13607/assets/x16.png)
-
+!(/html/2512.13607/assets/x16.png)
 
 (b) Nemotron-Cascade-14B-Thinking
 
@@ -2083,7 +2008,6 @@ Here is an example:
 ‘‘‘python
 from sqlfluff import lint
 
-
 def test\_\_rules\_\_std\_L060\_raised() -> None:
  try:
  sql = "SELECT IFNULL(NULL, 100),
@@ -2094,7 +2018,6 @@ def test\_\_rules\_\_std\_L060\_raised() -> None:
  print("Other issues")
  return
 
-
  try:
  assert result[0]["description"] == "Use ’COALESCE’ instead of ’IFNULL’."
  assert result[1]["description"] == "Use ’COALESCE’ instead of ’NVL’."
@@ -2103,9 +2026,7 @@ def test\_\_rules\_\_std\_L060\_raised() -> None:
  print("Issue reproduced")
  return
 
-
  return
-
 
 test\_rules\_std\_L060\_raised()
 
@@ -2423,9 +2344,6 @@ Hyper-parameters
   False
   False
 
-
-
-
 Table 18: Training hyperparameters of 14B-Thinking model in Math RL.
 
 Hyper-parameters
@@ -2683,9 +2601,6 @@ Table 21: Nemotron-Cascade-8B performance details on 51 Codeforces Rounds rangin
 | + | + | + | - | + | - |  |  |  |  |  |
 | Codeforces Round 1035 (Div. 2) | A | B | C | D | E | F |  |  |  |  |  | 2985.71 | - | 587/15624 | 2008 |
 | 500.00 | 1000.00 | 1485.71 | 0.0 | 0.0 | 0.0 |  |  |  |  |  |
-
-
-
 
 Table 22: Nemotron-Cascade-14B-Thinking performance details on 51 Codeforces Rounds ranging from 2501-2507. We attempt each problem with N=8N=8 times in total. For regular codeforces rounds, we present the score after considering expected penalties for each problem. For ICPC style rounds, we mark passed/failed problems as + and - correspondingly. We compute the estimated rank to human contestants and the corresponding Elo score as shown in rightmost two columns.
 
@@ -3356,83 +3271,3 @@ Table 22: Nemotron-Cascade-14B-Thinking performance details on 51 Codeforces Rou
   Jeffrey Zhou, Tianjian Lu, Swaroop Mishra, Siddhartha Brahma, Sujoy Basu, Yi Luan, Denny Zhou, and Le Hou.
   Instruction-following evaluation for large language models, 2023.
   URL <https://arxiv.org/abs/2311.07911>.
-
-[◄](/html/2512.13606)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.13607)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.13607)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.13607)[►](/html/2512.13608)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 02:01:42 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -11,49 +11,6 @@ url: http://arxiv.org/abs/1908.07442v5
 year: 2019
 ---
 
-[1908.07442] TabNet: Attentive Interpretable Tabular Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TabNet: Attentive Interpretable Tabular Learning
 
 Sercan Ö. Arık,
@@ -72,8 +29,7 @@ Deep neural networks (DNNs) have shown notable success with images (He et al. [
 For these, canonical architectures that efficiently encode the raw data into meaningful representations, fuel the rapid progress.
 One data type that has yet to see such success with a canonical architecture is tabular data.
 
-![Refer to caption](/html/1908.07442/assets/x1.png)
-
+!(/html/1908.07442/assets/x1.png)
 
 Figure 1: TabNet’s sparse feature selection exemplified for Adult Census Income prediction (Dua and Graff [2017](#bib.bib11)).
 Sparse feature selection enables interpretability and better learning as the capacity is used for the most salient features.
@@ -98,8 +54,7 @@ DNNs enable gradient descent-based end-to-end learning for tabular data which ca
 and perhaps most importantly
 (iv) end-to-end models allow representation learning which enables many valuable application scenarios including data-efficient domain adaptation (Goodfellow, Bengio, and Courville [2016](#bib.bib14)), generative modeling (Radford, Metz, and Chintala [2015](#bib.bib40)) and semi-supervised learning (Dai et al. [2017](#bib.bib8)).
 
-![Refer to caption](/html/1908.07442/assets/x2.png)
-
+!(/html/1908.07442/assets/x2.png)
 
 Figure 2: Self-supervised tabular learning. Real-world tabular datasets have interdependent feature columns, e.g., the education level can be guessed from the occupation, or the gender can be guessed from the relationship. Unsupervised representation learning by masked self-supervised learning results in an improved encoder model for the supervised learning task.
 
@@ -127,8 +82,7 @@ Commonly-used techniques such as forward selection and Lasso regularization (Guy
 *Instance-wise* feature selection refers to picking features individually for each input, studied in (Chen et al. [2018](#bib.bib4)) with an explainer model to maximize the mutual information between the selected features and the response variable, and in (Yoon, Jordon, and van der Schaar [2019](#bib.bib54)) by using an actor-critic framework to mimic a baseline while optimizing the selection.
 Unlike these, TabNet employs *soft feature selection with controllable sparsity in end-to-end learning* – a single model jointly performs feature selection and output mapping, resulting in superior performance with compact representations.
 
-![Refer to caption](/html/1908.07442/assets/x3.png)
-
+!(/html/1908.07442/assets/x3.png)
 
 Figure 3: 
 Illustration of DT-like classification using conventional DNN blocks (left) and the corresponding decision manifold (right).
@@ -166,23 +120,19 @@ TabNet is based on such functionality and it outperforms DTs while reaping their
 (iii) improves the learning capacity via non-linear processing of the selected features; and
 (iv) mimics ensembling via higher dimensions and more steps.
 
-![Refer to caption](/html/1908.07442/assets/x4.png)
-
+!(/html/1908.07442/assets/x4.png)
 
 (a) TabNet encoder architecture
 
-![Refer to caption](/html/1908.07442/assets/x5.png)
-
+!(/html/1908.07442/assets/x5.png)
 
 (b) TabNet decoder architecture
 
-![Refer to caption](/html/1908.07442/assets/x6.png)
-
+!(/html/1908.07442/assets/x6.png)
 
 (c)
 
-![Refer to caption](/html/1908.07442/assets/x7.png)
-
+!(/html/1908.07442/assets/x7.png)
 
 (d)
 
@@ -387,7 +337,7 @@ The time features (e.g. day) obtain high importance, and the benefit of instance
 
 ### Interpretability
 
-![Refer to caption](/html/1908.07442/assets/x8.png)
+!(/html/1908.07442/assets/x8.png)
 
 Figure 5: Feature importance masks 𝐌​[𝐢]𝐌delimited-[]𝐢\mathbf{M[i]} (that indicate feature selection at it​hsuperscript𝑖𝑡ℎi^{th} step) and the aggregate feature importance mask 𝐌𝐚𝐠𝐠subscript𝐌𝐚𝐠𝐠\mathbf{M\_{agg}} showing the global instance-wise feature selection, on Syn2 and Syn4 (Chen et al. [2018](#bib.bib4)). Brighter colors show a higher value. E.g. for Syn2, only X3subscript𝑋3X\_{3}-X6subscript𝑋6X\_{6} are used.
 
@@ -397,8 +347,7 @@ Synthetic datasets: Fig. [5](#Sx4.F5 "Figure 5 ‣ Interpretability ‣ Experime
 For Syn4, the output depends on either X1subscript𝑋1X\_{1}-X2subscript𝑋2X\_{2} or X3subscript𝑋3X\_{3}-X6subscript𝑋6X\_{6} depending on the value of X11subscript𝑋11X\_{11}.
 TabNet yields accurate instance-wise feature selection – it allocates a mask to focus on the indicator X11subscript𝑋11X\_{11}, and assigns almost all-zero weights to irrelevant features (the ones other than two feature groups).
 
-![Refer to caption](/html/1908.07442/assets/tsne_income.png)
-
+!(/html/1908.07442/assets/tsne_income.png)
 
 Figure 6: First two dimensions of the T-SNE of the decision manifold for Adult and the impact of the top feature ‘Age’.
 
@@ -407,8 +356,7 @@ Next, we consider Adult Census Income.
 TabNet yields feature importance rankings consistent with the well-known (Lundberg, Erion, and Lee [2018](#bib.bib32); Nbviewer [2019](#bib.bib37)) (see Appendix)
 For the same problem, Fig. [6](#Sx4.F6 "Figure 6 ‣ Interpretability ‣ Experiments ‣ TabNet: Attentive Interpretable Tabular Learning") shows the clear separation between age groups, as suggested by “Age” being the most important feature by TabNet.
 
-![Refer to caption](/html/1908.07442/assets/convergence_ssl.png)
-
+!(/html/1908.07442/assets/convergence_ssl.png)
 
 Figure 7: Training curves on Higgs dataset with 10k samples.
 
@@ -873,83 +821,3 @@ We consider datasets ranging from ∼similar-to\sim10K to ∼similar-to\sim10M s
   Yoon, J.; Jordon, J.; and van der Schaar, M. 2019.
   INVASE: Instance-wise Variable Selection using Neural Networks.
   In *ICLR*.
-
-[◄](/html/1908.07441)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1908.07442)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1908.07442)
-[View original  
-on arXiv](https://arxiv.org/abs/1908.07442)[►](/html/1908.07443)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 09:58:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

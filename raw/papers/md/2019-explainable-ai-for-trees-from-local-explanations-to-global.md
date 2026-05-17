@@ -19,49 +19,6 @@ url: http://arxiv.org/abs/1905.04610v1
 year: 2019
 ---
 
-[1905.04610] Explainable AI for Trees: From Local Explanations to Global Understanding
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Explainable AI for Trees: From Local Explanations to Global Understanding
 
 Scott M. Lundberg
@@ -108,8 +65,7 @@ One sentence summary: Explanations for ensemble tree-based predictions; a unique
 
 Machine learning models based on trees are the most popular non-linear models in use today [[29](#bib.bibx29), [20](#bib.bibx20)]. Random forests, gradient boosted trees, and other tree-based models are used in finance, medicine, biology, customer retention, advertising, supply chain management, manufacturing, public health, and many other areas to make predictions based on sets of input features (Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A left). In these applications it is often important to have models that are *both* accurate and interpretable, where being interpretable means that we can understand how the model uses the input features to make predictions [[41](#bib.bibx41)]. Yet while there is a rich history of global interpretation methods for trees that summarize the impact of input features on the model as a whole, much less attention has been paid to local explanations that explain the impact of input features on individual predictions (i.e. for a single sample) (Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A).
 
-![Refer to caption](/html/1905.04610/assets/x1.png)
-
+!(/html/1905.04610/assets/x1.png)
 
 Figure 1: Local explanations based on TreeExplainer enable a wide variety of new ways to understand global model structure. (A) A local explanation based on assigning a numeric measure of credit to each input feature (Section [2.5](#S2.SS5 "2.5 TreeExplainer provides fast local explanations with guaranteed consistency ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). (B) By combining many local explanations we can represent global structure while retaining local faithfulness to the original model. To demonstrate this we use three illustrative medical datasets to train gradient boosted decision trees and then compute local explanations based on SHapley Additive exPlanation (SHAP) values (Section [2.5](#S2.SS5 "2.5 TreeExplainer provides fast local explanations with guaranteed consistency ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Computing local explanations across all samples in a dataset enables many new tools for understanding global model structure (Section [2.7](#S2.SS7 "2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
@@ -138,7 +94,7 @@ We discuss why tree models are the most appropriate models in many situations, b
 
 ## 2 Results
 
-![Refer to caption](/html/1905.04610/assets/x2.png)
+!(/html/1905.04610/assets/x2.png)
 
 Figure 2: Gradient boosted tree models can be both more accurate than neural networks and more interpretable than linear models. (A) Gradient boosted tree models outperform both linear models and neural networks on all our medical datasets. (\*\*) represents a P-value <0.01absent0.01<0.01, and (\*) represents a P-value of 0.030.030.03 ([Methods 3](#S3a "Methods 3 Model accuracy performance experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 (B-D) Linear models exhibit explanation error as well as accuracy error in the presence of non-linearity. (B) Data generating models used for the simulation, ranging from linear to quadratic along the body mass index (BMI) dimension. (C) The test performance of linear logistic regression (red) is better than gradient boosting (blue) up until a specific amount of non-linearity. Not surprisingly, the bias of the linear model is higher than the gradient boosting model as shown by the steeper slope as we increase the non-linearity.
@@ -193,7 +149,7 @@ Efficiently and exactly computing the Shapley values guarantees that explanation
 
 TreeExplainer simultaneously addresses the consistency issues faced by the heuristic Saabas values (Section [2.3](#S2.SS3 "2.3 Current local explanations for tree-based models are inconsistent ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")), and the computational issues faced by model-agnostic methods (Section [2.4](#S2.SS4 "2.4 Model-agnostic local explanations are slow and variable ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). This leads to fast practical explanations with strong theoretical guarantees that result in improved performance across many quantitative metrics.
 
-![Refer to caption](/html/1905.04610/assets/x3.png)
+!(/html/1905.04610/assets/x3.png)
 
 Figure 3: Explanation method performance across 21 different evaluation metrics and three classification models in the chronic kidney disease dataset. Each tile represents the performance of a local explanation method on a given metric for a given model. Within each model the columns of tiles are scaled between the minimum and maximum value, and methods are sorted by their overall performance. TreeExplainer outperforms previous approaches not only by having theoretical guarantees of consistency, but also across a large set of other metrics ([Methods 11](#S11 "Methods 11 Benchmark evaluation metrics ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). When these experiments were repeated in two synthetic datasets, TreeExplainer remained the top performing method (Supplementary Figures [4](#Sx2.F4 "Supplementary Figure 4 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [5](#Sx2.F5 "Supplementary Figure 5 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Note that, as expected, Saabas becomes a better approximation to the Shapley values (and so a better attribution method) as the number of trees increases ([Methods 9](#S9 "Methods 9 Unifying previous heuristics with Shapley values ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
@@ -210,7 +166,7 @@ The SHAP interaction values consist of a matrix of feature attributions (the mai
 We present five new methods that combine many local explanations to provide global insight into a model’s behavior. This allows us to retain local faithfulness to the model while still capturing global patterns, resulting in richer, more accurate representations of the model’s behavior.
 Each application presented below illustrates how local explanations can be used as building blocks for explainable machine learning. For all experiments we use gradient boosted trees since they have high accuracy (Figure [2](#S2.F2 "Figure 2 ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A), low bias (Figure [2](#S2.F2 "Figure 2 ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")B-D), and support fast exact local explanations through TreeExplainer (Sections [2.5](#S2.SS5 "2.5 TreeExplainer provides fast local explanations with guaranteed consistency ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [2.6](#S2.SS6 "2.6 TreeExplainer extends local explanations to measure interaction effects ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
-![Refer to caption](/html/1905.04610/assets/x4.png)
+!(/html/1905.04610/assets/x4.png)
 
 Figure 4: By combining many local explanations we can provide rich summaries of both an entire model and individual features. (A) Bar chart (left) and SHAP summary plot (right) for a gradient boosted decision tree model trained on the mortality dataset. The long right tails in the summary plot are from rare but high-magnitude risk factors. (B) SHAP dependence plot of systolic blood pressure vs. its SHAP value in the mortality model. A clear interaction effect with age is visible that increases the impact of early onset high blood pressure. (C) Using SHAP interaction values we can remove the interaction effect of age from the model. (D) Plotting just the interaction effect of systolic blood pressure with age shows how the effect of systolic blood pressure on mortality risk varies with age. Adding the y-values of C and D produces B. (E) A dependence plot of systolic blood pressure vs. its SHAP value in the kidney model shows an increase in kidney disease risk at a systolic blood pressure of 125 (which parallels the increase in mortality risk). (F) Plotting the SHAP interaction value of ‘white blood cells’ with ‘blood urea nitrogen’ shows that high white blood cell counts increase the negative risk conferred by high blood urea nitrogen. (G) Plotting the SHAP interaction value of sex vs. age in the mortality model shows how the differential risk of men and women changes over their lifetimes.
 
@@ -236,8 +192,7 @@ In the mortality dataset, plotting the SHAP interaction value between age and se
 
 In the chronic kidney disease model, an interesting interaction is observed between ‘white blood cells’ and ‘blood urea nitrogen’ (Figure [4](#S2.F4 "Figure 4 ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")F). High white blood cell counts are more concerning to the model when they are accompanied by high blood urea nitrogen. This supports the notion that inflammation may interact with high blood urea nitrogen to contribute to faster kidney function decline [[6](#bib.bibx6), [17](#bib.bibx17)].
 
-![Refer to caption](/html/1905.04610/assets/x5.png)
-
+!(/html/1905.04610/assets/x5.png)
 
 Figure 5: Monitoring plots reveal problems that would otherwise be invisible in a retrospective hospital machine learning model deployment. (A) The squared error of a hospital duration model averaged over the nearest 1,000 samples. The increase in error after training is because the test error is (as expected) higher than the training error. (B) The SHAP value of the model loss for the feature indicating if the procedure happens in room 6. The significant change is where we intentionally swapped the labels of room 6 and 13, which is invisible in the overall model loss. (C) The SHAP value of the model loss for the general anesthesia feature; the spike one-third of the way into the data is the result of a previously unrecognized transient data corruption at a hospital. (D) The SHAP value of the model loss for the atrial fibrillation feature. The upward trend of the plot shows feature drift over time (P-value 5.4×10−195.4superscript10195.4\times 10^{-19}).
 
@@ -264,8 +219,7 @@ We can address both of these limitations by using local explanation embeddings t
 Running hierarchical supervised clustering using the mortality model results in many groups of people that share a similar mortality risk for similar reasons (Figure [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A; [Methods 18](#S18 "Methods 18 Local explanation embedding experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Analogously, we can also run PCA on local explanation embeddings for chronic kidney disease samples, which uncovers the two primary categories of risk factors that identify unique individuals at risk of end-stage renal disease. This is consistent with the fact that clinically these factors should be measured in parallel
 (Figures [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")B-D; [Methods 18](#S18 "Methods 18 Local explanation embedding experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). This type of insight into the overall structure of kidney risk is not at all apparent when just looking at a standard unsupervised embedding (Supplementary Figure [11](#Sx2.F11 "Supplementary Figure 11 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
-![Refer to caption](/html/1905.04610/assets/x6.png)
-
+!(/html/1905.04610/assets/x6.png)
 
 Figure 6: Local explanation embeddings support both supervised clustering and interpretable dimensionality reduction. (A) A clustering of mortality study individuals by their local explanation embedding. Columns are patients, and rows are features’ normalized SHAP values. Sorting by a hierarchical clustering reveals population subgroups that have distinct mortality risk factors. (B-D) A local explanation embedding of kidney study visits projected onto two principal components. Local feature attribution values can be viewed as an embedding of the samples into a space where each dimension corresponds to a feature and all axes have the units of the model’s output. (B) The embedding colored by the predicted log odds of a participant developing end-stage renal disease with 4 years of that visit. (C) The embedding colored by the SHAP value of blood creatinine. (D) The embedding colored by the SHAP value of the urine protein/creatinine ratio. Many other features also align with these top two principal components (Supplementary Figure [10](#Sx2.F10 "Supplementary Figure 10 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")), and an equivalent unsupervised PCA embedding is far less interpretable (Supplementary Figure [11](#Sx2.F11 "Supplementary Figure 11 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding"))
 
@@ -976,206 +930,164 @@ If we color the explanation space embedding by the risk of kidney disease progre
 
 ## Supplementary Figures
 
-![Refer to caption](/html/1905.04610/assets/x7.png)
-
+!(/html/1905.04610/assets/x7.png)
 
 Supplementary Figure 1: (A-B) TreeExplainer avoids the consistency problems of previous tree-specific approaches. For tree models that represent a multi-way AND function the Saabas method gives little credit to features near the root, while Tree SHAP evenly distributes credit among all the features involved in the AND function. (C-F) TreeExplainer represents a dramatic performance improvement over model agnostic approaches. All model agnostic approaches rely on sampling, so their runtime is lower bounded by the run-time to evaluate the model, and they always have some sampling variability. TreeExplainer’s Tree SHAP algorithm runs thousands of times faster, and has no sampling variability since it is exact. We consider both the Kernel SHAP [[41](#bib.bibx41)] and IME [[71](#bib.bibx71)] model agnostic estimators for Shapley values. (C-D) Using simulated data we can train XGBoost models over datasets of different sizes and observe that the number of samples required to maintain estimates with constant variance grows linearly with the number of features in the model. The reported runtime is a lower bound since it only accounts for the time to execute the model, not execute the explanation method itself.
 (E-F) As we increase the number of model evaluations used by model agnostic approaches we converge towards the exact solution. However, achieving low variance estimates requires days or years of CPU time even on the smallest of our medical datasets. We also only used a single background reference sample for computing conditional expectations in the model agnostic methods (instead of an entire dataset) so these represent lower bounds on the runtime. The estimation error on the y-axis represents the difference from the exact solution with a single background reference sample. Details of the experimental setup for C-F are described in [Methods 8](#S8 "Methods 8 Convergence experiments for model agnostic Shapley value approximations ‣ Explainable AI for Trees: From Local Explanations to Global Understanding").
 
-![Refer to caption](/html/1905.04610/assets/x8.png)
-
+!(/html/1905.04610/assets/x8.png)
 
 Supplementary Figure 2: Two simple tree models that demonstrate inconsistencies in the Saabas and gain feature attribution methods. The Cough feature has a larger impact in Model B than Model A, but is attributed less importance in Model B. Similarly, the Cough feature has a larger impact than Fever in Model B, yet is attributed less importance. The individualized attributions explain a single prediction of the model (when both Cough and Fever are Yes) by allocating the difference between the expected value of the model’s output (20 for Model A, 25 for Model B) and the current output (80 for Model A, 90 for Model B). Inconsistency prevents the reliable comparison of feature attribution values. The global attributions represent the overall importance of a feature in the model. “Gain” is the most common way of measuring feature importance in trees and is the sum of the reductions in loss that come from all splits using that feature. “Permutation“ is the change in the model’s accuracy when a single feature is permuted.
 
-![Refer to caption](/html/1905.04610/assets/x9.png)
-
+!(/html/1905.04610/assets/x9.png)
 
 Supplementary Figure 3: The Sabaas values, ϕissubscriptsuperscriptitalic-ϕ𝑠𝑖\phi^{s}\_{i}, attribute feature importance by measuring differences in conditional expectations along the order defined by the decision path. This is very similar to SHAP (SHapley Additive exPlanation) values, ϕisubscriptitalic-ϕ𝑖\phi\_{i}, except SHAP values result from averaging over all possible orderings. This is important since for non-linear functions the order in which features are introduced matters. Proofs from game theory show that averaging over all orderings is the only possible consistent approach where ∑i=0Mϕi=f​(x)superscriptsubscript𝑖0𝑀subscriptitalic-ϕ𝑖𝑓𝑥\sum\_{i=0}^{M}\phi\_{i}=f(x) ([Methods 10](#S10 "Methods 10 TreeExplainer algorithms ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
-
-
-![Refer to caption](/html/1905.04610/assets/x10.png)
+!(/html/1905.04610/assets/x10.png)
 
 Supplementary Figure 4: Explanation method performance across thirteen different evaluation metrics and three regression models in a simulated dataset with 60 features divided into tightly correlated groups. Each tile represents the performance of a feature attribution method on a given metric for a given model. Within each model the columns of tiles are scaled between the minimum and maximum value, and methods are sorted by their overall performance. Some of these metrics have been proposed before and others are new quantitative measures of explanation performance that we are introducing (see Methods).
 
-
-
-![Refer to caption](/html/1905.04610/assets/x11.png)
+!(/html/1905.04610/assets/x11.png)
 
 Supplementary Figure 5: Explanation method performance across thirteen different evaluation metrics and three regression models in a simulated dataset with 60 independent features. Each tile represents the performance of a feature attribution method on a given metric for a given model. Within each model the columns of tiles are scaled between the minimum and maximum value, and methods are sorted by their overall performance. Some of these metrics have been proposed before and others are new quantitative measures of explanation performance that we are introducing (see Methods).
 
-![Refer to caption](/html/1905.04610/assets/x12.png)
-
+!(/html/1905.04610/assets/x12.png)
 
 Supplementary Figure 6: Shapley value based methods agree with human intuition. We measured the most intuitive way to assign credit among input features by asking users to assign credit for predictions from four simple models (three predictions per model). The consensus allocation observed from a user study was then used as the ground truth and compared with the allocations given by different explanation methods. The sum of absolute differences was used to quantify agreement. All the Shapley value based methods had nearly perfect agreement across all the scenarios. The raw allocations for the cases where Saabas fails are shown in Supplementary Figures [38](#Sx2.F38 "Supplementary Figure 38 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")-[40](#Sx2.F40 "Supplementary Figure 40 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Note that since these small (human understandable) models have only three features, model agnostic Shapley methods are accurate and so comparable with TreeExplainer.
 
-![Refer to caption](/html/1905.04610/assets/x13.png)
-
+!(/html/1905.04610/assets/x13.png)
 
 Supplementary Figure 7: SHAP values can be combined to provide better feature selection power than traditional approaches. Feature selection methods based on trees or ensembles of trees typically either use the total gain (reduction in train error when splitting) or a permutation test (scramble each feature and observe the change in error) to do feature selection. To compare feature selection power we reproduce the same simulated independent features setting as [[31](#bib.bibx31)] (but with strong 3rd order interactions) and compare the mean SHAP value of the loss vs. mean SHAP value magnitude vs. gain vs. permutation for feature selection. We also repeat the experiment replacing the product style interactions from [[31](#bib.bibx31)] with minimum functions. For both a single tree (A,C) and an ensemble of ten trees (B,D) the SHAP values provide a better ranking of features. Perhaps because, unlike gain, they guarantee consistency as defined by Property [2](#Thmproperty2 "Property 2 (Consistency / Monotonicity). ‣ Methods 9 Unifying previous heuristics with Shapley values ‣ Explainable AI for Trees: From Local Explanations to Global Understanding"), and unlike permutations, they account for high-order interaction effects. The x-axis of the plots represents the number of features used in the true model (out of 200 total features), while the y-axis represents the fraction of those true features recovered in the set of top ranked features of the same size. Results are averages over performance on 1000 simulated datasets. Both SHAP value based methods outperform gain and permutation testing in every figure, with all paired t-test P-values being <10−7absentsuperscript107<10^{-7}.
 
-![Refer to caption](/html/1905.04610/assets/x14.png)
-
+!(/html/1905.04610/assets/x14.png)
 
 Supplementary Figure 8: Partial dependence plot of systolic blood pressure in the mortality model. Unlike the corresponding SHAP dependence plot in Figure [4](#S2.F4 "Figure 4 ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")B, the partial dependence plot gives no indication of the heterogeneity between individuals caused by interaction effects in the model.
 
-![Refer to caption](/html/1905.04610/assets/x15.png)
-
+!(/html/1905.04610/assets/x15.png)
 
 Supplementary Figure 9: The average duration of ablation procedures for atrial fibrillation dropped significantly during 2014. This data was obtained directly from the electrophysiology lab to diagnose why the atrial fibrillation feature was found (using a SHAP monitoring plot) to degrade model performance (Figure [5](#S2.F5 "Figure 5 ‣ 2.7.3 Local interactions reveal sex-specific life expectancy changes during aging and inflammation effects in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")D). The reason is that around 2014 (which was after the simulated model deployment) the duration of these procedures dropped significantly.
 
-![Refer to caption](/html/1905.04610/assets/x16.png)
-
+!(/html/1905.04610/assets/x16.png)
 
 Supplementary Figure 10: A local explanation embedding of kidney visits projected onto its first two principle components. This shows the next three top features beyond those shown in Figures [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")B-D. The fact that these features also align with the top principal components shows how many of the important features in the data set are capturing information along two largely orthogonal dimensions.
 
-![Refer to caption](/html/1905.04610/assets/x17.png)
-
+!(/html/1905.04610/assets/x17.png)
 
 Supplementary Figure 11: Principle component embedding of the chronic kidney disease dataset. Unlike an embedding based in the local explanation space (Figures [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")B-D), an unsupervised embedding of the data does not necessarily align with the outcome of interest in a dataset.
 
-![Refer to caption](/html/1905.04610/assets/x18.png)
-
+!(/html/1905.04610/assets/x18.png)
 
 Supplementary Figure 12: Bar chart (left) and summary plot (right) for a gradient boosted decision tree model trained on the chronic kidney disease data. For the summary plot red dots indicate a high value of that feature for that individual, while blue dots represent a low feature value. The x-axis is the SHAP value of a feature for each individual’s prediction, representing the change in the log-hazard ratio caused by observing that feature. High blood creatinine increases the risk of end-stage kidney disease. Conversely, low creatinine clearance increases the risk of end-stage kidney disease.
 
-![Refer to caption](/html/1905.04610/assets/x19.png)
-
+!(/html/1905.04610/assets/x19.png)
 
 Supplementary Figure 13: Bar chart (left) and summary plot (right) for a gradient boosted decision tree model trained on the hospital procedure duration data. For the summary plot red dots indicate a high value of that feature for that individual, while blue dots represent a low feature value. The x-axis is the SHAP value of a feature for each individual’s prediction, representing the change in the log-hazard ratio caused by observing that feature. Many of the features are bag-of-words counts that have only a few non-zero values. Because the model is very nonlinear, the impact of a flag being on (such as the trauma flag) can have very different effects for different procedures (as shown for trauma by the horizontal dispersion of the red dots).
 
-![Refer to caption](/html/1905.04610/assets/x20.png)
-
+!(/html/1905.04610/assets/x20.png)
 
 Supplementary Figure 14: A clustering of 14,264 mortality study individuals by their normalized data values. Standard complete linkage hierarchical clustering reveals fewer groups consistency with model risk than supervised clustering (Figure [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A ). This is because unsupervised clustering has no bias towards clusters that share common risk characteristics. Row-normalized feature SHAP values are used for coloring, as in Figure [6](#S2.F6 "Figure 6 ‣ 2.7.5 Local explanation embeddings reveal population subgroups relevant to mortality risk and complementary diagnostic indicators in chronic kidney disease ‣ 2.7 Local explanations from TreeExplainer can be used as building blocks for global understanding ‣ 2 Results ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")A.
 
-![Refer to caption](/html/1905.04610/assets/x21.png)
-
+!(/html/1905.04610/assets/x21.png)
 
 Supplementary Figure 15: A dependence plot for time of day vs the SHAP value of time of day with respect to the model loss. In our hospital system long running elective surgeries are scheduled at 7:20-7:30 AM on Monday/Tuesday/Thursday/Friday and at 8:20-8:30 AM on Wednesday. This plot shows that the primary way model is using time of day to reduce the model’s loss is by detecting these surgery scheduling times. Each dot is a procedure, the x-axis is the time that procedure was scheduled to begin, and the y-axis is the impact knowing the time of day had on the model’s loss for predicting that procedure’s duration (lower is better).
 
-![Refer to caption](/html/1905.04610/assets/x22.png)
-
+!(/html/1905.04610/assets/x22.png)
 
 Supplementary Figure 16: Keep positive (mask) metric for a random forest trained on the chronic kidney disease dataset. Sorting the attribution values of an explanation method provides an ordering of the features for each prediction made by the model. Here we keep a fraction of the features ordered by how much they increase the model’s output. Features that are not kept are masked with their mean value. If the ordering is good, as we include more and more features we push the model’s output higher. Note that features with a negative contribution are always masked. The x-axis is the maximum fraction of features kept and the y-axis is the mean increase of the model over 100 predictions (averaged over 10 model’s trained on different train/test splits of the dataset). Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x23.png)
-
+!(/html/1905.04610/assets/x23.png)
 
 Supplementary Figure 17: Keep positive (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [16](#Sx2.F16 "Supplementary Figure 16 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that instead of masking the hidden features with their mean value, we instead replace them with a random sample from the training dataset. This resampling process is averaged over 100 times to integrate over the distribution of background samples. If the input features are independent of one another then this effectively computes the conditional expectation of the model output conditioned on only the observed features. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x24.png)
-
+!(/html/1905.04610/assets/x24.png)
 
 Supplementary Figure 18: Keep positive (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figures [16](#Sx2.F16 "Supplementary Figure 16 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [17](#Sx2.F17 "Supplementary Figure 17 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that instead of mean masking or resampling the hidden features, we instead impute them using the covariance matrix of the training data (this is maximum likelihood imputation if we assume the input features are multivariate normal). This imputation process seeks to avoid evaluating the model on unrealistic input data. In contrast with mean imputation or resampling we assume the input feature are independent and so many provide unrealistic combinations of input features (such as pregnant men). Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x25.png)
-
+!(/html/1905.04610/assets/x25.png)
 
 Supplementary Figure 19: Keep negative (mask) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [16](#Sx2.F16 "Supplementary Figure 16 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most negative features instead of the most positive. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x26.png)
-
+!(/html/1905.04610/assets/x26.png)
 
 Supplementary Figure 20: Keep negative (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [17](#Sx2.F17 "Supplementary Figure 17 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most negative features instead of the most positive. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x27.png)
-
+!(/html/1905.04610/assets/x27.png)
 
 Supplementary Figure 21: Keep negative (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [18](#Sx2.F18 "Supplementary Figure 18 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most negative features instead of the most positive. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x28.png)
-
+!(/html/1905.04610/assets/x28.png)
 
 Supplementary Figure 22: Keep absolute (mask) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figures [16](#Sx2.F16 "Supplementary Figure 16 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [19](#Sx2.F19 "Supplementary Figure 19 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most important features by absolute value instead of the most positive or negative. Since this no longer specifically pushes the model output higher or lower, we instead measure the accuracy of the model. Good attribution methods will identify important features that when kept will result in better model accuracy, measured in this case by the area under the receiver operating characteristic (ROC) curve. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x29.png)
-
+!(/html/1905.04610/assets/x29.png)
 
 Supplementary Figure 23: Keep absolute (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figures [17](#Sx2.F17 "Supplementary Figure 17 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [20](#Sx2.F20 "Supplementary Figure 20 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most important features by absolute value instead of the most positive or negative (as in Figure [22](#Sx2.F22 "Supplementary Figure 22 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x30.png)
-
+!(/html/1905.04610/assets/x30.png)
 
 Supplementary Figure 24: Keep absolute (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figures [18](#Sx2.F18 "Supplementary Figure 18 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") and [21](#Sx2.F21 "Supplementary Figure 21 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we keep the most important features by absolute value instead of the most positive or negative (as in Figure [22](#Sx2.F22 "Supplementary Figure 22 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x31.png)
-
+!(/html/1905.04610/assets/x31.png)
 
 Supplementary Figure 25: Remove positive (mask) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [16](#Sx2.F16 "Supplementary Figure 16 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most positive features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x32.png)
-
+!(/html/1905.04610/assets/x32.png)
 
 Supplementary Figure 26: Remove positive (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [17](#Sx2.F17 "Supplementary Figure 17 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most positive features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x33.png)
-
+!(/html/1905.04610/assets/x33.png)
 
 Supplementary Figure 27: Remove positive (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [18](#Sx2.F18 "Supplementary Figure 18 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most positive features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x34.png)
-
+!(/html/1905.04610/assets/x34.png)
 
 Supplementary Figure 28: Remove negative (mask) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [19](#Sx2.F19 "Supplementary Figure 19 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most negative features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x35.png)
-
+!(/html/1905.04610/assets/x35.png)
 
 Supplementary Figure 29: Remove negative (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [20](#Sx2.F20 "Supplementary Figure 20 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most negative features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x36.png)
-
+!(/html/1905.04610/assets/x36.png)
 
 Supplementary Figure 30: Remove negative (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [21](#Sx2.F21 "Supplementary Figure 21 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most negative features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x37.png)
-
+!(/html/1905.04610/assets/x37.png)
 
 Supplementary Figure 31: Remove absolute (mask) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [22](#Sx2.F22 "Supplementary Figure 22 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most important features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x38.png)
-
+!(/html/1905.04610/assets/x38.png)
 
 Supplementary Figure 32: Remove absolute (resample) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [23](#Sx2.F23 "Supplementary Figure 23 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most important features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x39.png)
-
+!(/html/1905.04610/assets/x39.png)
 
 Supplementary Figure 33: Remove absolute (impute) metric for a random forest trained on the chronic kidney disease dataset. This is just like Supplementary Figure [24](#Sx2.F24 "Supplementary Figure 24 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding") except that we remove the most important features instead of keeping them. Note that the Tree SHAP and Sampling SHAP algorithms correspond to TreeExplainer and IME [[71](#bib.bibx71)], respectively.
 
-![Refer to caption](/html/1905.04610/assets/x40.png)
-
+!(/html/1905.04610/assets/x40.png)
 
 Supplementary Figure 34: Consensus human intuition values for an AND function. Human consensus values were measured by a user study over 33 participants for a simple AND-based function. The most popular allocation was chosen as the consensus ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The labels denote the allocation given by people as “fever / cough / headache”. The title gives the input values for sample being explained as “fever value/cough value”, where ‘T’ is true and ‘F’ is false; note that headache is always set to true.
 
-![Refer to caption](/html/1905.04610/assets/x41.png)
-
+!(/html/1905.04610/assets/x41.png)
 
 Supplementary Figure 35: Consensus human intuition values for an OR function. Human consensus values were measured by a user study over 33 participants for a simple OR-based function. The most popular allocation was chosen as the consensus ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The labels denote the allocation given by people as “fever / cough / headache”. The title gives the input values for sample being explained as “fever value/cough value”, where ‘T’ is true and ‘F’ is false; note that headache is always set to true.
 
-![Refer to caption](/html/1905.04610/assets/x42.png)
-
+!(/html/1905.04610/assets/x42.png)
 
 Supplementary Figure 36: Consensus human intuition values for an eXclusive OR (XOR) function. Human consensus values were measured by a user study over 33 participants for a simple XOR-based function. The most popular allocation was chosen as the consensus ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The labels denote the allocation given by people as “fever / cough / headache”. The title gives the input values for sample being explained as “fever value/cough value”, where ‘T’ is true and ‘F’ is false; note that headache is always set to true.
 
-![Refer to caption](/html/1905.04610/assets/x43.png)
-
+!(/html/1905.04610/assets/x43.png)
 
 Supplementary Figure 37: Consensus human intuition values for a SUM function. Human consensus values were measured by a user study over 33 participants for a simple SUM function. The most popular allocation was chosen as the consensus ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The labels denote the allocation given by people as “fever / cough / headache”. The title gives the input values for sample being explained as “fever value/cough value”, where ‘T’ is true and ‘F’ is false; note that headache is always set to true.
 
-![Refer to caption](/html/1905.04610/assets/x44.png)
-
+!(/html/1905.04610/assets/x44.png)
 
 Supplementary Figure 38: Comparison with human intuition for an AND function. Human consensus values were measured by a user study for a simple AND-based function evaluated when all inputs were set to ‘true’ (Supplementary Figure [34](#Sx2.F34 "Supplementary Figure 34 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The results of different explanation methods were then compared to these consensus values to measure their consistency with human intuition ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
-![Refer to caption](/html/1905.04610/assets/x45.png)
-
+!(/html/1905.04610/assets/x45.png)
 
 Supplementary Figure 39: Comparison with human intuition for an OR function. Human consensus values were measured by a user study for a simple OR-based function evaluated when all inputs were set to ‘true’ (Supplementary Figure [35](#Sx2.F35 "Supplementary Figure 35 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The results of different explanation methods were then compared to these consensus values to measure their consistency with human intuition ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
-![Refer to caption](/html/1905.04610/assets/x46.png)
-
+!(/html/1905.04610/assets/x46.png)
 
 Supplementary Figure 40: Comparison with human intuition for an eXclusive OR (XOR) function. Human consensus values were measured by a user study for a simple XOR-based function evaluated when all inputs were set to ‘true’ (Supplementary Figure [36](#Sx2.F36 "Supplementary Figure 36 ‣ Supplementary Figures ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")). The results of different explanation methods were then compared to these consensus values to measure their consistency with human intuition ([Methods 12](#S12 "Methods 12 User study experiments ‣ Explainable AI for Trees: From Local Explanations to Global Understanding")).
 
@@ -1544,83 +1456,3 @@ Supplementary Figure 40: Comparison with human intuition for an eXclusive OR (XO
   Martin Zinkevich
   “Rules of Machine Learning: Best Practices for ML Engineering”
   Technical Report, 2017
-
-[◄](/html/1905.04609)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1905.04610)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1905.04610)
-[View original  
-on arXiv](https://arxiv.org/abs/1905.04610)[►](/html/1905.04612)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 14:32:35 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

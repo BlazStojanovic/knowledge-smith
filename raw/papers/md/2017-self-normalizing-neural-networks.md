@@ -13,50 +13,6 @@ url: http://arxiv.org/abs/1706.02515v5
 year: 2017
 ---
 
-[1706.02515] Self-Normalizing Neural Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Self-Normalizing Neural Networks
 
 Günter Klambauer
@@ -242,9 +198,9 @@ normalization is transitive across layers. Within these intervals,
 the mean and variance both converge to a fixed point if the mapping g𝑔g is applied
 iteratively.
 
-![Refer to caption](/html/1706.02515/assets/x1.png)
+!(/html/1706.02515/assets/x1.png)
 
-![Refer to caption](/html/1706.02515/assets/x2.png)
+!(/html/1706.02515/assets/x2.png)
 
 Figure 1: The left panel and the right panel show the training error (y-axis) for feed-forward neural networks (FNNs) with batch
 normalization (BatchNorm) and self-normalizing networks (SNN) across update steps (x-axis)
@@ -425,8 +381,7 @@ attracting fixed point depending on (ω,τ)𝜔𝜏(\omega,\tau) in the
 All points within the (μ,ν)𝜇𝜈(\mu,\nu)-domain converge when
 iteratively applying the mapping Eq. ([3](#Sx2.E3 "In Deriving the Mean and Variance Mapping Function 𝑔. ‣ Self-normalizing Neural Networks (SNNs) ‣ Self-Normalizing Neural Networks")) to this fixed point.
 
-![Refer to caption](/html/1706.02515/assets/x3.png)
-
+!(/html/1706.02515/assets/x3.png)
 
 Figure 2: For ω=0𝜔0\omega=0 and τ=1𝜏1\tau=1,
 the mapping g𝑔g of mean μ𝜇\mu (x𝑥x-axis) and variance ν𝜈\nu (y𝑦y-axis)
@@ -2553,9 +2508,9 @@ See proof [44](#Thmtheorem44 "Lemma 44 (Main subfunction). ‣ A3.4.6 Intermedi
 
 The graph of the subfunction in the specified domain is displayed in Figure [A3](#S3.F3 "Figure A3 ‣ Main Sub-Function. ‣ A3.4.3 Lemmata for proofing Theorem 2: The variance is contracting ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks").
 
-![Refer to caption](/html/1706.02515/assets/x4.png)
+!(/html/1706.02515/assets/x4.png)
 
-![Refer to caption](/html/1706.02515/assets/x5.png)
+!(/html/1706.02515/assets/x5.png)
 
 Figure A3: Left panel: Graphs of the main subfunction f​(x,y)=e(x+y)22​x​erfc⁡(x+y2​x)−2​e(2​x+y)22​x​erfc⁡(2​x+y2​x)𝑓𝑥𝑦superscript𝑒superscript𝑥𝑦22𝑥erfc𝑥𝑦2𝑥2superscript𝑒superscript2𝑥𝑦22𝑥erfc2𝑥𝑦2𝑥f(x,y)=e^{\frac{(x+y)^{2}}{2x}}\operatorname{erfc}\left(\frac{x+y}{\sqrt{2}\sqrt{x}}\right)-2e^{\frac{(2x+y)^{2}}{2x}}\operatorname{erfc}\left(\frac{2x+y}{\sqrt{2}\sqrt{x}}\right)
 treated in Lemma [15](#Thmtheorem15 "Lemma 15 (Main subfunction). ‣ Main Sub-Function. ‣ A3.4.3 Lemmata for proofing Theorem 2: The variance is contracting ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks"). The function is negative and monotonically increasing with x𝑥x independent of y𝑦y.
@@ -3215,8 +3170,7 @@ The statement follows immediately from
 
 These bounds are displayed in figure [A4](#S3.F4 "Figure A4 ‣ A3.4.6 Intermediate Lemmata and Proofs ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks").
 
-![Refer to caption](/html/1706.02515/assets/x6.png)
-
+!(/html/1706.02515/assets/x6.png)
 
 Figure A4: Graphs of the upper and lower bounds on erfcerfc\operatorname{erfc}. The lower bound 2​e−x2π​(x2+2+x)2superscript𝑒superscript𝑥2𝜋superscript𝑥22𝑥\frac{2e^{-x^{2}}}{\sqrt{\pi}\left(\sqrt{x^{2}+2}+x\right)} (red),
 the upper bound 2​e−x2π​(x2+4π+x)2superscript𝑒superscript𝑥2𝜋superscript𝑥24𝜋𝑥\frac{2e^{-x^{2}}}{\sqrt{\pi}\left(\sqrt{x^{2}+\frac{4}{\pi}}+x\right)} (green) and the function erfc⁡(x)erfc𝑥\operatorname{erfc}(x) (blue) as
@@ -3228,9 +3182,9 @@ ex2​erfc⁡(x)superscript𝑒superscript𝑥2erfc𝑥e^{x^{2}}\operatorname{er
 and has positive curvature
 (positive 2nd order derivative), that is, the decreasing slowes down.
 
-![Refer to caption](/html/1706.02515/assets/x7.png)
+!(/html/1706.02515/assets/x7.png)
 
-![Refer to caption](/html/1706.02515/assets/x8.png)
+!(/html/1706.02515/assets/x8.png)
 
 Figure A5: Graphs of the functions ex2​erfc⁡(x)superscript𝑒superscript𝑥2erfc𝑥e^{x^{2}}\operatorname{erfc}(x) (left) and x​ex2​erfc⁡(x)𝑥superscript𝑒superscript𝑥2erfc𝑥xe^{x^{2}}\operatorname{erfc}(x) (right) treated in Lemma [23](#Thmtheorem23 "Lemma 23 (Function 𝑒^𝑥²⁢erfc(𝑥)). ‣ A3.4.6 Intermediate Lemmata and Proofs ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks") and Lemma [24](#Thmtheorem24 "Lemma 24 (Properties of 𝑥⁢𝑒^𝑥²⁢erfc(𝑥)). ‣ A3.4.6 Intermediate Lemmata and Proofs ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks"),
 respectively.
@@ -4669,8 +4623,7 @@ and
 We can consider μ~~𝜇{\tilde{\mu}} with given μ​ω𝜇𝜔\mu\omega as a function in x=ν​τ𝑥𝜈𝜏x=\nu\tau. We show the graph of this function at the
 maximal μ​ω=0.01𝜇𝜔0.01\mu\omega=0.01 in the interval x∈[0,1]𝑥01x\in[0,1] in Figure [A6](#S3.F6 "Figure A6 ‣ A3.4.6 Intermediate Lemmata and Proofs ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks").
 
-![Refer to caption](/html/1706.02515/assets/x9.png)
-
+!(/html/1706.02515/assets/x9.png)
 
 Figure A6: The graph of function μ~~𝜇{\tilde{\mu}} for low variances x=ν​τ𝑥𝜈𝜏x=\nu\tau for μ​ω=0.01𝜇𝜔0.01\mu\omega=0.01, where x∈[0,3]𝑥03x\in[0,3], is
 displayed in yellow.
@@ -4796,8 +4749,7 @@ formulae-sequence0.1𝜇0.10.1𝜔0.10.05𝜈0.240.8𝜏1.25\Omega^{-}=\{\mu,\om
 We visualize the function μ~2superscript~𝜇2{{\tilde{\mu}}}^{2} at its maximal μ​ν=−0.01𝜇𝜈0.01\mu\nu=-0.01 and for x=ν​τ𝑥𝜈𝜏x=\nu\tau in the form
 h​(x)=μ~2​(0.1,−0.1,x,1,λ01,α01)ℎ𝑥superscript~𝜇20.10.1𝑥1subscript𝜆01subscript𝛼01h(x)={{\tilde{\mu}}}^{2}(0.1,-0.1,x,1,\lambda\_{\mathrm{0}1},\alpha\_{\mathrm{0}1}) in Figure [A7](#S3.F7 "Figure A7 ‣ A3.4.6 Intermediate Lemmata and Proofs ‣ A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks").
 
-![Refer to caption](/html/1706.02515/assets/x10.png)
-
+!(/html/1706.02515/assets/x10.png)
 
 Figure A7: The graph of the function h​(x)=μ~2​(0.1,−0.1,x,1,λ01,α01)ℎ𝑥superscript~𝜇20.10.1𝑥1subscript𝜆01subscript𝛼01h(x)={{\tilde{\mu}}}^{2}(0.1,-0.1,x,1,\lambda\_{\mathrm{0}1},\alpha\_{\mathrm{0}1}) is displayed. It has a local
 maximum at x=ν​τ≈0.187342𝑥𝜈𝜏0.187342x=\nu\tau\approx 0.187342 and h​(x)≈0.00451457ℎ𝑥0.00451457h(x)\approx 0.00451457 in the domain x∈[0,1]𝑥01x\in[0,1].
@@ -7038,9 +6990,6 @@ Table A4: Hyperparameters considered for self-normalizing networks in the UCI da
 | Dropout rate | {0.05, 0} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A5: Hyperparameters considered for ReLU networks with MS initialization in the UCI data sets.
 
 | Hyperparameter | Considered values |
@@ -7050,9 +6999,6 @@ Table A5: Hyperparameters considered for ReLU networks with MS initialization in
 | Learning rate | {0.01, 0.1, 1} |
 | Dropout rate | {0.5, 0} |
 | Layer form | {rectangular, conic} |
-
-
-
 
 Table A6: Hyperparameters considered for batch normalized networks in the UCI data sets.
 
@@ -7064,9 +7010,6 @@ Table A6: Hyperparameters considered for batch normalized networks in the UCI da
 | Normalization | {Batchnorm} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A7: Hyperparameters considered for weight normalized networks in the UCI data sets.
 
 | Hyperparameter | Considered values |
@@ -7076,9 +7019,6 @@ Table A7: Hyperparameters considered for weight normalized networks in the UCI d
 | Learning rate | {0.01, 0.1, 1} |
 | Normalization | {Weightnorm} |
 | Layer form | {rectangular, conic} |
-
-
-
 
 Table A8: Hyperparameters considered for layer normalized networks in the UCI data sets.
 
@@ -7090,9 +7030,6 @@ Table A8: Hyperparameters considered for layer normalized networks in the UCI da
 | Normalization | {Layernorm} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A9: Hyperparameters considered for Highway networks in the UCI data sets.
 
 | Hyperparameter | Considered values |
@@ -7100,9 +7037,6 @@ Table A9: Hyperparameters considered for Highway networks in the UCI data sets.
 | Number of hidden layers | {2, 3, 4, 8, 16, 32} |
 | Learning rate | {0.01, 0.1, 1} |
 | Dropout rate | {0, 0.5} |
-
-
-
 
 Table A10: Hyperparameters considered for Residual networks in the UCI data sets.
 
@@ -7194,8 +7128,6 @@ normalization (WN), and layer normalization (LN).
 | horse-colic | 368 | 26 | 0.8088 | 0.8529 | 0.7794 | 0.8088 | 0.8529 | 0.7059 | 0.7941 |
 | ilpd-indian-liver | 583 | 10 | 0.6986 | 0.6644 | 0.6781 | 0.6712 | 0.5959 | 0.6918 | 0.6986 |
 
-
-
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | image-segmentation | 2310 | 19 | 0.9114 | 0.9090 | 0.9024 | 0.8919 | 0.8481 | 0.8938 | 0.8838 |
@@ -7250,8 +7182,6 @@ normalization (WN), and layer normalization (LN).
 | spectf | 267 | 45 | 0.4973 | 0.6043 | 0.8930 | 0.7005 | 0.2299 | 0.4545 | 0.5561 |
 | statlog-australian-credit | 690 | 15 | 0.5988 | 0.6802 | 0.6802 | 0.6395 | 0.6802 | 0.6860 | 0.6279 |
 | statlog-german-credit | 1000 | 25 | 0.7560 | 0.7280 | 0.7760 | 0.7720 | 0.7520 | 0.7400 | 0.7400 |
-
-
 
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -7333,9 +7263,6 @@ SNNs are ranked third having been outperformed by Random Forests and SVMs.
 | GLM | bayesglm\_caret | 15.0 | 1.6e-06 |
 | Stacking | Stacking\_weka | 20.9 | 2.2e-12 |
 
-
-
-
 Table A13: UCI comparison reporting the average rank
 of a method on 46 classification task of the
 UCI machine learning repository with more than 1000 data points.
@@ -7401,9 +7328,6 @@ Table A14: Hyperparameters considered for self-normalizing networks in the Tox21
 | Layer form | {rectangular, conic} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
 
-
-
-
 Table A15: Hyperparameters considered for ReLU networks with MS initialization in the Tox21 data set.
 
 | Hyperparameter | Considered values |
@@ -7415,9 +7339,6 @@ Table A15: Hyperparameters considered for ReLU networks with MS initialization i
 | Layer form | {rectangular, conic} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
 
-
-
-
 Table A16: Hyperparameters considered for batch normalized networks in the Tox21 data set.
 
 | Hyperparameter | Considered values |
@@ -7428,9 +7349,6 @@ Table A16: Hyperparameters considered for batch normalized networks in the Tox21
 | Normalization | {Batchnorm} |
 | Layer form | {rectangular, conic} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
-
-
-
 
 Table A17: Hyperparameters considered for weight normalized networks in the Tox21 data set.
 
@@ -7444,9 +7362,6 @@ Table A17: Hyperparameters considered for weight normalized networks in the Tox2
 | Layer form | {rectangular, conic} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
 
-
-
-
 Table A18: Hyperparameters considered for layer normalized networks in the Tox21 data set.
 
 | Hyperparameter | Considered values |
@@ -7459,9 +7374,6 @@ Table A18: Hyperparameters considered for layer normalized networks in the Tox21
 | Layer form | {rectangular, conic} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
 
-
-
-
 Table A19: Hyperparameters considered for Highway networks in the Tox21 data set.
 
 | Hyperparameter | Considered values |
@@ -7470,9 +7382,6 @@ Table A19: Hyperparameters considered for Highway networks in the Tox21 data set
 | Learning rate | {0.01, 0.05, 0.1} |
 | Dropout rate | {0, 0.5} |
 | L2 regularization parameter | {0.001,0.0001,0.00001} |
-
-
-
 
 Table A20: Hyperparameters considered for Residual networks in the Tox21 data set.
 
@@ -7492,9 +7401,9 @@ well be approximated by a normal distribution. To this end, we investigated the
 density of the network inputs before and during learning and found that
 these density are close to normal distributions (see Figure [A8](#S4.F8 "Figure A8 ‣ Distribution of network inputs. ‣ A4.3 Tox21 challenge data set: Hyperparameters ‣ A4 Additional information on experiments ‣ Self-Normalizing Neural Networks")).
 
-![Refer to caption](/html/1706.02515/assets/x11.png)
+!(/html/1706.02515/assets/x11.png)
 
-![Refer to caption](/html/1706.02515/assets/x12.png)
+!(/html/1706.02515/assets/x12.png)
 
 Figure A8: Distribution of network inputs of an SNN for the Tox21 data set.
 The plots show the distribution of network inputs z𝑧z of the second layer of a typical Tox21 network.
@@ -7528,9 +7437,6 @@ Table A21: Hyperparameters considered for self-normalizing networks on the HTRU2
 | Dropout rate | { 0, 0.05} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A22: Hyperparameters considered for ReLU networks with Microsoft initialization on the HTRU2 data set.
 
 | Hyperparameter | Considered values |
@@ -7540,9 +7446,6 @@ Table A22: Hyperparameters considered for ReLU networks with Microsoft initializ
 | Learning rate | {0.1, 0.01, 1} |
 | Dropout rate | {0, 0.5} |
 | Layer form | {rectangular, conic} |
-
-
-
 
 Table A23: Hyperparameters considered for BatchNorm networks on the HTRU2 data set.
 
@@ -7554,9 +7457,6 @@ Table A23: Hyperparameters considered for BatchNorm networks on the HTRU2 data s
 | Normalization | {Batchnorm} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A24: Hyperparameters considered for WeightNorm networks on the HTRU2 data set.
 
 | Hyperparameter | Considered values |
@@ -7566,9 +7466,6 @@ Table A24: Hyperparameters considered for WeightNorm networks on the HTRU2 data 
 | Learning rate | {0.1, 0.01, 1} |
 | Normalization | {Weightnorm} |
 | Layer form | {rectangular, conic} |
-
-
-
 
 Table A25: Hyperparameters considered for LayerNorm networks on the HTRU2 data set.
 
@@ -7580,9 +7477,6 @@ Table A25: Hyperparameters considered for LayerNorm networks on the HTRU2 data s
 | Normalization | {Layernorm} |
 | Layer form | {rectangular, conic} |
 
-
-
-
 Table A26: Hyperparameters considered for Highway networks on the HTRU2 data set.
 
 | Hyperparameter | Considered values |
@@ -7590,9 +7484,6 @@ Table A26: Hyperparameters considered for Highway networks on the HTRU2 data set
 | Number of hidden layers | {2, 4, 8, 16, 32} |
 | Learning rate | {0.1, 0.01, 1} |
 | Dropout rate | {0, 0.5} |
-
-
-
 
 Table A27: Hyperparameters considered for Residual networks on the HTRU2 data set.
 
@@ -7951,7 +7842,6 @@ computed).
 7. [A7 Graph of the function h​(x)=μ~2​(0.1,−0.1,x,1,λ01,α01)ℎ𝑥superscript~𝜇20.10.1𝑥1subscript𝜆01subscript𝛼01h(x)={{\tilde{\mu}}}^{2}(0.1,-0.1,x,1,\lambda\_{\mathrm{0}1},\alpha\_{\mathrm{0}1})](#S3.F7 "Figure A7In A3.4 Lemmata and Other Tools Required for the Proofs ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks")
 8. [A8 Distribution of network inputs in Tox21 SNNs.](#S4.F8 "Figure A8In A4.3 Tox21 challenge data set: Hyperparameters ‣ A4 Additional information on experiments ‣ Self-Normalizing Neural Networks")
 
-
 ###### List of Tables
 
 1. [1 Comparison of seven FNNs on 121 UCI tasks](#Sx3.T1 "Table 1In Experiments ‣ Self-Normalizing Neural Networks")
@@ -8046,83 +7936,3 @@ computed).
   + proof [§A3.2](#S3.SS2 "A3.2 Proof of Theorem 2 ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks")
 * Theorem 3 [§A2.3](#S2.SS3.p1.14 "A2.3 Theorem 3: Increasing Variance from Below ‣ A2 Theorems ‣ Self-Normalizing Neural Networks"), [Theorem 3](#Thmtheorem3 "Theorem 3 (Increasing 𝜈). ‣ Stable and Attracting Fixed Points for Unnormalized Weights. ‣ Self-normalizing Neural Networks (SNNs) ‣ Self-Normalizing Neural Networks")
   + proof [§A3.3](#S3.SS3 "A3.3 Proof of Theorem 3 ‣ A3 Proofs of the Theorems ‣ Self-Normalizing Neural Networks")
-
-[◄](/html/1706.02513)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1706.02515)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1706.02515)
-[View original  
-on arXiv](https://arxiv.org/abs/1706.02515)[►](/html/1706.02516)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 5 05:27:07 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

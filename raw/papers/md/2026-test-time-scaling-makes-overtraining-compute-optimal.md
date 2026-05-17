@@ -19,49 +19,6 @@ url: https://arxiv.org/abs/2604.01411
 year: 2026
 ---
 
-[2604.01411] Test-Time Scaling Makes Overtraining Compute-Optimal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Test-Time Scaling Makes Overtraining Compute-Optimal
 
 Nicholas Roberts       Sungjun Cho      Zhiqi Gao      Tzu-Heng Huang      Albert Wu
@@ -111,8 +68,7 @@ Following Chinchilla, we evaluate multiple modeling approaches: whether to model
 Although the two approaches are quite different, we find that they agree closely: both suggest substantial overtraining and test-time scaling across our evaluations.
 We build on an existing set of Chinchilla scaling checkpoints from porian2024resolving, extending it into the overtrained regime and assembling a testbed of over 100 models across 12 compute levels spanning three orders of magnitude.
 
-![Refer to caption](/html/2604.01411/assets/x1.png)
-
+!(/html/2604.01411/assets/x1.png)
 
 Figure 1: Our T2T^{2} scaling laws combine Chinchilla scaling for pretraining with pass@kk modeling for test-time scaling via repeated sampling to obtain optimal pretraining allocations subject to a test-time scaling budget. T2T^{2} recommends overtraining compared to Chinchilla.
 
@@ -392,13 +348,10 @@ While both approaches somewhat overestimate performance, Approach 1 extrapolate
 Table [1](#S4.T1 "Table 1 ‣ Table 2 ‣ 4.2 RQ2: Does 𝑇² Scaling Extrapolate to Overtrained Checkpoints? ‣ 4 Experiments ‣ Test-Time Scaling Makes Overtraining Compute-Optimal") shows that our best small overtrained checkpoints always outperform the Chinchilla optimal checkpoints when inference corrected, across all eight tasks.
 This confirms that T2T^{2} extrapolates to real overtrained checkpoints, and that this phenomenon is not just an artifact of our T2T^{2} approaches.
 
-![Refer to caption](/html/2604.01411/assets/x4.png)
+!(/html/2604.01411/assets/x4.png)
   
 
-
 Figure 4: Extrapolating porian2024resolving checkpoints to the overtraining regime.
-
-
 
 |  |  | Best overtrained | Chinchilla opt. |
 | --- | --- | --- | --- |
@@ -514,8 +467,6 @@ We find that overtraining predictions are relatively stable across inference bud
 Figure 6: 
 Approach 1 IsoFLOP profiles across different scaling budgets for all eight tasks.
 
-
-
 |  |
 | --- |
 | Refer to caption |
@@ -625,7 +576,6 @@ Example 2:
 A mother comforts a crying baby. A teacher encourages a
 struggling student. A coach motivates a discouraged player
 
-
 Box 3: Simple Knowledge Recall
 
 Example 1:
@@ -634,7 +584,6 @@ The capital of Egypt is Cairo
 Example 2:
 [⬇](data:text/plain;base64,VGhlIGZpZnRoIHRhc3RlIGlzKCpAXGNvbG9yYm94e3llbGxvdyE0MH17XHRleHR0dHsgdW1hbWl9fUAqKQ==)
 The fifth taste is umami
-
 
 Box 4: Multi-Step Arithmetic Reasoning
 
@@ -646,7 +595,6 @@ Example 2:
 [⬇](data:text/plain;base64,UGF0dGVybjogMTAsIDIwLCAzMCwgLi4uIFRoaXMgYWRkcyAxMCBlYWNoIHRpbWUuIEFmdGVyIDMwCmNvbWVzKCpAXGNvbG9yYm94e3llbGxvdyE0MH17XHRleHR0dHsgNDB9fUAqKQ==)
 Pattern: 10, 20, 30, ... This adds 10 each time. After 30
 comes 40
-
 
 Box 5: Spatial Reasoning
 
@@ -676,83 +624,3 @@ We profile over a grid of 40 candidate EE values spaced between 0.01⋅min⁡(NL
 Second, we fit the Beta regression parameters.
 The per-question success probability is modeled as p∼Beta​(aN,D,bN,D)p\sim\text{Beta}(a\_{N,D},b\_{N,D}) where μ=aN,D/(aN,D+bN,D)\mu=a\_{N,D}/(a\_{N,D}+b\_{N,D}) is a scaled logit link and the concentration ν=aN,D+bN,D\nu=a\_{N,D}+b\_{N,D} is parameterized as a log link function.
 Together, the five parameters (θ0,θ1,θ2,θ3,θ4)(\theta\_{0},\theta\_{1},\theta\_{2},\theta\_{3},\theta\_{4}) are fit by minimizing SSE between predicted and empirical pass@kk accuracy values over a grid of initializations seeded from a sigmoid baseline, again using L-BFGS-B.
-
-[◄](/html/2604.01409)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.01411)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.01411)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.01411)[►](/html/2604.01412)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:05:22 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

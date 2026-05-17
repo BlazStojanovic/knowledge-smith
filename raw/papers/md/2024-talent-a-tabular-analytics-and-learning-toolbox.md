@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2407.04057
 year: 2024
 ---
 
-[2407.04057] : A Tabular Analytics and Learning Toolbox
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # : A Tabular Analytics and Learning Toolbox
 
 \nameSi-Yang Liu \emailliusiyang@smail.nju.edu.cn
@@ -91,8 +48,6 @@ Machine learning has achieved remarkable success across a broad spectrum of doma
 | 53 | 11th | Handlers-cleaners | Black | Male | 40 | ≤\leq50K |
 | 28 | Bachelors | Prof-specialty | Black | Female | 40 | >>50K |
 | 45 | Masters | Exec-managerial | White | Female | 50 | - |
-
-
 
 Table 1: An example of a binary classification task from the Adult dataset (Becker and Kohavi, [1996](#bib.bib4)). The first six attributes/features (columns) are used to predict the final label. The first five rows are training examples, and the last row is a test instance with an unknown income.
 
@@ -150,8 +105,7 @@ Classical models in include K-Nearest Neighbors (KNN) and SVM for various tasks,
 
 Tree-based methods in utilize powerful algorithms, including Random Forest, XGBoost (Chen and Guestrin, [2016](#bib.bib12)), CatBoost (Prokhorenkova et al., [2018](#bib.bib35)) and LightGBM (Ke et al., [2017](#bib.bib24)), known for their high efficiency and strong predictive performance across a variety of datasets.
 
-![Refer to caption](/html/2407.04057/assets/x1.png)
-
+!(/html/2407.04057/assets/x1.png)
 
 Figure 1: Various deep prediction methods for tabular data in .
 
@@ -265,8 +219,7 @@ leverages open-source libraries to support its advanced data processing and mach
 
 ### 3.2 The workflow of
 
-![Refer to caption](/html/2407.04057/assets/x2.png)
-
+!(/html/2407.04057/assets/x2.png)
 
 Figure 2: Flowchart depicting the data prediction process with Talent.
 
@@ -466,8 +419,7 @@ In this script:
 
 ### 3.5 Adding New Methods
 
-![Refer to caption](/html/2407.04057/assets/x3.png)
-
+!(/html/2407.04057/assets/x3.png)
 
 Figure 3: Workflow for Adding a New Method to .
 
@@ -495,19 +447,19 @@ By following these steps, researchers can add new algorithms to , adapting it to
 
 ## 4 Preliminary Experiments
 
-![Refer to caption](/html/2407.04057/assets/x4.png)
+!(/html/2407.04057/assets/x4.png)
 
 (a) Binary Classification
 
-![Refer to caption](/html/2407.04057/assets/x5.png)
+!(/html/2407.04057/assets/x5.png)
 
 (b) Multi-Class Classification
 
-![Refer to caption](/html/2407.04057/assets/x6.png)
+!(/html/2407.04057/assets/x6.png)
 
 (c) Regression
 
-![Refer to caption](/html/2407.04057/assets/x7.png)
+!(/html/2407.04057/assets/x7.png)
 
 (d) All Tasks
 
@@ -776,83 +728,3 @@ We also leverage to compare recent deep tabular methods fairly across numerous d
   Weinan Zhang, Tianming Du, and Jun Wang.
   Deep learning over multi-field categorical data - - A case study on user response prediction.
   In *ECIR*, pages 45–57, 2016.
-
-[◄](/html/2407.04056)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2407.04057)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2407.04057)
-[View original  
-on arXiv](https://arxiv.org/abs/2407.04057)[►](/html/2407.04058)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Aug 5 12:55:00 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

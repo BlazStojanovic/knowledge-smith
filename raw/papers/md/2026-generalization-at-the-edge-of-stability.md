@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2604.19740
 year: 2026
 ---
 
-[2604.19740] Generalization at the Edge of Stability
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Generalization at the Edge of Stability
 
 \nameMario Tuci \emailmario.tuci@inria.fr\addrINRIA, CNRS, Département d’Informatique de l’Ecole Normale Supérieure / PSL, France\addrDepartment of Computing, Imperial College London, United Kingdom
@@ -78,8 +35,7 @@ Training modern neural networks often relies on large learning rates, operating 
 
 Understanding why large, overparameterized neural networks trained by gradient-based methods generalize remains one of the central open problems in modern machine learning.
 
-![Refer to caption](/html/2604.19740/assets/x1.png)
-
+!(/html/2604.19740/assets/x1.png)
 
 Figure 1: Generalization at the Edge of Stability (EoS). Modeling stochastic optimization as a random dynamical system (RDS), we show that at EoS the leading sharpness satisfies λ1>0\lambda\_{1}>0, implying expansion along at least one direction. The fundamental balance between expansion and contraction implies that the effective dimensionality of the dynamics, measured by our Sharpness Dimension (SD), is strictly smaller than the ambient parameter space: SD<d\mathrm{SD}<d. We prove that the worst-case generalization error is governed by SD\mathrm{SD} rather than the parameter count. Our results identify EoS as precisely the regime where generalization is controlled by a provably lower-dimensional attractor, providing a principled explanation for why overparameterized models can generalize beyond classical complexity measures.
 
@@ -255,8 +211,6 @@ Definition 4.1 
 Let (Ω,ℱ,ℙ,θ,ϕ)(\Omega,\mathcal{F},\mathbb{P},\theta,\phi) be a C1C^{1} random dynamical system on ℝd\mathbb{R}^{d}. For a fixed state w∈ℝdw\in\mathbb{R}^{d}, let D​ϕ​(1,ω,w)∈ℝd×dD\phi(1,\omega,w)\in\mathbb{R}^{d\times d} denote the Jacobian (Fréchet derivative)
 of the map x↦ϕ​(1,ω,x)x\mapsto\phi(1,\omega,x) evaluated at x=wx=w. Let 𝒜​(ω)\mathcal{A}(\omega) be random compact set. We define the RDS Sharpness of Order kk as the expected log-variation of the kk-th singular value:
 
-
-
 λk:=𝔼​[supw∈𝒜​(ω)ln⁡σk​(ω,w)]∀k∈{1,…,d},\lambda\_{k}:=\mathbb{E}\left[\sup\_{w\in\mathcal{A}(\omega)}\ln\sigma\_{k}(\omega,w)\right]\quad\forall k\in\{1,\dots,d\},
 
 (8)
@@ -268,8 +222,6 @@ of the Hessian.
 Example 4.1 
 (GD Sharpness):
 We can interpret GD as a deterministic instance of a random dynamical system where the algorithmic randomness ω\omega is constant. Let ℛ^S​(w)\widehat{\mathcal{R}}\_{S}(w) denote the empirical risk for a fixed dataset S∈𝒵nS\in\mathcal{Z}^{n} and w∈ℝdw\in\mathbb{R}^{d}; the discrete-time update map ϕ\phi is defined as:
-
-
 
 ϕ​(1,w)=w−η​∇ℛ^S​(w).\phi(1,w)=w-\eta\nabla\widehat{\mathcal{R}}\_{S}(w).
 
@@ -330,13 +282,9 @@ Definition 4.2 
 Let (Ω,ℱ,ℙ,θ,ϕ)(\Omega,\mathcal{F},\mathbb{P},\theta,\phi) be a C1C^{1} discrete random dynamical system on ℝd\mathbb{R}^{d}. Further let 𝒜​(ω)⊂ℝd\mathcal{A}(\omega)\subset\mathbb{R}^{d} be an almost surely compact random set. As in Dfn. [4](#S4.SS0.SSS0.Px1 "Sharpness ‣ 4 Theoretical Results ‣ Generalization at the Edge of Stability"), let λk\lambda\_{k} be the RDS sharpness of order kk, for k=1,…,dk=1,\dots,d.
 Set
 
-
-
 j∗:=max⁡{i∈{1,…,d}:∑k=1iλk≥0},j^{\*}:=\max\left\{i\in\{1,\dots,d\}:\sum\_{k=1}^{i}\lambda\_{k}\geq 0\right\},
 with the convention j∗=0j^{\*}=0 if λ1<0\lambda\_{1}<0.
 The Sharpness Dimension of  𝒜​(ω)\mathcal{A}(\omega) is defined as
-
-
 
 dimS𝒜:={j∗+∑i=1j∗λi|λj∗+1|,if ​1≤j∗<d,d,if ​j∗=d,0,if ​λ1<0.\dim\_{\mathrm{S}}\mathcal{A}:=\begin{cases}j^{\*}+\frac{\sum\_{i=1}^{j^{\*}}\lambda\_{i}}{|\lambda\_{j^{\*}+1}|},&\text{if }1\leq j^{\*}<d,\\
 d,&\text{if }j^{\*}=d,\\
@@ -407,12 +355,8 @@ Theorem 4.5 
 Let S={z1,…,zn}∼μz⊗nS=\{z\_{1},\dots,z\_{n}\}\sim\mu\_{z}^{\otimes n} be a dataset of size nn. Let (Ω,ℱ,ℙ,θ,ϕ)(\Omega,\mathcal{F},\mathbb{P},\theta,\phi) be a discrete-time RDS according to Dfn [3.1](#S3.Thmdefinition1 "Definition 3.1 (Random Dynamical System). ‣ Random dynamical systems ‣ 3 Preliminaries ‣ Generalization at the Edge of Stability") such that Assump. [4.4](#S4.Thmtheorem4 "Assumption 4.4 (Regular Random Dynamics). ‣ Generalization Bounds ‣ 4 Theoretical Results ‣ Generalization at the Edge of Stability") holds.
 Under Assumps. [4.2](#S4.Thmtheorem2 "Assumption 4.2 (Boundedness of Loss). ‣ Generalization Bounds ‣ 4 Theoretical Results ‣ Generalization at the Edge of Stability") and [4.3](#S4.Thmtheorem3 "Assumption 4.3 (Lipschitz Continuity of Loss). ‣ Generalization Bounds ‣ 4 Theoretical Results ‣ Generalization at the Edge of Stability"), there exists a constant C>0C>0 s.t. with probability at least 1−ζ−γ1-\zeta-\gamma over the joint draw (S,ω)∼μz⊗n⊗ℙ(S,\omega)\sim\mu\_{z}^{\otimes n}\otimes\mathbb{P}, there exists δn,γ>0\delta\_{n,\gamma}>0 such that for all 0<δ<δn,γ0<\delta<\delta\_{n,\gamma},
 
-
-
 𝒢S​(𝒜​(ω))\displaystyle\mathcal{G}\_{S}(\mathcal{A}(\omega))
 ≤2​L​δ+2​B​4​dimS𝒜S​log⁡(1/δ)n\displaystyle\leq 2L\delta+2B\sqrt{\frac{4\,\dim\_{\mathrm{S}}\mathcal{A}\_{S}\>\log(1/\delta)}{n}}
-
-
 
 +I∞​(𝒜S​(ω),S)+log⁡(1/ζ)n+C​B2n.\displaystyle\quad+\frac{I\_{\infty}(\mathcal{A}\_{S}(\omega),S)+\log(1/\zeta)}{\sqrt{n}}+\frac{CB^{2}}{\sqrt{n}}.
 We recall that 𝒢S​(𝒜​(ω))\mathcal{G}\_{S}(\mathcal{A}(\omega)) denotes the worst-case generalization gap (see ([1](#S3.E1 "Equation 1 ‣ Learning setup ‣ 3 Preliminaries ‣ Generalization at the Edge of Stability"))) and I∞​(𝒜S​(ω),S)I\_{\infty}(\mathcal{A}\_{S}(\omega),S) (see Dfn. [A.5](#A1.Thmdefinition5 "Definition A.5 (Total mutual information). ‣ A.3 Data-dependent worst-case generalization bounds ‣ Appendix A Theoretical Background ‣ Generalization at the Edge of Stability")) denotes the total mutual information between the random pullback attractor 𝒜S​(ω)\mathcal{A}\_{S}(\omega) and SS.
@@ -451,16 +395,14 @@ We begin by experimenting on classical learning scenarios with a small 3-layer M
 
 For our SLQ-based eigenvalue density estimator (SD-SLQ), we use 500 Lanczos runs of 100 steps each via random Rademacher initializations and full reorthogonalization. The expectation is estimated using a separate minibatch per Lanczos run, followed by Gaussian quadrature and kernel smoothing. We then compute SD by integrating the estimated spectral density and the eigenvalue-weighted spectral density using the trapezoidal rule.
 
-![Refer to caption](/html/2604.19740/assets/x2.png)
-
+!(/html/2604.19740/assets/x2.png)
 
 Figure 2: 
 Correlations between various generalization indices and the empirical generalization gap on our small 3-layer MLP trained on MNIST dataset. The region indicated in green shows that our proposed Sharpness Dimension (SD) better predicts the generalization and loss gaps.
 
 Fig. [2](#S5.F2 "Figure 2 ‣ Generalization in 3-layer small MLPs ‣ 5.1 Analysis ‣ 5 Empirical Results ‣ Generalization at the Edge of Stability") shows correlations between various generalization measures and the empirical generalization and loss gaps. Both the Euclidean and data-dependent PH-Dims fail to capture the generalization behaviour. In addition, both Euclidean and data-dependent EαE\_{\alpha} show only weak positive correlation with the generalization gap. These results suggest that the trajectory-based topological indices may fail to accurately quantify generalization when networks operate at the edge of stability regime, where I−η​∇2ℛ^S​(w)I-\eta\nabla^{2}\widehat{\mathcal{R}}\_{S}(w) has singular values larger than 1, i.e., not contractive on average. The top RDS-Sharpness λ1\lambda\_{1} alone also shows a weak negative correlation, suggesting that the largest SV alone is not indicative of generalization in this setting. In contrast, both SD and the approximate SD-SLQ show higher correlations with the gap. The full Hessian-spectrum SD achieves the strongest result indicating that SD better quantifies generalization in this edge of stability regime.
 
-![Refer to caption](/html/2604.19740/assets/x3.png)
-
+!(/html/2604.19740/assets/x3.png)
 
 Figure 3: Kendall coefficients and their average granulated variant for the same 5-layer MLP trained using various batch sizes and learning rates. Our estimate further uses the SLQ approximation and its density estimating variant, SD-KDE.
 
@@ -470,8 +412,7 @@ Here, we use the same SLQ setup to estimate eigenvalue densities, with the numbe
 
 For various complexity measures, Fig. [3](#S5.F3 "Figure 3 ‣ Generalization in 3-layer small MLPs ‣ 5.1 Analysis ‣ 5 Empirical Results ‣ Generalization at the Edge of Stability") indicates that backward PH-Dim, forward EαE\_{\alpha}’s, our SD-SLQ and SD-KDE achieve similar average GKC values, with backward PH-Dim performing best and SD-SLQ following closely. Yet, when comparing Kendall τ\tau values, SD-SLQ outperforms all other indicators. Overall, when learning rates and batch sizes are grouped separately, the indicators perform similarly. However, when the full hyperparameter grid is considered, our dimension most accurately captures generalization.
 
-![Refer to caption](/html/2604.19740/assets/x4.png)
-
+!(/html/2604.19740/assets/x4.png)
 
 Figure 4: Grokking analysis for different learning rates (η\eta), weight decay (W​DWD) and seeds across two architectures: (top row) 2-layer MLP. (second row) 2-layer MLP. Note that the *suddenness*  of the grokking behavior is best captured in the complexity measures we introduce: RDS-Sharpness and Sharpness Dimension (SD).
 
@@ -501,8 +442,7 @@ provide useful signals in some settings, but their behavior is less uniform. Ove
 transformer setting as well, generalization is better captured by SD and related RDS-based quantities than by classical
 sharpness alone.
 
-![Refer to caption](/html/2604.19740/assets/x5.png)
-
+!(/html/2604.19740/assets/x5.png)
 
 Figure 5: Correlation Matrices Corresponding to GPT-2 Trained on WikiText2-Dataset for different learning rates (LR), batch sizes (BS) and weight decay values (WD), across three different optimizers: SGD, SGD with momentum and AdamW.
 
@@ -988,8 +928,7 @@ Let (θ,ϕ)(\theta,\phi) be an RDS on a Polish space XX, and let AA be an invari
 
 Fig. [6](#A1.F6 "Figure 6 ‣ A.1 Random Attractor ‣ Appendix A Theoretical Background ‣ Generalization at the Edge of Stability") complements our definitions and results with an example. Indeed in the main write up we focus on the notion of random pullback attractor.
 
-![Refer to caption](/html/2604.19740/assets/x6.png)
-
+!(/html/2604.19740/assets/x6.png)
 
 Figure 6: (a) Fractal Pullback Attractor at the Edge of Stability.
 Visualization of the random snapshot attractor 𝒜​(ζ)\mathcal{A}(\zeta) generated by
@@ -2406,8 +2345,7 @@ Regarding the SD computation, for a network with NN parameters and kk minibatche
 Below in Fig [7](#A4.F7 "Figure 7 ‣ Grokking for the 3-layer MLP ‣ Appendix D Additional Results ‣ Generalization at the Edge of Stability") we present another experiment, with different seeds and hyper-parameters in the grokking setting identical to the main paper but for a 3-layer MLP with 32 hidden features instead.
 Similarly, we use 100 uniformly spaced checkpoints and ReLU activation, trained with SGD using only weight decay. In particular, we observe an interesting phenomenon in the first plot, where our dimension increases while test accuracy is increasing slowly, sharply decreases while the test accuracy is increasing sharply (grokking), and then increases again afterwards when test accuracy reaches 100%. In contrast, the other measures decrease monotonically. This behaviour aligns with the theoretical motivation of our dimension, which targets the edge-of-stability regime, and accurately reflects the grokking phase transitions. A similar phase transition is visible in Plot 3, while Plot 4 reflects the grokking experiment from the main paper. In Plot 2, focusing on the sharp grokking region reveals a similarly sharp decrease in SD.
 
-![Refer to caption](/html/2604.19740/assets/x7.png)
-
+!(/html/2604.19740/assets/x7.png)
 
 Figure 7: Grokking analysis for different learning rates (η\eta), weight decay (W​DWD) and seeds 3-layer MLP with ReLU activation and no momentum. Note that the *suddenness*  of the grokking behavior is best captured in the complexity measures we introduce: RDS-Sharpness and Sharpness Dimension (SD).
 
@@ -2415,87 +2353,6 @@ Figure 7: Grokking analysis for different learning rates (η\eta), weight decay 
 
 Figure [8](#A4.F8 "Figure 8 ‣ Hessian Spectra & RDS Sharpness Spectrum. ‣ Appendix D Additional Results ‣ Generalization at the Edge of Stability") illustrates our spectral estimators for Hessian spectral density and the RDS sharpness spectrum on GPT-2 across SGD, SGD with momentum, and AdamW. The left image in each pair visualizes the expectation of minibatch Hessian spectral density over eigenvalues α\alpha. The corresponding right images show the push-forward of this density through the transformation α↦log⁡|1−η​α|\alpha\mapsto\log|1-\eta\alpha|, i.e., the transformed spectral density underlying the RDS Sharpnesses of Order kk, λk\lambda\_{k}. We observe that, across all three optimizers, a large fraction of the Hessian spectrum is concentrated near α=0\alpha=0. This mass near α=0\alpha=0 produces a peak near 0 in the RDS sharpness spectrum and corresponds to neutral or nearly neutral directions (i.e., expanding and contracting with almost 0 log-singular values). In contrast, the isolated spikes, positive tails, and negative curvature components of the Hessian spectrum produce the contractive and expansive directions of the RDS Sharpness spectrum. Positive eigenvalues less than 2/η2/\eta yield negative RDS sharpness values, corresponding to the contractive directions. Positive eigenvalues that are larger than 2/η2/\eta and all negative eigenvalues yield positive RDS sharpness values, corresponding to expansive directions instead. Hence, this visualization clarifies why the Sharpness Dimension depends on the full Hessian spectrum rather than only the top Hessian eigenvalue or a small part of it: SD is determined by the balance between the positive RDS sharpness directions, the near-neutral bulk, and the negative tail. Moreover, the estimated Hessian densities are consistent with prior observations on neural-network and transformer Hessian spectra Ghorbani et al., ([2019](#bib.bib28)); Zhang et al., ([2024](#bib.bib77)), providing additional evidence that our SLQ-based procedure captures the relevant spectral structure.
 
-![Refer to caption](/html/2604.19740/assets/x8.png)
-
+!(/html/2604.19740/assets/x8.png)
 
 Figure 8: Hessian Spectra & RDS Sharpness Spectrum. For selected GPT-2 runs trained with (a) SGD, (b) SGD with momentum, and (c) AdamW, we show the SLQ-based histogram estimate (SD-SLQ) and the kernel-smoothed estimate (SD-KDE) for both the raw Hessian spectrum (left in each pair) and the transformed RDS sharpness spectrum log⁡|1−η​α|\log|1-\eta\alpha| (right in each pair). Together, the panels show how optimizer and hyperparameter choices affect both the Hessian spectrum and its induced RDS sharpness spectrum. These examples show that the SLQ histogram and the corresponding kernel-smoothed estimate provide consistent views of the underlying spectrum across a range of training configurations.
-
-[◄](/html/2604.19739)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.19740)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.19740)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.19740)[►](/html/2604.19741)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 21:24:26 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

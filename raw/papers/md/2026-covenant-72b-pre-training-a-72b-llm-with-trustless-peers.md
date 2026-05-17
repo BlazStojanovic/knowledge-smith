@@ -18,49 +18,6 @@ url: https://arxiv.org/abs/2603.08163
 year: 2026
 ---
 
-[2603.08163] Covenant-72B: Pre-Training a 72B LLM with Trustless Peers Over-the-Internet
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Covenant-72B: Pre-Training a 72B LLM with Trustless Peers Over-the-Internet
 
 Joel Lidin1  Amir Sarfi1  Erfan Miahi1  Quentin Anthony  Shivam Chauhan1  
@@ -102,8 +59,7 @@ In what follows, Section [2](#S2 "2 Background and Methodology ‣ Covenant-72B
 
 ## 2 Background and Methodology
 
-![Refer to caption](/html/2603.08163/assets/x1.png)
-
+!(/html/2603.08163/assets/x1.png)
 
 Figure 1: Covenant-72B parallelism protocol. Each peer runs
 a SparseLoCo replica and communicates heavily compressed and
@@ -233,8 +189,7 @@ Figure [2](#S4.F2 "Figure 2 ‣ Inner learning rate schedule. ‣ 4.1 Setup ‣
 During the late stages of training (110K inner steps), we observed that the loss and a number of metrics began to plateau. We found that decreasing the outer learning rate to α=0.65\alpha=0.65 helped alleviate this. In the annealing phase, the inner learning rate is warmed up and rapidly decayed on a higher-quality data mixture to prepare the model for the SFT phase, following Anthony et al. ([2024](#bib.bib3 "The zyphra training cookbook")).
 Finally, we perform a 14.8B-token SFT phase offline, which is further described in Section [5](#S5 "5 Covenant-72B-Chat: Supervised Fine-Tuning (SFT) ‣ 4.4 Participation Dynamics ‣ 4.3 Communication Efficiency ‣ LLaMA-2. ‣ LLM360 K2. ‣ Psyche Consilience. ‣ INTELLECT-1. ‣ 4.2 Main Pre-Training Results ‣ 4 Pre-Training ‣ Covenant-72B: Pre-Training a 72B LLM with Trustless Peers Over-the-Internet").
 
-![Refer to caption](/html/2603.08163/assets/x2.png)
-
+!(/html/2603.08163/assets/x2.png)
 
 Figure 2: Learning rate schedule. *Left:* pre-training inner
 learning rate with linear warmup, cosine decay with a flatten window,
@@ -333,8 +288,7 @@ In local optimizers such as DiLoCo/SparseLoCo Douillard et al. ([2023](#bib.bib
 
 With R=20R{=}20 peers, H=30H{=}30 inner steps per round, and 8×8\timesB200 per peer, we enforce a fixed per-round compute window of tcompute=20t\_{\text{compute}}{=}20 minutes. Assuming a bandwidth constraint where each node does not exceed 500 Mb/s downlink and 110 Mb/s uplink, we observe an average communication time of tcomm=70t\_{\text{comm}}{=}70 seconds per round. This corresponds to a compute utilization of ∼94.5%{\sim}94.5\% for the 72B model.
 
-![Refer to caption](/html/2603.08163/assets/x3.png)
-
+!(/html/2603.08163/assets/x3.png)
 
 Figure 3: Compute–communication timelines over a two-hour window.
 Each row shows the breakdown of successive training rounds, with black segments denoting the compute window (inner-step training) and red segments denoting synchronization overhead. Despite training a 7.2×7.2\times larger model, Covenant-72B incurs only 70 s of idle time per round, compared to the 8.3 min per-round synchronization overhead reported for DiLoCo-style training in INTELLECT-1.
@@ -343,14 +297,12 @@ For context, we compare to the other major globally distributed run INTELLECT-1�
 
 ### 4.4 Participation Dynamics
 
-![Refer to caption](/html/2603.08163/assets/x4.png)
-
+!(/html/2603.08163/assets/x4.png)
 
 Figure 4: Contributing peers over the course of training.
 The solid curve shows the number of peers whose pseudo-gradients were selected (by Gauntlet) and included in each round’s aggregation. We cap the number of contributors at 20; across the run, we observed an average of 16.9 contributing peers throughout training.
 
-![Refer to caption](/html/2603.08163/assets/x5.png)
-
+!(/html/2603.08163/assets/x5.png)
 
 Figure 5: Cumulative unique peer participants over training. At
 least 70 unique peers contributed to model updates over the course of
@@ -712,8 +664,7 @@ Future work can consider scaling training to a wider and potentially more hetero
 
 In permissionless decentralized training, peer availability changes over time: participants may join, leave, or pause due to network issues or hardware problems. Figure [6](#A1.F6 "Figure 6 ‣ Appendix A Participation ‣ 6 Conclusion ‣ Quantitative Results. ‣ 5 Covenant-72B-Chat: Supervised Fine-Tuning (SFT) ‣ 4.4 Participation Dynamics ‣ 4.3 Communication Efficiency ‣ LLaMA-2. ‣ LLM360 K2. ‣ Psyche Consilience. ‣ INTELLECT-1. ‣ 4.2 Main Pre-Training Results ‣ 4 Pre-Training ‣ Covenant-72B: Pre-Training a 72B LLM with Trustless Peers Over-the-Internet") shows the number of peers actively submitting pseudo-gradients per step (red). Because participation is open, we use the Gauntlet mechanism to filter out submissions that appear low-quality or bad-faith (e.g., suspected of copying). The contributing peers (black) are those whose submissions are selected for the final aggregation and model update. Across the run, we observe an average of 24.4 active peers per step and 16.9 contributing peers per step.
 
-![Refer to caption](/html/2603.08163/assets/x6.png)
-
+!(/html/2603.08163/assets/x6.png)
 
 Figure 6: Active and contributing peers over training.
 Active peers (red) are registered on the network and actively submitting pseudo-gradients; contributing peers (black) denote the number of peers whose pseudo-gradients are selected for aggregation each round. In our permissionless setting, not all submissions are selected (e.g., due to failing validation checks or low-quality pseudo-gradients).
@@ -1236,19 +1187,15 @@ Here’s a Python function implementing topological sort using Kahn’s algorith
 [⬇](data:text/plain;base64,ZnJvbSBjb2xsZWN0aW9ucyBpbXBvcnQgZGVxdWUKCmRlZiB0b3BvbG9naWNhbF9zb3J0KGdyYXBoKToKICAgICIiIgogICAgUGVyZm9ybXMgYSB0b3BvbG9naWNhbCBzb3J0IG9uIGEgZGlyZWN0ZWQgYWN5Y2xpYyBncmFwaCAoREFHKS4KCiAgICBBcmdzOgogICAgICAgIGdyYXBoIChkaWN0KTogQSBkaWN0aW9uYXJ5IHJlcHJlc2VudGluZyB0aGUgZ3JhcGgsIHdoZXJlIGVhY2gga2V5IGlzIGEgbm9kZSBhbmQgaXRzIHZhbHVlIGlzIGFub3RoZXIgZGljdGlvbmFyeSBvZiBpdHMgbmVpZ2hib3JzLgoKICAgIFJldHVybnM6CiAgICAgICAgbGlzdDogQSBsaXN0IG9mIG5vZGVzIGluIHRvcG9sb2dpY2FsIG9yZGVyLgoKICAgIFJhaXNlczoKICAgICAgICBWYWx1ZUVycm9yOiBJZiB0aGUgZ3JhcGggaGFzIGEgY3ljbGUuCiAgICAiIiIKICAgIGluX2RlZ3JlZSA9IHtub2RlOiAwIGZvciBub2RlIGluIGdyYXBofQogICAgZm9yIG5vZGUgaW4gZ3JhcGg6CiAgICAgICAgZm9yIG5laWdoYm9yIGluIGdyYXBoW25vZGVdOgogICAgICAgICAgICBpbl9kZWdyZWVbbmVpZ2hib3JdICs9IDEKCiAgICBxdWV1ZSA9IGRlcXVlKFtub2RlIGZvciBub2RlIGluIGdyYXBoIGlmIGluX2RlZ3JlZVtub2RlXSA9PSAwXSkKICAgIHNvcnRlZF9ub2RlcyA9IFtdCgogICAgd2hpbGUgcXVldWU6CiAgICAgICAgbm9kZSA9IHF1ZXVlLnBvcGxlZnQoKQogICAgICAgIHNvcnRlZF9ub2Rlcy5hcHBlbmQobm9kZSkKICAgICAgICBmb3IgbmVpZ2hib3IgaW4gZ3JhcGhbbm9kZV06CiAgICAgICAgICAgIGluX2RlZ3JlZVtuZWlnaGJvcl0gLT0gMQogICAgICAgICAgICBpZiBpbl9kZWdyZWVbbmVpZ2hib3JdID09IDA6CiAgICAgICAgICAgICAgICBxdWV1ZS5hcHBlbmQobmVpZ2hib3IpCgogICAgaWYgbGVuKHNvcnRlZF9ub2RlcykgIT0gbGVuKGdyYXBoKToKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKCJHcmFwaCBoYXMgYSBjeWNsZSIpCgogICAgcmV0dXJuIHNvcnRlZF9ub2Rlcw==)
 from collections import deque
 
-
 def topological\_sort(graph):
  """
  Performs a topological sort on a directed acyclic graph (DAG).
 
-
  Args:
  graph (dict): A dictionary representing the graph, where each key is a node and its value is another dictionary of its neighbors.
 
-
  Returns:
  list: A list of nodes in topological order.
-
 
  Raises:
  ValueError: If the graph has a cycle.
@@ -1258,10 +1205,8 @@ def topological\_sort(graph):
  for neighbor in graph[node]:
  in\_degree[neighbor] += 1
 
-
  queue = deque([node for node in graph if in\_degree[node] == 0])
  sorted\_nodes = []
-
 
  while queue:
  node = queue.popleft()
@@ -1271,10 +1216,8 @@ def topological\_sort(graph):
  if in\_degree[neighbor] == 0:
  queue.append(neighbor)
 
-
  if len(sorted\_nodes) != len(graph):
  raise ValueError("Graph has a cycle")
-
 
  return sorted\_nodes
 Approach:
@@ -1367,83 +1310,3 @@ New ML Student:
 Overfitting occurs when a model is too complex and learns the noise in the training data, rather than the underlying patterns. This results in a model that performs well on the training data but poorly on new, unseen data. Think of it like memorizing the answers to a practice test instead of learning the material. The model is essentially "memorizing" the training data, including the noise and random fluctuations, rather than learning the generalizable patterns. To avoid overfitting, we use techniques like regularization, cross-validation, and early stopping to ensure the model is generalizing well to new data.
 Research Scientist:
 Overfitting is a fundamental problem in machine learning where a model becomes overly specialized to the training data, capturing noise and random fluctuations rather than the underlying patterns. This is often characterized by a significant gap between the model’s performance on the training data and its performance on unseen data. Overfitting can be attributed to various factors, including model complexity, data quality, and training procedures. To mitigate overfitting, researchers employ a range of techniques, including regularization, early stopping, and ensemble methods, to balance model complexity and generalization performance. The goal is to develop models that can effectively generalize to new, unseen data, while minimizing the risk of overfitting.
-
-[◄](/html/2603.08161)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.08163)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.08163)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.08163)[►](/html/2603.08164)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 08:24:22 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

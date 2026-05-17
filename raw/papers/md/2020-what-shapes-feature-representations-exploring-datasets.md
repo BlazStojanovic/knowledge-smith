@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/2006.12433v2
 year: 2020
 ---
 
-[2006.12433] What shapes feature representations? Exploring datasets, architectures, and training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # What shapes feature representations? Exploring datasets, architectures, and training
 
 Katherine L. Hermann
@@ -116,8 +73,7 @@ Over training, as a model becomes sensitive to a target feature, does it build t
 Datasets.
 In a set of preliminary experiments, our datasets consisted of 224 ×\times 224 RGB images of objects with multiple features, each of which could be used as a label in a classification task. For each of these tasks, we created 5 cross-validation splits, creating validation sets by holding out a subset of values for the non-target features (3 classes per feature). For example, a validation set for a color classification task might include squares, triangles, and circles, while no training examples would have had these shapes. Thus, our classification tasks required generalizing the target feature (e.g. color) over the non-target feature(s) (e.g. shape and texture).
 
-![Refer to caption](/html/2006.12433/assets/figures/stims.png)
-
+!(/html/2006.12433/assets/figures/stims.png)
 
 Figure 1: Example vision dataset items. The Navon dataset is adapted from [[13](#bib.bib13)] and based on [[30](#bib.bib30)].
 
@@ -146,13 +102,11 @@ One hypothesis is that the decodability of features from an untrained model refl
 
 In this section, we trained models to classify a target feature in the presence of one or more non-target, task-irrelevant (uncorrelated with the label) features.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_trained_vs_untrained_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_trained_vs_untrained_decoding.png)
 
 Figure 2: Target features are enhanced, and non-target features are suppressed, relative to an untrained model in models with an AlexNet architecture trained on Trifeature tasks. Accuracy decoding features (shape, texture, color) from layers of an untrained model (far left) versus from models trained to classify shape, texture, or color (mean decoding accuracy across models trained on each of 5 cv-splits of the data; error bars indicate 95% CIs). Chance = 1717\frac{1}{7} = 14.3% (dashed gray line). Decoding accuracy is generally higher for target features in the trained than in the untrained model (enhanced) and lower for non-target features (suppressed).
 
-![Refer to caption](/html/2006.12433/assets/figures/navon_experiments/navon_custom_alexnet_trained_vs_untrained_decoding.png)
-
+!(/html/2006.12433/assets/figures/navon_experiments/navon_custom_alexnet_trained_vs_untrained_decoding.png)
 
 Figure 3: Feature decodability in models with an AlexNet architecture trained on the Navon dataset. Accuracy decoding features (shape, texture) from an untrained model (left) versus from shape- (center) and texture-trained models (right). Results corresponding to trained models are mean across models trained on 5 cv splits. Chance = 123123\frac{1}{23} = 4.3% (dashed gray line). As for the Trifeature models (Figure [2](#S3.F2 "Figure 2 ‣ 3.2 What’s decodable after training? ‣ 3 Does feature selection happen by enhancement or suppression? ‣ What shapes feature representations? Exploring datasets, architectures, and training")), decoding accuracy in the untrained model decreases across layers, and the target features are enhanced, whereas the non-target features are suppressed.
 
@@ -176,8 +130,7 @@ We created (non-vision) datasets containing features that differed in difficulty
 
 ### 4.1 What if two features redundantly predict the label?
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_accuracy_perfect_correlation_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_accuracy_perfect_correlation_decoding.png)
 
 Figure 4: When two features redundantly predict the label, models
 preferentially learn one feature. Color is more decodable than shape, and shape is more decodable than texture, when AlexNet is trained on perfectly predictive pairs.
@@ -196,8 +149,7 @@ Results.
 The target feature was always enhanced (higher decodability from the trained than the untrained model), whereas the correlated non-target feature was generally preserved (no change) or suppressed (Figure [5](#S4.F5 "Figure 5 ‣ 4.2 What if one feature perfectly predicts the label, but another only partially predicts it? ‣ 4 What if multiple features are predictive? ‣ What shapes feature representations? Exploring datasets, architectures, and training")). Surprisingly, the level of suppression was more or less constant across degree of correlation, except at high correlations. When the conditional probability was 0.9, the correlated non-target features were slightly enhanced.
 A similar pattern was observed in the post-pool layer of ResNet-50 (Figure [A.3](#A1.F3 "Figure A.3 ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")). Figures [A.4](#A1.F4 "Figure A.4 ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training") and [A.5](#A1.F5 "Figure A.5 ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training") show raw decoding accuracies.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/decoding_correlated.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/decoding_correlated.png)
 
 Figure 5: Non-target features correlated with the target feature are generally suppressed. For both datasets in which shape and color (left), and shape and texture (right), are correlated, non-target features correlated with the target feature (“correlated”) are suppressed (red region) relative to the untrained model, whereas target features are enhanced (yellow region). Suppression of the correlated non-target feature is largely constant across correlation strengths (x axis), until very high correlations.
 
@@ -205,8 +157,7 @@ Figure 5: Non-target features correlated with the target feature are generally s
 
 Above, we tested what vision models learn when one feature perfectly predicts the label. Here, we consider the non-visual Binary Features datasets and a simpler model architecture (a 5-layer MLP), and consider what happens when no feature is perfectly predictive. We vary both the difficulty and predictivity of features, and test whether a model prefers a feature that is easier to learn (linearly decodable from the input) but only moderately predictive of the label, or a feature that is more difficult (XOR/parity, not linearly correlated with the input) but more predictive of the label. Will a model trade off predictivity for learnability?
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_easy_vs_hard_compressed.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_easy_vs_hard_compressed.png)
 
 Figure 6: More reliable, but difficult, features can be suppressed by less reliable, but easier, features. The difficult feature (purple) had fixed predictivity of 0.9, while the easy feature (green) had varied predictivity (x-axis). The left panel evaluates the model’s use of each feature (using a test set with the other feature made unpredictive). The middle panel shows decodability of each feature from the penultimate layer. The right panel shows decodability of a single input unit’s value (another linear feature) from the inputs associated with each feature. (5 runs per condition; lines are linear fits.)
 
@@ -220,21 +171,18 @@ Which features are represented? The easy feature could be decoded with relativel
 
 ## 5 What affects the representational similarity between models?
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_basic_rsa.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_basic_rsa.png)
 
 (a) Similarity by architecture and task pairing.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_RSA_by_tasks.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_RSA_by_tasks.png)
 
 (b) Details of cross-task similarity.
 
 Figure 7: Representational similarity of Trifeature (Uncorrelated) models. ([7(a)](#S5.F7.sf1 "In Figure 7 ‣ 5 What affects the representational similarity between models? ‣ What shapes feature representations? Exploring datasets, architectures, and training")) Representational similarity of the same layer across two runs, of different layers within an architecture (e.g. pool3 and fc6), and of different layers across architectures (AlexNet pool3 and ResNet-50 post-pool).
 ([7(b)](#S5.F7.sf2 "In Figure 7 ‣ 5 What affects the representational similarity between models? ‣ What shapes feature representations? Exploring datasets, architectures, and training")) Representational similarity across layers and architectures on each possible pair of tasks. Similarity is highest between pairs of models trained on the same versus different tasks, though within tasks, it is lowest for texture. (Results from 5 runs per condition; errorbars are bootstrap 95%-CIs.)
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_heatmap_rsa_correlation.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_heatmap_rsa_correlation.png)
 
 Figure 8: Representational similarity of Binary Feature models. We compare an untrained model, a model trained with an unpredictive, or perfectly predictive, easy feature (p​(label|easy feature)=0.5𝑝conditionallabeleasy feature0.5p(\text{label}|\text{easy feature})=0.5 or 1.01.01.0), and a multitask model. While similarity is generally highest between pairs of models trained on the same task, the numerical magnitude varies considerably.
 Multi-task models closely resemble the model trained with the predictive easier feature, even though they are also trained to output the more difficult feature. (5 runs per condition.)
@@ -559,62 +507,49 @@ Exploring datasets, architectures, and training”
 
 ## Appendix A Supplemental Figures
 
-![Refer to caption](/html/2006.12433/assets/figures/navon_experiments/navon_custom_resnet50_trained_vs_untrained_decoding.png)
-
+!(/html/2006.12433/assets/figures/navon_experiments/navon_custom_resnet50_trained_vs_untrained_decoding.png)
 
 Figure A.1: Feature decodability in models with a ResNet-50 architecture trained on the Navon dataset. Accuracy decoding features (shape, texture) from an untrained model (left) versus from shape- (center) and texture-trained (right) models. Results corresponding to trained models are mean across models trained on 5 cv splits. Chance = 123123\frac{1}{23} = 4.3% (dashed line). Target features are enhanced relative to the untrained model, whereas non-target features are suppressed.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_trained_vs_untrained_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_trained_vs_untrained_decoding.png)
 
 Figure A.2: Non-target features are suppressed in the post-pool layer of models with a ResNet-50 architecture trained on the Trifeature dataset. Accuracy decoding features (shape, texture, color) for models trained to classify shape (left), texture (center), or color (right). Chance = 1717\frac{1}{7} = 14.3%. As observed with the Navon dataset and in the AlexNet models, non-target features are suppressed in trained models relative to the untrained model.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_difference_by_prob_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_difference_by_prob_decoding.png)
 
 Figure A.3: Non-target features that are correlated with the target feature are suppressed in ResNet-50. For both datasets in which shape and color (upper row) and shape and texture (lower row) are correlated, target features are enhanced (left column), whereas non-target features correlated with the the target feature (“correlated non-target feature”, right column) are suppressed. As observed in experiments using an AlexNet architecture, suppression of the correlated non-target feature is largely constant across correlation strengths (x axis).
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_accuracy_by_prob_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_accuracy_by_prob_decoding.png)
 
 Figure A.4: Decoding accuracy for models with an AlexNet architecture trained on the Trifeature (Correlated) datasets. See Figure [5](#S4.F5 "Figure 5 ‣ 4.2 What if one feature perfectly predicts the label, but another only partially predicts it? ‣ 4 What if multiple features are predictive? ‣ What shapes feature representations? Exploring datasets, architectures, and training") for these results plotted in terms of enhancement/suppression relative to an untrained model.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_accuracy_by_prob_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_accuracy_by_prob_decoding.png)
 
 Figure A.5: Decoding accuracy for models with a ResNet-50 architecture trained on the Trifeature (Correlated) datasets. as a function of the degree of correlation of the non-target feature with the target feature in See Figure [A.3](#A1.F3 "Figure A.3 ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training") for these results plotted in terms of enhancement/suppression relative to an untrained model.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_accuracy_perfect_correlation_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_accuracy_perfect_correlation_decoding.png)
 
 Figure A.6: When two features redundantly predict the label, models with a ResNet-50 architecture preferentially learn one feature. Color is more decodable than shape, and shape is more decodable than texture, when ResNet-50 is trained on perfectly predictive pairs, consistent with the pattern we observed in AlexNet (Figure [4](#S4.F4 "Figure 4 ‣ 4.1 What if two features redundantly predict the label? ‣ 4 What if multiple features are predictive? ‣ What shapes feature representations? Exploring datasets, architectures, and training")).
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_difference_perfect_correlation_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_alexnet_difference_perfect_correlation_decoding.png)
 
 Figure A.7: Models with an AlexNet architecture sometimes suppress features that perfectly predict the label. Models trained on a dataset in which shape and color redundantly predict the label suppress shape in pool3 and fc6 relative to an untrained model. Models trained on a dataset in which shape and texture predict the label suppress texture in pool3.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_difference_perfect_correlation_decoding.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_custom_resnet50_difference_perfect_correlation_decoding.png)
 
 Figure A.8: Models with a ResNet-50 architecture sometimes suppress features that perfectly predict the label. Models trained on a dataset in which shape and color redundantly predict the label suppress shape in the post-pool layer relative to an untrained model. For reasons of computational resources, we did not decode from the pre-pool layer.
 
 ### A.1 Binary feature tasks
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_decoding_suppression_timecourse.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_decoding_suppression_timecourse.png)
 
 Figure A.9: The dynamics of feature learning when the easy feature has relatively low predictivity (0.65) and the hard feature has high predictivity (0.9). The easy feature is decodable above chance (∼75%similar-toabsentpercent75\sim 75\%, chance is 50%) before training (epoch 0), while the difficult feature is not. Perhaps because of this, the easy feature is learned first, and test performance on this feature, as well as its decodability, spike early. As the more difficult feature is learned, the decodability and use of the easier feature declines, although not to chance, and the more difficult and predictive feature is still decodable and used less than 80% of the time. (Averages across 5 runs.)
 
-
-
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_decoding_nonlinear_values.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_decoding_nonlinear_values.png)
 
 (a) Nonlinear decoder accuracy.
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_decoding_nonlinear_advantage.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_decoding_nonlinear_advantage.png)
 
 (b) Advantage over linear decoder.
 
@@ -622,44 +557,34 @@ Figure A.10: Nonlinear decoders trained on a larger dataset (2048 examples) are 
 
 ### A.2 RSA
 
-![Refer to caption](/html/2006.12433/assets/figures/navon_experiments/navon_basic_rsa.png)
-
+!(/html/2006.12433/assets/figures/navon_experiments/navon_basic_rsa.png)
 
 (a) Similarity by architecture and task pairing.
 
-![Refer to caption](/html/2006.12433/assets/figures/navon_experiments/navon_RSA_by_tasks.png)
-
+!(/html/2006.12433/assets/figures/navon_experiments/navon_RSA_by_tasks.png)
 
 (b) Details of cross-task similarity.
 
 Figure A.11: Two views of the RSA results on the Navon tasks. ([11(a)](#A1.F11.sf1 "In Figure A.11 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")) The results across the two architectures we considered, and different possible training task pairings: two different training tasks, an untrained model vs. a trained one, and two models trained on the same task. In general, whether models are trained on the same task significantly drives RSA results, although untrained models do have some similarity to trained models. ([11(b)](#A1.F11.sf2 "In Figure A.11 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")) Representational similarity between all models and layers on each possible pair of tasks. While similarity is highest between models trained on the same task, the magnitude of that similarity varies across tasks. For instance, two texture-trained models are much less similar to one another than shape trained models. See Fig. [7](#S5.F7 "Figure 7 ‣ 5 What affects the representational similarity between models? ‣ What shapes feature representations? Exploring datasets, architectures, and training") for equivalent analyses on the trifeature tasks. The overall results are similar, but the Navon dataset shows slightly higher similarity within models than the trifeature dataset, and slightly more of an effect of architecture on representational similarity.
 (Results are from 5 runs per condition.)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_experiments/cst_corr_features_task_similarity.png)
-
+!(/html/2006.12433/assets/figures/cst_experiments/cst_corr_features_task_similarity.png)
 
 Figure A.12: The effect of feature correlations (between shape and texture) on representational similarity in the trifeature dataset. The representational similarity analysis is most sensitive to the target feature, even when another feature is relatively strongly correlated with it. (Results from 5 runs per condition, with matched architecture and layer.)
 
-
-
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_rsa_correlation.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_rsa_correlation.png)
 
 (a) RSA with correlation distance similarity.
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_rsa_euclidean.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_rsa_euclidean.png)
 
 (b) RSA with Euclidean similarity.
 
-![Refer to caption](/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_cka.png)
-
+!(/html/2006.12433/assets/figures/toy_experiments/toy_task_rsa_cka.png)
 
 (c) CKA.
 
 Figure A.13: Further representation analyses for the toy tasks. Here we expand the results from the main text figure Fig. [8](#S5.F8 "Figure 8 ‣ 5 What affects the representational similarity between models? ‣ What shapes feature representations? Exploring datasets, architectures, and training"), including both comparisons to intermediate easy feature predictivity values, and different analysis approaches. The results for intermediate easy feature predictivities interpolate between the cases shown in the main text, but this interpolation reflects the bias towards the easier features. In the main text (Fig. [8](#S5.F8 "Figure 8 ‣ 5 What affects the representational similarity between models? ‣ What shapes feature representations? Exploring datasets, architectures, and training")) we used RSA with correlation distance as the metric. We show an expanded version of this figure in [13(a)](#A1.F13.sf1 "In Figure A.13 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")). We also show that ([13(b)](#A1.F13.sf2 "In Figure A.13 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")) RSA with Euclidean distance as the metric, and ([13(c)](#A1.F13.sf3 "In Figure A.13 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")) CKA [[22](#bib.bib22)] both yield quite similar patterns of results. Our conclusions do not appear to be limited to the particular analysis we considered in the main text.
-
-
 
 | A | B |
 | --- | --- |
@@ -677,7 +602,6 @@ BABAABA∧\wedgeBA∨\veeBA⊕direct-sum\oplusBA∨\veeBA∧\wedgeBRDM[112011]ma
 &&&1\\
 &&&\\
 \end{bmatrix}Correlation: -0.8
-
 
 Figure A.14: An intuitive example of why representational similarity might be lower on nonlinear tasks — there are multiple solutions resulting in different RDMs. We consider two possible ways that a network with two hidden units could compute the XOR of two binary inputs: either by an AND and an OR (top row), or by units that select each of the valid combinations (bottom row). When the inputs are passed through these networks, and representations are computed at the hidden layer, the patterns are different. In fact, when the representational dissimilarity matrices are computed, and then the correlation is taken between the two networks, it is actually negative! This raises the question of why positive representational similarities are observed at all between different networks computing XOR. The answer likely lies in overparameterization — a very large hidden layer will likely contain units which partially represent both solutions. However, the network will still likely favor one or the other, thus resulting in lower correlations between RDMs than on simpler tasks. (This will likely be exacerbated by other features being partially represented, and so on.)
 
@@ -707,25 +631,25 @@ Decoders were trained for 5000 epochs with a learning rate of 10−3superscript1
 
 In Fig. [B.1](#A2.F1 "Figure B.1 ‣ B.3 Trifeature ‣ Appendix B Methods ‣ What shapes feature representations? Exploring datasets, architectures, and training") we show sample stimuli illustrating the range of features in the trifeature dataset.
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/triangle_solid_red.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/triangle_solid_red.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/square_stripes_green.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/square_stripes_green.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/plus_grid_blue.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/plus_grid_blue.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/circle_hexgrid_yellow.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/circle_hexgrid_yellow.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/tee_dots_pink.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/tee_dots_pink.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/rhombus_noise_cyan.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/rhombus_noise_cyan.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/pentagon_triangles_purple.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/pentagon_triangles_purple.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/star_zigzags_ocean.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/star_zigzags_ocean.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/fivesquare_rain_orange.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/fivesquare_rain_orange.png)
 
-![Refer to caption](/html/2006.12433/assets/figures/cst_demo_stims/trapezoid_pluses_white.png)
+!(/html/2006.12433/assets/figures/cst_demo_stims/trapezoid_pluses_white.png)
 
 Figure B.1: Sample images showing all colors, shapes, and textures used in the trifeature dataset.
 
@@ -740,83 +664,3 @@ For the Trifeature datasets, representational similarity analyses were performed
 For the binary feature datasets, representational similarity analyses were performed on a new dataset sampled independently from the training and evaluation data for the models; the predictivity of the features in this dataset did not matter, since the labels are not used in RSA, only the patterns of activation produced by the inputs.
 
 We also compared to CKA [[22](#bib.bib22)], as well as RSA with Euclidean distance as the RDM metric, and found similar results in both cases (Fig. [A.13](#A1.F13 "Figure A.13 ‣ A.2 RSA ‣ Appendix A Supplemental Figures ‣ What shapes feature representations? Exploring datasets, architectures, and training")), and similarly with Spearman rank correlation rather than Pearson between the RDMs.
-
-[◄](/html/2006.12432)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2006.12433)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2006.12433)
-[View original  
-on arXiv](https://arxiv.org/abs/2006.12433)[►](/html/2006.12434)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 11:10:49 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

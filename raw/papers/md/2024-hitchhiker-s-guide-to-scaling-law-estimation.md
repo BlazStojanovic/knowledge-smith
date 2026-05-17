@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2410.11840
 year: 2024
 ---
 
-[2410.11840] A Hitchhiker’s Guide to Scaling Law Estimation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A Hitchhiker’s Guide to Scaling Law Estimation
 
 Leshem Choshen
@@ -112,24 +69,22 @@ Our experiments also provide insight into the functional form of scaling laws th
 We conclude with discussion of other work on scaling law estimation that may be of interest to practitioners §[10](#S10 "10 Related work ‣ A Hitchhiker’s Guide to Scaling Law Estimation").
 
 GPT3
-![Refer to caption](/html/2410.11840/assets/x1.png)
+!(/html/2410.11840/assets/x1.png)
 
-![Refer to caption](/html/2410.11840/assets/x2.png)
+!(/html/2410.11840/assets/x2.png)
 
-![Refer to caption](/html/2410.11840/assets/x3.png)
+!(/html/2410.11840/assets/x3.png)
 
 Pythia
-![Refer to caption](/html/2410.11840/assets/x4.png)
+!(/html/2410.11840/assets/x4.png)
 
 (a) Scale up vs. Train Percentage
 
-![Refer to caption](/html/2410.11840/assets/x5.png)
-
+!(/html/2410.11840/assets/x5.png)
 
 (b) #Models vs. Train Percentage
 
-![Refer to caption](/html/2410.11840/assets/x6.png)
-
+!(/html/2410.11840/assets/x6.png)
 
 (c) #Models vs. Scale up predicted
 
@@ -138,15 +93,14 @@ Each column shows a subset of the three axes along which these training sets dif
 (1) the number of tokens used to train each LM in Ftrainsubscript𝐹trainF\_{\mathrm{train}} (expressed as a fraction of the full training corpus), (2) the number of distinct models trained; and (3) the size of the largest model trained (expressed as a scale-up factor—the ratio between the target model and the largest model in Ftrainsubscript𝐹trainF\_{\mathrm{train}}).
 In (a), all laws are estimated from four models. In (c) all laws use the full corpus.
 Orange lines show iso-FLOP contours (sets of scaling laws whose training sets require the same computational cost to produce).
-![Refer to caption](/html/2410.11840/assets/x8.png) represent the most efficient ways to obtain 15%, 10% and 5% ARE. One of the most immediate conclusions from these plots is that scaling law estimation is quite noisy—the inclusion of a single badly-behaved model in the estimation procedure can produce large errors, and in small model families error does not reliably decrease with additional computation. However—because of noise—it is often preferable to extrapolate from a large number of small, partially trained models rather than a small number of large models.
+!(/html/2410.11840/assets/x8.png) represent the most efficient ways to obtain 15%, 10% and 5% ARE. One of the most immediate conclusions from these plots is that scaling law estimation is quite noisy—the inclusion of a single badly-behaved model in the estimation procedure can produce large errors, and in small model families error does not reliably decrease with additional computation. However—because of noise—it is often preferable to extrapolate from a large number of small, partially trained models rather than a small number of large models.
 
 ## 2 Defining a scaling law
 
 A scaling law estimates the loss of a costly model by training cheaper ones (see Fig. [2](#S2.F2 "Figure 2 ‣ 2 Defining a scaling law ‣ A Hitchhiker’s Guide to Scaling Law Estimation")) which share a pretraining procedure and differ by some hyperparameters, typically model size (#​params#params\#\texttt{params}{}) and number of tokens seen during training (#​toks#toks\#\texttt{toks}{}). A scaling law is a function that predicts a target model’s loss on held-out data when setting the value of one hyperparameter (Kaplan et al., [2020](#bib.bib25)) or both ([Rosenfeld et al.,](#bib.bib39) ; Hoffmann et al., [2022](#bib.bib19)).
 Comparing laws’ predictions about different pretraining choices (e.g. data Ge et al., [2024](#bib.bib14)) allows informed decisions about which large-scale model to train.
 
-![Refer to caption](/html/2410.11840/assets/x9.png)
-
+!(/html/2410.11840/assets/x9.png)
 
 Figure 2: Illustration of a scaled family, an estimated scaling law, and its prediction error for a target model.
 
@@ -236,18 +190,15 @@ Instead of varying the amount of data or epochs, Ge et al. ([2024](#bib.bib14))
 
 ## 5 When I train a new model, do I even need a new scaling law?
 
-![Refer to caption](/html/2410.11840/assets/x10.png)
-
+!(/html/2410.11840/assets/x10.png)
 
 (a) Size parameters
 
-![Refer to caption](/html/2410.11840/assets/x11.png)
-
+!(/html/2410.11840/assets/x11.png)
 
 (b) Token parameters
 
-![Refer to caption](/html/2410.11840/assets/x12.png)
-
+!(/html/2410.11840/assets/x12.png)
 
 (c) Intercept
 
@@ -289,18 +240,15 @@ To provide another form of comparison for the predicted scaling laws, we compute
 
 We find (See App. [5.2](#S5.SS2 "5.2 Are even simpler baselines enough? ‣ 5 When I train a new model, do I even need a new scaling law? ‣ A Hitchhiker’s Guide to Scaling Law Estimation")) that out of the two, the *best performance* baseline is closer to L​(Ftarget)𝐿subscript𝐹targetL{}(F\_{\mathrm{target}}), which is to be expected, as the target model performance is better than any other model in F𝐹F and this is the better of the two. In both cases, even with the full F𝐹F, the baselines suffer more than 15% error, mostly above 10%, almost never get below 5%, and 18% ARE on average across all scaled families we study.
 
-![Refer to caption](/html/2410.11840/assets/x13.png)
-
+!(/html/2410.11840/assets/x13.png)
 
 (a) OPT
 
-![Refer to caption](/html/2410.11840/assets/x14.png)
-
+!(/html/2410.11840/assets/x14.png)
 
 (b) GPT3
 
-![Refer to caption](/html/2410.11840/assets/x15.png)
-
+!(/html/2410.11840/assets/x15.png)
 
 (c) Pythia
 
@@ -326,17 +274,16 @@ Our remaining experiments thus fit scaling laws using all these intermediate che
 Almost all, but drop checkpoints from the beginning of training.
 
 OPT
-![Refer to caption](/html/2410.11840/assets/x16.png)
+!(/html/2410.11840/assets/x16.png)
 
-![Refer to caption](/html/2410.11840/assets/x17.png)
+!(/html/2410.11840/assets/x17.png)
 
 Pythia
-![Refer to caption](/html/2410.11840/assets/x18.png)
+!(/html/2410.11840/assets/x18.png)
 
 (a) Cut 10B first tokens
 
-![Refer to caption](/html/2410.11840/assets/x19.png)
-
+!(/html/2410.11840/assets/x19.png)
 
 (b) Fit all data
 
@@ -720,43 +667,35 @@ Our findings leave open many important questions, from performing efficient pred
 We bring errors of data from fitting from a single model on a given percentage of training to the largest model with full training. Scaling is constant and follows the literature (Muennighoff et al., [2024](#bib.bib32))
 and the largest model stands as target model (so the bottom line in each figure represents predicting from the beginning of training).
 
-![Refer to caption](/html/2410.11840/assets/x20.png)
-
+!(/html/2410.11840/assets/x20.png)
 
 (a) OPT
 
-![Refer to caption](/html/2410.11840/assets/x21.png)
-
+!(/html/2410.11840/assets/x21.png)
 
 (b) GPT2 (trained on C4)
 
-![Refer to caption](/html/2410.11840/assets/x22.png)
-
+!(/html/2410.11840/assets/x22.png)
 
 (c) OLMO
 
-![Refer to caption](/html/2410.11840/assets/x23.png)
-
+!(/html/2410.11840/assets/x23.png)
 
 (d) Pythia deduped V0
 
-![Refer to caption](/html/2410.11840/assets/x24.png)
-
+!(/html/2410.11840/assets/x24.png)
 
 (e) Pythia V0
 
-![Refer to caption](/html/2410.11840/assets/x25.png)
-
+!(/html/2410.11840/assets/x25.png)
 
 (f) Pythia deduped
 
-![Refer to caption](/html/2410.11840/assets/x26.png)
-
+!(/html/2410.11840/assets/x26.png)
 
 (g) Pythia
 
-![Refer to caption](/html/2410.11840/assets/x27.png)
-
+!(/html/2410.11840/assets/x27.png)
 
 (h) T5-Pile
 
@@ -766,33 +705,27 @@ Figure 6: Fitting scaling laws under the assumption that all models scale simila
 
 We provide in Fig. [7](#A2.F7 "Figure 7 ‣ Appendix B Loss curves and predictions ‣ A Hitchhiker’s Guide to Scaling Law Estimation") graphs of the loss during training of the target models per originating source (e.g., a paper) together with the predictions by using different percentage of the training.
 
-![Refer to caption](/html/2410.11840/assets/x28.png)
-
+!(/html/2410.11840/assets/x28.png)
 
 (a) Overtrain
 
-![Refer to caption](/html/2410.11840/assets/x29.png)
-
+!(/html/2410.11840/assets/x29.png)
 
 (b) Datablations
 
-![Refer to caption](/html/2410.11840/assets/x30.png)
-
+!(/html/2410.11840/assets/x30.png)
 
 (c) GPT-3
 
-![Refer to caption](/html/2410.11840/assets/x31.png)
-
+!(/html/2410.11840/assets/x31.png)
 
 (d) Pythia
 
-![Refer to caption](/html/2410.11840/assets/x32.png)
-
+!(/html/2410.11840/assets/x32.png)
 
 (e) T5-Pile
 
-![Refer to caption](/html/2410.11840/assets/x33.png)
-
+!(/html/2410.11840/assets/x33.png)
 
 (f) Training Trajectories
 
@@ -808,33 +741,27 @@ To test this we reverse the order of models and predict with the largest models 
 
 As shown in Fig. [8](#A3.F8 "Figure 8 ‣ Appendix C Is scaling working only upwards? ‣ A Hitchhiker’s Guide to Scaling Law Estimation"), the number of models plays an important role in fitting well and a minimum of 30-40% of the training is necessary for good fit, more than that often improves further.
 
-![Refer to caption](/html/2410.11840/assets/x34.png)
-
+!(/html/2410.11840/assets/x34.png)
 
 (a) OPT
 
-![Refer to caption](/html/2410.11840/assets/x35.png)
-
+!(/html/2410.11840/assets/x35.png)
 
 (b) Pythia deduped V0
 
-![Refer to caption](/html/2410.11840/assets/x36.png)
-
+!(/html/2410.11840/assets/x36.png)
 
 (c) Pythia V0
 
-![Refer to caption](/html/2410.11840/assets/x37.png)
-
+!(/html/2410.11840/assets/x37.png)
 
 (d) Pythia deduped
 
-![Refer to caption](/html/2410.11840/assets/x38.png)
-
+!(/html/2410.11840/assets/x38.png)
 
 (e) Pythia
 
-![Refer to caption](/html/2410.11840/assets/x39.png)
-
+!(/html/2410.11840/assets/x39.png)
 
 (f) T5-Pile
 
@@ -845,83 +772,3 @@ Figure 8: Fitting scaling laws trying to predict the smallest model, with the la
 If so, not through cross validataion.
 
 In §[7](#S7 "7 How big a model should I train? ‣ A Hitchhiker’s Guide to Scaling Law Estimation"), we raise the issue of instability of scaling law predictions, with a single model vastly changing the results. We tried to see if, without knowing the ARE, we could remove bad models from the prediction. We hypothesized that models that we can’t predict would mean models that would skew our predictions when fitted upon. We performed a cross-validation on the #​params#params\#\texttt{params}{} families in F𝐹F each time setting the models with most #​toks#toks\#\texttt{toks}{} as target ans exclusing the #​params#params\#\texttt{params}{} family from F𝐹F. Our hypothesis was found to be incorrect. Such cases of hard-to-predict models were found to indicate that the models left in F𝐹F are bad predictors and not that the target is very dissimilar (a "bad" training). In 58% of the cases removing that model from the scaling law created the worst ARE possible on the actual target, more than removing any other model.
-
-[◄](/html/2410.11839)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2410.11840)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2410.11840)
-[View original  
-on arXiv](https://arxiv.org/abs/2410.11840)[►](/html/2410.11841)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Nov 5 20:15:36 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

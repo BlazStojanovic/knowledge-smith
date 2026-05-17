@@ -19,50 +19,6 @@ url: http://arxiv.org/abs/1706.06978v4
 year: 2017
 ---
 
-[1706.06978] Deep Interest Network for Click-Through Rate Prediction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Deep Interest Network for Click-Through Rate Prediction
 
 Guorui Zhou, Chengru Song, Xiaoqiang Zhu
@@ -182,8 +138,7 @@ When she visits the e-commerce site, system displays a suitable ad to her, for e
 Obviously the displayed ad only matches or activates part of interests of this mother.
 In summary, interests of user with rich behaviors are diverse and could be locally activated given certain ads. We show later in this paper making use of these characteristics plays important role for building CTR prediction model.
 
-![Refer to caption](/html/1706.06978/assets/images/omni/sys4.png)
-
+!(/html/1706.06978/assets/images/omni/sys4.png)
 
 Figure 1. Illustration of running procedure of display advertising system in Alibaba, in which user behavior data plays important roles.
 
@@ -238,8 +193,7 @@ Table 1. Statistics of feature sets used in the display advertising system in Al
 | time | ∼10similar-toabsent10\sim 10 | one-hot | 1 |
 | … | … | … | … |
 
-![Refer to caption](/html/1706.06978/assets/images/omni/DIN_new.png)
-
+!(/html/1706.06978/assets/images/omni/DIN_new.png)
 
 Figure 2. Network Architecture. The left part illustrates the network of base model (Embedding&MLP). Embeddings of cate\_id, shop\_id and goods\_id belong to one goods are concatenated to represent one visited goods in user’s behaviors. Right part is our proposed DIN model. It introduces a local activation unit, with which the representation of user interests varies adaptively given different candidate ads.
 
@@ -354,8 +308,7 @@ Take ℓ2subscriptℓ2\ell\_{2} regularization as an example.
 Only parameters of non-zero sparse features appearing in each mini-batch needs to be updated in the scenario of SGD based optimization methods without regularization.
 However, when adding ℓ2subscriptℓ2\ell\_{2} regularization it needs to calculate L2-norm over the whole parameters for each mini-batch, which leads to extremely heavy computations and is unacceptable with parameters scaling up to hundreds of millions.
 
-![Refer to caption](/html/1706.06978/assets/x1.png)
-
+!(/html/1706.06978/assets/x1.png)
 
 Figure 3. Control function of PReLU and Dice.
 
@@ -461,8 +414,7 @@ Table 2. Statistics of datasets used in this paper.
 
   For MovieLens dataset, goods refer to be movies.
 
-![Refer to caption](/html/1706.06978/assets/images/exp/reg_new.png)
-
+!(/html/1706.06978/assets/images/exp/reg_new.png)
 
 Figure 4. Performances of BaseModel with different regularizations on Alibaba Dataset. Training with fine-grained g​o​o​d​s​\_​i​d​s𝑔𝑜𝑜𝑑𝑠\_𝑖𝑑𝑠goods\\_ids features without regularization encounters serious overfitting after the first epoch. All the regularizations show improvement, among which our proposed mini-batch aware regularization performs best. Besides, well trained model with g​o​o​d​s​\_​i​d​s𝑔𝑜𝑜𝑑𝑠\_𝑖𝑑𝑠goods\\_ids features gets higher AUC than without them. It comes from the richer information that fine-grained features contained.
 
@@ -644,8 +596,7 @@ We first examine the effectiveness of local activation unit.
 Fig.[5](#S6.F5 "Figure 5 ‣ 6.8. Visualization of DIN ‣ 6. Experiments ‣ Deep Interest Network for Click-Through Rate Prediction") illustrates the activation intensity of user behaviors with respect to a candidate ad.
 As expected, behaviors with high relevance to candidate ad are weighted high.
 
-![Refer to caption](/html/1706.06978/assets/images/omni/attention_timeline_fix.png)
-
+!(/html/1706.06978/assets/images/omni/attention_timeline_fix.png)
 
 Figure 5. Illustration of adaptive activation in DIN. Behaviors with high relevance to candidate ad get high activation weight.
 
@@ -655,8 +606,7 @@ Fig.[6](#S6.F6 "Figure 6 ‣ 6.8. Visualization of DIN ‣ 6. Experiments ‣ De
 We can see that goods with same category almost belong to one cluster, which shows the clustering property of DIN embeddings clearly.
 Besides, we color the points that represent candidate ads by the prediction value. Fig.[6](#S6.F6 "Figure 6 ‣ 6.8. Visualization of DIN ‣ 6. Experiments ‣ Deep Interest Network for Click-Through Rate Prediction") is also a heat map of this mother’s interest density distribution for potential candidates in embedding space. It shows DIN can form a multimodal interest density distribution in candidates’ embedding space for a certain user to capture his/her diverse interests.
 
-![Refer to caption](/html/1706.06978/assets/images/omni/TDdiagram.png)
-
+!(/html/1706.06978/assets/images/omni/TDdiagram.png)
 
 Figure 6. Visualization of embeddings of goods in DIN. Shape of points represents category of goods. Color of points corresponds to CTR prediction value.
 
@@ -895,83 +845,3 @@ DIN now has been deployed in the online display advertising system in Alibaba.
   ATRank: An Attention-Based User Behavior Modeling
   Framework for Recommendation. In Proceedings of
   32th AAAI Conference on Artificial Intelligence.
-
-[◄](/html/1706.06977)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1706.06978)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1706.06978)
-[View original  
-on arXiv](https://arxiv.org/abs/1706.06978)[►](/html/1706.06979)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 15:28:45 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

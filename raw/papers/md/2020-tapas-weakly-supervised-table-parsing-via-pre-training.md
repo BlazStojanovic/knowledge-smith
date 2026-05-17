@@ -14,49 +14,6 @@ url: http://arxiv.org/abs/2004.02349v2
 year: 2020
 ---
 
-[2004.02349] TaPas: Weakly Supervised Table Parsing via Pre-training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TaPas: Weakly Supervised Table Parsing via Pre-training
 
 Jonathan Herzig1,2, Paweł Krzysztof Nowak1, Thomas Müller1,
@@ -107,8 +64,7 @@ Our code and pre-trained model are publicly available at <https://github.com/goo
 
 ## 2 TaPas Model
 
-![Refer to caption](/html/2004.02349/assets/x1.png)
-
+!(/html/2004.02349/assets/x1.png)
 
 Figure 1: TaPas model (bottom) with example model outputs for the question: “Total number of days for the top two”. Cell prediction (top right) is given for the selected column’s table cells in bold (zero for others) along with aggregation prediction (top left).
 
@@ -116,8 +72,7 @@ Our model’s architecture (Figure [1](#S2.F1 "Figure 1 ‣ 2 TaPas Model ‣ Ta
 
 #### Additional embeddings
 
-![Refer to caption](/html/2004.02349/assets/x2.png)
-
+!(/html/2004.02349/assets/x2.png)
 
 Figure 2: Encoding of the question “query?” and a simple table using the special embeddings of TaPas.
 The previous answer embeddings are omitted for brevity.
@@ -187,8 +142,7 @@ We note that we additionally experimented with data augmentation, which shares a
 
 ## 4 Fine-tuning
 
-![Refer to caption](/html/2004.02349/assets/x3.png)
-
+!(/html/2004.02349/assets/x3.png)
 
 Figure 3: A table (left) with corresponding example questions (right). The last example is conversational.
 
@@ -347,8 +301,6 @@ When we pre-train the model on WikiSQL or SQA (which is straight-forward in our 
 
 Table 3: WikiSQL denotation accuracy555As explained in Section [5.2](#S5.SS2 "5.2 Experimental Setup ‣ 5 Experiments ‣ TaPas: Weakly Supervised Table Parsing via Pre-training"), we report TaPas numbers comparing against our own reference answers. Appendix [A](#A1 "Appendix A WikiSQL Execution Errors ‣ TaPas: Weakly Supervised Table Parsing via Pre-training") contains numbers WRT the official WikiSQL eval script..
 
-
-
 | Model | Test |
 | --- | --- |
 | Pasupat and Liang ([2015](#bib.bib36)) | 37.1 |
@@ -378,8 +330,6 @@ For SQA, Table [5](#S5.T5 "Table 5 ‣ 5.3 Results ‣ 5 Experiments ‣ TaPas: 
 | TaPas | 67.2 | 40.4 | 78.2 | 66.0 | 59.7 |
 
 Table 5: SQA test results. ALL is the average question accuracy, SEQ the sequence accuracy, and QX, the accuracy of the X’th question in a sequence.
-
-
 
 |  | SQA (SEQ) | | WikiSQL | | WikiTQ | |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -814,8 +764,6 @@ Table [9](#A1.T9 "Table 9 ‣ Appendix A WikiSQL Execution Errors ‣ TaPas: Wea
 
 Table 9: WikiSQL development denotation accuracy.
 
-
-
 | Model | WikiSQL | TaPas |
 | --- | --- | --- |
 | TaPas (no answer loss) | 80.1 | 81.2 |
@@ -839,8 +787,6 @@ Table 10: WikiSQL test denotation accuracy.
 Table 11: Hyper-parameters for WikiSQL and WikiTQ. Values are constrained to either a range (a,b)𝑎𝑏(a,b) or a list [a,b,c,…]
 
 𝑎𝑏𝑐…[a,b,c,\ldots].
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -929,83 +875,3 @@ The full form for the zero and second order Taylor approximations are:
 
 The approximations are then easy to write in any tensor computation language and will be differentiable.
 In this work we experimented with the zero and second order approximations and found small improvements over the weighted average baseline. It’s worth noting that in the dataset the proportion of average examples is very low. We expect this method to be more relevant in the more general setting.
-
-[◄](/html/2004.02348)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2004.02349)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2004.02349)
-[View original  
-on arXiv](https://arxiv.org/abs/2004.02349)[►](/html/2004.02350)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 17 07:51:11 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

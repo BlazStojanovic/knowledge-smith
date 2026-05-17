@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/2407.04491v3
 year: 2024
 ---
 
-[2407.04491] Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data
 
 David Holzmüller
@@ -172,16 +129,13 @@ Here, we introduce RealMLP-TD, our improved MLP with tuned defaults, which we de
 
 One-hot encodingRobust scaleSmooth-clipNum./cat. embeddingsLearnable scalingLinearParametric activationDropoutLinear3×fragments33\times
 
-
 (a) Preprocessing and NN architecture for RealMLP-TD.
 
-![Refer to caption](/html/2407.04491/assets/x1.png)
-
+!(/html/2407.04491/assets/x1.png)
 
 (b) The coslog4fragmentscoslog4\operatorname{coslog}\_{4} and flat\_cosfragmentsflat\_cos\operatorname{flat\\_cos} schedules.
 
-![Refer to caption](/html/2407.04491/assets/x2.png)
-
+!(/html/2407.04491/assets/x2.png)
 
 (c) From a vanilla MLP to RealMLP-TD.
 
@@ -314,19 +268,16 @@ We use the following abbreviations, see [Appendix C](#A3 "Appendix C Benchmark 
 
 [Figure 2](#S5.F2 "In 5.2 Results ‣ 5 Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows the results of the aforementioned methods on the meta-train and meta-test benchmarks, along with their runtimes on a CPU. We also show results for the benchmark of [[19](#bib.bib19)] in [Figure 3](#S5.F3 "In 5.2 Results ‣ 5 Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data"), specifically the version with medium-size datasets (≤10fragments10\leq 10K training samples). The latter include scikit-learn’s GradientBoostingTree (GBT-SKL) as well as two transformer-based models, FT-Transformer [[16](#bib.bib16)] and SAINT [[59](#bib.bib59)]. For the baselines, we use (slightly adapted) HPO search spaces from the original paper, see [Section C.4](#A3.SS4 "C.4 Grinsztajn et al. benchmark ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x3.png)
-
+!(/html/2407.04491/assets/x3.png)
 
 Figure 2: Benchmark scores on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}}, ℬtrainregfragmentsBtrainreg\mathcal{B}^{\operatorname{train}}\_{\mathrm{reg}}, ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}}, and ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}} vs. average training time.
 The y𝑦y-axis shows the shifted geometric mean (SGMεfragmentsSGM𝜀\operatorname{SGM}\_{\varepsilon}) classification error (left) or RMSE (right) as explained in [Section 2.2](#S2.SS2 "2.2 Aggregate Benchmark Score ‣ 2 Methodology ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 The x𝑥x-axis shows average training times per 1000 samples (measured on ℬtrainfragmentsBtrain\mathcal{B}^{\operatorname{train}} for efficiency reasons), see LABEL:sec:appendix:runtimes.
 The error bars are approximate 95% confidence intervals for the limit #splits →→\to ∞\infty, see [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
+!(/html/2407.04491/assets/x4.png)
 
-
-![Refer to caption](/html/2407.04491/assets/x4.png)
-
-![Refer to caption](/html/2407.04491/assets/x5.png)
+!(/html/2407.04491/assets/x5.png)
 
 Figure 3: Results on the benchmarks of Grinsztajn et al. [[19](#bib.bib19)].
 The y𝑦y-axis (inverted) shows the normalized accuracy / R2 score used in the original paper (see [Section C.4](#A3.SS4 "C.4 Grinsztajn et al. benchmark ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data")). The x𝑥x-axis shows average training times per 1000 samples, using GPUs for NNs as in [[19](#bib.bib19)], see LABEL:sec:appendix:runtimes.
@@ -1150,9 +1101,6 @@ Table B.3: Improvements for LGBM-TD by bagging or (ensembled) refitting. We perf
 | LGBM-TD (refitting, 5 models, indiv. stopping) | 6.0 [5.4, 6.5] | 6.3 [5.2, 7.5] | 3.8 [1.6, 6.0] | 5.7 [5.1, 6.3] |
 | LGBM-TD (refitting, 5 models, joint stopping) | 5.8 [5.2, 6.4] | 6.2 [5.4, 7.1] | 3.9 [1.6, 6.1] | 5.6 [5.1, 6.1] |
 
-
-
-
 Table B.4: Improvements for RealMLP-TD by bagging or (ensembled) refitting. We perform 5-fold cross-validation, stratified for classification, and 5-fold refitting. We compare bagging vs. refitting, one model vs. five models, and individual stopping vs. joint stopping. The table shows the relative reduction in shifted geometric mean benchmark scores, including approximated 95% confidence intervals ([Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data")). In each column, the best score is highlighted in bold, and errors whose confidence interval contains the best score are underlined.
 
 |  |  |  |  |  |
@@ -1174,13 +1122,11 @@ The results of our experiments can be found in [Table B.3](#A2.T3 "In B.3 Baggi
 
 In [Figure B.1](#A2.F1 "In B.4 Early stopping for GBDTs ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") and [Figure B.2](#A2.F2 "In B.4 Early stopping for GBDTs ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data"), we study the influence of different early stopping patiences and metrics on the resulting benchmark performance of XGB-TD, LGBM-TD, and CatBoost-TD. While the regression results only deteriorate slightly for low patiences of 10 or 20 iterations, classification results are much more hurt by low patiences. In the classification setting, we evaluate the use of different losses for early stopping and for best-epoch selection: classification error, Brier score, and cross-entropy loss. In each case, cross-entropy loss is used as the training loss, and classification error is used for evaluating the models on the test sets in the computation of the benchmark score. We observe that models stopped on classification error strongly deteriorate at low patiences (≲100fragmentsless-than-or-similar-to100\lesssim 100), while our default patience of 300 achieves close-to-optimal results. Models stopped on cross-entropy loss deteriorate much less at low patiences, but achieve roughly 2% worse benchmark score at high patiences. Stopping on Brier loss achieves very good high-patience performance and is still only slightly more sensitive to the patience than stopping on cross-entropy loss. An interesting follow-up question would be if HPO can attenuate the differences between different settings.
 
-![Refer to caption](/html/2407.04491/assets/x6.png)
-
+!(/html/2407.04491/assets/x6.png)
 
 Figure B.1: Effect of stopping patiences and metrics on the performance of GBDTs on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}}. We run the XGB-TD, LGBM-TD, and CatBoost-TD with different early stopping patiences (early\_stopping\_rounds). We compare three different metrics used for stopping and best-epoch selection: classification error, Brier loss, and cross-entropy loss. The y𝑦y-axis reports the relative increase in the benchmark score relative to stopping on classification error with patience 100010001000 (i.e., never stopping early). The shaded areas are approximate 95% confidence intervals, cf. [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x7.png)
-
+!(/html/2407.04491/assets/x7.png)
 
 Figure B.2: Effect of stopping patiences on the performance of GBDTs on ℬtrainregfragmentsBtrainreg\mathcal{B}^{\operatorname{train}}\_{\mathrm{reg}}. We run the TD configurations of XGB, LGBM, and CatBoost with different early stopping patiences (early\_stopping\_rounds). As in the remainder of the paper, we use RMSE for early stopping and best-epoch selection. The y𝑦y-axis reports the relative increase in the benchmark score relative to stopping on classification error with patience 100010001000 (i.e., never stopping early). The shaded areas are approximate 95% confidence intervals, cf. [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
@@ -1212,16 +1158,14 @@ In both settings, we also evaluate RealMLP without label smoothing (no ls). [Fig
 
   RealMLP without label smoothing is still competitive with GBDTs on the meta-test benchmark but does not perform better than GBDTs unlike what we observed for classification error.
 
-![Refer to caption](/html/2407.04491/assets/x8.png)
-
+!(/html/2407.04491/assets/x8.png)
 
 Figure B.3: Benchmark scores on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}} and ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}} vs. average training time for AUC, optimized for cross-entropy. BestModel-TD uses RealMLP-TD without label smoothing.
 The y𝑦y-axis shows the shifted geometric mean (SGMεfragmentsSGM𝜀\operatorname{SGM}\_{\varepsilon}) 1−AUCfragments1AUC1-\mathrm{AUC} as explained in [Section 2.2](#S2.SS2 "2.2 Aggregate Benchmark Score ‣ 2 Methodology ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 The x𝑥x-axis shows average training times per 1000 samples (measured on ℬtrainfragmentsBtrain\mathcal{B}^{\operatorname{train}} for efficiency reasons), see LABEL:sec:appendix:runtimes.
 The error bars are approximate 95% confidence intervals for the limit #splits →→\to ∞\infty, see [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x9.png)
-
+!(/html/2407.04491/assets/x9.png)
 
 Figure B.4: Benchmark scores on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}} and ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}} vs. average training time for AUC. Stopping and best-epoch selection are performed on accuracy, while HPO is performed on AUC.
 The y𝑦y-axis shows the shifted geometric mean (SGMεfragmentsSGM𝜀\operatorname{SGM}\_{\varepsilon}) 1−AUCfragments1AUC1-\mathrm{AUC} as explained in [Section 2.2](#S2.SS2 "2.2 Aggregate Benchmark Score ‣ 2 Methodology ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
@@ -1232,8 +1176,7 @@ The error bars are approximate 95% confidence intervals for the limit #splits �
 
 To assess whether the results are influenced by our choices in missing value handling and exclusion, [Figure B.5](#A2.F5 "In B.6 Results Without Missing-Value Datasets ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") presents results on all meta-test datasets that originally did not contain missing values. Only six meta-test datasets originally contain missing values: Three from ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}} (kick, okcupid-stem, and porto-seguro) and three from ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}} (fps\_benchmark, house\_prices\_nominal, SAT11-HAND-runtime-regression). While RealMLP deteriorates slightly, especially due to the exclusion of fps\_benchmark, qualitative takeaways remain similar.
 
-![Refer to caption](/html/2407.04491/assets/x10.png)
-
+!(/html/2407.04491/assets/x10.png)
 
 Figure B.5: Benchmark scores on ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}} and ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}} without missing value datasets vs. average training time.
 The y𝑦y-axis shows the shifted geometric mean (SGMεfragmentsSGM𝜀\operatorname{SGM}\_{\varepsilon}) classification error (left) or RMSE (right) as explained in [Section 2.2](#S2.SS2 "2.2 Aggregate Benchmark Score ‣ 2 Methodology ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
@@ -1282,8 +1225,7 @@ In [Figure B.6](#A2.F6 "In B.8 Comparing HPO Methods ‣ Appendix B More Experi
 
 While TPE often performs slightly better, the differences in benchmark scores are relatively small.
 
-![Refer to caption](/html/2407.04491/assets/x11.png)
-
+!(/html/2407.04491/assets/x11.png)
 
 Figure B.6: Benchmark scores of selected methods on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}}, ℬtrainregfragmentsBtrainreg\mathcal{B}^{\operatorname{train}}\_{\mathrm{reg}}, ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}}, and ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}} vs. average training time.
 The y𝑦y-axis shows the shifted geometric mean (SGMεfragmentsSGM𝜀\operatorname{SGM}\_{\varepsilon}) classification error (left) or RMSE (right) as explained in [Section 2.2](#S2.SS2 "2.2 Aggregate Benchmark Score ‣ 2 Methodology ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
@@ -1295,42 +1237,35 @@ The error bars are approximate 95% confidence intervals for the limit #splits �
 Here, we provide more time-vs-error plots.
 [Figure B.7](#A2.F7 "In B.9 More Time-Error Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows results for the arithmetic mean error, and [Figure B.8](#A2.F8 "In B.9 More Time-Error Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows results for the arithmetic mean rank, which is also shown in [Figure B.9](#A2.F9 "In B.9 More Time-Error Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") for the Grinsztajn et al. [[19](#bib.bib19)] benchmark. In [Figure B.10](#A2.F10 "In B.9 More Time-Error Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") we also reproduce the main plots from [[19](#bib.bib19)] with added methods.
 
-![Refer to caption](/html/2407.04491/assets/x12.png)
-
+!(/html/2407.04491/assets/x12.png)
 
 Figure B.7: Benchmark scores (arithmetic mean) vs. average training time.
 The y𝑦y-axis shows the *arithmetic mean* classification error (left) or RMSE (right).
 The x𝑥x-axis shows average training times per 1000 samples (measured on ℬtrainfragmentsBtrain\mathcal{B}^{\operatorname{train}} for efficiency reasons), see LABEL:sec:appendix:runtimes. The error bars are approximate 95% confidence intervals for the limit #splits →→\to ∞\infty, see [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x13.png)
-
+!(/html/2407.04491/assets/x13.png)
 
 Figure B.8: Benchmark scores (ranks) vs. average training time.
 The y𝑦y-axis shows the *arithmetic mean* rank, averaged over all splits and datasets.
 The x𝑥x-axis shows average training times per 1000 samples (measured on ℬtrainfragmentsBtrain\mathcal{B}^{\operatorname{train}} for efficiency reasons), see LABEL:sec:appendix:runtimes. The error bars are approximate 95% confidence intervals for the limit #splits →→\to ∞\infty, see [Section C.5](#A3.SS5 "C.5 Confidence Intervals ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
+!(/html/2407.04491/assets/x14.png)
 
-
-![Refer to caption](/html/2407.04491/assets/x14.png)
-
-![Refer to caption](/html/2407.04491/assets/x15.png)
+!(/html/2407.04491/assets/x15.png)
 
 Figure B.9: Results on the benchmarks of Grinsztajn et al. [[19](#bib.bib19)].
 The y𝑦y-axis shows the arithmetic mean rank of each model. The x𝑥x-axis shows average training times per 1000 samples, see LABEL:sec:appendix:runtimes.
 
+!(/html/2407.04491/assets/x16.png)
 
-
-![Refer to caption](/html/2407.04491/assets/x16.png)
-
-![Refer to caption](/html/2407.04491/assets/x17.png)
+!(/html/2407.04491/assets/x17.png)
 
 Figure B.10: Results on the benchmarks of Grinsztajn et al. [[19](#bib.bib19)], for classification (left) and regression (right).
 The plot is similar to the one in the main part of [[19](#bib.bib19)], with our algorithms added. The y𝑦y-axis shows the result of the best (on val, but evaluated on test) hyperparameter combination up to n steps of random step (x𝑥x-axis). As in the original paper, we normalize each score between the max and the 10% quantile (classification) or 50% (regression), and truncate scores below 0 for regression.
 
 ### B.10 Critical Difference Diagrams
 
-![Refer to caption](/html/2407.04491/assets/x18.png)
-
+!(/html/2407.04491/assets/x18.png)
 
 Figure B.11: Critical difference diagrams on the meta-train and meta-test benchmarks. The plots show the average rank of methods on each benchmark. Horizontal bars indicate groups of algorithms that are not statistically significantly different at a 95% confidence level according to a Friedman test and post-hoc Nemenyi test implemented in autorank [[23](#bib.bib23)].
 
@@ -1340,23 +1275,19 @@ Figure B.11: Critical difference diagrams on the meta-train and meta-test benchm
 
 For pairs of methods, we analyze the percentage of (dataset, split) combinations on which the first method has a lower error than the second method. We plot these win-rates in marix plots: [Figure B.12](#A2.F12 "In B.11 Win-rate Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows the results on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}}, [Figure B.13](#A2.F13 "In B.11 Win-rate Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows the results on ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}}, [Figure B.14](#A2.F14 "In B.11 Win-rate Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows the results on ℬtrainregfragmentsBtrainreg\mathcal{B}^{\operatorname{train}}\_{\mathrm{reg}}, and [Figure B.15](#A2.F15 "In B.11 Win-rate Plots ‣ Appendix B More Experiments ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data") shows the results on ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}}.
 
-![Refer to caption](/html/2407.04491/assets/x19.png)
-
+!(/html/2407.04491/assets/x19.png)
 
 Figure B.12: Percentages of wins of row algorithms vs column algorithms on ℬtrainclassfragmentsBtrainclass\mathcal{B}^{\operatorname{train}}\_{\mathrm{class}}. Wins are averaged over all datasets and splits. Ties count as half-wins. Methods are sorted by average winrate (i.e., the average of the values in the row). When averaging, we use dataset-dependent weighting as explained in [Section C.3.1](#A3.SS3.SSS1 "C.3.1 Meta-train Benchmarks ‣ C.3 Dataset Selection and Preprocessing ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x20.png)
-
+!(/html/2407.04491/assets/x20.png)
 
 Figure B.13: Percentages of wins of row algorithms vs column algorithms on ℬtestclassfragmentsBtestclass\mathcal{B}^{\operatorname{test}}\_{\mathrm{class}}. Wins are averaged over all datasets and splits. Ties count as half-wins. Methods are sorted by average winrate (i.e., the average of the values in the row).
 
-![Refer to caption](/html/2407.04491/assets/x21.png)
-
+!(/html/2407.04491/assets/x21.png)
 
 Figure B.14: Percentages of wins of row algorithms vs column algorithms on ℬtrainregfragmentsBtrainreg\mathcal{B}^{\operatorname{train}}\_{\mathrm{reg}}. Wins are averaged over all datasets and splits. Ties count as half-wins. Methods are sorted by average winrate (i.e., the average of the values in the row). When averaging, we use dataset-dependent weighting as explained in [Section C.3.1](#A3.SS3.SSS1 "C.3.1 Meta-train Benchmarks ‣ C.3 Dataset Selection and Preprocessing ‣ Appendix C Benchmark Details ‣ Better by Default: Strong Pre-Tuned MLPs and Boosted Trees on Tabular Data").
 
-![Refer to caption](/html/2407.04491/assets/x22.png)
-
+!(/html/2407.04491/assets/x22.png)
 
 Figure B.15: Percentages of wins of row algorithms vs column algorithms on ℬtestregfragmentsBtestreg\mathcal{B}^{\operatorname{test}}\_{\mathrm{reg}}. Wins are averaged over all datasets and splits. Ties count as half-wins. Methods are sorted by average winrate (i.e., the average of the values in the row).
 
@@ -1385,9 +1316,6 @@ Table C.1: Hyperparameters for LGBM-TD and LGBM-D. Italic hyperparameters have n
 | max\_bin | 255 | 255 | 255 |
 | early\_stopping\_rounds | 300 | 300 | 1000 |
 
-
-
-
 Table C.2: Hyperparameters for XGB-TD and XGB-D. Italic hyperparameters have not been tuned for XGB-TD.
 
 |  |  |  |  |
@@ -1405,9 +1333,6 @@ Table C.2: Hyperparameters for XGB-TD and XGB-D. Italic hyperparameters have not
 | n\_estimators | 1000 | 1000 | 100 |
 | max\_bin | 256 | 256 | 256 |
 | early\_stopping\_rounds | 300 | 300 | 1000 |
-
-
-
 
 Table C.3: Hyperparameters for CatBoost-TD and CatBoost-D. Italic hyperparameters have not been tuned for CatBoost-TD.
 
@@ -1430,9 +1355,6 @@ Table C.3: Hyperparameters for CatBoost-TD and CatBoost-D. Italic hyperparameter
 | od\_wait | 300 | 300 | None |
 | od\_type | Iter | Iter | Iter |
 
-
-
-
 Table C.4: Hyperparameters for MLP-D, adapted from [[43](#bib.bib43)].
 
 |  |  |
@@ -1452,9 +1374,6 @@ Table C.4: Hyperparameters for MLP-D, adapted from [[43](#bib.bib43)].
 | Activation function | ReLU |
 | Initialization | PyTorch default |
 | Weight decay | 0.01 |
-
-
-
 
 Table C.5: Hyperparameters for ResNet-D, adapted from [[43](#bib.bib43)].
 
@@ -1477,9 +1396,6 @@ Table C.5: Hyperparameters for ResNet-D, adapted from [[43](#bib.bib43)].
 | max\_epochs | 1000 |
 | early stopping patience | 20 |
 | Preprocessing | RTDL quantile transform |
-
-
-
 
 Table C.6: Hyperparameters for TabR-S-D, taken from [[18](#bib.bib18)].
 
@@ -1528,9 +1444,6 @@ Table C.7: Hyperparameter seach space for LGBM-HPO, adapted from [[51](#bib.bib5
 | lambda\_l1 | Random{{\{0, LogUniform[e−16fragmentsefragments16e^{-16}, e2fragmentse2e^{2}]}}\} |
 | lambda\_l2 | Random{{\{0, LogUniform[e−16fragmentsefragments16e^{-16}, e2fragmentse2e^{2}]}}\} |
 
-
-
-
 Table C.8: Hyperparameter search space for XGB-HPO, adapted from [[19](#bib.bib19)]. We use the hist method, which is the new default in XGBoost 2.0 and supports native handling of categorical values, while the old auto method selection is not available in XGBoost 2.0. We also increase early\_stopping\_rounds to 300.
 
 |  |  |
@@ -1548,9 +1461,6 @@ Table C.8: Hyperparameter search space for XGB-HPO, adapted from [[19](#bib.bib1
 | alpha | LogUniform[1e-8, 1e-2] |
 | lambda | LogUniform[1, 4] |
 | gamma | LogUniform[1e-8, 7.0] |
-
-
-
 
 Table C.9: Hyperparameter search space for CatBoost-HPO, adapted from [[57](#bib.bib57)], who did not specify the number of estimators.
 
@@ -1570,9 +1480,6 @@ Table C.9: Hyperparameter search space for CatBoost-HPO, adapted from [[57](#bib
 | one\_hot\_max\_size | UniformInt[0, 25] |
 | leaf\_estimation\_iterations | UniformInt[1, 20] |
 
-
-
-
 Table C.10: Hyperparameter search space for RealMLP-HPO. The remaining hyperparameters are set as in RealMLP-TD.
 
 | Hyperparameter | classif. | reg. |
@@ -1586,9 +1493,6 @@ Table C.10: Hyperparameter search space for RealMLP-HPO. The remaining hyperpara
 | Weight decay | Choice([0.0, 2e-2]) | same |
 | 𝒘(1,i)embfragmentswfragments(1,i)emb\boldsymbol{w}^{(1,i)}\_{\text{emb}} init std. | LogUniform([0.05, 0.5]) |  |
 | Label smoothing ε𝜀\varepsilon | Choice([0.0, 0.1], p=[0.3, 0.7]) | no label smoothing |
-
-
-
 
 Table C.11: Hyperparameter search space for MLP-HPO, adapted from [[16](#bib.bib16)]. We reduced the embedding dimension upper bound, the maximum number of epochs, and the number of layers to have a more acceptable runtime on the meta-test benchmarks. We also used a minimum batch size of 256. As in the original paper, the size of the first and the last layers are tuned and set separately, while the size for
 “in-between” layers is the same for all of them.
@@ -1714,9 +1618,6 @@ Table C.12: Datasets in the meta-train classification benchmark.
 | wine\_quality\_all | 6497 | 11 | 1 | 2 | 7 |
 | wine\_quality\_type | 6497 | 11 | 0 |  | 2 |
 | wine\_quality\_white | 4898 | 11 | 0 |  | 7 |
-
-
-
 
 Table C.13: Datasets in the meta-train regression benchmark.
 
@@ -1880,9 +1781,6 @@ Table C.14: Datasets in the meta-test classification benchmark.
 | volkert | 58310 | 180 | 0 |  | 10 | 359985 |
 | yeast | 1484 | 8 | 0 |  | 10 | 2073 |
 
-
-
-
 Table C.15: Datasets in the meta-test regression benchmark.
 
 | Name | #samples | #num. features | #cat. features | largest #categories | OpenML task ID |
@@ -1985,83 +1883,3 @@ Here, we leverage that the shifted geometric mean uses g=expfragmentsgg=\exp to 
 {IEEEeqnarray\*}+rCl+x\*
 
 Conversion to HTML had a Fatal error and exited abruptly. This document may be truncated or damaged.
-
-[◄](/html/2407.04490)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2407.04491)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2407.04491)
-[View original  
-on arXiv](https://arxiv.org/abs/2407.04491)[►](/html/2407.04492)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Aug 5 15:41:23 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

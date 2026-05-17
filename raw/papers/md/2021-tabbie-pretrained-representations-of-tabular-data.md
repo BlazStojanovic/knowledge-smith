@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2105.02584v1
 year: 2021
 ---
 
-[2105.02584] TABBIE: Pretrained Representations of Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TABBIE: Pretrained Representations of Tabular Data
 
 Hiroshi Iida††\dagger     
@@ -83,8 +40,7 @@ Large-scale self-supervised pretraining has substantially advanced the state-of-
 
 Existing table representation models such as TaBERT (Yin et al., [2020](#bib.bib31)) and TaPas (Herzig et al., [2020](#bib.bib8)) concatenate tabular data with an associated piece of text and then use BERT’s masked language modeling objective for pretraining. These approaches are computationally expensive due to the long sequences that arise from concatenating text with linearized tables, which necessitates truncating the input sequences111 Herzig et al. ([2020](#bib.bib8)) use a fixed limit of 128 tokens for both text and table, while Yin et al. ([2020](#bib.bib31)) drop all but three rows of the table during pretraining. to make training feasible. We show that TaBERT underperforms on downstream table-based applications that operate independent of external text (e.g., deciding whether cell text was corrupted while extracting a table from a PDF), which motivates us to investigate an approach that preserves the full table during pretraining.
 
-![Refer to caption](/html/2105.02584/assets/x1.png)
-
+!(/html/2105.02584/assets/x1.png)
 
 Figure 1: tabbie is a table embedding model trained to detect corrupted cells, inspired by the ELECTRA (Clark et al., [2020](#bib.bib2)) objective function. This simple pretraining objective results in powerful embeddings of cells, columns, and rows, and it yields state-of-the-art results on downstream table-based tasks.
 
@@ -93,8 +49,7 @@ tabbie uses a simplified training objective compared to masked language modelin
 
 In a controlled comparison to TaBERT (pretraining on the same number of tables and using a similarly-sized model), we evaluate tabbie on three table-based benchmarks: column population, row population, and column type prediction. On most configurations of these tasks, tabbie achieves state-of-the-art performance, outperforming TaBERT and other baselines, while in others it performs competitively with TaBERT. Additionally, tabbie was trained on 8 V100 GPUs in just over a week, compared to the 128 V100 GPUs used to train TaBERT in six days. A qualitative nearest-neighbor analysis of embeddings derived from tabbie confirms that it encodes complex semantic properties about textual and numeric cells and substructures. We release our pretrained models and code to support further advances on table-based tasks.222<https://github.com/SFIG611/tabbie>
 
-![Refer to caption](/html/2105.02584/assets/x2.png)
-
+!(/html/2105.02584/assets/x2.png)
 
 Figure 2: tabbie’s computations at one layer. For a given table, the row Transformer contextualizes the representations of the cells in each row, while the column Transformer similarly contextualizes cells in each column. The final cell representation is an average of the row and column embeddings, which is passed as input to the next layer. [cls] tokens are prepended to each row and column to facilitate downstream tasks operating on table substructures.
 
@@ -189,8 +144,7 @@ Our formulation diverges from Clark et al. ([2020](#bib.bib2)) in how the corru
 
   Intra-table cell swapping: To encourage the model to learn fine-grained distinctions between topically-similar data, our second strategy produces corrupted candidates by swapping two cells in the same table (Figure [3](#S2.F3 "Figure 3 ‣ 2.3 Cell corruption process ‣ 2 Model ‣ TABBIE: Pretrained Representations of Tabular Data")c, d). This task is more challenging than the frequency-based sampling strategy above, especially when the swapped cells occur within the same column. While it underperforms frequency-based sampling on downstream tasks, it qualitatively results in more semantic similarity among nearest neighbors of column and row embeddings.
 
-![Refer to caption](/html/2105.02584/assets/x3.png)
-
+!(/html/2105.02584/assets/x3.png)
 
 Figure 3: The different cell corruption strategies used in our experiments.
 
@@ -209,12 +163,9 @@ We compared two pretrained models trained with different cell corruption strateg
 
 We validate tabbie’s table representation quality through its performance on three downstream table-centric benchmarks (column population, row population, and column type prediction) that measure semantic table understanding. In most configurations of these tasks, tabbie outperforms TaBERT and other baselines to set new state-of-the-art numbers. Note that we do *not* investigate tabbie’s performance on table-and-text tasks such as WikiTableQuestions (Pasupat and Liang, [2015](#bib.bib21)), as our focus is not on integrating tabbie into complex task-specific pipelines (Liang et al., [2018](#bib.bib14)), although this is an interesting avenue for future work.
 
-![Refer to caption](/html/2105.02584/assets/x4.png)
-
+!(/html/2105.02584/assets/x4.png)
 
 Figure 4: The inputs and outputs for each of our table-based prediction tasks. Column type prediction does not include headers as part of the table.
-
-
 
 | Task | Batch size | LR | Max epochs |
 | --- | --- | --- | --- |
@@ -324,8 +275,7 @@ As shown in Table [5](#S4.T5 "Table 5 ‣ 4.1 Corrupt Cell Detection ‣ 4 Anal
 
 Table 5: A fine-grained comparison of different models on corrupt cell detection, with different types of corruption. TaBERT struggles on this task, especially in the challenging setting of *intra-column swaps*. Unlike our downstream tasks, the MIX strategy is far superior to FREQ here.
 
-![Refer to caption](/html/2105.02584/assets/x5.png)
-
+!(/html/2105.02584/assets/x5.png)
 
 Figure 5: In this figure, (b) and (c) contain the predicted corruption probability of each cell in (a). Only tabbie MIX is able to reliably identify violations of numerical trends in columns.
 
@@ -333,9 +283,9 @@ Figure 5: In this figure, (b) and (c) contain the predicted corruption probabili
 
 We now turn to a qualitative analysis of the representations learned by tabbie. In Figure [6](#S4.F6 "Figure 6 ‣ 4.2 Nearest neighbors ‣ 4 Analysis ‣ TABBIE: Pretrained Representations of Tabular Data") (top), we display the two nearest neighbor columns from our validation set to the *date* column marked by the red box. tabbie is able to model the similarity of *feb. 16* and *saturday. february 5th* despite the formatting difference, while TaBERT’s neighbors more closely resemble the original column. Figure [6](#S4.F6 "Figure 6 ‣ 4.2 Nearest neighbors ‣ 4 Analysis ‣ TABBIE: Pretrained Representations of Tabular Data") (bottom) shows that tabbie’s nearest neighbors are less reliant on matching headers than TaBERT, as the neighbors all have different headers (*nom*, *nombre*, *name*).
 
-![Refer to caption](/html/2105.02584/assets/x6.png)
+!(/html/2105.02584/assets/x6.png)
 
-![Refer to caption](/html/2105.02584/assets/x7.png)
+!(/html/2105.02584/assets/x7.png)
 
 Figure 6: Nearest neighbors of the *date* and *nom* columns from the tables on the left, from both tabbie and TaBERT. tabbie’s nearest neighbors exhibit more diverse formatting and less reliance on the header, which is an example of its semantic representation capability.
 
@@ -343,8 +293,7 @@ Figure 6: Nearest neighbors of the *date* and *nom* columns from the tables on t
 
 Are the embeddings produced by tabbie useful for clustering and data discovery? To find out, we perform clustering experiments on the FinTabNet dataset from Zheng et al. ([2021](#bib.bib36)). This dataset contains ∼similar-to\sim110K tables from financial reports of corporations in the S&P-500. We use the [cls] embedding at the (0,0)00(0,0) position (i.e., the top left-most cell in the table), extracted from a tabbie model trained with the FREQ strategy, as a representative embedding for each table in the dataset. Next, we perform k𝑘k-means clustering on these embeddings using the FAISS library Johnson et al. ([2017](#bib.bib11)), with k𝑘k=1024 centroids. While the FinTabNet dataset is restricted to the homogenous domain of financial tables, these tables cluster into sub-types such as *consolidated financial tables*, *jurisdiction tables*, *insurance tables*, etc. We then examine the contents of these clusters (Figure  [7](#S4.F7 "Figure 7 ‣ 4.3 Clustering ‣ 4 Analysis ‣ TABBIE: Pretrained Representations of Tabular Data")) and observe that tabbie embeddings can not only be clustered into these sub-types, but also that tables from reports of the same company, but from different financial years, are placed into the same cluster.
 
-![Refer to caption](/html/2105.02584/assets/x8.png)
-
+!(/html/2105.02584/assets/x8.png)
 
 Figure 7: Sample tables from clusters obtained by running k𝑘k-means on tabbie’s [cls] embeddings on the FinTabNet dataset. tabbie not only clusters embeddings into reasonable semantic types, such as *Table of Contents* (first row), but it also places tables of the same type from the same company into the same cluster (second and third rows). We provide the source images of the corresponding tables in this figure.
 
@@ -605,83 +554,3 @@ Foundation (NSF).
   identification and cell structure recognition using visual context.
   In *Proceedings of the IEEE/CVF Winter Conference on
   Applications of Computer Vision (WACV)*, pages 697–706.
-
-[◄](/html/2105.02583)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2105.02584)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2105.02584)
-[View original  
-on arXiv](https://arxiv.org/abs/2105.02584)[►](/html/2105.02585)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 17 09:54:12 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

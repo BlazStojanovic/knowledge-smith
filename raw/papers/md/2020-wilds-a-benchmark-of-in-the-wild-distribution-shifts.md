@@ -32,49 +32,6 @@ url: http://arxiv.org/abs/2012.07421v3
 year: 2020
 ---
 
-[2012.07421] Wilds: A Benchmark of in-the-Wild Distribution Shifts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Wilds: A Benchmark of in-the-Wild Distribution Shifts
 
 Pang Wei Koh
@@ -152,8 +109,7 @@ In *subpopulation shift*, we consider test distributions that are subpopulations
 For example, it is well-documented that standard models often perform poorly on under-represented demographics (Buolamwini and Gebru, [2018](#bib.bib67); Koenecke et al., [2020](#bib.bib208)),
 and so we might seek models that can perform well on all demographic subpopulations.
 
-![Refer to caption](/html/2012.07421/assets/x1.png)
-
+!(/html/2012.07421/assets/x1.png)
 
 Figure 1: 
 In each Wilds dataset, each data point (x,y,d)𝑥𝑦𝑑(x,y,d) is associated with a domain d𝑑d.
@@ -162,9 +118,7 @@ We study two types of distribution shifts.
 Top: In *domain generalization*, we train and test on disjoint sets of domains. The goal is to generalize to domains unseen during training, e.g., molecules with a new scaffold in OGB-MolPCBA (Hu et al., [2020b](#bib.bib182)).
 Bottom: In *subpopulation shift*, the training and test domains overlap, but their relative proportions differ. We typically assess models by their worst performance over test domains, each of which correspond to a subpopulation of interest, e.g., different geographical regions in FMoW-wilds (Christie et al., [2018](#bib.bib83)).
 
-
-
-![Refer to caption](/html/2012.07421/assets/x2.png)
+!(/html/2012.07421/assets/x2.png)
 
 Figure 2: 
 The Wilds benchmark contains 10 datasets across a diverse set of application areas, data modalities, and dataset sizes. Each dataset comprises data from different domains, and the benchmark is set up to evaluate models on distribution shifts across these domains.
@@ -288,8 +242,7 @@ We provide more details and context on related distribution shifts for each data
 
 #### 4.1.1 iWildCam2020-wilds: Species classification across different camera traps
 
-![Refer to caption](/html/2012.07421/assets/x3.png)
-
+!(/html/2012.07421/assets/x3.png)
 
 Figure 3: 
 The iWildCam2020-wilds dataset comprises photos of wildlife taken by a variety of camera traps. The goal is to learn models that generalize to photos from new camera traps that are not in the training set.
@@ -304,8 +257,7 @@ which results in models generalizing poorly to new camera trap deployments (Beer
 We study this shift on a variant of the iWildCam 2020 dataset (Beery et al., [2020a](#bib.bib37)), where the input x𝑥x is a photo from a camera trap, the label y𝑦y is one of 182 animal species, and the domain d𝑑d specifies the identity of the camera trap (Figure [3](#S4.F3 "Figure 3 ‣ 4.1.1 iWildCam2020-wilds: Species classification across different camera traps ‣ 4.1 Domain generalization datasets ‣ 4 Wilds datasets ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts")). The training and test sets comprise photos from disjoint sets of camera traps. As leverage, we include over 200 camera traps in the training set, capturing a wide range of variation. We evaluate models by their macro F1 scores, which emphasizes performance on rare species, as rare and endangered species are the most important to accurately monitor.
 Appendix [E.1](#S5.SS1a "E.1 iWildCam2020-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") provides additional details and context.
 
-![Refer to caption](/html/2012.07421/assets/x4.png)
-
+!(/html/2012.07421/assets/x4.png)
 
 Figure 4: 
 The Camelyon17-wilds dataset comprises tissue patches from different hospitals. The goal is to accurately predict the presence of tumor tissue in patches taken from hospitals that are not in the training set.
@@ -323,8 +275,7 @@ Appendix [E.2](#S5.SS2a "E.2 Camelyon17-wilds ‣ E Additional dataset details 
 
 #### 4.1.3 RxRx1-wilds: Genetic perturbation classification across experimental batches
 
-![Refer to caption](/html/2012.07421/assets/x5.png)
-
+!(/html/2012.07421/assets/x5.png)
 
 Figure 5: 
 The RxRx1-wilds dataset comprises images of cells that have been genetically
@@ -368,8 +319,7 @@ This means that models need to generalize to out-of-distribution molecules that 
 We study this shift on the OGB-MolPCBA dataset, which is directly adopted from the Open Graph Benchmark (Hu et al., [2020b](#bib.bib182)) and originally from MoleculeNet (Wu et al., [2018](#bib.bib412)). As summarized in Figure [6](#S4.F6 "Figure 6 ‣ 4.1.4 OGB-MolPCBA: Molecular property prediction across different scaffolds ‣ 4.1 Domain generalization datasets ‣ 4 Wilds datasets ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"), it is a multi-label classification dataset, where the input x𝑥x is a molecular graph, the label y𝑦y is a 128-dimensional binary vector where each component corresponds to a biochemical assay result, and the domain d𝑑d specifies the scaffold (i.e., a cluster of molecules with similar structure). The training and test sets comprise molecules with disjoint scaffolds; for leverage, the training set has molecules from over 40,000 scaffolds. We evaluate models by averaging the Average Precision (AP) across each of the 128 assays.
 Appendix [E.4](#S5.SS4a "E.4 OGB-MolPCBA ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") provides additional details and context.
 
-![Refer to caption](/html/2012.07421/assets/x6.png)
-
+!(/html/2012.07421/assets/x6.png)
 
 Figure 6: 
 The OGB-MolPCBA dataset comprises molecules with many different structural scaffolds. The goal is to predict biochemical assay results in molecules with scaffolds that are not in the training set. Here, we show sample molecules from each scaffold, together with target labels: each molecule is associated with 128 binary labels and ‘?’ indicates that the label is not provided for the molecule.
@@ -388,8 +338,7 @@ As leverage, we include images from 18 acquisition sessions over 5 countries in 
 We evaluate model performance on unseen countries by measuring accuracy at a fixed Intersection over Union (IoU) threshold, and averaging across acquisition sessions to account for imbalances in the numbers of images in them.
 Additional details are provided in Appendix [E.5](#S5.SS5 "E.5 GlobalWheat-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts").
 
-![Refer to caption](/html/2012.07421/assets/figures/wheat_dataset.png)
-
+!(/html/2012.07421/assets/figures/wheat_dataset.png)
 
 Figure 7: 
 The GlobalWheat-wilds dataset consists of overhead images of wheat fields, annotated with bounding boxes of wheat heads. The goal is to detect and predict the bounding boxes of wheat heads, where images are from new acquisition sessions. A set of wheat images are collected in each acquisition session, each corresponding to a specific wheat field location, time, and sensor. While acquisition sessions vary along multiple axes, from the aforementioned factors to wheat growth stage to illumination conditions, the dataset split primarily captures a shift in location; test images are taken from countries unseen during training time. In this figure, we show images with bounding boxes from different acquisition sessions.
@@ -409,8 +358,7 @@ The training and test sets comprise comments on disjoint articles, and we evalua
 Models can use the provided domain annotations as leverage to learn to perform well over each demographic group.
 Appendix [E.6](#S5.SS6 "E.6 CivilComments-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") provides additional details and context.
 
-![Refer to caption](/html/2012.07421/assets/x7.png)
-
+!(/html/2012.07421/assets/x7.png)
 
 Figure 8: 
 The CivilComments-wilds dataset involves classifying the toxicity of online comments. The goal is to learn models that avoid spuriously associating mentions of demographic identities (like male, female, etc.) with toxicity due to biases in the training data.
@@ -430,8 +378,7 @@ We evaluate models by their test accuracy on the worst geographical region, whic
 As we provide both time and region annotations, models can leverage the structure across both space and time to improve robustness.
 Appendix [E.7](#S5.SS7 "E.7 FMoW-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") provides additional details and context.
 
-![Refer to caption](/html/2012.07421/assets/x8.png)
-
+!(/html/2012.07421/assets/x8.png)
 
 Figure 9: 
 The FMoW-wilds dataset contains satellite images taken in different geographical regions and at different times. The goal is to generalize to satellite imagery taken in the future, which may be shifted due to infrastructure development across time, and to do equally well across geographic regions.
@@ -446,13 +393,11 @@ We study this shift through a variant of the poverty mapping dataset collected b
 As poverty measures are highly correlated across space (Jean et al., [2018](#bib.bib188); Rolf et al., [2020](#bib.bib319)), methods can utilize the provided location coordinates, and the country and urban/rural annotations, to improve robustness.
 Appendix [E.8](#S5.SS8 "E.8 PovertyMap-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") provides additional details and context.
 
-![Refer to caption](/html/2012.07421/assets/x9.png)
-
+!(/html/2012.07421/assets/x9.png)
 
 Figure 10: The PovertyMap-wilds dataset contains satellite images taken in different countries. The goal is to predict asset wealth in countries that are not present in the training set, while being accurate in both urban and rural areas. There may be significant economic and cultural differences across country borders that contribute to the spatial distribution shift.
 
-![Refer to caption](/html/2012.07421/assets/x10.png)
-
+!(/html/2012.07421/assets/x10.png)
 
 Figure 11: 
 The Amazon-wilds dataset involves predicting star ratings from reviews of Amazon products. The goal is to do consistently well on new reviewers who are not in the training set.
@@ -480,8 +425,7 @@ The training and test sets comprise code from disjoint GitHub repositories.
 As leverage, we include over 5,300 repositories in the training set, capturing a wide range of source code variation. We evaluate models by their accuracy on the subpopulation of class and method tokens.
 Additional dataset and model details are provided in Appendix [E.10](#S5.SS10 "E.10 Py150-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts").
 
-![Refer to caption](/html/2012.07421/assets/x11.png)
-
+!(/html/2012.07421/assets/x11.png)
 
 Figure 12: 
 The Py150-wilds dataset comprises Python source code files taken from a variety of public repositories on GitHub. The task is code completion: predict token names given the context of previous tokens. We evaluate models on their accuracy on the subpopulation of API calls (i.e., method and class tokens), which are the most common code completion queries in real-world settings. Our goal is to learn code completion models that generalize to source code in new repositories that are not seen in the training set.
@@ -613,9 +557,6 @@ All datasets show performance drops due to distribution shift, with substantiall
 | PovertyMap-wilds | Worst-U/R Pearson R | Mixed-to-test | 0.60 (0.06) | 0.45 (0.06) | 0.15 |
 | Amazon-wilds | 10th percentile acc | Average | 71.9 (0.1) | 53.8 (0.8) | 18.1 |
 | Py150-wilds | Method/class acc | Train-to-train | 75.4 (0.4) | 67.9 (0.1) | 7.5 |
-
-
-
 
 Table 2: The out-of-distribution test performance of models trained with different baseline algorithms: CORAL, originally designed for unsupervised domain adaptation; IRM, for domain generalization; and Group DRO, for subpopulation shifts. Evaluation metrics for each dataset are the same as in Table [1](#S5.T1 "Table 1 ‣ 5.4 Results ‣ 5 Performance drops from distribution shifts ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"); higher is better.
 Overall, these algorithms did not improve over empirical risk minimization (ERM), and sometimes made performance significantly worse, except on CivilComments-wilds where they perform better but still do not close the in-distribution gap in Table [1](#S5.T1 "Table 1 ‣ 5.4 Results ‣ 5 Performance drops from distribution shifts ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts").
@@ -991,8 +932,7 @@ The Wilds package provides a simple, standardized interface for all datasets in 
 This short code snippet covers all of the steps of getting started with a Wilds dataset, including dataset download and initialization, accessing various splits, and initializing the data loader.
 We also provide multiple data loaders in order to accommodate a wide array of algorithms, which often require specific data loading schemes.
 
-![Refer to caption](/html/2012.07421/assets/x12.png)
-
+!(/html/2012.07421/assets/x12.png)
 
 Figure 13: 
 Dataset initialization and data loading.
@@ -1002,8 +942,7 @@ Dataset initialization and data loading.
 To allow algorithms to leverage domain annotations as well as other groupings over the available metadata, the Wilds package provides Grouper objects.
 Grouper objects (e.g., grouper in Figure [14](#S10.F14 "Figure 14 ‣ Domain information. ‣ 10 Using the Wilds package ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts")) extract group annotations from metadata, allowing users to specify the grouping scheme in a flexible fashion.
 
-![Refer to caption](/html/2012.07421/assets/x13.png)
-
+!(/html/2012.07421/assets/x13.png)
 
 Figure 14: 
 Accessing domain and other group information via a Grouper object.
@@ -1013,8 +952,7 @@ Accessing domain and other group information via a Grouper object.
 Finally, the Wilds package standardizes and automates the evaluation for each dataset.
 As summarized in Figure [15](#S10.F15 "Figure 15 ‣ Evaluation. ‣ 10 Using the Wilds package ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"), invoking the eval method of each dataset yields all metrics reported in the paper and on the leaderboard.
 
-![Refer to caption](/html/2012.07421/assets/x14.png)
-
+!(/html/2012.07421/assets/x14.png)
 
 Figure 15: 
 Evaluation.
@@ -4198,8 +4136,7 @@ We split the dataset by randomly partitioning the data by camera traps:
 The camera traps are randomly distributed across the training, validation (OOD), and test (OOD) sets. The number of examples per location vary widely from 1 to 8494, with a median of 194 images (Figure [16](#S5.F16 "Figure 16 ‣ Data. ‣ E.1.1 Setup ‣ E.1 iWildCam2020-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts")).
 All images from the same sequence (i.e., all images taken in the same burst) are placed together in the same split. See Appendix [E.1.4](#S5.SS1.SSS4 "E.1.4 Additional details ‣ E.1 iWildCam2020-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") for more details.
 
-![Refer to caption](/html/2012.07421/assets/x15.png)
-
+!(/html/2012.07421/assets/x15.png)
 
 Figure 16: Number of examples per location in the iWildCam2020-wilds dataset. The locations are sorted such that locations with the least amount of examples are to the left on the x-axis.
 
@@ -4214,8 +4151,7 @@ We anticipate that approaches that utilize the provided camera trap annotations 
 
 #### E.1.2 Baseline results
 
-![Refer to caption](/html/2012.07421/assets/x16.png)
-
+!(/html/2012.07421/assets/x16.png)
 
 Figure 17: Label distribution for each iWildCam2020-wilds split.
 
@@ -4363,9 +4299,6 @@ Table 5: Baseline results on Camelyon17-wilds. In-distribution (ID) results corr
 | IRM | 91.6 (7.7) | 86.2 (1.4) | 64.2 (8.1) |
 | Group DRO | 93.7 (5.2) | 85.5 (2.2) | 68.4 (7.3) |
 
-
-
-
 Table 6: Mixed-to-test comparison for ERM models on Camelyon17-wilds.
 In the official OOD setting, we train on data from three hospitals and evaluate on a different test hospital, whereas in the mixed-to-test ID setting,
 we add data from one extra slide from the test hospital to the training set.
@@ -4404,8 +4337,7 @@ We trained models with CORAL, IRM, and Group DRO, treating each hospital as a do
 However, they performed comparably or worse than the ERM baseline.
 For the CORAL and IRM models, our grid search selected the lowest values of their penalty weights (0.1 and 1, respectively) based on OOD validation accuracy.
 
-![Refer to caption](/html/2012.07421/assets/x17.png)
-
+!(/html/2012.07421/assets/x17.png)
 
 Figure 18: 
 Test (OOD) accuracy versus validation (OOD) accuracy for different random seeds on Camelyon17-wilds, using the same hyperparameters. The test accuracy is far more variable than the validation accuracy (note the differences in the axes), in part because we early stop on the highest OOD validation accuracy.
@@ -4523,8 +4455,7 @@ these 6 channels: nuclei, endoplasmic reticuli, actin, nucleoli and cytoplasmic
 RNA, mitochondria, and Golgi.
 To make the dataset smaller and more accessible, we only included the first 3 channels in RxRx1-wilds.
 
-![Refer to caption](/html/2012.07421/assets/figures/rxrx1_channels.png)
-
+!(/html/2012.07421/assets/figures/rxrx1_channels.png)
 
 Figure 19: 6-channel composite image of HUVEC cells (left) and its
 individual channels (rest): nuclei (blue), endoplasmic reticuli (green),
@@ -4538,8 +4469,7 @@ design 51 different times, each in a different batch of experiments. The design
 consists of four 384-well plates, where individual wells are used to isolate
 populations of cells on each plate (see Figure [20](#S5.F20 "Figure 20 ‣ Data. ‣ E.3.1 Setup ‣ E.3 RxRx1-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts")).
 
-![Refer to caption](/html/2012.07421/assets/figures/rxrx1_plate.png)
-
+!(/html/2012.07421/assets/figures/rxrx1_plate.png)
 
 Figure 20: Schematic of a 384-well plate demonstrating imaging sites and
 6-channel images. The 4-plate experiments in RxRx1-wilds were run in the wells
@@ -4573,8 +4503,7 @@ Each experiment was run in a single cell type, and of the 51 experiments in RxRx
 Figure [21](#S5.F21 "Figure 21 ‣ Data. ‣ E.3.1 Setup ‣ E.3 RxRx1-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") shows the phenotype of the same siRNA in each of these
 four cell types.
 
-![Refer to caption](/html/2012.07421/assets/figures/rxrx1_celltypes.png)
-
+!(/html/2012.07421/assets/figures/rxrx1_celltypes.png)
 
 Figure 21: Images of the same siRNA in four cell types, from left to right: HUVEC, RPE, HepG2, U2OS.
 
@@ -4668,9 +4597,6 @@ Table 7: Baseline results on RxRx1-wilds. In-distribution (ID) results correspon
 | CORAL | 18.5 (0.4) | 34.0 (0.3) | 28.4 (0.3) |
 | IRM | 5.6 (0.4) | 9.9 (1.4) | 8.2 (1.1) |
 | Group DRO | 15.2 (0.1) | 28.1 (0.3) | 23.0 (0.3) |
-
-
-
 
 Table 8: Mixed-to-test comparison for ERM models on RxRx1-wilds.
 In the official OOD setting, we train on data from 33 experiments (1 site per experiment) and test on 14 different experiments (2 sites per experiment).
@@ -4818,8 +4744,7 @@ In Figure [22](#S5.F22 "Figure 22 ‣ Data. ‣ E.4.1 Setup ‣ E.4 OGB-MolPCBA
 However, the differences in scaffold sizes do not significantly change the statistics of the molecules in each split.
 In Figures [22](#S5.F22 "Figure 22 ‣ Data. ‣ E.4.1 Setup ‣ E.4 OGB-MolPCBA ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts") (B) and (C), we see that the label statistics remain very similar across train/validation/test splits, suggesting that the main distribution shift comes from the difference in the input molecular graph structure.
 
-![Refer to caption](/html/2012.07421/assets/x18.png)
-
+!(/html/2012.07421/assets/x18.png)
 
 Figure 22: Analyses of scaffold groups in the OGB-MolPCBA dataset. (A) shows the distribution of the scaffold sizes, (B) and (C) show how the ratios of positive molecules and labeled molecules for the 128 tasks vary across the train/validation /test splits.
 
@@ -4842,9 +4767,6 @@ Table 9: Baseline results on OGB-MolPCBA. Parentheses show standard deviation ac
 | CORAL | 18.4 (0.2) | 17.9 (0.5) |
 | IRM | 15.8 (0.2) | 15.6 (0.3) |
 | Group DRO | 23.1 (0.6) | 22.4 (0.6) |
-
-
-
 
 Table 10: 
 Random split comparison for ERM models on OGB-MolPCBA.
@@ -5047,9 +4969,6 @@ Table 12: Baseline results on GlobalWheat-wilds. In-distribution (ID) results co
 | ERM | 77.4 (1.1) | 68.6 (0.4) | 77.1 (0.5) | 51.2 (1.8) |
 | Group DRO | 76.1 (1.0) | 66.2 (0.4) | 76.2 (0.8) | 47.9 (2.0) |
 
-
-
-
 Table 13: Mixed-to-test comparison for ERM models on GlobalWheat-wilds.
 In the official OOD setting, we train on data from Europe, whereas in the mixed-to-test ID setting, we train on a mix of data from Europe, Africa, and North America.
 In both settings, we test on data from Africa and North America.
@@ -5061,9 +4980,6 @@ Parentheses show standard deviation across 3 replicates.
 | Setting | Algorithm | Test accuracy (%) |
 | Official (train on ID examples) | ERM | 49.6 (1.9) |
 | Mixed-to-test (train on ID + OOD examples) | ERM | 63.3 (1.7) |
-
-
-
 
 Table 14: Mixed-to-test comparison for ERM models on GlobalWheat-wilds, broken down by each test domain. This is a more detailed version of Table [13](#S5.T13 "Table 13 ‣ Model. ‣ E.5.2 Baseline results ‣ E.5 GlobalWheat-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"). Parentheses show standard deviation across 3 replicates.
 
@@ -5239,9 +5155,6 @@ We show standard deviation across 5 random seeds in parentheses.
 | CORAL (label ×\times Black) | 88.9 (0.6) | 64.7 (1.4) | 88.7 (0.5) | 65.6 (1.3) |
 | IRM (label ×\times Black) | 89.0 (0.7) | 65.9 (2.8) | 88.8 (0.7) | 66.3 (2.1) |
 | Group DRO (label ×\times Black) | 90.1 (0.4) | 67.7 (1.8) | 89.9 (0.5) | 70.0 (2.0) |
-
-
-
 
 Table 16: Accuracies on each subpopulation in CivilComments-wilds, averaged over models trained by group DRO (label).
 
@@ -5440,9 +5353,9 @@ The train/val/test data splits contain images from disjoint location coordinates
 The ID and OOD splits within the test and validation sets may have overlapping locations, but have non-overlapping time ranges.
 There is a disparity in the number of examples in each region, with Africa and Oceania having the least examples (Figure [23](#S5.F23 "Figure 23 ‣ Data. ‣ E.7.1 Setup ‣ E.7 FMoW-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts")); this could be due to bias in sampling and/or a lack of infrastructure and land data in certain regions.
 
-![Refer to caption](/html/2012.07421/assets/x19.png)
+!(/html/2012.07421/assets/x19.png)
 
-![Refer to caption](/html/2012.07421/assets/x20.png)
+!(/html/2012.07421/assets/x20.png)
 
 Figure 23: Number of examples from each region of the world in FMoW-wilds on the ID vs. OOD splits of the data. There is much less data from Africa and Oceania than other regions.
 
@@ -5468,9 +5381,6 @@ Parentheses show standard deviation across 3 replicates.
 | IRM | 56.6 (0.59) | 47.5 (1.57) | 56.0 (0.34) | 30.0 (1.37) |
 | Group DRO | 57.9 (0.62) | 46.5 (0.25) | 57.8 (0.60) | 30.8 (0.81) |
 
-
-
-
 Table 19: The regional accuracies of models trained on data before 2013 and tested on held-out locations from ID (<2013absent2013<2013) or OOD (≥2016absent2016\geq 2016) test sets in FMoW-wilds. ID results correspond to the train-to-train setting. Standard deviations over 3 trials are in parentheses.
 
 |  |  |  |  |  |  |  |
@@ -5486,9 +5396,6 @@ Table 19: The regional accuracies of models trained on data before 2013 and test
 | CORAL | 56.6 (1.35) | 55.0 (1.02) | 69.2 (2.92) | 59.7 (0.83) | 70.8 (2.53) | 55.0 (1.02) |
 | IRM | 56.9 (0.62) | 56.0 (0.34) | 69.7 (2.16) | 59.7 (0.49) | 68.3 (2.00) | 56.0 (0.34) |
 | Group DRO | 58.7 (0.33) | 57.9 (0.74) | 69.2 (0.28) | 61.1 (0.57) | 68.8 (2.38) | 57.8 (0.60) |
-
-
-
 
 Table 20: Mixed-to-test comparison for ERM models on FMoW-wilds.
 In the official setting, we train on ID examples (i.e., data from 2002–2013),
@@ -5543,8 +5450,7 @@ This drop in performance may be partially due to label shift:
 from Figure [24](#S5.F24 "Figure 24 ‣ Discussion. ‣ E.7.2 Baseline results ‣ E.7 FMoW-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"), we see that the label distributions between Africa and other regions are very different, e.g., with a large drop in recreational facilities and a sharp increase in single residential units.
 We do not find a similarly large label shift between <2013absent2013<2013 and ≥2013absent2013\geq 2013 splits of the dataset.
 
-![Refer to caption](/html/2012.07421/assets/x21.png)
-
+!(/html/2012.07421/assets/x21.png)
 
 Figure 24: Number of examples from each category in FMoW-wilds in non-African and African regions. There is a large label shift between non-African regions and Africa.
 
@@ -5640,9 +5546,9 @@ Asset wealth may also shift dramatically between countries. Figure [25](#S5.F25
 Mean asset wealth ranges from -0.4 to +0.8 depending on the country.
 There is a stark difference between mean asset wealth in urban and rural areas, with urban asset wealth being positive in all countries while rural mean asset wealth being mostly negative.
 
-![Refer to caption](/html/2012.07421/assets/x22.png)
+!(/html/2012.07421/assets/x22.png)
 
-![Refer to caption](/html/2012.07421/assets/x23.png)
+!(/html/2012.07421/assets/x23.png)
 
 Figure 25: Mean asset wealth by country on aggregate as well as urban and rural splits for each country, computed on the full dataset.
 
@@ -5662,8 +5568,7 @@ Large socioeconomic differences between countries makes generalization across bo
 Poverty measures are also known to be highly correlated across space, meaning nearby villages will likely have similar poverty measures, and methods can utilize this spatial structure (using the provided location coordinate metadata) to improve predictions (Jean et al., [2018](#bib.bib188); Rolf et al., [2020](#bib.bib319)).
 We show the correlation with distance in Figure [26](#S5.F26 "Figure 26 ‣ Potential leverage. ‣ E.8.1 Setup ‣ E.8 PovertyMap-wilds ‣ E Additional dataset details and results ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts"), which plots the distance between pairs of data points against the absolute differences in asset wealth between pairs.
 
-![Refer to caption](/html/2012.07421/assets/x24.png)
-
+!(/html/2012.07421/assets/x24.png)
 
 Figure 26: Mean absolute difference in asset wealth between two data points in the full dataset as a function of (great circle) distance between the two points. Smaller distances between data points correlate with more similar asset wealth measures. The pairs are binned by distance on a log (base 10) scale (100 bins), and the mean value of each bin is plotted at the midpoint distance of each bin.
 
@@ -5701,9 +5606,6 @@ All results are averaged over 5 different OOD country folds taken from Yeh et 
 | CORAL | 0.59 (0.04) | 0.52 (0.06) | 0.59 (0.03) | 0.44 (0.06) |
 | IRM | 0.57 (0.06) | 0.53 (0.05) | 0.57 (0.08) | 0.43 (0.07) |
 | Group DRO | 0.49 (0.08) | 0.46 (0.04) | 0.54 (0.11) | 0.39 (0.06) |
-
-
-
 
 Table 22: Mixed-to-test comparison for ERM models on PovertyMap-wilds.
 In the official OOD setting, we train on data from one set of countries, and then test on a different set of countries.
@@ -5903,8 +5805,7 @@ Reweighted (label)
 52.0 (0.0)
 68.6 (0.6)
 
-![Refer to caption](/html/2012.07421/assets/x25.png)
-
+!(/html/2012.07421/assets/x25.png)
 
 Figure 27: 
 Distribution of per-reviewer accuracy on the test set for the ERM model (blue). The corresponding random baseline would have per-reviewer accuracy distribution in grey.
@@ -6217,9 +6118,6 @@ Table 27: Comparison of precision scores for each race group at 60% global weapo
 | Black pedestrians only | 0.131 | 0.174 | 0.360 |
 | All pedestrians, subsampled to # Black pedestrians | 0.135 | 0.183 | 0.362 |
 
-
-
-
 Table 28: Comparison of precision scores for each borough at a threshold which achieves 60% global weapon recall. Train set size is 155,929 for both rows.
 
 |  |  |  |  |  |  |
@@ -6228,9 +6126,6 @@ Table 28: Comparison of precision scores for each borough at a threshold which a
 | Training dataset | Bronx | Brooklyn | Manhattan | Queens | Staten Island |
 | Bronx pedestrians only | 0.074 | 0.158 | 0.207 | 0.157 | 0.105 |
 | All pedestrians, subsampled to # Bronx pedestrians | 0.075 | 0.162 | 0.224 | 0.168 | 0.107 |
-
-
-
 
 Table 29: Model parameters used in this analysis.
 
@@ -6300,8 +6195,7 @@ Thus, each x𝑥x is associated with a target output y∈{−1,0,1}128𝑦supers
 During training and testing, we simply ignore ambiguous bins, and only focus on bound or unbound bins.
 The domain d𝑑d is an integer that identifies the cell type.
 
-![Refer to caption](/html/2012.07421/assets/figures/Wilds_ENCODE-DREAM-schematic.png)
-
+!(/html/2012.07421/assets/figures/Wilds_ENCODE-DREAM-schematic.png)
 
 Figure 28: 
 Setup of the ENCODE benchmark. (a) The predictive model predicts binding of a protein to a location, in a cell type (domain). (b) The input features are DNA sequence and chromatin accessibility, and the labels are assigned over 200 base pair (bp) bins tiling the genome every 50 bp. (c) Each training example is a 12800 bp window, with the 128 middle bins evaluated (spanning 6400 bp).
@@ -6412,8 +6306,7 @@ Bins are 200bp wide.
 Our model is a version of the fully convolutional U-Net model for image segmentation (Ronneberger et al., [2015](#bib.bib320)), modified from the architecture in Li and Guan ([2019](#bib.bib231)). It is illustrated in Figure [29](#S6.F29 "Figure 29 ‣ Model. ‣ F.2.2 Baseline results ‣ F.2 ENCODE: Transcription factor binding across different cell types ‣ F Datasets with distribution shifts that do not cause performance drops ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts").
 We train each model using the average cross-entropy loss over the 128 output bins in each example (after excluding ambiguous bins).
 
-![Refer to caption](/html/2012.07421/assets/figures/Unet-seq-wilds.png)
-
+!(/html/2012.07421/assets/figures/Unet-seq-wilds.png)
 
 Figure 29: 
 Architecture of the baseline prediction model, based on U-Net.
@@ -6460,9 +6353,6 @@ Expanded results per round-robin split are in Table [35](#S6.T35 "Table 35 ‣ 
 | JUND | ENCODE-DREAM | 65.9 (1.2) | 66.7 (1.4) | 32.9 (1.0) | 42.3 (2.5) |
 | JUND | round-robin | 53.2 (4.0) | 54.1 (4.2) | 47.2 (2.4) | 42.9 (3.2) |
 
-
-
-
 Table 33: In-distribution results on ENCODE: when training and validation cell types are set to the test cell type.
 All numbers are average precision.
 “Round-robin” indicates the average performance over all splits marked “round-robin” in Table [30](#S6.T30 "Table 30 ‣ Data. ‣ F.2.1 Setup ‣ F.2 ENCODE: Transcription factor binding across different cell types ‣ F Datasets with distribution shifts that do not cause performance drops ‣ Wilds: A Benchmark of in-the-Wild Distribution Shifts").
@@ -6476,9 +6366,6 @@ Expanded results per round-robin split are in Table [35](#S6.T35 "Table 35 ‣ 
 | MAX | round-robin | 77.3 (0.9) | 65.2 (1.3) | 65.4 (1.3) |
 | JUND | ENCODE-DREAM | 76.0 (0.6) | 55.8 (0.5) | 56.0 (0.7) |
 | JUND | round-robin | 79.3 (2.7) | 61.8 (2.4) | 62.4 (2.6) |
-
-
-
 
 Table 34: Baseline results on ENCODE.
 In-distribution (ID) results correspond to the train-to-train setting.
@@ -6503,9 +6390,6 @@ Parentheses show standard deviation across replicates.
 | JUND | HCT116 / HeLa-S3 | 75.7 (1.5) | 50.0 (2.4) | 50.6 (2.4) | 69.2 (2.1) | 52.9 (3.2) |
 | JUND | HeLa-S3 / HepG2 | 78.0 (2.1) | 59.5 (5.1) | 60.0 (4.9) | 30.3 (1.3) | 66.6 (3.6) |
 | JUND | HepG2 / K562 | 79.6 (0.9) | 61.9 (1.1) | 62.3 (1.4) | 69.8 (0.6) | 30.5 (0.6) |
-
-
-
 
 Table 35: Test-to-test results on ENCODE.
 Parentheses show standard deviation across replicates.
@@ -6625,17 +6509,13 @@ time of day and location. Our results below suggest that more challenging tasks,
 detection and segmentation, may be more suited to evaluations of distribution shifts in an
 autonomous driving context.
 
-![Refer to caption](/html/2012.07421/assets/figures/bdd100k.png)
-
+!(/html/2012.07421/assets/figures/bdd100k.png)
 
 Figure 30: For BDD100K, we study two different types of shift, based on time of day and location. We
 visualize randomly chosen images and their corresponding labels from the training, validation, and
 test splits for both shifts. The labels are 9-dimensional binary vectors indicating the presence
 (1) or absence (0) of, in order: bicycles, buses, cars, motorcycles, pedestrians, riders, traffic
 lights, traffic signs, and trucks.
-
-
-
 
 Table 36: Average multi-task classification accuracy of ERM trained models on BDD100K. All
 results are reported across 3 random seeds, with standard deviation in parentheses. We observe no
@@ -6773,9 +6653,6 @@ Table 37: Baseline results on time shifts on the Amazon Reviews Dataset. We repo
 |  | Train | | Validation (OOD) | | Test (OOD) | |
 | Algorithm | Average | Worst year | Average | Worst year | Average | Worst year |
 | ERM | 75.0 (0.0) | 72.4 (0.1) | 75.7 (0.1) | 74.6 (0.1) | 76.0 (0.1) | 75.4 (0.1) |
-
-
-
 
 Table 38: Test-to-test in-distribution comparison for time shifts on Amazon Reviews Dataset. We observe only modest performance drops due to time shifts.
 
@@ -6932,9 +6809,6 @@ Table 40: Baseline results on time shifts on the Yelp Open Dataset. We report th
 | Algorithm | Average | Worst year | Average | Worst year | Average | Worst year |
 | ERM | 71.4 (0.7) | 65.7 (1.1) | 76.1 (0.1) | 73.1 (0.2) | 76.0 (0.4) | 73.9 (0.4) |
 
-
-
-
 Table 41: Test-to-test in-distribution comparison on the Yelp Open Dataset. We observe only modest performance drops due to time shifts. Parentheses show standard deviation across 3 replicates.
 
 |  |  |  |  |  |  |  |
@@ -7012,83 +6886,3 @@ ERM
 70.6 (0.0)
 56.0 (0.0)
 70.9 (0.1)
-
-[◄](/html/2012.07420)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2012.07421)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2012.07421)
-[View original  
-on arXiv](https://arxiv.org/abs/2012.07421)[►](/html/2012.07422)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 08:01:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

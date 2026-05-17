@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/1708.05123v1
 year: 2017
 ---
 
-[1708.05123] Deep & Cross Network for Ad Click Predictions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Deep & Cross Network for Ad Click Predictions
 
 Ruoxi Wang
@@ -134,8 +91,7 @@ The paper is organized as follows: [Section 2](#S2 "2. Deep & Cross Network (DC
 In this section we describe the architecture of Deep & Cross Network (DCN) models.
 A DCN model starts with an *embedding and stacking layer*, followed by a *cross network* and a *deep network* in parallel. These in turn are followed by a final *combination layer* which combines the outputs from the two networks. The complete DCN model is depicted in [Figure 1](#S2.F1 "Figure 1 ‣ 2. Deep & Cross Network (DCN) ‣ Deep & Cross Network for Ad Click Predictions").
 
-![Refer to caption](/html/1708.05123/assets/x1.png)
-
+!(/html/1708.05123/assets/x1.png)
 
 Figure 1. The Deep & Cross Network
 
@@ -181,8 +137,7 @@ superscriptℝ𝑑{\bf x}\_{l},{\bf x}\_{l+1}\in\mathbb{R}^{d} are column vector
 subscript𝐰𝑙subscript𝐛𝑙
 superscriptℝ𝑑{\bf w}\_{l},{\bf b}\_{l}\in\mathbb{R}^{d} are the weight and bias parameters of the l𝑙l-th layer. Each cross layer adds back its input after a feature crossing f𝑓f, and the mapping function f:ℝd↦ℝd:𝑓maps-tosuperscriptℝ𝑑superscriptℝ𝑑f:\mathbb{R}^{d}\mapsto\mathbb{R}^{d} fits the residual of 𝐱l+1−𝐱lsubscript𝐱𝑙1subscript𝐱𝑙{\bf x}\_{l+1}-{\bf x}\_{l}. A visualization of one cross layer is shown in [Figure 2](#S2.F2 "Figure 2 ‣ 2.2. Cross Network ‣ 2. Deep & Cross Network (DCN) ‣ Deep & Cross Network for Ad Click Predictions").
 
-![Refer to caption](/html/1708.05123/assets/x2.png)
-
+!(/html/1708.05123/assets/x2.png)
 
 Figure 2. Visualization of a cross layer.
 
@@ -410,8 +365,7 @@ Table 4. Differences in the validation logloss (×10−2absentsuperscript102\tim
 
 [Figure 3](#S4.F3 "Figure 3 ‣ 4.4. Model Performance ‣ 4. Experimental Results ‣ Deep & Cross Network for Ad Click Predictions") shows the improvement as we increase the number of cross layers on randomly selected settings. For the deep networks in [Figure 3](#S4.F3 "Figure 3 ‣ 4.4. Model Performance ‣ 4. Experimental Results ‣ Deep & Cross Network for Ad Click Predictions"), there is a clear improvement when 1 cross layer is added to the model. As more cross layers are introduced, for some settings the logloss continues to decrease, indicating the introduced cross terms are effective in the prediction; whereas for others the logloss starts to fluctuate and even slightly increase, which indicates the higher-degree feature interactions introduced are not helpful.
 
-![Refer to caption](/html/1708.05123/assets/x3.png)
-
+!(/html/1708.05123/assets/x3.png)
 
 Figure 3. Improvement in the validation logloss with the growth of cross layer depth. The case with 0 cross layers is equivalent to a single DNN model. In the legend, “layers” is hidden layers, “nodes” is hidden nodes. Different symbols represent different hyperparameters for the deep network.
 
@@ -654,83 +608,3 @@ Therefore, if we denote P𝜶subscript𝑃𝜶P\_{\bm{\alpha}} to be the set of 
 | (12) |  | c𝜶=∑j1,⋯,jp∈Pp∑i1,⋯,ip∈Bp∏k=1pwik(jk).subscript𝑐𝜶subscript  subscript𝑗1⋯subscript𝑗𝑝 subscript𝑃𝑝subscript  subscript𝑖1⋯subscript𝑖𝑝 subscript𝐵𝑝superscriptsubscriptproduct𝑘1𝑝superscriptsubscript𝑤subscript𝑖𝑘subscript𝑗𝑘c\_{\bm{\alpha}}=\sum\_{j\_{1},\cdots,j\_{p}\in P\_{p}}\sum\_{i\_{1},\cdots,i\_{p}\in B\_{p}}\prod\_{k=1}^{p}w\_{i\_{k}}^{(j\_{k})}. |  |
 
 ∎
-
-[◄](/html/1708.05122)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1708.05123)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1708.05123)
-[View original  
-on arXiv](https://arxiv.org/abs/1708.05123)[►](/html/1708.05124)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 00:42:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

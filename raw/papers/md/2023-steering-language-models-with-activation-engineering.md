@@ -16,49 +16,6 @@ url: https://arxiv.org/abs/2308.10248
 year: 2023
 ---
 
-[2308.10248] Activation Addition: Steering Language Models Without Optimization
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Activation Addition: Steering Language Models Without Optimization
 
 Alexander Matt Turner,1
@@ -158,7 +115,7 @@ Figure 1: Schematic of the Activation Addition  (ActAdd) method.
 == natural language text;
 ∙∙\bullet  = vectors of activations just before a specified layer. In this example, the output is heavily biased towards discussing weddings, regardless of the topic of the user prompt. (See Algorithm [1](#alg1 "Algorithm 1 ‣ Activation addition ‣ Methods ‣ Activation Addition: Steering Language Models Without Optimization") for omitted parameters over intervention strength and location.)
 
-![Refer to caption](/html/2308.10248/assets/x1.png)
+!(/html/2308.10248/assets/x1.png)
 
 ## Methods
 
@@ -254,7 +211,7 @@ Finally, the change in perplexity under ActAdd  for each wedding-word-frequenc
 
 Figure 2: Performance of ActAdd  on a target topic as the topic becomes more relevant. The perplexity ratio (lower better) compares the relative predictive performance of ActAdd and an unmodified model; we see that adding a wedding - ‘   ’ steering vector improves performance on wedding-related text while preserving performance on unrelated text.
 
-![Refer to caption](/html/2308.10248/assets/x2.png)
+!(/html/2308.10248/assets/x2.png)
 
 Figure [2](#Sx4.F2 "Figure 2 ‣ Intervention effectiveness ‣ Results ‣ Activation Addition: Steering Language Models Without Optimization") shows the resulting perplexity ratios under ActAdd, relative to the unmodified model. On documents where the injected topic is more relevant, ActAdd’s relative predictive performance increases.
 
@@ -290,13 +247,11 @@ Figures [4](#Sx4.F4 "Figure 4 ‣ Intervention effectiveness ‣ Results ‣ Ac
 
 Figure 3: Topic steering effect (mean related words in completions) over injection layer. In blue is the average related-word count among 200 ActAdd  completions; the dotted line is the count among unmodified completions.
 
-![Refer to caption](/html/2308.10248/assets/x3.png)
-
-
+!(/html/2308.10248/assets/x3.png)
 
 Figure 4: Topic steering effect (probability of seeing some related words in completions) over injection layer. In blue is the average probability among 200 ActAdd  completions; dotted line is the probability in unmodified completions.
 
-![Refer to caption](/html/2308.10248/assets/x4.png)
+!(/html/2308.10248/assets/x4.png)
 
 ##### Preservation of general (off-target) performance
 
@@ -307,7 +262,7 @@ As shown in Figure [5](#Sx4.F5 "Figure 5 ‣ Preservation of general (off-targe
 
 Figure 5: Testing side effects of ActAdd  with the ConceptNet benchmark (Petroni et al. [2019](#bib.bib41)), a general relational knowledge dataset. ‘P​@​K𝑃@𝐾P@K’ is the probability of the correct answer being in the model’s top K𝐾K answers. Our method has a negligible impact on off-target probabilities across a range of top-K𝐾K values.
 
-![Refer to caption](/html/2308.10248/assets/x5.png)
+!(/html/2308.10248/assets/x5.png)
 
 ##### Algebraic combination of forward passes
 
@@ -328,7 +283,7 @@ Because ActAdd  involves only forward passes, it scales naturally with model s
 
 Figure 6: The cost to inference speed of using ActAdd  (compared to no steering), over increasing model size, as measured by the %percent\% increase in inference time. We see that the relationship is either roughly flat (in the OPT family) or decreasing (in the GPT family) over an order of magnitude increase in parameter count (124M to 2.7B).
 
-![Refer to caption](/html/2308.10248/assets/x6.png)
+!(/html/2308.10248/assets/x6.png)
 
 ## Discussion
 
@@ -793,8 +748,6 @@ We write A→B→𝐴𝐵A\to B to mean: Record the activations before layer A�
 
 Table 3: Note: some completions contain unpleasant content including slurs. Example GPT-2-XL outputs before and after applying ActAdd. A runnable notebook showing the best-of-3 samples used can be found here: tinyurl.com/ActAddExamples.
 
-
-
 | prompt 1 | prompt 2 | layer | coeff | User prompt | Before steering | After steering |
 | --- | --- | --- | --- | --- | --- | --- |
 | p+subscript𝑝p\_{+} | p−subscript𝑝p\_{-} | l𝑙l | c𝑐c | p∗subscript𝑝p\_{\*} |  | ActAddActAdd\mathrm{ActAdd} |
@@ -863,8 +816,6 @@ We discovered most of the example contrast pairs in Appendix Table [3](#A1.T3 "
 
 Table 7: Test examples from ConceptNet
 
-
-
 | token | mean\_logprob\_diff | mean\_logprob\_normal |
 | --- | --- | --- |
 | marry | 0.593 | -3.509 |
@@ -890,12 +841,9 @@ Table 7: Test examples from ConceptNet
 
 Table 8: Tokens with the greatest absolute change in log probability under ActAdd(weddings). (See Figure [7](#A1.F7 "Figure 7 ‣ B. Implementation details ‣ Appendix A Appendix ‣ Activation Addition: Steering Language Models Without Optimization") for the distribution these are drawn from.) The probabilities most increased on average are primarily wedding-related, with the exception of ‘OG’ and ‘08’. (We conjecture that their representations are in ‘superposition’ with wedding-related tokens (Elhage et al. [2022](#bib.bib9))). The bottom tokens share no obvious theme and show a significantly lower absolute change in probability: the mean log-prob diff for token ‘ bride’ represents a probability increase of 500%, whereas for ‘Image’ it’s -30%.
 
-
-
-
 Figure 7: Distribution shift (in mean log-probability changes) under ActAdd, relative to the unmodified model, and compared to a normal distribution’s quantiles (red). The resulting distribution is approximately normal for most tokens. The positive tail is significantly heavier than the negative tail: one set of tokens are reliably increased in probability, one reliably decreased.     See Appendix Table [8](#A1.T8 "Table 8 ‣ B. Implementation details ‣ Appendix A Appendix ‣ Activation Addition: Steering Language Models Without Optimization") for the corresponding tokens.
 
-![Refer to caption](/html/2308.10248/assets/x7.png)
+!(/html/2308.10248/assets/x7.png)
 
 ### C. Reproducibility
 
@@ -1008,13 +956,11 @@ This provides a measure of the magnitude of the modification, relative to a norm
 
 Figure 8: The relative norm decreases throughout the forward pass. The flat red line is because position 0 is the same token (endoftext) for both ‘Anger’ and ‘Calm’, and so the difference is 00. Thus, position 0 is never modified by a steering vector generated from any pair of prompts.
 
-![Refer to caption](/html/2308.10248/assets/x8.png)
-
-
+!(/html/2308.10248/assets/x8.png)
 
 Figure 9: The KL-divergence of output tokens under an anger ActAdd  and under a random vector. We see that, systematically, the anger vector changes the output distribution less than a random vector.
 
-![Refer to caption](/html/2308.10248/assets/x9.png)
+!(/html/2308.10248/assets/x9.png)
 
 Importantly, Figure [8](#A1.F8 "Figure 8 ‣ E. Investigating the norm of steering vectors ‣ Appendix A Appendix ‣ Activation Addition: Steering Language Models Without Optimization") shows the result of using c=+1𝑐1c=+1. But Anger −- Calm is an effective steering vector at coefficient +1010+10. Therefore, this intervention is nearly ten times the norm of the underlying forward pass. Heuristically, we interpret this as meaning that after layer normalization (and ignoring any destructive interference from adding the steering vector), around 90% of the residual stream is determined by the steering vector and not by the previous information computed from the prompt (“I think you’re”). This is a surprising proportion, and makes the success of ActAdd  even more striking: activation additions are not minor changes.
 
@@ -1035,19 +981,15 @@ Note that random vectors are not the same as the steering vectors for random (i.
 
 Figure 10: Token-level effect of the ActAdd wedding vector on KL-divergence, using GPT-J-6B instead of GPT-2.
 
-![Refer to caption](/html/2308.10248/assets/x10.png)
-
-
+!(/html/2308.10248/assets/x10.png)
 
 Figure 11: Token-level effect of the ActAdd wedding vector on token probability, using GPT-J-6B instead of GPT-2.
 
-![Refer to caption](/html/2308.10248/assets/x11.png)
-
-
+!(/html/2308.10248/assets/x11.png)
 
 Figure 12: Perplexity ratio effect of the ActAdd wedding vector (blue) across different steering coefficient values, using GPT-J-6B instead of GPT-2. (L) when injecting the steering vector at layer 6; (R) when at layer 16.
 
-![Refer to caption](/html/2308.10248/assets/x12.png)
+!(/html/2308.10248/assets/x12.png)
 
 ### G. Partial ActAdd
 
@@ -1061,7 +1003,7 @@ Figure [13](#A1.F13 "Figure 13 ‣ G. Partial ActAdd ‣ Appendix A Appendix �
 
 Figure 13: Wedding-relatedness (by simple related word count) as more of the residual stream dimensions are modified by the wedding ActAdd. We see somewhat smooth increases in wedding-relatedness over increasing n𝑛n, and an interesting nonmonotonic relationship for the prompt ‘I went up to my friend and said’.
 
-![Refer to caption](/html/2308.10248/assets/x13.png)
+!(/html/2308.10248/assets/x13.png)
 
 The first prompt is “I went up to my friend and said”, which is the prompt we originally demonstrated the wedding vector on. For this prompt, we observe a non-monotonic relationship between weddingness and fraction of dimensions modified. Surprisingly, for the first prompt, adding in the first 1,120 dimensions of the residual stream makes the completions more about weddings than all 1,600 dimensions. We originally chose this prompt to give GPT-2 an opportunity to bring up weddings. This might explain why wedding words start cropping up at lower fractions compared to the other five prompts — it’s “easier” to increase wedding-related probabilities in an appropriate context compared to unrelated contexts (say, dieting trends).
 
@@ -1079,83 +1021,3 @@ However, this complicated and undemonstrated hypothesis does not explain the non
 | ‘I NEVER talk about people getting hurt’ | ‘I talk about people getting hurt’ | 15 | +44+4 | The rock hurtled toward the child. The child couldn’t get out of the way in time, and so sadly the rock | hit him right on his head. The little boy cried for a long while before he could stop crying. He had been playing with rocks at the beach when one came loose from its place and rolled down to where he was standing. | hit him right on his head. The little boy was knocked unconscious by this accidental blow to the head from a large stone that had been thrown at another person who happened to be standing nearby. |
 
 Table 10: Example outputs before and after applying ActAdd on Llama-13B. Notice the failed replication on the Eiffel example. A notebook showing the best-of-3 samples used can be found here: tinyurl.com/llamactadd.
-
-[◄](/html/2308.10247)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2308.10248)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2308.10248)
-[View original  
-on arXiv](https://arxiv.org/abs/2308.10248)[►](/html/2308.10249)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 11:53:16 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

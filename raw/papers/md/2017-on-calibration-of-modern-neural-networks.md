@@ -13,50 +13,6 @@ url: http://arxiv.org/abs/1706.04599v2
 year: 2017
 ---
 
-[1706.04599] On Calibration of Modern Neural Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On Calibration of Modern Neural Networks
 
 Chuan Guo
@@ -95,9 +51,9 @@ Alternatively, in automated health care, control should be passed on to human do
 Specifically, a network should provide a *calibrated confidence* measure in addition to its prediction.
 In other words, the probability associated with the predicted class label should reflect its ground truth correctness likelihood.
 
-![Refer to caption](/html/1706.04599/assets/x1.png)
+!(/html/1706.04599/assets/x1.png)
 
-![Refer to caption](/html/1706.04599/assets/x2.png)
+!(/html/1706.04599/assets/x2.png)
 
 Figure 1: Confidence histograms (top) and reliability diagrams (bottom) for a 5-layer LeNet (left) and a 110-layer ResNet (right) on CIFAR-100. Refer to the text below for detailed illustration.
 
@@ -118,8 +74,7 @@ Finally, we compare various post-processing calibration methods on state-of-the-
 
 ## 2 Definitions
 
-![Refer to caption](/html/1706.04599/assets/x3.png)
-
+!(/html/1706.04599/assets/x3.png)
 
 Figure 2: The effect of network depth (far left), width (middle left), Batch Normalization (middle right), and weight decay (far right) on miscalibration, as measured by ECE (lower is better).
 
@@ -233,8 +188,7 @@ Increased model capacity will lower training NLL, and thus the model will be mor
 
 While it is difficult to pinpoint exactly how Batch Normalization affects the final predictions of a model, we do observe that models trained with Batch Normalization tend to be more miscalibrated. In the middle right plot of [Figure 2](#S2.F2 "Figure 2 ‣ 2 Definitions ‣ On Calibration of Modern Neural Networks"), we see that a 6-layer ConvNet obtains worse calibration when Batch Normalization is applied, even though classification accuracy improves slightly. We find that this result holds regardless of the hyperparameters used on the Batch Normalization model (i.e. low or high learning rate, etc.).
 
-![Refer to caption](/html/1706.04599/assets/x4.png)
-
+!(/html/1706.04599/assets/x4.png)
 
 Figure 3: Test error and NLL of a 110-layer ResNet with stochastic depth on CIFAR-100 during training. NLL is scaled by a constant to fit in the figure. Learning rate drops by 10x at epochs 250 and 375. The shaded area marks between epochs at which the best validation *loss* and best validation *error* are produced.
 
@@ -487,8 +441,7 @@ For document classification we experiment with 4 datasets:
 On 20 News and Reuters, we train Deep Averaging Networks (DANs) (Iyyer et al., [2015](#bib.bib20)) with 3 feed-forward layers and Batch Normalization. On SST, we train TreeLSTMs (Long Short Term Memory) (Tai et al., [2015](#bib.bib41)).
 For both models we use the default hyperparmaeters suggested by the authors.
 
-![Refer to caption](/html/1706.04599/assets/x5.png)
-
+!(/html/1706.04599/assets/x5.png)
 
 Figure 4: Reliability diagrams for CIFAR-100 before (far left) and after calibration (middle left, middle right, far right).
 
@@ -915,8 +868,7 @@ which recovers the temperature scaling model by setting T=1λ𝑇1𝜆T=\frac{1}
 We see that, as training continues, the model begins to overfit with respect to NLL (red line).
 This results in a low-entropy softmax distribution over classes (blue line), which explains the model’s overconfidence. Temperature scaling not only lowers the NLL but also raises the entropy of the distribution (green line).
 
-![Refer to caption](/html/1706.04599/assets/x6.png)
-
+!(/html/1706.04599/assets/x6.png)
 
 Figure S1: Entropy and NLL for CIFAR-100 before and after calibration. The optimal T𝑇T selected by temperature scaling rises throughout optimization, as the pre-calibration entropy decreases steadily.
 The post-calibration entropy and NLL on the validation set coincide
@@ -951,8 +903,6 @@ Tables [S1](#S3.T1 "Table S1 ‣ S3 Additional Tables ‣ On Calibration of Mod
 
 Table S1: MCE (%) (with M=15𝑀15M=15 bins) on standard vision and NLP datasets before calibration and with various calibration methods. The number following a model’s name denotes the network depth. MCE seems very sensitive to the binning scheme and is less suited for small test sets.
 
-
-
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Dataset | Model | Uncalibrated | Hist. Binning | Isotonic | BBQ | Temp. Scaling | Vector Scaling | Matrix Scaling |
@@ -977,8 +927,6 @@ Table S1: MCE (%) (with M=15𝑀15M=15 bins) on standard vision and NLP datasets
 | SST Fine Grained | TreeLSTM | 49.5% | 49.91% | 48.55% | 49.86% | 49.5% | 49.77% | 48.51% |
 
 Table S2: Test error (%) on standard vision and NLP datasets before calibration and with various calibration methods. The number following a model’s name denotes the network depth. Error with temperature scaling is exactly the same as uncalibrated.
-
-
 
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1007,99 +955,16 @@ Table S3: NLL (%) on standard vision and NLP datasets before calibration and wit
 
 ## S4 Additional Reliability Diagrams
 
-![Refer to caption](/html/1706.04599/assets/x7.png)
-
+!(/html/1706.04599/assets/x7.png)
 
 Figure S2: Reliability diagrams for CIFAR-10 before (far left) and after calibration (middle left, middle right, far right).
 
-![Refer to caption](/html/1706.04599/assets/x8.png)
-
+!(/html/1706.04599/assets/x8.png)
 
 Figure S3: Reliability diagrams for SST Binary and SST Fine Grained before (far left) and after calibration (middle left, middle right, far right).
 
-![Refer to caption](/html/1706.04599/assets/x9.png)
-
+!(/html/1706.04599/assets/x9.png)
 
 Figure S4: Reliability diagrams for SST Binary and SST Fine Grained before (far left) and after calibration (middle left, middle right, far right).
 
 We include reliability diagrams for additional datasets: CIFAR-10 ([Figure S2](#S4.F2 "Figure S2 ‣ S4 Additional Reliability Diagrams ‣ On Calibration of Modern Neural Networks")) and SST ([Figure S3](#S4.F3 "Figure S3 ‣ S4 Additional Reliability Diagrams ‣ On Calibration of Modern Neural Networks") and [Figure S4](#S4.F4 "Figure S4 ‣ S4 Additional Reliability Diagrams ‣ On Calibration of Modern Neural Networks")). Note that, as mentioned in [Section 2](#S2 "2 Definitions ‣ On Calibration of Modern Neural Networks"), the reliability diagrams do not represent the proportion of predictions that belong to a given bin.
-
-[◄](/html/1706.04598)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1706.04599)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1706.04599)
-[View original  
-on arXiv](https://arxiv.org/abs/1706.04599)[►](/html/1706.04600)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 7 23:30:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

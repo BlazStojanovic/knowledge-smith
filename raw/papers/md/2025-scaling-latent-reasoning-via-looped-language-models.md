@@ -42,64 +42,6 @@ url: https://arxiv.org/abs/2510.25741
 year: 2025
 ---
 
-[2510.25741] Scaling Latent Reasoning via Looped Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1]ByteDance Seed
-2]UC Santa Cruz
-3]Princeton University
-4]Mila - Quebec AI Institute
-5]University of Montreal
-6]Peking University
-7]Carnegie Mellon University
-8]University of Pennsylvania
-9]Conscium
-10]University of Manchester
-11]M-A-P
-\contribution[\*]Core Contributors
-\contribution[†]Corresponding authors
-
 # Scaling Latent Reasoning via Looped Language Models
 
 Rui-Jie Zhu
@@ -196,8 +138,7 @@ Modern LLMs are trained to “think” primarily via explicit text generation, s
 ,
 , , \checkdata[Project Page & Base / Reasoning Models]<http://ouro-llm.github.io>
 
-![Refer to caption](/html/2510.25741/assets/x1.png)
-
+!(/html/2510.25741/assets/x1.png)
 
 Figure 1: Ouro Looped Language Model performance. (Left) The parameter-shared looped architecture. (Middle & Right) Radar plots comparing the Ouro 1.4B and 2.6B models, both with 4 recurrent steps (red), against individual transformer baselines. Our models demonstrate strong performance comparable to or exceeding much larger baselines.
 
@@ -241,8 +182,7 @@ We address the above questions with a multi-faceted study. We scale LoopLM pre-t
 
 Our study establishes loop depth as a third scaling axis beyond model size and data, and we publicly release the Ouro model family (1.4B and 2.6B parameters) to demonstrate the benefits of LoopLM at scale.
 
-![Refer to caption](/html/2510.25741/assets/x2.png)
-
+!(/html/2510.25741/assets/x2.png)
 
 Figure 2: Performance on advanced reasoning benchmarks. Ouro-Thinking models compared with strong baselines such as Qwen3 and DeepSeek-Distill. Ouro-1.4B-Thinking R4 is competitive with 4B models, and Ouro-2.6B-Thinking R4 matches or exceeds 8B models across multiple math and science datasets.
 
@@ -262,8 +202,7 @@ Here, the LoopLM’s iteration is viewed as latent reasoning where each step is 
 
 ## 3 Learning Adaptive Latent Reasoning with LoopLM
 
-![Refer to caption](/html/2510.25741/assets/x3.png)
-
+!(/html/2510.25741/assets/x3.png)
 
 Figure 3: Overview of Looped Language Model (LoopLM) architecture.
 Left (Training): During training, the model applies a stack of NN layers repeatedly for Tm​a​xT\_{max} recurrent steps. At each recurrent step ℓ\ell, an exit gate predicts the probability pℓp\_{\ell} of exiting, and a language modeling head ℒℓ\mathcal{L}\_{\ell} computes the lanugage modeling loss.
@@ -436,8 +375,7 @@ Optimizing [Equation˜6](#S3.E6 "In 3.4 Stage II: Focused Adaptive Gate Training
 
 ## 4 Training Looped Language Models
 
-![Refer to caption](/html/2510.25741/assets/x4.png)
-
+!(/html/2510.25741/assets/x4.png)
 
 Figure 4: End-to-end Ouro training pipeline: shared warmup → Stable Training → forks into a 1.4B retained path and a 2.6B upcycled path → four shared stages → Reasoning SFT to produce Ouro-Thinking.
 
@@ -500,9 +438,6 @@ Table 3: Statistics of the training corpus. Since data are randomly sampled duri
 | OpenCoder-Annealing | Stage 2 | 7 | 7 |
 | ProLong-64K | Stage 3 | 20 | 20 |
 | Mid-training SFT Mix | Stage 4 | 182 | 90 |
-
-
-
 
 Table 4: Data composition for Stage 1 (Stable Training I & II). Total dataset size: 6T tokens.
 
@@ -664,9 +599,6 @@ Table 7: Comparison of 1.4B LoopLM model with 1-4B parameter baselines. The best
 | MBPP | 12.40 | 35.70 | 60.30 | 68.00 | 63.00 | 50.30 | 78.80 | 60.60 | 73.00 |
 | MBPP+ | 10.10 | 29.10 | 50.00 | 58.50 | 54.20 | 39.70 | 65.90 | 51.10 | 62.70 |
 
-
-
-
 Table 8: Comparison of 2.6B LoopLM model with 3-12B parameter baselines. The best score is bolded, and the second-best is underlined. LoopLM’s column is highlighted in gray.
 
 |  |  |  |  |  |  |  |  |  |  |
@@ -774,9 +706,6 @@ Table 10: Performance of the Ouro 1.4B base model across different recurrent ste
 | 7 | 58.96 | 81.99 | 74.28 | 72.35 | 65.28 | 70.09 |
 | 8 | 58.19 | 82.07 | 73.55 | 71.60 | 64.49 | 69.30 |
 
-
-
-
 Table 11: Performance of the Ouro 2.6B base model across different recurrent steps (C-QA is CommonsenseQA [[66](#bib.bib66)]). Steps 5-8 represent extrapolation, as the model was trained with a maximum of 4 steps. Performance is strongest around the trained depth (T=4T=4) and shows varied degradation patterns during extrapolation.
 
 |  |  |  |  |  |  |  |
@@ -814,9 +743,6 @@ Table 12: Performance of Ouro-1.4B-Thinking model by recurrent step. The model w
 | AIME 2024 | 0.00 | 37.33 | 62.33 | 65.00 | 60.67 | 50.67 | 42.33 | 38.67 |
 | AIME 2025 | 0.33 | 25.00 | 43.33 | 46.30 | 47.00 | 43.00 | 41.00 | 38.00 |
 
-
-
-
 Table 13: Performance of Ouro-2.6B-Thinking model by recurrent step. The model was trained at T=4T=4. Performance peaks at T=3T=3 or T=4T=4. All scores are percentages (0-100).
 
 | Benchmark | T=1 | T=2 | T=3 | T=4 | T=5 | T=6 | T=7 | T=8 |
@@ -848,8 +774,7 @@ The simplest strategy forces the model to exit at a predetermined recurrent step
 
 This heuristic-based approach monitors the magnitude of representational changes between consecutive recurrent steps. At each step tt, we compute Δ​ht=‖ht−ht−1‖2\Delta h\_{t}=\|h\_{t}-h\_{t-1}\|\_{2} and trigger early exit when Δ​ht<ϵ\Delta h\_{t}<\epsilon for some threshold ϵ\epsilon.
 
-![Refer to caption](/html/2510.25741/assets/x5.png)
-
+!(/html/2510.25741/assets/x5.png)
 
 Figure 5: Comparison of early exit strategies on MMLU. We evaluate four approaches across different average exit rounds: static baseline (red triangle), hidden state difference threshold (green squares), Ponder gate from standard pre-training (blue circles), and Ponder gate with specialized adaptive exit training from Section [3.4](#S3.SS4 "3.4 Stage II: Focused Adaptive Gate Training ‣ 3 Learning Adaptive Latent Reasoning with LoopLM ‣ Scaling Latent Reasoning via Looped Language Models") (orange diamonds).
 
@@ -932,7 +857,7 @@ We thereby trained GPT-2 style models of different parameter numbers ranging fro
 
 Results. The results are visualized in the plot “bits vs. # of parameters”, where we can observe the comparison between iso-parameter looped and non-looped models. Our results are shown in [Figure˜6](#S6.F6 "In 6.1 LoopLMs does not increase knowledge capacity ‣ 6 Understanding LoopLMs Superiority from a Parametric Knowledge Viewpoint ‣ Scaling Latent Reasoning via Looped Language Models") (Left): looping does not increase knowledge capacity nor improve capacity scaling. Models with and without loops all attain around a similar capacity ratio ≈2\approx 2 bits/parameter. Therefore, the number of parameters itself can be seen as a direct indicator of knowledge capacity, and merely increasing looping does not help enhance knowledge capacity itself.
 
-![Refer to caption](/html/2510.25741/assets/x6.png)
+!(/html/2510.25741/assets/x6.png)
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -962,9 +887,9 @@ To evaluate the manipulation capability thoroughly, we consider the test accurac
 
 Results. The results in [Figure˜6](#S6.F6 "In 6.1 LoopLMs does not increase knowledge capacity ‣ 6 Understanding LoopLMs Superiority from a Parametric Knowledge Viewpoint ‣ Scaling Latent Reasoning via Looped Language Models") show that given the same parameters, looped models always outperform their non-looped counterpart for all possible k∈{2,3,6}k\in\{2,3,6\}. Even with the same number of FLOPs in the model, the looped models can often perform better. This indicates that LoopLM has a better inductive bias towards knowledge manipulation: with the same budget on training samples and computation, LoopLM can achieve comparable or even better performance after training when the task requires manipulation capability (e.g., parsing the arithmetic tree) given limited amount of required knowledge (e.g., modular arithmetic rules).
 
-![Refer to caption](/html/2510.25741/assets/x7.png)
+!(/html/2510.25741/assets/x7.png)
 
-![Refer to caption](/html/2510.25741/assets/x8.png)
+!(/html/2510.25741/assets/x8.png)
 
 Figure 7: We trained LoopLMs and standard transformer baselines with the same parameters on Multi-hop QA tasks. To investigate the sample efficiency of LoopLMs, we vary the number of unique training samples (from 2.5%2.5\% to 25%25\% all possible QA pairs) for models with different loops. We compare the final performance using the same compute budget in total training tokens. Left. As shown, models with more loops requires fewer samples to learn the 3-hop QA task.
 Right. As an example, we train with 15%15\% of all possible QA pairs (12000 unique samples) for 20000 steps with context length 1024 and batch size 2048. Models with more loops learn faster and achieve better performance comparing with models without loops.
@@ -1009,20 +934,17 @@ We evaluate Ouro 1.4B and 2.6B models with recurrent steps ranging from 1 to 8, 
 
 To further investigate how increasing recurrent steps affects the model’s safety alignment, we conduct Principal Component Analysis (PCA) on the hidden representation of the last input token from the top model layer. For a controlled analysis, we select 100 benign and 100 harmful questions with identical formats (all the examples are the questions starting with “How to”) from Zheng et al.(2024) [[72](#bib.bib72)]333Harmful questions: <https://github.com/chujiezheng/LLM-Safeguard/blob/main/code/data/custom.txt>; Benign questions: <https://github.com/chujiezheng/LLM-Safeguard/blob/main/code/data_harmless/custom.txt>. Additionally, we evaluate the model’s responses to the 100 harmful questions and compute a 5-level harmfulness score (same as the one used in HEx-PHI) for each response. We plot our PCA analysis on Ouro 1.4B in [Figure˜8(b)](#S7.F8.sf2 "In Figure 8 ‣ 7.1 Safety ‣ 7 Safety, Faithfulness and Consistency ‣ Scaling Latent Reasoning via Looped Language Models"), from which we have the following observations. First, as the number of recurrent steps increases, the model becomes more capable of separating benign and harmful prompts, resulting in safer responses, as indicated by the decreasing number of red points. Furthermore, most points associated with unsafe responses appear near the middle of the plot, which represents the boundary between the “benign” and “harmful” clusters. This suggests that difficulty in distinguishing harmfulness may lead to unsafe responses, which can be alleviated by increasing the number of recurrent steps.
 
-![Refer to caption](/html/2510.25741/assets/x9.png)
-
+!(/html/2510.25741/assets/x9.png)
 
 (a) HEx-PHI evaluation
 
-![Refer to caption](/html/2510.25741/assets/x10.png)
-
+!(/html/2510.25741/assets/x10.png)
 
 (b) PCA analysis on Ouro 1.4B
 
 Figure 8: (a) For both 1.4B and 2.6B models, Ouro demonstrates improved safety alignment on HEx-PHI as the recurrent steps increase. Note that models were trained with 4 recurrent steps; evaluations at steps 5-8 demonstrate successful extrapolation beyond the training configuration. (b) As the recurrent steps increase, Ouro 1.4B can better distinguish the benign prompts and harmful prompts, leading to safer responses. We perform PCA on the hidden representation of the last input token from the model’s top layer. Harmful prompts with a harmfulness score of 4 or 5 at recurrent step 1 are marked with ×\times, while other harmful prompts are shown as circles. The color of each point reflects the harmfulness score of the corresponding response. Benign prompts are shown as green squares.
 
-![Refer to caption](/html/2510.25741/assets/x11.png)
-
+!(/html/2510.25741/assets/x11.png)
 
 Figure 9: Left. ROCAUC of linear probes by layer on Quora Question Pairs. Each colored curve shows a probe trained on hidden states within a given 2 to 8 recurrent steps to predict that loop’s answer; Qwen3-4B models are the baselines. Vertical dotted lines mark loop boundaries. In recurrent step i=2,3,4i=2,3,4, the ROC AUC rises quickly within a recurrent step, then partially resets at the next loop, indicating that intra-step answers are determined early while cross-step updates modify the provisional answer. Right. Agreement across recurrent steps. Heat map (A) over 1,000 Quora Question Pairs. Entry A​[i,j]A[i,j] is the number of items for which steps (i) and (j) assign the same label.
 
@@ -1653,8 +1575,7 @@ Ge Zhang, Wenhao Huang, Yoshua Bengio, Jason Eshraghian
 
 ## Appendix A Empirical Validation of Prior Choice
 
-![Refer to caption](/html/2510.25741/assets/x12.png)
-
+!(/html/2510.25741/assets/x12.png)
 
 Figure 10: Effect of the prior over exit steps.
 *Left:* training loss (300-step sliding average) for a LoopLM with Tmax=4T\_{\max}=4 under different priors on zz.
@@ -1791,18 +1712,16 @@ We use a base model architecture with 1024 hidden dimensions, 16 attention heads
 
 As the supplement of the main text, we present additional experiments to show that the superiority of LoopLM is general across different number of unique samples. For presentation, we only consider the interval of {105,1.2×105,1.4×105}\{10^{5},1.2\times 10^{5},1.4\times 10^{5}\} to exhibit the difference between looped models and non-looped baselines. We also checked iso-flop baseline models with the same hidden dimension and 24 layers555We note that in [Figure 12](#A2.F12 "In B.3.1 Additional experimental results ‣ B.3 Multi-hop question answering on synthetic relations ‣ Appendix B Physics of LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"), the iso-flop baseline with N=1.2×105N=1.2\times 10^{5} does not perform significantly better than the shallower version in the main paper. We conjecture that it could be because of the randomness, or insufficient hyperparameter tuning. We believe further follow-up experiments should be necessary to further validate this conclusion here in the appendix.. The results are presented below in [Figure˜11](#A2.F11 "In B.3.1 Additional experimental results ‣ B.3 Multi-hop question answering on synthetic relations ‣ Appendix B Physics of LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models") and [Figure˜12](#A2.F12 "In B.3.1 Additional experimental results ‣ B.3 Multi-hop question answering on synthetic relations ‣ Appendix B Physics of LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models").
 
-![Refer to caption](/html/2510.25741/assets/x13.png)
+!(/html/2510.25741/assets/x13.png)
 
-![Refer to caption](/html/2510.25741/assets/x14.png)
+!(/html/2510.25741/assets/x14.png)
 
 Figure 11: 
 Left & Right. We further train with 100000100000 and 140000140000 unique QA pairs for 20000 steps with context length 1024 and batch size 2048. Similar to the main text, models with more loops learn faster and achieve better performance comparing with models without loops.
 
+!(/html/2510.25741/assets/x15.png)
 
-
-![Refer to caption](/html/2510.25741/assets/x15.png)
-
-![Refer to caption](/html/2510.25741/assets/x16.png)
+!(/html/2510.25741/assets/x16.png)
 
 Figure 12: 
 Left & Right. We further train with 100000100000 and 120000120000 unique QA pairs for 20000 steps with context length 1024 and batch size 2048. We train the baseline with 24 layers, which is equivalent flops with the loop 4 transformers. Similar to the main text, models with more loops learn faster and achieve better performance comparing with models without loops, even with iso-flop transformers. The loop 2 average performance is weaker than the iso-flop version transformer since it has less equivalent depth when N=105N=10^{5}, but it surpasses the baseline with more data provided.
@@ -2091,13 +2010,11 @@ By observing the trends in the curves, we derive the following observations:
 
 1. Whether standard models or LoopLM, the model’s performance improves with increasing model size and recurrent step. As shown in Figure [13](#A4.F13 "Figure 13 ‣ Experimental Setup ‣ D.1 RQ1: What is the performance gap between standard models and LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"), for all recurrent steps, the benchmark performance of both the LoopLM and Standard models increases as the model size grows, which aligns with the principle of LLMs: larger is better. As shown in Figure [14](#A4.F14 "Figure 14 ‣ Experimental Setup ‣ D.1 RQ1: What is the performance gap between standard models and LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"), except for the LoopLM at 778M and 1.364B, both the LoopLM and Standard models show that benchmark performance increases as the recurrent step increases. This indicates that latent reasoning is indeed useful for both the LoopLM and Standard Transformer.
 
-![Refer to caption](/html/2510.25741/assets/x17.png)
-
+!(/html/2510.25741/assets/x17.png)
 
 Figure 13: The average benchmark performance of LoopLM and Standard Transformer models under different recurrent steps as model size varies. With a recurrent step of 1 (top left), both models have identical architectures, resulting in overlapping curves. Overall, as the model size increases, the benchmark performance improves. The average benchmark score demonstrates the average results of the six benchmarks.
 
-![Refer to caption](/html/2510.25741/assets/x18.png)
-
+!(/html/2510.25741/assets/x18.png)
 
 Figure 14: The average benchmark performance of LoopLM and Standard Transformer models under different model sizes as recurrent step varies. Except for the LoopLM at the model size of 778M and 1.364B, in all other cases, the benchmark performance of the model increases with the increase in recurrent steps.
 
@@ -2125,8 +2042,7 @@ Here, we have following variables: model size NN, training data size DD, maximum
 
 The purpose of t1t\_{1}, t2t\_{2}, and t3t\_{3} is to prevent the variables from exploding in value near zero, allowing the fitting curve to be smoother. We refer to above formula as the Total Loss Scaling Law. First, to validate the predictability of LoopLM, we fit all the data points, and the resulting curve is shown in Figure [15](#A4.F15 "Figure 15 ‣ D.2 RQ2: How do recurrent step impact the total loss and step-wise loss in the context of LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"). We find that the actual loss curve and the predicted loss curve are highly consistent, demonstrating the predictability of LoopLM in terms of model size, training data size, and max recurrent step. We quantify the consistency of the scaling law using the coefficient of determination R2R^{2}. An absolute value of the R2R^{2} closer to 1 indicates a better fit, with positive values representing a positive correlation and negative values representing a negative correlation. Fitting the Total Loss Scaling Law using all data points and calculating R2R^{2} with all data points, we obtain an R2R^{2} value of 0.9596. This confirms the strong correlation between total loss and model size, training data size, and max recurrent step, demonstrating the predictability of the Total Loss Scaling Law.
 
-![Refer to caption](/html/2510.25741/assets/x19.png)
-
+!(/html/2510.25741/assets/x19.png)
 
 Figure 15: Illustration of the actual loss curve and the loss curve predicted by the scaling law. To demonstrate the predictability of LoopLM, we have used all data points for fitting, proving its predictability in terms of model size, training data size, and max recurrent step. The orange dashed line represents the prediction, while the blue solid line represents the actual loss.
 
@@ -2144,18 +2060,15 @@ Therefore, we have a total of three major experiments, each representing the fit
 We find that in some cases in Figure [17](#A4.F17 "Figure 17 ‣ D.2 RQ2: How do recurrent step impact the total loss and step-wise loss in the context of LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models") and Figure [18](#A4.F18 "Figure 18 ‣ D.2 RQ2: How do recurrent step impact the total loss and step-wise loss in the context of LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"), LsL\_{s} increases with the increase in DD. We consider this a special case and will discuss it in detail in Section [D.3](#A4.SS3 "D.3 RQ3: What is the inherent connection between total loss and step-wise loss? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"); we will ignore these outlier data points during fitting. The R2R^{2} for the three max recurrent steps are 0.8898, 0.8146, and 0.795, respectively. As the maximum recurrent step increases, the increase in the number of data points leads to lower R2R^{2} values. The step-wise loss itself is less stable than the total loss, resulting in greater variability. Thus, the obtained R2R^{2} values are not as high as those of the Total Loss Scaling Law. However, it is still evident that the scaling law is able to capture the overall trend of the curves, demonstrating the predictability of the Step-wise Loss Scaling Law.
 The fitting parameter γ\gamma of the Step-wise Loss Scaling Law is positive, indicating that LsL\_{s} decreases as the recurrent step increases. This aligns with our original intent in the design of the recurrence. Besides, we present the generalizability of the Step-wise Loss Scaling Law in Appendix [E.2](#A5.SS2 "E.2 Generalizability for the Step-wise Loss Scaling Law ‣ Appendix E Details of the Scaling Law for LoopLM ‣ Scaling Latent Reasoning via Looped Language Models").
 
-![Refer to caption](/html/2510.25741/assets/x20.png)
-
+!(/html/2510.25741/assets/x20.png)
 
 Figure 16: Illustration of the actual loss curve and the loss curve predicted by the Step-wise Loss Scaling Law when the maximum recurrent step is equal to 2.
 
-![Refer to caption](/html/2510.25741/assets/x21.png)
-
+!(/html/2510.25741/assets/x21.png)
 
 Figure 17: Illustration of the actual loss curve and the loss curve predicted by the Step-wise Loss Scaling Law when the maximum recurrent step is equal to 4.
 
-![Refer to caption](/html/2510.25741/assets/x22.png)
-
+!(/html/2510.25741/assets/x22.png)
 
 Figure 18: Illustration of the actual loss curve and the loss curve predicted by the Step-wise Loss Scaling Law when the maximum recurrent step is equal to 8.
 
@@ -2204,15 +2117,13 @@ As the amount of training data increases, the learned gating mechanism qϕq\_{\p
 
 In Section [D.2](#A4.SS2 "D.2 RQ2: How do recurrent step impact the total loss and step-wise loss in the context of LoopLM? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"), when considering the Step-wise Loss Scaling Law, we will fix the maximum recurrent step. Once we determine the model’s maximum recurrent step TmT\_{m}, the forms of the above formula and the Total Loss Scaling Law are completely consistent, indicating that there is a trend consistency in the scaling law between total loss and step-wise loss.
 
-![Refer to caption](/html/2510.25741/assets/figures/scalinglaw_round_wise_histograms.png)
-
+!(/html/2510.25741/assets/figures/scalinglaw_round_wise_histograms.png)
 
 Figure 19: Distribution of the learned ponder weights (qϕ​(z=t∣x)q\_{\phi}(z=t\mid x)) for each recurrent step tt when the maximum recurrent step Tm=4T\_{m}=4. These weights were collected during inference on the MMLU benchmark.
 
 We further demonstrate this through practical experiments. We take the situation where the max recurrent step is equal to 4. First, we perform a standard fitting of the Step-wise Loss Scaling Law to obtain the fitting parameters Es,As,Bs,Cs,E\_{s},A\_{s},B\_{s},C\_{s}, and so on. Next, we observe and record the distribution of qϕq\_{\phi} for each recurrent step tt when the maximum recurrent step Tm=4T\_{m}=4, as shown in Figure [19](#A4.F19 "Figure 19 ‣ D.3 RQ3: What is the inherent connection between total loss and step-wise loss? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"). For convenience, we take the average value of qϕq\_{\phi} at different recurrent steps and treat it as a normal discrete distribution, resulting in the distribution {0.0004, 0.0855, 0.3793, 0.5348}. We then substitute this distribution and the TT values into the training objective, ignoring the entropy regularization term (after the training stabilizes, it becomes relatively low, for simplicity, we will just ignore it). This leads to a fitting formula, and upon substituting the actual fitting data points NN and DD, the computed R2R^{2} value is 0.961, with the fitting results illustrated in Figure [20](#A4.F20 "Figure 20 ‣ D.3 RQ3: What is the inherent connection between total loss and step-wise loss? ‣ Appendix D Scaling Law for LoopLMs ‣ Scaling Latent Reasoning via Looped Language Models"). We can see that the fitting accuracy is high, and the predicted curve closely matches the actual curve, indicating that, under a relatively rough estimate, step-wise loss can be transformed into total loss, thus indirectly suggesting an intrinsic connection between the two.
 
-![Refer to caption](/html/2510.25741/assets/x23.png)
-
+!(/html/2510.25741/assets/x23.png)
 
 Figure 20: Illustration of the actual loss curve and the loss curve predicted by the estimated Scaling Law when the maximum recurrent step is equal to 4.
 
@@ -2224,8 +2135,7 @@ To demonstrate the generalizability of the Total Loss Scaling Law across model s
 
 Model Size Generalizability For model size generalizability, our total data points include five different model sizes: 53M, 134M, 374M, 778M, and 1.364B. We select three model sizes as fitting data points, resulting in (53)=10\binom{5}{3}=10 possible combinations. After fitting, the average R2R^{2} across the 10 combinations is 0.9542, which is similar to the result obtained with the full data points, demonstrating the model size generalizability of the Total Loss Scaling Law. Figure [21](#A5.F21 "Figure 21 ‣ E.1 Generalizability for the Total Loss Scaling Law ‣ Appendix E Details of the Scaling Law for LoopLM ‣ Scaling Latent Reasoning via Looped Language Models") illustrates an example.
 
-![Refer to caption](/html/2510.25741/assets/x24.png)
-
+!(/html/2510.25741/assets/x24.png)
 
 Figure 21: Illustration of model size generalizability for the Total Loss Scaling Law. The fitting data includes model sizes of 374M, 778M, and 1.364B. The predicted curves for the unseen model sizes of 53M and 134M closely align with the actual curves, demonstrating the generalizability of the Total Loss Scaling Law with respect to model size.
 
@@ -2250,92 +2160,10 @@ Additionally, these results are similar to those obtained from fitting with the 
 
 Recurrent Step Generalizability In the case of max recurrent step equal to 2, there are only two recurrent step values, making it unreasonable to conduct generalizability experiments. Therefore, we choose to perform experiments with max recurrent step equal to 4. In this situation, we have four different recurrent step values: 1, 2, 3, and 4. We randomly select three of these as fitting data points, resulting in a total of (43)=4\binom{4}{3}=4 experiments. The average R2R^{2} value obtained from these four experiments is 0.8118, which is similar to the R2R^{2} value of 0.8146 obtained from the full data points, demonstrating the generalizability of the Step-wise Loss Scaling Law with respect to recurrent step. Figure [23](#A5.F23 "Figure 23 ‣ E.2 Generalizability for the Step-wise Loss Scaling Law ‣ Appendix E Details of the Scaling Law for LoopLM ‣ Scaling Latent Reasoning via Looped Language Models") presents a specific example, showing a high degree of consistency between the fitted curve and the actual curve.
 
-![Refer to caption](/html/2510.25741/assets/x25.png)
-
+!(/html/2510.25741/assets/x25.png)
 
 Figure 22: Illustration of model size generalizability for the Step-wise Loss Scaling Law. The fitting data comprises three medium model sizes: 134M, 374M, and 778M. To verify the fitting consistency of the model on unseen larger model size 1.364B and unseen smaller model size 53M, we can observe that the predicted curves reflect the trends of the actual data points, demonstrating the generalizability of the Step-wise Loss Scaling Law with respect to the model size.
 
-![Refer to caption](/html/2510.25741/assets/x26.png)
-
+!(/html/2510.25741/assets/x26.png)
 
 Figure 23: Illustration of recurrent step generalizability for the Step-wise Loss Scaling Law. The fitting data includes three different recurrent steps: recurrent step = 1, 2, and 3. At the unseen data points of recurrent step = 4, the predicted curve closely matches the actual curve, demonstrating the generalizability of the Step-wise Loss Scaling Law with respect to recurrent step.
-
-[◄](/html/2510.25740)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.25741)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.25741)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.25741)[►](/html/2510.25742)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 18:43:54 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

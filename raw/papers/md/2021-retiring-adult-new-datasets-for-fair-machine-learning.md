@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2108.04884v3
 year: 2021
 ---
 
-[2108.04884] Retiring Adult: New Datasets for Fair Machine Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Retiring Adult: New Datasets for Fair Machine Learning
 
 Frances Ding
@@ -262,8 +219,7 @@ The discrepancy likely stems from the fact that UCI Adult used the variable “f
 This made our inclusion criteria slightly more permissive than those of UCI Adult.
 The fact that we found exact matches for 13 of the 15 UCI Adult variables and a very close match for “native-country” is evidence that our reconstruction of UCI Adult is accurate.
 
-![Refer to caption](/html/2108.04884/assets/x1.png)
-
+!(/html/2108.04884/assets/x1.png)
 
 Figure 1: 
 Fairness interventions with varying income threshold on IPUMS Adult.
@@ -394,8 +350,7 @@ A notable if obvious limitation of our work is that it is entirely US-centric. A
 
 ## 4 A tour of empirical observations
 
-![Refer to caption](/html/2108.04884/assets/x2.png)
-
+!(/html/2108.04884/assets/x2.png)
 
 Figure 2: 
 The effect size of fairness interventions varies by state. Each panel
@@ -434,9 +389,9 @@ as study the performance of these interventions under geographical and
 temporal *distribution shift* when the test dataset differs from the one on
 which the model was trained.
 
-![Refer to caption](/html/2108.04884/assets/x3.png)
+!(/html/2108.04884/assets/x3.png)
 
-![Refer to caption](/html/2108.04884/assets/x4.png)
+!(/html/2108.04884/assets/x4.png)
 
 Figure 3: 
 Transfer from one state to another gives unpredictable results in terms
@@ -508,8 +463,7 @@ in-processing (ExpGrad), or post-processing to satisfy demographic parity in
 2014, all have a similar degradation in accuracy, but the fairness metrics remain stable. Thus, a classifier that satisfies demographic parity on the 2014 data
 continues to satisfy the constraint on 2015-2018 data.
 
-![Refer to caption](/html/2108.04884/assets/x5.png)
-
+!(/html/2108.04884/assets/x5.png)
 
 Figure 4: 
 Fairness criteria are more stable over time than accuracy.
@@ -899,8 +853,7 @@ values of the threshold, the small number of positive instances substantially
 increases the confidence intervals around the report EO values and makes it
 difficult to compare the different interventions.
 
-![Refer to caption](/html/2108.04884/assets/x6.png)
-
+!(/html/2108.04884/assets/x6.png)
 
 Figure 5: 
 Fairness interventions with varying income threshold on IPUMS Adult.
@@ -2924,8 +2877,7 @@ In Figure [7](#A4.F7 "Figure 7 ‣ D.1 Intervention effect sizes across states 
 demographic parity on four other ACS data tasks: ACSPublicCoverage,
 ACSEmployment, ACSMobility, and ACSTravelTime, respectively.
 
-![Refer to caption](/html/2108.04884/assets/x7.png)
-
+!(/html/2108.04884/assets/x7.png)
 
 Figure 6: 
 The effect size of fairness interventions varies by state. Each panel
@@ -2938,15 +2890,13 @@ head represents the (accuracy, EO) point obtained after applying the
 intervention. The arrow for HI in the LFR plot and ME in all three plots
 is entirely covered by the start and end points.
 
+!(/html/2108.04884/assets/x8.png)
 
+!(/html/2108.04884/assets/x9.png)
 
-![Refer to caption](/html/2108.04884/assets/x8.png)
+!(/html/2108.04884/assets/x10.png)
 
-![Refer to caption](/html/2108.04884/assets/x9.png)
-
-![Refer to caption](/html/2108.04884/assets/x10.png)
-
-![Refer to caption](/html/2108.04884/assets/x11.png)
+!(/html/2108.04884/assets/x11.png)
 
 Figure 7: 
 The effect size of fairness interventions varies by state. Each panel
@@ -2974,9 +2924,9 @@ In Figures [9](#A4.F9 "Figure 9 ‣ D.2 Geographic distribution shift ‣ Appen
 conduct the same experiment for demographic parity on four other ACS data tasks:
 ACSPublicCoverage, ACSEmployment, ACSMobility, and ACSTravelTime, respectively.
 
-![Refer to caption](/html/2108.04884/assets/x12.png)
+!(/html/2108.04884/assets/x12.png)
 
-![Refer to caption](/html/2108.04884/assets/x13.png)
+!(/html/2108.04884/assets/x13.png)
 
 Figure 8: 
 Transfer from one state to another gives unpredictable results in terms
@@ -2990,11 +2940,9 @@ on the state on which it was trained and evaluated both ID and OOD on
 all 50 states. Confidence intervals are 95% Clopper-Pearson intervals for accuracy
 and 95% Newcombe intervals for equality of opportunity violation.
 
+!(/html/2108.04884/assets/x14.png)
 
-
-![Refer to caption](/html/2108.04884/assets/x14.png)
-
-![Refer to caption](/html/2108.04884/assets/x15.png)
+!(/html/2108.04884/assets/x15.png)
 
 Figure 9: 
 Transfer from one state to another gives unpredictable results in terms
@@ -3008,11 +2956,9 @@ on the state on which it was trained and evaluated both ID and OOD on
 all 50 states. Confidence intervals are 95% Clopper-Pearson intervals for accuracy
 and 95% Newcombe intervals for demographic parity.
 
+!(/html/2108.04884/assets/x16.png)
 
-
-![Refer to caption](/html/2108.04884/assets/x16.png)
-
-![Refer to caption](/html/2108.04884/assets/x17.png)
+!(/html/2108.04884/assets/x17.png)
 
 Figure 10: 
 Transfer from one state to another gives unpredictable results in terms
@@ -3026,11 +2972,9 @@ on the state on which it was trained and evaluated both ID and OOD on
 all 50 states. Confidence intervals are 95% Clopper-Pearson intervals for accuracy
 and 95% Newcombe intervals for demographic parity.
 
+!(/html/2108.04884/assets/x18.png)
 
-
-![Refer to caption](/html/2108.04884/assets/x18.png)
-
-![Refer to caption](/html/2108.04884/assets/x19.png)
+!(/html/2108.04884/assets/x19.png)
 
 Figure 11: 
 Transfer from one state to another gives unpredictable results in terms
@@ -3044,11 +2988,9 @@ on the state on which it was trained and evaluated both ID and OOD on
 all 50 states. Confidence intervals are 95% Clopper-Pearson intervals for accuracy
 and 95% Newcombe intervals for demographic parity.
 
+!(/html/2108.04884/assets/x20.png)
 
-
-![Refer to caption](/html/2108.04884/assets/x20.png)
-
-![Refer to caption](/html/2108.04884/assets/x21.png)
+!(/html/2108.04884/assets/x21.png)
 
 Figure 12: 
 Transfer from one state to another gives unpredictable results in terms
@@ -3074,8 +3016,7 @@ In Figure [14](#A4.F14 "Figure 14 ‣ D.3 Temporal distribution shift ‣ Appen
 interventions to satisfy demographic parity on 4 other ACS PUMS predictions
 tasks: ACSPublicCoverage, ACSMobility, ACSEmployment, and ACSTravelTime.
 
-![Refer to caption](/html/2108.04884/assets/x22.png)
-
+!(/html/2108.04884/assets/x22.png)
 
 Figure 13: 
 Fairness criteria are more stable over time than accuracy.
@@ -3089,15 +3030,13 @@ constant. Confidence intervals are 95% Clopper-Pearson intervals for
 accuracy and 95% Newcombe intervals for equality of opportunity
 violations.
 
+!(/html/2108.04884/assets/x23.png)
 
+!(/html/2108.04884/assets/x24.png)
 
-![Refer to caption](/html/2108.04884/assets/x23.png)
+!(/html/2108.04884/assets/x25.png)
 
-![Refer to caption](/html/2108.04884/assets/x24.png)
-
-![Refer to caption](/html/2108.04884/assets/x25.png)
-
-![Refer to caption](/html/2108.04884/assets/x26.png)
+!(/html/2108.04884/assets/x26.png)
 
 Figure 14: 
 Fairness criteria are more stable over time than accuracy.
@@ -3605,83 +3544,3 @@ For the most up-to-date version of this datasheet, please refer to <https://git
   Any other comments?
 
   No.
-
-[◄](/html/2108.04883)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2108.04884)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2108.04884)
-[View original  
-on arXiv](https://arxiv.org/abs/2108.04884)[►](/html/2108.04885)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 04:18:02 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

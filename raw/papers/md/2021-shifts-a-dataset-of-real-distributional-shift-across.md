@@ -28,53 +28,6 @@ url: http://arxiv.org/abs/2107.07455v3
 year: 2021
 ---
 
-[2107.07455] Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\useunder
-
-\ul
-
 # Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks
 
 Andrey Malinin1,2
@@ -210,25 +163,19 @@ Table 3: Comparing uncertainty measures of CatBoost ensembles for Weather Predic
 | eval | F1-AUC (%) ↑↑\uparrow | 52.36 | 49.81 | 50.40 | 58.22 | 57.89 | 56.99 | 56.96 | 56.93 |
 | ROC-AUC (%) ↑↑\uparrow | 65.99 | 78.32 | 79.90 | 66.20 | 66.76 | 83.44 | 83.59 | 83.68 |
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_mse.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_mse.png)
 
 (a) Regression, MSE.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1.png)
 
 (b) Regression, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class.png)
 
 (c) Classification, error.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class.png)
 
 (d) Classification, F1.
 
@@ -276,15 +223,11 @@ Table 5: Uncertainty and robustness for Machine Translation. Mean ±σplus-or-mi
 | dev | 33.22±0.48 | 32.87 | 0.43±0.00 | 0.44 | 0.42±0.01 | 0.43 | 68.90±0.28 | 69.30 |
 | eval | 34.80±0.06 | 34.57 | 0.37 ±0.07 | 0.38 | 0.34 ±0.03 | 0.36 | 79.18 ±0.63 | 80.10 |
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/nmt_error_retention_eval.png)
-
+!(/html/2107.07455/assets/figures/nmt_error_retention_eval.png)
 
 (a) Error
 
-![Refer to caption](/html/2107.07455/assets/figures/nmt_F1_retention_eval.png)
-
+!(/html/2107.07455/assets/figures/nmt_F1_retention_eval.png)
 
 (b) F1
 
@@ -337,13 +280,11 @@ Table 7: Uncertainty and robustness performance for motion prediction. The error
 
 [Table 7](#S5.T7 "In Baselines ‣ 5 Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") presents a joint evaluation of the uncertainty quantification and robustness of our baselines. We compute R-AUC with respect to cNLL and weightedADE, and the F1-AUC and F1@​95%@percent95@95\% metrics with respect to the cNLL metric, as detailed in Appendices [A](#A1 "Appendix A Assessment Metrics ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") and  [E.3](#A5.SS3 "E.3 Performance Metrics ‣ Appendix E Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks"). We observe that an ensemble of RIP-BC models outperforms RIP-DIM on these metrics. These results strongly suggest that RIP-BC has more informative uncertainty estimates than RIP-DIM, because RIP-BC achieves better R-AUC cNLL despite having greater overall error in terms of cNLL (in addition to minADE and minFDE). Figure [3](#S5.F3 "Figure 3 ‣ Baselines ‣ 5 Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") depicts, for cNLL, error- and F1-retention curves on the full eval dataset which reflect the trends observed in Table [7](#S5.T7 "Table 7 ‣ Baselines ‣ 5 Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks"). Additionally, we find that across model configurations the per–prediction request uncertainty scores do not perform particularly well in detecting distribution shift (ROC-AUC). This may occur due to significant data uncertainty in all cases. Future work on detecting distributional shift on this dataset could, for example, inspect the distribution of log-likelihood scores on the in-distribution and shifted partitions in order to devise a metric for this task, aside from the uncertainty scores U𝑈U used for the retention analysis.
 
-![Refer to caption](/html/2107.07455/assets/x1.png)
-
+!(/html/2107.07455/assets/x1.png)
 
 (a) cNLL error-retention.
 
-![Refer to caption](/html/2107.07455/assets/x2.png)
-
+!(/html/2107.07455/assets/x2.png)
 
 (b) cNLL F1-retention.
 
@@ -890,18 +831,15 @@ One standard approach to jointly assess robustness and uncertainty are *error-re
 The area under the retention curve (R-AUC) is a metric for jointly assessing robustness to distributional shift and the quality of the uncertainty estimates. R-AUC can be reduced either by improving the predictions of the model, such that it has lower overall error at any given retention rate, or by providing estimates of uncertainty which better correlate with error, such that the most incorrect predictions are rejected first. It is important that the dataset in question contains both a subset “matched” to the training data, and a distributionally shifted subset.
 Figure [4](#A1.F4 "Figure 4 ‣ Appendix A Assessment Metrics ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") provides example retention curves for the three tasks of the Shifts Dataset. In each figure, in addition to the uncertainty-based ranking, we included curves which represent “random” ranking, where uncertainty estimates are entirely non-informative, and “optimal” ranking, where uncertainty estimates perfectly correlate with error. These represent the lower and upper bounds on R-AUC performance as a function of uncertainty quality.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_retention_dev_mse.png)
-
+!(/html/2107.07455/assets/figures/weather_retention_dev_mse.png)
 
 (a) Weather Prediction
 
-![Refer to caption](/html/2107.07455/assets/figures/error_retention_example_nmt.png)
-
+!(/html/2107.07455/assets/figures/error_retention_example_nmt.png)
 
 (b) Machine Translation
 
-![Refer to caption](/html/2107.07455/assets/x3.png)
-
+!(/html/2107.07455/assets/x3.png)
 
 (c) Vehicle Motion Prediction
 
@@ -929,18 +867,15 @@ Next, given the true acceptability labels {𝒜Te​(𝒙i)}i=1Nsuperscriptsubsc
 
 where we use N−i𝑁𝑖N-i because we sort uncertainties from largest (𝒰1subscript𝒰1\mathcal{U}\_{1}) to smallest (𝒰Nsubscript𝒰𝑁\mathcal{U}\_{N}). We then plot {F1i}i=1NsuperscriptsubscriptsubscriptF1𝑖𝑖1𝑁\{\text{F1}\_{i}\}\_{i=1}^{N} against 1−iN1𝑖𝑁1-\frac{i}{N}, i.e., the fraction of data we are classifying as acceptable, which we refer to as the retention fraction. This yields the following curves for the three Shifts tasks:
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_retention_dev_f1.png)
-
+!(/html/2107.07455/assets/figures/weather_retention_dev_f1.png)
 
 (a) Weather Prediction
 
-![Refer to caption](/html/2107.07455/assets/figures/F1_retention_example_nmt.png)
-
+!(/html/2107.07455/assets/figures/F1_retention_example_nmt.png)
 
 (b) Machine Translation
 
-![Refer to caption](/html/2107.07455/assets/x4.png)
-
+!(/html/2107.07455/assets/x4.png)
 
 (c) Motion Prediction
 
@@ -1000,8 +935,7 @@ The data was logged during applying trained CatBoost models for weather forecast
 
 To analyze the robustness of learned models to *climate shifts*, we use the Koppen climate classification [[77](#bib.bib77)] that provides publicly available data131313Available to download from <http://hanschen.org/koppen> that maps latitudes and longitudes at a 0.5∘superscript0.50.5^{\circ} resolution to one of five main climate types: Tropical, Dry, Mild Temperate, Snow and Polar. This information is available over the years 1901 to 2010. The Weather Prediction dataset is augmented such that each sample has an associated climate type. The climate type is determined by minimizing the 1-norm between the longitudes/latitudes in the weather data and the Koppen climate classification for the most recent year available, 2010. The climate type is not used as a training feature.
 
-![Refer to caption](/html/2107.07455/assets/x5.png)
-
+!(/html/2107.07455/assets/x5.png)
 
 Figure 6: Canonical Partitioning of Weather Prediction dataset.
 
@@ -1035,103 +969,79 @@ Table 8: Number of samples in the canonical partitioning of Weather Prediction d
 | eval\_out | 576,626 | 0 | 0 | 0 | 525,967 | 50,659 |
 | eval | 1,137,731 | 74,406 | 123,487 | 363,212 | 525,967 | 50,659 |
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_violin_plots.png)
-
+!(/html/2107.07455/assets/figures/weather_violin_plots.png)
 
 Figure 7: Temperature distributions on canonical partitions of Weather Prediction dataset.
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_location_dist_train.png)
-
+!(/html/2107.07455/assets/figures/weather_location_dist_train.png)
 
 (a) train.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_location_dist_dev_in.png)
-
+!(/html/2107.07455/assets/figures/weather_location_dist_dev_in.png)
 
 (b) dev\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_location_dist_eval_in.png)
-
+!(/html/2107.07455/assets/figures/weather_location_dist_eval_in.png)
 
 (c) eval\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_location_dist_dev_out.png)
-
+!(/html/2107.07455/assets/figures/weather_location_dist_dev_out.png)
 
 (d) dev\_out.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_location_dist_eval_out.png)
-
+!(/html/2107.07455/assets/figures/weather_location_dist_eval_out.png)
 
 (e) eval\_out.
 
 Figure 8: Location of samples from canonical partitioning of Weather Prediction dataset.
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_train.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_train.png)
 
 (a) train.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_dev_in.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_dev_in.png)
 
 (b) dev\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_eval_in.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_eval_in.png)
 
 (c) eval\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_dev_out.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_dev_out.png)
 
 (d) dev\_out.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_eval_out.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_eval_out.png)
 
 (e) eval\_out.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_clim_type_all.png)
-
+!(/html/2107.07455/assets/figures/weather_clim_type_all.png)
 
 (f) all.
 
 Figure 9: Distribution of climate types from canonical partitioning of Weather Prediction dataset.
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_train.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_train.png)
 
 (a) train.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_dev_in.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_dev_in.png)
 
 (b) dev\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_eval_in.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_eval_in.png)
 
 (c) eval\_in.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_dev_out.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_dev_out.png)
 
 (d) dev\_out.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_eval_out.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_eval_out.png)
 
 (e) eval\_out.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_precip_class_all.png)
-
+!(/html/2107.07455/assets/figures/weather_precip_class_all.png)
 
 (f) all.
 
@@ -1619,89 +1529,69 @@ Table 11: Comparing ensembled F1-AUC and ROC-AUC for various uncertainty measure
 | FT-Transformer | 65.03 | 68.78 | 67.67 | 30.68 | 70.37 | 76.46 | 76.43 | 76.36 |
 | CatBoost ⊕direct-sum\oplus FT-Transformer | 67.78 | 75.43 | 79.29 | 30.86 | 69.92 | 82.49 | 82.16 | 81.85 |
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_mse.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_mse.png)
 
 (a) CatBoost, Regression, MSE.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_f1.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_f1.png)
 
 (b) CatBoost, Regression, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_acc_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_acc_class.png)
 
 (c) CatBoost, Classification, error rate.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_f1_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_f1_class.png)
 
 (d) CatBoost, Classification, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_mse_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_mse_ftt.png)
 
 (e) FT-Trans, Regression, MSE.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_f1_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_f1_ftt.png)
 
 (f) FT-Trans, Regression, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_acc_class_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_acc_class_ftt.png)
 
 (g) FT-Trans, Classification, error rate.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_dev_f1_class_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_dev_f1_class_ftt.png)
 
 (h) FT-Trans, Classification, F1.
 
 Figure 11: Retention curves for CatBoost and FT-Transformer on dev for the canonical Weather prediction dataset.
 
-
-
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_mse.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_mse.png)
 
 (a) CatBoost, Regression, MSE.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1.png)
 
 (b) CatBoost, Regression, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class.png)
 
 (c) CatBoost, Classification, error rate.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class.png)
 
 (d) CatBoost, Classification, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_mse_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_mse_ftt.png)
 
 (e) FT-Trans, Regression, MSE.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1_ftt.png)
 
 (f) FT-Trans, Regression, F1.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_acc_class_ftt.png)
 
 (g) FT-Trans, Classification, error rate.
 
-![Refer to caption](/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class_ftt.png)
-
+!(/html/2107.07455/assets/figures/weather_single_retention_eval_f1_class_ftt.png)
 
 (h) FT-Trans, Classification, F1.
 
@@ -1711,13 +1601,9 @@ Figure 12: Retention curves with CatBoost and FT-Transformer on eval for the can
 
 Figure [13](#A3.F13 "Figure 13 ‣ C.5.1 Further experiments ‣ C.5 Additional experiments ‣ Appendix C Tabular Weather ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") depicts additional splits beyond the canonical partition of the tabular weather data. Table [12](#A3.T12 "Table 12 ‣ C.5.1 Further experiments ‣ C.5 Additional experiments ‣ Appendix C Tabular Weather ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") summarises the experiments to be performed with a brief description of what each experiment involves. All experiments are to be performed using CatBoost for both the regression and classification tasks. These experiments aim to better understand whether time or climate shift in the data leads to a greater performance drop from in-domain to shifted datasets. Hence, the focus here is on robustness only. The corresponding results for each experiment are given in Table [13](#A3.T13 "Table 13 ‣ C.5.1 Further experiments ‣ C.5 Additional experiments ‣ Appendix C Tabular Weather ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks").
 
-![Refer to caption](/html/2107.07455/assets/figures/tabular_splits_aug.png)
-
+!(/html/2107.07455/assets/figures/tabular_splits_aug.png)
 
 Figure 13: Extended splits of tabular weather data.
-
-
-
 
 Table 12: Description of additional experiments.
 
@@ -1727,9 +1613,6 @@ Table 12: Description of additional experiments.
 | B | train ⊕direct-sum\oplus train\_xclim | dev\_in ⊕direct-sum\oplus dev\_xclim | Time shift |
 | C | train ⊕direct-sum\oplus train\_xtime | dev\_in ⊕direct-sum\oplus dev\_xtime | Climate shift |
 | D | train ⊕direct-sum\oplus train\_xclim ⊕direct-sum\oplus train\_xtime | dev\_in ⊕direct-sum\oplus dev\_xclim ⊕direct-sum\oplus dev\_xtime | No shift |
-
-
-
 
 Table 13: Predictive performance for Weather prediction using different training sets. Mean is quoted for the single models.
 
@@ -1795,9 +1678,9 @@ Both the development and evaluation Reddit data was manually annotated by member
 
 An analysis of the occurrence and co-occurrence of these anomalies is provided in figure [14](#A4.F14 "Figure 14 ‣ Composition ‣ D.1 Dataset Description ‣ Appendix D Machine Translation ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks").
 
-![Refer to caption](/html/2107.07455/assets/figures/anomaly_fraction.png)
+!(/html/2107.07455/assets/figures/anomaly_fraction.png)
 
-![Refer to caption](/html/2107.07455/assets/figures/anomaly_cooccurence.png)
+!(/html/2107.07455/assets/figures/anomaly_cooccurence.png)
 
 Figure 14: Analysis of anomaly occurrence and co-occurrence in Reddit (shifted) development and evaluation data
 
@@ -1851,23 +1734,19 @@ Training data was standard used the standard perl-based script provided in Fairs
 
 ### D.4 Additional Results
 
-![Refer to caption](/html/2107.07455/assets/figures/nmt_error_retention_dev.png)
-
+!(/html/2107.07455/assets/figures/nmt_error_retention_dev.png)
 
 (a) Dev
 
-![Refer to caption](/html/2107.07455/assets/figures/nmt_error_retention_eval.png)
-
+!(/html/2107.07455/assets/figures/nmt_error_retention_eval.png)
 
 (b) Eval
 
-![Refer to caption](/html/2107.07455/assets/figures/nmt_F1_retention_dev.png)
-
+!(/html/2107.07455/assets/figures/nmt_F1_retention_dev.png)
 
 (c) Dev
 
-![Refer to caption](/html/2107.07455/assets/figures/nmt_F1_retention_eval.png)
-
+!(/html/2107.07455/assets/figures/nmt_F1_retention_eval.png)
 
 (d) Eval
 
@@ -1958,13 +1837,9 @@ In addition, we remove all cases of precipitation from the in-domain training, d
 The canonical partitioning is fully described in Figure [16](#A5.F16 "Figure 16 ‣ Composition ‣ E.1 Dataset Description ‣ Appendix E Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks").
 This partitioning is also the one used in the Shifts Challenge.
 
-![Refer to caption](/html/2107.07455/assets/figures/SDC_data_partition.png)
-
+!(/html/2107.07455/assets/figures/SDC_data_partition.png)
 
 Figure 16: The canonical partitioning of the Vehicle Motion Prediction dataset.
-
-
-
 
 Table 19: The number of scenes in the canonical dataset partitioning.
 
@@ -2021,8 +1896,7 @@ As a justification, consider that in a certain context, multiple trajectories ma
 superscriptsubscript𝑐𝑖𝑑𝑑
 1…subscript𝐷𝑖c\_{i}^{(d)},d\in\{1,\dots D\_{i}\}. These provide an ordering of the plausibility of the various trajectories predicted for a given input. The scores must be non-negative and sum to 111 (i.e., form a valid probability distribution).
 
-![Refer to caption](/html/2107.07455/assets/figures/motion_prediction_model_2.png)
-
+!(/html/2107.07455/assets/figures/motion_prediction_model_2.png)
 
 Figure 17: Diagram of the Vehicle Motion Prediction task. Models take as input a single scene context 𝒙𝒙\bm{x} composed of static (HD map) and time-dependent input features, and predict trajectories {𝒚(d)∣d∈1,…,D}conditional-setsuperscript𝒚𝑑𝑑
 
@@ -2253,9 +2127,6 @@ See [Section E.4](#A5.SS4 "E.4 Experimental Setup ‣ Appendix E Vehicle Motion
 | DIM, MA, K=3 | 0.720 | 0.907 | 0.758 | 1.432 | 1.760 | 1.497 | 1.465 | 1.960 | 1.564 | 3.267 | 4.107 | 3.435 | 48.74 | 74.70 | 53.93 |
 | DIM, MA, K=5 | 0.728 | 0.925 | 0.767 | 1.431 | 1.766 | 1.498 | 1.494 | 2.017 | 1.599 | 3.269 | 4.120 | 3.439 | 50.51 | 79.30 | 56.28 |
 
-
-
-
 Table 21: *Uncertainty and robustness performance* of RIP across the two backbone models (BC and DIM) and uncertainty estimation methods (Deep Ensemble and Dropout Ensemble). The error metric for computing the area under the rejection curve (R-AUC) and area under the F1 curve (F1-AUC) is cNLL. We use a threshold of 25 for the F1 metrics, which approximately corresponds to a 1 meter deviation on all trajectories. See [Section E.4](#A5.SS4 "E.4 Experimental Setup ‣ Appendix E Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks") for setup details.
 
 | Dataset | Method | Model | R-AUC ↓↓\downarrow | | | F1-AUC (%) ↑↑\uparrow | | | F1@959595% ↑↑\uparrow | | | ROC-AUC (%) ↑↑\uparrow |
@@ -2310,108 +2181,22 @@ Table 21: *Uncertainty and robustness performance* of RIP across the two backbon
 | DIM, MA, K=3 | 12.73 | 21.43 | 14.40 | 63.6 | 63.9 | 63.7 | 89.1 | 86.0 | 88.5 | 51.1 |
 | DIM, MA, K=5 | 13.36 | 22.85 | 15.19 | 63.5 | 63.8 | 63.6 | 89.4 | 86.3 | 88.8 | 50.9 |
 
-
-
-![Refer to caption](/html/2107.07455/assets/x6.png)
-
+!(/html/2107.07455/assets/x6.png)
 
 (a) Full dev cNLL retention.
 
-![Refer to caption](/html/2107.07455/assets/x7.png)
-
+!(/html/2107.07455/assets/x7.png)
 
 (b) Full eval cNLL retention.
 
-![Refer to caption](/html/2107.07455/assets/x8.png)
-
+!(/html/2107.07455/assets/x8.png)
 
 (c) Full dev F1-cNLL retention.
 
-![Refer to caption](/html/2107.07455/assets/x9.png)
-
+!(/html/2107.07455/assets/x9.png)
 
 (d) Full eval F1-cNLL retention.
 
 Figure 18: cNLL and F1-cNLL retention curves on the Full (i.e., containing both the in-distribution and distributionally shifted datapoints) dev (left column) and eval (right column) partitions of the Vehicle Motion Prediction dataset.
 Top row: retention on cNLL (lower ↓↓\downarrow AUC is better). Bottom row: retention on F1-cNLL (higher ↑↑\uparrow AUC is better).
 We vary the backbone model and number of ensemble members, fix the Model Averaging (MA) aggregation strategy for the per-trajectory aggregation operator ⊕trajectorysubscriptdirect-sumtrajectory\oplus\_{\text{trajectory}} and the per–prediction request aggregation operator ⊕pred-reqsubscriptdirect-sumpred-req\oplus\_{\text{pred-req}} (based on results from [Table 7](#S5.T7 "In Baselines ‣ 5 Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks")), and otherwise use the standard RIP settings enumerated in [Section E.4](#A5.SS4 "E.4 Experimental Setup ‣ Appendix E Vehicle Motion Prediction ‣ Shifts: A Dataset of Real Distributional Shift Across Multiple Large-Scale Tasks").
-
-[◄](/html/2107.07454)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2107.07455)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2107.07455)
-[View original  
-on arXiv](https://arxiv.org/abs/2107.07455)[►](/html/2107.07456)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 04:49:23 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

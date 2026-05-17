@@ -19,50 +19,6 @@ url: https://arxiv.org/abs/2602.00747
 year: 2026
 ---
 
-[2602.00747] Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training
 
 Shengrui Li
@@ -98,7 +54,7 @@ Machine Learning, ICML
 Large Language Models (LLMs) have achieved remarkable success across a wide range of domains (Shao et al., [2024](#bib.bib10 "Deepseekmath: pushing the limits of mathematical reasoning in open language models"); Guo et al., [2025](#bib.bib9 "Deepseek-r1: incentivizing reasoning capability in llms via reinforcement learning"); Kimi Team et al., [2025](#bib.bib11 "Kimi k2: open agentic intelligence"); Bai et al., [2025](#bib.bib12 "Qwen2. 5-vl technical report")), largely driven by the massive pre-training (Gemini Team et al., [2023](#bib.bib13 "Gemini: a family of highly capable multimodal models"); Achiam et al., [2023](#bib.bib14 "Gpt-4 technical report")).
 Beyond scale alone, the composition of the pre-training corpus plays a critical role in shaping model capabilities (Feng et al., [2024](#bib.bib26 "Maximize your data’s potential: enhancing llm accuracy with two-phase pretraining"); Basant et al., [2025](#bib.bib27 "Nvidia nemotron nano 2: an accurate and efficient hybrid mamba-transformer reasoning model"); Blakeman et al., [2025](#bib.bib28 "Nemotron 3 nano: open, efficient mixture-of-experts hybrid mamba-transformer model for agentic reasoning")).
 
-![Refer to caption](/html/2602.00747/assets/x1.png)
+!(/html/2602.00747/assets/x1.png)
 
 Figure 1: 
 Methods such as RegMix and CLIMB require extensive proxies. Scaling each proxy leads to unaffordable overall budget. While our DeMix only require a few component models to merge unlimited training-free proxies.
@@ -132,8 +88,7 @@ Based on these merged proxy models, we predict the optimal data mixture via regr
 
   We release DeMix Corpora, a 22T high-quality, large-scale dataset with validated mixtures that can be directly used for LLM pre-training.
 
-![Refer to caption](/html/2602.00747/assets/x2.png)
-
+!(/html/2602.00747/assets/x2.png)
 
 Figure 2: Pipeline for DeMix. After (1) cleaning and categorizing massive data, (2) component models are trained on individual candidate datasets. Instead of large-scale training for every ratio, (3) weighted model merging serves as a computationally efficient proxy to estimate performance for various mixture ratios. Finally, (4) a predictor is trained on the benchmarked proxy models to regress the relationship between mixing ratios and performance, utilizing iterative resampling to converge on the optimal mixture.
 
@@ -386,20 +341,15 @@ Table 6: Comparison of public high-quality pre-training datasets.
 
 Public pre-training corpora can be categorized into several types. Web-derived general English corpora include FineWeb-Edu (Penedo et al., [2024](#bib.bib20 "The fineweb datasets: decanting the web for the finest text data at scale")), DCLM-baseline (Li et al., [2024](#bib.bib21 "Datacomp-lm: in search of the next generation of training sets for language models")), and ClimbMix (Diao et al., [2025](#bib.bib36 "Climb: clustering-based iterative data mixture bootstrapping for language model pre-training")); composite corpora include SmolLM-Corpus (Ben Allal et al., [2024](#bib.bib86 "SmolLM-corpus")), DOLMA (Soldaini et al., [2024](#bib.bib43 "Dolma: an open corpus of three trillion tokens for language model pretraining research")), and Nemotron-Pretrain (Basant et al., [2025](#bib.bib27 "Nvidia nemotron nano 2: an accurate and efficient hybrid mamba-transformer reasoning model")). In addition, multilingual (Messmer et al., [2025](#bib.bib39 "Enhancing multilingual llm pretraining with model-based data selection"); De Gibert et al., [2024](#bib.bib40 "A new massive multilingual dataset for high-performance language technologies")), code (Li et al., [2023](#bib.bib41 "Starcoder: may the source be with you!")), and mathematics (Allal et al., [2025a](#bib.bib30 "SmolLM2: when smol goes big–data-centric training of a small language model")) corpora are not directly applicable for pre-training. As shown in Table [6](#S5.T6 "Table 6 ‣ 5 DeMix Corpora ‣ Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training"), there remains a scarcity of high-quality corpora with validated mixture. In contrast, our proposed DeMix Corpora (15T original tokens and 22T mixture tokens) serves as a comprehensive, high-quality, large-scale, and carefully mixed resource that can be directly employed for pre-training.
 
-![Refer to caption](/html/2602.00747/assets/x3.png)
+!(/html/2602.00747/assets/x3.png)
 
 Figure 3: 
 General performance of high-quality general datasets.
 
-
-
-![Refer to caption](/html/2602.00747/assets/x4.png)
+!(/html/2602.00747/assets/x4.png)
 
 Figure 4: 
 The data mixture constructed using our DeMix framework. The three hierarchical levels from the inside out are domain, data category, and data origin.
-
-
-
 
 Table 7: Multi-Domain performance of mixed datasets after mid-training 50B tokens.
 
@@ -849,13 +799,10 @@ We train a 1.7B model from scratch using the stage-1 mixture for a sufficient nu
 
 ### A.2 Data Composition Across Stages
 
-![Refer to caption](/html/2602.00747/assets/x5.png)
+!(/html/2602.00747/assets/x5.png)
 
 Figure 5: 
 Data mixtures for the three stages of pre-training in the DeMix Corpora, with approximately 14T, 6T, and 2T tokens, respectively. The three hierarchical levels from the inside out are domain, data category, and data origin.
-
-
-
 
 Table 8: Composition of DeMix Corpora and the mixture in each stage, measured in tokens (B).
 
@@ -943,83 +890,3 @@ Table 9: Detailed mixtures from different experiments.
   †\dagger is the benchmarking cost derived from equal GPU‑hour as in Table [1](#S3.T1 "Table 1 ‣ 3.1 Benchmark ‣ 3 Experimental Settings ‣ Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training").
 
 We extend Table [3](#S4.T3 "Table 3 ‣ 4 Experimental Results ‣ Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training") by listing the detailed mixture ratios in Table [9](#A3.T9 "Table 9 ‣ Appendix C Detailed Mixtures in Experiments. ‣ Decouple Searching from Training: Scaling Data Mixing via Model Merging for Large Language Model Pre-training").
-
-[◄](/html/2602.00746)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.00747)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.00747)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.00747)[►](/html/2602.00748)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 21:05:54 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

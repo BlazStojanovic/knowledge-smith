@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2406.20094
 year: 2024
 ---
 
-[2406.20094] Scaling Synthetic Data Creation with 1,000,000,000 Personas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Scaling Synthetic Data Creation with 1,000,000,000 Personas
 
 Xin Chan, Xiaoyang Wang, Dian Yu, Haitao Mi, Dong Yu
@@ -72,8 +29,7 @@ We propose a novel persona-driven data synthesis methodology that leverages vari
 
 DISCLAIMER: Persona Hub can facilitate synthetic data creation at a billion-scale to simulate diverse inputs (i.e., use cases) from a wide variety of real-world users. If this data is used as input to query a target LLM to obtain its outputs at scale, there is a high risk that the LLM’s knowledge, intelligence and capabilities will be dumped and easily replicated, thereby challenging the leading position of the most powerful LLMs (e.g., our approach allows a 7B LLM to achieve 65% on MATH, matching the performance of gpt-4-turbo-preview). This tech report is for research purposes only. It is crucial to avoid misuse and ensure ethical and responsible application. We discuss its broad impact and potential concerns in detail in Section [5](#S5 "5 Broad Impact and Ethical Concerns ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas").
 
-![Refer to caption](/html/2406.20094/assets/x1.png)
-
+!(/html/2406.20094/assets/x1.png)
 
 Figure 1: Personas can work with a wide range of data synthesis prompts (e.g., create a math problem or a user prompt) to guide an LLM to synthesize data with corresponding perspectives. The 1 billion personas in Persona Hub can facilitate synthetic data creation for various data synthesis scenarios at a billion scale.
 
@@ -94,8 +50,7 @@ Previous research tends to diversify the data synthesis prompt through the follo
 
 To practically achieve diverse synthetic data creation at scale, we propose a novel persona-driven data synthesis methodology. This is inspired by the observation that simply adding a persona to a data synthesis prompt can steer the LLM towards the corresponding perspective to create distinctive synthetic data, as shown in Figure [1](#S0.F1 "Figure 1 ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas"). Since almost any LLM use case can be associated with a specific persona, we can create all-encompassing synthetic data at scale as long as we construct a comprehensive persona collection.
 
-![Refer to caption](/html/2406.20094/assets/x2.png)
-
+!(/html/2406.20094/assets/x2.png)
 
 Figure 2: From a compression perspective (Delétang et al., [2023](#bib.bib13); Ge et al., [2024](#bib.bib16)), Persona Hub (∼1010similar-toabsentsuperscript1010\sim 10^{10} tokens) can be seen as the compressed form of world knowledge (public web text for training LLMs, ∼1014similar-toabsentsuperscript1014\sim 10^{14} tokens) into distributed carriers. On the other hand, the public web text can be seen as the decompressed content created by these personas with their knowledge and experiences.
 
@@ -133,8 +88,7 @@ Note: Our proposed methodology is applicable to almost any popular LLM222We main
 
 We propose two scalable approaches to derive diverse personas to construct Persona Hub from massive web data: Text-to-Persona and Persona-to-Persona.
 
-![Refer to caption](/html/2406.20094/assets/x3.png)
-
+!(/html/2406.20094/assets/x3.png)
 
 Figure 3: The Text-to-Persona approach: it can use any text as input to obtain corresponding personas just by prompting the LLM “Who is likely to [read|write|like|dislike|…] the text?”
 
@@ -144,8 +98,7 @@ A person with specific professional experiences and cultural backgrounds will ha
 
 There are many formats (e.g., plain text or structured text) to represent a persona, which can be controlled within the prompt. The granularity of an output persona description can also be adjusted through the prompt. For example, in the first case, a coarse-grained persona might be “a computer scientist”, whereas the fine-grained persona is “a machine learning researcher focused on neural network architectures and attention mechanisms”. In our practice, we ask the LLM (in the prompt) to output persona descriptions as specifically as possible. Besides specifying the granularity of persona descriptions in the prompt, input texts can also influence the granularity of persona descriptions. As shown in Figure [4](#S2.F4 "Figure 4 ‣ 2.1 Text-to-Persona ‣ 2 Persona Hub ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas"), if an input text (e.g., from a mathematical textbook or an academic paper about superconductivity) contains many detailed elements, the resulting persona description will also be specific and fine-grained. Therefore, by applying the Text-to-Persona approach to massive web text data, we can obtain billions (or even trillions) of diverse personas, encompassing a wide range of aspects across different granularities.
 
-![Refer to caption](/html/2406.20094/assets/x4.png)
-
+!(/html/2406.20094/assets/x4.png)
 
 Figure 4: Persona descriptions will be fine-grained if input texts involve many detailed elements.
 
@@ -153,8 +106,7 @@ Figure 4: Persona descriptions will be fine-grained if input texts involve many 
 
 As discussed above, Text-to-Persona is a highly scalable method that can synthesize personas covering almost every aspect. However, it may still miss some personas that have low visibility on the web and thus are less likely to obtain via Text-to-Persona, such as a child, a beggar, or a behind-the-scenes crew member of a movie. To supplement the personas that Text-to-Persona might hardly reach, we propose Persona-to-Persona, which derives personas with interpersonal relationships from those obtained through Text-to-Persona.
 
-![Refer to caption](/html/2406.20094/assets/x5.png)
-
+!(/html/2406.20094/assets/x5.png)
 
 Figure 5: Persona-to-Persona obtains diverse personas via interpersonal relationships, which can be easily achieved by prompting the LLM “Who is in close relationship with the given persona?”
 
@@ -180,8 +132,7 @@ After deduplication and using simple heuristic methods to filter out low-quality
 
 Our proposed persona-driven data synthesis approach is straightforward and effective, which involves integrating a persona into the appropriate position in a data synthesis prompt. Simple as it appears, it can significantly influence the LLM to adopt the persona’s perspective to create synthetic data. Driven by the 1 billion personas in Persona Hub, this approach can easily create diverse synthetic data at a billion scale.
 
-![Refer to caption](/html/2406.20094/assets/x6.png)
-
+!(/html/2406.20094/assets/x6.png)
 
 Figure 6: 0-shot, few-shot and persona-enhanced few-shot prompting methods.
 
@@ -209,13 +160,11 @@ As mentioned earlier, the persona-driven approach is general and versatile, maki
 
 As the initial example (Figure [1](#S0.F1 "Figure 1 ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas")) shows, when prompting an LLM to create a math problem, adding a persona leads the LLM to create math problems related to that persona. The example in Figure [7](#S4.F7 "Figure 7 ‣ 4.1.1 Demonstrations ‣ 4.1 Math Problems ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas")(left) further confirms this: when presented with a linguist persona, the LLM will create a math problem in the context of computational linguistics. Moreover, adding a persona does not hinder the flexibility of the prompt – we can still easily specify the focus (Figure [7](#S4.F7 "Figure 7 ‣ 4.1.1 Demonstrations ‣ 4.1 Math Problems ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas")(middle)) or difficulty (Figure [7](#S4.F7 "Figure 7 ‣ 4.1.1 Demonstrations ‣ 4.1 Math Problems ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas")(right)) of our desired math problem in the prompt.
 
-![Refer to caption](/html/2406.20094/assets/x7.png)
-
+!(/html/2406.20094/assets/x7.png)
 
 Figure 7: A linguist persona with different math problem creation prompts that specify the focus (e.g., geometry) or the difficulty (e.g., Olympiad-level)
 
-![Refer to caption](/html/2406.20094/assets/x8.png)
-
+!(/html/2406.20094/assets/x8.png)
 
 Figure 8: Examples of math problems created with personas of professionals related to the field of mathematics. They tend to be more challenging than those created with general personas because they usually require a deeper and more fine-grained understanding of advanced mathematical knowledge and skills.
 
@@ -265,8 +214,6 @@ We simply fine-tune the latest open-sourced 7B LLM – Qwen2-7B (qwe, [2024](#b
 
 Table 1: In-distribution evaluation results on the 11.6K synthetic test instances.
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | Model | Model Size | Accuracy (%) |
@@ -289,8 +236,7 @@ Table 1: In-distribution evaluation results on the 11.6K synthetic test instance
 
 Table 2: Out-of-distribution evaluation on MATH. Results marked with an asterisk (\*) may not use the OpenAI’s evaluation method. The model fine-tuned with our synthesized 1.07M math problems achieves 64.9% on MATH, matching the performance of gpt-4-turbo-preview at only a 7B scale.
 
-![Refer to caption](/html/2406.20094/assets/x9.png)
-
+!(/html/2406.20094/assets/x9.png)
 
 Figure 9: Accuracy on MATH with scaling the synthetic instances used for training Qwen2-7B
 
@@ -300,8 +246,7 @@ We present the evaluation results on MATH in Table [2](#S4.T2 "Table 2 ‣ Equal
 
 Figure [9](#S4.F9 "Figure 9 ‣ Equality Checking ‣ 4.1.2 Evaluation ‣ 4.1 Math Problems ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") presents the performance of the model on MATH when trained with synthetic math problems at different scales. Its performance trend generally aligns with the scaling law (Kaplan et al., [2020](#bib.bib20)). Unlike previous research (Yu et al., [2023](#bib.bib41); Wang et al., [2023](#bib.bib36); Li et al., [2024a](#bib.bib21)) that performs scaling on in-distribution data (e.g., heavily relying on MATH train data to augment in-distribution data), we did not use any instances from MATH during data synthesis or training. Therefore, in this out-of-distribution (OOD) evaluation setting, achieving performance on MATH that surpasses gpt-4-turbo-preview (1106/0125) is indeed impressive and promising for a 7B model.
 
-![Refer to caption](/html/2406.20094/assets/x10.png)
-
+!(/html/2406.20094/assets/x10.png)
 
 Figure 10: Similarities of math problems created by personas with different similarities: (a) Similarity of math problems when no specific focus is given; (b) Similarity of math problems when the prompt specifies they must be related to finance and probability; (c) Similarity of math problems synthesized by gpt-4o and gpt-35-turbo with persona similarity of 0.9.
 
@@ -313,20 +258,17 @@ We can clearly observe that the semantic similarity between synthesized math pro
 
 ### 4.2 Logical Reasoning Problems
 
-![Refer to caption](/html/2406.20094/assets/x11.png)
-
+!(/html/2406.20094/assets/x11.png)
 
 Figure 11: Logical reasoning problems created by our proposed persona-driven methodology
 
-![Refer to caption](/html/2406.20094/assets/x12.png)
-
+!(/html/2406.20094/assets/x12.png)
 
 Figure 12: Ruozhiba-style logical reasoning problems created with various personas. Note that Logical Prompt 3 in this figure is a simplified prompt. In practice, we need to specifically define a Ruozhiba-style logical reasoning problem in this prompt in order to obtain desired synthetic data.
 
 Similar to math problems, logical reasoning problems can also be easily synthesized. We present examples of typical logical reasoning problems synthesized using our proposed persona-driven methodology in Figure [11](#S4.F11 "Figure 11 ‣ 4.2 Logical Reasoning Problems ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas").
 
-![Refer to caption](/html/2406.20094/assets/x13.png)
-
+!(/html/2406.20094/assets/x13.png)
 
 Figure 13: Two typical prompts used for creating instructions (i.e., user prompts).
 
@@ -346,8 +288,7 @@ As Figure [1](#S0.F1 "Figure 1 ‣ Scaling Synthetic Data Creation with 1,000,00
 
 ### 4.4 Knowledge-rich Texts
 
-![Refer to caption]()
-
+!()
 
 Figure 14: Examples of knowledge-rich plain text synthesis with personas
 
@@ -357,22 +298,19 @@ In addition to synthesizing instructions that can enhance the instruction tuning
 
 A straightforward and practical application of Persona Hub is creating diverse NPCs (Non-Player Characters) at scale for games. As long as we can provide a game’s background and world-building information to the LLM, we can prompt the LLM to project personas from Persona Hub (which are typically real-world personas) into characters within the game’s world. In this way, we can significantly reduce the effort required for brainstorming NPCs during the game design process.
 
-![Refer to caption](/html/2406.20094/assets/x15.png)
-
+!(/html/2406.20094/assets/x15.png)
 
 Figure 15: NPC creation for the game “World of Warcraft” using personas in Persona Hub
 
 Figure [15](#S4.F15 "Figure 15 ‣ 4.5 Game NPCs ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") and [16](#S4.F16 "Figure 16 ‣ 4.5 Game NPCs ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") show concrete examples where we use personas in Persona Hub to create game NPCs for the game “World of Warcraft121212[World of Warcraft](https://worldofwarcraft.blizzard.com/en-us/), developed by Blizzard Entertainment, is a highly influential MMORPG with millions of active players worldwide, spanning over 100 countries since its release in 2004.” and “Moonlight Blade131313[Moonlight Blade (天涯明月刀)](https://wuxia.qq.com/main.shtml) is a 3D martial arts-themed MMORPG developed by Tencent, officially launched in China on July 1, 2016.”.
 
-![Refer to caption](/html/2406.20094/assets/x16.png)
-
+!(/html/2406.20094/assets/x16.png)
 
 Figure 16: NPC creation for the game “Moonlight Blade (天涯明月刀)” using Persona Hub
 
 ### 4.6 Tool (Function) Development
 
-![Refer to caption](/html/2406.20094/assets/x17.png)
-
+!(/html/2406.20094/assets/x17.png)
 
 Figure 17: Examples of tool (function) creation with Persona Hub
 
@@ -380,8 +318,7 @@ As Section [4.3](#S4.SS3 "4.3 Instructions ‣ 4 Use Cases ‣ Scaling Synthetic
 
 Figure [17](#S4.F17 "Figure 17 ‣ 4.6 Tool (Function) Development ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") shows examples of tools created with various personas. These tools provide functionalities that the personas may need (e.g., a cab driver needs to check traffic conditions) but cannot be accessed by an LLM, greatly expanding the range of services provided by the LLM. Note that although the tools in Figure [17](#S4.F17 "Figure 17 ‣ 4.6 Tool (Function) Development ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") are just interface definitions, these definitions can be easily converted into code implementations, as shown in Figure [18](#S4.F18 "Figure 18 ‣ 4.6 Tool (Function) Development ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas").
 
-![Refer to caption](/html/2406.20094/assets/x18.png)
-
+!(/html/2406.20094/assets/x18.png)
 
 Figure 18: The interface definitions (e.g., the species identification interface) in Figure [17](#S4.F17 "Figure 17 ‣ 4.6 Tool (Function) Development ‣ 4 Use Cases ‣ Scaling Synthetic Data Creation with 1,000,000,000 Personas") can be easily converted into code implementations by calling an LLM to implement them. The resulting pre-built tools can then be directly utilized by the LLM in the future, eliminating the need to build them from scratch each time.
 
@@ -654,83 +591,3 @@ Also, while this work only explores data synthesis with text-based LLMs, the met
   Qihao Zhu, Daya Guo, Zhihong Shao, Dejian Yang, Peiyi Wang, Runxin Xu, Y Wu, Yukun Li, Huazuo Gao, Shirong Ma, et al.
   Deepseek-coder-v2: Breaking the barrier of closed-source models in code intelligence.
   *arXiv preprint arXiv:2406.11931*, 2024.
-
-[◄](/html/2406.20093)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2406.20094)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2406.20094)
-[View original  
-on arXiv](https://arxiv.org/abs/2406.20094)[►](/html/2406.20095)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Jul 5 17:51:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

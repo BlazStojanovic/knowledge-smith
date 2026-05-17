@@ -11,49 +11,6 @@ url: https://arxiv.org/abs/2601.19156
 year: 2026
 ---
 
-[2601.19156] Convergence of Muon with Newton–Schulz
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Convergence of Muon with Newton–Schulz
 
 Gyu Yeol Kim
@@ -632,8 +589,7 @@ in line with Theorems [1](#Thmtheorem1 "Theorem 1 (Convergence of Muon with New
 which state that the Newton–Schulz variant matches the SVD iteration complexity up to a factor χq→1\chi\_{q}\to 1 that decays doubly exponentially in qq.
 At the same time, the bottom row of Fig. [1](#S5.F1 "Figure 1 ‣ 5 Numerical Experiments ‣ Convergence of Muon with Newton–Schulz") shows that Muon with q=2q=2 or 33 reaches a given test loss substantially faster in wall‑clock time than the SVD variant, reflecting the lower per‑iteration cost of the Newton–Schulz update.
 
-![Refer to caption](/html/2601.19156/assets/x1.png)
-
+!(/html/2601.19156/assets/x1.png)
 
 Figure 1: Newton–Schulz steps (qq) ablation.
 Muon with Newton–Schulz for q∈{1,2,3}q\in\{1,2,3\} vs. Muon (SVD) and SGD with momentum (SGD‑M, baseline).
@@ -3129,13 +3085,9 @@ Dataset and Model:
 
 ### G.1 MLP on MNIST
 
-![Refer to caption](/html/2601.19156/assets/x2.png)
-
+!(/html/2601.19156/assets/x2.png)
 
 Figure 2: Train losses of MLP on MNIST across wall-clock time and epochs
-
-
-
 
 Table 2: Wall-clock time training performance of MLP (0.5M) on MNIST dataset
 
@@ -3150,16 +3102,12 @@ Table 2: Wall-clock time training performance of MLP (0.5M) on MNIST dataset
 
 ### G.2 CifarNet on CIFAR-10
 
-![Refer to caption](/html/2601.19156/assets/x3.png)
-
+!(/html/2601.19156/assets/x3.png)
 
 Figure 3: 
 Train losses of
 CifarNet on CIFAR-10
 across wall-clock time and epochs
-
-
-
 
 Table 3: Wall-clock time training performance of CifarNet (2M) on CIFAR-10
 
@@ -3174,16 +3122,12 @@ Table 3: Wall-clock time training performance of CifarNet (2M) on CIFAR-10
 
 ### G.3 ResNet-18 on CIFAR-100
 
-![Refer to caption](/html/2601.19156/assets/x4.png)
-
+!(/html/2601.19156/assets/x4.png)
 
 Figure 4: 
 Train losses of
 ResNet-18 on CIFAR-100
 across wall-clock time and epochs
-
-
-
 
 Table 4: Wall-clock time training performance of ResNet-18 (11.2M) on CIFAR-100
 
@@ -3198,16 +3142,12 @@ Table 4: Wall-clock time training performance of ResNet-18 (11.2M) on CIFAR-100
 
 ### G.4 WideResNet-28-10 on Tiny-ImageNet
 
-![Refer to caption](/html/2601.19156/assets/x5.png)
-
+!(/html/2601.19156/assets/x5.png)
 
 Figure 5: 
 Train losses of
 WideResNet-28-10 on Tiny-ImageNet
 across wall-clock time and epochs
-
-
-
 
 Table 5: Wall-clock time training performance of WideResNet-28-10 (36.6M) on Tiny-ImageNet
 
@@ -3222,16 +3162,12 @@ Table 5: Wall-clock time training performance of WideResNet-28-10 (36.6M) on Tin
 
 ### G.5 NanoGPT on FineWeb
 
-![Refer to caption](/html/2601.19156/assets/x6.png)
-
+!(/html/2601.19156/assets/x6.png)
 
 Figure 6: 
 Train losses of
 NanoGPT on FineWeb
 across wall-clock time and epochs
-
-
-
 
 Table 6: Wall-clock time training performance of NanoGPT (124M) on FineWeb
 
@@ -3246,16 +3182,12 @@ Table 6: Wall-clock time training performance of NanoGPT (124M) on FineWeb
 
 ### G.6 GPT-2 based model (1.3B) on FineWeb
 
-![Refer to caption](/html/2601.19156/assets/x7.png)
-
+!(/html/2601.19156/assets/x7.png)
 
 Figure 7: 
 Train losses of
 GPT-2 based model (1.3B) on FineWeb
 across wall-clock time and epochs
-
-
-
 
 Table 7: Wall-clock time training performance of GPT-2 based model (1.3B) on FineWeb
 
@@ -3272,8 +3204,7 @@ Table 7: Wall-clock time training performance of GPT-2 based model (1.3B) on Fin
 
 ### H.1 Newton–Schulz–polynomial degree-κ\kappa ablations.
 
-![Refer to caption](/html/2601.19156/assets/x8.png)
-
+!(/html/2601.19156/assets/x8.png)
 
 Figure 8: Degree κ\kappa sweep.
 Newton–Schulz polynomial degree κ∈{1,…,5}\kappa\in\{1,\ldots,5\} at fixed q=3q=3.
@@ -3313,16 +3244,12 @@ directly testing the theory-driven prediction that larger κ\kappa accelerates o
 
 ### H.2 Rank–dependence.
 
-![Refer to caption](/html/2601.19156/assets/x9.png)
-
+!(/html/2601.19156/assets/x9.png)
 
 Figure 9: Rank dependence.
 Epoch‑averaged gradient norm vs. rank rr
 (left: raw log–log; right: normalized by r\sqrt{r}).
 Muon variants are nearly rr‑invariant; SGD-M scales up with rank.
-
-
-
 
 Table 8: log–log slopes (ω\omega) from Fig. [9](#A8.F9 "Figure 9 ‣ H.2 Rank–dependence. ‣ Appendix H Additional Ablation Experiments ‣ Convergence of Muon with Newton–Schulz").
 
@@ -3393,16 +3320,14 @@ From an optimization perspective, a larger BB reduces gradient noise but also de
 In our runs, the best time–to-accuracy is achieved for a large batch size B=1024B=1024,
 while a small BB suffers from noise, taking a greater amount of time.
 
-![Refer to caption](/html/2601.19156/assets/x10.png)
-
+!(/html/2601.19156/assets/x10.png)
 
 Figure 10: Batch size.
 Train/test loss vs. epoch and wall‑clock for B∈{64,128,256,512,1024}B\in\{64,128,256,512,1024\}.
 
 ### H.4 Degree-2 NS polynomial vs. Ad-hoc degree-2 NS polynomial
 
-![Refer to caption](/html/2601.19156/assets/x11.png)
-
+!(/html/2601.19156/assets/x11.png)
 
 Figure 11: NS polynomial vs. Ad-hoc polynomial.
 Train/test loss vs. epoch and wall‑clock.
@@ -3447,83 +3372,3 @@ Hence, the monotonicity premise of Lemma [2](#Thmlemma2 "Lemma 2 (Residual upda
 even though τ​(1)=p​(1)2=0.7012<1\tau(1)=p(1)^{2}=0.701^{2}<1 holds.
 This explains why our guarantees apply to pκp\_{\kappa} but not to the ad-hoc quadratic,
 which remains an empirical heuristic.
-
-[◄](/html/2601.19155)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.19156)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.19156)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.19156)[►](/html/2601.19157)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 15:11:45 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

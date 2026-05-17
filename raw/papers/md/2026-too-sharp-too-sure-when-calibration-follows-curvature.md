@@ -13,50 +13,6 @@ url: https://arxiv.org/abs/2604.20614
 year: 2026
 ---
 
-[2604.20614] Too Sharp, Too Sure: When Calibration Follows Curvature
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Too Sharp, Too Sure: When Calibration Follows Curvature
 
 Alessandro Morosini
@@ -81,8 +37,7 @@ Modern neural networks can achieve high accuracy while remaining poorly calibrat
 
 Calibration, copy them
 
-![Refer to caption](/html/2604.20614/assets/x1.png)
-
+!(/html/2604.20614/assets/x1.png)
 
 Figure 1: Training dynamics for Gradient Descent and Stochastic Gradient Descent across learning rates on CIFAR-10. Expected Calibration Error closely tracks sharpness throughout training: both rise as the model enters the edge of stability regime, peak around the same time, and decay together as training progresses.
 
@@ -205,20 +160,15 @@ We test Hypothesis [1](#Thmhyp1 "Hypothesis 1 (Flat Minima for Calibration). �
 
 Figures [2](#S3.F2 "Figure 2 ‣ 3.2 Converging to Flat Minima or Following Flat Directions? ‣ 3 The Coupling Between Calibration and Sharpness ‣ Too Sharp, Too Sure: When Calibration Follows Curvature") and [3](#S3.F3 "Figure 3 ‣ 3.2 Converging to Flat Minima or Following Flat Directions? ‣ 3 The Coupling Between Calibration and Sharpness ‣ Too Sharp, Too Sure: When Calibration Follows Curvature") show the training dynamics. Although SAM consistently maintains lower sharpness than GD and SGD, its calibration trajectory closely mirrors that of standard training, with a comparable peak ECE and slower convergence. In contrast, both Muon and BulkSGD achieve substantially lower peak calibration error and faster ECE decay, despite exhibiting markedly different sharpness profiles.
 
-![Refer to caption](/html/2604.20614/assets/x2.png)
-
+!(/html/2604.20614/assets/x2.png)
 
 Figure 2: Training dynamics for SAM and Muon across learning rates on CIFAR-10.
 
-
-
-![Refer to caption](/html/2604.20614/assets/img/main/Bulk_SGD_LR_2_70.png)
-
+!(/html/2604.20614/assets/img/main/Bulk_SGD_LR_2_70.png)
 
 (a) BulkSGD with learning rate 270\frac{2}{70}
 
-![Refer to caption](/html/2604.20614/assets/img/main/BulkSGD_LR_2_30.png)
-
+!(/html/2604.20614/assets/img/main/BulkSGD_LR_2_30.png)
 
 (b) BulkSGD with learning rate 230\frac{2}{30}
 
@@ -1569,179 +1519,129 @@ e−mθ​(xi,yi)≤e−mε,θ​(xi,yi)e^{-m\_{\theta}(x\_{i},y\_{i})}\leq e^{-
 
 We present detailed training dynamics for each optimizer on CIFAR-10 and CIFAR-100, showing the co-evolution of loss, accuracy, ECE, margin, and sharpness throughout training. Since computing the full Hessian eigenvalue is expensive, these experiments use an MLP with a 5K/5K train/validation split. For each dataset, a scatter summary visualizes the temporal coupling across optimizers in a single view; per-optimizer figures report training (left) and validation (right) metrics across learning rates.
 
-![Refer to caption](/html/2604.20614/assets/x3.png)
-
+!(/html/2604.20614/assets/x3.png)
 
 Figure A1: ECE vs. GN sharpness trajectories (CIFAR-10). Each curve traces the joint evolution of ECE and GN sharpness (λmax\lambda\_{\max}) across training steps for one optimizer and learning rate, with a filled circle marking the first training step and a cross (×\times) the last; color encodes learning rate. Trajectories lie near the diagonal, visualizing the temporal coupling between the two quantities.
 
-
-
-![Refer to caption](/html/2604.20614/assets/x4.png)
-
+!(/html/2604.20614/assets/x4.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x5.png)
-
+!(/html/2604.20614/assets/x5.png)
 
 (b) Validation metrics
 
 Figure A2: Gradient Descent (GD). Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x6.png)
-
+!(/html/2604.20614/assets/x6.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x7.png)
-
+!(/html/2604.20614/assets/x7.png)
 
 (b) Validation metrics
 
 Figure A3: Stochastic Gradient Descent (SGD). Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x8.png)
-
+!(/html/2604.20614/assets/x8.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x9.png)
-
+!(/html/2604.20614/assets/x9.png)
 
 (b) Validation metrics
 
 Figure A4: Sharpness-Aware Minimization (SAM). Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x10.png)
-
+!(/html/2604.20614/assets/x10.png)
 
 (a) Training metrics
 
-![Refer to caption]()
-
+!()
 
 (b) Validation metrics
 
 Figure A5: Muon. Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x12.png)
-
+!(/html/2604.20614/assets/x12.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x13.png)
-
+!(/html/2604.20614/assets/x13.png)
 
 (b) Validation metrics
 
 Figure A6: AdamW. Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x14.png)
-
+!(/html/2604.20614/assets/x14.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x15.png)
-
+!(/html/2604.20614/assets/x15.png)
 
 (b) Validation metrics
 
 Figure A7: BulkSGD. Training dynamics (loss, accuracy, ECE, margin, sharpness) across four learning rates on CIFAR-10; training (left) and validation (right).
 
-![Refer to caption](/html/2604.20614/assets/x16.png)
-
+!(/html/2604.20614/assets/x16.png)
 
 Figure A8: ECE vs. GN sharpness trajectories (CIFAR-100). Same format as Figure [A1](#A3.F1 "Figure A1 ‣ C.1 Sharpness–Calibration Correlation Analysis ‣ Appendix C Additional Sharpness–Calibration Experiments ‣ Too Sharp, Too Sure: When Calibration Follows Curvature").
 
-
-
-![Refer to caption](/html/2604.20614/assets/x17.png)
-
+!(/html/2604.20614/assets/x17.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x18.png)
-
+!(/html/2604.20614/assets/x18.png)
 
 (b) Validation metrics
 
 Figure A9: Gradient Descent (GD) — CIFAR-100. Training dynamics (loss, accuracy, ECE, margin, sharpness) across learning rates on CIFAR-100; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x19.png)
-
+!(/html/2604.20614/assets/x19.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x20.png)
-
+!(/html/2604.20614/assets/x20.png)
 
 (b) Validation metrics
 
 Figure A10: Stochastic Gradient Descent (SGD) — CIFAR-100. Training dynamics (loss, accuracy, ECE, margin, sharpness) across learning rates on CIFAR-100; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x21.png)
-
+!(/html/2604.20614/assets/x21.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x22.png)
-
+!(/html/2604.20614/assets/x22.png)
 
 (b) Validation metrics
 
 Figure A11: Sharpness-Aware Minimization (SAM) — CIFAR-100. Training dynamics (loss, accuracy, ECE, margin, sharpness) across learning rates on CIFAR-100; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x23.png)
-
+!(/html/2604.20614/assets/x23.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x24.png)
-
+!(/html/2604.20614/assets/x24.png)
 
 (b) Validation metrics
 
 Figure A12: Muon — CIFAR-100. Training dynamics (loss, accuracy, ECE, margin, sharpness) across learning rates on CIFAR-100; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x25.png)
-
+!(/html/2604.20614/assets/x25.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x26.png)
-
+!(/html/2604.20614/assets/x26.png)
 
 (b) Validation metrics
 
 Figure A13: AdamW — CIFAR-100. Training dynamics (loss, accuracy, ECE, margin, sharpness) across learning rates on CIFAR-100; training (left) and validation (right).
 
-
-
-![Refer to caption](/html/2604.20614/assets/x27.png)
-
+!(/html/2604.20614/assets/x27.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x28.png)
-
+!(/html/2604.20614/assets/x28.png)
 
 (b) Validation metrics
 
@@ -1769,55 +1669,41 @@ To evaluate out-of-sample calibration, we train ResNet-20 on CIFAR-10 using the 
 ECE, the margin functional Q​(θ)=𝔼​[e−m]Q(\theta)=\mathbb{E}[e^{-m}], and loss. For each optimizer, we report both training metrics (left) and validation metrics (right). Lines show
 mean over 3 seeds; shaded regions indicate ±1\pm 1 standard deviation (multiplicative for log-scale plots).
 
-![Refer to caption](/html/2604.20614/assets/x29.png)
-
+!(/html/2604.20614/assets/x29.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x30.png)
-
+!(/html/2604.20614/assets/x30.png)
 
 (b) Validation metrics
 
 Figure A15: SGD: CE vs. CalMO. Training dynamics on ResNet-20/CIFAR-10; training (left) and validation (right), mean ±1\pm 1 std over 3 seeds.
 
-
-
-![Refer to caption](/html/2604.20614/assets/x31.png)
-
+!(/html/2604.20614/assets/x31.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x32.png)
-
+!(/html/2604.20614/assets/x32.png)
 
 (b) Validation metrics
 
 Figure A16: AdamW: CE vs. CalMO. Training dynamics on ResNet-20/CIFAR-10; training (left) and validation (right), mean ±1\pm 1 std over 3 seeds.
 
-
-
-![Refer to caption](/html/2604.20614/assets/x33.png)
-
+!(/html/2604.20614/assets/x33.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x34.png)
-
+!(/html/2604.20614/assets/x34.png)
 
 (b) Validation metrics
 
 Figure A17: Muon: CE vs. CalMO. Training dynamics on ResNet-20/CIFAR-10; training (left) and validation (right), mean ±1\pm 1 std over 3 seeds.
 
-
-
-![Refer to caption](/html/2604.20614/assets/x35.png)
-
+!(/html/2604.20614/assets/x35.png)
 
 (a) Training metrics
 
-![Refer to caption](/html/2604.20614/assets/x36.png)
-
+!(/html/2604.20614/assets/x36.png)
 
 (b) Validation metrics
 
@@ -1871,13 +1757,11 @@ Table [A2](#A4.T2 "Table A2 ‣ D.3 Benchmark vs. Intrinsic Calibration Methods 
 
 We rerun the experimental setup of Section [3](#S3 "3 The Coupling Between Calibration and Sharpness ‣ Too Sharp, Too Sure: When Calibration Follows Curvature") with mean squared error (MSE) loss in place of cross-entropy, on 5000 CIFAR-10 training samples. Figures [A19](#A5.F19 "Figure A19 ‣ E.1 GD and SGD Experiments ‣ Appendix E Extension to Mean Squared Error ‣ Too Sharp, Too Sure: When Calibration Follows Curvature") and [A20](#A5.F20 "Figure A20 ‣ E.1 GD and SGD Experiments ‣ Appendix E Extension to Mean Squared Error ‣ Too Sharp, Too Sure: When Calibration Follows Curvature") report the training dynamics for gradient descent and stochastic gradient descent, respectively.
 
-![Refer to caption](/html/2604.20614/assets/img/other/mse_gd.png)
-
+!(/html/2604.20614/assets/img/other/mse_gd.png)
 
 Figure A19: CIFAR-10 | Optimizer: Gradient Descent | Loss: Mean Squared Error
 
-![Refer to caption](/html/2604.20614/assets/img/other/mse_sgd.png)
-
+!(/html/2604.20614/assets/img/other/mse_sgd.png)
 
 Figure A20: CIFAR-10 | Optimizer: Stochastic Gradient Descent | Loss: Mean Squared Error
 
@@ -1917,83 +1801,3 @@ Hence, unlike CE, the Gauss–Newton curvature does not attenuate as the model i
 |  | HGNMSE​(θ)=1n​∑iJi​(θ)⊤​Hz,iMSE​Ji​(θ)=2K⋅1n​∑iJi​(θ)⊤​Ji​(θ),H\_{\mathrm{GN}}^{\mathrm{MSE}}(\theta)=\frac{1}{n}\sum\_{i}J\_{i}(\theta)^{\top}H^{\mathrm{MSE}}\_{z,i}J\_{i}(\theta)=\frac{2}{K}\cdot\frac{1}{n}\sum\_{i}J\_{i}(\theta)^{\top}J\_{i}(\theta), |  |
 
 so the eigenvalues of HGNMSE​(θ)H\_{\mathrm{GN}}^{\mathrm{MSE}}(\theta) are governed entirely by the Jacobians Ji​(θ)J\_{i}(\theta), with no probability-dependent factor diag​(p)−p​p⊤\mathrm{diag}(p)-pp^{\top} to drive curvature toward zero. Combined with the underconfidence analysis of Appendix [E.1](#A5.SS1 "E.1 GD and SGD Experiments ‣ Appendix E Extension to Mean Squared Error ‣ Too Sharp, Too Sure: When Calibration Follows Curvature"), this explains why neither sharpness nor training ECE collapse under MSE in the interpolation regime, in contrast with the CE case.
-
-[◄](/html/2604.20613)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.20614)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.20614)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.20614)[►](/html/2604.20615)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 18:02:09 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

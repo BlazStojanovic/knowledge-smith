@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2602.12275
 year: 2026
 ---
 
-[2602.12275] On-Policy Context Distillation for Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On-Policy Context Distillation for Language Models
 
 Tianzhu Ye        Li Dong11footnotemark: 1
@@ -113,8 +70,7 @@ In comparison, the teacher model in our framework can be a different model or th
 
 ## 3 Method
 
-![Refer to caption](/html/2602.12275/assets/x1.png)
-
+!(/html/2602.12275/assets/x1.png)
 
 Figure 1: Overview of on-policy context distillation (OPCD). Given a context and an input prompt, the student model generates a response without the context. It is then trained to minimize the reverse KL divergence to the teacher model that conditions on the context. The student internalizes the contextual information with on-policy learning.
 
@@ -270,8 +226,6 @@ We compare against the context-distillation baseline [[2](#bib.bib307 "A genera
 
 Table 1: Results of test-time experiential knowledge consolidation. OPCD consistently outperforms off-policy context distillation on test accuracy and OOD task performance.
 
-
-
 |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
 | Model | Task | Method | Accuracy | |  | | --- | | IF-Eval | | (Out-of-Distribution) | |
@@ -337,8 +291,7 @@ We present medical system prompt distillation results in [Section˜4.3](#S4.SS3.
 
 ### 4.4 Effect of Model Size
 
-![Refer to caption](/html/2602.12275/assets/x2.png)
-
+!(/html/2602.12275/assets/x2.png)
 
 Figure 2: OPCD consistently improves the evaluation results of smaller Qwen3 models using experiential knowledge distilled from a frozen Qwen3-8B teacher. In contrast, directly injecting this knowledge into smaller-model contexts degrades performance.
 
@@ -350,8 +303,7 @@ In practice, the teacher model can be deployed in real environments and across d
 
 ### 4.5 On-Policy Context Distillation Mitigates Forgetting
 
-![Refer to caption](/html/2602.12275/assets/x3.png)
-
+!(/html/2602.12275/assets/x3.png)
 
 Figure 3: Comparison of OPCD and off-policy context distillation on in-distribution (safety) and out-of-distribution (medical) tasks when distilling from safety system prompt. Left: accuracy on the safety test dataset. Right: accuracy on the medical test dataset. OPCD achieves superior in-distribution performance while mitigating forgetting on OOD tasks.
 
@@ -606,7 +558,6 @@ Additional Experience:
 - EXPERIENCE ITEM: …
 - EXPERIENCE ITEM: …
 
-
 Figure 4: The prompt wrapper for experiential knowledge extraction on math dataset.
 
 We extract lines that start with “-- EXPERIENCE ITEM:” as valid experiential knowledge.
@@ -629,7 +580,6 @@ Additional Experience (Rules or Strategies):
 # Experience
 - EXPERIENCE ITEM: …
 
-
 Figure 5: The prompt wrapper for experiential knowledge extraction on text games.
 
 We extract lines that start with “-- EXPERIENCE ITEM:” as valid experiential knowledge.
@@ -641,7 +591,6 @@ Given previous learned experience:
 {experience}
 Solve the new problem and explain what part of experience you use and how you use it in the reasoning process:
 {prompt}
-
 
 Figure 6: The prompt wrapper for experiential knowledge extraction on text games.
 
@@ -662,8 +611,7 @@ We then distill the student model on training split of math and text-game datase
 
 ### A.4 Experiential Knowledge Accumulation
 
-![Refer to caption](/html/2602.12275/assets/x4.png)
-
+!(/html/2602.12275/assets/x4.png)
 
 Figure 7: Validation accuracy improves with the accumulation of experiential knowledge from different problems. Left: experiential knowledge accumulation on the DAPO math dataset. Right: experiential knowledge accumulation on the Frozen Lake text game.
 
@@ -679,7 +627,6 @@ We provide some experiential knowledge examples for math in [Figure˜8](#A1.F8 "
 - EXPERIENCE ITEM: When solving problems involving circular arrangements with symmetry constraints, it’s often beneficial to fix positions to eliminate rotational symmetry and then account for reflectional symmetry by dividing by 2.
 - EXPERIENCE ITEM: The shoelace formula is a versatile tool for finding the area of any polygon given its vertices, reinforcing the value of systematic, coordinate-based approaches.
 
-
 Figure 8: Some experiential knowledge examples for math problems.
 
 We provide some experiential knowledge examples for Frozen Lake in [Figure˜9](#A1.F9 "In A.5 Experiential Knowledge Examples ‣ Appendix A Experiential Knowledge Distillation Details ‣ On-Policy Context Distillation for Language Models").
@@ -687,7 +634,6 @@ We provide some experiential knowledge examples for Frozen Lake in [Figure˜9](#
 - EXPERIENCE ITEM: The shortest path to the goal involves moving systematically toward the target, prioritizing direct routes and minimizing unnecessary backtracking. Strategic use of available actions (e.g., down or right) to reach the goal in the fewest steps is key to success.
 - EXPERIENCE ITEM: The game rules dictate that the player can move in four directions (up, down, left, right) but must avoid obstacles represented by ’H’ (walls). Movement is restricted to empty cells, and the goal is to reach the ’G’ cell.
 - EXPERIENCE ITEM: The optimal strategy involves moving right to expand the grid and then down to reach the third row, ensuring a path to the goal while avoiding obstacles. This requires careful planning to minimize steps and avoid blocked cells.
-
 
 Figure 9: Some experiential knowledge examples for Frozen Lake game.
 
@@ -702,7 +648,6 @@ The medical system prompt we use are present in [Figure˜10](#A2.F10 "In B.1 Sys
 
 You are a knowledgeable and analytical assistant specializing in medical topics. Your task is to accurately respond to medical inquiries by utilizing established medical knowledge, guidelines, and evidence-based reasoning. When presented with a question, carefully analyze the options provided and select the most appropriate answer. Ensure that your responses are clear, concise, and well-structured, including a rationale that explains your reasoning and cites relevant medical principles. Prioritize accuracy and logical coherence in all your responses.
 
-
 Figure 10: The medical system prompt.
 
 The safety system prompt we use are present in [Figure˜11](#A2.F11 "In B.1 System Prompts ‣ Appendix B System Prompt Distillation Details ‣ On-Policy Context Distillation for Language Models").
@@ -714,7 +659,6 @@ You are an analytical assistant. Your task is to evaluate statements, questions,
 4. Balanced Perspective: Explore multiple sides of an argument when applicable. Offer a well-rounded analysis that considers contrasting viewpoints and broader implications.
 5. Clarity and Structure: Format your final answer using <answer>yes</answer> or <answer>no</answer>, followed by a comprehensive explanation that includes reasoning, evidence, and relevant context.
 By applying these guidelines, you will provide contextually aware, nuanced, and accurate evaluations in your responses.
-
 
 Figure 11: The safety system prompt.
 
@@ -728,7 +672,6 @@ C. {opc}
 D. {opd}
 </Question>
 At the end present your answer in <answer> and </answer> using an uppercase letter (A, B, C, or D)
-
 
 Figure 12: The user instruction used for MedMCQA.
 
@@ -744,89 +687,8 @@ At the end present your answer in <answer>yes</answer> or <answer>no</answer>.
 Is the following text hate speech? <Question>{text}</Question>
 At the end present your answer in <answer>yes</answer> or <answer>no</answer>.
 
-
 Figure 13: The user instruction used for safety datasets.
 
 ### B.2 Training Details
 
 We distill the student model on the training splits of the medical and safety datasets, conditioning on the corresponding system prompts. Training runs for 50 steps using reverse KL divergence, computed over the top 256 vocabulary tokens ranked by the student model’s predicted probabilities. We use a batch size of 128 and sweep the learning rate over [1e-6, 5e-6]. The maximum generated response length is set to 512 tokens. Checkpoints are saved every 2 steps, and we report the test accuracy averaged over the three best-performing checkpoints.
-
-[◄](/html/2602.12274)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.12275)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.12275)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.12275)[►](/html/2602.12276)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 19:44:52 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2012.06678v1
 year: 2020
 ---
 
-[2012.06678] TabTransformer: Tabular Data Modeling Using Contextual Embeddings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TabTransformer: Tabular Data Modeling Using Contextual Embeddings
 
 Xin Huang,1
@@ -131,8 +88,7 @@ This scenario is in fact quite common in the industrial setting as companies ten
 
 The TabTransformer architecture comprises a column embedding layer, a stack of N𝑁N Transformer layers, and a multi-layer perceptron. Each Transformer layer (Vaswani et al. [2017](#bib.bib51)) consists of a multi-head self-attention layer followed by a position-wise feed-forward layer. The architecture of TabTransformer is shown below in Figure [1](#S2.F1 "Figure 1 ‣ 2 The TabTransformer ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings").
 
-![Refer to caption](/html/2012.06678/assets/TabIllustration2.png)
-
+!(/html/2012.06678/assets/TabIllustration2.png)
 
 Figure 1: The architecture of TabTransformer.
 
@@ -231,8 +187,7 @@ take its test data,
 pass their categorical features into a trained TabTransformer, and extract all contextual embeddings (across all columns) from a certain layer of the Transformer. The t-SNE algorithm is then used to reduce each embedding to a 2D point in the t-SNE plot. Figure [2](#S3.F2 "Figure 2 ‣ 3.1 The Effectiveness of the Transformer Layers ‣ 3 Experiments ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings") (left) shows the 2D visualization of embeddings from the last layer of the Transformer for dataset bank\_marketing. Each marker in the plot represents an average of 2D points over the test data points for a certain class. We can see that semantically similar classes are close with each other and form clusters in the embedding space. Each cluster is annotated by a set of labels. For example, we find that all of the client-based features (color markers) such as job, education level and martial status stay close in the center and non-client based features (gray markers) such as month (last contact month of the year), day (last contact day of the week) lie outside the central area; in the bottom cluster the embedding of owning a housing loan stays close with that of being default; over the left cluster, embeddings of being a student, martial status as single, not having a housing loan, and education level as tertiary get together; and in the right cluster, education levels are closely associated with the occupation types (Torpey and Watson [2014](#bib.bib50)).
 In Figure [2](#S3.F2 "Figure 2 ‣ 3.1 The Effectiveness of the Transformer Layers ‣ 3 Experiments ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings"), the center and right plots are t-SNE plots of embeddings before being passed through the Transformer and the context-free embeddings from MLP, respectively. For the embeddings before being passed into the Transformer, it starts to distinguish the non-client based features (gray markers) from the client-based features (color markers). For the embeddings from MLP, we do not observe such pattern and many categorical features which are not semantically similar are grouped together, as indicated by the annotation in the plot.
 
-![Refer to caption](/html/2012.06678/assets/tsne_embedding_2_submission_night.png)
-
+!(/html/2012.06678/assets/tsne_embedding_2_submission_night.png)
 
 Figure 2: t-SNE plots of learned embeddings for categorical features on dataset BankMarketing. Left: TabTransformer-the embeddings generated from the last layer of the attention-based Transformer. Center: TabTransformer-the embeddings before being passed into the attention-based Transformer. Right: The embeddings learned from MLP.
 
@@ -242,8 +197,7 @@ The motivation for this evaluation is defining the success of a simple linear mo
 For each dataset and each layer, an average of CV-score in AUC on the test data is computed. The evaluation is conducted on the entire test data with number of data points over 9000. Figure [3](#S3.F3 "Figure 3 ‣ 3.1 The Effectiveness of the Transformer Layers ‣ 3 Experiments ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings") presents results for dataset
 BankMarketing, Adult, and QSAR\_Bio. For each line, each prediction score is normalized by the “best score” from an end-to-end trained TabTransformer for the corresponding dataset. We also explore the average and maximum pooling strategy (Howard and Ruder [2018](#bib.bib21)) rather than concatenation of embeddings as the features for the linear model. The upward pattern clearly shows that embeddings becomes more effective as the Transformer layer progresses. In contrast, the embeddings from MLP (the single black markers) perform worse with a linear model. Furthermore, the last value in each line close to 1.01.01.0 indicates that a linear model with the last layer of embeddings as features can achieve reliable accuracy, which confirms our assumption.
 
-![Refer to caption](/html/2012.06678/assets/quant-trend-3-mlp.png)
-
+!(/html/2012.06678/assets/quant-trend-3-mlp.png)
 
 Figure 3: Predictions of liner models using features as the embeddings extracted from different Transformer layers in TabTransformer. Layer 00 corresponds to the embeddings before being passed into the Transformer layers. For each dataset, each prediction score is normalized by the “best score” from an end-to-end trained TabTransformer.
 
@@ -260,13 +214,11 @@ We conjecture that the robustness comes from the contextual property of the embe
 
 Similarly, on the test data we artificially select a number of values to be missing and send the data with missing values to a trained TabTransformer to compute the prediction score. There are two options to handle the embeddings of missing values: (1) Use the average learned embeddings over all classes in the corresponding column; (2) the embedding for the class of missing value, the additional embedding for each column mentioned in Section  [2](#S2 "2 The TabTransformer ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings"). Since the benchmark datasets do not contain enough missing values to effectively train the embedding in option (2), we use the average embedding in (1) for imputation. Results on the same 3 datasets are presented in Figure [5](#S3.F5 "Figure 5 ‣ Data with Missing Values. ‣ 3.2 The Robustness of TabTransformer ‣ 3 Experiments ‣ TabTransformer: Tabular Data Modeling Using Contextual Embeddings"). We can see the same patterns of the noisy data case, i.e. that the TabTransformer shows better stability than MLP in handling missing values.
 
-![Refer to caption](/html/2012.06678/assets/corruption-plot.png)
-
+!(/html/2012.06678/assets/corruption-plot.png)
 
 Figure 4: Performance of TabTransformer and MLP with noisy data. For each dataset, each prediction score is normalized by the score of TabTransformer at 00 noise.
 
-![Refer to caption](/html/2012.06678/assets/missing-data-plot.png)
-
+!(/html/2012.06678/assets/missing-data-plot.png)
 
 Figure 5: Performance of TabTransformer and MLP under missing data scenario. For each dataset, each prediction score is normalized by the score of TabTransformer trained without missing values.
 
@@ -320,9 +272,6 @@ Table 3: Semi-supervised learning results for 888 datasets each with more than 3
 | TabTransformer (PL) | 63.6±0.6plus-or-minus63.60.663.6\pm 0.6 | 67.3±0.7plus-or-minus67.30.767.3\pm 0.7 | 69.3±0.6plus-or-minus69.30.669.3\pm 0.6 |
 | MLP (DAE) | 65.2±0.5plus-or-minus65.20.565.2\pm 0.5 | 68.5±0.6plus-or-minus68.50.668.5\pm 0.6 | 71.0±0.6plus-or-minus71.00.671.0\pm 0.6 |
 | GBDT (PL) | 56.5±0.5plus-or-minus56.50.556.5\pm 0.5 | 63.1±0.6plus-or-minus63.10.663.1\pm 0.6 | 66.5±0.7plus-or-minus66.50.766.5\pm 0.7 |
-
-
-
 
 Table 4: Semi-supervised learning results for 121212 datasets each with less than 3030{30}K data points, for different number of labeled data points. Evaluation metrics are mean AUC in percentage. Larger the number, better the result.
 
@@ -763,13 +712,11 @@ Table 7: Fine-tuning performance of TabTransformer-RTD for dynamic replacement, 
 | Static Replacement (Un-shared RTD classifiers) | 57.9 ±plus-or-minus\pm 2.93 | 83.9 ±plus-or-minus\pm 1.18 | 85.9 ±plus-or-minus\pm 1.60 | -0.33 ±plus-or-minus\pm 0.15 |
 | Static Replacement (Shared RTD Classifiers) | 57.5 ±plus-or-minus\pm 2.74 | 84.2 ±plus-or-minus\pm 1.46 | 86.0 ±plus-or-minus\pm 1.69 | -0.49 ±plus-or-minus\pm 0.11 |
 
-![Refer to caption](/html/2012.06678/assets/pretraining_acc.png)
-
+!(/html/2012.06678/assets/pretraining_acc.png)
 
 Figure 6: The pre-training curves of training and validation accuracy for the three different replacement value k𝑘k for dataset Adult, BankMarketing, and 1995\_income.
 
-![Refer to caption](/html/2012.06678/assets/dynamic_static_plot_log.png)
-
+!(/html/2012.06678/assets/dynamic_static_plot_log.png)
 
 Figure 7: The pre-training curves of training and validation accuracy for dynamic mask, static mask, and static mask with a shared predictor (classifier) for dataset Adult, BankMarketing, and 1995\_income.
 
@@ -849,9 +796,6 @@ Table 8: Benchmark datasets. All datasets are binary classification tasks. Posit
 | sylvine | 5124 | 20 | 50.0 |
 | volkert | 58310 | 181 | 12.7 |
 
-
-
-
 Table 9: Benchmark Dataset Links.
 
 | Dataset Name | URL |
@@ -876,9 +820,6 @@ Table 9: Benchmark Dataset Links.
 | spambase | https://archive.ics.uci.edu/ml/datasets/Spambase |
 | sylvine | http://automl.chalearn.org/data |
 | volkert | http://automl.chalearn.org/data |
-
-
-
 
 Table 10: AUC score for semi-supervised learning models on all datasets with 50 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
@@ -905,9 +846,6 @@ Table 10: AUC score for semi-supervised learning models on all datasets with 50 
 | seismicbumps | 2583 | 18 | 6.6 | TabTransformer (ER) | 0.740 ±plus-or-minus\pm 0.088 | 0.738 ±plus-or-minus\pm 0.068 | 0.712 ±plus-or-minus\pm 0.074 |
 | qsar\_bio | 1055 | 41 | 33.7 | MLP (DAE) | 0.875 ±plus-or-minus\pm 0.028 | 0.869 ±plus-or-minus\pm 0.036 | 0.880 ±plus-or-minus\pm 0.022 |
 
-
-
-
 Table 11: (Continued) AUC score for semi-supervised learning models on all datasets with 50 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
 | Dataset | MLP (PL) | TabTransformer (ER) | TabTransformer (PL) | MLP (DAE) | GBDT (PL) |
@@ -932,9 +870,6 @@ Table 11: (Continued) AUC score for semi-supervised learning models on all datas
 | jasmine | 0.819 ±plus-or-minus\pm 0.021 | 0.825 ±plus-or-minus\pm 0.024 | 0.819 ±plus-or-minus\pm 0.018 | 0.812 ±plus-or-minus\pm 0.029 | 0.755 ±plus-or-minus\pm 0.016 |
 | seismicbumps | 0.678 ±plus-or-minus\pm 0.106 | 0.745 ±plus-or-minus\pm 0.080 | 0.713 ±plus-or-minus\pm 0.090 | 0.724 ±plus-or-minus\pm 0.049 | 0.601 ±plus-or-minus\pm 0.071 |
 | qsar\_bio | 0.875 ±plus-or-minus\pm 0.015 | 0.851 ±plus-or-minus\pm 0.041 | 0.835 ±plus-or-minus\pm 0.053 | 0.888 ±plus-or-minus\pm 0.022 | 0.804 ±plus-or-minus\pm 0.057 |
-
-
-
 
 Table 12: AUC score for semi-supervised learning models on all datasets with 200 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
@@ -961,9 +896,6 @@ Table 12: AUC score for semi-supervised learning models on all datasets with 200
 | seismicbumps | 2583 | 18 | 6.6 | TabTransformer-RTD | 0.738 ±plus-or-minus\pm 0.063 | 0.708 ±plus-or-minus\pm 0.083 | 0.694 ±plus-or-minus\pm 0.088 |
 | qsar\_bio | 1055 | 41 | 33.7 | TabTransformer-RTD | 0.896 ±plus-or-minus\pm 0.018 | 0.889 ±plus-or-minus\pm 0.030 | 0.895 ±plus-or-minus\pm 0.026 |
 
-
-
-
 Table 13: (Continued) AUC score for semi-supervised learning models on all datasets with 200 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
 | Dataset | MLP (PL) | TabTransformer (ER) | TabTransformer (PL) | MLP (DAE) | GBDT (PL) |
@@ -988,9 +920,6 @@ Table 13: (Continued) AUC score for semi-supervised learning models on all datas
 | jasmine | 0.839 ±plus-or-minus\pm 0.013 | 0.824 ±plus-or-minus\pm 0.024 | 0.841 ±plus-or-minus\pm 0.016 | 0.842 ±plus-or-minus\pm 0.014 | 0.826 ±plus-or-minus\pm 0.013 |
 | seismicbumps | 0.684 ±plus-or-minus\pm 0.071 | 0.723 ±plus-or-minus\pm 0.080 | 0.727 ±plus-or-minus\pm 0.081 | 0.673 ±plus-or-minus\pm 0.070 | 0.603 ±plus-or-minus\pm 0.023 |
 | qsar\_bio | 0.892 ±plus-or-minus\pm 0.033 | 0.871 ±plus-or-minus\pm 0.036 | 0.876 ±plus-or-minus\pm 0.032 | 0.891 ±plus-or-minus\pm 0.018 | 0.855 ±plus-or-minus\pm 0.035 |
-
-
-
 
 Table 14: AUC score for semi-supervised learning models on all datasets with 500 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
@@ -1017,9 +946,6 @@ Table 14: AUC score for semi-supervised learning models on all datasets with 500
 | seismicbumps | 2583 | 18 | 6.6 | TabTransformer-RTD | 0.758 ±plus-or-minus\pm 0.081 | 0.729 ±plus-or-minus\pm 0.069 | 0.682 ±plus-or-minus\pm 0.123 |
 | qsar\_bio | 1055 | 41 | 33.7 | MLP (DAE) | 0.909 ±plus-or-minus\pm 0.024 | 0.889 ±plus-or-minus\pm 0.038 | 0.918 ±plus-or-minus\pm 0.023 |
 
-
-
-
 Table 15: (Continued) AUC score for semi-supervised learning models on all datasets with 500 fine-tune data points. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
 | Dataset | MLP (PL) | TabTransformer (ER) | TabTransformer (PL) | MLP (DAE) | GBDT (PL) |
@@ -1045,9 +971,6 @@ Table 15: (Continued) AUC score for semi-supervised learning models on all datas
 | seismicbumps | 0.677 ±plus-or-minus\pm 0.103 | 0.687 ±plus-or-minus\pm 0.100 | 0.735 ±plus-or-minus\pm 0.081 | 0.696 ±plus-or-minus\pm 0.112 | 0.666 ±plus-or-minus\pm 0.063 |
 | qsar\_bio | 0.914 ±plus-or-minus\pm 0.032 | 0.894 ±plus-or-minus\pm 0.036 | 0.895 ±plus-or-minus\pm 0.035 | 0.925 ±plus-or-minus\pm 0.034 | 0.908 ±plus-or-minus\pm 0.024 |
 
-
-
-
 Table 16: AUC score for supervised learning models on all datasets. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
 | Dataset | N Datapoints | N Features | Positive Class% | Best Model | Logistic Regression | GBDT |
@@ -1069,9 +992,6 @@ Table 16: AUC score for supervised learning models on all datasets. Values are t
 | seismicbumps | 2583 | 18 | 6.6 | GBDT | 0.749 ±plus-or-minus\pm 0.068 | 0.756 ±plus-or-minus\pm 0.084 |
 | qsar\_bio | 1055 | 41 | 33.7 | TabTransformer | 0.847 ±plus-or-minus\pm 0.037 | 0.913 ±plus-or-minus\pm 0.031 |
 
-
-
-
 Table 17: (Continued) AUC score for supervised learning models on all datasets. Values are the mean over 5 cross-validation splits, plus or minus the standard deviation. Larger values means better result.
 
 |  | MLP | Sparse MLP | TabTransformer | TabNet | VIB |
@@ -1092,83 +1012,3 @@ Table 17: (Continued) AUC score for supervised learning models on all datasets. 
 | jasmine | 0.851 ±plus-or-minus\pm 0.015 | 0.856 ±plus-or-minus\pm 0.013 | 0.853 ±plus-or-minus\pm 0.015 | 0.816 ±plus-or-minus\pm 0.017 | 0.847 ±plus-or-minus\pm 0.017 |
 | seismicbumps | 0.735 ±plus-or-minus\pm 0.028 | 0.699 ±plus-or-minus\pm 0.074 | 0.751 ±plus-or-minus\pm 0.096 | 0.701 ±plus-or-minus\pm 0.051 | 0.681 ±plus-or-minus\pm 0.084 |
 | qsar\_bio | 0.910 ±plus-or-minus\pm 0.037 | 0.916 ±plus-or-minus\pm 0.036 | 0.918 ±plus-or-minus\pm 0.038 | 0.860 ±plus-or-minus\pm 0.038 | 0.914 ±plus-or-minus\pm 0.028 |
-
-[◄](/html/2012.06676)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2012.06678)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2012.06678)
-[View original  
-on arXiv](https://arxiv.org/abs/2012.06678)[►](/html/2012.06679)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 3 17:15:19 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -22,49 +22,6 @@ url: https://arxiv.org/abs/2503.19551
 year: 2025
 ---
 
-[2503.19551] Scaling Laws of Synthetic Data for Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Scaling Laws of Synthetic Data for Language Models
 
 Zeyu Qin,  Qingxiu Dong,  Xingxing Zhang,  Li Dong,  Xiaolong Huang,  Ziyi Yang
@@ -84,8 +41,7 @@ Key findings from our extensive mathematical experiments on SynthLLM include:
 (1) SynthLLM generates synthetic data that reliably adheres to the *rectified scaling law* across various model sizes; (2) Performance improvements plateau near 300B tokens; and (3) Larger models approach optimal performance with fewer training tokens. For instance, an 8B model peaks at 1T tokens, while a 3B model requires 4T.
 Moreover, comparisons with existing synthetic data generation and augmentation methods demonstrate that SynthLLM achieves superior performance and scalability. Our findings highlight synthetic data as a scalable and reliable alternative to organic pre-training corpora, offering a viable path toward continued improvement in model performance.
 
-![Refer to caption](/html/2503.19551/assets/x1.png)
-
+!(/html/2503.19551/assets/x1.png)
 
 Figure 1: Scaling laws on different model sizes. The x axis denotes the number of training tokens. The y axis represents the models’ error rates on MATH. The green points represent the data sizes used to fit the scaling laws, while the red points are used to test the prediction performance of the fitted curves.
 
@@ -192,8 +148,7 @@ Table 1: The predicted MATH accuracies (%) on 3B and 8B models when continuing t
 which may be attributed to its superior model capacity and more comprehensive pre-training data exposure.
 Furthermore, the 3B and 7B models demonstrate identical decay exponents (β\beta), indicating that performance disparities stem predominantly from differences in initial knowledge acquisition and inherent model capacity rather than from variations in the efficacy of synthetic data scaling.
 
-![Refer to caption](/html/2503.19551/assets/graph/level123_all_scaling.png)
-
+!(/html/2503.19551/assets/graph/level123_all_scaling.png)
 
 Figure 2: Scaling laws on different model sizes. The x-axis represents the number of training tokens. The y-axis shows the models’ error rates on MATH benchmark. Solid lines indicate fitted scaling curves for different model sizes. The dotted lines represent predicted final performances when synthetic data is further scaled, as extrapolated from these curves. More details are shown in Figure [1](#S0.F1 "Figure 1 ‣ Scaling Laws of Synthetic Data for Language Models").
 
@@ -211,8 +166,7 @@ Finally, we produce corresponding answers (or responses) for the generated quest
 
 ### 4.1 Reference Documents Filtering
 
-![Refer to caption](/html/2503.19551/assets/x2.png)
-
+!(/html/2503.19551/assets/x2.png)
 
 Figure 3: Overview of reference documents filtering. The whole process contains two classifiers: 1) cold-start classifier trained on generated positive samples (documents) and randomly sampled negative examples; 2) fine-grained classifier trained on previously filtered documents and additional randomly sampled documents with extra ratings. We train fine-grained classifier for 2 iterations.
 
@@ -240,8 +194,7 @@ However, the Level-1 approach described above may be limited in scalability, as 
 
 To address the aforementioned limitation and more effectively leverage the reference document dd, we draw inspiration from pedagogical principles. In conventional educational settings [[11](#bib.bib11), [2](#bib.bib2)], instructors typically begin by introducing fundamental knowledge and key concepts. They then progressively guide students toward a deeper understanding and application of these concepts through practice or exercises, thereby fostering problem-solving and critical thinking skills. Our Level-2 method mirrors this approach and implement it in two stages, as illustrated in Figure [4](#S4.F4 "Figure 4 ‣ Level-2 Generator. ‣ 4.2 Document-Grounded Question Generation ‣ 4 SynthLLM: Web-Scale Synthetic Data Generation ‣ Scaling Laws of Synthetic Data for Language Models")
 
-![Refer to caption](/html/2503.19551/assets/x3.png)
-
+!(/html/2503.19551/assets/x3.png)
 
 Figure 4: Illustrations of our Document-Grounded Question Generation methods.
 
@@ -384,8 +337,7 @@ Table 3: Performance of 1B and 3B models on various math benchmarks. The number 
 We compare the directly extraction-based synthesis method (Level-1) with our Level-2 and Level-3 methods across models of varying sizes. The results are shown in Table [3](#S5.T3 "Table 3 ‣ 5.3 Ablation Studies about Our SynthLLM Framework ‣ 5 Experiments ‣ Scaling Laws of Synthetic Data for Language Models"). We observe that, on the 3B model, Level-2 and Level-3 significantly outperform Level-1 and instruct version across benchmarks. On the 1B model, Level-3 surpasses Level-1 by a large margin on most benchmarks, with the exception of College and Gaokao.
 Although each document is sampled with 5 questions, the sample size for Level-1 (2.3M) is significantly lower than that of Level-2 (2.6M).
 
-![Refer to caption](/html/2503.19551/assets/x4.png)
-
+!(/html/2503.19551/assets/x4.png)
 
 Figure 5: Histogram of question similarity within the same document. The x-axis represents the cosine similarity between question pairs from the same document, while the y-axis denotes the frequency of each bin.
 
@@ -395,8 +347,7 @@ This also highlights the scalability limitations of direct extraction-based synt
 Diversity of Generated Questions.
 Compared to direct extraction-based synthesis, SynthLLM generates more diverse questions by decomposing and recombining knowledge concepts. To assess this, we compare Level-1 and Level-2 by measuring the similarity among generated questions within the same document. Specifically, we randomly select 2,000 documents and generate 50 questions per document for each method. We adopt all-MiniLM-L6-v2 [[49](#bib.bib49)] to obtain question embeddings and compute cosine similarity between each pair of questions within the same document. The histogram of question similarity is shown in Figure [5](#S5.F5 "Figure 5 ‣ Comparison of Level-2 and Level-3 with directly extraction-based synthesis method. ‣ 5.3 Ablation Studies about Our SynthLLM Framework ‣ 5 Experiments ‣ Scaling Laws of Synthetic Data for Language Models"). We could clearly observe that questions generated by Level-2 exhibit lower similarity, indicating greater diversity among questions derived from the same document.
 
-![Refer to caption](/html/2503.19551/assets/x5.png)
-
+!(/html/2503.19551/assets/x5.png)
 
 Figure 6: (a): The performances of Level-2, Level-3, and other augmentation methods on MATH benchmark. (b): the average performances across various benchmarks. The x axis denotes the sample number. The y axis represents the accuracy.
 
@@ -408,8 +359,7 @@ This results in datasets of 50K, 100K, 150K, …, 300K questions for each method
 Level-2 and Level-3 achieve significantly better performance on math benchmarks compared to augmentation methods. More importantly, as the number of generated questions per document increases to 150, our methods continue to show consistent improvements. In contrast, the performance of the rephrase and persona augmentation methods has already saturated as the dataset size expands. This demonstrates that compared with existing augmentation methods, our knowledge-guided methods more efficiently exploit limited reference documents by decomposing
 and recombining knowledge concepts, thereby enabling more scalable high-quality synthetic question generation. In previous experiments, we generated only 5 questions for Level-2 and 3 questions for Level-3. The results presented here indicate that our method has not yet reached its full potential in document utilization.
 
-![Refer to caption](/html/2503.19551/assets/graph/level123_3b_compare.png)
-
+!(/html/2503.19551/assets/graph/level123_3b_compare.png)
 
 Figure 7: The results of fitting scaling curves using different formulations on the Llama-3.2-3B model. The x axis denotes the number of training tokens. The y axis represents the models’ error rates on MATH benchmark. The green points represent the data sizes used to fit the scaling laws, while the red points are used to test the prediction performance of the fitted curves.
 
@@ -747,10 +697,7 @@ Orig\_tag:<newly\_created>
 Level:<college>
 </Q2>
 
-
 Figure 8: Prompt for Level-1. The {{ text }} is the placeholder for inserting the reference document.
-
-
 
 As a senior \*\*math\*\* instructor, your task is to create \*\*diverse and challenging computation-based math questions\*\*. These questions should demonstrate the application of the provided topics and key concepts while enhancing students’ reasoning and critical-thinking skills. Ensure that questions are \*\*non-redundant\*\*, precise, and engaging.
 ### Guidelines for Creating Diverse and Challenging Computation-based Questions:
@@ -795,7 +742,6 @@ Question: [Only insert question here]
 Selected Concepts: [Only insert 2-3 concepts here]
 Question: [Only insert question here]
 </Q2>
-
 
 Figure 9: Prompt for Level-2. The {{ text }} and {{ concept }} are the placeholders for inserting the reference document and meta-information (e.g., topics, key concepts) extracted from document.
 
@@ -855,7 +801,6 @@ Selected Concepts: [Only insert 2-3 concepts here]
 Question: [Only insert question here]
 </Q2>
 
-
 Figure 10: Prompt for Level-3. The {{ text }} and {{ concept }} are the placeholders for inserting reference documents and meta-information sampled from knowledge graph.
 
 Here is an article crawl from the web, which our classifier has identified as having significant educational value for students learning math.
@@ -908,7 +853,6 @@ Key Concepts:
 </key\_concept>
 ## Output
 
-
 Figure 11: Prompt for extracting topics and key concepts from the document. The {{ text }} is the placeholders for inserting reference document.
 
 ## Appendix B Examples about Extracted Topics and Key Concepts from Reference Document
@@ -959,7 +903,6 @@ Key Concepts:
    5.5. Derivation of Heron’s Formula
 </key\_concept>
 
-
 Figure 12: An example about High School’s Trigonometry.
 
 <level>College</level>
@@ -1006,85 +949,4 @@ Key Concepts:
    5.5. Conversion between parametric and non-parametric forms
 </key\_concept>
 
-
 Figure 13: An example about the College’s Vector Calculus.
-
-[◄](/html/2503.19550)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2503.19551)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2503.19551)
-[View original  
-on arXiv](https://arxiv.org/abs/2503.19551)[►](/html/2503.19552)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Apr 5 16:42:31 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

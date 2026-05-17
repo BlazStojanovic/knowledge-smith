@@ -21,49 +21,6 @@ url: https://arxiv.org/abs/2603.26535
 year: 2026
 ---
 
-[2603.26535] PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization
 
 Zelin Tan1,2  Zhouliang Yu3  Bohan Lin1  Zijie Geng1  Hejia Geng4  Yudong Zhang1
@@ -91,13 +48,11 @@ First, all correct responses are assigned identical advantage irrespective of re
 
 Process reward models (PRM) (Zheng et al., [2023](#bib.bib14 "Judging llm-as-a-judge with mt-bench and chatbot arena"); Lightman et al., [2023](#bib.bib12 "Let’s verify step by step"); Wang et al., [2024](#bib.bib13 "Math-shepherd: verify and reinforce llms step-by-step without human annotations")) offer a natural remedy by evaluating reasoning quality. In particular, rubric-based evaluation (Yuan et al., [2025](#bib.bib16 "Curing miracle steps in llm mathematical reasoning with rubric rewards"); Shao et al., [2025](#bib.bib7 "DeepSeekMath-v2: towards self-verifiable mathematical reasoning"); Sheng et al., [2026](#bib.bib10 "Reinforcing chain-of-thought reasoning with self-evolving rubrics"); Yang et al., [2026](#bib.bib11 "Proof-rm: a scalable and generalizable reward model for math proof")) through the LLM-as-Judge paradigm has attracted growing interest as a scalable form of process supervision that requires no step-level annotations. However, we find that *directly integrating rubric-based PRM into GRPO as rewards leads to reward hacking (Skalse et al., [2022](#bib.bib19 "Defining and characterizing reward hacking"))*, where models learn to inflate PRM scores by generating increasingly verbose responses, ultimately causing accuracy to collapse. Even a naive multiplicative combination of ORM and PRM fails to surpass ORM, as the process signal is suppressed within a single normalization pass, as shown in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization")b.
 
-![Refer to caption](/html/2603.26535/assets/x1.png)
-
+!(/html/2603.26535/assets/x1.png)
 
 (a) OlympiadBench evaluation results.
 
-![Refer to caption](/html/2603.26535/assets/x2.png)
-
+!(/html/2603.26535/assets/x2.png)
 
 (b) Accuracy on competition math.
 
@@ -188,8 +143,7 @@ coinciding with the accuracy plateau and further decline in Figure [1](#S1.F1 "
 
 A natural solution to ORM’s limitations is to replace binary rewards with rubric-based PRM scores that capture both answer correctness and reasoning quality in a single continuous signal. However, directly using PRM scores as the GRPO reward (ri=riprocr\_{i}=r\_{i}^{\text{proc}}) conflates these two objectives, leading to catastrophic reward hacking, as we analyze in detail using Figure [2](#S3.F2 "Figure 2 ‣ 3.2 Reward Hacking with Direct PRM Integration ‣ 3 Empirical analysis of PRM and ORM ‣ PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization").
 
-![Refer to caption](/html/2603.26535/assets/x3.png)
-
+!(/html/2603.26535/assets/x3.png)
 
 Figure 2: Reward signal analysis. (a) Training reward: PRM reward climbs to 1.0 (perfect score gaming); ORM×\timesPRM stays moderate. (b) Response length: PRM generates increasingly verbose responses; ORM×\timesPRM shows moderate length increase (up to ∼\sim1700 tokens). (c) OlympiadBench accuracy: PRM collapses after step 600; ORM×\timesPRM tracks ORM but fails to exceed it, showing that naive signal combination does not resolve signal exhaustion.
 
@@ -225,8 +179,7 @@ ORM is stable but lacks process-level signal; PRM is information-rich but unstab
 
 We propose Process-Aware Policy Optimization (PAPO), which integrates rubric-based process evaluation into GRPO through *decoupled advantage normalization*. The key idea is to construct the advantage from independently normalized outcome and process components, preventing the reward hacking that arises from direct PRM integration while preserving fine-grained quality signals. Figure [3](#S4.F3 "Figure 3 ‣ 4 Method: PAPO ‣ PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization") provides an overview of the framework.
 
-![Refer to caption](/html/2603.26535/assets/x4.png)
-
+!(/html/2603.26535/assets/x4.png)
 
 Figure 3: Overview of PAPO. Given a prompt, the policy generates GG responses. Each response is evaluated by two reward signals: an outcome reward (ORM, binary correctness) and a process reward (PRM, rubric-based quality, only for correct responses). The advantage is computed through decoupled normalization: AoutA\_{\text{out}} is normalized over all responses via standard GRPO, while AprocA\_{\text{proc}} is normalized exclusively among correct responses (*correct-subset normalization*). The combined advantage Atotal=Aout+AprocA\_{\text{total}}=A\_{\text{out}}+A\_{\text{proc}} provides both correctness direction and quality differentiation.
 
@@ -330,8 +283,7 @@ We also evaluate PAPO on top of DAPO (Yu et al., [2025a](#bib.bib29 "DAPO: an op
 
 ### 5.3 Advantage Signal Analysis
 
-![Refer to caption](/html/2603.26535/assets/x5.png)
-
+!(/html/2603.26535/assets/x5.png)
 
 Figure 4: Signal quality comparison on Qwen2.5-7B. (a) Zero-advantage ratio: ORM’s sparsity grows to 69% while PAPO maintains 44%. (b) Advantage standard deviation, reflecting gradient signal strength. (c) Positive-advantage ratio, reflecting reinforcement density.
 
@@ -699,8 +651,7 @@ Score: …\boxed{\ldots}
 
 ### B.1 Cross-Scale Training Curves
 
-![Refer to caption](/html/2603.26535/assets/x6.png)
-
+!(/html/2603.26535/assets/x6.png)
 
 Figure 5: Training curves (avg@4) across two model scales and three benchmarks. Top row: Qwen2.5-3B; bottom row: Qwen2.5-7B. PAPO consistently outperforms ORM throughout training on both scales, with gains widening in later stages as ORM’s signal exhaustion worsens. The pattern is consistent across OlympiadBench (competition math), MATH-500 (standard math), and HumanEval (code generation). Qwen2.5-14B results are reported in Table [1](#S5.T1 "Table 1 ‣ 5.2 Main Results ‣ 5 Experiments ‣ PAPO: Stabilizing Rubric Integration Training via Decoupled Advantage Normalization").
 
@@ -708,13 +659,11 @@ Figure [5](#A2.F5 "Figure 5 ‣ B.1 Cross-Scale Training Curves ‣ Appendix B 
 
 ### B.2 Ablation Training Curves
 
-![Refer to caption](/html/2603.26535/assets/x7.png)
-
+!(/html/2603.26535/assets/x7.png)
 
 Figure 6: Ablation: correct-subset normalization (PAPO) vs. full normalization (Fullnorm) on OlympiadBench and MATH-500. Both methods improve over ORM, but PAPO’s correct-subset design maintains a consistent advantage over Fullnorm throughout training.
 
-![Refer to caption](/html/2603.26535/assets/x8.png)
-
+!(/html/2603.26535/assets/x8.png)
 
 Figure 7: Ablation: decoupled normalization (PAPO) vs. multiplicative reward (Mult) on OlympiadBench and MATH-500. Mult improves over ORM but falls substantially short of PAPO, confirming that decoupled normalization is superior to naive reward combination.
 
@@ -722,8 +671,7 @@ Figures [6](#A2.F6 "Figure 6 ‣ B.2 Ablation Training Curves ‣ Appendix B Ad
 
 ### B.3 Process Advantage Effect
 
-![Refer to caption](/html/2603.26535/assets/x9.png)
-
+!(/html/2603.26535/assets/x9.png)
 
 Figure 8: (a) Minimum advantage among correct responses. ORM: identically 0.0 (all correct responses treated equally). PAPO: ≈−1.49\approx-1.49 (the process advantage penalizes correct responses with poor reasoning). (b) Standard deviation of advantages among correct responses. ORM: zero (no differentiation). PAPO: non-zero (quality-based ranking within correct group).
 
@@ -731,8 +679,7 @@ Figure [8](#A2.F8 "Figure 8 ‣ B.3 Process Advantage Effect ‣ Appendix B Add
 
 ### B.4 Advantage Composition
 
-![Refer to caption](/html/2603.26535/assets/x10.png)
-
+!(/html/2603.26535/assets/x10.png)
 
 Figure 9: PAPO advantage composition. (a) Signal strength (std) of AoutA\_{\text{out}} and AprocA\_{\text{proc}}: the outcome advantage provides the dominant gradient signal while the process advantage contributes a complementary quality signal. (b) Process signal active ratio: the fraction of groups where AprocA\_{\text{proc}} is non-zero (≥2\geq 2 correct responses), growing from ∼\sim30% to 70% as the model improves. (c) Mean advantage by correctness: correct responses receive positive advantage while wrong responses receive negative, confirming the outcome signal functions correctly despite the added process component.
 
@@ -827,8 +774,6 @@ x2−8​x=(x−4)2−16x^{2}-8x=(x-4)^{2}-16,  y2+4​y=(y+2)2−4y^{2}+4y=(y
 (±5,0)(\pm 5,0), (0,±5)(0,\pm 5), (±3,±4)(\pm 3,\pm 4), (±4,±3)(\pm 4,\pm 3) — 12 pairs total.
 4. Substitute a=x−4a=x{-}4, b=y+2b=y{+}2, check x,y>0x,y>0:
 
-
-
 (5,0)(5,0): x=9,y=−2x{=}9,y{=}{-}2
 inv.
 (−5,0)(-5,0): x=−1,y=−2x{=}{-}1,y{=}{-}2
@@ -869,32 +814,20 @@ ORM Response (correct but no verification)
 To solve the equation log2⁡(log2⁡(2​x−2))=2\log\_{2}(\log\_{2}(2x-2))=2, we need to follow a step-by-step approach.
 First, let’s rewrite the equation in a more manageable form. Since log2⁡(log2⁡(2​x−2))=2\log\_{2}(\log\_{2}(2x-2))=2, we can exponentiate both sides with base 2 to eliminate the outer logarithm:
 
-
-
 log2⁡(2​x−2)=22\log\_{2}(2x-2)=2^{2}
 This simplifies to:
-
-
 
 log2⁡(2​x−2)=4\log\_{2}(2x-2)=4
 Next, we exponentiate both sides again with base 2 to eliminate the logarithm:
 
-
-
 2​x−2=242x-2=2^{4}
 This simplifies to:
-
-
 
 2​x−2=162x-2=16
 Now, we solve for xx by isolating it on one side of the equation. First, add 2 to both sides:
 
-
-
 2​x=182x=18
 Then, divide both sides by 2:
-
-
 
 x=9x=9
 Thus, the value of xx is 9\boxed{9}.
@@ -911,8 +844,6 @@ log2⁡(2​x−2)=4\log\_{2}(2x-2)=4 implies that 2​x−2=24=162x-2=2^{4}=16.
 4. Verify the solution:
 Substitute x=9x=9 back into the original equation to ensure it satisfies the equation:
 
-
-
 log2⁡(log2⁡(2⋅9−2))=log2⁡(log2⁡(16))\log\_{2}\left(\log\_{2}(2\cdot 9-2)\right)=\log\_{2}\left(\log\_{2}(16)\right)
 Since log2⁡(16)=4\log\_{2}(16)=4 and log2⁡(4)=2\log\_{2}(4)=2, the solution is verified.
 Therefore, the value of xx is 9\boxed{9}.
@@ -924,83 +855,3 @@ This work focuses on improving reinforcement learning algorithms for mathematica
 ## Appendix E The Use of Large Language Models
 
 We used Large Language Model (LLM) to refine our initial draft. This process included checking for obvious grammatical and syntactical errors, as well as making the language more formal and academic. We reviewed the content generated by the LLM to ensure that no prohibited generated content appeared in the article.
-
-[◄](/html/2603.26534)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.26535)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.26535)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.26535)[►](/html/2603.26536)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Apr 5 23:48:26 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

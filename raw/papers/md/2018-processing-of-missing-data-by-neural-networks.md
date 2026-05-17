@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/1805.07405
 year: 2018
 ---
 
-[1805.07405] Processing of missing data by neural networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Processing of missing data by neural networks
 
 Marek Śmieja
@@ -95,7 +52,7 @@ In this paper, we introduce a general, theoretically justified methodology for f
 
 The main advantage of the proposed approach is the ability to train neural network on data sets containing only incomplete samples (without a single fully observable data). This distinguishes our approach from recent models like context encoder [[2](#bib.bib2), [3](#bib.bib3)], denoising autoencoder [[4](#bib.bib4)] or modified generative adversarial network [[5](#bib.bib5)], which require complete data as an output of the network in training. Moreover, our approach can be applied to various types of neural networks what requires only minimal modification in their architectures. Our main theoretical result shows that this generalization does not lead to loss of information when processing the input (Section [4](#S4 "4 Theoretical analysis ‣ Processing of missing data by neural networks")). Experimental results performed on several types of networks demonstrate practical usefulness of the method (see Section [5](#S5 "5 Experiments ‣ Processing of missing data by neural networks") and Figure [4](#A2.F4 "Figure 4 ‣ B.2 General identification property ‣ Appendix B Theoretical analysis ‣ Processing of missing data by neural networks") for sample results) .
 
-∫ϕ​(wT​x+b)​FS​(x)​𝑑xitalic-ϕsuperscript𝑤𝑇𝑥𝑏subscript𝐹𝑆𝑥differential-d𝑥\int\phi(w^{T}x+b)F\_{S}(x)dxx1subscript𝑥1x\_{1} ⋆⋆\starx3subscript𝑥3x\_{3} ⋆⋆\starx5subscript𝑥5x\_{5} x6subscript𝑥6x\_{6} x7subscript𝑥7x\_{7} w1subscript𝑤1w\_{1}w2subscript𝑤2w\_{2}w3subscript𝑤3w\_{3}w4subscript𝑤4w\_{4}w5subscript𝑤5w\_{5}w6subscript𝑤6w\_{6}w7subscript𝑤7w\_{7}GMM params: (pi,mi,Σi)isubscriptsubscript𝑝𝑖subscript𝑚𝑖subscriptΣ𝑖𝑖(p\_{i},m\_{i},\Sigma\_{i})\_{i} ![Refer to caption](/html/1805.07405/assets/plotnn.png)
+∫ϕ​(wT​x+b)​FS​(x)​𝑑xitalic-ϕsuperscript𝑤𝑇𝑥𝑏subscript𝐹𝑆𝑥differential-d𝑥\int\phi(w^{T}x+b)F\_{S}(x)dxx1subscript𝑥1x\_{1} ⋆⋆\starx3subscript𝑥3x\_{3} ⋆⋆\starx5subscript𝑥5x\_{5} x6subscript𝑥6x\_{6} x7subscript𝑥7x\_{7} w1subscript𝑤1w\_{1}w2subscript𝑤2w\_{2}w3subscript𝑤3w\_{3}w4subscript𝑤4w\_{4}w5subscript𝑤5w\_{5}w6subscript𝑤6w\_{6}w7subscript𝑤7w\_{7}GMM params: (pi,mi,Σi)isubscriptsubscript𝑝𝑖subscript𝑚𝑖subscriptΣ𝑖𝑖(p\_{i},m\_{i},\Sigma\_{i})\_{i} !(/html/1805.07405/assets/plotnn.png)
 INPUTOUTPUT
 
 Figure 1: Missing data point (x,J)𝑥𝐽(x,J), where x∈ℝD𝑥superscriptℝ𝐷x\in\mathbb{R}^{D} and J⊂{1,…,D}𝐽1…𝐷J\subset\{1,\ldots,D\} denotes absent attributes, is represented as a conditional density FSsubscript𝐹𝑆F\_{S} (data density restricted to the affine subspace S=Aff​[x,J]𝑆Aff𝑥𝐽S=\mathrm{Aff}[x,J] identified with (x,J)𝑥𝐽(x,J)). Instead of calculating the activation function ϕitalic-ϕ\phi on a single data point (as for complete data points), the first hidden layer computes the expected activation of neurons. Parameters of missing data density (pi,μi,Σi)isubscriptsubscript𝑝𝑖subscript𝜇𝑖subscriptΣ𝑖𝑖(p\_{i},\mu\_{i},\Sigma\_{i})\_{i} are tuned jointly with remaining network parameters.
@@ -309,7 +266,7 @@ It is possible to obtain an analogical result for RBF activation function. Moreo
 | --- | --- | --- | --- | --- | --- | --- |
 | original | mask | k-nn | mean | dropout | our | CE |
 
-​ ![Refer to caption](/html/1805.07405/assets/mnist_4_merged.png)
+​ !(/html/1805.07405/assets/mnist_4_merged.png)
 
 Figure 2: Reconstructions of partially incomplete images using the autoencoder. From left: (1) original image, (2) image with missing pixels passed to autoencooder; the output produced by autoencoder when unknown pixels were initially filled by (3) k-nn imputation and (4) mean imputation; (5) the results obtained by autoencoder with dropout, (6) our method and (7) context encoder. All columns except the last one were obtained with loss function computed based on pixels from outside the mask (no fully observable data available in training phase). It can be noticed that our method gives much sharper images than the competitive methods.
 
@@ -650,18 +607,15 @@ Let us observe that the formula ([6](#A1.E6 "In A.1 Regularized conditional dens
 
 To overcome this problem, which occurs in the case of gaussian distributions, we introduce the regularized γ𝛾\gamma-conditional densities, where γ>0𝛾0\gamma>0 is a regularization parameter. Intuitively, the regularization allows to control the influence of F𝐹F outside S=Aff​[x,J]𝑆Aff𝑥𝐽S=\mathrm{Aff}[x,J] on conditional density FSsubscript𝐹𝑆F\_{S}. In consequence, the mixture components (in the case of GMM) could have higher impact on the final conditional density even if they are located far from S𝑆S. The Figure [3](#A1.F3 "Figure 3 ‣ A.1 Regularized conditional density ‣ Appendix A Missing data representation ‣ Processing of missing data by neural networks") illustrates the regularization effect for different values of γ𝛾\gamma. We are indebted to the classical idea behind the definition of conditional probability.
 
-![Refer to caption](/html/1805.07405/assets/gamma_0_sigma_1.png)
-
+!(/html/1805.07405/assets/gamma_0_sigma_1.png)
 
 (a) Conditional density (γ→0→𝛾0\gamma\to 0)
 
-![Refer to caption](/html/1805.07405/assets/gamma_1_sigma_1.png)
-
+!(/html/1805.07405/assets/gamma_1_sigma_1.png)
 
 (b) Intermediate case (γ=1𝛾1\gamma=1)
 
-![Refer to caption](/html/1805.07405/assets/gamma_1000_sigma_1.png)
-
+!(/html/1805.07405/assets/gamma_1000_sigma_1.png)
 
 (c) Marginal density (γ→∞→𝛾\gamma\to\infty)
 
@@ -900,12 +854,9 @@ which makes the proof complete.
 | --- | --- | --- | --- | --- | --- | --- |
 | original | mask | k-nn | mean | dropout | our | CE |
 
-​ ![Refer to caption](/html/1805.07405/assets/mnist_10_merged.png)
+​ !(/html/1805.07405/assets/mnist_10_merged.png)
 
 Figure 4: More reconstructions of partially incomplete images using the autoencoder. From left: (1) original image, (2) image with missing pixels passed to autoencooder; the output produced by autoencoder when absent pixels were initially filled by (3) k-nn imputation and (4) mean imputation; (5) the results obtained by autoencoder with (5) dropout, (6) our method and (7) context encoder. All columns except the last one were obtained with loss function computed based on pixels from outside the mask (no fully observable data available in training phase). It can be noticed that our method gives much sharper images then the competitive methods.
-
-
-
 
 Table 5: Summary of data sets, where 50% of values were removed randomly.
 
@@ -919,9 +870,6 @@ Table 5: Summary of data sets, where 50% of values were removed randomly.
 | fourclass | 862 | 2 |
 | heart | 270 | 13 |
 | liver disorders | 345 | 6 |
-
-
-
 
 Table 6: Classification results measured by accuracy on UCI data sets with 50% of removed attributes.
 
@@ -954,18 +902,15 @@ In contrast, for a complete data point we need to compute t𝑡t ReLU activation
 
 ## Appendix F Learning missing data density
 
-![Refer to caption](/html/1805.07405/assets/x1.png)
-
+!(/html/1805.07405/assets/x1.png)
 
 (a) Reference classification
 
-![Refer to caption](/html/1805.07405/assets/x2.png)
-
+!(/html/1805.07405/assets/x2.png)
 
 (b) Initial Gaussians
 
-![Refer to caption](/html/1805.07405/assets/x3.png)
-
+!(/html/1805.07405/assets/x3.png)
 
 (c) Final Gaussians and resulted classification
 
@@ -974,83 +919,3 @@ Figure 5: Toy example of learning missing data density by the network.
 To run our model we need to define initial mixture of Gaussians. This distribution is passed to the network and its parameters are tuned jointly with remaining network weights to minimize the overall cost of the network.
 
 We illustrate this behavior on the following toy example. We generated a data set from the mixture of four Gaussians; two of them were labeled as class 1 (green) while the remaining two were labeled as class 2 (blue), see Figure [5(a)](#A6.F5.sf1 "In Figure 5 ‣ Appendix F Learning missing data density ‣ Processing of missing data by neural networks"). We removed one of the attributes from randomly selected data points x=(x1,x2)𝑥subscript𝑥1subscript𝑥2x=(x\_{1},x\_{2}) with x1<0subscript𝑥10x\_{1}<0. In other words, we generated missing samples only from two Gaussian on the left. Figure [5(b)](#A6.F5.sf2 "In Figure 5 ‣ Appendix F Learning missing data density ‣ Processing of missing data by neural networks") shows initial GMM passed to the network. As can be seen this GMM matches neither a data density nor a density of missing samples. After training, we get a GMM, where its first component estimates a density of class 1, while the second component matches class 2, see Figure [5(c)](#A6.F5.sf3 "In Figure 5 ‣ Appendix F Learning missing data density ‣ Processing of missing data by neural networks"). In consequence, learning missing data density by the network helped to perform better classification than estimating GMM directly by EM algorithm.
-
-[◄](/html/1805.07404)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1805.07405)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1805.07405)
-[View original  
-on arXiv](https://arxiv.org/abs/1805.07405)[►](/html/1805.07406)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 05:09:34 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

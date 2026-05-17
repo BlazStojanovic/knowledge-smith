@@ -15,68 +15,17 @@ url: https://arxiv.org/abs/2603.21191
 year: 2026
 ---
 
-[2603.21191] On the Role of Batch Size in Stochastic Conditional Gradient Methods
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On the Role of Batch Size in Stochastic Conditional Gradient Methods
 
 Rustem Islamov1,4,†\dagger
 
-
-
 Roman Machacek2
 
-
-
 Aurelien Lucchi1
-
-
 
 Antonio Silveti-Falls3
   
 Eduard Gorbunov4,⋆\star
-
-
 
 Volkan Cevher5,⋆\star
 
@@ -520,9 +469,6 @@ Table 1: Final validation loss when training a 124M NanoGPT model varying the ba
 | 6.0 | 3.4967±0.049 | 3.4198±0.0002 | 3.3875±0.0019 | 3.3887±0.0024 | 3.4202±0.0022 | 3.5005±0.0038 | 3.7013±0.0160 |
 | 7.2 | 3.5151±0.0007 | 3.4301±0.0001 | 3.3978±0.0026 | 3.3960±0.0022 | 3.4331±0.0025 | 3.5270±0.0071 | 3.7506±0.0271 |
 
-
-
-
 Table 2: Final validation loss when training a 124M NanoGPT model varying the train sequence length while keeping the batch size 256256 under the token budget 1.31.3B. The validation sequence length is always 10241024. We report the average across 55 runs along with a standard deviation. ∗ indicates that not all runs had a stable decrease in validation loss. Bold numbers indicate the best performance in the column. The runs in red indicate the best configuration of batch size, sequence length, and Frank–Wolfe stepsize across all runs for a given token budget.
 
 |  |  |  |  |  |  |
@@ -675,23 +621,17 @@ Based on the results in [Figure˜3](#S6.F3 "In 6.5 Increasing Batch Size and Seq
 
 Figure 4: Comparison of fixed large batch size strategies when training a 1B model. The validation loss is evaluated with a smaller sequence length 10241024. Scion with a batch size of 10241024 suggested by our BST scaling rule achieves the best performance compared to other baselines with batch sizes 20482048 and 40964096. The values of batch sizes B1,2,3B\_{1,2,3}, sequence lengths SS, and Frank–Wolfe stepsizes β0,1\beta\_{0,1} are given in the legends. The notation (B1,2,3,S,β0,1)(B\_{1,2,3},S,\beta\_{0,1}) characterizes which batch size, sequence length, and Frank–Wolfe stepsize are used for the particular setup, respectively. The notation BST indicates the rule used to select the B,SB,S, and β\beta.
 
-
-
 |  |
 | --- |
 | Refer to caption |
 
 Figure 5: The final performance of the 124M model when varying the Frank–Wolfe stepsize β\beta under different token budgets (left: 2.7B, center: 5.3B, right: 8.0B). We average the train loss over 3 random seeds and report the moving average in the window of size 500. We observe that the BST scaling rule predicts a good estimate for the optimal β\beta when increasing the token budget. Moreover, the difference in performance between BST and μ\muP baselines grows with a token budget.
 
-
-
 |  |
 | --- |
 | Refer to caption |
 
 Figure 6: The final performance of the 124M model when varying the momentum α\alpha under different token budgets (left: 1.3B, center left: 2.7B, center right: 5.3B, right: 8.0B). We average the train loss over 3 random seeds and report the moving average in the window of size 500. We observe that rule momentum parameter α\alpha transfers under BST scaling.
-
-
 
 |  |
 | --- |
@@ -1028,8 +968,6 @@ Table B.1: The model configurations and training details used in [Section˜6](#S
 | Matrix Weights Radii | 5050 | | |
 | Precision | bf16 | | |
 | Device Batch Size | |  | | --- | | 32 | | if the opposite | | is not stated explicitly | |  | 16 |
-
-
 
 |  |  |
 | --- | --- |
@@ -1569,83 +1507,3 @@ third term in ([36](#A4.E36 "Equation 36 ‣ Remark D.2. ‣ Appendix D In-Expec
 |  | B1​S1=B0​S0​D1D0​ρ12ρ02​L0L1,B\_{1}S\_{1}=B\_{0}S\_{0}\sqrt{\frac{D\_{1}}{D\_{0}}\frac{\rho\_{1}^{2}}{\rho\_{0}^{2}}\frac{L\_{0}}{L\_{1}}}, |  | (37) |
 
 assuming that parameters Δ\Delta and σ⋆\sigma\_{\star} are independent of the model size. This approach is similar to ([16](#A3.E16 "Equation 16 ‣ C.1 Additional Baselines in Experiments from Section˜6.5 ‣ Appendix C Additional Experiments ‣ On the Role of Batch Size in Stochastic Conditional Gradient Methods")) up to problem-dependent constants ρ\rho and LL.
-
-[◄](/html/2603.21189)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.21191)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.21191)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.21191)[►](/html/2603.21192)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 05:31:36 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

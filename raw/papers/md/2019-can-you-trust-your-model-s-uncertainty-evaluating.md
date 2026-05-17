@@ -19,49 +19,6 @@ url: http://arxiv.org/abs/1906.02530v2
 year: 2019
 ---
 
-[1906.02530] Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift
 
 Yaniv Ovadia
@@ -263,33 +220,27 @@ We evaluate the behavior of the predictive uncertainty of deep learning models o
 
 ### 4.1 An illustrative example - MNIST
 
-![Refer to caption](/html/1906.02530/assets/x1.png)
-
+!(/html/1906.02530/assets/x1.png)
 
 (a) Rotated MNIST
 
-![Refer to caption](/html/1906.02530/assets/x2.png)
-
+!(/html/1906.02530/assets/x2.png)
 
 (b) Translated MNIST
 
-![Refer to caption](/html/1906.02530/assets/x3.png)
-
+!(/html/1906.02530/assets/x3.png)
 
 (c) Confidence vs Acc Rotated 60∘
 
-![Refer to caption](/html/1906.02530/assets/x4.png)
-
+!(/html/1906.02530/assets/x4.png)
 
 (d) Count vs Confidence Rotated 60∘
 
-![Refer to caption](/html/1906.02530/assets/x5.png)
-
+!(/html/1906.02530/assets/x5.png)
 
 (e) Entropy on OOD
 
-![Refer to caption](/html/1906.02530/assets/x6.png)
-
+!(/html/1906.02530/assets/x6.png)
 
 (f) Confidence on OOD
 
@@ -305,8 +256,7 @@ straying away from the training data distribution.
 What we observe: We see in Figures [1(a)](#S4.F1.sf1 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") and [1(b)](#S4.F1.sf2 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") that accuracy certainly degrades as a function of shift for all methods tested, and they are difficult to disambiguate on that metric.
 However, the Brier score paints a clearer picture and we see a significant difference between methods, i.e. prediction quality degrades more significantly for some methods than others. An important observation is that *while calibrating on the validation set leads to well-calibrated predictions on the test set, it does not guarantee calibration on shifted data*. In fact, nearly all other methods (except vanilla) perform better than the state-of-the-art post-hoc calibration (Temperature scaling) in terms of Brier score under shift. While SVI achieves the worst accuracy on the test set, it actually outperforms all other methods by a much larger margin when exposed to significant shift. In Figures [1(c)](#S4.F1.sf3 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") and [1(d)](#S4.F1.sf4 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") we look at the distribution of confidences for each method to understand the discrepancy between metrics. We see in Figure [1(d)](#S4.F1.sf4 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") that SVI has the lowest confidence in general but in Figure [1(c)](#S4.F1.sf3 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") we observe that SVI gives the highest accuracy at high confidence (or conversely is much less frequently confidently wrong), which can be important for high-stakes applications. Most methods demonstrate very low entropy (Figure [1(e)](#S4.F1.sf5 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift")) and give high confidence predictions (Figure [1(f)](#S4.F1.sf6 "In Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift")) on data that is entirely OOD, i.e. they are confidently wrong about completely OOD data.
 
-![Refer to caption](/html/1906.02530/assets/x7.png)
-
+!(/html/1906.02530/assets/x7.png)
 
 Figure 2: Calibration under distributional shift: a detailed comparison of accuracy and ECE under all types of corruptions on
 (a) CIFAR-10 and (b) ImageNet.
@@ -314,33 +264,27 @@ For each method we show the mean on the test set and summarize the results on ea
 
 ### 4.2 Image Models: CIFAR-10 and ImageNet
 
-![Refer to caption](/html/1906.02530/assets/x8.png)
-
+!(/html/1906.02530/assets/x8.png)
 
 (a) CIFAR: Confidence vs Accuracy
 
-![Refer to caption](/html/1906.02530/assets/x9.png)
-
+!(/html/1906.02530/assets/x9.png)
 
 (b) CIFAR: Count vs Confidence
 
-![Refer to caption](/html/1906.02530/assets/x10.png)
-
+!(/html/1906.02530/assets/x10.png)
 
 (c) CIFAR: Entropy on OOD
 
-![Refer to caption](/html/1906.02530/assets/x11.png)
-
+!(/html/1906.02530/assets/x11.png)
 
 (d) ImageNet: Confidence vs Acc
 
-![Refer to caption](/html/1906.02530/assets/x12.png)
-
+!(/html/1906.02530/assets/x12.png)
 
 (e) ImageNet: Count vs Confidence
 
-![Refer to caption](/html/1906.02530/assets/x13.png)
-
+!(/html/1906.02530/assets/x13.png)
 
 (f) CIFAR: Confidence on OOD
 
@@ -366,35 +310,31 @@ We use the even-numbered classes (10 classes out of 20) as in-distribution and t
 
 We look at confidence vs accuracy when the test data consists of a mix of in-distribution and either shifted or completely OOD data, in this case the One Billion Word Benchmark (LM1B) (Chelba et al., [2013](#bib.bib10)). Figure [4](#S4.F4 "Figure 4 ‣ 4.3 Text Models ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") (bottom row) shows the results. Ensembles significantly outperform all other methods, and achieve better trade-off between accuracy versus confidence. Surprisingly, LL-Dropout and LL-SVI perform worse than the vanilla method, giving higher confidence incorrect predictions, especially when tested on fully OOD data.
 
-![Refer to caption](/html/1906.02530/assets/x14.png)
+!(/html/1906.02530/assets/x14.png)
 
-![Refer to caption](/html/1906.02530/assets/x15.png)
+!(/html/1906.02530/assets/x15.png)
 
-![Refer to caption](/html/1906.02530/assets/x16.png)
+!(/html/1906.02530/assets/x16.png)
 
-![Refer to caption](/html/1906.02530/assets/x17.png)
+!(/html/1906.02530/assets/x17.png)
 
-![Refer to caption](/html/1906.02530/assets/x18.png)
+!(/html/1906.02530/assets/x18.png)
 
-![Refer to caption](/html/1906.02530/assets/x19.png)
+!(/html/1906.02530/assets/x19.png)
 
-![Refer to caption](/html/1906.02530/assets/x20.png)
-
+!(/html/1906.02530/assets/x20.png)
 
 () Confidence vs Acc.
 
-![Refer to caption](/html/1906.02530/assets/x21.png)
-
+!(/html/1906.02530/assets/x21.png)
 
 () Confidence vs Count
 
-![Refer to caption](/html/1906.02530/assets/x22.png)
-
+!(/html/1906.02530/assets/x22.png)
 
 () Confidence vs Accuracy
 
-![Refer to caption](/html/1906.02530/assets/x23.png)
-
+!(/html/1906.02530/assets/x23.png)
 
 () Confidence vs Count
 
@@ -409,13 +349,13 @@ We introduce shift by reassigning each categorical feature to a random new token
 This coarsely simulates a type of shift observed in non-stationary categorical features as category tokens appear and disappear over time, for example due to hash collisions.
 The model consists of a 3-hidden-layer multi-layer-perceptron (MLP) with hashed and embedded categorical features and achieves a negative log-likelihood of approximately 0.5 (contest winners achieved 0.44). Due to class imbalance (∼25%similar-toabsentpercent25\sim 25\% of examples are positive), we report AUC instead of classification accuracy.
 
-![Refer to caption](/html/1906.02530/assets/x24.png)
+!(/html/1906.02530/assets/x24.png)
 
-![Refer to caption](/html/1906.02530/assets/x25.png)
+!(/html/1906.02530/assets/x25.png)
 
-![Refer to caption](/html/1906.02530/assets/x26.png)
+!(/html/1906.02530/assets/x26.png)
 
-![Refer to caption](/html/1906.02530/assets/x27.png)
+!(/html/1906.02530/assets/x27.png)
 
 Figure 5: Results on Criteo: The first two plots show degrading AUCs and Brier scores with increasing shift while the latter two depict the distribution of prediction confidences and their corresponding accuracies at 75% randomization of categorical features.
 SVI is excluded as it performed too poorly.
@@ -875,28 +815,23 @@ We distorted MNIST images using rotations with spline filter interpolation and c
 
 For the corrupted ImageNet dataset, we used ImageNet-C (Hendrycks & Dietterich, [2019](#bib.bib21)). Figure [S2](#A2.F2 "Figure S2 ‣ Appendix B Shifted Images ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") shows examples of ImageNet-C images at varying corruption intensities. Figure [S3](#A2.F3 "Figure S3 ‣ Appendix B Shifted Images ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") shows ImageNet-C images with the 16 corruptions analyzed in this paper, at intensity 3 (on a scale of 1 to 5).
 
-![Refer to caption](/html/1906.02530/assets/x28.png)
-
+!(/html/1906.02530/assets/x28.png)
 
 (a) Rotations
 
-![Refer to caption](/html/1906.02530/assets/x29.png)
-
+!(/html/1906.02530/assets/x29.png)
 
 (b) Cyclic translations
 
 Figure S1: Examples of rotated and cyclically translated MNIST digits. Results for accuracy and calibration on rotated/translated MNIST are shown in Figure [1](#S4.F1 "Figure 1 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift").
 
-![Refer to caption](/html/1906.02530/assets/x30.png)
-
+!(/html/1906.02530/assets/x30.png)
 
 Figure S2: Examples of ImageNet images corrupted by Gaussian blur, at intensities of 0 (uncorrupted image) through 5 (maximum corruption included in ImageNet-C).
 
+!(/html/1906.02530/assets/all_corruptions_3_top2rows.jpg)
 
-
-![Refer to caption](/html/1906.02530/assets/all_corruptions_3_top2rows.jpg)
-
-![Refer to caption](/html/1906.02530/assets/all_corruptions_3_bottom2rows.jpg)
+!(/html/1906.02530/assets/all_corruptions_3_bottom2rows.jpg)
 
 Figure S3: Examples of 16 corruption types in ImageNet-C images, at corruption intensity 3 (on a scale from 1–5). The same corruptions were applied to CIFAR-10. Figure [2](#S4.F2 "Figure 2 ‣ 4.1 An illustrative example - MNIST ‣ 4 Experiments and Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") and Section [C](#A3 "Appendix C Evaluating uncertainty under distributional shift: Additional Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") show boxplots for each uncertainty method and corruption intensity, spanning all corruption types.
 
@@ -905,51 +840,47 @@ Figure S3: Examples of 16 corruption types in ImageNet-C images, at corruption i
 Figures [S4](#A3.F4 "Figure S4 ‣ Appendix C Evaluating uncertainty under distributional shift: Additional Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift"), [S5](#A3.F5 "Figure S5 ‣ Appendix C Evaluating uncertainty under distributional shift: Additional Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") and [S7](#A3.F7 "Figure S7 ‣ Appendix C Evaluating uncertainty under distributional shift: Additional Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") show comprehensive results on CIFAR-10, ImageNet and Criteo respectively across various metrics including Brier score, along with the components of the Brier score : reliability (lower means better calibration) and resolution (higher values indicate better predictive quality).
 Ensembles and dropout outperform all other methods across corruptions, while LL SVI shows no improvement over the baseline model. Figure [S6](#A3.F6 "Figure S6 ‣ Appendix C Evaluating uncertainty under distributional shift: Additional Results ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") shows accuracy and ECE for models with double the number of ResNet filters; the higher-capacity models are not better calibrated than their lower-capacity counterparts, suggesting that the good calibration performance of ensembles is not due simply to higher capacity.
 
-![Refer to caption](/html/1906.02530/assets/x31.png)
+!(/html/1906.02530/assets/x31.png)
 
-![Refer to caption](/html/1906.02530/assets/x32.png)
+!(/html/1906.02530/assets/x32.png)
 
-![Refer to caption](/html/1906.02530/assets/x33.png)
+!(/html/1906.02530/assets/x33.png)
 
-![Refer to caption](/html/1906.02530/assets/x34.png)
+!(/html/1906.02530/assets/x34.png)
 
-![Refer to caption](/html/1906.02530/assets/x35.png)
+!(/html/1906.02530/assets/x35.png)
 
 Figure S4: Boxplots facilitating comparison of methods for each shift level showing detailed comparisons of various metrics under all types of corruptions on CIFAR-10. Each box shows the quartiles summarizing the results across all types of shift while the error bars indicate the min and max across different shift types.
 
+!(/html/1906.02530/assets/x36.png)
 
+!(/html/1906.02530/assets/x37.png)
 
-![Refer to caption](/html/1906.02530/assets/x36.png)
+!(/html/1906.02530/assets/x38.png)
 
-![Refer to caption](/html/1906.02530/assets/x37.png)
+!(/html/1906.02530/assets/x39.png)
 
-![Refer to caption](/html/1906.02530/assets/x38.png)
+!(/html/1906.02530/assets/x40.png)
 
-![Refer to caption](/html/1906.02530/assets/x39.png)
-
-![Refer to caption](/html/1906.02530/assets/x40.png)
-
-![Refer to caption](/html/1906.02530/assets/x41.png)
+!(/html/1906.02530/assets/x41.png)
 
 Figure S5: Boxplots facilitating comparison of methods for each shift level showing detailed comparisons of various metrics under all types of corruptions on ImageNet. Each box shows the quartiles summarizing the results across all types of shift while the error bars indicate the min and max across different shift types.
 
+!(/html/1906.02530/assets/x42.png)
 
-
-![Refer to caption](/html/1906.02530/assets/x42.png)
-
-![Refer to caption](/html/1906.02530/assets/x43.png)
+!(/html/1906.02530/assets/x43.png)
 
 Figure S6: Boxplots facilitating comparison of results for higher-capacity models (’Wide Vanilla’ and ’Wide Dropout’) with their lower-capacity counterparts on CIFAR. Each box shows the quartiles summarizing the results across all types of shift while the error bars indicate the min and max across different shift types.
 
-![Refer to caption](/html/1906.02530/assets/x44.png)
+!(/html/1906.02530/assets/x44.png)
 
-![Refer to caption](/html/1906.02530/assets/x45.png)
+!(/html/1906.02530/assets/x45.png)
 
-![Refer to caption](/html/1906.02530/assets/x46.png)
+!(/html/1906.02530/assets/x46.png)
 
-![Refer to caption](/html/1906.02530/assets/x47.png)
+!(/html/1906.02530/assets/x47.png)
 
-![Refer to caption](/html/1906.02530/assets/x48.png)
+!(/html/1906.02530/assets/x48.png)
 
 Figure S7: Comprehensive comparison of metrics on Criteo models.
 The Brier decomposition reveals that the majority of its degradation is due to worsening reliability, and this component alone appears to largely explain the ranking of methods in total Brier score.
@@ -961,23 +892,19 @@ Total Brier score and AUC results are discussed in detail in Section [4.4](#S4.S
 
 Figure [S8](#A4.F8 "Figure S8 ‣ Appendix D Effect of the number of samples on the quality of uncertainty ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") shows the effect of the number of sample sizes used by Dropout, SVI (and last-layer variants) on the quality of predictive uncertainty, as measured by the Brier score. Increasing the number of samples has little effect on last-layer variants, whereas increasing the number of samples improves the performance for SVI and Dropout, with diminishing returns beyond size 5.
 
-![Refer to caption](/html/1906.02530/assets/x49.png)
-
+!(/html/1906.02530/assets/x49.png)
 
 (a) Dropout
 
-![Refer to caption](/html/1906.02530/assets/x50.png)
-
+!(/html/1906.02530/assets/x50.png)
 
 (b) LL-Dropout
 
-![Refer to caption](/html/1906.02530/assets/x51.png)
-
+!(/html/1906.02530/assets/x51.png)
 
 (c) SVI
 
-![Refer to caption](/html/1906.02530/assets/x52.png)
-
+!(/html/1906.02530/assets/x52.png)
 
 (d) LL-SVI
 
@@ -989,33 +916,27 @@ As mentioned earlier, the Brier score can be further decomposed into BS=calibrat
 reliability↓↓reliabilityabsent\mathrm{reliability}\downarrow measures calibration as the average violation of long-term true label frequencies, and refinement=uncertainty−resolutionrefinementuncertaintyresolution\mathrm{refinement}=\mathrm{uncertainty}-\mathrm{resolution}, where
 uncertaintyuncertainty\mathrm{uncertainty} is the marginal uncertainty over labels (independent of predictions) and resolution↑↑resolutionabsent\mathrm{resolution}\uparrow measures the deviation of individual predictions from the marginal.
 
-![Refer to caption](/html/1906.02530/assets/x53.png)
-
+!(/html/1906.02530/assets/x53.png)
 
 (a) Brier Score
 
-![Refer to caption](/html/1906.02530/assets/x54.png)
-
+!(/html/1906.02530/assets/x54.png)
 
 (b) Brier Reliability
 
-![Refer to caption](/html/1906.02530/assets/x55.png)
-
+!(/html/1906.02530/assets/x55.png)
 
 (c) Brier Resolution
 
-![Refer to caption](/html/1906.02530/assets/x56.png)
-
+!(/html/1906.02530/assets/x56.png)
 
 (d) Brier Score
 
-![Refer to caption](/html/1906.02530/assets/x57.png)
-
+!(/html/1906.02530/assets/x57.png)
 
 (e) Brier Reliability
 
-![Refer to caption](/html/1906.02530/assets/x58.png)
-
+!(/html/1906.02530/assets/x58.png)
 
 (f) Brier Resolution
 
@@ -1025,18 +946,15 @@ Note that the scales for Reliability are significantly smaller than the other pl
 
 ## Appendix E Variational Gaussian Process Results
 
-![Refer to caption](/html/1906.02530/assets/x59.png)
-
+!(/html/1906.02530/assets/x59.png)
 
 (a) Brier Score
 
-![Refer to caption](/html/1906.02530/assets/x60.png)
-
+!(/html/1906.02530/assets/x60.png)
 
 (b) Accuracy
 
-![Refer to caption](/html/1906.02530/assets/x61.png)
-
+!(/html/1906.02530/assets/x61.png)
 
 (c) ECE
 
@@ -1048,13 +966,11 @@ We studied the set of methods for detecting OOD genomic sequence, as a challengi
 
 Figure [S11](#A6.F11 "Figure S11 ‣ Appendix F OOD detection for genomic sequences ‣ Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift") shows the confidence vs (a) accuracy and (b) count when the test data consists of a mix of in-distribution and OOD data. Ensembles significantly outperform all other methods, and achieve better trade-off between accuracy versus confidence. Dropout performs better than Temp Scaling, and they both perform better than LL-Dropout, LL-SVI, and the Vanilla method. Note that the accuracy on examples p​(y|𝒙)≥0.9𝑝conditional𝑦𝒙0.9p(y|{\bm{x}})\geq 0.9 for the best method is still below 65%, suggesting that this realistic genomic sequences dataset is a challenging problem to benchmark future methods.
 
-![Refer to caption](/html/1906.02530/assets/x62.png)
-
+!(/html/1906.02530/assets/x62.png)
 
 (a) Confidence vs Accuracy
 
-![Refer to caption](/html/1906.02530/assets/x63.png)
-
+!(/html/1906.02530/assets/x63.png)
 
 (b) Confidence vs Count
 
@@ -1105,83 +1021,3 @@ The tables below report quartiles of Brier score, negative log-likelihood, and E
 | ECE (25th) | 0.041 | 0.055 | 0.044 | 0.043 | 0.052 | 0.254 | 0.066 |
 | ECE (50th) | 0.097 | 0.113 | 0.100 | 0.085 | 0.100 | 0.254 | 0.127 |
 | ECE (75th) | 0.135 | 0.149 | 0.141 | 0.116 | 0.136 | 0.254 | 0.162 |
-
-[◄](/html/1906.02529)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1906.02530)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1906.02530)
-[View original  
-on arXiv](https://arxiv.org/abs/1906.02530)[►](/html/1906.02531)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 15 22:59:54 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

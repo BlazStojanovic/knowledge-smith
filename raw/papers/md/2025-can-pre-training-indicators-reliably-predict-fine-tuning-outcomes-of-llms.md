@@ -16,58 +16,9 @@ url: https://arxiv.org/abs/2504.12491
 year: 2025
 ---
 
-[2504.12491] Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\pdftrailerid
-
-redacted
-\correspondingauthorhzeng@cs.umass.edu, kaihuibj@google.com
-
 # Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?
 
 Hansi Zeng
-
 
 Kai Hui
 Google DeepMind
@@ -100,8 +51,7 @@ Despite the accessibility afforded by prompting, fine-tuning on downstream tasks
 While LLMs demonstrably improve on supervised fine-tuning (SFT) tasks with increasing scale (Zhang et al., [2024](#bib.bib52); Isik et al., [2025](#bib.bib18)), the substantial costs associated with larger models strongly motivate performance optimization at a fixed size. These efforts often concentrate on refining pre-training elements, such as data compositions (Shen et al., [2024](#bib.bib39); Penedo et al., [2024](#bib.bib35)) or training objectives (Raffel et al., [2020](#bib.bib37); Tay et al., [2023a](#bib.bib42), [b](#bib.bib43)). This context underscores a critical need: the ability to reliably forecast the post-SFT performance of same-size LLM variants using only indicators available during pre-training. Although metrics like perplexity correlate well with scaling-driven performance gains (lower perplexity generally corresponds to better few-shot (Grattafiori et al., [2024](#bib.bib14)) and fine-tuning (Isik et al., [2025](#bib.bib18)) results as model size expands), their predictive efficacy for fine-tuning outcomes within a constant model size remains uncertain. Practically, dependable predictors are essential to avoid the prohibitive expense of fine-tuning numerous checkpoints. This requirement is especially pronounced for monitoring and guiding decisions throughout the lengthy pre-training cycles (often months) of very large models (Liu et al., [2024a](#bib.bib26); Grattafiori et al., [2024](#bib.bib14)), and also when subsequent fine-tuning involves substantial datasets,
 including potentially stopping unpromising runs early.
 
-![Refer to caption](/html/2504.12491/assets/figures/proxy_sft_error.png)
-
+!(/html/2504.12491/assets/figures/proxy_sft_error.png)
 
 Figure 1: 
 Mean pairwise error rates across three SFT tasks (separate plots). Each plot compares perplexity, the best individual proxy (Section [3](#S3 "3 Predictive Power on SFT Tasks ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?")), and the learning-to-compare proxy (shown on the x-axis). The y-axis represents the error rate, defined as the proportion of mis-classified LLM pairs regarding post-SFT performance.
@@ -195,8 +145,7 @@ Despite these improvements, even the best individual or combined proxies yield p
 To understand proxy limitations, we analyzed how well PPL-CLM, PPL-SC, and Kshot-RAG predict relative SFT performance between models differing only in their pre-training objective. We grouped models by objective (CLM, SC, UL2, etc.) and evaluated pairwise prediction accuracy for comparisons between these groups (details in Figure [2](#S3.F2 "Figure 2 ‣ A predictive power case study using varied pre-training objectives. ‣ 3 Predictive Power on SFT Tasks ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?"); Appendix [B](#A2 "Appendix B Proxy Predictive Accuracy ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?") covers data variations).
 Confirming earlier results, PPL-SC and Kshot-RAG consistently outperformed PPL-CLM. However, their accuracy depended significantly on two factors: (1) The specific pre-training difference: Proxies better captured large performance gaps caused by different objectives (e.g., SC vs. CLM, often ≥0.6\geq 0.6 accuracy) than smaller variations. (2) The target SFT task: A specific comparison (e.g., SC vs. SC+CLM) could yield low accuracy on one task (SFT-CMS, 0.2) but high accuracy on others (SFT-RAG/SFT-CBQA, ≥0.6\geq 0.6).
 
-![Refer to caption](/html/2504.12491/assets/figures/pointwise_obj_obj_acc.png)
-
+!(/html/2504.12491/assets/figures/pointwise_obj_obj_acc.png)
 
 Figure 2: 
 Pairwise prediction accuracy for PPL-CLM, PPL-SC, and Kshot-RAG comparing LLMs differing only in pre-training objective, across three SFT tasks (rows) and the three proxies (columns). Each cell indicates average accuracy of pairs where the proxy prediction agreed with the SFT result.
@@ -254,8 +203,7 @@ We further assessed LightGBM’s generalization by training on one SFT task (sou
 
 We quantify each proxy’s contribution to the LightGBM classifiers by computing their normalized gain-based importance scores, as illustrated in Figure [3](#S4.F3 "Figure 3 ‣ Proxy importance. ‣ 4.3 Results ‣ 4 Learning to Compare ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?") (detailed in Appendix Section [E](#A5 "Appendix E Proxy Normalized Importance Score for LightGBM ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?")). Kshot-RAG consistently emerged as the most influential proxy across the three SFT tasks, showing particular dominance in SFT-RAG and SFT-CBQA. PPL-SC and PPL-CLM represented the next tier of importance; for instance, PPL-SC was second most important for SFT-CMS, while PPL-CLM ranked second for SFT-CBQA. Intriguingly, PPL-CLM contributed more significantly to the LightGBM model’s predictions than Kshot-CMS and Kshot-CBQA, despite possessing lower standalone accuracy (Table [1](#S3.T1 "Table 1 ‣ 3 Predictive Power on SFT Tasks ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?")). Our hypothesis is that the supervised classifier effectively utilizes the strong negative correlation observed between PPL-CLM and SFT task performance.
 
-![Refer to caption](/html/2504.12491/assets/figures/feat-imp-lightGBM.png)
-
+!(/html/2504.12491/assets/figures/feat-imp-lightGBM.png)
 
 Figure 3: 
 Relative influence of proxy metrics in the LTC framework (LightGBM).
@@ -274,8 +222,7 @@ To explore the relationship between performance disparity and classifier accurac
 
 The findings show that prediction reliability for both Kshot-RAG and the Learning-to-compare predictors indeed improves as the performance gap between models widens. For pairs with minimal performance differences ([0–20%] quantile), where models perform almost identically after fine-tuning, prediction accuracy is low, near chance levels (approximately 0.5). As the absolute performance difference increases, accuracy steadily rises, reaching approximately 0.9 for the most distinct pairs ([80–100%] quantile). This confirms that these classifiers yield more reliable predictions when comparing models that are easier to distinguish. Interestingly, PPL-CLM demonstrates the opposite behavior: its accuracy diminishes as the performance gap increases, further highlighting that conventional perplexity is not a dependable indicator for this prediction scenario. Among the methods tested, the learning-to-compare classifier consistently outperformed both PPL-CLM and Kshot-RAG across the quantiles, showing particular strength on the SFT-CMS and SFT-CBQA tasks.
 
-![Refer to caption](/html/2504.12491/assets/figures/bucket_accs.png)
-
+!(/html/2504.12491/assets/figures/bucket_accs.png)
 
 Figure 4: 
 Accuracy comparison of PPL-CLM, Kshot-RAG, and Learning-to-Compare (LTC) on SFT tasks (CMS, RAG, CBQA), grouped into five quantiles by absolute SFT performance difference.
@@ -284,8 +231,7 @@ Accuracy comparison of PPL-CLM, Kshot-RAG, and Learning-to-Compare (LTC) on SFT 
 
 One key practical use for LLM performance predictors is to identify the most promising models within a group of candidates, which can lead to significant cost savings by reducing the number of models that undergo supervised fine-tuning. To assess our classifier’s effectiveness in this critical application—specifically, its ability to recall the best pre-trained LLMs—we performed a ranking experiment where pairwise comparisons between models were predicted and then aggregated into an overall ranking using Borda Count scoring (detailed in Appendix [D](#A4 "Appendix D Ranking using Borda Count ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?")) Dwork et al. ([2001](#bib.bib10)). Models achieving more pairwise ’wins’ received higher scores, indicating better predicted performance. The evaluation results, presented as top-1 and top-5 recall in Figure [5](#S5.F5 "Figure 5 ‣ 5.2 Recall the Best Model from a Small Candidate Set ‣ 5 Can Post SFT LLM Performance be Reliably Predicted? ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?"), show that our “learning-to-compare” method consistently identified the top-performing LLMs. Impressively, it achieved perfect top-1 recall for the SFT-CMS, SFT-RAG, and SFT-CBQA tasks by focusing on the top 7, 7, and 8 predicted models respectively, demonstrating its effectiveness even when narrowing down a relatively small candidate pool (as few as 8 models). Additionally, the unsupervised Kshot-RAG method showed strong performance, corroborating observations from Section [3](#S3 "3 Predictive Power on SFT Tasks ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?").
 
-![Refer to caption](/html/2504.12491/assets/figures/hits_GT.png)
-
+!(/html/2504.12491/assets/figures/hits_GT.png)
 
 Figure 5: 
 Top-1 (top row) and Top-5 (bottom row) recall comparison at various cutoffs: supervised Learning-to-compare (LTC) vs. unsupervised baselines on SFT-CMS, SFT-RAG, and SFT-CBQA tasks.
@@ -645,8 +591,6 @@ We pretrain 50 LLMs, each with 1 billion parameters, on 100 billion tokens. Mode
 
 Table 3: six configurations of sub dataset combinations in Slimpajama
 
-
-
 | Model ID | Pretrained Objective | Domain Re-weight | LR | Domain Tagging | Length Filtering |
 | --- | --- | --- | --- | --- | --- |
 | 1 | CLM | DC-0 | 1e-4 | ✗ | ✗ |
@@ -706,13 +650,11 @@ Table 4: Pre-trained configurations of LLMs
 
 Similar to Section [3](#S3 "3 Predictive Power on SFT Tasks ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?"), we group the pre-trained LLMs into six categories either based on their domain re-weighting or tagging & length filtering configurations. In both cases, paired models share the same pretraining configurations except for the group-specific factor (domain re-weighting or tagging & length filtering). We compute the predictive accuracy of each proxy on three SFT tasks and report the results in the Figure [6](#A2.F6 "Figure 6 ‣ Appendix B Proxy Predictive Accuracy ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?") and Figure [7](#A2.F7 "Figure 7 ‣ Appendix B Proxy Predictive Accuracy ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?").
 
-![Refer to caption](/html/2504.12491/assets/figures/domain_reweight_acc.png)
-
+!(/html/2504.12491/assets/figures/domain_reweight_acc.png)
 
 Figure 6: Predictive accuracy of PPL-CLM, PPL-SC, and Kshot-RAG in distinguishing the better-performing model between two LLMs with different pre-trained dataset domain re-weighting (other pre-trained configurations fixed). DC-0 to DC-5 referes to different dataset variants, detailed in Table [3](#A1.T3 "Table 3 ‣ Appendix A Pretraining and LLMs ‣ Can Pre-training Indicators Reliably Predict Fine-tuning Outcomes of LLMs?").
 
-![Refer to caption](/html/2504.12491/assets/figures/tag_length_filter_acc.png)
-
+!(/html/2504.12491/assets/figures/tag_length_filter_acc.png)
 
 Figure 7: Predictive accuracy of PPL-CLM, PPL-SC, and Kshot-RAG in distinguishing the better-performing model between two LLMs with different length & filtering methods (other pre-trained configuration fixed). The naming follows the format of [Tagging]-[Length Filtering]. “Tag” and “NoTag” indicate whether domain tags are added. “All” keeps all examples, “Mid” keeps samples with lengths in the 25–75% quantile range, and “Max” keeps the longest 25% of examples.
 
@@ -911,83 +853,3 @@ The all supervised fine-tuned, perplexity and Kshot-learning results are detaile
 | 50 | 72.040 | 47.575 | 37.300 | 0.387 | 0.106 | 61.120 | 32.380 | 20.200 |
 
 Table 6: SFT, perplexity and kshot performance for all pretrained LLMs.
-
-[◄](/html/2504.12489)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2504.12491)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2504.12491)
-[View original  
-on arXiv](https://arxiv.org/abs/2504.12491)[►](/html/2504.12492)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon May 5 18:37:55 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

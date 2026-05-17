@@ -11,54 +11,6 @@ url: https://arxiv.org/abs/1703.00056
 year: 2017
 ---
 
-[1703.00056] Fair prediction with disparate impact: A study of bias in recidivism prediction instruments
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\MakePerPage
-
-footnote
-
 # Fair prediction with disparate impact: A study of bias in recidivism prediction instruments
 
 Alexandra Chouldechova
@@ -154,25 +106,21 @@ The work of Corbett-Davies et al. [[24](#bib.bib24)] closely parallels the resu
 
 ### 2.3 Predictive parity, false positive rates, and false negative rates
 
-![Refer to caption](/html/1703.00056/assets/x1.png)
+!(/html/1703.00056/assets/x1.png)
 
-![Refer to caption](/html/1703.00056/assets/x2.png)
-
+!(/html/1703.00056/assets/x2.png)
 
 (a) Bars represent empirical estimates of the expressions in ([2.1](#S2.E1 "In Definition 1 (Calibration). ‣ 2.1 Background ‣ 2 Assessing fairness ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")): ℙ(Y=1∣S=s,R=r)\mathbb{P}(Y=1\mid S=s,R=r) for decile scores s∈{1,…,10}.𝑠1…10s\in\{1,\ldots,10\}.
 
-![Refer to caption](/html/1703.00056/assets/x3.png)
-
+!(/html/1703.00056/assets/x3.png)
 
 (b) Bars represent empirical estimates of the expressions in ([2.2](#S2.E2 "In Definition 2 (Predictive parity). ‣ 2.1 Background ‣ 2 Assessing fairness ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")): ℙ​(Y=1​∣S>​sHR,R=r)ℙformulae-sequence𝑌1ket𝑆subscript𝑠HR𝑅𝑟\mathbb{P}(Y=1\mid S>s\_{\mathrm{HR}},R=r) for values of the high-risk cutoff sHR∈{0,…,9}subscript𝑠HR0…9s\_{\mathrm{HR}}\in\{0,\ldots,9\}
 
-![Refer to caption](/html/1703.00056/assets/x4.png)
-
+!(/html/1703.00056/assets/x4.png)
 
 (c) Bars represent observed false positive rates, which are empirical estimates of the expressions in ([2.3](#S2.E3 "In Definition 3 (Error rate balance). ‣ 2.1 Background ‣ 2 Assessing fairness ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")): ℙ(S>sHR∣Y=0,R=r)\mathbb{P}(S>s\_{\mathrm{HR}}\mid Y=0,R=r) for values of the high-risk cutoff sHR∈{0,…,9}subscript𝑠HR0…9s\_{\mathrm{HR}}\in\{0,\ldots,9\}
 
-![Refer to caption](/html/1703.00056/assets/x5.png)
-
+!(/html/1703.00056/assets/x5.png)
 
 (d) Bars represent observed false negative rates, which are empirical estimates of the expressions in ([2.4](#S2.E4 "In Definition 3 (Error rate balance). ‣ 2.1 Background ‣ 2 Assessing fairness ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")): ℙ(S≤sHR∣Y=1,R=r)\mathbb{P}(S\leq s\_{\mathrm{HR}}\mid Y=1,R=r) for values of the high-risk cutoff sHR∈{0,…,9}subscript𝑠HR0…9s\_{\mathrm{HR}}\in\{0,\ldots,9\}
 
@@ -192,7 +140,6 @@ Given a particular choice of sHRsubscript𝑠HRs\_{\mathrm{HR}}, we can summariz
 | Y=1𝑌1Y=1 | FN | TP |
 
   
-
 
 Table 1: T/F denote True/False and N/P denote Negative/Positive. For instance, FP is the number of false positives: individuals who are classified as high-risk but who do not reoffend.
 
@@ -283,13 +230,11 @@ In general, all of the theoretical results presented in this section extend to t
 
 The false positive rates shown in Figure [2](#S3.F2 "Figure 2 ‣ 3.1 Conditioning on other covariates ‣ 3 Assessing impact ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")(a) correspond precisely to the quantities FPRr​(𝒳)subscriptFPR𝑟𝒳\mathrm{FPR}\_{r}(\mathcal{X}) for choices of 𝒳𝒳\mathcal{X} given by different prior record count bins. The leftmost bars correspond to taking 𝒳={#​priors=0}𝒳#priors0\mathcal{X}=\{\#\text{priors}=0\}. Similarly the leftmost bars in Figure [2](#S3.F2 "Figure 2 ‣ 3.1 Conditioning on other covariates ‣ 3 Assessing impact ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments")(a) correspond to taking 𝒳={#​priors=0,charge degree=M}𝒳formulae-sequence#priors0charge degree𝑀\mathcal{X}=\{\#\text{priors}=0,\text{charge degree}=M\}. In Appendix [B](#A2 "Appendix B Covariate-adjusted false positive rates ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments") we present a logistic regression analysis showing that significant differences in false positive rates persist even after adjusting for a number of other recidivism-related covariates.
 
-![Refer to caption](/html/1703.00056/assets/x6.png)
-
+!(/html/1703.00056/assets/x6.png)
 
 (a) All defendants.
 
-![Refer to caption](/html/1703.00056/assets/x7.png)
-
+!(/html/1703.00056/assets/x7.png)
 
 (b) Defendants charged with a Misdemeanor offense.
 
@@ -297,8 +242,7 @@ Figure 2: False positive rates across prior record count. Plot is based on asses
 
 ### 3.2 Connections to measures of differences in distribution
 
-![Refer to caption](/html/1703.00056/assets/x8.png)
-
+!(/html/1703.00056/assets/x8.png)
 
 Figure 3: COMPAS decile score histograms for Black and White defendants. Cohen’s d=0.60𝑑0.60d=0.60, non-overlap dTV​(fb,fw)=24.5%subscript𝑑TVsubscript𝑓𝑏subscript𝑓𝑤percent24.5d\_{\mathrm{TV}}(f\_{b},f\_{w})=24.5\%.
 
@@ -324,9 +268,9 @@ In this section we present some empirical results based on two hypothetical sent
 
 The penalty ranges tminsubscript𝑡mint\_{\mathrm{min}} and tmaxsubscript𝑡maxt\_{\mathrm{max}} are selected by approximately matching each offender’s charge degree (M2 - F1) to a sentence range in Pennsylvania’s Basic Sentencing Matrix (PA Code §303.16). This matrix provides sentence ranges based on the charge degree for the current offense and the defendant’s prior record score (0 - 5+). We do not have enough information in the Broward County data to reliably assign a prior record score for each individual. Our results are based on using the sentencing range corresponding to a prior record score of 111 for all defendants in the data.
 
-![Refer to caption](/html/1703.00056/assets/x9.png)
+!(/html/1703.00056/assets/x9.png)
 
-![Refer to caption](/html/1703.00056/assets/x10.png)
+!(/html/1703.00056/assets/x10.png)
 
 Figure 4: Average sentences under the hypothetical sentencing policies described in Section [3.3](#S3.SS3 "3.3 Empirical results ‣ 3 Assessing impact ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments"). The mapping between the x𝑥x-axis variable and the offender’s charge degree is given in Table [2](#S3.T2 "Table 2 ‣ 3.3 Empirical results ‣ 3 Assessing impact ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments"). For all OGS levels except 8, observed differences in average sentence are statistically significant at the 0.010.010.01 level.
 
@@ -360,8 +304,7 @@ In this final section we revisit the notion of predictive parity and further dis
 
    Allow unequal PPV’s to achieve equal false positive and false negative rates
 
-![Refer to caption](/html/1703.00056/assets/x11.png)
-
+!(/html/1703.00056/assets/x11.png)
 
 Figure 5: The two points represent the observed values of (FNR, FPR) for Black and White defendants. The orange line represents feasible values of (FNR, FPR) for White defendants when the prevalence pwsubscript𝑝𝑤p\_{w} and PPVwsubscriptPPV𝑤\mathrm{PPV}\_{w} are both held fixed at their observed values in Table [1](#S2.T1 "Table 1 ‣ 2.3 Predictive parity, false positive rates, and false negative rates ‣ 2 Assessing fairness ‣ Fair prediction with disparate impact: A study of bias in recidivism prediction instruments"). The dark grey line represents feasible values of (FNRb,FPRb)subscriptFNR𝑏subscriptFPR𝑏(\mathrm{FNR}\_{b},\mathrm{FPR}\_{b}) when the prevalence pbsubscript𝑝𝑏p\_{b} is held fixed at the observed value and PPVbsubscriptPPV𝑏\mathrm{PPV}\_{b} is set equal to the observed value of PPVw=0.591subscriptPPV𝑤0.591\mathrm{PPV}\_{w}=0.591. *Nested* shaded regions correspond to feasible values of (FNRb,FPRb)subscriptFNR𝑏subscriptFPR𝑏(\mathrm{FNR}\_{b},\mathrm{FPR}\_{b}) if we allow PPVbsubscriptPPV𝑏\mathrm{PPV}\_{b} to vary under the constraint |PPVb−0.591|<δsubscriptPPV𝑏0.591𝛿|\mathrm{PPV}\_{b}-0.591|<\delta, with δ∈{0.05,0.1,0.125}𝛿0.050.10.125\delta\in\{0.05,0.1,0.125\}. The smaller δ𝛿\delta, the smaller the feasible region.
 
@@ -450,8 +393,6 @@ Table [4](#A2.T4 "Table 4 ‣ Appendix B Covariate-adjusted false positive rate
 | raceBlack | 0.976 | 0.077 | 12.60 | 0.0000 |
 
 Table 3: Logistic regression with race alone.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -646,83 +587,3 @@ Table 4: Logistic regression with race and other covariates that may be associat
   The influence of race on sentencing: A meta-analytic review of
   experimental studies.
   *Behavioral Sciences & the Law*, 10(2):179–195, 1992.
-
-[◄](/html/1703.00055)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1703.00056)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1703.00056)
-[View original  
-on arXiv](https://arxiv.org/abs/1703.00056)[►](/html/1703.00057)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 17:17:12 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -25,49 +25,6 @@ url: http://arxiv.org/abs/2008.02217v3
 year: 2020
 ---
 
-[2008.02217] Hopfield Networks is All You Need
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Hopfield Networks is All You Need
 
 Hubert Ramsauer11footnotemark: 1  Bernhard Schäfl11footnotemark: 1  Johannes Lehner11footnotemark: 1  Philipp Seidl11footnotemark: 1  
@@ -245,8 +202,7 @@ in deep learning architectures for pooling, memory, prototype learning, and atte
 We test these new layers on different benchmark datasets and tasks like
 immune repertoire classification.
 
-![Refer to caption](/html/2008.02217/assets/x1.png)
-
+!(/html/2008.02217/assets/x1.png)
 
 Figure 1: We generalize
 the energy
@@ -595,8 +551,7 @@ GRU (Cho et al., [2014](#bib.bib24)) &
 LSTM (Hochreiter, [1991](#bib.bib44); Hochreiter & Schmidhuber, [1997](#bib.bib45)) layers, and
 attention layers (Vaswani et al., [2017a](#bib.bib96); [b](#bib.bib97); Bahdanau et al., [2014](#bib.bib8)).
 
-![Refer to caption](/html/2008.02217/assets/x2.png)
-
+!(/html/2008.02217/assets/x2.png)
 
 Figure 2: Left: A standard deep network with layers
 ( ■■\blacksquare) propagates
@@ -661,8 +616,7 @@ In our experiments in which we compare machine learning methods
 on small datasets of the UCI benchmark collection
 the layer Hopfield is also used.
 
-![Refer to caption](/html/2008.02217/assets/x3.png)
-
+!(/html/2008.02217/assets/x3.png)
 
 Figure 3: The layer Hopfield allows the association of two sets 𝑹𝑹\bm{R} ( ■■\blacksquare) and 𝒀𝒀\bm{Y} ( ■■\blacksquare).
 It can be integrated into deep networks that propagate sets of vectors.
@@ -705,8 +659,7 @@ See Fig. [4](#S3.F4 "Figure 4 ‣ Types of new Hopfield layers. ‣ 3 New Hopfi
 The layer HopfieldPooling is used for
 experiments with multiple instance learning tasks, e.g. for immune repertoire classification in the experiments.
 
-![Refer to caption](/html/2008.02217/assets/x4.png)
-
+!(/html/2008.02217/assets/x4.png)
 
 Figure 4: The layer HopfieldPooling enables
 pooling or summarization of sets,
@@ -757,8 +710,7 @@ In our experiments with the drug design benchmark datasets,
 the layer HopfieldLayer has been applied and compared to
 other machine learning methods.
 
-![Refer to caption](/html/2008.02217/assets/x5.png)
-
+!(/html/2008.02217/assets/x5.png)
 
 Figure 5: The layer HopfieldLayer enables
 multiple queries of the training set,
@@ -1114,7 +1066,6 @@ layers based on the new Hopfield networks and how to use them.
       2. [A.6.2 Functionality](#A1.SS6.SSS2 "In A.6 PyTorch Implementation of Hopfield Layers ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
       3. [A.6.3 Usage](#A1.SS6.SSS3 "In A.6 PyTorch Implementation of Hopfield Layers ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 
-
 ###### List of theorems
 
 1. [Theorem A1 (Global Convergence (Zangwill): Energy).](#ThmtheoremA1 "In A.1.4 Global Convergence of the Update Rule ‣ A.1 Continuous State Modern Hopfield Networks (A New Concept) ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
@@ -1128,7 +1079,6 @@ layers based on the new Hopfield networks and how to use them.
 9. [Theorem A9 (Exponentially Small Retrieval Error).](#ThmtheoremA9 "In A.1.6.2 Retrieval of Patterns with One Update and Small Retrieval Error. ‣ A.1.6 Properties of Fixed Points Near Stored Pattern ‣ A.1 Continuous State Modern Hopfield Networks (A New Concept) ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 10. [Theorem A10 (Storage Capacity for Binary Modern Hopfield Nets (Demircigil et al. 2017)).](#ThmtheoremA10 "In A.3.2 Energy and Update Rule for Binary Modern Hopfield Networks ‣ A.3 Modern Hopfield Networks: Binary States (Krotov and Hopfield) ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 
-
 ###### List of definitions
 
 1. [Definition A1 (Softmax).](#ThmdefinitionA1 "In A.2 Properties of Softmax, Log-Sum-Exponential, Legendre Transform, Lambert W Function ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
@@ -1137,7 +1087,6 @@ layers based on the new Hopfield networks and how to use them.
 4. [Definition A4 (Legendre Transform).](#ThmdefinitionA4 "In A.2 Properties of Softmax, Log-Sum-Exponential, Legendre Transform, Lambert W Function ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 5. [Definition A5 (Epi-Sum).](#ThmdefinitionA5 "In A.2 Properties of Softmax, Log-Sum-Exponential, Legendre Transform, Lambert W Function ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 6. [Definition A6 (Lambert Function).](#ThmdefinitionA6 "In A.2 Properties of Softmax, Log-Sum-Exponential, Legendre Transform, Lambert W Function ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
-
 
 ###### List of figures
 
@@ -1206,7 +1155,6 @@ layers based on the new Hopfield networks and how to use them.
 10. [A.5 Change of count density during training](#A1.F5 "Figure A.5In A.5.1 Experiment 1: Attention in Transformers described by Hopfield dynamics ‣ A.5 Experiments ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 11. [A.6 Attentions of a Gaussian averaging heads](#A1.F6 "Figure A.6In A.5.1 Experiment 1: Attention in Transformers described by Hopfield dynamics ‣ A.5 Experiments ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
 12. [A.7 A flowchart of the Hopfield layer](#A1.F7 "Figure A.7In A.6 PyTorch Implementation of Hopfield Layers ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")
-
 
 ###### List of tables
 
@@ -1875,8 +1823,7 @@ A rigorous formulation of the results can be found in the corresponding subsecti
    Iterations that start near the metastable state converge
    to this metastable state.
 
-![Refer to caption](/html/2008.02217/assets/x6.png)
-
+!(/html/2008.02217/assets/x6.png)
 
 Figure A.1: The three cases of fixed points.
 a) Stored patterns (fixed point is single pattern):
@@ -6865,8 +6812,7 @@ in deep network architectures,
 which we introduce via specific layers
 in the next section. The right part of Eq. ([548](#A1.E548 "In A.4 Hopfield Update Rule is Attention of The Transformer ‣ Appendix A Appendix ‣ Hopfield Networks is All You Need")) serves as starting point for these specific layers.
 
-![Refer to caption](/html/2008.02217/assets/x7.png)
-
+!(/html/2008.02217/assets/x7.png)
 
 Figure A.2: We generalized
 the energy
@@ -6899,8 +6845,7 @@ is abundant in lower layers.
 Similar observations have been reported in other studies (Toneva & Wehbe, [2019a](#bib.bib93); [b](#bib.bib94); Tay et al., [2020](#bib.bib92)).
 Operating class (III) (medium metastable states) is predominant in the last layers.
 
-![Refer to caption](/html/2008.02217/assets/x8.png)
-
+!(/html/2008.02217/assets/x8.png)
 
 Figure A.3: Analysis of operating modes of the heads of a pre-trained BERT model.
 For each head in each layer, the distribution of the minimal number
@@ -6965,20 +6910,17 @@ We can see that
 the attention
 in heads of Class IV remain almost unchanged during the rest of the training.
 
-![Refer to caption](/html/2008.02217/assets/x9.png)
-
+!(/html/2008.02217/assets/x9.png)
 
 Figure A.4: Left: Ridge plots of the distribution of counts k𝑘k over time for BERT-small Right: Violin plot of counts k𝑘k after 1,450000
 
 14500001,450000 steps, divided into the four classes from the main paper. The thresholds were adapted to the shorter sequence length.
 
-
-
-![Refer to caption](/html/2008.02217/assets/x10.png)
+!(/html/2008.02217/assets/x10.png)
 
 (a) Densities
 
-![Refer to caption](/html/2008.02217/assets/x11.png)
+!(/html/2008.02217/assets/x11.png)
 
 (b) Norm of Jacobian
 
@@ -7049,8 +6991,7 @@ A recently proposed input independent replacement for self-attention is the so c
 (Tay et al., [2020](#bib.bib92)). Here the softmaxsoftmax\mathrm{softmax}-attention is directly parametrized with an N×N𝑁𝑁N\times N
 matrix. This amounts to 0.5⋅N⋅0.5𝑁0.5\cdot N more parameters than Gaussian averaging.
 
-![Refer to caption](/html/2008.02217/assets/x12.png)
-
+!(/html/2008.02217/assets/x12.png)
 
 Figure A.6: Attentions of a Gaussian averaging head at initialization for sequence length N=128𝑁128N=128. Every line depicts one Gaussian kernel. Here, the location parameters are initialized with the value of the supporting points μi=sisubscript𝜇𝑖subscript𝑠𝑖\mu\_{i}=s\_{i}.
 
@@ -7797,8 +7738,7 @@ We allow for three different pattern normalizations, where the first is the defa
 
   no pattern normalization.
 
-![Refer to caption](/html/2008.02217/assets/x13.png)
-
+!(/html/2008.02217/assets/x13.png)
 
 Figure A.7: 
 A flowchart of the Hopfield layer.
@@ -8651,83 +8591,3 @@ The Hopfield layer can be used to implement or to substitute different layers:
   *Proceedings of the IEEE international conference on computer
   vision*, pp.  19–27, 2015.
   arXiv 1506.06724.
-
-[◄](/html/2008.02216)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2008.02217)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2008.02217)
-[View original  
-on arXiv](https://arxiv.org/abs/2008.02217)[►](/html/2008.02218)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 13 10:37:52 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

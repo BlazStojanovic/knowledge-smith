@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2512.10858
 year: 2025
 ---
 
-[2512.10858] Scaling Behavior of Discrete Diffusion Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Scaling Behavior of Discrete Diffusion Language Models
 
 Dimitri von Rütte\* 1, Janis Fluri, Omead Pooladzandi, Bernhard Schölkopf1 2 3,
@@ -80,8 +37,7 @@ While all noise types converge to similar loss values in compute-bound scaling, 
 We scale our uniform diffusion model up to 10B parameters trained for 102210^{22} FLOPs, confirming the predicted scaling behavior and making it the largest publicly known uniform diffusion model to date.
 Training code and models are open-source: <https://github.com/dvruette/gidd-easydel>
 
-![Refer to caption](/html/2512.10858/assets/x1.png)
-
+!(/html/2512.10858/assets/x1.png)
 
 Figure 1: Our proposed scaling laws extrapolate well to 3B and 10B models trained on up to 50×\times larger compute budgets and suggest that DLMs can be competitive with ALMs at scale, even in compute-bound training settings.222Our bpb values are not directly comparable to those of autoregressive models since our value is a mixture of conditional and unconditional likelihoods.
 
@@ -108,9 +64,9 @@ Furthermore, prior work on scaling MDMs (Nie et al., [2025a](#bib.bib39)) makes
 In this work, we refine the strategy from Nie et al. ([2025a](#bib.bib39)) by putting additional care on tuning crucial hyperparameters and comparing both compute- and token-bound scaling laws for different noise types, including masked, uniform and hybrid-noise diffusion.
 Our contributions are three-fold:
 
-![Refer to caption](/html/2512.10858/assets/x2.png)
+!(/html/2512.10858/assets/x2.png)
 
-![Refer to caption](/html/2512.10858/assets/x3.png)
+!(/html/2512.10858/assets/x3.png)
 
 Figure 2: Compute-optimal token-to-parameter ratios as a function of model size can vary significantly for different training objectives: While ALMs generally call for more training tokens relative to parameters, as shown by Chinchilla (Hoffmann et al., [2022](#bib.bib23)), Llama 3 (Grattafiori et al., [2024](#bib.bib17)), and DeepSeek (Bi et al., [2024](#bib.bib5)), discrete diffusion models require comparatively more parameters. For masked diffusion, there is a noticeable disagreement between our results and the literature, with Nie et al. ([2025a](#bib.bib39)) predicting more parameter-heavy scaling and Ni et al. ([2025](#bib.bib38)) predicting more token-heavy scaling.
 
@@ -296,9 +252,9 @@ Following Hafner et al. ([2023](#bib.bib19)), we use LaProp (Ziyin et al., [20
 The learning rate is warmed up over the first 2000 steps of training and held constant, with most experiments not including a cooldown phase.
 For the experiments that do have a cooldown phase, we anneal the learning rate to 0 over the last 20% of training following the WSD schedule (Hu et al., [2024](#bib.bib24); Hägele et al., [2024](#bib.bib20)).
 
-![Refer to caption](/html/2512.10858/assets/x4.png)
+!(/html/2512.10858/assets/x4.png)
 
-![Refer to caption](/html/2512.10858/assets/x5.png)
+!(/html/2512.10858/assets/x5.png)
 
 Figure 3: 
 (left) The optimal batch size B∗B^{\*} of discrete diffusion model scales as a power law of training tokens rather than target loss, training FLOPs, or model size. Furthermore, the scaling is close to linear with an exponent of 0.820.82. (right) The optimal learning rate η∗\eta^{\*} also follows a power law in batch size (assuming that batch size is optimal) with a scaling exponent of 0.340.34.
@@ -317,13 +273,11 @@ Due to the predictability of the optimal learning rate, we sweep between only 2�
 Across all five noise types the resulting grid search spans 510 runs.
 See App. [A.3](#A1.SS3 "A.3 Sweep Configuration ‣ Appendix A Additional Results ‣ Scaling Behavior of Discrete Diffusion Language Models") for details.
 
-![Refer to caption](/html/2512.10858/assets/x6.png)
+!(/html/2512.10858/assets/x6.png)
 
-![Refer to caption](/html/2512.10858/assets/x7.png)
+!(/html/2512.10858/assets/x7.png)
 
 Figure 4: Comparing the scaling laws of different noise types reveals that all noise types approximately converge in the compute-constrained settings (left) while uniform diffusion out-scales other noise types in token-constrained settings (right). Furthermore, the extrapolations remains accurate even up to 50×\times larger compute budgets than what they were fitted on.
-
-
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -372,18 +326,15 @@ Furthermore, while absolute loss values are difficult to compare between differe
 This suggests that DLMs may be competitive with ALMs at scale, a trend that is corroborated by Nie et al. ([2025b](#bib.bib40)).
 Downstream performance of our models, as measured by a range of standard NLP benchmarks, is reported in Appendix [A.1](#A1.SS1 "A.1 Downstream Evaluations ‣ Appendix A Additional Results ‣ Scaling Behavior of Discrete Diffusion Language Models").
 
-![Refer to caption](/html/2512.10858/assets/x8.png)
-
+!(/html/2512.10858/assets/x8.png)
 
 (a)
 
-![Refer to caption](/html/2512.10858/assets/x9.png)
-
+!(/html/2512.10858/assets/x9.png)
 
 (b)
 
-![Refer to caption](/html/2512.10858/assets/x10.png)
-
+!(/html/2512.10858/assets/x10.png)
 
 (c)
 
@@ -826,8 +777,6 @@ This is impossible for masked diffusion without remasking, as it is forced to fu
 
 Table 2: Downstream performance of our scaled models generally correlates with ELBO, with the 3B masked model slightly outperforming the 3B uniform model on average.
 
-
-
 | Model | Ancestral (T=256T=256) | Adaptive (T=128T=128) | Adaptive (T=256T=256) |
 | --- | --- | --- | --- |
 | Masking 3B | 1.06 | 1.67 | – |
@@ -840,11 +789,11 @@ Table 3: Confidence-based, or adaptive, sampling improves accuracy on GSM8k noti
 
 We given an example of the discovered hyperbolic relation between batch size and step count in Figure [6](#A1.F6 "Figure 6 ‣ A.2 Relation Between Batch Size and Step Count ‣ Appendix A Additional Results ‣ Scaling Behavior of Discrete Diffusion Language Models").
 
-![Refer to caption](/html/2512.10858/assets/x11.png)
+!(/html/2512.10858/assets/x11.png)
 
-![Refer to caption](/html/2512.10858/assets/x12.png)
+!(/html/2512.10858/assets/x12.png)
 
-![Refer to caption](/html/2512.10858/assets/x13.png)
+!(/html/2512.10858/assets/x13.png)
 
 Figure 6: (left, middle) There appears to be a tight relationship between batch sizes and step counts achieving the same loss, with iso-loss curves following a hyperbolic relation. (right) The minimum batch size and step count, as per the asymptotes of the fitted hyperbolas, grow with what appears to be a power law in the target loss, implying that as we get closer to the minimum achievable loss, the minimum required step count, but especially the minimum batch size, grow to large values. Here we display runs of a 85M (L12-D768) model trained on balanced hybrid noise.
 
@@ -859,8 +808,6 @@ Figure 6: (left, middle) There appears to be a tight relationship between batch 
 | L20-D1536 | 566.7M | 131072 | 20 | 1536 | 12 |
 
 Table 4: Overview of the five different model sizes that were used in our experiments. Parameter counts refer to non-embedding parameters.
-
-
 
 |  |  |
 | --- | --- |
@@ -944,18 +891,15 @@ The existence of such a batch size is well-established for autoregressive models
 Further, these findings may not generalize to multi-epoch training setups, as we operate in the sub-epoch training regime where overfitting is not a concern.
 Further research will be required to understand how optimal and critical batch sizes behave in multi-epoch training for both DLMs and ALMs.
 
-![Refer to caption](/html/2512.10858/assets/x14.png)
-
+!(/html/2512.10858/assets/x14.png)
 
 Figure 7: Optimal batch size as a function of training tokens grouped by noise type.
 
-![Refer to caption]()
-
+!()
 
 Figure 8: Optimal learning rate as a function of (optimal) batch size grouped by noise type.
 
-![Refer to caption](/html/2512.10858/assets/x16.png)
-
+!(/html/2512.10858/assets/x16.png)
 
 Figure 9: Optimal learning rate η∗\eta^{\*} as a function of training steps split by noise type and colored by batch size (between 8 and 512 sequences, brighter is larger) reveals that η∗\eta^{\*} appears to follow a power law in training steps for each batch size. Model sizes are indicated by different markers.
 
@@ -1046,13 +990,9 @@ Table [8](#A4.T8 "Table 8 ‣ Appendix D Scaling Coefficients ‣ Scaling Behav
 Figures [11](#A4.F11 "Figure 11 ‣ Appendix D Scaling Coefficients ‣ Scaling Behavior of Discrete Diffusion Language Models") and [12](#A4.F12 "Figure 12 ‣ Appendix D Scaling Coefficients ‣ Scaling Behavior of Discrete Diffusion Language Models") visualize all data points and the fitted scaling trends along with 95% confidence intervals for the smoothed and raw data respectively.
 Finally, Table [9](#A4.T9 "Table 9 ‣ Appendix D Scaling Coefficients ‣ Scaling Behavior of Discrete Diffusion Language Models") reports all scaling coefficients fitted to a power-law hypothesis which includes an irreducible term.
 
-![Refer to caption](/html/2512.10858/assets/x17.png)
-
+!(/html/2512.10858/assets/x17.png)
 
 Figure 10: The fitted scaling coefficients differ systematically between FLOP estimation techniques: Method 1 uses the FLOP estimation technique proposed by Bi et al. ([2024](#bib.bib5)) whereas method 2 uses the classic approach by Hoffmann et al. ([2022](#bib.bib23)). Furthermore, fitting on interpolated data (squared fit) produces tighter confidence bounds and better scaling exponents. Shaded regions denote 95% confidence intervals obtained via standard bootstrapping on the aggregated data points.
-
-
-
 
 Table 7: 
 Compute-constrained scaling coefficients for all noise types, metrics, and methodologies, obtained by fitting the power law A​CαAC^{\alpha} (where C=M​DC=MD) to the observed data. Method 1 uses the FLOP/tok estimation from Bi et al. ([2024](#bib.bib5)) while method 2 uses the classic M=6​PM=6P approximation (Hoffmann et al., [2022](#bib.bib23)). ‘raw’ interpolation refers to taking the optimal observed value for a given iso-FLOP target (i.e. no interpolation), whereas the ‘sq. fit’ data is obtained by fitting a parabola to the observed values and taking the optimum thereof. Smallest scaling coefficients are bolded.
@@ -1105,32 +1045,25 @@ Compute-constrained scaling coefficients for all noise types, metrics, and metho
 | high-uniform | sq. fit | 0.00011 | 0.63110 | 0.00019 | 0.62119 |
 | uniform | sq. fit | 0.00005 | 0.64820 | 0.00022 | 0.61776 |
 
+!(/html/2512.10858/assets/x18.png)
 
+!(/html/2512.10858/assets/x19.png)
 
-![Refer to caption](/html/2512.10858/assets/x18.png)
+!(/html/2512.10858/assets/x20.png)
 
-![Refer to caption](/html/2512.10858/assets/x19.png)
-
-![Refer to caption](/html/2512.10858/assets/x20.png)
-
-![Refer to caption](/html/2512.10858/assets/x21.png)
+!(/html/2512.10858/assets/x21.png)
 
 Figure 11: Compute-optimal scaling laws fitted to interpolated values (squared fit). The FLOP estimation methodologies by Bi et al. ([2024](#bib.bib5)) (Method 1) and Hoffmann et al. ([2022](#bib.bib23)) (Method 2) differ significantly since the FLOP-approximation used by Hoffmann et al. ([2022](#bib.bib23)) (M=6​PM=6P) systematically underestimates the total number of FLOPs executed during training.
 
+!(/html/2512.10858/assets/x22.png)
 
+!(/html/2512.10858/assets/x23.png)
 
-![Refer to caption](/html/2512.10858/assets/x22.png)
+!(/html/2512.10858/assets/x24.png)
 
-![Refer to caption](/html/2512.10858/assets/x23.png)
-
-![Refer to caption](/html/2512.10858/assets/x24.png)
-
-![Refer to caption](/html/2512.10858/assets/x25.png)
+!(/html/2512.10858/assets/x25.png)
 
 Figure 12: Compute-optimal scaling laws fitted on non-interpolated observations. Compared to interpolated values, the optimal observed values can deviate significantly from the compute-optimal trend due to the small number of unique model sizes used in the sweep. Method 1 uses the FLOP estimation technique from Bi et al. ([2024](#bib.bib5)), whereas Method 2 follows Hoffmann et al. ([2022](#bib.bib23)).
-
-
-
 
 Table 8: Goodness of fit (as per R2R^{2}) for all noise types, metrics, and methodologies. Interpolated values (‘sq. fit’) generally yield a better fit due to the smoothing effect of interpolation, with the exception for the loss, where ‘raw’ values are already rather smooth.
 
@@ -1160,9 +1093,6 @@ Table 8: Goodness of fit (as per R2R^{2}) for all noise types, metrics, and meth
 | balanced | 0.9996 | 0.9997 | 0.9998 | 0.9997 |
 | high-uniform | 0.9998 | 0.9995 | 0.9997 | 0.9993 |
 | uniform | 0.9996 | 0.9998 | 0.9995 | 0.9997 |
-
-
-
 
 Table 9: 
 Scaling coefficients with intercept, obtained by fitting the power law A​Cα+EAC^{\alpha}+E to the data. The fits almost always have E≈0E\approx 0, except for the uninterpolated loss values (‘raw’), leading us to conclude that setting E=0E=0 is a valid assumption for our setting.
@@ -1214,83 +1144,3 @@ Scaling coefficients with intercept, obtained by fitting the power law A​Cα+E
 | balanced | sq. fit | 0.0007 | 0.5888 | 0.0031 | 0.0019 | 0.5685 | 0.0068 |
 | high-uniform | sq. fit | 0.0001 | 0.6311 | 0.0009 | 0.0002 | 0.6212 | 0.0021 |
 | uniform | sq. fit | 0.0001 | 0.6482 | 0.0008 | 0.0002 | 0.6178 | 0.0083 |
-
-[◄](/html/2512.10857)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.10858)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.10858)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.10858)[►](/html/2512.10859)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 11:45:54 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

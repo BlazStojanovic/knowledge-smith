@@ -13,54 +13,6 @@ url: https://arxiv.org/abs/2603.09951
 year: 2026
 ---
 
-[2603.09951] Towards a Neural Debugger for Python
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\contribution
-
-∗Work done during an internship at Meta FAIR
-
 # Towards a Neural Debugger for Python
 
 Maximilian Beck1,∗
@@ -127,8 +79,7 @@ Our 32 B32\text{\,}\mathrm{B} parameter neural debugger consistently achieves f
 In addition, neural debuggers exhibit strong transfer to CruxEval output and input prediction tasks (gu2024cruxeval), demonstrating their enhanced code understanding and interpretation capabilities.
 In particular, our 1.8 B1.8\text{\,}\mathrm{B}-parameter neural debugger LLM, trained from scratch on 150 B150\text{\,}\mathrm{B} tokens, attains CruxEval input and output pass@1 scores of 53.6 53.6\text{\,} and 57.7 57.7\text{\,}, respectively, while our finetuned 32 B32\text{\,}\mathrm{B}-parameter neural debugger LLM reaches scores of 66.5 66.5\text{\,} and 83.2 83.2\text{\,}, respectively.
 
-![Refer to caption](/html/2603.09951/assets/x1.png)
-
+!(/html/2603.09951/assets/x1.png)
 
 Figure 1: Neural Debugger Data Pipeline.
 Our pipeline prepares training data for neural debuggers by transforming stack-frame sequences recorded via sys.settrace in three steps: (1) we construct a state tree (Section [4.1](#S4.SS1 "4.1 Formulating the debugger as an MDP ‣ 4 Neural debugger ‣ Towards a Neural Debugger for Python")) from frame events; (2) we sample trajectories by traversing the state tree using a data-generating action policy; and (3) we tokenize each trajectory using our formal neural debugger language grammar (Section [4.2](#S4.SS2 "4.2 Formal language for neural debuggers ‣ 4 Neural debugger ‣ Towards a Neural Debugger for Python")).
@@ -188,8 +139,7 @@ Finally, we present our practical implementation of the debugger data pipeline, 
 
 ### 4.1 Formulating the debugger as an MDP
 
-![Refer to caption](/html/2603.09951/assets/x2.png)
-
+!(/html/2603.09951/assets/x2.png)
 
 Figure 2: 
 State-action structure of Code World Model (CWM) and neural debuggers.
@@ -229,8 +179,7 @@ Since the recorded program state sequences contain information about runtime eve
 Specifically, we build a tree data structure that inserts program states belonging to one function call as children of the calling line event node while still retaining the sequential order of the program states.
 In this way, the depth of a node in the tree corresponds to the depth of the call stack at the given program state (see Figure [3](#S4.F3 "Figure 3 ‣ State tree. ‣ 4.1 Formulating the debugger as an MDP ‣ 4 Neural debugger ‣ Towards a Neural Debugger for Python")).
 
-![Refer to caption](/html/2603.09951/assets/x3.png)
-
+!(/html/2603.09951/assets/x3.png)
 
 Figure 3: 
 Transition model. We visualize the state transitions as traversal on the forward and inverse state tree.
@@ -289,8 +238,7 @@ The boundaries between elements are marked by special separator tokens.
 Forward and inverse traces differ in their special event and action tokens, as well as in aspects of the state format.
 The detailed structure of states and actions is described in Section [4.1](#S4.SS1 "4.1 Formulating the debugger as an MDP ‣ 4 Neural debugger ‣ Towards a Neural Debugger for Python").
 
-![Refer to caption](/html/2603.09951/assets/x4.png)
-
+!(/html/2603.09951/assets/x4.png)
 
 Figure 4: 
 Formal neural debugger language grammar. | indicates an OR-statement, {} indicate none or more elements, and : denotes an assignment. Whitespaces are shown for illustration purposes only. <|.|> indicate special tokens, LOCALS is the local variable dictionary, ARGS are return or exception arguments, and SRC denotes the source line.
@@ -334,8 +282,7 @@ However, program state event statistics and average token sequence lengths diffe
 This is primarily due to larger local variable dictionaries and the presence of more arbitrary Python objects in repository-level executions.
 The following experiments use a mixture of function- and repository-level trajectories in both forward and inverse directions.
 
-![Refer to caption](/html/2603.09951/assets/x5.png)
-
+!(/html/2603.09951/assets/x5.png)
 
 Figure 5: 
 Average token, action and event counts of forward debugger trajectory datasets. We show the mean function-level counts in turquoise and the repository-level counts in yellow, with the boxes indicating the 25% and 90% range. While the average action counts are similar due to the same action policy, repository-level trajectories contain more function calls, more exceptions, and longer token sequences.
@@ -359,13 +306,11 @@ Further training details are provided in Appendix [B.1](#A2.SS1 "B.1 Training re
 
 ### 5.1 Finetuning and pre-training neural debuggers
 
-![Refer to caption](/html/2603.09951/assets/x6.png)
-
+!(/html/2603.09951/assets/x6.png)
 
 (a)
 
-![Refer to caption](/html/2603.09951/assets/x7.png)
-
+!(/html/2603.09951/assets/x7.png)
 
 (b)
 
@@ -417,13 +362,11 @@ This indicates that predicting variables values is harder than predicting contro
 Note that, similar to the previous section, em\_locals@1 does for inv\_step\_call actions in Figure [7(b)](#S5.F7.sf2 "Figure 7(b) ‣ Figure 7 ‣ Source lines & state events are predicted reliably; local variables contain errors. ‣ 5.2 Next program state prediction by state component ‣ 5 Experimental results ‣ Towards a Neural Debugger for Python") and [2(b)](#A2.F2.sf2 "Figure 2(b) ‣ Figure B.2 ‣ B.2 Extended next state prediction results ‣ Appendix B Extended experiments ‣ Towards a Neural Debugger for Python"), it does not account for ambiguities in inverse execution prediction (see Section [A.2](#A1.SS2 "A.2 Evaluating Inverse Execution Prediction ‣ Appendix A Extended neural debugger ‣ Towards a Neural Debugger for Python")).
 Entries marked “N/A” indicate state components not present in a given trace element (see Figure [4](#S4.F4 "Figure 4 ‣ Neural debugger language grammar. ‣ 4.2 Formal language for neural debuggers ‣ 4 Neural debugger ‣ Towards a Neural Debugger for Python")).
 
-![Refer to caption](/html/2603.09951/assets/x8.png)
-
+!(/html/2603.09951/assets/x8.png)
 
 (a)
 
-![Refer to caption]()
-
+!()
 
 (b)
 
@@ -465,18 +408,15 @@ For both models, the finetuned 32 B32\text{\,}\mathrm{B} CWM neural debugger an
 Larger sampling budgets (higher kk) partially mitigate the accuracy drop, suggesting that test-time ensembling, majority voting, or resampling based on model uncertainty could serve as effective strategies to further improve neural debugger performance.
 We believe this result offers exciting avenues for future research: for example, one could investigate whether model uncertainties are suitable for deciding when to jump to return events, adaptively assigning inference compute based on program difficulty.
 
-![Refer to caption](/html/2603.09951/assets/x10.png)
-
+!(/html/2603.09951/assets/x10.png)
 
 (a)
 
-![Refer to caption](/html/2603.09951/assets/x11.png)
-
+!(/html/2603.09951/assets/x11.png)
 
 (b)
 
-![Refer to caption](/html/2603.09951/assets/x12.png)
-
+!(/html/2603.09951/assets/x12.png)
 
 (c)
 
@@ -532,8 +472,7 @@ In this way, neural debuggers tightly couple neural reasoning with executable pr
 
 ### A.1 Extended debugger trace dataset
 
-![Refer to caption](/html/2603.09951/assets/x13.png)
-
+!(/html/2603.09951/assets/x13.png)
 
 Figure A.1: 
 Length distributions of the debugger trace dataset. We show the length distribution histograms of debugger trajectories in number of tokens and actions, and show the distribution of the code length in number of characters.
@@ -601,13 +540,11 @@ In addition, we report the analogous results for the repository-level data.
 
 In Figure [B.1](#A2.F1 "Figure B.1 ‣ B.2 Extended next state prediction results ‣ Appendix B Extended experiments ‣ Towards a Neural Debugger for Python"), we show the evolution of the next state prediction accuracy per debugger action on the repository-level validation set during training.
 
-![Refer to caption](/html/2603.09951/assets/x14.png)
-
+!(/html/2603.09951/assets/x14.png)
 
 (a)
 
-![Refer to caption](/html/2603.09951/assets/x15.png)
-
+!(/html/2603.09951/assets/x15.png)
 
 (b)
 
@@ -615,13 +552,11 @@ Figure B.1: Evolution of the exact match (em) next state prediction accuracy per
 
 In Figure [B.2](#A2.F2 "Figure B.2 ‣ B.2 Extended next state prediction results ‣ Appendix B Extended experiments ‣ Towards a Neural Debugger for Python"), we show the next state prediction results by state component per debugger action on the repository-level validation set.
 
-![Refer to caption](/html/2603.09951/assets/x16.png)
-
+!(/html/2603.09951/assets/x16.png)
 
 (a)
 
-![Refer to caption](/html/2603.09951/assets/x17.png)
-
+!(/html/2603.09951/assets/x17.png)
 
 (b)
 
@@ -1034,83 +969,3 @@ return n
 (b) Inverse debugger trace.
 
 Figure C.1: An example of a forward and inverse debugger trace for a function counting the occurrences of t in s. We take only step\_into or inv\_step\_into actions to visit every frame. While the forward debugger trace is deterministic given its inputs, the inverse debugger trace with return argument n=2 is an example with infinitely many input combinations for s and t.
-
-[◄](/html/2603.09950)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.09951)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.09951)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.09951)[►](/html/2603.09952)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Apr 5 18:50:20 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

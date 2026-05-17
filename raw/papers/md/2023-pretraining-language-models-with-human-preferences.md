@@ -17,50 +17,6 @@ url: https://arxiv.org/abs/2302.08582
 year: 2023
 ---
 
-[2302.08582] Pretraining Language Models with Human Preferences
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Pretraining Language Models with Human Preferences
 
 Tomasz Korbak
@@ -90,7 +46,7 @@ Machine Learning, ICML
 
 ## 1 Introduction
 
-![Refer to caption](/html/2302.08582/assets/x1.png)
+!(/html/2302.08582/assets/x1.png)
 
 Conventional LM pretraining    Pretraining with feedback
   
@@ -245,29 +201,27 @@ Conditional 
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x2.png)
+!(/html/2302.08582/assets/x2.png)
 
-![Refer to caption](/html/2302.08582/assets/x3.png)
+!(/html/2302.08582/assets/x3.png)
 
-![Refer to caption](/html/2302.08582/assets/x4.png)
-
+!(/html/2302.08582/assets/x4.png)
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x5.png)
+!(/html/2302.08582/assets/x5.png)
 
-![Refer to caption](/html/2302.08582/assets/x6.png)
+!(/html/2302.08582/assets/x6.png)
 
-![Refer to caption](/html/2302.08582/assets/x7.png)
-
+!(/html/2302.08582/assets/x7.png)
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x8.png)
+!(/html/2302.08582/assets/x8.png)
 
-![Refer to caption](/html/2302.08582/assets/x9.png)
+!(/html/2302.08582/assets/x9.png)
 
-![Refer to caption](/html/2302.08582/assets/x10.png)
+!(/html/2302.08582/assets/x10.png)
 
 Figure 2: KL from GPT-3 and average misalignment score of LM samples for MLE and PHF objectives (lower is better). We show KL from GPT-3 versus average score on a scatter plot (first column) and also each of these two metrics over training time (with log-log axes; second and third columns). Conditional training (orange) is either strictly optimal (toxicity, PEP8) or on the Pareto frontier (PII) of PHF objectives
 
@@ -300,17 +254,15 @@ Conditional 
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x11.png)
-
+!(/html/2302.08582/assets/x11.png)
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x12.png)
-
+!(/html/2302.08582/assets/x12.png)
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x13.png)
+!(/html/2302.08582/assets/x13.png)
 
 Figure 3: Average misalignment score of LM responses to adversarial prompts in the pool found in the course of red-teaming. With each additional round, more optimization pressure is applied to the search for adversarial prompts. A target LM is considered more robust when its misalignment score increases at a slower rate.
 
@@ -359,23 +311,21 @@ For PEP8, we report pass@10 and pass@100 on HumanEval (Chen et al., [2021b](#bi
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x14.png)
+!(/html/2302.08582/assets/x14.png)
 
-![Refer to caption]()
-
+!()
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x16.png)
+!(/html/2302.08582/assets/x16.png)
 
-![Refer to caption](/html/2302.08582/assets/x17.png)
-
+!(/html/2302.08582/assets/x17.png)
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x18.png)
+!(/html/2302.08582/assets/x18.png)
 
-![Refer to caption](/html/2302.08582/assets/x19.png)
+!(/html/2302.08582/assets/x19.png)
 
 Figure 4: GLUE and zero-shot evaluation results (higher is better). Conditional training (orange) tends to match MLE’s (blue) performance.
 
@@ -391,17 +341,13 @@ Finally, on HumanEval, the capabilities gap between MLE and PHF methods is wider
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x20.png)
-
+!(/html/2302.08582/assets/x20.png)
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x21.png)
-
+!(/html/2302.08582/assets/x21.png)
 
 Figure 5: Difference in diversity (token entropy) and degeneration frequency (distinct tokens) compared to MLE (higher is better).
-
-
 
 MLE 
 Conditional 
@@ -416,11 +362,11 @@ Task: PII
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x22.png)
+!(/html/2302.08582/assets/x22.png)
 
-![Refer to caption](/html/2302.08582/assets/x23.png)
+!(/html/2302.08582/assets/x23.png)
 
-![Refer to caption](/html/2302.08582/assets/x24.png)
+!(/html/2302.08582/assets/x24.png)
 
 Figure 6: Misalignment score over training time for finetuning with feedback. We report finetuning from a model trained on 1.6B tokens using MLE (dashed line) and finetuning from a model trained on 2.9B tokens using MLE (dotted line).
 For comparison, we also plot MLE pretraining and conditional pretraining (solid lines). We grayed out finetuning runs with worse results for clarity. On all tasks, neither finetuning run matches conditional pretraining’s scores.
@@ -450,17 +396,15 @@ Pretraining    Finetuning from MLE for 1.6B tokens
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x25.png)
-
+!(/html/2302.08582/assets/x25.png)
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x26.png)
-
+!(/html/2302.08582/assets/x26.png)
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x27.png)
+!(/html/2302.08582/assets/x27.png)
 
 Figure 7: Average misalignment score (lower is better) of LM responses to adversarial prompts in the pool found in the course of red-teaming, for models pretrained with conditional training (solid lines) and only finetuned with conditional training (dashed and dotted lines); lower is better. Pretraining with feedback for the whole time is always better than only using feedback with final 330M tokens, and tends to be better than using feedback only with the final 1.6B tokens.
 
@@ -1279,13 +1223,11 @@ In our finetuning experiments, conditional training requires extending the vocab
 
 As discussed in §[3](#S3 "3 Experimental Setup ‣ Pretraining Language Models with Human Preferences"), we keep the original hyperparameters of gpt2-small except for learning rate and batch size. We tune learning rate and batch size for each task-objective pair based on train loss. If an objective has it own hyperparameters (e.g. t𝑡t, α𝛼\alpha or β𝛽\beta), we first tune learning rate and batch size for each (t,α,β)𝑡𝛼𝛽(t,\alpha,\beta) configuration considered and then chose the best (t,α,β)𝑡𝛼𝛽(t,\alpha,\beta) configuration based on misalignment score of LM samples and KL from GPT-3 (§[4.1](#S4.SS1 "4.1 Capabilities-Alignment Trade-offs ‣ 4 Pretraining Experiments ‣ Pretraining Language Models with Human Preferences")). We swept over a fixed set of learning rates and batch sizes, the same for each task-objective pair. See Fig. [8](#A1.F8 "Figure 8 ‣ Hyperparameters ‣ Appendix A Hyperparameters and Implementation Details ‣ Pretraining Language Models with Human Preferences") for an ablation study showing the effect of threshold t𝑡t on capabilities-alignment trade-off in conditional training and filtering. We report hyperparameters we used in our experiments in Tables [1](#A1.T1 "Table 1 ‣ Hyperparameters ‣ Appendix A Hyperparameters and Implementation Details ‣ Pretraining Language Models with Human Preferences")-[3](#A1.T3 "Table 3 ‣ Hyperparameters ‣ Appendix A Hyperparameters and Implementation Details ‣ Pretraining Language Models with Human Preferences").
 
-![Refer to caption](/html/2302.08582/assets/x28.png)
-
+!(/html/2302.08582/assets/x28.png)
 
 (a) Conditional training
 
-![Refer to caption](/html/2302.08582/assets/x29.png)
-
+!(/html/2302.08582/assets/x29.png)
 
 (b) Filtering
 
@@ -1317,8 +1259,6 @@ Figure 8: Ablation over the threshold t𝑡t as used in conditional training and
 
 Table 1: Hyperparameters used in our Toxicity experiments
 
-
-
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
 | objective | LR | BS | t𝑡t | α𝛼\alpha | β𝛽\beta |
@@ -1344,8 +1284,6 @@ Table 1: Hyperparameters used in our Toxicity experiments
 (b) Finetuning for 1.6B tokens (§[5](#S5 "5 Finetuning with Human Feedback ‣ Pretraining Language Models with Human Preferences"))
 
 Table 2: Hyperparameters used in our PII experiments
-
-
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
@@ -1428,8 +1366,6 @@ Reported results are averages from ten independent trials, each involving ten ro
 
 Table 4: Prompts for the red LM, containing an instruction and few-shot examples, used in our red-teaming procedure.
 
-
-
 MLE 
 Conditional 
  Filtering 
@@ -1437,58 +1373,47 @@ Conditional 
  RWR 
  AWR
 
-![Refer to caption](/html/2302.08582/assets/x30.png)
-
+!(/html/2302.08582/assets/x30.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x31.png)
-
+!(/html/2302.08582/assets/x31.png)
 
 (b) PII
 
-![Refer to caption](/html/2302.08582/assets/x32.png)
-
+!(/html/2302.08582/assets/x32.png)
 
 (c) PEP8
 
 Figure 9: Average misalignment score of target LM responses to trigger prompts generated in a given round; lower is better.
 
-![Refer to caption](/html/2302.08582/assets/x33.png)
-
+!(/html/2302.08582/assets/x33.png)
 
 (d) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x34.png)
-
+!(/html/2302.08582/assets/x34.png)
 
 (e) PII
 
-![Refer to caption](/html/2302.08582/assets/x35.png)
-
+!(/html/2302.08582/assets/x35.png)
 
 (f) PEP8
 
 Figure 10: Average misalignment score of target LM responses to the best trigger found in the pool at the end of the procedure
 
-![Refer to caption](/html/2302.08582/assets/x36.png)
-
+!(/html/2302.08582/assets/x36.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x37.png)
-
+!(/html/2302.08582/assets/x37.png)
 
 (b) PII
 
-![Refer to caption](/html/2302.08582/assets/x38.png)
-
+!(/html/2302.08582/assets/x38.png)
 
 (c) PEP8
 
 Figure 11: Average misalignment score of LM responses to the best trigger prompt generated in a given round of red-teaming
-
-
 
 Content warning: this table contains LM samples that are offensive in nature
 
@@ -1521,8 +1446,6 @@ Content warning: this table contains LM samples that are offensive in nature
 
 Table 5: Best adversarial prompts found in the course of red-teaming on LMs trained on toxicity using MLE, conditional training and unlikelihood. “avg score” refers to the average misalignment scores of target LM responses when conditioned on that prompt.
 
-
-
 |  |  |
 | --- | --- |
 | prompt | avg score |
@@ -1542,8 +1465,6 @@ Table 5: Best adversarial prompts found in the course of red-teaming on LMs trai
 (b) Conditional training
 
 Table 6: Best adversarial prompts found in the course of red-teaming on LMs trained on PII using MLE and conditional training. “avg score” (↓↓\downarrow is better) refers to the average misalignment scores of target LM responses when conditioned on that prompt.
-
-
 
 |  |  |
 | --- | --- |
@@ -1591,8 +1512,6 @@ For STS-B task, we clip the predicted scalars to range [0,5] to satisfy GLUE lea
 
 Table 8: Test set results of selected GLUE tasks by Toxicity models pretrained using 6 objectives.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | CoLA (↑↑\uparrow) | SST2 (↑↑\uparrow) | MRPC (↑↑\uparrow) | STSB (↑↑\uparrow) | QQP (↑↑\uparrow) | MNLI (↑↑\uparrow) | QNLI (↑↑\uparrow) | RTE (↑↑\uparrow) | avg (↑↑\uparrow) |
@@ -1605,8 +1524,6 @@ Table 8: Test set results of selected GLUE tasks by Toxicity models pretrained u
 
 Table 9: Test set results of selected GLUE tasks by PII models pretrained using 6 objectives.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | CoLA (↑↑\uparrow) | SST2 (↑↑\uparrow) | MRPC (↑↑\uparrow) | STSB (↑↑\uparrow) | QQP (↑↑\uparrow) | MNLI (↑↑\uparrow) | QNLI (↑↑\uparrow) | RTE (↑↑\uparrow) | avg (↑↑\uparrow) |
@@ -1617,18 +1534,15 @@ Table 10: Test set results for two baselines: OpenAI-pretrained GPT-2 and random
 
 ## Appendix D Additional results on scores of LM samples
 
-![Refer to caption](/html/2302.08582/assets/x39.png)
-
+!(/html/2302.08582/assets/x39.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x40.png)
-
+!(/html/2302.08582/assets/x40.png)
 
 (b) PII
 
-![Refer to caption](/html/2302.08582/assets/x41.png)
-
+!(/html/2302.08582/assets/x41.png)
 
 (c) PEP8
 
@@ -1641,35 +1555,29 @@ Conditional 
  RWR 
  AWR
 
-![Refer to caption](/html/2302.08582/assets/x42.png)
-
+!(/html/2302.08582/assets/x42.png)
 
 (d) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x43.png)
-
+!(/html/2302.08582/assets/x43.png)
 
 (e) PII
 
-![Refer to caption](/html/2302.08582/assets/x44.png)
-
+!(/html/2302.08582/assets/x44.png)
 
 (f) PEP8
 
 Figure 13: Expected maximum misalignment score (↓↓\downarrow is better; Gehman et al., [2020](#bib.bib27))of LM samples, i.e. maximum score expected in 25 samples
 
-![Refer to caption](/html/2302.08582/assets/x45.png)
-
+!(/html/2302.08582/assets/x45.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x46.png)
-
+!(/html/2302.08582/assets/x46.png)
 
 (b) PEP8
 
-![Refer to caption](/html/2302.08582/assets/x47.png)
-
+!(/html/2302.08582/assets/x47.png)
 
 (c) Toxicity; RealToxicityPrompts
 
@@ -1683,13 +1591,11 @@ Conditional 
  RWR 
  AWR
 
-![Refer to caption](/html/2302.08582/assets/x48.png)
-
+!(/html/2302.08582/assets/x48.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x49.png)
-
+!(/html/2302.08582/assets/x49.png)
 
 (b) PII
 
@@ -1705,29 +1611,27 @@ Conditional 
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x50.png)
+!(/html/2302.08582/assets/x50.png)
 
-![Refer to caption](/html/2302.08582/assets/x51.png)
+!(/html/2302.08582/assets/x51.png)
 
-![Refer to caption](/html/2302.08582/assets/x52.png)
-
+!(/html/2302.08582/assets/x52.png)
 
 Task: PII
 
-![Refer to caption](/html/2302.08582/assets/x53.png)
+!(/html/2302.08582/assets/x53.png)
 
-![Refer to caption](/html/2302.08582/assets/x54.png)
+!(/html/2302.08582/assets/x54.png)
 
-![Refer to caption](/html/2302.08582/assets/x55.png)
-
+!(/html/2302.08582/assets/x55.png)
 
 Task: PEP8
 
-![Refer to caption](/html/2302.08582/assets/x56.png)
+!(/html/2302.08582/assets/x56.png)
 
-![Refer to caption](/html/2302.08582/assets/x57.png)
+!(/html/2302.08582/assets/x57.png)
 
-![Refer to caption](/html/2302.08582/assets/x58.png)
+!(/html/2302.08582/assets/x58.png)
 
 Figure 16: KL from GPT-3 (↓↓\downarrow is better) and average misalignment score of LM samples (↓↓\downarrow is better) from models pretrained using MLE up to 1.6B tokens and then finetuning using each of five PHF objectives on each of three tasks. We show KL from GPT-3 versus average score on a scatter plot (first column) and also each of these two metrics over training time (with log-log axes; second and third columns). For a corresponding pretraining plot, see Fig. [2](#S4.F2 "Figure 2 ‣ 4 Pretraining Experiments ‣ Pretraining Language Models with Human Preferences") in main text. Note that conditional training starts at a different point (in columns 2 and 3) because extending LM’s vocabulary with two control tokens temporarily decreases performance (Hewitt, [2021](#bib.bib34)).
 
@@ -1735,18 +1639,15 @@ Pretraining 
 Finetuning from MLE for 1.6B tokens 
 Finetuning from MLE for 300M tokens
 
-![Refer to caption](/html/2302.08582/assets/x59.png)
-
+!(/html/2302.08582/assets/x59.png)
 
 (a) Toxicity
 
-![Refer to caption](/html/2302.08582/assets/x60.png)
-
+!(/html/2302.08582/assets/x60.png)
 
 (b) PII
 
-![Refer to caption](/html/2302.08582/assets/x61.png)
-
+!(/html/2302.08582/assets/x61.png)
 
 (c) PEP8
 
@@ -1762,86 +1663,6 @@ Conditional 
 
 Task: toxicity
 
-![Refer to caption](/html/2302.08582/assets/x62.png)
+!(/html/2302.08582/assets/x62.png)
 
 Figure 18: Misalignment score over training time for finetuning with feedback. We compare MLE finetuning from LM pretrained with Conditional on 1.6B tokens (dashed line) and Conditional finetuning from LM pretrained with MLE on 1.6B tokens (dotted line).
-
-[◄](/html/2302.08581)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2302.08582)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2302.08582)
-[View original  
-on arXiv](https://arxiv.org/abs/2302.08582)[►](/html/2302.08583)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 02:00:38 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

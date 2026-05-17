@@ -28,49 +28,6 @@ url: https://arxiv.org/abs/2604.26256
 year: 2026
 ---
 
-[2604.26256] DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training
 
 Tianhao Hu
@@ -195,18 +152,15 @@ where v​(⋅)v(\cdot) denotes the version number of a policy model. The stalen
 
 The training phase additionally requires the number of sampled trajectories to match the train batch size (T​B​STBS) specified by algorithm experts.
 
-![Refer to caption](/html/2604.26256/assets/x1.png)
-
+!(/html/2604.26256/assets/x1.png)
 
 Figure 1: Response length distribution in the RL training in the DAPO-Math-17K dataset.
 
-![Refer to caption](/html/2604.26256/assets/x2.png)
-
+!(/html/2604.26256/assets/x2.png)
 
 Figure 2: Response length distribution in the production. The stacked bar is due to the overlong truncation.
 
-![Refer to caption](/html/2604.26256/assets/x3.png)
-
+!(/html/2604.26256/assets/x3.png)
 
 Figure 3: Prefill duration of Longcat-Flash (team2025longcat) when EP is 128 on mid-end accelerators.
 
@@ -225,13 +179,11 @@ For the training efficiency, an RL training step consists of rollout (prefill + 
 
   Inference Efficiency: Rollout phase processes R​B​SRBS (Rollout Batch Size) prompts. Without substantially downgrading the rollout efficiency, each request incurs a compute-bound prefill (TprefillT\_{\text{prefill}}) and a memory-bound decode (TdecodeT\_{\text{decode}}) duration. Each device accommodates up to KK concurrent requests to avoid recomputation, constrained by accelerator memory (model footprint and KV-cache, which scales with sequence length). Under fixed batch size, the time per output token (TPOT) τ\tau is approximately constant.
 
-![Refer to caption](/html/2604.26256/assets/x4.png)
-
+!(/html/2604.26256/assets/x4.png)
 
 Figure 4: Skewed Bubbles in the Synchronous Training
 
-![Refer to caption](/html/2604.26256/assets/x5.png)
-
+!(/html/2604.26256/assets/x5.png)
 
 Figure 5: The non-EP general matrix multiplication is unbalanced when handling long-tailed inputs, and expert parallelism is 128.
 
@@ -271,8 +223,7 @@ Without loss of generality, we present DORA using a disaggregated architecture, 
 
 As shown in Figure [6](#S4.F6 "Figure 6 ‣ 4.1 System Overview ‣ 4 DORA Design ‣ DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training"), the workflow of our DORA system proceeds as follows. A RolloutManager dispatches prompts to rollout instances, tagging each with a policy version to enforce C1. Completed trajectories stream into an asynchronous TransferQueue equipped with staleness monitoring for staleness control. The Trainer consumes the number of T​B​STBS samples for experience preparation and model training, then synchronizes the latest weights with rollout instances. A Load-balancing orchestrator monitors per-version workloads and triggers resource re-partitioning and request migration as needed, preserving the intermediate execution state. Notably, these components run on different nodes and are primarily responsible for logic control and coordination via Remote Procedure Call (RPC), while workers running on accelerators execute the actual tasks.
 
-![Refer to caption](/html/2604.26256/assets/x6.png)
-
+!(/html/2604.26256/assets/x6.png)
 
 Figure 6: The execution timeline of DORA’s multi-version streaming training system.
 
@@ -292,8 +243,7 @@ While multi-version streaming satisfies C1–C3 and partially alleviates both bu
 *(i) Resource fragmentation.* We observe the orphan requests that the legacy version’s pending requests decrease monotonically, yet its bound resources remain fixed, leading to notable device underutilization. This motivates the dynamic orchestration described in Section [4.3](#S4.SS3 "4.3 Dynamic Resource Orchestration ‣ 4 DORA Design ‣ DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training").
 *(ii) Re-prefill overhead.* Migrating requests across DP groups naively re-triggers the full prefill phase—prohibitive for long-context scenarios (64k–128k tokens). This motivates the KV-Cache reuse mechanism in Section [4.4](#S4.SS4 "4.4 KV-Cache Reuse ‣ 4 DORA Design ‣ DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training"), which exploits the mathematical equivalence guaranteed by C1.
 
-![Refer to caption](/html/2604.26256/assets/x7.png)
-
+!(/html/2604.26256/assets/x7.png)
 
 Figure 7: The workflow of the Dynamic Resource Orchestration.
 
@@ -402,18 +352,15 @@ Training Configurations For the RL algorithm, we follow the setting of DAPO (yu2
 
 We evaluate DORA (k=3k=3) against all baselines on 64 and 128 GPUs, measuring the rollout time fraction, average wall-clock step time, and end-to-end throughput.
 
-![Refer to caption](/html/2604.26256/assets/x8.png)
-
+!(/html/2604.26256/assets/x8.png)
 
 Figure 8: Average RL step time across different training paradigms on Dense-32B.
 
-![Refer to caption](/html/2604.26256/assets/x9.png)
-
+!(/html/2604.26256/assets/x9.png)
 
 Figure 9: End-to-End Throughput across different training paradigms on Dense-32B.
 
-![Refer to caption](/html/2604.26256/assets/x10.png)
-
+!(/html/2604.26256/assets/x10.png)
 
 Figure 10: DORA vs. synchronous training in production using Longcat-Flash (team2025longcat), where the max response length is 64K.
 
@@ -428,8 +375,7 @@ On 64 GPUs, DORA achieves an average step time of 14.67 min, a 1.56×\times sp
 On 128 GPUs, DORA achieves 10.46 min per step, outperforming the synchronous (20.23 min) baseline by 1.93×\times, one-off by 1.34×\times, and partial rollout by 1.33×\times.
 Notably, DORA delivers these gains while satisfying all three algorithmic constraints (C1–C3), offering practitioners a paradigm that combines high efficiency with the standard RL formulation.
 
-![Refer to caption](/html/2604.26256/assets/x11.png)
-
+!(/html/2604.26256/assets/x11.png)
 
 Figure 11: Training reward scores for various training paradigms, and we utilize a staleness of 1 and 3 for the DORA system.
 
@@ -459,8 +405,7 @@ In this section, we quantify the system overheads introduced by DORA’s dynamic
 
 Orchestration Efficiency The Load-Balancing process—which encompasses requests monitoring, resource re-partitioning, and P2P weight synchronization—is highly efficient. At 64 GPUs, it accounts for only 0.414% of the total execution time. As the cluster scales to 128 GPUs, this overhead increases to 1.519%, reflecting the growing complexity of centralized coordination across a larger pool of rollout instances. Despite this slight increase, the orchestration cost remains marginal compared to the substantial throughput gains (as reported in Section [5.2](#S5.SS2 "5.2 Training Efficiency ‣ 5 Experiments and Analysis ‣ DORA: A Scalable Asynchronous Reinforcement Learning System for Language Model Training")) achieved through dynamic load balancing.
 
-![Refer to caption](/html/2604.26256/assets/x12.png)
-
+!(/html/2604.26256/assets/x12.png)
 
 Figure 12: System Overhead Analysis.
 
@@ -490,83 +435,3 @@ However, we acknowledge the absence of direct benchmarks against publicly availa
 ## 8 Conclusion
 
 We present DORA, a scalable asynchronous RL system that addresses the tension between training efficiency and algorithmic correctness in long-context scenarios. By formalizing asynchronous RL as a constrained optimization—maximizing rollout efficiency subject to intra-trajectory consistency (C1), data integrity (C2), and bounded staleness (C3)—DORA introduces multi-version streaming training, offering practitioners a new paradigm that combines high efficiency with the standard RL formulation. A key insight is that maintaining C1 yields KV-Cache equivalence across instances, enabling zero-re-prefill migration—an optimization uniquely enabled by maintaining strict policy consistency. Experiments in the open-source benchmarks demonstrate up to 8.2×\times rollout speedup and 2.12×2.12\times end-to-end acceleration over synchronous training with convergence parity, and industrial deployment over tens of thousands of accelerators produces the competitive open-source model.
-
-[◄](/html/2604.26255)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.26256)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.26256)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.26256)[►](/html/2604.26258)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:12:19 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

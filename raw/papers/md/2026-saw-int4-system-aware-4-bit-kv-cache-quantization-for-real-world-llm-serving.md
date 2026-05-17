@@ -20,49 +20,6 @@ url: https://arxiv.org/abs/2604.19157
 year: 2026
 ---
 
-[2604.19157] SAW-INT4: System-AWare 4-Bit KV-Cache Quantization for Real-World LLM Serving
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # SAW-INT4: System-AWare 4-Bit KV-Cache Quantization for Real-World LLM ServingThanks: Project lead.
 
 Jinda Jia
@@ -78,7 +35,6 @@ Jue Wang
   
 Tri Dao
   
-
 
 Affiliation: Shuaiwen Leon Song, Ben Athiwaratkun, Chenfeng Xu, Tianyi Zhang, Xiaoxia Wu22footnotemark: 2
 Affiliation:
@@ -146,14 +102,11 @@ Our finding is that Block-Diagonal Rotation (BDR) before token-wise INT4 quantiz
 
   Extensive evaluation across models and tasks. We validate our findings on Qwen3-4B, Qwen3-8B, Qwen3-32B, and GLM-4.7-FP8 across five reasoning and coding benchmarks (GPQA, HumanEval, LiveCodeBench, AIME25, MATH500), showing that the simplest serving-compatible approach—rotation plus token-wise INT4—consistently provides the best accuracy–efficiency trade-off across model scales.
 
-![Refer to caption](/html/2604.19157/assets/figures/Gemini_arch.png)
+!(/html/2604.19157/assets/figures/Gemini_arch.png)
 
-![Refer to caption](/html/2604.19157/assets/figures/Gemini_rotate.png)
+!(/html/2604.19157/assets/figures/Gemini_rotate.png)
 
 Figure 1: Overview of our system-aware INT4 KV-cache quantization framework (left) and rotate-quantize pipeline (right) for modern LLM serving.
-
-
-
 
 Table 1: Throughput on 2×H100 GPUs with 32 concurrent requests, each with an input length of 8192 tokens, output 1024 tokens. Here, TPS/User denotes tokens/s per user, and TPS/GPU denotes tokens/s per GPU. Acc is the mean computed over 5 tasks; each task is repeated 5 times.
 
@@ -193,8 +146,7 @@ Paged Memory Layouts: Modern systems (e.g., Kwon et al., [2023](#bib.bib18); Zh
 
   Channel-Wise Scaling: Because tokens span non-contiguous blocks, computing shared scaling factors across channels (e.g., Liu et al., [2024c](#bib.bib24)) requires highly inefficient cross-block memory access.
 
-![Refer to caption](/html/2604.19157/assets/figures/throughput_gap.png)
-
+!(/html/2604.19157/assets/figures/throughput_gap.png)
 
 Figure 2: Qwen3-8B Per-GPU throughput vs. batch size. More complex methods (e.g., Kitty) do not match the performance of unquantized SGLang BF16. All non-SGLang-BF16 throughput numbers are measured with Hugging Face model.generate. which lacks continuous batching and PagedAttention, underestimating their performance.
 
@@ -273,9 +225,6 @@ Hessian+BDR-128 denotes applying BDR-128 followed by Hessian-based quantization.
 KM (CC) denotes K-means (vector quantization) with CC centroids.
 KM + BDR-128 applies BDR-128 on top of KM with C=2048C=2048 (the KM-only result for C=2048C=2048 is shown above; other variants are omitted due to space constraints).
 
-
-
-
 Table 3: Expanded comparison on Qwen3-8B and GLM-4.7 (358B). Entries are μ±σ\mu\pm\sigma.
 
 |  |  |  |  |  |  |  |  |
@@ -347,8 +296,7 @@ Outside\_Kernel\_Rotation: unfused rotation overhead.
 
 ### 4.2 From Kernel Throughput to End-to-End Latency
 
-![Refer to caption](/html/2604.19157/assets/x1.png)
-
+!(/html/2604.19157/assets/x1.png)
 
 Figure 3: Effective bandwidth (GB/s) on H100 for the fused block rotate–quantize–save KV-cache kernel, grouped by sequence length, with H​e​a​d​D​i​m​e​n​s​i​o​n=128HeadDimension{=}128 and H​e​a​d​s=8Heads{=}8. Within each group, bars correspond to different Hadamard block orders h∈{16,32,64,128}h\in\{16,32,64,128\}.
 
@@ -360,13 +308,13 @@ This interpretation is consistent with the serving results in Figure [4](#S4.F4
 
 We further compare end-to-end throughput against k-means and Hessian-based methods and also include additional comparisons between our INT4 method and Kitty. The complete results are shown in Figure 7 and Figure 8 in Appendix D. Overall, rotation preserves the benefits of INT4 while substantially improving model quality, highlighting that end-to-end performance matters more than isolated kernel microbenchmarks.
 
-![Refer to caption](/html/2604.19157/assets/x2.png)
+!(/html/2604.19157/assets/x2.png)
 
-![Refer to caption](/html/2604.19157/assets/x3.png)
+!(/html/2604.19157/assets/x3.png)
 
-![Refer to caption](/html/2604.19157/assets/x4.png)
+!(/html/2604.19157/assets/x4.png)
 
-![Refer to caption](/html/2604.19157/assets/x5.png)
+!(/html/2604.19157/assets/x5.png)
 
 Figure 4: TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} versus per-GPU throughput (TPSsys/NGPU\mathrm{TPS}\_{\mathrm{sys}}/N\_{\mathrm{GPU}}). The top row shows Qwen3-4B and Qwen3-8B; the bottom row shows Qwen3-32B and GLM-4.7 (358B). INT4 + R128 consistently matches or slightly exceeds plain INT4 and outperforms BF16 across most operating regimes, showing that rotation preserves INT4 efficiency while improving model quality.
 
@@ -931,9 +879,6 @@ Table 6: Prefilling kernel profiling results (time in μ\mus) by category across
 | Others | 746.11 | 1457.63 | 2818.16 | 5631.24 | 11043.55 |
 | TOTAL | 7677.72 | 17961.98 | 40433.09 | 106477.68 | 313650.80 |
 
-
-
-
 Table 7: Decoding kernel profiling results (time in μ\mus) by category across different batch sizes (input length = 16k).
 
 |  |  |  |  |  |  |  |
@@ -1042,9 +987,6 @@ BDR refers to the Block Diagonal Rotation algorithm.
 Suffixes “(K)” and “(K&V)” indicate whether rotation is applied to key only or both key and value.
 All experiments use a maximum generation length of 32768 tokens.
 
-
-
-
 Table 9: Effect of centroid size under different rotation ranks on KV cache quantization (Qwen3-4B-Thinking-2507). Entries are μ±σ\mu\pm\sigma.
 
 |  |  |  |  |  |  |  |  |
@@ -1140,23 +1082,21 @@ INT4+BDR matches INT4 system TPS within ≤1%{\leq}1\% at all concurrency levels
 In summary, TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} can be misleading under memory-pressure conditions because it measures only the active decode phase and ignores queuing delays.
 TPSsys\mathrm{TPS}\_{\mathrm{sys}} (Eq. 17) is the appropriate metric for comparing serving efficiency across configurations with different KV cache memory footprints.
 
-![Refer to caption](/html/2604.19157/assets/x6.png)
+!(/html/2604.19157/assets/x6.png)
 
 (a) Long context: TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} vs. TTFT¯req\overline{\mathrm{TTFT}}\_{\mathrm{req}}.
 
-![Refer to caption](/html/2604.19157/assets/x7.png)
+!(/html/2604.19157/assets/x7.png)
 
 (b) Short context: TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} vs. TTFT¯req\overline{\mathrm{TTFT}}\_{\mathrm{req}}.
 
 Figure 5: TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} vs. TTFT¯req\overline{\mathrm{TTFT}}\_{\mathrm{req}} on 1×\timesH100 (Qwen3-8B). Marker shape encodes concurrency level; color encodes KV cache configuration (blue = BF16, red = INT4, green = INT4+BDR). Points to the right and lower are better. In the long-context regime at high concurrency, BF16 achieves artificially high TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} by running small batches due to its larger KV memory footprint, but pays a severe TTFT penalty; system-level throughput is shown separately.
 
-
-
-![Refer to caption](/html/2604.19157/assets/x8.png)
+!(/html/2604.19157/assets/x8.png)
 
 (a) Long context: system TPS (TPSsys\mathrm{TPS}\_{\mathrm{sys}}).
 
-![Refer to caption](/html/2604.19157/assets/x9.png)
+!(/html/2604.19157/assets/x9.png)
 
 (b) Short context: system TPS (TPSsys\mathrm{TPS}\_{\mathrm{sys}}).
 
@@ -1172,97 +1112,16 @@ All experiments use SGLang with FA3 prefill and Triton decode backends, KV cache
 We sweep concurrency from 1 to 256.
 Figure [7](#A4.F7 "Figure 7 ‣ Generalization across model sizes and hardware configurations. ‣ Appendix D Serving Throughput Under Concurrent Load ‣ SAW-INT4: System-AWare 4-Bit KV-Cache Quantization for Real-World LLM Serving") plots mean per-request output TPS (TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}}) against per-GPU system throughput (TPSsys/NGPU\mathrm{TPS}\_{\mathrm{sys}}/N\_{\mathrm{GPU}}), comparing BF16, INT4, and INT4+BDR (R128, key-only).
 
-![Refer to caption](/html/2604.19157/assets/x10.png)
+!(/html/2604.19157/assets/x10.png)
 
-![Refer to caption](/html/2604.19157/assets/x11.png)
+!(/html/2604.19157/assets/x11.png)
 
-![Refer to caption](/html/2604.19157/assets/x12.png)
+!(/html/2604.19157/assets/x12.png)
 
-![Refer to caption](/html/2604.19157/assets/x13.png)
+!(/html/2604.19157/assets/x13.png)
 
 Figure 7: TPS¯req\overline{\mathrm{TPS}}\_{\mathrm{req}} versus per-GPU throughput (TPSsys/NGPU\mathrm{TPS}\_{\mathrm{sys}}/N\_{\mathrm{GPU}}) across four workloads. The top row shows Qwen3-4B and Qwen3-8B; the bottom row shows Qwen3-32B and GLM-4.7 (358B). INT4 + R128 consistently matches or slightly exceeds plain INT4 and outperforms BF16 across most operating regimes, showing that rotation preserves INT4 efficiency while improving model quality.
 
-![Refer to caption](/html/2604.19157/assets/figures/final_all_in_legend.png)
-
+!(/html/2604.19157/assets/figures/final_all_in_legend.png)
 
 Figure 8: Qwen3-8B per-GPU throughput vs. batch size. More complex methods (e.g., Kitty) do not match the performance of BF16 or INT4+BDR. INT4+BDR performs substantially better at larger batch sizes. Input ≈\approx100 tokens, output ≈\approx8000 tokens.
-
-[◄](/html/2604.19156)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.19157)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.19157)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.19157)[►](/html/2604.19158)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 00:47:44 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

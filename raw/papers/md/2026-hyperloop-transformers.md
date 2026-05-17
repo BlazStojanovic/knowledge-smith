@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2604.21254
 year: 2026
 ---
 
-[2604.21254] Hyperloop Transformers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Hyperloop Transformers
 
 Abbas Zeitoun    Lucas Torroba-Hennigen    Yoon Kim
@@ -115,8 +72,7 @@ Given the input-dependent matrices 𝐇l,tpre∈ℝ1×n,𝐇l,tpost∈ℝn×1\ma
 
 Thus, mHC Transformers make it possible to work with a larger matrix-valued residual stream without incurring much additional compute (since the compute-heavy attention/MLP layers still work with CC-dimensional inputs/outputs).
 
-![Refer to caption](/html/2604.21254/assets/x1.png)
-
+!(/html/2604.21254/assets/x1.png)
 
 Figure 1: (Left) A vanilla middle-cycle looped Transformer architecture with two loops. (Right) A Hyperloop Transformer, which uses parallel residual streams that are written to after each loop using hyper-connections (mHC).
 
@@ -209,12 +165,9 @@ The above experiments hold the parameter count constant and vary the depth by ch
 
 We now conduct more ablations focusing on the 136M-parameter/12.5B-token setting.
 
-![Refer to caption](/html/2604.21254/assets/x2.png)
-
+!(/html/2604.21254/assets/x2.png)
 
 Figure 2: Perplexity numbers as the number of loops is varied for the 135M (left) and 579M (right) parameter looped models. The non-looped Transformer baselines have 238M (left) and 991M (right) parameters. Each loop consists of 4 Transformer layers.
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -233,8 +186,6 @@ Figure 2: Perplexity numbers as the number of loops is varied for the 135M (left
 |  | 3L →\rightarrow 2L (×6)(\times 6) →\rightarrow 3L | 477 M | 9.8629.862 |
 
 Table 3: Performance of the looped and Hyperloop Transformers as we vary the looping structure while keeping the depth fixed at 16 or 18 layers.
-
-
 
 |  |  |
 | --- | --- |
@@ -322,8 +273,7 @@ We hypothesize that the outperformance of the Hyperloop architecture is supporte
 We see that both looped models exhibit similarity within the looped blocks; in particular, we also see that the representations output by the same layer *across* loops exhibit higher-than-expected similarity.
 [Table 8](#S4.T8 "In 4.4 Analysis ‣ 4 Empirical Study ‣ Hyperloop Transformers") quantifies the average similarity of layers across loops (e.g., comparing representations of middle layer 1 across loops) for all the looped layers. We find that Hyperloop models’ representations are indeed less similar, supporting our hypothesis.
 
-![Refer to caption](/html/2604.21254/assets/x3.png)
-
+!(/html/2604.21254/assets/x3.png)
 
 Figure 3: Pairwise cosine similarity between inner residual streams at each (effective) layer, across model scales (rows) and architectures (columns).
 
@@ -339,8 +289,7 @@ We see that both Hyperloop and the vanilla looped transformer produce representa
 The fact that both looped models exhibit maximum alignment toward the vocabulary distribution at the end of a loop further corroborates this claim.
 Interestingly, our approach produces models with *higher* alignment than the vanilla looped models, suggesting that the hyper-connections offer additional regularization in this direction. This potentially indicates that Hyperloop Transformers could be more amenable to early-exit-style inference strategies and enable compute savings.
 
-![Refer to caption](/html/2604.21254/assets/x4.png)
-
+!(/html/2604.21254/assets/x4.png)
 
 Figure 4: Logit lens-inspired analysis across model scales. Each column corresponds to a model scale, and each row shows a different metric: average cross-entropy (top), average entropy of vocabulary distribution (middle), and greedy decoding accuracy (bottom), computed by mapping the outer residual stream via the language modeling head. Loop boundaries are indicated at the top of each panel, though they only apply to looped models.
 
@@ -422,83 +371,3 @@ Table [9](#A2.T9 "Table 9 ‣ Appendix B Downstream Task Evaluations ‣ Hyperl
 | Average | 52.77% | 53.71% | 53.29% | 54.59% |
 
 Table 9: Accuracies on downstream tasks across three model-size settings. For tasks marked with a ⋆\star, we normalize the log-likelihood of the different multiple-choice continuations by the number of tokens.
-
-[◄](/html/2604.21253)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.21254)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.21254)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.21254)[►](/html/2604.21255)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 21:18:41 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

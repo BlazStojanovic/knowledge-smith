@@ -12,58 +12,6 @@ url: https://arxiv.org/abs/2604.27077
 year: 2026
 ---
 
-[2604.27077] Learning Rate Transfer in Normalized Transformers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1,2,\*]Boris Shigida
-2]Boris Hanin
-1]Andrey Gromov
-1]Meta Superintelligence Labs
-2]Princeton University
-\contribution[\*]work done during an internship at Meta
-\correspondence
-
 # Learning Rate Transfer in Normalized Transformers
 
 [
@@ -115,13 +63,11 @@ Specifically:
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x1.png)
-
+!(/html/2604.27077/assets/x1.png)
 
 (a) nGPT (baseline)
 
-![Refer to caption](/html/2604.27077/assets/x2.png)
-
+!(/html/2604.27077/assets/x2.png)
 
 (b) ν\nuGPT (ours)
 
@@ -130,19 +76,15 @@ The baseline nGPT does not show learning rate transfer.
 Our parametrization ν\nuGPT does, and performs no worse or slightly better.
 The points are averaged over three initialization seeds and no validation loss EMA is used.
 
-
-
 |  |  |
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x3.png)
-
+!(/html/2604.27077/assets/x3.png)
 
 (a) nGPT (baseline)
 
-![Refer to caption](/html/2604.27077/assets/x4.png)
-
+!(/html/2604.27077/assets/x4.png)
 
 (b) ν\nuGPT (ours)
 
@@ -330,7 +272,6 @@ We then provide in [section˜3.2](#S3.SS2 "3.2 Width and depth corrections ‣ 3
 ### 3.1 Summary of the changes
 
 {NiceTabular}
-
 
 Table 1: 
 Our re-parametrization of nGPT (defined in [section˜2](#S2 "2 Normalized Transformers: definitions ‣ Learning Rate Transfer in Normalized Transformers")).
@@ -643,13 +584,11 @@ Width corrections (powers of mwidthm\_{\text{width}}) are important for width tr
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x5.png)
-
+!(/html/2604.27077/assets/x5.png)
 
 (a) nGPT (baseline)
 
-![Refer to caption](/html/2604.27077/assets/x6.png)
-
+!(/html/2604.27077/assets/x6.png)
 
 (b) ν\nuGPT (ours)
 
@@ -713,57 +652,44 @@ This confirms the point made theoretically in Everett et al. ([2024](#bib.bib11)
 that the assumption ωoutput=1\omega\_{\text{output}}=1 (uniquely motivating μ\muP)
 is too conservative.
 
-![Refer to caption](/html/2604.27077/assets/x7.png)
-
+!(/html/2604.27077/assets/x7.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x8.png)
-
+!(/html/2604.27077/assets/x8.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x9.png)
-
+!(/html/2604.27077/assets/x9.png)
 
 (c) Alignment exponent ν\nu
 
 Figure 4: Alignment exponents ([definition˜3.1](#S3.theoremcnt1 "Definition 3.1 (Alignment exponents). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) of ν\nuGPT with 0​p​t=nheads=120pt=n\_{\text{heads}}=12 on a fixed validation batch, averaged over layers.
 
-
-
-![Refer to caption](/html/2604.27077/assets/x10.png)
-
+!(/html/2604.27077/assets/x10.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x11.png)
-
+!(/html/2604.27077/assets/x11.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x12.png)
-
+!(/html/2604.27077/assets/x12.png)
 
 (c) Alignment exponent ν\nu
 
 Figure 5: Alignment exponents ([definition˜3.1](#S3.theoremcnt1 "Definition 3.1 (Alignment exponents). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) of ν\nuGPT with 0​p​t=nheads=120pt=n\_{\text{heads}}=12 on a fixed validation batch, averaged over layers,
 viewed as a function of loss decrease. The mid alignment assumption ([definition˜3.2](#S3.theoremcnt2 "Definition 3.2 (Full, no, mid alignment). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) matches the observations well.
 
-
-
-![Refer to caption](/html/2604.27077/assets/x13.png)
-
+!(/html/2604.27077/assets/x13.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x14.png)
-
+!(/html/2604.27077/assets/x14.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x15.png)
-
+!(/html/2604.27077/assets/x15.png)
 
 (c) Alignment exponent ν\nu
 
@@ -778,13 +704,11 @@ but rather making some corrections in the theory. In particular, we confirm the 
 that μ\muP is by no means the unique maximal update parametrization achieving feature learning and giving
 learning rate transfer (in particular, our parametrization is somewhat different from any parametrization in prior work).
 
-![Refer to caption](/html/2604.27077/assets/x16.png)
-
+!(/html/2604.27077/assets/x16.png)
 
 (a) nGPT with μ\muP-style width corrections (“CompleteP” in [table˜1](#S3.T1 "In 3.1 Summary of the changes ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers"))
 
-![Refer to caption](/html/2604.27077/assets/x17.png)
-
+!(/html/2604.27077/assets/x17.png)
 
 (b) ν\nuGPT (ours)
 
@@ -820,13 +744,11 @@ is a fruitful subject of theoretical research.
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x18.png)
-
+!(/html/2604.27077/assets/x18.png)
 
 (a) Depth sweep of “Depth-μ\muP” in [table˜1](#S3.T1 "In 3.1 Summary of the changes ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers").
 
-![Refer to caption](/html/2604.27077/assets/x19.png)
-
+!(/html/2604.27077/assets/x19.png)
 
 (b) ν\nuGPT (ours)
 
@@ -846,9 +768,9 @@ We see that it decreases roughly as (iter. count)−1/3(\text{iter. count})^{-1/
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x20.png)
+!(/html/2604.27077/assets/x20.png)
 
-![Refer to caption](/html/2604.27077/assets/x21.png)
+!(/html/2604.27077/assets/x21.png)
 
 Figure 9: A sweep of a fixed ν\nuGPT model with different number of iterations (in the legend, with the best loss in parentheses) but without token count corrections: optimal peak learning rate decreases at about (iter. count)−1/3(\text{iter. count})^{-1/3}.
 
@@ -1516,32 +1438,30 @@ that is,
 |  |  |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x22.png)
+!(/html/2604.27077/assets/x22.png)
 
-![Refer to caption](/html/2604.27077/assets/x23.png)
+!(/html/2604.27077/assets/x23.png)
 
-![Refer to caption](/html/2604.27077/assets/x24.png)
+!(/html/2604.27077/assets/x24.png)
 
-![Refer to caption](/html/2604.27077/assets/x25.png)
+!(/html/2604.27077/assets/x25.png)
 
 Figure 10: 
 Depth sweep of nGPT (baseline) at a fixed iteration count, power law fit of 𝜶A\bm{\alpha}\_{A} and 𝜶M\bm{\alpha}\_{M} components
 (averaged over layers and component indices).
-
-
 
 |  |  |
 | --- | --- |
 |  |  |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x26.png)
+!(/html/2604.27077/assets/x26.png)
 
-![Refer to caption](/html/2604.27077/assets/x27.png)
+!(/html/2604.27077/assets/x27.png)
 
-![Refer to caption](/html/2604.27077/assets/x28.png)
+!(/html/2604.27077/assets/x28.png)
 
-![Refer to caption](/html/2604.27077/assets/x29.png)
+!(/html/2604.27077/assets/x29.png)
 
 Figure 11: 
 Depth sweep of nGPT with μ\muP-style corrections at a fixed iteration count, power law fit of 𝜶A\bm{\alpha}\_{A} and 𝜶M\bm{\alpha}\_{M} components
@@ -1552,57 +1472,44 @@ Depth sweep of nGPT with μ\muP-style corrections at a fixed iteration count, po
 Analogously to [section˜4.3](#S4.SS3 "4.3 Alignment exponents ‣ 4 Experiments ‣ Learning Rate Transfer in Normalized Transformers"), we plot in [figures˜12](#S7.F12 "In 7.2 Alignment exponents for a wider model ‣ 7 Additional experiments ‣ Learning Rate Transfer in Normalized Transformers"), [13](#S7.F13 "Figure 13 ‣ 7.2 Alignment exponents for a wider model ‣ 7 Additional experiments ‣ Learning Rate Transfer in Normalized Transformers") and [14](#S7.F14 "Figure 14 ‣ 7.2 Alignment exponents for a wider model ‣ 7 Additional experiments ‣ Learning Rate Transfer in Normalized Transformers")
 the alignment exponents for a model with 0​p​t=120pt=12 and nheads=28n\_{\text{heads}}=28.
 
-![Refer to caption](/html/2604.27077/assets/x30.png)
-
+!(/html/2604.27077/assets/x30.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x31.png)
-
+!(/html/2604.27077/assets/x31.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x32.png)
-
+!(/html/2604.27077/assets/x32.png)
 
 (c) Alignment exponent ν\nu
 
 Figure 12: Alignment exponents ([definition˜3.1](#S3.theoremcnt1 "Definition 3.1 (Alignment exponents). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) of ν\nuGPT with 0​p​t=120pt=12, nheads=28n\_{\text{heads}}=28 on a fixed validation batch, averaged over layers.
 
-
-
-![Refer to caption](/html/2604.27077/assets/x33.png)
-
+!(/html/2604.27077/assets/x33.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x34.png)
-
+!(/html/2604.27077/assets/x34.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x35.png)
-
+!(/html/2604.27077/assets/x35.png)
 
 (c) Alignment exponent ν\nu
 
 Figure 13: Alignment exponents ([definition˜3.1](#S3.theoremcnt1 "Definition 3.1 (Alignment exponents). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) of ν\nuGPT with 0​p​t=120pt=12, nheads=28n\_{\text{heads}}=28 on a fixed validation batch, averaged over layers,
 viewed as a function of loss decrease. The mid alignment assumption ([definition˜3.2](#S3.theoremcnt2 "Definition 3.2 (Full, no, mid alignment). ‣ Summary derivations of width corrections ‣ 3.2 Width and depth corrections ‣ 3 Reparametrization for transfer over width, depth and token horizon ‣ Learning Rate Transfer in Normalized Transformers")) matches the observations well.
 
-
-
-![Refer to caption](/html/2604.27077/assets/x36.png)
-
+!(/html/2604.27077/assets/x36.png)
 
 (a) Alignment exponent α\alpha
 
-![Refer to caption](/html/2604.27077/assets/x37.png)
-
+!(/html/2604.27077/assets/x37.png)
 
 (b) Alignment exponent ω\omega
 
-![Refer to caption](/html/2604.27077/assets/x38.png)
-
+!(/html/2604.27077/assets/x38.png)
 
 (c) Alignment exponent ν\nu
 
@@ -1618,9 +1525,9 @@ The power law is again close to (iter. count)−1/3(\text{iter. count})^{-1/3} l
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x39.png)
+!(/html/2604.27077/assets/x39.png)
 
-![Refer to caption](/html/2604.27077/assets/x40.png)
+!(/html/2604.27077/assets/x40.png)
 
 Figure 15: A width sweep of ν\nuGPT models with different nheadsn\_{\text{heads}} (in the legend) at 20 tokens per parameter but without token count corrections: optimal peak learning rate also decreases at a law close to (iter. count)−1/3(\text{iter. count})^{-1/3}, as in [figure˜9](#S4.F9 "In 4.6 Token count correction ‣ 4 Experiments ‣ Learning Rate Transfer in Normalized Transformers").
 
@@ -1639,13 +1546,11 @@ Based on this, we propose a small modification (designed to be as simple as we c
 | --- |
 |  |
 
-![Refer to caption](/html/2604.27077/assets/x41.png)
-
+!(/html/2604.27077/assets/x41.png)
 
 (a) 0​p​t=nheads=100pt=n\_{\text{heads}}=10
 
-![Refer to caption](/html/2604.27077/assets/x42.png)
-
+!(/html/2604.27077/assets/x42.png)
 
 (b) 0​p​t=nheads=160pt=n\_{\text{heads}}=16
 
@@ -1680,41 +1585,32 @@ to scale differently.
 
 {NiceTabular}
 
-
 Table 2: 
 The correct value ωoutput=1/2\omega\_{\text{output}}=1/2 leads to two different ways to scale logits and ηoutput\eta\_{\text{output}}.
-
-
 
 |  |  |
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x43.png)
-
+!(/html/2604.27077/assets/x43.png)
 
 (a) “CompleteP”
 
-![Refer to caption](/html/2604.27077/assets/x44.png)
-
+!(/html/2604.27077/assets/x44.png)
 
 (b) ν\nuGPT (full align)
 
 Figure 17: Aspect ratio sweep of “CompleteP” and ν\nuGPT (full align) at 20 tokens per parameter
 
-
-
 |  |  |
 | --- | --- |
 |  |  |
 
-![Refer to caption](/html/2604.27077/assets/x45.png)
-
+!(/html/2604.27077/assets/x45.png)
 
 (a) “CompleteP” with tuned ηoutput\eta\_{\text{output}}
 
-![Refer to caption](/html/2604.27077/assets/x46.png)
-
+!(/html/2604.27077/assets/x46.png)
 
 (b) ν\nuGPT (full align) with tuned ηoutput\eta\_{\text{output}}
 
@@ -2043,83 +1939,3 @@ Figure 18: Aspect ratio sweep of “CompleteP” and ν\nuGPT (full align) with 
   In *The Twelfth International Conference on Learning
   Representations*, 2024b.
   <https://openreview.net/forum?id=17pVDnpwwl>.
-
-[◄](/html/2604.27076)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.27077)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.27077)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.27077)[►](/html/2604.27078)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 23:11:14 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

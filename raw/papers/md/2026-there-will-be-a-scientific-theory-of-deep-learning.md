@@ -23,50 +23,6 @@ url: https://arxiv.org/abs/2604.21691
 year: 2026
 ---
 
-[2604.21691] There Will Be a Scientific Theory of Deep Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # There Will Be a Scientific Theory of Deep Learning
 
 Jamie Simon
@@ -382,13 +338,11 @@ These analytically tractable cornerstones are useful because they reveal phenome
 One particularly fruitful simplification is linearization.
 Here we discuss two distinct instantiations of this idea: linearization in the data, where f​(𝒙;𝜽)f({\bm{x}};{\bm{\theta}}) becomes linear in 𝒙{\bm{x}}, and linearization in the parameters, where f​(𝒙;𝜽)f({\bm{x}};{\bm{\theta}}) becomes linear in 𝜽{\bm{\theta}}.
 
-![Refer to caption](/html/2604.21691/assets/x1.png)
-
+!(/html/2604.21691/assets/x1.png)
 
 (a) Linearization in the data
 
-![Refer to caption](/html/2604.21691/assets/x2.png)
-
+!(/html/2604.21691/assets/x2.png)
 
 (b) Linearization in the parameters
 
@@ -487,8 +441,7 @@ While the definition of feature learning is much debated (see [4](#Thmopendirect
 This suggests the NTK infinite-width limit is not the right one to study.
 Networks in this linearized regime were later termed “lazy” by chizat2019lazy.
 
-![Refer to caption](/html/2604.21691/assets/figs/limits/lazy_rich_plots.png)
-
+!(/html/2604.21691/assets/figs/limits/lazy_rich_plots.png)
 
 Figure 2: 
 Large and small network output multipliers are sufficient to induce lazy and rich training dynamics.
@@ -582,8 +535,7 @@ Many important physical and chemical laws were first discovered as empirical reg
 Given how often scientific fields have developed in this way, it seems likely that deep learning will continue to yield empirical laws as its science matures.
 Here, we highlight a handful of examples and conclude with takeaways for theorists.
 
-![Refer to caption](/html/2604.21691/assets/x3.png)
-
+!(/html/2604.21691/assets/x3.png)
 
 Figure 3: The loss of large neural networks decays according to predictable neural scaling laws.
 These neural scaling laws take the form of power laws (linear on log-log plots) in compute, dataset size, and parameter count.
@@ -612,8 +564,7 @@ Nonetheless, some robust patterns in the coarse, aggregate properties of weight 
 One of these is the sharpness of the network loss surface, defined as the largest eigenvalue of the Hessian with respect to the parameters.
 When a typical network is trained using full-batch gradient descent with learning rate η\eta, the sharpness undergoes two distinct phases: a gradual increase (termed progressive sharpening) followed by a plateau near 2/η2/\eta (cohen2021gradient; see [Figure 4](#S2.F4 "In Weight dynamics at the edge of stability. ‣ 2.3 Simple empirical laws capture meaningful macroscopic statistics ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning")), called the edge of stability.
 
-![Refer to caption](/html/2604.21691/assets/x4.png)
-
+!(/html/2604.21691/assets/x4.png)
 
 Figure 4: 
 Gradient descent occurs near the edge of stability.
@@ -701,8 +652,7 @@ Other analyses have developed analogous characterizations for stochastic dynamic
 Fully extending this characterization to stochastic and adaptive optimizers would give us a common language for reasoning about the implicit effects of optimization hyperparameters on the training trajectory.
 It then remains to understand how these modifications to the training trajectory influence properties of the learned network (see [8](#Thmopendirectionthm8 "Open Direction 8: How does loss curvature interplay with architecture, features, and generalization? ‣ 5 Open directions in learning mechanics ‣ There Will Be a Scientific Theory of Deep Learning")).
 
-![Refer to caption](/html/2604.21691/assets/x5.png)
-
+!(/html/2604.21691/assets/x5.png)
 
 Figure 5: 
 The theory of network parameterization permits learning rate transfer across widths.
@@ -728,13 +678,11 @@ This scaling-centric approach to hyperparameters was later extended to depth sca
 
 ### 2.5 Universal phenomena appear across settings and tasks
 
-![Refer to caption](/html/2604.21691/assets/figs/universality/diffusion_arch_names.png)
-
+!(/html/2604.21691/assets/figs/universality/diffusion_arch_names.png)
 
 (a) Universality across architectures
 
-![Refer to caption](/html/2604.21691/assets/figs/universality/prh.png)
-
+!(/html/2604.21691/assets/figs/universality/prh.png)
 
 (b) Universality across data modalities
 
@@ -961,7 +909,7 @@ These directions are loosely ordered by their connection to the lines of evidenc
 We hope this helps sharpen a shared research agenda.
 For a longer catalog and a forum for community discussion, see <learningmechanics.pub/openquestions>.
 
-###### [Uncaptioned image] Open Direction 1: What are simple, solvable models of genuinely deep, nonlinear learning?
+######  Open Direction 1: What are simple, solvable models of genuinely deep, nonlinear learning?
 
 As discussed in [Section 2.1](#S2.SS1 "2.1 Analytically solvable settings exist ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), deep linear networks and kernel methods are the two main workhorse solvable models of learning mechanics.
 The first captures nonlinear dynamics of the parameters, and the second learns nonlinear functions of the data.
@@ -972,7 +920,7 @@ Is there a class of solvable model that captures both deep, nonlinear dynamics a
 Can such models illuminate new things about feature learning, the role of depth, optimization phenomena (e.g. progressive sharpening), and architectural innovations (e.g. normalization layers, residual streams, self-attention, and gated nonlinearities)?
 Can it be usefully applied to modern learning paradigms like self-supervised learning, reinforcement learning, and denoising diffusion?
 
-###### [Uncaptioned image] Open Direction 2: What would a theory capable of capturing natural data look like?
+######  Open Direction 2: What would a theory capable of capturing natural data look like?
 
 Deep neural networks find and exploit structure in natural data.
 This means that the structure of the data must somehow enter into our theories.
@@ -983,7 +931,7 @@ What are these minimal data statistics, and how do they enter into a predictive 
 Are these statistics different for different models and at different stages of training?
 Can we describe the relevant structure in a dataset in terms of a model with free parameters found via an empirical fit?
 
-###### [Uncaptioned image] Open Direction 3: Does deep learning implicitly minimize some notion of functional complexity?
+######  Open Direction 3: Does deep learning implicitly minimize some notion of functional complexity?
 
 Deep networks trained by conventional optimizers are widely believed to have some sort of bias towards learning simple functions.
 This idea has surfaced many times under different names (e.g. implicit regularization, maximum margin bias, simplicity bias, and spectral bias), but has only been characterized precisely in highly specific settings, and a general picture has not been found.
@@ -993,7 +941,7 @@ If so, what is the appropriate notion of complexity — Kolmogorov, circuit, wei
 In what settings or limits is this minimization exact, and when is it only approximate?
 Do the sparse features and circuitry studied by mechanistic interpretability naturally emerge as the solution to this minimization problem?
 
-###### [Uncaptioned image] Open Direction 4: How do we formally define the features learned by neural networks?
+######  Open Direction 4: How do we formally define the features learned by neural networks?
 
 Mechanistic interpretability seeks to identify and disentangle the features, circuits, and mechanisms learned by neural networks.
 Can these concepts be given precise mathematical definitions grounded in first principles?
@@ -1001,21 +949,21 @@ What formal structures naturally emerge from such a definition?
 Can we use these notions to evaluate and formalize central assumptions of mechanistic interpretability, including linear representability, locality, sparsity, and compositionality, as discussed in [Section 3](#S3 "3 Relation to other perspectives ‣ There Will Be a Scientific Theory of Deep Learning")?
 How do these ideas connect with the less semantically-meaningful — but more precise — rich vs. lazy picture of feature learning discussed in [Section 2.2](#S2.SS2 "2.2 Insightful limits reveal fundamental behavior ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning")?
 
-###### [Uncaptioned image] Open Direction 5: Are finite neural networks properly understood as approximations to infinite limits?
+######  Open Direction 5: Are finite neural networks properly understood as approximations to infinite limits?
 
 In [Section 2.2](#S2.SS2 "2.2 Insightful limits reveal fundamental behavior ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), we articulated the Discretization Hypothesis, which states that finite neural networks are simply discretized approximations to infinite networks, analogous to how a spatiotemporal discretization is used to numerically approximate the solution to a differential equation. For network width, the limiting continuous object is the measure of neuron activity in hidden layers, while finite depth in a residual network can be viewed as a discretization of a neural SDE or ODE.
 Small step sizes can render stochastic optimization algorithms approximately equivalent to some kind of flow. In this view, increasing model size (and decreasing learning rate while commensurately increasing step count) serve essentially to improve model performance by decreasing discretization error, at the price of additional computation.
 Is this the right way to understand width, depth, learning rate, and other finite hyperparameters in deep learning?
 What does the limiting continuum system look like?
 
-###### [Uncaptioned image] Open Direction 6: Can we understand and eliminate all hyperparameters?
+######  Open Direction 6: Can we understand and eliminate all hyperparameters?
 
 In [Sections 2.2](#S2.SS2 "2.2 Insightful limits reveal fundamental behavior ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning") and [2.4](#S2.SS4 "2.4 Hyperparameters can be disentangled and understood ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), we outlined a research program in which hyperparameters are systematically analyzed, disentangled, and in some cases removed by taking appropriate limits.
 How far can this program go?
 Can we reach zero hyperparameters, or are some hyperparameters irreducible?
 If we eliminate all hyperparameters, what remains?
 
-###### [Uncaptioned image] Open Direction 7: Can we predict scaling law exponents a priori?
+######  Open Direction 7: Can we predict scaling law exponents a priori?
 
 As discussed in [Section 2.3](#S2.SS3 "2.3 Simple empirical laws capture meaningful macroscopic statistics ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), large models exhibit robust power-law scaling of loss with respect to model size, data, and compute.
 The observed exponents are nontrivial: they do not appear to be simple fractions which might result from elementary dimensionality arguments.
@@ -1025,18 +973,18 @@ At present, no framework can robustly do so across realistic settings.
 Can we develop a theory of scaling laws that both explains why power laws arise and predicts their exponents a priori?
 What measurements of the dataset, architecture, and optimization are required to do so?
 
-###### [Uncaptioned image] Open Direction 8: How does loss curvature interplay with architecture, features, and generalization?
+######  Open Direction 8: How does loss curvature interplay with architecture, features, and generalization?
 
 As discussed in [Sections 2.3](#S2.SS3 "2.3 Simple empirical laws capture meaningful macroscopic statistics ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning") and [2.4](#S2.SS4 "2.4 Hyperparameters can be disentangled and understood ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), a significant feature of deep learning optimization is that the optimizer implicitly regularizes the curvature (i.e. Hessian) along its trajectory, by steering towards regions of the loss landscape with lower curvature. While progress has been made on formalizing this effect using curvature-penalized gradient flows, it remains unclear how these curvature dynamics relate to other concerns in deep learning theory. Why does the curvature tend to rise in the absence of any such implicit regularization, and can this “progressive sharpening” be attributed to certain properties of the architecture or data distribution? How does the implicit curvature regularization affect the features that are learned? Why does it sometimes lead to improved generalization?
 
-###### [Uncaptioned image] Open Direction 9: What makes for a good optimizer in deep learning?
+######  Open Direction 9: What makes for a good optimizer in deep learning?
 
 It remains fundamentally unclear why some deep learning optimizers work better than others.
 Why do adaptive methods, such as Adam and Muon, consistently outperform simpler alternatives like SGD when training large language models?
 How does adaptive preconditioning in these optimizers interact with a network’s architecture and loss landscape to lead to faster, more stable training?
 Can we identify fundamental principles that explain the success of modern optimizers, predict when they will fail, and guide the design of new ones?
 
-###### [Uncaptioned image] Open Direction 10: In what sense do large models trained differently learn similar representations?
+######  Open Direction 10: In what sense do large models trained differently learn similar representations?
 
 In [Section 2.5](#S2.SS5 "2.5 Universal phenomena appear across settings and tasks ‣ 2 Evidence of an emerging mechanics of learning ‣ There Will Be a Scientific Theory of Deep Learning"), we discussed evidence that large models trained from different random seeds — and sometimes even with different widths, architectures, data, or objectives — tend to learn similar internal representations.
 A precise version of this claim would be very powerful: understanding how representation learning is *universal* would give us confidence that theory developed for one model and setting transfers to many others.
@@ -1158,83 +1106,3 @@ Wanyu Lei,
 Yasaman Bahri,
 and
 Zohar Ringel.
-
-[◄](/html/2604.21690)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.21691)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.21691)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.21691)[►](/html/2604.21692)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:08:33 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

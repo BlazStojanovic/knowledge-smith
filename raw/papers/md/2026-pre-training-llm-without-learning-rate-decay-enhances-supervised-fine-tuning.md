@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2603.16127
 year: 2026
 ---
 
-[2603.16127] Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning
 
 Kazuki Yano†, Shun Kiyono‡, Sosuke Kobayashi†, Sho Takase†, Jun Suzuki†
@@ -102,8 +59,7 @@ Our contributions are as follows:
 (2) We show that WSO similarly benefits mid-training and over-training scenarios, achieving superior SFT performance compared to conventional decay-based schedulers.
 (3) We reveal through loss landscape analysis that WSO preserves flatter minima than decay-based schedulers, explaining why models trained with WSO achieve better performance after SFT.
 
-![Refer to caption](/html/2603.16127/assets/x1.png)
-
+!(/html/2603.16127/assets/x1.png)
 
 Figure 1: 
 Learning rate schedulers used in pre-training and their impact on performance after supervised fine-tuning (SFT).
@@ -205,8 +161,7 @@ In this variant, the decay phase is omitted, which corresponds to setting αpre=
 In our experiments, we investigate four LR schedulers: Scheduler∈{WSO,WSD,Cosine,Linear}\texttt{Scheduler}\in\{\text{WSO},\text{WSD},\text{Cosine},\text{Linear}\}.
 The detailed formulations for Cosine ηCosine​(t,αpre)\eta^{\text{{Cosine}}}({t},\alpha\_{\text{pre}}) and Linear ηLinear​(t,αpre)\eta^{\text{{Linear}}}({t},\alpha\_{\text{pre}}) are provided in Appendix [B](#A2 "Appendix B Learning Rate Scheduler Formulations ‣ Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning").
 
-![Refer to caption](/html/2603.16127/assets/x2.png)
-
+!(/html/2603.16127/assets/x2.png)
 
 Figure 2: Mid-training LR schedulers with different αpre\alpha\_{\text{pre}} and αmid\alpha\_{\text{mid}} values.
 
@@ -354,9 +309,6 @@ Table 3: Relative performance after over-training (2T tokens). Values are differ
 | Cosine | 0.1 | +0.017 | +0.0 | -0.4 |
 | 0.0 | +0.017 | -1.3 | -0.3 |
 
-
-
-
 Table 4: Relative performance after over-training with mid-training (2T + 500B tokens). Values are differences (Δ\Delta) from the best-performing decay-based scheduler for each metric. Similar to Section [4](#S4 "4 Experiment 2: Three-stage (Pre-, Mid-, and Post-training) Setting ‣ Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning"), WSO yields the best SFT performance.
 
 |  |  |  |  |  |  |  |
@@ -409,8 +361,7 @@ This pattern holds both for single-stage over-training (Table [3](#S4.T3 "Table
 
 ## 6 Understanding Adaptability Through Loss Landscape Geometry
 
-![Refer to caption](/html/2603.16127/assets/x3.png)
-
+!(/html/2603.16127/assets/x3.png)
 
 Figure 3: Sharpness​(θt)\text{Sharpness}(\theta\_{t}) during pre-training of the 1B model. Vertical line at step TstableT\_{\text{stable}} indicating where WSD decays LR. Decay-based schedulers (αpre=0\alpha\_{\text{pre}}=0 or αpre=0.1\alpha\_{\text{pre}}=0.1) lead to sharper minima, while WSO (αpre=1.0\alpha\_{\text{pre}}=1.0) maintains flatter landscapes.
 
@@ -451,8 +402,7 @@ Flatter regions obtained by WSO allow more flexible parameter adaptation during 
 
 ##### Correlation between sharpness and downstream adaptability.
 
-![Refer to caption](/html/2603.16127/assets/x4.png)
-
+!(/html/2603.16127/assets/x4.png)
 
 Figure 4: Pre-training sharpness negatively correlates with downstream SFT performance.
 
@@ -952,9 +902,6 @@ Table 6: Pre-training hyperparameters for 1B and 8B models. The WSD stable ratio
 | Other | | |
 | Precision | bfloat16 | bfloat16 |
 
-
-
-
 Table 7: Over-training configuration for the 1B model trained on 2T tokens. All other hyperparameters are identical to those in Table [6](#A3.T6 "Table 6 ‣ Appendix C Pre-training Hyperparameters ‣ Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning").
 
 | Hyperparameter | Value |
@@ -1074,9 +1021,6 @@ Table 11: SFT learning rates selected for each pre-trained model based on Alpaca
 | Cosine | 0.1 | 1×10−41\times 10^{-4} |
 | 0.0 | 3×10−53\times 10^{-5} |
 
-
-
-
 Table 12: 
 SFT evaluation results. Models pre-trained with WSO achieve the best downstream performance.
 
@@ -1118,9 +1062,6 @@ Table 13: SFT learning rates selected for each over-trained 1B model based on Al
 | 0.0 | 3×10−53\times 10^{-5} |
 | Cosine | 0.1 | 1×10−51\times 10^{-5} |
 | 0.0 | 1×10−41\times 10^{-4} |
-
-
-
 
 Table 14: 
 SFT evaluation results for over-trained 1B models (pre-trained on 2T tokens).
@@ -1208,9 +1149,6 @@ Table 17: SFT learning rates selected for each model configuration based on Alpa
 | Cosine | 0.1 | 1.0 | 1×10−51\times 10^{-5} |
 | 0.1 | 0.0 | 1×10−51\times 10^{-5} |
 
-
-
-
 Table 18: 
 SFT evaluation results after mid-training. WSO throughout pre- and mid-training generally achieves better SFT performance.
 
@@ -1255,9 +1193,6 @@ Table 19: SFT learning rates selected for each over-trained and mid-trained 1B m
 | Cosine | 0.1 | 1.0 | 1×10−51\times 10^{-5} |
 | 0.1 | 0.0 | 1×10−51\times 10^{-5} |
 
-
-
-
 Table 20: 
 SFT evaluation results for over-trained 1B models after mid-training (pre-trained on 2T tokens, mid-trained on 500B tokens, then supervised fine-tuned).
 
@@ -1286,9 +1221,6 @@ Table 21: Mid-training configuration for 1B and 8B models.
 | Total tokens | 150B | 225B |
 | Batch size (tokens) | 4,194,304 | 12,582,912 |
 | Sequence length | 2,048 | 2,048 |
-
-
-
 
 Table 22: Mid-training configurations in over-training settings for the 1B model trained on 500BT tokens. All other hyperparameters are identical to those in Table [6](#A3.T6 "Table 6 ‣ Appendix C Pre-training Hyperparameters ‣ Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning").
 
@@ -1333,83 +1265,3 @@ Table 23: Configuration for sharpness (Hessian trace) computation using Hutchins
 
 Table [23](#A8.T23 "Table 23 ‣ Implementation Details. ‣ Appendix H Sharpness Computation Details ‣ Pre-training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning") shows computation configurations for Hutchinson’s estimator.
 We measure sharpness at regular intervals throughout pre-training (every 4,000 steps) on held-out validation sets from both the pre-training dataset and the SFT dataset to understand how the loss landscape geometry evolves during training.
-
-[◄](/html/2603.16126)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.16127)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.16127)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.16127)[►](/html/2603.16128)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 03:18:44 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

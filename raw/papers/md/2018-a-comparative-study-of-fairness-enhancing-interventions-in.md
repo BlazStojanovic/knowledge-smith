@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/1802.04422v1
 year: 2018
 ---
 
-[1802.04422] A comparative study of fairness-enhancing interventions in machine learning This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: https://github.com/algofairness/fairness-comparison
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A comparative study of fairness-enhancing interventions in machine learning ††thanks: This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: <https://github.com/algofairness/fairness-comparison>
 
 Sorelle A. Friedler
@@ -234,8 +191,7 @@ explainability by Guidotti et al. ([2018](#bib.bib14)).
 
 ## 3 Benchmark Structure
 
-![Refer to caption](/html/1802.04422/assets/figs/flowchart.png)
-
+!(/html/1802.04422/assets/figs/flowchart.png)
 
 Figure 1: The stages of the fairness-aware benchmarking program: data input, preprocessing, benchmarking, and analysis. Intermediate files are saved at each stage of the pipeline to ensure reproducibility.
 
@@ -284,9 +240,9 @@ While some algorithms are able to handle the datasets for training with only the
 
 With these four preprocessed versions of each data set in place, we can compare how a single algorithm performs relative to all versions of the dataset on which it can run. The most common form of input for the algorithms we consider here is numerical, and all these algorithms can additionally handle the numerical+binary version of the dataset. This gives an opportunity to determine the effect, per algorithm and per dataset, of allowing an algorithm access to full information about sensitive attribute categorization or only a binary summary.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/preprocessing-tradeoff-accuracy.png)
+!(/html/1802.04422/assets/figs/analysis/preprocessing-tradeoff-accuracy.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/preprocessing-tradeoff-DIbinary.png)
+!(/html/1802.04422/assets/figs/analysis/preprocessing-tradeoff-DIbinary.png)
 
 Figure 2:  Examining the results of the Feldman et al. Feldman et al. ([2015](#bib.bib12)) algorithm under different preprocessing choices: numerical versus numerical+binary. Each dot plots the result of a single split of the data in terms of the labeled metric under both preprocessing choices. The gray line shows equality between the preprocessing choices. The model used within the Feldman algorithm is listed, and some variants of the algorithm had the tradeoff parameter optimized for either accuracy or disparate impact value.
 
@@ -392,15 +348,13 @@ Calibration has been introduced previously with the goal of equalizing across se
 
 Although there are many variations on these and other measures, we find that many of these are correlated. In some cases, this is not surprising as these measures are definitionally related. For example, DI takes the ratio of two probabilities while CV takes the difference. However, by analyzing resulting measures across many algorithms, we can find correlations that are less obvious. In fact, it appears that there are two main groups of measures, all correlated with each other! In Figure [3](#S6.F3 "Figure 3 ‣ 6.3 Analysis ‣ 6 Measures ‣ A comparative study of fairness-enhancing interventions in machine learning This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: https://github.com/algofairness/fairness-comparison") we fix two dataset-algorithm pairs and look at how the different measures of fairness correlate with each other. A first surprising observation is that the various group-conditioned fairness measures are very closely related to each other (the base-rate measures like DI and CV are also closely related for the reason mentioned above). This suggests that we need not focus on the specific group-conditioned fairness measure we use. An unusual exception to this is the group-conditional calibration measure on negative outcomes (s-Calibration-) which is much more closely associated with the base-rate measures than other group-conditioned measures. A second surprising observation is that the accuracy measures are correlated with the group-conditioned fairness measures. This suggests that the discussions of fairness-accuracy tradeoffs are more pertinent with respect to base-rate fairness measures.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/measure-correlation.png)
-
+!(/html/1802.04422/assets/figs/analysis/measure-correlation.png)
 
 Figure 3: Examining the relationships between different measures of fairness. Each figure represents one data set-algorithm pair. For each entry, the algorithm is run for 10 training-testing splits for different parameter choices. The Stahel-Donoho estimatorStahel ([1981](#bib.bib31)); Donoho ([1982](#bib.bib8)) is then computed for each set of pairs of measurements.
 
 Additionally, there are cases in which we would expect there to be tradeoffs between measures. Recent impossibility results show that, assuming unequal base rates across populations, it is impossible to achieve both calibration and error rate balance (both the same false positive rate and the same false negative rates across groups) Chouldechova ([2017](#bib.bib7)); Kleinberg et al. ([2017](#bib.bib25)). In Figure [4](#S6.F4 "Figure 4 ‣ 6.3 Analysis ‣ 6 Measures ‣ A comparative study of fairness-enhancing interventions in machine learning This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: https://github.com/algofairness/fairness-comparison") we empirically examine this tradeoff. As before, each colored point represents one instance of train-test split for an algorithm. As Figure [4](#S6.F4 "Figure 4 ‣ 6.3 Analysis ‣ 6 Measures ‣ A comparative study of fairness-enhancing interventions in machine learning This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: https://github.com/algofairness/fairness-comparison") shows, there is a clear tradeoff between with s-calibration- versus s-TPR for each algorithm. Interestingly, different algorithms situate themselves in different parts of the tradeoff line.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/adult_tradeoff/sex-TPR-sex-calibration-.png)
-
+!(/html/1802.04422/assets/figs/analysis/adult_tradeoff/sex-TPR-sex-calibration-.png)
 
 Figure 4: An illustration of the tradeoff between s-calibration- and TPR for all algorithms on the Adult dataset. Each dot represents one run out of 10 random train-test splits.
 
@@ -430,15 +384,15 @@ et al.](#bib.bib23) implementation of this algorithm.111111<https://github.com/
 [Zafar
 et al.](#bib.bib36) re-express fairness constraints (which can be nonconvex) via a convex relaxation. This allows them to maximize accuracy subject to fairness and also maximize fairness subject to fairness constraints. They use two parameters: c𝑐c is a parameter that controls the degree of independence of the outcome and the sensitive attribute via a covariance calculation: setting c=0𝑐0c=0 forces complete independence (and therefore fairness). The second parameter γ𝛾\gamma fixes the degree of approximation they are willing to tolerate: the algorithm is only required to find an answer that is within a 1+γ1𝛾1+\gamma factor of the optimal solution. In their experiments they set γ=0.5𝛾0.5\gamma=0.5 and vary c𝑐c as a linear function of the corresponding covariance estimate for an unconstrained classifier. When optimizing, we use values between 0.0010.0010.001 and 111 in 10 logarithmic steps.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/all_data_overview/adult-edited.png)
+!(/html/1802.04422/assets/figs/analysis/all_data_overview/adult-edited.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/all_data_overview/german-edited.png)
+!(/html/1802.04422/assets/figs/analysis/all_data_overview/german-edited.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/all_data_overview/ricci-edited.png)
+!(/html/1802.04422/assets/figs/analysis/all_data_overview/ricci-edited.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/all_data_overview/propublica-r-edited.png)
+!(/html/1802.04422/assets/figs/analysis/all_data_overview/propublica-r-edited.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/all_data_overview/propublica-vr-edited.png)
+!(/html/1802.04422/assets/figs/analysis/all_data_overview/propublica-vr-edited.png)
 
 Figure 5: The performance of all algorithms on each dataset with the goal of removing discrimination on a specific attribute. From top to bottom, the algorithms and sensitive attributes considered are: Adult Income on race, German Credit on sex, Ricci on race, ProPublica recidivism on race, and ProPublica violent recidivism on race. Each point is the result of a single algorithm running on a single training / test split - each algorithm is shown for ten such splits.
 
@@ -448,9 +402,9 @@ In Figure [5](#S7.F5 "Figure 5 ‣ Zafar et al. (2017) ‣ 7 Algorithms ‣ A co
 
 When analyzing algorithms, an additional question we are concerned with is that of *stability* - will the algorithm still perform well if the training data is slightly different? To assess this, we considered the standard deviation of each metric over 10 random splits. The results are shown in Figure [6](#S7.F6 "Figure 6 ‣ 7.1 Stability ‣ 7 Algorithms ‣ A comparative study of fairness-enhancing interventions in machine learning This work was partially supported by National Science Foundation under grants IIS-1633387, IIS-1513651, and IIS-1633724, as well as by a grant from the Ethics and Governance of AI Initiative. Source code, including instructions for adding your own algorithm or dataset, can be found at: https://github.com/algofairness/fairness-comparison") for the Adult Income data set for all algorithms when focusing on non-discrimination in terms of race (left) and sex (right) using numerical+binary preprocessing. These results give perhaps the clearest indication of the quality of an algorithm on a given data set. It is also easy to see that each algorithm occupies a slightly different place on the trade-off between fairness (measured here by DI when taken over binary sensitive attributes). For example, when focusing on non-discrimination in terms of sex, the Zafar et al. algorithm is potentially the best choice in terms of a balance between fairness and accuracy, but the large standard deviation over DI may make it a less desirable option.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/adult_race_sensitivity.png)
+!(/html/1802.04422/assets/figs/analysis/adult_race_sensitivity.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/adult_sex_sensitivity.png)
+!(/html/1802.04422/assets/figs/analysis/adult_sex_sensitivity.png)
 
 Figure 6: The stability of algorithms on the Adult dataset. Each algorithm is tested on ten random train / test splits and a rectangle centered on the mean and with a width and height equal to the standard deviation along that measure is plotted. On the left, the algorithms attempt to remove discrimination in terms of race, and on the right in terms of sex.
 
@@ -460,17 +414,16 @@ Many of these fairness-aware learning algorithms provide a parameter to allow a 
 et al. ([2017](#bib.bib36)) algorithm on the Ricci dataset (left) and the Feldman et al. ([2015](#bib.bib12)) algorithm on the Adult Income dataset.
 A clear tradeoff between fairness and accuracy in these algorithms can be seen; the parameters are appropriately allowing exploration of the possible solution space.
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/ricci_race_params_zafar.png)
+!(/html/1802.04422/assets/figs/analysis/ricci_race_params_zafar.png)
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/adult_race_params_feldman.png)
+!(/html/1802.04422/assets/figs/analysis/adult_race_params_feldman.png)
 
 Figure 7: The results of the Zafar
 et al. ([2017](#bib.bib36)) algorithm on the Ricci dataset (left) and the Feldman et al. ([2015](#bib.bib12)) algorithm on the Adult Income dataset (right) when the provided parameter to tradeoff between fairness and accuracy is used. The parameter is varied and each split and each new parameter value is shown.
 
 ### 7.3 Multiple sensitive attributes
 
-![Refer to caption](/html/1802.04422/assets/figs/analysis/multiple_sensitive.png)
-
+!(/html/1802.04422/assets/figs/analysis/multiple_sensitive.png)
 
 Figure 8: Here, we show the behavior of four different algorithms when making predictions while accounting for different protected attributes (“repairing” race and sex, as well as a composite attribute). Different algorithms not only behave quite differently from one another, but their performance varies significantly depending on which specific attribute is being considered.
 
@@ -783,7 +736,6 @@ recommend reporting algorithm success and stability based on a moderate number o
   21 Fairness Definitions and Their Politics.
   (Feb. 23 2018).
 
-
   Tutorial presented at the Conference on Fairness, Accountability,
   and Transparency.
 * Romei and
@@ -870,83 +822,3 @@ recommend reporting algorithm success and stability based on a moderate number o
   Learning Fair Representations. In
   *Proc. of Intl. Conf. on Machine Learning*.
   325–333.
-
-[◄](/html/1802.04421)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1802.04422)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1802.04422)
-[View original  
-on arXiv](https://arxiv.org/abs/1802.04422)[►](/html/1802.04423)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 9 12:49:56 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

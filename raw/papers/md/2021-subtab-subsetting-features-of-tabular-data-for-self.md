@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2110.04361v2
 year: 2021
 ---
 
-[2110.04361] SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning
 
 Talip Uçar, Ehsan Hajiramezanali, Lindsay Edwards
@@ -81,7 +38,7 @@ SubTab can: i) construct a better representation by using the aggregate of the r
 
 ## 2 Method
 
-![Refer to caption](/html/2110.04361/assets/images/arc9.png)
+!(/html/2110.04361/assets/images/arc9.png)
 
 Figure 1: SubTab framework: i) Dividing the features into subsets (similar to feature bagging, or cropping images), ii) Reconstruction of either subsets of features (x~1subscript~𝑥1\tilde{x}\_{1},x~2subscript~𝑥2\tilde{x}\_{2},x~3subscript~𝑥3\tilde{x}\_{3}), or complete feature space (X~1subscript~𝑋1\tilde{X}\_{1},X~2subscript~𝑋2\tilde{X}\_{2},X~3subscript~𝑋3\tilde{X}\_{3}), which are used to compute reconstruction loss. iii) Generating projections used to compute contrastive and distance loss. E≡E​n​c​o​d​e​r,D≡D​e​c​o​d​e​r,G≡P​r​o​j​e​c​t​i​o​nformulae-sequence𝐸𝐸𝑛𝑐𝑜𝑑𝑒𝑟formulae-sequence𝐷𝐷𝑒𝑐𝑜𝑑𝑒𝑟𝐺𝑃𝑟𝑜𝑗𝑒𝑐𝑡𝑖𝑜𝑛E\equiv Encoder,D\equiv Decoder,G\equiv Projection.
 
@@ -105,18 +62,15 @@ Moreover, we use three different strategies when selecting the features to add n
 | --- | --- | --- | --- |
 |  | 𝒙𝟏​𝒄=(𝟏−𝒎)⊙𝒙𝟏+𝒎⊙ϵsubscript𝒙1𝒄direct-product1𝒎subscript𝒙1direct-product𝒎bold-italic-ϵ\bm{x\_{1c}=(1-m)\odot x\_{1}+m\odot\epsilon} |  | (1) |
 
-![Refer to caption](/html/2110.04361/assets/images/forces.png)
-
+!(/html/2110.04361/assets/images/forces.png)
 
 (a) Push-Pull forces
 
-![Refer to caption](/html/2110.04361/assets/images/selection_types_vertical.png)
-
+!(/html/2110.04361/assets/images/selection_types_vertical.png)
 
 (b) Feature selection
 
-![Refer to caption](/html/2110.04361/assets/images/test_time7.png)
-
+!(/html/2110.04361/assets/images/test_time7.png)
 
 (c) Representation at test time
 
@@ -199,18 +153,15 @@ For self-supervised models, once the models are trained, we evaluate them by tra
 
 ### 3.3 Results
 
-![Refer to caption](/html/2110.04361/assets/images/mnist_text_acc.png)
-
+!(/html/2110.04361/assets/images/mnist_text_acc.png)
 
 (a)
 
-![Refer to caption](/html/2110.04361/assets/images/mnist_train.png)
-
+!(/html/2110.04361/assets/images/mnist_train.png)
 
 (b)
 
-![Refer to caption](/html/2110.04361/assets/images/mnist_test.png)
-
+!(/html/2110.04361/assets/images/mnist_test.png)
 
 (c)
 
@@ -221,13 +172,11 @@ We used a simple three-layer encoder architecture with dimensions of [512, 256, 
 
 For SubTab, we trained our base model multiple times without noise at the input. For each training, we used different number of subsets with different levels of overlap between neighbouring subsets (Figure [3](#S3.F3 "Figure 3 ‣ 3.3 Results ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning")a). For small number of subsets (e.g. 2 or 3), the performance monotonically decreases when we increase the overlap between subsets. But, for higher number of subsets, the performance generally improves as we increase the number of shared features between the neighbouring subsets. In general, our results show that K=4𝐾4K=4 with 75% overlap, and K=7𝐾7K=7 with 50% overlap perform the best in MNIST dataset, where K𝐾K refers to the number of subsets. Figure [3](#S3.F3 "Figure 3 ‣ 3.3 Results ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning") also shows t-SNE plots of training and test sets for K= 4 with 75% overlap, which proves the high quality of clustering, while Table [1](#S3.T1 "Table 1 ‣ 3.3 Results ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning") summarizes the classification accuracy of all models on the test set. Our base model without noise outperforms autoencoder baselines and other self-supervised models with the same architecture. We experimented with three noise types for all self-supervised models, and observed that adding swap-noise at the input pushes the performance higher. For SubTab, adding distance loss and increasing the dimensions of the last layer from 128 to 512 help improve the performance even further. Moreover, we conducted three additional experiments (details in Section [C.3](#A3.SS3 "C.3 Supporting visuals for experiments ‣ Appendix C Details of the experiments in the main paper ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning") of Appendix):
 
-![Refer to caption](/html/2110.04361/assets/images/performance_num_subsets7.png)
-
+!(/html/2110.04361/assets/images/performance_num_subsets7.png)
 
 (a)
 
-![Refer to caption](/html/2110.04361/assets/images/sota3.png)
-
+!(/html/2110.04361/assets/images/sota3.png)
 
 (b)
 
@@ -235,18 +184,15 @@ Figure 4: a) After training the base model (latent dimension=128) on four subset
 
 In the first experiment, for the optimum case of K=4𝐾4K=4 with 75% overlap, we trained and tested accuracy of a linear model by using the joint representations obtained from the varying number of subsets. Starting with a single subset of the data, we plot the training and test accuracy of the model (Figure [4](#S3.F4 "Figure 4 ‣ 3.3 Results ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning")a). The linear model is able to achieve 87.5% test accuracy using the representation of a single subset. As we start adding latent representations of remaining subsets, both the training and test accuracy keep increasing, eventually achieving top accuracy when all subsets are used. The evolution of clusters corresponding to Figure [4](#S3.F4 "Figure 4 ‣ 3.3 Results ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning")a can be seen in Figure [A7](#A6.F7 "Figure A7 ‣ F.1 MNIST ‣ Appendix F Additional results for the experiments listed in the main paper ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning") in Appendix. This experiment indicates that we can achieve a good performance using only small subset of features when we don’t have access to data on other features.
 
-![Refer to caption](/html/2110.04361/assets/images/acc_over_subsets1v2.png)
-
+!(/html/2110.04361/assets/images/acc_over_subsets1v2.png)
 
 (a)
 
-![Refer to caption](/html/2110.04361/assets/images/acc_over_subsets2.png)
-
+!(/html/2110.04361/assets/images/acc_over_subsets2.png)
 
 (b)
 
-![Refer to caption](/html/2110.04361/assets/images/acc_over_subsets3v2.png)
-
+!(/html/2110.04361/assets/images/acc_over_subsets3v2.png)
 
 (c)
 
@@ -780,9 +726,6 @@ Table A1: Architectures & hyper-parameters for the results in Table [1](#S3.T1 "
 | Income | [1024, 1024] | [1024, 1024] | No | Yes | No | 5 / 25% | 0.2 | Gaussian | 256, 20 |
 | Blog | [1024, 1024] | [1024, 1024] | No | Yes | No | 7 / 75% | 0.2 | Gaussian | 256, 20 |
 
-
-
-
 Table A2: Architectures & hyper-parameters for the results of Shallow SubTab in Table [3](#S3.T3 "Table 3 ‣ 3.4 Ablation study ‣ 3 Experiments ‣ SubTab: Subsetting Features of Tabular Data for Self-Supervised Representation Learning").
 
 | Dataset | Encoder | Decoder | Projection | DL | CL | Subsets / Overlap | MR | Noise | Batch/Epoch |
@@ -811,8 +754,7 @@ Few other notes:
 
 ### C.2 Evaluation
 
-![Refer to caption](/html/2110.04361/assets/images/sup_evaluation.png)
-
+!(/html/2110.04361/assets/images/sup_evaluation.png)
 
 Figure A1: Once the SubTab model is trained, the joint embeddings for both training and test sets are obtained, and the quality of the representation is evaluated by using a linear classifier.
 
@@ -820,23 +762,19 @@ For all autoencoder baselines and self-supervised models, we evaluate the qualit
 
 ### C.3 Supporting visuals for experiments
 
-![Refer to caption](/html/2110.04361/assets/images/sup_subtab_info_content_in_joint.png)
-
+!(/html/2110.04361/assets/images/sup_subtab_info_content_in_joint.png)
 
 Figure A2: First experiment; measuring the information content of the joint embedding. The example in this figure shows the case for the joint embedding of three subsets.
 
-![Refer to caption](/html/2110.04361/assets/images/sup_dividing_mnist_7subsets.png)
-
+!(/html/2110.04361/assets/images/sup_dividing_mnist_7subsets.png)
 
 Figure A3: Setup for second and third experiments; MNIST is divided into seven subsets.
 
-![Refer to caption](/html/2110.04361/assets/images/sup_six_models.png)
-
+!(/html/2110.04361/assets/images/sup_six_models.png)
 
 Figure A4: Setup for second experiment, in which five models are trained by using different combinations of seven subsets, and a sixth model that is kept untrained.
 
-![Refer to caption](/html/2110.04361/assets/images/sup_individdual_info_content.png)
-
+!(/html/2110.04361/assets/images/sup_individdual_info_content.png)
 
 Figure A5: Second experiment; measuring the information content of individual subsets. For each subset, we obtained its embedding from each of the six models for both training and test sets, and evaluated the information content by using a linear classifier.
 
@@ -860,8 +798,7 @@ We implemented our work using PyTorch [[38](#bib.bib38)]. AdamW optimizer [[29](
 
 ### D.2 Comments
 
-![Refer to caption](/html/2110.04361/assets/images/sup_applications.png)
-
+!(/html/2110.04361/assets/images/sup_applications.png)
 
 Figure A6: Two of the possible applications of SubTab
 
@@ -892,51 +829,41 @@ We can also choose to use separate encoders for different subsets of the data.
 
 ### F.1 MNIST
 
-![Refer to caption](/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs0.png)
-
+!(/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs0.png)
 
 (a) Using one subset out of four available
 
-![Refer to caption](/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs1.png)
-
+!(/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs1.png)
 
 (b) Using two subsets out of four available
 
-![Refer to caption](/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs2.png)
-
+!(/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs2.png)
 
 (c) Using three subsets out of four available
 
-![Refer to caption](/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs3.png)
-
+!(/html/2110.04361/assets/images/classes_inLatentSpace_test_unique_zs3.png)
 
 (d) Using all four subsets
 
 Figure A7: PCA and t-SNE clustering of representation for the model trained on four subsets with 75% overlap between subsets. Starting from one subset, we keep adding more subsets to get a better representation on the test set: a) One subset, b) Two subsets, c) Three subsets, d) Four (all) subsets.
 
-![Refer to caption](/html/2110.04361/assets/images/mnist_28.png)
-
+!(/html/2110.04361/assets/images/mnist_28.png)
 
 (a) Using 28 subsets for MNIST
-
-
 
 Figure A8: a) Dividing MNIST to 28 subsets, each of which corresponds to one row in a 28x28 image. The test accuracy of a subset can be used as a measure of information content in that subset i.e. particular row in the image.
 
 ### F.2 Varying the number of subsets and the percentage of overlap for other datasets
 
-![Refer to caption](/html/2110.04361/assets/images/blog_sweep.png)
-
+!(/html/2110.04361/assets/images/blog_sweep.png)
 
 (a) Blog
 
-![Refer to caption](/html/2110.04361/assets/images/income_sweep.png)
-
+!(/html/2110.04361/assets/images/income_sweep.png)
 
 (b) Income
 
-![Refer to caption](/html/2110.04361/assets/images/rppa_sweep.png)
-
+!(/html/2110.04361/assets/images/rppa_sweep.png)
 
 (c) TCGA
 
@@ -944,13 +871,11 @@ Figure A9:  Test accuracy on (a) Blog, (b) Income, and (c) TCGA datasets over di
 
 ### F.3 Sensitivity analysis for masking ratio (p) and initialization
 
-![Refer to caption](/html/2110.04361/assets/images/p_sweep.png)
-
+!(/html/2110.04361/assets/images/p_sweep.png)
 
 (a) Sensitivity to p𝑝p.
 
-![Refer to caption](/html/2110.04361/assets/images/sensitivity_initialization.png)
-
+!(/html/2110.04361/assets/images/sensitivity_initialization.png)
 
 (b) Sensitivity to the initialization.
 
@@ -1083,83 +1008,3 @@ Based on the results shown in Table [A7](#A8.T7 "Table A7 ‣ H.3 Results ‣ Ap
 * •
 
   If the dataset is trivial (i.e. logistic regression already gives a very decent performance), we might be better off using simple models such as logistic regression as this was the case in datasets [6, 7, and 8] (i.e. Texture, DNA, and Climate datasets respectively).
-
-[◄](/html/2110.04360)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2110.04361)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2110.04361)
-[View original  
-on arXiv](https://arxiv.org/abs/2110.04361)[►](/html/2110.04362)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 22:06:11 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

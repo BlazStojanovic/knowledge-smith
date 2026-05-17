@@ -11,52 +11,6 @@ url: http://arxiv.org/abs/1711.09784v1
 year: 2017
 ---
 
-[1711.09784] Distilling a Neural Network Into a Soft Decision Tree
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-11institutetext: Google Brain Team
-
 # Distilling a Neural Network Into a Soft Decision Tree
 
 Nicholas Frosst
@@ -103,8 +57,7 @@ where Q⋅ℓsubscriptsuperscript𝑄ℓ⋅Q^{\ell}\_{\cdot} denotes the probabi
 
 In order to avoid very soft decisions in the tree, we introduced an inverse temperature β𝛽\beta to the filter activations prior to calculating the sigmoid. Thus the probability of taking the right branch at node i𝑖i becomes pi​(𝐱)=σ​(β​(𝐱𝐰i+bi))subscript𝑝𝑖𝐱𝜎𝛽subscript𝐱𝐰𝑖subscript𝑏𝑖p\_{i}({\bf x})=\sigma(\beta({\bf x}{\bf w}\_{i}+b\_{i})).
 
-![Refer to caption](/html/1711.09784/assets/treedepth1diagram.png)
-
+!(/html/1711.09784/assets/treedepth1diagram.png)
 
 Figure 1: This diagram shows a soft binary decision tree with a single inner node and two leaf nodes.
 
@@ -151,8 +104,7 @@ achieved a test accuracy of 96.76% which is about halfway between the neural net
 
 ## 5 Explaining how a soft decision tree makes a classification
 
-![Refer to caption](/html/1711.09784/assets/treedepth4flip.png)
-
+!(/html/1711.09784/assets/treedepth4flip.png)
 
 Figure 2: This is a visualization of a soft decision tree of depth 4 trained on MNIST. The images at the inner nodes are the learned filters, and the images at the leaves are visualizations of the learned probability distribution over classes. The final most likely classification at each leaf, as well as the likely classifications at each edge are annotated. If we take for example the right most internal node, we can see that at that level in the tree the potential classifications are only 3 or 8, thus the learned filter is simply learning to distinguish between those two digits. The result is a filter that looks for the presence of two areas that would join the ends of the 3 to make an 8.
 
@@ -164,7 +116,7 @@ The crux of this model is that it does not rely on hierarchical features, it rel
 We tried this model on several other data sets, but focused on spatial input for the sake of visualization. By first training a neural net and then using it to provide soft targets for training a soft decision tree, with a tree of depth 8 we were able to achieve a test accuracy of 80.60% on the Connect4 dataset (Lichman, [2013](#bib.bib15)) comprised of board states of the popular child’s game connect 4 as input, and the final outcome of the game (player 1 win, player 2 win, or tie) as the target value. Without distilling from a neural net, the best test accuracy we achieved was 78.63%. Other decision trees trained with gradient descent have been applied to this dataset (Norouzi et al., [2015](#bib.bib16)) but were only able to achieve a maximum test accuracy of 76.50% at the equivalent depth of 8 and 77.45% at a depth of 20. This provides an interesting example of the utility of an explainable model - by examining the learned filters of the soft decision tree we are able to learn something about the nature of the game. From examining the first learned filter we can see that the game can be split into two distinct sub types of games - games where the players have placed pieces on the edges of the board, and games where the players have placed pieces in the center of the board. These two sub games progress in sufficiently different manners that it was beneficial for the decision tree to split them at the root.
 
 .
-![Refer to caption](/html/1711.09784/assets/connect4vis.png)
+!(/html/1711.09784/assets/connect4vis.png)
 
 Figure 3: This is a visualization of the first 2 layers of a soft decision tree trained on the Connect4 data set. From examining the learned filters we can see that the game can be split into two distinct sub types of games - games where the players have placed pieces on the edges of the board, and games where the players have placed pieces in the center of the board.
 
@@ -270,83 +222,3 @@ So if it is essential to be able to explain why a model classifies a particular 
   Efficient non-greedy optimization of decision trees.
   In *Advances in Neural Information Processing Systems*, pages
   1729–1737, 2015.
-
-[◄](/html/1711.09783)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1711.09784)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1711.09784)
-[View original  
-on arXiv](https://arxiv.org/abs/1711.09784)[►](/html/1711.09785)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 04:24:31 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

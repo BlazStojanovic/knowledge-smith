@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2101.03961
 year: 2021
 ---
 
-[2101.03961] Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
 
 \nameWilliam Fedus
@@ -130,9 +87,9 @@ While effective, it is also extremely computationally intensive (Strubell et al
 Inspired by the success of model scale, but seeking greater computational efficiency, we instead propose a *sparsely-activated* expert model: the Switch Transformer.
 In our case the sparsity comes from activating a *subset* of the neural network weights for each incoming example.
 
-![Refer to caption](/html/2101.03961/assets/x1.png)
+!(/html/2101.03961/assets/x1.png)
 
-![Refer to caption](/html/2101.03961/assets/x2.png)
+!(/html/2101.03961/assets/x2.png)
 
 Figure 1: Scaling and sample efficiency of Switch Transformers. Left Plot: Scaling properties for increasingly sparse (more experts) Switch Transformers. Right Plot: Negative log perplexity comparing Switch Transformers to T5 (Raffel et al., [2019](#bib.bib36)) models using the same compute budget.
 
@@ -179,8 +136,7 @@ Our work here focuses on TPU architectures, but these class of models may be sim
 In our distributed training setup, our sparsely activated layers split *unique* weights on different devices.
 Therefore, the weights of the model increase with the number of devices, all while maintaining a manageable memory and computational footprint on each device.
 
-![Refer to caption](/html/2101.03961/assets/x3.png)
-
+!(/html/2101.03961/assets/x3.png)
 
 Figure 2: Illustration of a Switch Transformer encoder block. We replace the dense feed forward network (FFN) layer present in the Transformer with a sparse Switch FFN layer (light blue). The layer operates independently on the tokens in the sequence. We diagram two tokens (x1=“More”subscript𝑥1“More”x\_{1}=\text{``More"} and x2=“Parameters”subscript𝑥2“Parameters”x\_{2}=\text{``Parameters"} below) being routed (solid lines) across four FFN experts, where the router independently routes each token. The switch FFN layer returns the output of the selected FFN multiplied by the router gate value (dotted-line).
 
@@ -216,8 +172,7 @@ The benefits for the Switch layer are three-fold:
 (3) The routing implementation is simplified and communication costs are reduced.
 Figure [3](#S2.F3 "Figure 3 ‣ 2.1 Simplifying Sparse Routing ‣ 2 Switch Transformer ‣ Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity") shows an example of routing with different expert capacity factors.
 
-![Refer to caption](/html/2101.03961/assets/x4.png)
-
+!(/html/2101.03961/assets/x4.png)
 
 Figure 3: Illustration of token routing dynamics. Each expert processes a fixed batch-size of tokens modulated by the *capacity factor*. Each token is routed to the expert with the highest router probability, but each expert has a fixed batch size of (total\_tokens / num\_experts) ×\times capacity\_factor. If the tokens are unevenly dispatched then certain experts will overflow (denoted by dotted red lines), resulting in these tokens not being processed by this layer. A larger capacity factor alleviates this overflow issue, but also increases computation and communication costs (depicted by padded white/empty slots).
 
@@ -400,9 +355,9 @@ We find that increasing the number of experts leads to more sample efficient mod
 Our Switch-Base 64 expert model achieves the same performance of the T5-Base model at step 60k at step 450k, which is a  7.5x speedup in terms of step time.
 In addition, consistent with the findings of Kaplan et al. ([2020](#bib.bib25)), we find that larger models are also more *sample efficient*—learning more quickly for a fixed number of observed tokens.
 
-![Refer to caption](/html/2101.03961/assets/x5.png)
+!(/html/2101.03961/assets/x5.png)
 
-![Refer to caption](/html/2101.03961/assets/x6.png)
+!(/html/2101.03961/assets/x6.png)
 
 Figure 4: Scaling properties of the Switch Transformer. Left Plot: We measure the quality improvement, as measured by perplexity, as the parameters increase by scaling the number of experts. The top-left point corresponds to the T5-Base model with 223M parameters. Moving from top-left to bottom-right, we double the number of experts from 2, 4, 8 and so on until the bottom-right point of a 256 expert model with 14.7B parameters. Despite all models using an equal computational budget, we observe consistent improvements scaling the number of experts. Right Plot: Negative log perplexity per step sweeping over the number of experts. The dense baseline is shown with the purple line and we note improved sample efficiency of our Switch-Base models.
 
@@ -415,8 +370,7 @@ This raises the question:
 
 *For a fixed training duration and computational budget, should one train a dense or a sparse model?*
 
-![Refer to caption](/html/2101.03961/assets/x7.png)
-
+!(/html/2101.03961/assets/x7.png)
 
 Figure 5: Speed advantage of Switch Transformer. All models trained on 32 TPUv3 cores with equal FLOPs per example. For a fixed amount of computation and training time, Switch Transformers significantly outperform the dense Transformer baseline. Our 64 expert Switch-Base model achieves the same quality in *one-seventh* the time of the T5-Base and continues to improve.
 
@@ -434,9 +388,9 @@ But despite T5-Large applying 3.5x more FLOPs per token, Switch-Base is still mo
 Furthermore, more gains can be had simply by designing a new, larger sparse version, Switch-Large, which is FLOP-matched to T5-Large.
 We do this and demonstrate superior scaling and fine-tuning in the following section.
 
-![Refer to caption](/html/2101.03961/assets/x8.png)
+!(/html/2101.03961/assets/x8.png)
 
-![Refer to caption](/html/2101.03961/assets/x9.png)
+!(/html/2101.03961/assets/x9.png)
 
 Figure 6: Scaling Transformer models with Switch layers or with standard dense model scaling. Left Plot: Switch-Base is more sample efficient than both the T5-Base, and T5-Large variant, which applies 3.5x more FLOPS per token. Right Plot: As before, on a wall-clock basis, we find that Switch-Base is still faster, and yields a 2.5x speedup over T5-Large.
 
@@ -571,13 +525,11 @@ In our final set of downstream experiments, we measure the model quality and spe
 We build and benchmark off the recent work of mT5 (Xue et al., [2020](#bib.bib59)), a multilingual extension to T5.
 We pre-train on the multilingual variant of the Common Crawl data set (mC4) spanning 101 languages introduced in mT5, but due to script variants within certain languages, the mixture contains 107 tasks.
 
-![Refer to caption](/html/2101.03961/assets/x10.png)
-
+!(/html/2101.03961/assets/x10.png)
 
 Figure 7: Multilingual pre-training on 101 languages. Improvements of Switch T5 Base model over dense baseline when multi-task training on 101 languages. We observe Switch Transformers to do quite well in the multi-task training setup and yield improvements on all 101 languages.
 
-![Refer to caption](/html/2101.03961/assets/x11.png)
-
+!(/html/2101.03961/assets/x11.png)
 
 Figure 8: Multilingual pre-training on 101 languages. We histogram for each language, the step speedup of Switch Transformers over the FLOP matched T5 dense baseline to reach the same quality. Over all 101 languages, we achieve a mean step speed-up over mT5-Base of 5x and, for 91% of languages, we record a 4x, or greater, speedup to reach the final perplexity of mT5-Base.
 
@@ -620,8 +572,7 @@ For the variants with experts-layers, we consider E𝐸E experts, each of which 
 | E𝐸E | Number of experts in Switch layers. |
 | C𝐶C | Expert capacity, the batch size of each expert. |
 
-![Refer to caption](/html/2101.03961/assets/x12.png)
-
+!(/html/2101.03961/assets/x12.png)
 
 Figure 9: Data and weight partitioning strategies. Each 4×\times4 dotted-line grid represents 16 cores and the shaded squares are the data contained on that core (either model weights or batch of tokens). We illustrate both how the model weights and the data tensors are split for each strategy. First Row: illustration of how *model weights* are split across the cores. Shapes of different sizes in this row represent larger weight matrices in the Feed Forward Network (FFN) layers (e.g larger df​fsubscript𝑑𝑓𝑓d\_{ff} sizes). Each color of the shaded squares identifies a unique weight matrix. The number of parameters *per core* is fixed, but larger weight matrices will apply more computation to each token. Second Row: illustration of how the *data batch* is split across cores. Each core holds the same number of tokens which maintains a fixed memory usage across all strategies. The partitioning strategies have different properties of allowing each core to either have the same tokens or different tokens across cores, which is what the different colors symbolize.
 
@@ -842,8 +793,7 @@ Similarly, our work also replaced the FFN layer in the Transformer, but we brief
 We add Switch layers into the Transformer *Self-Attention* layers.
 To do so, we replace the trainable weight matrices that produce the queries, keys and values with Switch layers as seen in Figure [10](#A1.F10 "Figure 10 ‣ Appendix A Switch for Attention ‣ Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity").
 
-![Refer to caption](/html/2101.03961/assets/x13.png)
-
+!(/html/2101.03961/assets/x13.png)
 
 Figure 10: Switch layers in attention. We diagram how to incorporate the Switch layer into the Self-Attention transformer block. For each token (here we show two tokens, x1=“More”subscript𝑥1“More”x\_{1}=\text{``More"} and x2=“Parameters”subscript𝑥2“Parameters”x\_{2}=\text{``Parameters"}), one set of weights produces the query and the other set of unique weights produces the shared keys and values. We experimented with each expert being a linear operation, as well as a FFN, as was the case throughout this work. While we found quality improvements using this, we found this to be more unstable when used with low precision number formats, and thus leave it for future work.
 
@@ -872,8 +822,7 @@ Lepikhin et al. ([2020](#bib.bib30)) adapts a Mixture-of-Expert model and addre
 
 We suspected that having no computation applied to tokens could be very wasteful, especially since if there is overflow on one expert, that means another expert will have extra capacity. With this intuition we create *No-Token-Left-Behind*, which iteratively reroutes any tokens that are at first routed to an expert that is overflowing. Figure  [11](#A2.F11 "Figure 11 ‣ Appendix B Preventing Token Dropping with No-Token-Left-Behind ‣ Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity") shows a graphical description of this method, which will allow us to guarantee almost no tokens will be dropped during training and inference. We hypothesised that this could improve performance and further stabilize training, but we found no empirical benefits. We suspect that once the network learns associations between different tokens and experts, if this association is changed (e.g. sending a token to its second highest expert) then performance could be degraded.
 
-![Refer to caption](/html/2101.03961/assets/x14.png)
-
+!(/html/2101.03961/assets/x14.png)
 
 Figure 11: Diagram of the *No-Token-Left-Behind Routing*. Stage 1 is equivalent to Switch routing where tokens are routed to the expert with the highest probability from the router. In Stage 2 we look at all tokens that have overflowed and route them to the expert with which has the second highest probability. Tokens can still be overflowed if their second highest expert has too many tokens, but this allows most of the tokens to be routed. This process can be iterated to guarantee virtually no tokens are dropped at all.
 
@@ -905,8 +854,7 @@ Throughout this work, we use input jitter to inject noise as we have found it to
 Switch Transformer is also an effective architecture at small scales as well as in regimes with thousands of cores and trillions of parameters.
 Many of our prior experiments were at the scale of 10B+ parameter models, but we show in Figure [12](#A4.F12 "Figure 12 ‣ Appendix D Switch Transformers in Lower Compute Regimes ‣ Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity") as few as 2 experts produce compelling gains over a FLOP-matched counterpart. Even if a super computer is not readily available, training Switch Transformers with 2, 4, or 8 experts (as we typically recommend one expert per core) results in solid improvements over T5 dense baselines.
 
-![Refer to caption](/html/2101.03961/assets/x15.png)
-
+!(/html/2101.03961/assets/x15.png)
 
 Figure 12: Switch Transformer with few experts. Switch Transformer improves over the baseline even with very few experts. Here we show scaling properties at very small scales, where we improve over the T5-Base model using 2, 4, and 8 experts.
 
@@ -916,9 +864,9 @@ There is no guarantee that a model’s quality on a pre-training objective will 
 Figure [13](#A5.F13 "Figure 13 ‣ Appendix E Relation of Upstream to Downstream Model Performance ‣ Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity") presents the correlation of the upstream model quality, for both dense and Switch models, on the C4 pre-training task with two downstream task measures: average SuperGLUE performance and TriviaQA score.
 We choose these two tasks as one probes the model’s reasoning and the other factual knowledge.
 
-![Refer to caption](/html/2101.03961/assets/x16.png)
+!(/html/2101.03961/assets/x16.png)
 
-![Refer to caption](/html/2101.03961/assets/x17.png)
+!(/html/2101.03961/assets/x17.png)
 
 Figure 13: Upstream pre-trained quality to downstream model quality. We correlate the upstream performance with downstream quality on both SuperGLUE and TriviaQA (SOTA recorded without SSM), reasoning and knowledge-heavy benchmarks, respectively (validation sets). We find that, as with the baseline, the Switch model scales with improvements in the upstream pre-training task. For SuperGLUE, we find a loosely linear relation between negative log perplexity and the average SuperGLUE score. However, the dense model often performs better for a fixed perplexity, particularly in the large-scale regime. Conversely, on the knowledge-heavy task, TriviaQA, we find that the Switch Transformer may follow an improved scaling relationship – for a given upstream perplexity, it does better than a dense counterpart. Further statistics (expensive to collect and left to future work) would be necessary to confirm these observations.
 
@@ -975,8 +923,6 @@ loss = mtf.reduce\_mean(density\_1\_proxy \* density\_1) \* (num\_experts ^ 2)
 return loss
 
 Figure 14: Pseudo code for the load balance loss for Switch Transformers in Mesh Tensorflow.
-
-
 
 [⬇](data:text/plain;base64,aW1wb3J0IG1lc2hfdGVuc29yZmxvdyBhcyBtdGYKCmRlZiByb3V0ZXIoaW5wdXRzLCBjYXBhY2l0eV9mYWN0b3IpOgogICAgIiIiUHJvZHVjZSB0aGUgY29tYmluZSBhbmQgZGlzcGF0Y2ggdGVuc29ycyB1c2VkIGZvciBzZW5kaW5nIGFuZAogICAgcmVjZWl2aW5nIHRva2VucyBmcm9tIHRoZWlyIGhpZ2hlc3QgcHJvYmFiaWxpdHkgZXhwZXJ0LiAiIiIKICAgICMgQ29yZSBsYXlvdXQgaXMgc3BsaXQgYWNyb3NzIG51bV9jb3JlcyBmb3IgYWxsIHRlbnNvcnMgYW5kIG9wZXJhdGlvbnMuCiAgICAjIGlucHV0cyBzaGFwZTogW251bV9jb3JlcywgdG9rZW5zX3Blcl9jb3JlLCBkX21vZGVsXQoKICAgIHJvdXRlcl93ZWlnaHRzID0gbXRmLlZhcmlhYmxlKHNoYXBlPVtkX21vZGVsLCBudW1fZXhwZXJ0c10pCgogICAgIyByb3V0ZXJfbG9naXRzIHNoYXBlOiBbbnVtX2NvcmVzLCB0b2tlbnNfcGVyX2NvcmUsIG51bV9leHBlcnRzXQogICAgcm91dGVyX2xvZ2l0cyA9IG10Zi5laW5zdW0oW2lucHV0cywgcm91dGVyX3dlaWdodHNdLCByZWR1Y2VkX2RpbT1kX21vZGVsKQoKICAgIGlmIGlzX3RyYWluaW5nOgogICAgICAgICMgQWRkIG5vaXNlIGZvciBleHBsb3JhdGlvbiBhY3Jvc3MgZXhwZXJ0cy4KICAgICAgICByb3V0ZXJfbG9naXRzICs9IG10Zi5yYW5kb21fdW5pZm9ybShzaGFwZT1yb3V0ZXJfbG9naXRzLnNoYXBlLCBtaW52YWw9MS1lcHMsIG1heHZhbD0xK2VwcykKCiAgICAjIENvbnZlcnQgaW5wdXQgdG8gc29mdG1heCBvcGVyYXRpb24gZnJvbSBiZmxvYXQxNiB0byBmbG9hdDMyIGZvciBzdGFiaWxpdHkuCiAgICByb3V0ZXJfbG9naXRzID0gbXRmLnRvX2Zsb2F0MzIocm91dGVyX2xvZ2l0cykKCiAgICAjIFByb2JhYmlsaXRpZXMgZm9yIGVhY2ggdG9rZW4gb2Ygd2hhdCBleHBlcnQgaXQgc2hvdWxkIGJlIHNlbnQgdG8uCiAgICByb3V0ZXJfcHJvYnMgPSBtdGYuc29mdG1heChyb3V0ZXJfbG9naXRzLCBheGlzPS0xKQoKICAgICMgR2V0IHRoZSB0b3AtMSBleHBlcnQgZm9yIGVhY2ggdG9rZW4uIGV4cGVydF9nYXRlIGlzIHRoZSB0b3AtMSBwcm9iYWJpbGl0eQogICAgIyBmcm9tIHRoZSByb3V0ZXIgZm9yIGVhY2ggdG9rZW4uIGV4cGVydF9pbmRleCBpcyB3aGF0IGV4cGVydCBlYWNoIHRva2VuCiAgICAjIGlzIGdvaW5nIHRvIGJlIHJvdXRlZCB0by4KICAgICMgZXhwZXJ0X2dhdGUgc2hhcGU6IFtudW1fY29yZXMsIHRva2Vuc19wZXJfY29yZV0KICAgICMgZXhwZXJ0X2luZGV4IHNoYXBlOiBbbnVtX2NvcmVzLCB0b2tlbnNfcGVyX2NvcmVdCiAgICBleHBlcnRfZ2F0ZSwgZXhwZXJ0X2luZGV4ID0gbXRmLnRvcF8xKHJvdXRlcl9wcm9icywgcmVkdWNlZF9kaW09bnVtX2V4cGVydHMpCgogICAgIyBleHBlcnRfbWFzayBzaGFwZTogW251bV9jb3JlcywgdG9rZW5zX3Blcl9jb3JlLCBudW1fZXhwZXJ0c10KICAgIGV4cGVydF9tYXNrID0gbXRmLm9uZV9ob3QoZXhwZXJ0X2luZGV4LCBkaW1lbnNpb249bnVtX2V4cGVydHMpCgogICAgIyBDb21wdXRlIGxvYWQgYmFsYW5jaW5nIGxvc3MuCiAgICBhdXhfbG9zcyA9IGxvYWRfYmFsYW5jZV9sb3NzKHJvdXRlcl9wcm9icywgZXhwZXJ0X21hc2spCgogICAgIyBFeHBlcnRzIGhhdmUgYSBmaXhlZCBjYXBhY2l0eSwgZW5zdXJlIHdlIGRvIG5vdCBleGNlZWQgaXQuIENvbnN0cnVjdAogICAgIyB0aGUgYmF0Y2ggaW5kaWNlcywgdG8gZWFjaCBleHBlcnQsIHdpdGggcG9zaXRpb25faW5fZXhwZXJ0CiAgICAjIG1ha2Ugc3VyZSB0aGF0IG5vdCBtb3JlIHRoYXQgZXhwZXJ0X2NhcGFjaXR5IGV4YW1wbGVzIGNhbiBiZSByb3V0ZWQgdG8KICAgICMgZWFjaCBleHBlcnQuCiAgICBwb3NpdGlvbl9pbl9leHBlcnQgPSBtdGYuY3Vtc3VtKGV4cGVydF9tYXNrLCBkaW1lbnNpb249dG9rZW5zX3Blcl9jb3JlKSAqIGV4cGVydF9tYXNrCgogICAgIyBLZWVwIG9ubHkgdG9rZW5zIHRoYXQgZml0IHdpdGhpbiBleHBlcnRfY2FwYWNpdHkuCiAgICBleHBlcnRfbWFzayAqPSBtdGYubGVzcyhwb3NpdGlvbl9pbl9leHBlcnQsIGV4cGVydF9jYXBhY2l0eSkKICAgIGV4cGVydF9tYXNrX2ZsYXQgPSBtdGYucmVkdWNlX3N1bShleHBlcnRfbWFzaywgcmVkdWNlZF9kaW09ZXhwZXJ0c19kaW0pCgogICAgIyBNYXNrIG91dCB0aGUgZXhwZXJ0cyB0aGF0IGhhdmUgb3ZlcmZsb3dlZCB0aGUgZXhwZXJ0IGNhcGFjaXR5LgogICAgZXhwZXJ0X2dhdGUgKj0gZXhwZXJ0X21hc2tfZmxhdAoKICAgICMgY29tYmluZV90ZW5zb3IgdXNlZCBmb3IgY29tYmluaW5nIGV4cGVydCBvdXRwdXRzIGFuZCBzY2FsaW5nIHdpdGggcm91dGVyIHByb2JhYmlsaXR5LgogICAgIyBjb21iaW5lX3RlbnNvciBzaGFwZTogW251bV9jb3JlcywgdG9rZW5zX3Blcl9jb3JlLCBudW1fZXhwZXJ0cywgZXhwZXJ0X2NhcGFjaXR5XQogICAgY29tYmluZV90ZW5zb3IgPSAoCiAgICAgICAgZXhwZXJ0X2dhdGUgKiBleHBlcnRfbWFza19mbGF0ICoKICAgICAgICBtdGYub25lX2hvdChleHBlcnRfaW5kZXgsIGRpbWVuc2lvbj1udW1fZXhwZXJ0cykgKgogICAgICAgIG10Zi5vbmVfaG90KHBvc2l0aW9uX2luX2V4cGVydCwgZGltZW5zaW9uPWV4cGVydF9jYXBhY2l0eSkpCgogICAgIyBDYXN0IGJhY2sgb3V0cHV0cyB0byBiZmxvYXQxNiBmb3IgdGhlIHJlc3Qgb2YgdGhlIGxheWVyLgogICAgY29tYmluZV90ZW5zb3IgPSBtdGYudG9fYmZsb2F0MTYoY29tYmluZV90ZW5zb3IpCgogICAgIyBDcmVhdGUgYmluYXJ5IGRpc3BhdGNoIHRlbnNvciB0aGF0IGlzIDEgaWYgdGhlIHRva2VuIGdldHMgcm91dGVkIHRvIHRoZSBjb3JyZXNwb25kaW5nIGV4cGVydC4KICAgICMgZGlzcGF0Y2hfdGVuc29yIHNoYXBlOiBbbnVtX2NvcmVzLCB0b2tlbnNfcGVyX2NvcmUsIG51bV9leHBlcnRzLCBleHBlcnRfY2FwYWNpdHldCiAgICBkaXNwYXRjaF90ZW5zb3IgPSBtdGYuY2FzdChjb21iaW5lX3RlbnNvciwgdGYuYm9vbCkKCiAgICByZXR1cm4gZGlzcGF0Y2hfdGVuc29yLCBjb21iaW5lX3RlbnNvciwgYXV4X2xvc3MK)
 
@@ -1077,8 +1023,6 @@ dispatch\_tensor = mtf.cast(combine\_tensor, tf.bool)
 return dispatch\_tensor, combine\_tensor, aux\_loss
 
 Figure 15: Pseudo code for the router for Switch Transformers in Mesh Tensorflow.
-
-
 
 [⬇](data:text/plain;base64,aW1wb3J0IG1lc2hfdGVuc29yZmxvdyBhcyBtdGYKCmRlZiBzd2l0Y2hfbGF5ZXIoaW5wdXRzLCBuLCBjYXBhY2l0eV9mYWN0b3IsIG51bV9leHBlcnRzKToKICAgICIiIkRpc3RyaWJ1dGVkIHN3aXRjaCB0cmFuc2Zvcm1lciBmZWVkLWZvcndhcmQgbGF5ZXIuIiIiCiAgICAjIG51bV9jb3JlcyAobikgPSB0b3RhbCBjb3JlcyBmb3IgdHJhaW5pbmcgdGhlIG1vZGVsIChzY2FsYXIpLgogICAgIyBkX21vZGVsID0gbW9kZWwgaGlkZGVuIHNpemUgKHNjYWxhcikuCiAgICAjIG51bV9leHBlcnRzID0gdG90YWwgbnVtYmVyIG9mIGV4cGVydHMuCiAgICAjIGNhcGFjaXR5X2ZhY3RvciA9IGV4dHJhIGJ1ZmZlciBmb3IgZWFjaCBleHBlcnQuCiAgICAjIGlucHV0cyBzaGFwZTogW2JhdGNoLCBzZXFfbGVuLCBkX21vZGVsXQogICAgYmF0Y2gsIHNlcV9sZW4sIGRfbW9kZWwgPSBpbnB1dHMuZ2V0X3NoYXBlKCkKCiAgICAjIEVhY2ggY29yZSB3aWxsIHJvdXRlIHRva2Vuc19wZXJfY29yZSB0b2tlbnMgdG8gdGhlIGNvcnJlY3QgZXhwZXJ0cy4KICAgIHRva2Vuc19wZXJfY29yZSA9IGJhdGNoICogc2VxX2xlbiAvIG51bV9jb3JlcwoKICAgICMgRWFjaCBleHBlcnQgd2lsbCBoYXZlIHNoYXBlIFtudW1fY29yZXMsIGV4cGVydF9jYXBhY2l0eSwgZF9tb2RlbF0uCiAgICAjIEVhY2ggY29yZSBpcyByZXNwb25zaWJsZSBmb3Igc2VuZGluZyBleHBlcnRfY2FwYWNpdHkgdG9rZW5zCiAgICAjIHRvIGVhY2ggZXhwZXJ0LgogICAgZXhwZXJ0X2NhcGFjaXR5ID0gdG9rZW5zX3Blcl9jb3JlICogY2FwYWNpdHlfZmFjdG9yIC8gbnVtX2V4cGVydHMKCiAgICAjIFJlc2hhcGUgdG8gc2V0dXAgcGVyIGNvcmUgZXhwZXJ0IGRpc3BhdGNoaW5nLgogICAgIyBzaGFwZTogW2JhdGNoLCBzZXFfbGVuLCBkX21vZGVsXSAtPiBbbnVtX2NvcmVzLCB0b2tlbnNfcGVyX2NvcmUsIGRfbW9kZWxdCiAgICAjIENvcmUgbGF5b3V0OiBbbiwgMSwgMV0gLT4gW24sIDEsIDFdCiAgICBpbnB1dHMgPSBtdGYucmVzaGFwZShpbnB1dHMsIFtudW1fY29yZXMsIHRva2Vuc19wZXJfY29yZSwgZF9tb2RlbF0pCgogICAgIyBDb3JlIExheW91dDogW24sIDEsIDFdIC0+IFtuLCAxLCAxLCAxXSwgW24sIDEsIDEsIDFdCiAgICAjIGRpc3BhdGNoX3RlbnNvciAoYm9vbGVhbikgc2hhcGU6IFtudW1fY29yZXMsIHRva2Vuc19wZXJfY29yZSwgbnVtX2V4cGVydHMsIGV4cGVydF9jYXBhY2l0eV0KICAgICMgZGlzcGF0Y2hfdGVuc29yIGlzIHVzZWQgZm9yIHJvdXRpbmcgdG9rZW5zIHRvIHRoZSBjb3JyZWN0IGV4cGVydC4KICAgICMgY29tYmluZV90ZW5zb3IgKGZsb2F0KSBzaGFwZTogW251bV9jb3JlcywgdG9rZW5zX3Blcl9jb3JlLCBudW1fZXhwZXJ0cywgZXhwZXJ0X2NhcGFjaXR5XQogICAgIyBjb21iaW5lX3RlbnNvciB1c2VkIGZvciBjb21iaW5pbmcgZXhwZXJ0IG91dHB1dHMgYW5kIHNjYWxpbmcgd2l0aCByb3V0ZXIKICAgICMgcHJvYmFiaWxpdHkuCiAgICBkaXNwYXRjaF90ZW5zb3IsIGNvbWJpbmVfdGVuc29yLCBhdXhfbG9zcyA9IHJvdXRlcihpbnB1dHMsIGV4cGVydF9jYXBhY2l0eSkKCiAgICAjIE1hdG11bCB3aXRoIGxhcmdlIGJvb2xlYW4gdGVuc29yIHRvIGFzc2lnbiB0b2tlbnMgdG8gdGhlIGNvcnJlY3QgZXhwZXJ0LgogICAgIyBDb3JlIExheW91dDogW24sIDEsIDFdLCAtPiBbMSwgbiwgMSwgMV0KICAgICMgZXhwZXJ0X2lucHV0cyBzaGFwZTogW251bV9leHBlcnRzLCBudW1fY29yZXMsIGV4cGVydF9jYXBhY2l0eSwgZF9tb2RlbF0KICAgIGV4cGVydF9pbnB1dHMgPSBtdGYuZWluc3VtKFtpbnB1dHMsIGRpc3BhdGNoX3RlbnNvcl0sIHJlZHVjZV9kaW1zPVt0b2tlbnNfcGVyX2NvcmVdKQoKICAgICMgQWxsLXRvLUFsbCBjb21tdW5pY2F0aW9uLiBDb3JlcyBzcGxpdCBhY3Jvc3MgbnVtX2NvcmVzIGFuZCBub3cgd2Ugd2FudCB0byBzcGxpdAogICAgIyBhY3Jvc3MgbnVtX2V4cGVydHMuIFRoaXMgc2VuZHMgdG9rZW5zLCByb3V0ZWQgbG9jYWxseSwgdG8gdGhlIGNvcnJlY3QgZXhwZXJ0IG5vdwogICAgIyBzcGxpdCBhY3Jvc3MgZGlmZmVyZW50IGNvcmVzLgogICAgIyBDb3JlIGxheW91dDogWzEsIG4sIDEsIDFdIC0+IFtuLCAxLCAxLCAxXQogICAgZXhwZXJ0X2lucHV0cyA9IG10Zi5yZXNoYXBlKGV4cGVydF9pbnB1dHMsIFtudW1fZXhwZXJ0cywgbnVtX2NvcmVzLCBleHBlcnRfY2FwYWNpdHksIGRfbW9kZWxdKQoKICAgICMgU3RhbmRhcmQgZmVlZCBmb3J3YXJkIGNvbXB1dGF0aW9uLCB3aGVyZSBlYWNoIGV4cGVydCB3aWxsIGhhdmUgaXRzIG93bgogICAgIyB1bmlxdWUgc2V0IG9mIHBhcmFtZXRlcnMuCiAgICAjIFRvdGFsIHVuaXF1ZSBwYXJhbWV0ZXJzIGNyZWF0ZWQ6IG51bV9leHBlcnRzICogKGRfbW9kZWwgKiBkX2ZmICogMikuCiAgICAjIGV4cGVydF9vdXRwdXRzIHNoYXBlOiBbbnVtX2V4cGVydHMsIG51bV9jb3JlcywgZXhwZXJ0X2NhcGFjaXR5LCBkX21vZGVsXQogICAgZXhwZXJ0X291dHB1dHMgPSBmZWVkX2ZvcndhcmQoZXhwZXJ0X2lucHV0cykKCiAgICAjIEFsbC10by1BbGwgY29tbXVuaWNhdGlvbi4gQ29yZXMgYXJlIGN1cnJlbnRseSBzcGxpdCBhY3Jvc3MgdGhlIGV4cGVydHMKICAgICMgZGltZW5zaW9uLCB3aGljaCBuZWVkcyB0byBiZSBzd2l0Y2hlZCBiYWNrIHRvIGJlaW5nIHNwbGl0IGFjcm9zcyBudW1fY29yZXMuCiAgICAjIENvcmUgTGF5b3V0OiBbbiwgMSwgMSwgMV0gLT4gWzEsIG4sIDEsIDFdCiAgICBleHBlcnRfb3V0cHV0cyA9IG10Zi5yZXNoYXBlKGV4cGVydF9vdXRwdXRzLCBbbnVtX2V4cGVydHMsIG51bV9jb3JlcywgZXhwZXJ0X2NhcGFjaXR5LCBkX21vZGVsXSkKCiAgICAjIENvbnZlcnQgYmFjayB0byBpbnB1dCBzaGFwZSBhbmQgbXVsdGlwbHkgb3V0cHV0cyBvZiBleHBlcnRzIGJ5IHRoZSByb3V0aW5nIHByb2JhYmlsaXR5LgogICAgIyBleHBlcnRfb3V0cHV0cyBzaGFwZTogW251bV9leHBlcnRzLCBudW1fY29yZXMsIHRva2Vuc19wZXJfY29yZSwgZF9tb2RlbF0KICAgICMgZXhwZXJ0X291dHB1dHNfY29tYmluZWQgc2hhcGU6IFtudW1fY29yZXMsIHRva2Vuc19wZXJfY29yZSwgZF9tb2RlbF0KICAgICMgQ29yZSBMYXlvdXQ6IFsxLCBuLCAxLCAxXSAtPiBbbiwgMSwgMV0KICAgIGV4cGVydF9vdXRwdXRzX2NvbWJpbmVkID0gbXRmLmVpbnN1bShbZXhwZXJ0X291dHB1dHMsIGNvbWJpbmVfdGVuc29yXSwgcmVkdWNlX2RpbXM9W3Rva2Vuc19wZXJfY29yZV0pCgogICAgIyBSZW1vdmUgdG9rZW5zX3Blcl9jb3JlIHNoYXBlcyB1c2VkIGZvciBsb2NhbCByb3V0aW5nIGRpc3BhdGNoaW5nIHRvIG1hdGNoIGlucHV0IHNoYXBlLgogICAgIyBDb3JlIExheW91dDogW24sIDEsIDFdIC0+IFtuLCAxLCAxXQogICAgb3V0cHV0cyA9IG10Zi5yZXNoYXBlKGV4cGVydF9vdXRwdXRzX2NvbWJpbmVkLCBbYmF0Y2gsIHNlcV9sZW4sIGRfbW9kZWxdKQogICAgcmV0dXJuIG91dHB1dHMsIGF1eF9sb3NzCgo=)
 
@@ -1558,83 +1502,3 @@ Figure 16: Pseudo code of the Switch Transformer layer in Mesh Tensorflow.
   Santiago Ontanon, Philip Pham, Anirudh Ravula, Qifan Wang, Li Yang, et al.
   Big bird: Transformers for longer sequences.
   *arXiv preprint arXiv:2007.14062*, 2020.
-
-[◄](/html/2101.03960)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2101.03961)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2101.03961)
-[View original  
-on arXiv](https://arxiv.org/abs/2101.03961)[►](/html/2101.03962)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 07:44:35 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

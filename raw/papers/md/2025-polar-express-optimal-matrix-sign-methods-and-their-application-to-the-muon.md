@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2505.16932
 year: 2025
 ---
 
-[2505.16932] The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm
 
 Noah Amsel
@@ -177,11 +134,9 @@ if G.size(-2) > G.size(-1): X = X.mT
 
 return X
 
+!(/html/2505.16932/assets/x1.png)
 
-
-![Refer to caption](/html/2505.16932/assets/x1.png)
-
-![Refer to caption](/html/2505.16932/assets/x2.png)
+!(/html/2505.16932/assets/x2.png)
 
 Figure 1: Training a GPT-2-Large
 model (774M params) on 1 billion tokens from the FineWeb dataset [[2](#bib.bib2)]. The label muon-<name> refers to implementing Muon using <name> to compute the polar factor. Left: final validation loss across learning rates. Right: validation loss across epochs using the best learning rate. The best learning rate (l​rlr) and final validation loss for each method was adamw (l​r=0.0001)(lr=0.0001): 4.1724.172, muon-You (l​r=0.02)(lr=0.02): 3.4003.400, muon-Jordan (l​r=0.02)(lr=0.02): 3.3983.398 and muon-PolarExp (l​r=0.02)(lr=0.02): 3.3403.340.
@@ -414,14 +369,12 @@ Given that polar(𝑴)−p​(𝑴)=𝑼​(𝑰−p​(𝚺))​𝑽𝖳\operat
 
 For completeness, the equivalence between ([6](#S3.E6 "Equation 6 ‣ 3 Approximations by Compositions of Polynomials ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm")) and ([7](#S3.E7 "Equation 7 ‣ 3 Approximations by Compositions of Polynomials ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm")) is proven in [Appendix C](#A3 "Appendix C Proof of equivalence between (6) and (7) ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm").
 
-![Refer to caption](/html/2505.16932/assets/img/demonstration.png)
-
+!(/html/2505.16932/assets/img/demonstration.png)
 
 (a) 
 The left figure compares the composition (for T=6T=6 and d=5d=5) of polynomials given by Polar Express (ℓ=0.001\ell=0.001), You’s method (which is defined up to 6 iterations), Newton-Schulz, and Jordan’s method for approximating sign(x)\operatorname\*{sign}(x). The right figure demonstrates the convergence of the methods on [0.001,1][0.001,1]. Note the slow initial convergence of Newton-Schulz.
 
-![Refer to caption](/html/2505.16932/assets/img/steps.png)
-
+!(/html/2505.16932/assets/img/steps.png)
 
 (b) 
 The evolution of the first three optimal polynomials p1p\_{1}, p2p\_{2}, and p3p\_{3} and the corresponding lower bounds ℓt+1=pt​(ℓt)\ell\_{t+1}=p\_{t}(\ell\_{t}) and upper bounds ut+1=2−ℓt+1u\_{t+1}=2-\ell\_{t+1}, as described in [Theorem 4.1](#S4.Thmdefinition1 "Theorem 4.1. ‣ 4.1 Greedy is optimal ‣ 4 The Polar Express ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm"). The horizontal black line indicates y=1y=1. The polynomial degree is d=5d=5 and the number of iterations is T=3T=3. We set ℓ1=0.03\ell\_{1}=0.03 and u1=1u\_{1}=1.
@@ -599,8 +552,7 @@ Since we use these bounds for all input matrices, we can precompute the optimal 
 
 ### 4.4  Finite precision considerations
 
-![Refer to caption](/html/2505.16932/assets/x3.png)
-
+!(/html/2505.16932/assets/x3.png)
 
 Figure 3: Effects of stabilizing the update rules with a safety factor and cushioning, as described in [Section 4.4](#S4.SS4 "4.4 Finite precision considerations ‣ 4 The Polar Express ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm").
 The blue curve is the optimal degree-5 polynomial for the interval [0.005,1][0.005,1].
@@ -711,8 +663,7 @@ All told, our proposal for Muon is to apply the composition of these polynomials
 
 ### 5.1  Convergence of Polar Express
 
-![Refer to caption](/html/2505.16932/assets/x4.png)
-
+!(/html/2505.16932/assets/x4.png)
 
 Figure 4: Convergence of various degree-5 polynomial methods in the spectral norm. When tuned properly, Polar Express attains outperforms the other methods at every iteration. Left panel: synthetic matrix with σmax=1\sigma\_{\max}=1, σmin=10−6\sigma\_{\min}=10^{-6}. Right panel: gradient of a certain weight matrix of a randomly-initialized GPT-2 architecture on a batch of language modeling data, normalized by the Frobenius norm.
 
@@ -726,8 +677,7 @@ You’s method, which is difficult to see on the plot because it is only defined
 When Polar Express is instantiated with ℓ=σmin\ell=\sigma\_{\min}, it dominates the other methods at every iteration, achieving excellent accuracy after just 11 iterations and converging about twice as fast as Newton-Schulz to any given error.
 Even when the lower bound on σmin\sigma\_{\min} is wrong by two orders of magnitude in either direction, the method remains competitive, though it does not actually outperform Keller until iteration 13 or 14.
 
-![Refer to caption](/html/2505.16932/assets/x5.png)
-
+!(/html/2505.16932/assets/x5.png)
 
 Figure 5: Convergence of polynomial methods in the Frobenius norm on GPT-2 gradient matrices. The number of matrix-matrix products is T​(d+1)/2T(d+1)/2, where dd is the degree (33 for Chen & Chow; 55 for all others) and TT is the number of iterations.
 
@@ -765,13 +715,13 @@ All methods for the matrix sign computations are performed in float16b precision
 
 We apply Muon selectively to certain layers of the model. Following the nano-gpt implementation [[21](#bib.bib21)], we assign Muon to all parameters with at least two dimensions (typically weight matrices, and excluding RMS norm parameters), excluding the embeddings, unembeddings, and the attention head. These excluded parameters are instead optimized with AdamW.
 
-![Refer to caption](/html/2505.16932/assets/x6.png)
+!(/html/2505.16932/assets/x6.png)
 
-![Refer to caption](/html/2505.16932/assets/x7.png)
+!(/html/2505.16932/assets/x7.png)
 
-![Refer to caption](/html/2505.16932/assets/x8.png)
+!(/html/2505.16932/assets/x8.png)
 
-![Refer to caption](/html/2505.16932/assets/x9.png)
+!(/html/2505.16932/assets/x9.png)
 
 Figure 6: Training a GPT-2 (124M) model on 1 Billion tokens of the Fineweb data set [[2](#bib.bib2)]. The Legend muon-<name> refers to using muon with the <name> method for computing polar(𝑴)\operatorname\*{polar}(\bm{M}). Top Left: The final validation loss vs. the learning rate. The final best validation losses for each method were, in reverse order, adamw: 4.1974.197, muon-Jordan: 3.6393.639, muon-You: 3.6293.629 and muon-PolarExp: 3.5883.588. Bottom Left: The final training loss vs the learning rate. Top Right: Validation loss vs. number of iterations. Bottom Left: validation loss vs. time, plotting each method with its best learning rate.
 
@@ -1416,8 +1366,7 @@ In [Figure 7](#A5.F7 "In Appendix E Initialization for Matrices with Large Spec
 Applying ([20](#A5.E20 "Equation 20 ‣ Appendix E Initialization for Matrices with Large Spectral Gaps ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm")) costs almost as much as performing an iteration of a degree-5 polynomial method, so for fair comparison, we count it as an additional iteration in this plot.
 For both Newton-Schulz and Polar Express, performing the extra spectrum-aware initialization step described in this section leads to significant speedups in convergence.
 
-![Refer to caption](/html/2505.16932/assets/x10.png)
-
+!(/html/2505.16932/assets/x10.png)
 
 Figure 7: Benefits of the spectrum-aware initialization scheme of [Appendix E](#A5 "Appendix E Initialization for Matrices with Large Spectral Gaps ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm"). Using this scheme improves convergence of both Newton-Schulz and Polar Express on a synthetic 32×3232\times 32 matrix with σj​(𝑴)=j−5\sigma\_{j}(\bm{M})=j^{-5}. Note that we count the spectrum-aware initialization as an additional iteration.
 
@@ -1493,8 +1442,7 @@ As expected, using [Algorithm 4](#alg4 "In Appendix F Fast Polynomial Iteration
 Running six iterations of a degree-5 polynomial method when α=4\alpha=4 (as with the linear transformations in each MLP block of a transformer) we obtain almost a 2x speedup, and when α=32\alpha=32, we obtain nearly a 10x speedup.
 If we restart every three iterations, the trend is the same but the runtime savings are somewhat smaller.
 
-![Refer to caption](/html/2505.16932/assets/x11.png)
-
+!(/html/2505.16932/assets/x11.png)
 
 Figure 8: Effects of using [Algorithm 4](#alg4 "In Appendix F Fast Polynomial Iteration for Rectangular Matrices ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm") on runtime on a GPU. We run T=6T=6 iterations of a degree-5 polynomial method on matrices with various dimensions nn and aspect ratios α\alpha. Restart interval =6=6 is [Algorithm 4](#alg4 "In Appendix F Fast Polynomial Iteration for Rectangular Matrices ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm"), restart interval =1=1 is equivalent to the baseline (that is, not using [Algorithm 4](#alg4 "In Appendix F Fast Polynomial Iteration for Rectangular Matrices ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm")), and restart interval =3=3 is an intermediate method that calls [Algorithm 4](#alg4 "In Appendix F Fast Polynomial Iteration for Rectangular Matrices ‣ The Polar Express: Optimal Matrix Sign Methods and Their Application to the Muon Algorithm") once to do the first three iterations and again to do the last three iterations for greater stability.
 When α≫1\alpha\gg 1, increasing the restart interval *significantly* reduces the runtime.
@@ -1601,83 +1549,3 @@ u = 2 - l
 return coefficients
 
 print(\*optimal\_composition(1e-3, 10), sep="\n")
-
-[◄](/html/2505.16931)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2505.16932)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2505.16932)
-[View original  
-on arXiv](https://arxiv.org/abs/2505.16932)[►](/html/2505.16933)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Jun 5 21:06:42 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

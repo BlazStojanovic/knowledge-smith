@@ -16,49 +16,6 @@ url: http://arxiv.org/abs/1708.04617v1
 year: 2017
 ---
 
-[1708.04617] Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention NetworksThe corresponding author is Xiangnan He.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks††thanks: The corresponding author is Xiangnan He.
 
 Jun Xiao1  Hao Ye1  Xiangnan He2  Hanwang Zhang2  Fei Wu1  Tat-Seng Chua2
@@ -125,8 +82,7 @@ However, FM models all possible feature interactions with the same weight, which
 
 ## 3 Attentional Factorization Machines
 
-![Refer to caption](/html/1708.04617/assets/x1.png)
-
+!(/html/1708.04617/assets/x1.png)
 
 Figure 1: The neural network architecture of our proposed Attentional Factorization Machine model.
 
@@ -292,9 +248,9 @@ We carefully tuned the L2subscript𝐿2L\_{2} regularization for LibFM and HOFM,
 Early stopping strategy is used based on the performance on validation set.
 For Wide&Deep, DeepCross and AFM, we find that pre-training their feature embeddings with FM leads to a lower RMSE than a random initialization. As such, we report their performance with pre-training.
 
-![Refer to caption](/html/1708.04617/assets/x2.png)
+!(/html/1708.04617/assets/x2.png)
 
-![Refer to caption](/html/1708.04617/assets/x3.png)
+!(/html/1708.04617/assets/x3.png)
 
 Figure 2: Validation error of AFM and FM *w.r.t.* different dropout ratios on the pair-wise interaction layer
 
@@ -320,9 +276,9 @@ Figure [2](#S5.F2 "Figure 2 ‣ 5.1 Experimental Settings ‣ 5 Experiments ‣ 
 We then study whether the L2subscript𝐿2L\_{2} regularization on the attention network is beneficial to AFM. The dropout ratio is set to the optimal value for each dataset, as evidenced by the previous experiment. As can be seen from Figure [3](#S5.F3 "Figure 3 ‣ 5.2 Hyper-parameter Investigation (RQ1) ‣ 5 Experiments ‣ Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention NetworksThe corresponding author is Xiangnan He."), when λ𝜆\lambda is set to a value larger than 0, AFM is improved (note that the result of λ=0𝜆0\lambda=0 corresponds to the best performance obtained by AFM in Figure [2](#S5.F2 "Figure 2 ‣ 5.1 Experimental Settings ‣ 5 Experiments ‣ Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention NetworksThe corresponding author is Xiangnan He.")).
 This implies that simply using dropout on the pair-wise interaction layer is insufficient to prevent overfitting for AFM. And more importantly, tuning the attention network can further improve the generalization of AFM.
 
-![Refer to caption](/html/1708.04617/assets/x4.png)
+!(/html/1708.04617/assets/x4.png)
 
-![Refer to caption](/html/1708.04617/assets/x5.png)
+!(/html/1708.04617/assets/x5.png)
 
 Figure 3: Validation error of AFM *w.r.t.* different regularization strengths on the attention network
 
@@ -336,17 +292,15 @@ This justifies the rationality of AFM’s design that estimates the importance s
 Figure [5](#S5.F5 "Figure 5 ‣ 5.3 Impact of the Attention Network (RQ2) ‣ 5 Experiments ‣ Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention NetworksThe corresponding author is Xiangnan He.") compares the training and test error of AFM and FM of each epoch. We observe that AFM converges faster than FM. On Frappe, both the training and test error of AFM are much lower than that of FM, indicating that AFM can better fit the data and lead to more accurate prediction.
 On MovieLens, although AFM achieves a slightly higher training error than FM, the lower test error shows that AFM generalizes better to unseen data.
 
-![Refer to caption](/html/1708.04617/assets/x6.png)
+!(/html/1708.04617/assets/x6.png)
 
-![Refer to caption](/html/1708.04617/assets/x7.png)
+!(/html/1708.04617/assets/x7.png)
 
 Figure 4: Validation error of AFM *w.r.t.* different attention factors
 
+!(/html/1708.04617/assets/x8.png)
 
-
-![Refer to caption](/html/1708.04617/assets/x8.png)
-
-![Refer to caption](/html/1708.04617/assets/x9.png)
+!(/html/1708.04617/assets/x9.png)
 
 Figure 5: Training and test error of each epoch
 
@@ -614,83 +568,3 @@ Prime Minister’s office, Singapore under its IRC@SG Funding Initiative.
   Zhou Zhao, Hanqing Lu, Deng Cai, Xiaofei He, and Yueting Zhuang.
   User Preference Learning for Online Social Recommendation.
   TKDE, 2016.
-
-[◄](/html/1708.04616)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1708.04617)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1708.04617)
-[View original  
-on arXiv](https://arxiv.org/abs/1708.04617)[►](/html/1708.04618)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 15 21:20:01 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

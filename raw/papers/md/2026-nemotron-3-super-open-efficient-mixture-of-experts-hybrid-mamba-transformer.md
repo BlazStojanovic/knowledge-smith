@@ -557,50 +557,6 @@ url: https://arxiv.org/abs/2604.12374
 year: 2026
 ---
 
-[2604.12374] Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning
 
 NVIDIA
@@ -615,8 +571,7 @@ We describe the pre-training, post-training, and quantization of Nemotron 3 Supe
 
 The last few years have seen a rise in the popularity of Mixture-of-Experts (MoE) based Large Language Models (LLMs) (deepseekai2025deepseekv3technicalreport; yang2025qwen3technicalreport; 5team2025glm45agenticreasoningcoding). MoEs help LLMs achieve higher accuracy at a lower active parameter count than regular dense models (dai2024deepseekmoe; lepikhin2020gshard). Orthogonal to MoEs, Hybrid Mamba-Attention models have shown promise in significantly improving inference throughput (nemotronnanov2). We combine these two directions of improvement in Nemotron 3 (nvidia2025nvidianemotron3efficient). As part of our Nemotron 3 series of models, we present Nemotron 3 Super—a 12 billion active, 120 billion total parameter MoE hybrid Mamba-Attention model. Nemotron 3 Super achieves better or on-par benchmark accuracies than GPT-OSS-120B (openai2025gptoss120bgptoss20bmodel) and Qwen3.5-122B while achieving up to 2.2×\times and 7.5×\times higher inference throughput, respectively, on the 8k token input / 64k token output setting.
 
-![Refer to caption](/html/2604.12374/assets/x1.png)
-
+!(/html/2604.12374/assets/x1.png)
 
 Figure 1: Accuracy and throughput comparisons of Nemotron 3 Super with GPT-OSS-120B and Qwen3.5-122B. Nemotron 3 Super achieves comparable accuracies across popular benchmarks but provides the highest inference throughput; on 8k input sequence lengths and 64k output sequence lengths, Nemotron 3 Super provides up to 2.2×\times and 7.5×\times higher throughput than GPT-OSS-120B and Qwen3.5-122B, respectively. We measured throughput on B200 GPUs with vLLM and TRT-LLM and use the best out of the two frameworks for each model. For GPT-OSS-120B we use MXFP4 weights, MXFP8 activations, and FP8 KV-Cache; for Qwen3.5-122B we use BF16. We used the OpenHands harness to evaluate SWE-Bench.
 
@@ -630,28 +585,28 @@ Checkpoints 
 
 * •
 
-  [Nemotron 3 Super 120B-A12B NVFP4 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4) : post-trained and NVFP4 quantized model
+  [Nemotron 3 Super 120B-A12B NVFP4 ](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4) : post-trained and NVFP4 quantized model
 * •
 
-  [Nemotron 3 Super 120B-A12B FP8 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8) : post-trained and FP8 quantized model
+  [Nemotron 3 Super 120B-A12B FP8 ](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8) : post-trained and FP8 quantized model
 * •
 
-  [Nemotron 3 Super 120B-A12B BF16 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16) : post-trained model
+  [Nemotron 3 Super 120B-A12B BF16 ](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16) : post-trained model
 * •
 
-  [Nemotron 3 Super 120B-A12B Base BF16 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16) : base model
+  [Nemotron 3 Super 120B-A12B Base BF16 ](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-Base-BF16) : base model
 * •
 
-  [Qwen3-Nemotron-235B-A22B-GenRM-2603 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/nvidia/Qwen3-Nemotron-235B-A22B-GenRM-2603) : GenRM used for RLHF
+  [Qwen3-Nemotron-235B-A22B-GenRM-2603 ](https://huggingface.co/nvidia/Qwen3-Nemotron-235B-A22B-GenRM-2603) : GenRM used for RLHF
 
 Data 
 
 * •
 
-  [Nemotron-Pretraining-Specialized-v1.1 ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png)](https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Specialized-v1.1) : a collection of synthetic datasets aimed to improve LLM capabilities in code concepts and algorithms, formal logic, economics, and multiple choice questions.
+  [Nemotron-Pretraining-Specialized-v1.1 ](https://huggingface.co/datasets/nvidia/Nemotron-Pretraining-Specialized-v1.1) : a collection of synthetic datasets aimed to improve LLM capabilities in code concepts and algorithms, formal logic, economics, and multiple choice questions.
 * •
 
-  [Nemotron-Super-Post-Training-Data](https://huggingface.co/collections/nvidia/nemotron-post-training-v3)  ![[Uncaptioned image]](/html/2604.12374/assets/assets/huggingface-color.png) : a collection of RL environments and SFT datasets targeting a broad range of agentic capabilities.
+  [Nemotron-Super-Post-Training-Data](https://huggingface.co/collections/nvidia/nemotron-post-training-v3)   : a collection of RL environments and SFT datasets targeting a broad range of agentic capabilities.
 
 The report is organized into 3 broad sections: Pre-training (§[2](#S2 "2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")), Post-training (§[3](#S3 "3 Post-Training ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")), and Quantization (§[4](#S4 "4 Quantization For Inference ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")), each describing in detail our approach.
 
@@ -661,12 +616,9 @@ In this section, we highlight the key features of Nemotron 3 Super 120B-A12B Bas
 
 ### 2.1 Model Architecture
 
-![Refer to caption](/html/2604.12374/assets/x2.png)
-
+!(/html/2604.12374/assets/x2.png)
 
 Figure 2: Nemotron 3 Super layer pattern. Similar to Nemotron 3 Nano, we use a hybrid Mamba-Attention architecture, but Nemotron 3 Super is the first model to scale sparsely using LatentMoE layers rather than standard MoE layers.
-
-
 
 |  |  |
 | --- | --- |
@@ -723,13 +675,11 @@ Principle (4) gives a lower bound on how far dd can be reduced without collapse.
 Principle (5) indicates that increasing NN and KK improves quality; because memory bandwidth and communication scale linearly with KK, we can increase KK by a factor α\alpha and reduce dd by the same factor α\alpha to obtain higher accuracy at similar inference cost.
 Guided by these insights, we developed LatentMoE (latentmoe\_tr), a MoE architecture designed to achieve higher accuracy than a standard MoE at similar inference cost.
 
-![Refer to caption](/html/2604.12374/assets/figures/standard_moe.png)
-
+!(/html/2604.12374/assets/figures/standard_moe.png)
 
 (a) Standard MoE architecture.
 
-![Refer to caption](/html/2604.12374/assets/figures/latent_moe.png)
-
+!(/html/2604.12374/assets/figures/latent_moe.png)
 
 (b) LatentMoE architecture.
 
@@ -768,8 +718,7 @@ Figure [5](#S2.F5 "Figure 5 ‣ Speculative Decoding Performance. ‣ 2.1.2 Mult
 Overall, MTP in Nemotron-3 Super improves both representation learning and decoding efficiency, enabling higher acceptance at extended draft lengths without relying on an external draft model.
 These acceptance gains translate to superior serving efficiency on Blackwell hardware. As shown in Figure [5](#S2.F5 "Figure 5 ‣ Speculative Decoding Performance. ‣ 2.1.2 Multi-Token Prediction ‣ 2.1 Model Architecture ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning"), increasing the draft depth (D=1D=1 to D=3D=3) via MTP significantly shifts the throughput–latency Pareto frontier, delivering higher aggregate output tokens per second (TPS) for any given median user latency compared to the baseline with MTP disabled.
 
-![Refer to caption](/html/2604.12374/assets/x3.png)
-
+!(/html/2604.12374/assets/x3.png)
 
 Figure 4: MTP acceptance rate by draft index on SPEED-Bench using a draft length of 7.
 
@@ -791,8 +740,7 @@ Figure 4: MTP acceptance rate by draft index on SPEED-Bench using a draft length
 
 Table 2: MTP average acceptance lengths on SPEED-Bench using a draft length of 7.
 
-![Refer to caption](/html/2604.12374/assets/figures/mtp_trtllm_perf.png)
-
+!(/html/2604.12374/assets/figures/mtp_trtllm_perf.png)
 
 Figure 5: Total vs. user throughput for an NVFP4 checkpoint (TRT-LLM, TP=1, B300 GPU). Comparing MTP off vs. MTP with draft lengths of 1,3. Measured on SPEED-Bench’s Throughput-1k split, with 1k output tokens.
 
@@ -827,28 +775,24 @@ Nemotron 3 Super was trained with the NVFP4 pretraining recipe detailed in the N
 
 During the training of Nemotron 3 Super, we observed a growth in the number of zero-valued weight gradient elements and investigated the root cause to validate training health. Magnitude patterns emerged within some expert layers, characterized by the norms of FC1 output channels and corresponding FC2 input channels converging toward zero (Figure [6](#S2.F6 "Figure 6 ‣ 2.2 NVFP4 Pretraining ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")). By the end of pretraining, zero-valued weight gradient elements accounted for 7% of total parameters, appearing to correlate with the magnitude patterns. We believe that NVFP4 quantization increases the incidence of true zeros in the weight gradients that could have been more easily be represented by BF16 or MXFP8. Low-norm channels likely attenuate quicker when these layers are trained in NVFP4.
 
-![Refer to caption](/html/2604.12374/assets/x4.png)
-
+!(/html/2604.12374/assets/x4.png)
 
 Figure 6: Channel Magnitude Patterns in Weights of Expert Layers in Nemotron 3 Super. Patterns emerge as training progresses. Top: Early layer routed expert FC1 weight matrix at 0.5T tok and 23T tok. Bottom: Early layer routed expert FC2 weight matrix at 500B tok and 23T tok. Low-norm output channels of FC1 align with low-norm input channels of FC2.
 
-![Refer to caption](/html/2604.12374/assets/x5.png)
-
+!(/html/2604.12374/assets/x5.png)
 
 Figure 7: Number of Zero-Valued Weight Gradient Elements on Nemotron 3 Nano.
 Left: Released Nemotron Nano 3 model (nvidia2025nemotron3nanoopen) trained to 25T tokens in BF16. Right: Ablation study trained to 1T tokens in BF16 and with our NVFP4 recipe. The NVFP4 model at 1T tokens reaches a similar zero-valued weight gradient count as the BF16 model at 25T tokens. Switching from NVFP4 to BF16 at 0.5T tokens causes zero-valued weight gradients to return to baseline levels. The high prevalence of small-magnitude gradients (<1e-12) in BF16 suggests NVFP4 quantization underflows already-small values to zero.
 
 We compare identical Nemotron 3 Nano models (nvidia2025nemotron3nanoopen) trained for 1T tokens in BF16 and in NVFP4 and find that NVFP4 pretraining produces roughly 3x more zero-valued weight gradients at the same token horizon. When a partially trained NVFP4 model is switched back to BF16, the number of zero-valued weight gradients returns to baseline levels. The BF16 model still contains many small-magnitude gradients (<1e-12), but NVFP4 quantization underflows these values to zero (Figure [7](#S2.F7 "Figure 7 ‣ 2.2 NVFP4 Pretraining ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")). We sampled weight, activation, and gradient tensors from routed expert layers and observed high rates of underflow in dgrad of FC2 at 500B tokens, primarily because two-dimensional weight quantization blocks span high and low magnitude channels. Underflows in dgrad of FC2 create zeros in wgrad of FC1 through backpropagation of the gradient. At 750B tokens, we observe high rates of underflow in fprop of FC1, creating zeros in wgrad of FC2 (Figure [8](#S2.F8 "Figure 8 ‣ 2.2 NVFP4 Pretraining ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")). The 1T-token NVFP4 model behaves similarly to a much longer-trained BF16 model. After 10T tokens, the released Nemotron 3 Nano model, trained in BF16, nvidia2025nemotron3nanoopen reaches a similar number of zero-valued weight gradient elements as the NVFP4 model trained to 1T tokens (Figure [7](#S2.F7 "Figure 7 ‣ 2.2 NVFP4 Pretraining ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")) and inspection of weight matrices in early expert layers revealed a similar channel magnitude pattern. These conclusions on the Nemotron 3 Nano architecture give insights into the channel magnitude patterns and growth in zero-valued weight gradient elements in Nemotron 3 Super.
 
-![Refer to caption](/html/2604.12374/assets/x6.png)
-
+!(/html/2604.12374/assets/x6.png)
 
 Figure 8: Origin of Zero Element Weight Gradients in Nemotron 3 Nano, shown for routed expert layers increasing in layer depth. Averaged across all routed experts in a layer index. Top: Tensors sampled at 500B tokens. Percent of zero-valued weight gradients are higher for FC1 than FC2 and attributed almost entirely to underflows in dgrad of FC2. Bottom: Tensors sampled at 750B tokens. Percent of zero-valued weight gradients are equivalently high for FC1 and FC2. Zero-valued weight gradients in FC1 are attributed to underflows in dgrad of FC2. Zero element weight gradients in FC2 are attributed mainly to underflows in fprop of FC1, with a minor contribution of underflows in wgrad of FC2.
 
 Following our previous work in NVFP4 pretraining (nvidia2025pretraininglargelanguagemodels), we evaluated whether switching all tensors to higher precision prior to learning rate annealing would benefit Nemotron 3 Super. We promoted all tensors to MXFP8 at 19T tokens (1T tokens before annealing) and continued training through 20.6T tokens. While this improved the loss trajectory, it yielded no gains in downstream task accuracy (Fig [9](#S2.F9 "Figure 9 ‣ 2.2 NVFP4 Pretraining ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning")). The final Nemotron 3 Super model is therefore pretrained with our NVFP4 recipe for the entire token horizon.
 
-![Refer to caption](/html/2604.12374/assets/x7.png)
-
+!(/html/2604.12374/assets/x7.png)
 
 Figure 9: Improvement in downstream task evaluation accuracy after switching the network precision to MXFP8. Values greater than zero indicate improvement in accuracy over the NVFP4 model. None of the downstream task evaluation metrics showed sustained improvement after training in MXFP8.
 
@@ -910,13 +854,11 @@ In Phase 2, the blend shifts toward predominantly high-quality sources (e.g., Wi
 The transition to Phase 2 occurs at 80% of total training tokens.
 The specific mixtures used in each phase are illustrated in Figure [10](#S2.F10 "Figure 10 ‣ 2.3.7 Data Mixture and Ordering ‣ 2.3 Pretraining Data ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning").
 
-![Refer to caption](/html/2604.12374/assets/x8.png)
-
+!(/html/2604.12374/assets/x8.png)
 
 (a) Data mixture of Phase 1.
 
-![Refer to caption](/html/2604.12374/assets/x9.png)
-
+!(/html/2604.12374/assets/x9.png)
 
 (b) Data mixture of Phase 2.
 
@@ -938,8 +880,7 @@ During the stable phase of the WSD learning rate schedule described in Section [
 
 Following tian2025wsm, we use a minus-sqrt decay emulation to compute merge coefficients, with checkpoints saved every 1,0001{,}000 iterations (≈25{\approx}25B tokens at our global batch size of 3,072×8,1923{,}072\times 8{,}192 tokens). We evaluated sliding merge windows of 125B, 250B, and 500B tokens over the course of pretraining. On average, across a suite of 12 benchmarks (MMLU-Pro, MMLU, HumanEval, HumanEval+, MBPP, MBPP+, GSM8K, MATH-500, RACE, ARC-Challenge, HellaSwag, WinoGrande), the best merge consistently outperforms the corresponding trained checkpoint by 2–4 points on the unweighted average. Since merging is computationally cheap relative to training, we can evaluate all three windows at each checkpoint and select the best. Figure [11](#S2.F11 "Figure 11 ‣ 2.5 Tracking Merge Evaluation ‣ 2 Pretraining ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning") reports this best-of-three merge against the trained checkpoint over the full 25T-token training run.
 
-![Refer to caption](/html/2604.12374/assets/x10.png)
-
+!(/html/2604.12374/assets/x10.png)
 
 Figure 11: Average accuracy across 12 benchmarks for trained checkpoints versus the best offline checkpoint merge during pretraining. During the stable LR phase, offline merging yields a consistent 2–4 point improvement. During the LR decay phase (shaded), the gap narrows as trained checkpoints benefit from actual learning rate annealing.
 
@@ -1018,8 +959,7 @@ We follow the same general recipe as Nemotron 3 Nano, with a stronger emphasis o
 
 In SFT, we expand the training blend to cover a wider range of agentic harnesses and interaction scenarios. We also significantly improved our RL infrastructure, enabling reliable large-scale asynchronous training on thousands of GPUs. This infrastructure allows us to (1) train across 21 diverse environments, improving robustness across tasks, and (2) train on long-horizon SWE tasks, strengthening multi-step reasoning and problem solving in realistic agentic settings.
 
-![Refer to caption](/html/2604.12374/assets/x11.png)
-
+!(/html/2604.12374/assets/x11.png)
 
 Figure 12: Overview of the post-training pipeline for Nemotron 3 Super.
 
@@ -1067,8 +1007,7 @@ We curate a dataset of coding tasks derived from real-world GitHub issues to tra
 
 Agentic Programming.
 
-![Refer to caption](/html/2604.12374/assets/x12.png)
-
+!(/html/2604.12374/assets/x12.png)
 
 Figure 13: Agentic Command Line Interface Dataset Construction & Training Pipeline
 
@@ -1133,8 +1072,7 @@ Conversational Tool Use. Large-scale specialized tool-use training data has been
 
    SFT Data Selection: Select successful trajectories for SFT and filter for difficulty by dropping scenarios that yield all-success or all-failure outcomes.
 
-![Refer to caption](/html/2604.12374/assets/x13.png)
-
+!(/html/2604.12374/assets/x13.png)
 
 Figure 14: Overview of the synthetic data generation pipeline for specialized conversational tool-use SFT data used for Nemotron 3 Super.
 
@@ -1145,8 +1083,7 @@ The broader, general purpose tool-calling synthetic data pipeline begins with th
 
 The overall general-purpose synthetic tool-calling data pipeline is visualized in figure [15](#S3.F15 "Figure 15 ‣ 3.1.1 Data ‣ 3.1 Supervised Fine Tuning ‣ 3 Post-Training ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning").
 
-![Refer to caption](/html/2604.12374/assets/figures/broad_conversational_tool_use-new.png)
-
+!(/html/2604.12374/assets/figures/broad_conversational_tool_use-new.png)
 
 Figure 15: Overview of the pipeline for general-purpose tool-calling data used in Nemotron 3 Super.
 
@@ -1154,8 +1091,7 @@ Figure 15: Overview of the pipeline for general-purpose tool-calling data used i
 
 Our general stage 1 SFT data blend can be found in Figure [16](#S3.F16 "Figure 16 ‣ 3.1.2 SFT Data Blend ‣ 3.1 Supervised Fine Tuning ‣ 3 Post-Training ‣ Nemotron 3 Super: Open, Efficient Mixture-of-Experts Hybrid Mamba-Transformer Model for Agentic Reasoning") (all datasets not listed make up less than 1% of the blend). We train on over 7M total samples. In stage 2, we use 85% of the stage 1 blend and augments it with 256K and 512K-token long-context data. Compared to Nemotron 3 Nano, we significantly increased the volume and diversity of agentic tasks, and allocate it a much larger proportion of our blend.
 
-![Refer to caption](/html/2604.12374/assets/figures/super_sft_blend.jpg)
-
+!(/html/2604.12374/assets/figures/super_sft_blend.jpg)
 
 Figure 16: SFT data blend for Nemotron 3 Super.
 
@@ -1536,8 +1472,7 @@ Aakshita Chandiramani, Aaron Blakeman, Abdullahi Olaoye, Abhibha Gupta, Abhilash
 
 ## Appendix A Per-Benchmark Merge Evaluation
 
-![Refer to caption](/html/2604.12374/assets/x14.png)
-
+!(/html/2604.12374/assets/x14.png)
 
 Figure 17: Per-benchmark accuracy for trained checkpoints versus the best offline checkpoint merge across the full 25T-token training run. The 12 benchmarks span general knowledge (MMLU-Pro, MMLU), code generation (HumanEval, HumanEval+, MBPP, MBPP+), mathematical reasoning (GSM8K, MATH-500), and commonsense understanding (RACE, ARC-Challenge, HellaSwag, WinoGrande). The shaded region indicates the LR decay phase.
 
@@ -1631,83 +1566,3 @@ and define the deployment cost as the sum over sparse experts,
 |  | C​(Opmoe,Qmoe,f)=∑e∈ℰ(C​(Ope,up​\_​proj,Qmoe,f)+C​(Ope,down​\_​proj,Qmoe,f))C(\mathrm{Op}\_{\mathrm{moe}},Q\_{\mathrm{moe},f})=\sum\_{e\in\mathcal{E}}\left(C(\mathrm{Op}\_{e,\mathrm{up\\_proj}},Q\_{\mathrm{moe},f})+C(\mathrm{Op}\_{e,\mathrm{down\\_proj}},Q\_{\mathrm{moe},f})\right) |  |
 
 Other linear layers in the MoE block, such as latent projection layers and shared experts, are not part of this sparse-expert coupling constraint and can be assigned different quantization formats.
-
-[◄](/html/2604.12373)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.12374)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.12374)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.12374)[►](/html/2604.12375)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 00:05:08 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

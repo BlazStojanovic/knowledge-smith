@@ -17,49 +17,6 @@ url: http://arxiv.org/abs/2404.16030v1
 year: 2024
 ---
 
-[2404.16030] MoDE: CLIP Data Experts via Clustering
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # MoDE: CLIP Data Experts via Clustering
 
 Jiawei Ma1∗,2  Po-Yao Huang1  Saining Xie3  Shang-Wen Li1
@@ -82,8 +39,7 @@ Contrastive Language-Image Pretraining (CLIP) learns versatile vision-language r
 Specifically, for each image, its paired caption is viewed as a *positive* example, and the captions of all the other images are viewed as *negative*s.
 The model then learns to project both images and captions into a shared space, where the embedding of the positive caption is drawn closer to the image embedding, compared to the embeddings of all the other negative captions.
 
-![Refer to caption](/html/2404.16030/assets/x1.png)
-
+!(/html/2404.16030/assets/x1.png)
 
 Figure 1: For an image-caption pair, the caption may describe limited visual content or even be unrelated, and such noises unavoidably hurt the quality of negative examples to learning a single model.
 We propose to uncover the clusters from training data, where 1) the pairs with similar images but different captions are assigned to different clusters and 2) the samples in each cluster are of related meanings, and learn a Data Expert for each cluster.
@@ -142,8 +98,7 @@ which is then investigated with different architectures [[25](#bib.bib25), [9](
 However, all expert models are still trained on the same data simultaneously, resulting in much heavier training costs.
 Recently, BTM [[26](#bib.bib26), [13](#bib.bib13)] proposes to learn expert models on different document types (*e.g*., papers, posts) separately but is only validated on language models. Meanwhile, both MoE and BTM can only determine the model routing for each input separately. Instead, MoDE generalizes to task-level adaptation and ensembles the models by task metadata (*e.g*., class names in classification task [[3](#bib.bib3)]).
 
-![Refer to caption](/html/2404.16030/assets/x2.png)
-
+!(/html/2404.16030/assets/x2.png)
 
 Figure 2: Framework of MoDE via clustering. (Left) We perform a two-step clustering on captions to decide clusters / conditions for data experts. The colored scatter plots are fine-grained clusters and the circles are clusters at coarse-grained level. (Right) Each coarse-grained cluster (c𝑐c) conditions the learning of one data expert f(⋅|c)f(\cdot|c) and all data experts (colored boxes) are learned asynchronously. For inference, the similarity between task metadata and fine-grained cluster centers ({s}𝑠\{s\}) is used to decide the routing of data experts. To keep reasonable training cost, all data experts can be initialized with a model partially trained on all data without clustering (omitted for simplicity).
 
@@ -306,8 +261,7 @@ Nevertheless, MoDE requires much less pretraining cost. As summarized in [Fig. 
 Compared with OpenCLIP trained on LAION-2B data, MoDE-8 ViT-B/32 data experts can even outperform a single ViT-B/16 model by OpenCLIP but only use 31% of its GPU-Hours.
 In this way, our approach demonstrates great potential for efficient CLIP pretraining with limited GPUs in future.
 
-![Refer to caption](/html/2404.16030/assets/x3.png)
-
+!(/html/2404.16030/assets/x3.png)
 
 Figure 3: Average accuracy CLIP benchmark with increased number of data expert models in MoDE (Pretrain set: 2.5B pairs).
 
@@ -316,8 +270,7 @@ Finally, MoDE-4 achieves the highest average accuracy of all dataset variants am
 
 Zero-Shot Retrieval. We follow OpenCLIP [[43](#bib.bib43)] and reports the image/text retrieval results on COCO [[29](#bib.bib29)] and Flickr30k [[52](#bib.bib52)]. The compared models are trained on billion-scale datasets. As shown in LABEL:tab:retrieval, learning data experts can improve the scores consistently across all model sizes, on COCO, in particular, +3.3% and +2.7% in R@1 for image-to-text and text-to-image retrieval respectively by ViT-B/16 models, and we achieve the best performance. For the performance gap between MetaCLIP Baseline and OpenCLIP, *e.g*., text retrieval on Flickr30k by ViT-B/32 models, the gap can also be mitigated clearly.
 
-![Refer to caption](/html/2404.16030/assets/x4.png)
-
+!(/html/2404.16030/assets/x4.png)
 
 Figure 4: Summary of average accuracy on CLIP benchmark and pretraining cost (GPU-Hours). The diameter is proportional to the model size, different approaches are color-coded.
 
@@ -363,8 +316,7 @@ This occurs as the language embeddings are influenced by image embeddings, poten
 In contrast, the SimCSE text embeddings pretrained on large text corpora can understand abstract concepts for clustering.
 As another evidence, we compare the clustering based on language embeddings and use TF-IDF embeddings as reference. As the TF-IDF embedding is determined by on the frequency of words, the clusters on TF-IDF embeddings shown in [Fig. 5](#S5.F5 "In 5.3 Embeddings for Clustering ‣ 5 Discussion ‣ MoDE: CLIP Data Experts via Clustering") can only group captions with the same words, and struggle to provide abstract concepts via discrete text tokens. In contrast, using SimCSE embeddings can group the captions with coherent semantics (*e.g*., food).
 
-![Refer to caption](/html/2404.16030/assets/x5.png)
-
+!(/html/2404.16030/assets/x5.png)
 
 Figure 5: Representative instances for each cluster.
 
@@ -411,8 +363,7 @@ As the data experts can be trained asynchronously, MoDE introduces flexibility i
 
 Firstly, we rank the conditions, *i.e*., coarse-level clusters, to determine the training priority of data experts. This is useful when the computational resource is not sufficient to learn a giant dense model or all data experts together. We use the diversity of fine-grained clusters as a reference, and first train the model on the condition with the largest range, *i.e*., the average distance between fine-grained clusters and the coarse-grained center. As shown in [Fig. 6](#S5.F6 "In 5.5 Training Priority of Data Experts ‣ 5 Discussion ‣ MoDE: CLIP Data Experts via Clustering"), we vary the total number of ViT-B/32 data experts, *i.e*., n𝑛n, from 2 to 32 and summarize the average accuracy on the CLIP benchmark. When the data experts are gradually included, the performance keeps increasing.
 
-![Refer to caption](/html/2404.16030/assets/x6.png)
-
+!(/html/2404.16030/assets/x6.png)
 
 Figure 6: CLIP benchmark accuracy by MoDE-n𝑛n when the data experts based on ViT-B/32 are developed in order and added to the system progressively. The pre-train set contains 2.5B pairs.
 
@@ -787,83 +738,3 @@ Consequently, given the classification task with the class names L𝐿L, we use 
 Firstly, when |L|𝐿|L| is small, *e.g*., |L|<10𝐿10|L|<10, though only one data expert can be activated, the selection could be sensitive to noisy routing. Then, we soften the values in 𝐀𝐀\mathbf{A} by multiplying
 exp⁡(0.5−|L|)0.5𝐿\exp(0.5-\sqrt{|L|}) to ensemble two data experts in most cases.
 On the other hand, when |L|𝐿|L| is large, *e.g*., |L|>200𝐿200|L|>200, the normalized weights tend to be over-smooth, we thus use a much smaller temperature by dividing the λ𝜆\lambda by log⁡(|L|)𝐿\log(|L|). Then, we can only select a few data experts and have low-entropy routing weights.
-
-[◄](/html/2404.16029)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2404.16030)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2404.16030)
-[View original  
-on arXiv](https://arxiv.org/abs/2404.16030)[►](/html/2404.16031)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun May 5 22:02:29 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

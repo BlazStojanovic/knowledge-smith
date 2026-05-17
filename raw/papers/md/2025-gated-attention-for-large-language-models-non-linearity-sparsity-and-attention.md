@@ -22,49 +22,6 @@ url: https://arxiv.org/abs/2505.06708
 year: 2025
 ---
 
-[2505.06708] Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free
 
 Zihan Qiu∗1, Zekun Wang∗1, Bo Zheng∗1, Zeyu Huang∗2,
@@ -120,7 +77,7 @@ By evaluating gating variants, we uncover their ability to introduce non-lineari
 These findings deepen our understanding of the mechanisms of gated attention.
 We will open-source our attention-sink-free models to advance future research.
 
-![Refer to caption](/html/2505.06708/assets/x1.png)
+!(/html/2505.06708/assets/x1.png)
 
 Figure 1: Left: Investigated positions for applying gating operations.;
 Middle: Performance comparison (Test PPL and MMLU) of 15B MoE models with gating applied at various positions.
@@ -171,7 +128,7 @@ The concatenated SDPA output is passed through an output layer Wo∈ℝh​dk×d
 | --- | --- | --- | --- |
 |  | O=MultiHead​(Q,K,V)​Wo.O=\text{MultiHead}(Q,K,V)W\_{o}. |  | (4) |
 
-![Refer to caption](/html/2505.06708/assets/x2.png)
+!(/html/2505.06708/assets/x2.png)
 
 Figure 2: Left: Proportion of attention allocated to the initial token per layer (test perplexity dataset). The baseline model suffers from a significant attention sink, with an average of 46.7% of attention scores across layers directed towards the first token. Introducing a gate effectively alleviates this, reducing the proportion to 4.8%.
 Right: Average attention map weights for each head. Layer 21 in the baseline model demonstrates a strong attention sink (83% on the first token), which is substantially reduced by the gate (4%).
@@ -414,11 +371,9 @@ Table 4: Performance of different gating methods with varying activation functio
 | (6) SDPA Input Independent Gate | Sigmoid | 0.335 | 471 | 0.364 | 5.917 | 73.64 | 59.02 | 52.40 |
 | (7) SDPA Elementwise Gate | NS-sigmoid | 0.653 | 892 | 0.451 | 5.900 | 74.05 | 60.05 | 52.75 |
 
-
-
-![Refer to caption](/html/2505.06708/assets/x3.png)
-![Refer to caption](/html/2505.06708/assets/x4.png)
-![Refer to caption](/html/2505.06708/assets/x5.png)
+!(/html/2505.06708/assets/x3.png)
+!(/html/2505.06708/assets/x4.png)
+!(/html/2505.06708/assets/x5.png)
 
 Figure 3: Gating score means and distributions for SDPA elementwise (Left), value Elementwise (Middle), and SDPA elementwise with head-shared gating (Right).
 Most gating scores are less than 0.5, indicating that the gating scores are sparse.
@@ -872,7 +827,7 @@ It suggests that the introduction of gating itself plays a significant role in t
 
 ### A.2 More Discussion on Sparse Gating Score
 
-![Refer to caption](/html/2505.06708/assets/x6.png)
+!(/html/2505.06708/assets/x6.png)
 
 Figure 4: Mean absolute values before and after gating. The baseline and post-gating values are similar.
 
@@ -882,8 +837,8 @@ Specifically, we calculated the mean absolute values of YY and Y′Y^{\prime} be
 We also included results from a baseline without gating for comparison.
 The results indicate that: (1) after gating, the mean value of hidden states decreased from 0.71 to 0.05, corresponding to the generally small gating scores; (2) the gated hidden states closely resemble the baseline, suggesting that gating might serve a similar function as attention sink in filtering out irrelevant information.
 
-![Refer to caption](/html/2505.06708/assets/x7.png)
-![Refer to caption](/html/2505.06708/assets/x8.png)
+!(/html/2505.06708/assets/x7.png)
+!(/html/2505.06708/assets/x8.png)
 
 Figure 5: Proportion of SDPA output values below threshold after gating (Left: 1e-2, Right: 1e-3). We also include sparsity measurements obtained by multiplying the average gating score with pre-gating hidden states.
 
@@ -907,20 +862,20 @@ When enforcing shared gating scores across different heads (row 4) or modifying 
 
 These observations suggest that introducing sufficient sparsity within the attention mechanism may help mitigate the occurrence of massive activations. However, further investigation is needed to fully understand the interplay between sparsity, massive activations, and attention sinks, particularly in the context of scaling to deeper and larger models.
 
-![Refer to caption](/html/2505.06708/assets/x9.png)
-![Refer to caption](/html/2505.06708/assets/x10.png)
+!(/html/2505.06708/assets/x9.png)
+!(/html/2505.06708/assets/x10.png)
 
-![Refer to caption](/html/2505.06708/assets/x11.png)
-![Refer to caption](/html/2505.06708/assets/x12.png)
+!(/html/2505.06708/assets/x11.png)
+!(/html/2505.06708/assets/x12.png)
 
-![Refer to caption](/html/2505.06708/assets/x13.png)
-![Refer to caption](/html/2505.06708/assets/x14.png)
+!(/html/2505.06708/assets/x13.png)
+!(/html/2505.06708/assets/x14.png)
 
-![Refer to caption](/html/2505.06708/assets/x15.png)
-![Refer to caption](/html/2505.06708/assets/x16.png)
+!(/html/2505.06708/assets/x15.png)
+!(/html/2505.06708/assets/x16.png)
 
-![Refer to caption](/html/2505.06708/assets/x17.png)
-![Refer to caption](/html/2505.06708/assets/x18.png)
+!(/html/2505.06708/assets/x17.png)
+!(/html/2505.06708/assets/x18.png)
 
 Figure 6: Comparison of massive activations and attention sink phenomena across different gating configurations.
 Row 1 (Baseline): Significant massive activations and attention sinks emerge after the 6th layer.
@@ -934,11 +889,11 @@ In this section, we analyze the distribution of gating scores under two addition
 When enforcing shared gating scores across different heads, the gating scores for most layers increase.
 This indicates that different heads require different sparsity, highlighting the importance of head-specific gating mechanisms.
 
-![Refer to caption](/html/2505.06708/assets/x19.png)
-![Refer to caption](/html/2505.06708/assets/x20.png)
+!(/html/2505.06708/assets/x19.png)
+!(/html/2505.06708/assets/x20.png)
 
-![Refer to caption](/html/2505.06708/assets/x21.png)
-![Refer to caption](/html/2505.06708/assets/x22.png)
+!(/html/2505.06708/assets/x21.png)
+!(/html/2505.06708/assets/x22.png)
 
 Figure 7: Distribution of gating scores under different constraints for SDPA output gating variants.
 
@@ -950,83 +905,3 @@ Specifically, we introduce a clipping operation to constrain the outputs of atte
 However, we find that regardless of whether the clip value was set to 300 or 100, the model still encounters convergence issues at a learning rate of 8e-3.
 This suggests that the instability in pre-norm model training is not solely due to large activations within residuals.
 It is likely that any layer producing large outputs can lead to stability problems, indicating the need for further investigation into the root causes of training instability.
-
-[◄](/html/2505.06707)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2505.06708)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2505.06708)
-[View original  
-on arXiv](https://arxiv.org/abs/2505.06708)[►](/html/2505.06709)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Jun 5 15:02:29 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

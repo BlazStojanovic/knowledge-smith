@@ -20,50 +20,6 @@ url: https://arxiv.org/abs/2604.01621
 year: 2026
 ---
 
-[2604.01621] DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72
 
 Wanqian LiJintao PengZongfei JingTianyu ZhangZe LongXianjie QiaoXiaoming ChenDongxu YangKefeng Duan
@@ -137,11 +93,11 @@ within the range observed in production workloads. These results show that
 synchronization overhead is not a corner case: under realistic imbalance, it
 materially reduces end-to-end inference throughput.
 
-![Refer to caption](/html/2604.01621/assets/x1.png)
+!(/html/2604.01621/assets/x1.png)
 
 (a)
 
-![Refer to caption](/html/2604.01621/assets/chart_5.png)
+!(/html/2604.01621/assets/chart_5.png)
 
 (b)
 
@@ -200,8 +156,7 @@ DWDP to the context servers.
 
 ## 2  Methodology Overview
 
-![Refer to caption](/html/2604.01621/assets/x2.png)
-
+!(/html/2604.01621/assets/x2.png)
 
 Figure 2: Overview of DWDP with DWDP group size 4.
 
@@ -297,11 +252,9 @@ lengths (ISLs) at batch size 1.
 
 10248192163843276802244Input sequence length (tokens)Tcompute/TprefetchT\_{\mathrm{compute}}/T\_{\mathrm{prefetch}}
 
-
 (a) Tcompute/TprefetchT\_{\mathrm{compute}}/T\_{\mathrm{prefetch}}.
 
 10248192163843276800.50.5111.51.5Input sequence length (tokens)TDEP/TDWDPT\_{\mathrm{DEP}}/T\_{\mathrm{DWDP}}
-
 
 (b) TDEP/TDWDPT\_{\mathrm{DEP}}/T\_{\mathrm{DWDP}}.
 
@@ -371,8 +324,7 @@ This breakdown motivates the rest of this section. First, the baseline DWDP impl
 
 Beyond the kernel breakdown, we further analyze Nsight Systems runtime traces of the baseline DWDP implementation. This analysis reveals a practical issue of asynchronous remote-weight pulls: in each MoE layer, different destination ranks can simultaneously pull missing remote experts from the same source rank, creating many-to-one communication contention at the source-side copy engine.
 
-![Refer to caption](/html/2604.01621/assets/CE_8k1_ratio0.5_contention.png)
-
+!(/html/2604.01621/assets/CE_8k1_ratio0.5_contention.png)
 
 Figure 4: Nsight Systems trace showing many-to-one source-side communication contention in DWDP under max\_num\_tokens=16384=16384 and input sequence lengths ranging from 4K to 8K. Multiple destination ranks concurrently pull remote weights from the same source rank, so the source-side copy engine serializes these requests and exposes compute bubbles.
 
@@ -680,14 +632,10 @@ more heavily generation-bottlenecked, and the context stage cannot accumulate
 enough tokens to amortize DWDP’s prefetch overhead. As a result,
 DWDP may provide limited efficiency benefit or even a slight regression.
 
-![Refer to caption](/html/2604.01621/assets/e2e_summary_260227_plot1_tput.png)
-
+!(/html/2604.01621/assets/e2e_summary_260227_plot1_tput.png)
 
 Figure 5: End-to-end Pareto frontier comparison between baseline and
 DWDP.
-
-
-
 
 Table 5: End-to-end performance summary of DWDP across target TPS/user
 ranges.
@@ -700,9 +648,6 @@ ranges.
 | 60–70 | 1.00 | 1.10 |
 | 80–90 | 1.00 | 1.06 |
 | 170–180 | 1.00 | 0.97 |
-
-
-
 
 Table 6: Median TTFT comparison across target TPS/user ranges.
 
@@ -755,8 +700,7 @@ In DWDP, remote-weight prefetch is overlapped with computation. The overlap intr
 
 Figure [6](#A1.F6 "Figure 6 ‣ Appendix A In-Depth Analysis of Communication-Computation Interference ‣ DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72") shows a copy engine (CE) on the destination graphics processing unit (GPU) pulling weights from a peer GPU over NVLink. The CE is a dedicated data-movement engine, so it does not occupy Streaming Multiprocessor (SM)-based computation resources. However, the transfer still traverses the Network-on-Chip (NoC), Level-2 (L2) cache, and dynamic random-access memory (DRAM) on both GPUs, while local SM kernels issue concurrent memory requests. As a result, remote-weight prefetch and computation can interfere at multiple levels of the hierarchy.
 
-![Refer to caption](/html/2604.01621/assets/CE_and_SM_interference_graph.png)
-
+!(/html/2604.01621/assets/CE_and_SM_interference_graph.png)
 
 Figure 6: Copy-engine-driven remote weight pull across two GPUs. The transfer crosses NVLink and uses the NoC, L2 cache, and DRAM on both GPUs. Interference arises from shared NoC routing, L2 resources, DRAM bandwidth, and power budget.
 
@@ -791,8 +735,7 @@ To understand the impact of this contention, we evaluate three scheduling config
 
    Short-Duration Overlap: This pattern is closest to the real DWDP workload, where tightly scheduled attention modules overlap with smaller communication tasks.
 
-![Refer to caption](/html/2604.01621/assets/Communication_pattern.png)
-
+!(/html/2604.01621/assets/Communication_pattern.png)
 
 Figure 7: Illustration of the three communication patterns used in our overlap study. Intermittent Compute inserts large idle gaps between DeepSeek R1 attention modules to maximize power headroom, Long-Duration Overlap uses the longest communication windows while still preserving gaps between compute modules, and Short-Duration Overlap mimics the real DWDP workload with tightly scheduled compute and smaller communication tasks.
 
@@ -816,8 +759,7 @@ Table [7](#A1.T7 "Table 7 ‣ Evaluation of Overlap Strategies. ‣ A.2 Content
 
   Performance is tightly correlated with GPU frequency. As shown in Table [7](#A1.T7 "Table 7 ‣ Evaluation of Overlap Strategies. ‣ A.2 Contention with Compute-Intensive Kernels: Power-Induced Frequency Bottleneck ‣ Appendix A In-Depth Analysis of Communication-Computation Interference ‣ DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72"), the normalized attention-kernel runtime increases to 1.049×1.049\times and 1.226×1.226\times under Long-Duration Overlap and Short-Duration Overlap, while the normalized GPU frequency drops to 0.963×0.963\times and 0.798×0.798\times, respectively. Figure [8](#A1.F8 "Figure 8 ‣ 1st item ‣ Key Observations. ‣ A.2 Contention with Compute-Intensive Kernels: Power-Induced Frequency Bottleneck ‣ Appendix A In-Depth Analysis of Communication-Computation Interference ‣ DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72") shows the same trend, indicating that attention-kernel time tracks GPU frequency across all three patterns.
 
-  ![Refer to caption](/html/2604.01621/assets/clock_perf_correlation_plot.png)
-
+  !(/html/2604.01621/assets/clock_perf_correlation_plot.png)
 
   Figure 8: Normalized attention-kernel runtime and GPU frequency across the three overlap patterns. The two curves closely follow each other.
 * •
@@ -831,83 +773,3 @@ Table [7](#A1.T7 "Table 7 ‣ Evaluation of Overlap Strategies. ‣ A.2 Content
   NVLink traffic is not the dominant source of slowdown. Using publicly available profiling tools such as Nsight Systems and Nsight Compute, we monitored NVLink utilization and found that the instantaneous NVLink throughput does not show noticeable fluctuation when communication overlaps with the attention kernel. In other words, overlapping with the attention kernel does not significantly perturb the NVLink transfer rate; instead, the effective NVLink bandwidth is still primarily determined by system frequency. This observation suggests that NVLink or NoC contention is not the dominant cause of the slowdown.
 
 In summary, when heavy compute overlaps with communication, the evidence points to power-induced frequency throttling rather than L2, DRAM, or NVLink contention. This suggests avoiding fine-grained overlap patterns that amplify power spikes.
-
-[◄](/html/2604.01620)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.01621)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.01621)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.01621)[►](/html/2604.01622)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 20:43:01 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

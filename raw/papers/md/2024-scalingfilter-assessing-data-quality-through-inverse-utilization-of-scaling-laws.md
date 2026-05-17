@@ -16,49 +16,6 @@ url: https://arxiv.org/abs/2408.08310
 year: 2024
 ---
 
-[2408.08310] ScalingFilter: Assessing Data Quality through Inverse Utilization of Scaling Laws
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # ScalingFilter: Assessing Data Quality through Inverse Utilization of Scaling Laws
 
 Ruihang Li1,2,
@@ -95,7 +52,6 @@ Nenghai Yu1,
 Han Hu2,
 Houwen Peng2††thanks: Corresponding author.
 
-
 1University of Science and Technology of China,
 2Microsoft Research Asia,
 
@@ -106,8 +62,7 @@ Houwen Peng2††thanks: Corresponding author.
 
 The success of large language models (LLMs) is significantly influenced by the quality and quantity of the pre-training corpus. Researchers have developed various data curation pipelines to enhance dataset quality, focusing on raw web crawling, text extraction, repetition and toxic content removal, and, notably, quality filtering (Brown et al., [2020](#bib.bib5); Rae et al., [2021](#bib.bib30); Penedo et al., [2023](#bib.bib27)).
 
-![Refer to caption](/html/2408.08310/assets/x1.png)
-
+!(/html/2408.08310/assets/x1.png)
 
 Figure 1: In ScalingFilter, we assess the quality of text documents by their scaling characteristics with language models in different sizes.
 
@@ -136,13 +91,11 @@ In summary, the contributions of this work are threefold:
 
    To evaluate the data diversity of filtered datasets, we introduce semantic diversity as a novel and reliable metric. Extensive experiments demonstrate that ScalingFilter more effectively preserves the richness and variety of the raw data compared to conventional quality filtering approaches.
 
-![Refer to caption](/html/2408.08310/assets/x2.png)
-
+!(/html/2408.08310/assets/x2.png)
 
 (a)
 
-![Refer to caption](/html/2408.08310/assets/x3.png)
-
+!(/html/2408.08310/assets/x3.png)
 
 (b)
 
@@ -231,7 +184,6 @@ OpenbookQA
 BoolQ
 Avg
 
-
 Random
 45.40
 41.96
@@ -315,7 +267,6 @@ OpenbookQA
 BoolQ
 Avg
 
-
 Unfiltered CC
 47.34
 47.78
@@ -392,7 +343,6 @@ Random
 
 Binary Classification
 
-
 OpenWebText
 48.13
 48.96
@@ -424,7 +374,6 @@ Mixed†
 49.85
 
 Importance Resampling
-
 
 OpenWebText
 47.52
@@ -467,21 +416,16 @@ subscript𝜆1subscript𝜆2…subscript𝜆𝑛\lambda\_{1},\lambda\_{2},...,\l
 
 A pre-trained language model extracts each document’s semantic embedding, using cosine similarity as the similarity function. In our experiments, we utilize the bge-base-en-v1.5 model (Xiao et al., [2023](#bib.bib39)) with the sentence\_transformers library due to its efficiency and outstanding performance in various text embedding-related retrieval and clustering tasks.
 
-![Refer to caption](/html/2408.08310/assets/x4.png)
-
+!(/html/2408.08310/assets/x4.png)
 
 Figure 3: Positive correlation between the number of datasets and semantic diversity, demonstrating semantic diversity as a reliable measure of data diversity.
 
 Selecting a proper size of documents.
    Computational constraints prevent calculating semantic diversity for all documents in the dataset. Experiments on the unfiltered dataset help select an appropriate document count for calculating the semantic diversity metric. For each experiment, we randomly select n𝑛n samples, calculate their semantic diversity score, and repeat this process 10 times to compute the average score and standard deviation. Results are displayed in Figure [4](#S3.F4 "Figure 4 ‣ 3.2 Data Diversity Evaluation ‣ 3 Experiments ‣ ScalingFilter: Assessing Data Quality through Inverse Utilization of Scaling Laws"). Results indicate that semantic diversity stabilizes when the group exceeds 10,000 samples, with a standard deviation of 0.12. We choose 10,000 samples for subsequent experiments to balance accuracy and efficiency.
 
-![Refer to caption](/html/2408.08310/assets/x5.png)
-
+!(/html/2408.08310/assets/x5.png)
 
 Figure 4: Results on the relationship between semantic diversity and sample size. Semantic diversity stabilizes at a sample size of 10,000, with a standard deviation below 0.2. Therefore, we choose 10,000 as our sample size for calculating semantic diversity, as it represents the dataset’s diversity adequately while ensuring computational efficiency.
-
-
-
 
 Table 4: 
 Ablations on effects of sizes of meta-models. To note, the original ScalingFilter uses a pair of meta-models with 124M and 774M parameters, respectively.
@@ -496,7 +440,6 @@ ARC
 OpenbookQA
 BoolQ
 Avg
-
 
 124M
 335M
@@ -897,9 +840,7 @@ OpenbookQA
 BoolQ
 Avg
 
-
 Binary Classification
-
 
 2.5×10−42.5superscript1042.5\times 10^{-4}
 256
@@ -935,7 +876,6 @@ Binary Classification
 50.49
 
 ScalingFilter
-
 
 2.5×10−42.5superscript1042.5\times 10^{-4}
 256
@@ -1003,7 +943,6 @@ OpenbookQA
 BoolQ
 Avg
 
-
 τ=0𝜏0\tau=0  (Top-k)
 49.07
 48.42
@@ -1047,83 +986,3 @@ Avg
 ### A.4 Ablation Study on Hyperparameters
 
 To further validate the robustness of ScalingFilter, we conducted ablation experiments using various training hyperparameters on 1.3B models. Our focus was primarily on two hyperparameters: learning rate (default 2.5×10−42.5superscript1042.5\times 10^{-4}) and global batch size (default 256). We doubled the default values for each in the ablation study. The results are presented in Table [A.2](#A1.T2 "Table A.2 ‣ A.2.1 Positive correlation between 𝑎 and the negative tangent slope ‣ A.2 Derivation of ScalingFilter ‣ Appendix A Appendix ‣ ScalingFilter: Assessing Data Quality through Inverse Utilization of Scaling Laws"). The results indicate that an increase in global batch size significantly reduces performance in both settings with different quality filters, as it halves the training steps. Conversely, increasing the learning rate slightly affects downstream accuracy. Overall, ScalingFilter remains robust across a range of training hyperparameters, consistently surpassing binary classification, its top competitor, as shown in Table [1](#S3.T1 "Table 1 ‣ 3 Experiments ‣ ScalingFilter: Assessing Data Quality through Inverse Utilization of Scaling Laws").
-
-[◄](/html/2408.08309)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2408.08310)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2408.08310)
-[View original  
-on arXiv](https://arxiv.org/abs/2408.08310)[►](/html/2408.08311)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Sep 5 13:04:11 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

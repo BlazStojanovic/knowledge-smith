@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2006.06465
 year: 2020
 ---
 
-[2006.06465] DNF-Net: A Neural Architecture for Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DNF-Net: A Neural Architecture for Tabular Data
 
 Ami Abutbul
@@ -289,8 +246,7 @@ If T𝑇T consists of a root, a left subtree T0subscript𝑇0T\_{0} of rank r0su
 | --- | --- | --- |
 |  | r​a​n​k​(T)={1+r0if r0 = r1max⁡{r0,r1}else𝑟𝑎𝑛𝑘𝑇cases1subscript𝑟0if r0 = r1subscript𝑟0subscript𝑟1elserank(T)=\begin{cases}1+r\_{0}&\text{if $r\_{0}$ = $r\_{1}$}\\ \max\{r\_{0},r\_{1}\}&\text{else}\end{cases} |  |
 
-![Refer to caption](/html/2006.06465/assets/VCDim.png)
-
+!(/html/2006.06465/assets/VCDim.png)
 
 Figure 1: V​C​D​i​m​(D​Tnr)𝑉𝐶𝐷𝑖𝑚𝐷superscriptsubscript𝑇𝑛𝑟VCDim(DT\_{n}^{r}) and the upper bound on V​C​D​i​m​(D​N​Fnk)𝑉𝐶𝐷𝑖𝑚𝐷𝑁superscriptsubscript𝐹𝑛𝑘VCDim(DNF\_{n}^{k}) (log scale) as a function of the input dimension
 
@@ -410,33 +366,27 @@ where we examine the performance of DNF​-​NetDNF-Net{\rm{DNF\text{-}Net}}s o
 For each model, we optimized its critical hyperparameters. This optimization process required many computational resources: thousands of configurations have been tested for FCNs, hundreds of configurations for XGBoost, and only a few dozen for DNF​-​NetDNF-Net{\rm{DNF\text{-}Net}}. A detailed description of the grid search we used for each model can be found in Appendix [D.3](#A4.SS3 "D.3 Grid Parameters – Tabular Datasets ‣ Appendix D Experimental Protocol ‣ DNF-Net: A Neural Architecture for Tabular Data").
 In Table 3, we see that DNF​-​NetDNF-Net{\rm{DNF\text{-}Net}} consistently and significantly outperforms FCN over all the six datasets. While obtaining better than or indistinguishable results from XGBoost over two datasets, on the other datasets, DNF​-​NetDNF-Net{\rm{DNF\text{-}Net}} is slightly inferior but in the same ball park as XGBoost.
 
-![Refer to caption](/html/2006.06465/assets/Syn1_results.png)
-
+!(/html/2006.06465/assets/Syn1_results.png)
 
 (a) Syn1
 
-![Refer to caption](/html/2006.06465/assets/Syn2_results.png)
-
+!(/html/2006.06465/assets/Syn2_results.png)
 
 (b) Syn2
 
-![Refer to caption](/html/2006.06465/assets/Syn3_results.png)
-
+!(/html/2006.06465/assets/Syn3_results.png)
 
 (c) Syn3
 
-![Refer to caption](/html/2006.06465/assets/Syn4_results.png)
-
+!(/html/2006.06465/assets/Syn4_results.png)
 
 (d) Syn4
 
-![Refer to caption](/html/2006.06465/assets/Syn5_results.png)
-
+!(/html/2006.06465/assets/Syn5_results.png)
 
 (e) Syn5
 
-![Refer to caption](/html/2006.06465/assets/Syn6_results.png)
-
+!(/html/2006.06465/assets/Syn6_results.png)
 
 (f) Syn6
 
@@ -761,8 +711,7 @@ By Lemma 3.2.3 in Blummer et al. [[4](#bib.bib4)], if d=V​C​D​i​m​(C)�
 | --- | --- | --- |
 |  | V​C​D​i​m​(D​N​Fnk)≤2​(n+1)​k​log⁡(3​k).𝑉𝐶𝐷𝑖𝑚𝐷𝑁superscriptsubscript𝐹𝑛𝑘2𝑛1𝑘3𝑘VCDim(DNF\_{n}^{k})\leq 2(n+1)k\log(3k). |  |
 
-![Refer to caption](/html/2006.06465/assets/conjuction_graph.jpg)
-
+!(/html/2006.06465/assets/conjuction_graph.jpg)
 
 Figure 3: An example of a decision tree with rank 1, which is equivalent to the conjunction x0∧x1∧x2∧x3∧x4subscript𝑥0subscript𝑥1subscript𝑥2subscript𝑥3subscript𝑥4x\_{0}\wedge x\_{1}\wedge x\_{2}\wedge x\_{3}\wedge x\_{4}.
 
@@ -932,83 +881,3 @@ d∈[11,50,100,150,200,250,300]𝑑
 
 The FCN that we used has two dense hidden layers [64, 32] with a RELU activation. To keep things simple, we have not used drouput or any kind of regularization.
 The same training protocol was used for all three models. We used the same learning rate scheduler, early stopping protocol, loss function and optimizer as appear in Section [D.2](#A4.SS2 "D.2 Training Protocol ‣ Appendix D Experimental Protocol ‣ DNF-Net: A Neural Architecture for Tabular Data")666We noticed that in this scenario, a large learning rate or large batch size leads to a decline in the performance of the ’FCN with the feature selection’. While the simple FCN and the ’FCN with oracle mask’ remains approximately the same.. We use a batch size of 256, and an initial learning rate of 0.001. The only hyperparameter that was fine-tuned is the ‘feature selection beta’ in the case of ‘FCN with feature selection’ on the range {1.3,1.,0.7,0.4}\{1.3,1.,0.7,0.4\}. For the two other models, only a single configuration was tested in the grid search process.
-
-[◄](/html/2006.06464)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2006.06465)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2006.06465)
-[View original  
-on arXiv](https://arxiv.org/abs/2006.06465)[►](/html/2006.06466)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 14 14:06:00 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -12,57 +12,6 @@ url: http://arxiv.org/abs/1806.00979v1
 year: 2018
 ---
 
-[1806.00979] Similarity encoding for learning with dirty categorical variablesThis work was funded by the Wendelin and DirtyData (ANR-17-CE23-0018) grants.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-∎
-
-11institutetext: Inria Saclay 22institutetext: 1 Rue Honoré d’Estienne d’Orves, 91120 Palaiseau, France
-  
-22email: patricio.cerda@inria.fr 33institutetext: LAL, CNRS, France 
-
 # Similarity encoding for learning with dirty categorical variables††thanks: This work was funded by the Wendelin and DirtyData (ANR-17-CE23-0018) grants.
 
 Patricio Cerda
@@ -280,7 +229,7 @@ The dataset medical charges is the only one of this list that
 reaches its highest cardinality (100 categories) at around 1,000
 samples.
 
-![Refer to caption](/html/1806.00979/assets/x1.png)
+!(/html/1806.00979/assets/x1.png)
 
 Dirty categorical data can arise from a variety of mechanisms
 [kim2003taxonomy](#bib.bib19) :
@@ -792,10 +741,10 @@ encoding methods, all datasets use the same pipeline: no specific parameter
 tuning was performed for a particular dataset
 (for technical details see [Subsection 8.2](#S8.SS2 "8.2 Technical details on the experiments: prediction pipeline21footnote 2121footnote 21 Experiments are available at https://github.com/pcerda/ecml-pkdd-2018 ‣ 8 Appendix ‣ Similarity encoding for learning with dirty categorical variablesThis work was funded by the Wendelin and DirtyData (ANR-17-CE23-0018) grants.")).
 
-![Refer to caption](/html/1806.00979/assets/x2.png)
+!(/html/1806.00979/assets/x2.png)
 
 Gradient                                                                                                                                boosted trees                                                                                                                                
-![Refer to caption](/html/1806.00979/assets/x3.png)Ridge                                                                                                                                regression
+!(/html/1806.00979/assets/x3.png)Ridge                                                                                                                                regression
 
 Figure 2: Performance of different encoding methods.
 Upper figure: gradient boosting; Lower figure: ridge regression.
@@ -829,8 +778,7 @@ multiclass classification (which goes up to 104 classes for the
 *beer reviews*
 dataset).
 
-![Refer to caption](/html/1806.00979/assets/x4.png)
-
+!(/html/1806.00979/assets/x4.png)
 
 Figure 3: Scores with different classifiers Comparison between
 one-hot and 3-gram similarity encoding. Each box-plot corresponds to 100
@@ -851,11 +799,11 @@ The *medical charges* and *employee salaries* datasets
 do not have scores for the logistic model because their prediction
 task is a regression problem.
 
-![Refer to caption](/html/1806.00979/assets/x5.png)
+!(/html/1806.00979/assets/x5.png)
 
 Gradient                                                                                                                                   boosted trees
 
-![Refer to caption](/html/1806.00979/assets/x6.png)
+!(/html/1806.00979/assets/x6.png)
 
 Ridge                                                                                                                                   regression
 
@@ -924,7 +872,7 @@ Hence, it projects on a dictionary of reference n-grams and
 gives more importance to the n-grams that best capture
 the similarity between categories.
 
-![Refer to caption](/html/1806.00979/assets/x7.png)
+!(/html/1806.00979/assets/x7.png)
 
 Figure 5: Histogram of pairwise similarity between categories for
 different string similarity metrics. 10,000 pairs of categories
@@ -1385,83 +1333,3 @@ with k-means for dimensionality reduction.
 | Traffic violations | 12,165 | 1,686 | 686 | 262 | 116.6 | 7.1 | 2.3 | 1.1 |
 | Road safety | 211 | 30 | 10 | 6 | 78.2 | 1.5 | 0.6 | 0.4 |
 | Beer reviews | 14,214 | 2,260 | 809 | 436 | 302.7 | 2.0 | 0.6 | 0.5 |
-
-[◄](/html/1806.00978)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1806.00979)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1806.00979)
-[View original  
-on arXiv](https://arxiv.org/abs/1806.00979)[►](/html/1806.00980)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 3 04:04:12 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

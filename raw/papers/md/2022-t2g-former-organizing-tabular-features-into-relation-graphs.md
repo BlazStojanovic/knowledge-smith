@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/2211.16887v2
 year: 2022
 ---
 
-[2211.16887] T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction
 
 Jiahuan Yan1\equalcontrib,
@@ -77,8 +34,7 @@ Data in the form of table structures are ubiquitous in many fields, e.g., medica
 
 However, different from images and texts, it is challenging for fusion-based models to handle tabular feature interaction due to the feature heterogeneity problem (Borisov, Leemann et al. [2021](#bib.bib7)). DANets (Chen, Liao et al. [2022](#bib.bib8)) suggested the “selection & abstraction” principle that processes tabular data by first selecting and then interacting the selected features. Known neural feature selection schemes can be categorized into soft and hard versions. The soft selection essentially exerts fully connected interactions among features (see Fig. [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction")(b)), such as multiplicative interaction (Guo, Tang et al. [2017](#bib.bib17)), feature crossing (Wang, Fu et al. [2017](#bib.bib49); Wang, Shivanna et al. [2021](#bib.bib50)), and attention-based interaction (Song, Shi et al. [2019](#bib.bib45); Huang, Khetan et al. [2020](#bib.bib23); Gorishniy, Rubachev et al. [2021](#bib.bib16)). However, tabular features by nature are heterogeneous, and fully connected interaction is a sub-optimal choice since it blindly fuses all features together. DANets (Chen, Liao et al. [2022](#bib.bib8)) performed hard selection by grouping correlative features and then constraining interactions among grouped features (Fig.[1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction")(c)). Although DANets achieved promising results, its feature selection operation cannot thoroughly address intra-group interactions (see Fig. [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction")(c)), and thus features assigned in a same group are indiscriminately fused, making the model inferiorly expressive.
 
-![Refer to caption](/html/2211.16887/assets/x1.png)
-
+!(/html/2211.16887/assets/x1.png)
 
 Figure 1: An example of medical data tables. The values in different columns are located in heterogeneous feature spaces. Underlying medical knowledge sparsely links feature pairs. (a) Original separated features without any interactions, which are often used in non-deep models. (b) Fully connected interactions by softly selecting all the features. (c) Selective interactions among grouped features by hard selection. (d) Selective interactions according to a weighted relation graph. “BP” denotes blood pressure; “HIV-Ab” indicates the level of HIV antibody.
 
@@ -105,8 +61,7 @@ Overall, the main contributions of our work are as follows:
 
   Comprehensive experiments show that T2G-Former consistently outperforms state-of-the-art tabular DNNs on many datasets, and is competitive with GBDTs.
 
-![Refer to caption](/html/2211.16887/assets/x2.png)
-
+!(/html/2211.16887/assets/x2.png)
 
 Figure 2: (a) The architecture of T2G-Former for tabular learning. Each T2G block builds an FR-Graph for a feature level and performs selective interaction. A global readout node collects salient features from each layer to form tabular semantics. (b) Illustrating a basic block in Sec. [4.1](#S4.SS1 "4.1 Basic Block ‣ 4 T2G-Former ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction") and GE in Sec. [3](#S3 "3 Graph Estimator ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction").
 
@@ -267,8 +222,6 @@ et al. [2011](#bib.bib6))). For each dataset, data preprocessing and train-vali
 
 Table 1: Some details of the 12 public datasets. ”RMSE” denotes root mean squared error (for regression), and “Acc.” means accuracy (for classification). The number following each “+” in the row of “# features” is the number of categorical features.
 
-
-
 |  | GE ↑↑\uparrow | CH ↑↑\uparrow | EY ↑↑\uparrow | CA ↓↓\downarrow | HO ↓↓\downarrow | AD ↑↑\uparrow | OT ↑↑\uparrow | HE ↑↑\uparrow | JA ↑↑\uparrow | HI ↑↑\uparrow | FB ↓↓\downarrow | YE ↓↓\downarrow |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | XGBoost | 68.42 | 85.92 | 72.51 | 0.436 | 3.169 | 87.30 | 82.46 | 37.47 | 71.85 | 72.41 | 5.359 | 8.850 |
@@ -366,8 +319,7 @@ The results in Table [7](#S5.T7 "Table 7 ‣ Comparison with DANet Grouped Inte
 
 Table 7: Comparison with DANet group-based interaction on several datasets.
 
-![Refer to caption](/html/2211.16887/assets/x3.png)
-
+!(/html/2211.16887/assets/x3.png)
 
 Figure 3: Visualization of the FR-Graph in the first layer (heat map) and the readout selection (dark bar) on the datasets CA (left) and CH (right). More details of the feature descriptions are given in Appendix [D](#A4 "Appendix D Dataset Features ‣ T2G-Former: Organizing Tabular Features into Relation Graphs Promotes Heterogeneous Feature Interaction").
 
@@ -781,83 +733,3 @@ Table [12](#A4.T12 "Table 12 ‣ Appendix D Dataset Features ‣ T2G-Former: Org
 | Geography | Geo | The country from which the customer belongs. |
 
 Table 12: Feature descriptions of California Housing (CA) and Churn Modeling (CH).
-
-[◄](/html/2211.16886)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2211.16887)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2211.16887)
-[View original  
-on arXiv](https://arxiv.org/abs/2211.16887)[►](/html/2211.16888)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 14 10:02:45 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

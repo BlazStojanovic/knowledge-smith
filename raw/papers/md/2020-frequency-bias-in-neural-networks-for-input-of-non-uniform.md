@@ -15,50 +15,6 @@ url: http://arxiv.org/abs/2003.04560v1
 year: 2020
 ---
 
-[2003.04560] Frequency Bias in Neural Networks for Input of Non-Uniform Density
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Frequency Bias in Neural Networks for Input of Non-Uniform Density
 
 Ronen Basri
@@ -83,13 +39,13 @@ Machine Learning, ICML
 
 A key question in understanding the success of neural networks is: what makes over-parameterized networks generalize so well, avoiding solutions that overfit the training data? In search of an explanation, a number of recent papers (Farnia et al., [2018](#bib.bib12); Rahaman et al., [2019](#bib.bib19); Xu et al., [2019](#bib.bib25)) have suggested that training with gradient descent (GD) (as well as SGD) yields a frequency bias – in early epochs training a neural net yields a low frequency fit to the target function, while high frequencies are learned only in later epochs, if they are needed to fit the data (see Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density")(top)).
 
-![Refer to caption](/html/2003.04560/assets/x1.png)
+!(/html/2003.04560/assets/x1.png)
 
-![Refer to caption](/html/2003.04560/assets/x2.png)
+!(/html/2003.04560/assets/x2.png)
 
-![Refer to caption](/html/2003.04560/assets/x3.png)
+!(/html/2003.04560/assets/x3.png)
 
-![Refer to caption](/html/2003.04560/assets/x4.png)
+!(/html/2003.04560/assets/x4.png)
 
 Figure 1: Frequency bias under uniform (top) and non-uniform (bottom) distributions. The light cyan line represents the target function which is composed of the sum of a low and high frequency functions. The thin black line represents the network output. Top: when training data is distributed uniformly, low frequency (left) is learned before high frequency (right). Bottom: with non-uniform distribution (positive region is dense, negative is sparse), a good low frequency fit for the low density region is obtained only after 40 epochs, but by then the network fits most of the high frequency component of the target function at the dense region.
 
@@ -332,11 +288,11 @@ Note that if p​(x)=pj𝑝𝑥subscript𝑝𝑗p(x)=p\_{j} is constant in a con
 
 In other words, over the region Rjsubscript𝑅𝑗R\_{j}, this is a cosine function with frequency proportional to pjsubscript𝑝𝑗\sqrt{p\_{j}}. A plot of eigenfunctions for a piecewise constant distribution is shown in Fig. [3](#S4.F3 "Figure 3 ‣ 4.1 Explicit expressions for the eigenfunctions ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density").
 
-![Refer to caption](/html/2003.04560/assets/x5.png)
+!(/html/2003.04560/assets/x5.png)
 
 Figure 2: For the NTK of a two-layer network with bias we plot its eigenfunctions (in a decreasing order of eigenvalues) under a non-uniform data distribution in 𝕊1superscript𝕊1\mathbb{S}^{1}. Here we used a density composed of three constant regions with p​(x)∈3/(2​π)​{1/7,2/7,4/7}𝑝𝑥32𝜋172747p(x)\in 3/(2\pi)\{1/7,2/7,4/7\} (bottom right plot).
 
-![Refer to caption](/html/2003.04560/assets/x6.png)
+!(/html/2003.04560/assets/x6.png)
 
 Figure 3: The local frequency in the eigenfunctions within each of the three constant region densities in Figure [3](#S4.F3 "Figure 3 ‣ 4.1 Explicit expressions for the eigenfunctions ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density"), plotted for both a two-layer and deep (depth=10) networks (marked respectively by squares and plus signs). Measurements are obtained by applying FFT to each region. The measurements are in close match to our formula ([12](#S4.E12 "In 4.1 Explicit expressions for the eigenfunctions ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density")) (solid line).
 
@@ -368,13 +324,11 @@ As with the uniform distribution, due to periodic boundary conditions there is a
 
 q𝑞q is integer, and there is one eigenfunction for q=0𝑞0q=0 and two eigenfunctions for every q>0𝑞0q>0. Figure [4](#S4.F4 "Figure 4 ‣ 4.1 Explicit expressions for the eigenfunctions ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") shows a plot of the eigenvalues computed for various densities.
 
-![Refer to caption](/html/2003.04560/assets/x7.png)
-
+!(/html/2003.04560/assets/x7.png)
 
 Figure 4: The kernel eigenvalues for several distributions. The formula (marked by the solid lines) closely matches the eigenvalues Hpsuperscript𝐻𝑝H^{p} computed numerically using 50​K50𝐾50K points.
 
-![Refer to caption](/html/2003.04560/assets/x8.png)
-
+!(/html/2003.04560/assets/x8.png)
 
 Figure 5: For the NTK of a two-layer network we plot the eigenvectors of Hpsuperscript𝐻𝑝H^{p} for a continuous distribution, p​(x)=3​cos⁡(2​x+π)+4.59​π𝑝𝑥32𝑥𝜋4.59𝜋p(x)=\frac{3\cos(2x+\pi)+4.5}{9\pi} (bottom right).
 
@@ -398,22 +352,21 @@ Let p​(x)𝑝𝑥p(x) be a piecewise constant distribution on 𝕊1superscript
 
 Proving this theorem is complicated by the fact that (1) the frequency of the target function may not be exactly represented in the eigenfunctions of the kernel, due to the discrete number of eigenfunctions, and (2) the eigenfunctions restricted to any given region Rjsubscript𝑅𝑗R\_{j} are not orthogonal. These two properties may result in non-negligible correlations of g​(x)𝑔𝑥g(x) with eigenfunctions of yet smaller eigenvalues. Therefore, to prove Theorem [1](#Thmtheorem1 "Theorem 1. ‣ 4.2 Time to convergence ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") we first inspect the projections of g​(x)𝑔𝑥g(x) onto the eigenfunctions corresponding to such small eigenvalues and prove a bound on this tail. Subsequently we use this bound to prove the convergence rate in the theorem. The proofs are provided in the supplementary material.
 
-![Refer to caption](/html/2003.04560/assets/x9.png)
+!(/html/2003.04560/assets/x9.png)
 
-![Refer to caption](/html/2003.04560/assets/x10.png)
+!(/html/2003.04560/assets/x10.png)
 
-![Refer to caption](/html/2003.04560/assets/x11.png)
+!(/html/2003.04560/assets/x11.png)
 
-![Refer to caption](/html/2003.04560/assets/x12.png)
+!(/html/2003.04560/assets/x12.png)
 
-![Refer to caption](/html/2003.04560/assets/x13.png)
+!(/html/2003.04560/assets/x13.png)
 
 Figure 6: Illustration of Thm. [1](#Thmtheorem1 "Theorem 1. ‣ 4.2 Time to convergence ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density"). For a piecewise constant density with three regions (top right), a function g​(x)=sin⁡(14​x)𝑔𝑥14𝑥g(x)=\sin(14x) (in green, bottom plots) is projected onto the eigenfunctions of k𝑘k (three of which are shown with black curves in the bottom plots), producing coefficients gqsubscript𝑔𝑞g\_{q} (top left). This produces three peaks around the points predicted by our theory (marked by the dotted vertical lines), which correspond to high correlation of g​(x)𝑔𝑥g(x) with one of the three regions for the appropriate three basis functions (bottom row).
 
 In Figure [7](#S4.F7 "Figure 7 ‣ 4.2 Time to convergence ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") we used the target function g​(x)=sin⁡(κ​x)𝑔𝑥𝜅𝑥g(x)=\sin(\kappa x) for different values of κ𝜅\kappa to train a 2-layer network. The data was sampled from a non-uniform distribution with three constant regions of densities 3/(2​π)​(1/7,2/7,4/7)32𝜋1727473/(2\pi)(1/7,2/7,4/7). It can be seen that runtime increases for each region in proportion to κ2superscript𝜅2\kappa^{2}, and the network converged faster at denser regions (in proportion to p​(x)𝑝𝑥p(x)).
 
-![Refer to caption](/html/2003.04560/assets/x14.png)
-
+!(/html/2003.04560/assets/x14.png)
 
 Figure 7: Convergence times as a function of the target frequency κ𝜅\kappa for a two-layer network trained with data drawn from a non-uniform distribution in 𝕊1superscript𝕊1\mathbb{S}^{1}. We used the distribution of Figure [3](#S4.F3 "Figure 3 ‣ 4.1 Explicit expressions for the eigenfunctions ‣ 4 The eigenfunctions of NTK for two-layer networks for non-uniform distributions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density"), which is composed of three regions of constant density with a ratio of 1:2:4. For each region Rjsubscript𝑅𝑗R\_{j} the network converges at time proportional to κ2/pjsuperscript𝜅2subscript𝑝𝑗\kappa^{2}/p\_{j}, as is indicated by the three quadratic curves fit to the data points. In addition, the median ratios between our measurements for the three regions are 1:1.96:3.89, in close fit to the distribution.
 
@@ -457,23 +410,19 @@ and the residual ϵ​(t)italic-ϵ𝑡\epsilon(t) due to the GD steps is relativ
 where ‖ξ​(t)‖≤O​(ϵ)norm𝜉𝑡𝑂italic-ϵ\|\xi(t)\|\leq O(\epsilon). Next we show that under the setting of τ𝜏\tau, ‖𝐮(0)‖≤O​(ϵ)normsuperscript𝐮0𝑂italic-ϵ\|\mathbf{u}^{(0)}\|\leq O(\epsilon). Finally, by applying the spectral decomposition to H∞superscript𝐻H^{\infty} we obtain
 ([50](#A4.E50 "In Theorem 4. ‣ D.1 The network model ‣ Appendix D Spectral convergence analysis for deep networks - proof of Theorem 2 ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density")).
 
-![Refer to caption](/html/2003.04560/assets/figures/2D_eigenfunctions.png)
-
+!(/html/2003.04560/assets/figures/2D_eigenfunctions.png)
 
 Figure 8: The eigenfunctions of NTK for a two-layer network with bias for data drawn from a non-uniform distribution from 𝕊2superscript𝕊2\mathbb{S}^{2}. The left and right hemispheres each have constant density with a ratio of 12:1.
 
+!(/html/2003.04560/assets/x15.png)
 
+!(/html/2003.04560/assets/x16.png)
 
-![Refer to caption](/html/2003.04560/assets/x15.png)
-
-![Refer to caption](/html/2003.04560/assets/x16.png)
-
-![Refer to caption](/html/2003.04560/assets/x17.png)
+!(/html/2003.04560/assets/x17.png)
 
 Figure 9: Convergence times as a function of the target harmonic frequency κ𝜅\kappa for a two-layer network trained with data drawn from a non-uniform distribution in 𝕊2superscript𝕊2\mathbb{S}^{2}. In each plot the sphere was divided into 2 halves, with density ratios (from left to right) of 1:2, 1:3, 1:4. The plot shows a cubic fit to the measurements. The median ratios between our measurements for the three subplots are 1.76, 2.45 and 2.99, undershooting our conjectured ratios. We believe this is due to sensitivity of experiments on 𝕊2superscript𝕊2\mathbb{S}^{2} to sampling.
 
-![Refer to caption](/html/2003.04560/assets/x18.png)
-
+!(/html/2003.04560/assets/x18.png)
 
 Figure 10: The eigenfunctions of NTK for a deep network (depth 10) for the uniform distribution in 𝕊1superscript𝕊1\mathbb{S}^{1}. The eigenvectors are arranged according to a descending order of their corresponding eigenvalues.
 
@@ -481,15 +430,15 @@ Our next aim is to compute the eigenvectors and eigenvalues of NTK matrices for 
 
 Figure [10](#S5.F10 "Figure 10 ‣ 5 Deep networks ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") shows for the NTK of depth 10 that indeed the eigenvectors in 𝕊1superscript𝕊1\mathbb{S}^{1} is the Fourier series. We note that despite the lack of bias terms all the Fourier components are included. The eigenvalues decrease monotonically with frequency, indicating that the network should learn low frequency functions faster than high frequency ones. Moreover, as Figures [12](#S5.F12 "Figure 12 ‣ 5 Deep networks ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") and [12](#S5.F12 "Figure 12 ‣ 5 Deep networks ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") show, regardless of depth, when trained with a function of frequency κ𝜅\kappa overparameterized networks converge respectively at the asymptotic speed of O​(κ2)𝑂superscript𝜅2O(\kappa^{2}) and O​(κ3)𝑂superscript𝜅3O(\kappa^{3}) for uniform data in 𝕊1superscript𝕊1\mathbb{S}^{1} and 𝕊2superscript𝕊2\mathbb{S}^{2}. Interestingly, however, the eigenvalues of NTK reveal a difference in the way deep and shallow networks treat low frequencies in the target function, as is refelcted by the plots in Figure [12](#S5.F12 "Figure 12 ‣ 5 Deep networks ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density"). Each line of one color represents the log of the eigenvalues for one network and the lines are ordered from shallow to deep in ascending order. The local slope of these lines indicate the speed of convergence for the corresponding frequencies. Asymptotically all the lines become parallel as the frequency κ𝜅\kappa increases, implying that the asymptotic convergence times should be equal for all depths. However, for the low frequencies the lines corresponding to deeper networks are flatter than those corresponding to shallow networks. This flatter slope indicates that the frequency bias for such frequencies is smaller, implying that deep networks learn frequencies, e.g., 6-10, almost as fast as 1-5, while this is not true for shallow networks.
 
-![Refer to caption](/html/2003.04560/assets/x19.png)
+!(/html/2003.04560/assets/x19.png)
 
-![Refer to caption](/html/2003.04560/assets/x20.png)
+!(/html/2003.04560/assets/x20.png)
 
 Figure 11: For deep networks (3 and 7 layers) and data drawn from the uniform distribution in 𝕊1superscript𝕊1\mathbb{S}^{1} (left) and 𝕊2superscript𝕊2\mathbb{S}^{2} (right) we plot training times as a function of target frequency (marked by the solid blue circles). This is compared to the times predicted by the eigenvalues of the corresponding NTK model (red circles).
 
-![Refer to caption](/html/2003.04560/assets/x21.png)
+!(/html/2003.04560/assets/x21.png)
 
-![Refer to caption](/html/2003.04560/assets/x22.png)
+!(/html/2003.04560/assets/x22.png)
 
 Figure 12: This figure shows a plot of the eigenvalues of NTK for FC networks of different depths with points drawn from a uniform density in 𝕊1superscript𝕊1\mathbb{S}^{1} (left) and 𝕊2superscript𝕊2\mathbb{S}^{2} (right). The plot is given in log-log scale. Networks of different depths are colored differently. Plots for deeper networks appear higher due to scaling. It can be seen that all curves decrease monotonically, indicating that the eigenvalues decay with frequency. In addition they all become parallel as the frequency κ𝜅\kappa grows, converging to a slope of -2 for 𝕊1superscript𝕊1\mathbb{S}^{1} and -3 for 𝕊2superscript𝕊2\mathbb{S}^{2} (fitting the curves in the left plot starting at κ=50𝜅50\kappa=50 yields a slope of 1.94; fitting the right plot starting at κ=10𝜅10\kappa=10 yields a slope of 2.80). This indicates that asymptotically the rate of learning a frequency κ𝜅\kappa is O​(κ2)𝑂superscript𝜅2O(\kappa^{2}) and O​(κ3)𝑂superscript𝜅3O(\kappa^{3}) respectively regardless of depth. The shallower slope of deep networks on the left part of each plot indicates that middle frequencies are learned faster with deep networks than with shallow ones.
 
@@ -934,8 +883,7 @@ And we can choose for the second eigenfunction for each q𝑞q (up to a global s
 
 In Figure [13](#A2.F13 "Figure 13 ‣ B.1 Ratios between the amplitudes of neighboring regions ‣ Appendix B The amplitudes of the eigenfunctions in different regions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density") we show an example for this setup.
 
-![Refer to caption](/html/2003.04560/assets/x23.png)
-
+!(/html/2003.04560/assets/x23.png)
 
 Figure 13: For the NTK of a two-layer network with bias we plot in each of the four columns four of its eigenfunction pairs (each of the same eigenvalue) under a non-uniform data distribution of p​(x)∈1/π​{4/5,1/5}𝑝𝑥1𝜋4515p(x)\in 1/\pi\{4/5,1/5\} in 𝕊1superscript𝕊1\mathbb{S}^{1}. For this distribution whenever mod​(q,3)=0mod𝑞30\mathrm{mod}(q,3)=0 there is an integer number of cycles in each region. As a result, for each q𝑞q we obtain two eigenfunctions of the form of ([34](#A2.E34 "In B.1 Ratios between the amplitudes of neighboring regions ‣ Appendix B The amplitudes of the eigenfunctions in different regions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density")) and ([35](#A2.E35 "In B.1 Ratios between the amplitudes of neighboring regions ‣ Appendix B The amplitudes of the eigenfunctions in different regions ‣ Frequency Bias in Neural Networks for Input of Non-Uniform Density")).
 
@@ -1825,83 +1773,3 @@ Figure 12. Here, we calculate the eigenvalues of NTK for FC networks with 3≤L�
 16383n=16,383 and n=20,000𝑛
 
 20000n=20,000 data points in 𝕊1superscript𝕊1\mathbb{S}^{1} and 𝕊2superscript𝕊2\mathbb{S}^{2}, respectively.
-
-[◄](/html/2003.04558)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2003.04560)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2003.04560)
-[View original  
-on arXiv](https://arxiv.org/abs/2003.04560)[►](/html/2003.04563)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 12:42:02 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

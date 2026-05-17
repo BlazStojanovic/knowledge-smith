@@ -14,49 +14,6 @@ url: http://arxiv.org/abs/2407.03257v2
 year: 2024
 ---
 
-[2407.03257] Modern Neighborhood Components Analysis: A Deep Tabular Baseline Two Decades Later
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Modern Neighborhood Components Analysis: A Deep Tabular Baseline Two Decades Later
 
 Han-Jia Ye      Huai-Hong Yin       De-Chuan Zhan
@@ -83,11 +40,11 @@ classes [[61](#bib.bib61)].
 
 Although metric learning approaches perform well compared to vanilla nearest neighbor methods, they often struggle to match the predictive power of tree-based nonlinear approaches like Gradient Boosting Decision Trees (GBDT) [[12](#bib.bib12), [43](#bib.bib43)] on tabular data. However, the recent successes of deep metric learning in diverse domains such as image recognition[[47](#bib.bib47), [51](#bib.bib51), [52](#bib.bib52), [34](#bib.bib34)], person re-identification [[69](#bib.bib69), [64](#bib.bib64)], and recommendation systems [[28](#bib.bib28), [60](#bib.bib60)] suggest its untapped potential for tabular datasets. Moreover, specially designed MLP architectures and weight regularization strategies have enabled simple parametric models like MLPs to excel on many tabular datasets [[20](#bib.bib20), [30](#bib.bib30)], indicating that similar improvements could also benefit neighborhood-based methods.
 
-![Refer to caption](/html/2407.03257/assets/x1.png)
+!(/html/2407.03257/assets/x1.png)
 
 (a) Classification
 
-![Refer to caption](/html/2407.03257/assets/x2.png)
+!(/html/2407.03257/assets/x2.png)
 
 (b) Regression
 
@@ -321,9 +278,6 @@ We also report the average rank among all datasets (the lower, the better).
 | MIA×105absentsuperscript105\times 10^{5} | .8284 | .9322 | .8740 | .8034 | .8973 | .8717 | .8585 | 1.508 | .8562 | .9302 |
 | rank | 2.200 | 6.100 | 3.500 | 3.100 | 8.300 | 5.900 | 3.600 | 10.000 | 4.500 | 7.800 |
 
-
-
-
 Table 3: Results of comparison methods with different architectures. NCA cannot be applied for regression tasks.
 
 |  | TabR | NCA | Linear | LayerNorm | Residual | M-NCA |
@@ -357,11 +311,11 @@ The Influence of Distance Functions. The predicted label of a target instance �
 In ModernNCA, we choose Euclidean distance distEUC​(ϕ​(𝒙i),ϕ​(𝒙j))=(ϕ​(𝒙i)−ϕ​(𝒙j))⊤​(ϕ​(𝒙i)−ϕ​(𝒙j))=‖ϕ​(𝒙i)−ϕ​(𝒙j)‖2subscriptdistEUCitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗superscriptitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗topitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗subscriptnormitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗2{\rm dist}\_{\rm EUC}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j}))=\sqrt{(\phi({\bm{x}}\_{i})-\phi({\bm{x}}\_{j}))^{\top}(\phi({\bm{x}}\_{i})-\phi({\bm{x}}\_{j}))}=\|\phi({\bm{x}}\_{i})-\phi({\bm{x}}\_{j})\|\_{2}. We also utilize other distance functions, *e.g*., the squared Euclidean distance distEUC2​(ϕ​(𝒙i),ϕ​(𝒙j))superscriptsubscriptdistEUC2italic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗{\rm dist}\_{\rm EUC}^{2}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j})), the ℓ1subscriptℓ1\ell\_{1}-norm distance dist​(ϕ​(𝒙i),ϕ​(𝒙j))=‖ϕ​(𝒙i)−ϕ​(𝒙j)‖1distitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗subscriptnormitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗1{\rm dist}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j}))=\|\phi({\bm{x}}\_{i})-\phi({\bm{x}}\_{j})\|\_{1}, the (negative) cosine similarity dist​(ϕ​(𝒙i),ϕ​(𝒙j))=−(𝒙i⊤​𝒙j)/(‖𝒙i‖2​‖𝒙j‖2)distitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗superscriptsubscript𝒙𝑖topsubscript𝒙𝑗subscriptnormsubscript𝒙𝑖2subscriptnormsubscript𝒙𝑗2{\rm dist}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j}))=-({\bm{x}}\_{i}^{\top}{\bm{x}}\_{j})/(\|{\bm{x}}\_{i}\|\_{2}\|{\bm{x}}\_{j}\|\_{2}), and the (negative) inner product dist​(ϕ​(𝒙i),ϕ​(𝒙j))=−𝒙i⊤​𝒙jdistitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗superscriptsubscript𝒙𝑖topsubscript𝒙𝑗{\rm dist}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j}))=-{\bm{x}}\_{i}^{\top}{\bm{x}}\_{j}.
 The results using different distance functions are listed in [Table 4](#S5.T4 "Table 4 ‣ 5.3 Ablation Studies ‣ 5 Experiments ‣ Modern Neighborhood Components Analysis: A Deep Tabular Baseline Two Decades Later"), where Euclidean distance achieves good results on average. Although ℓ1subscriptℓ1\ell\_{1}-norm also performs well, it will introduce larger computational costs than the Euclidean distance.
 
-![Refer to caption](/html/2407.03257/assets/x3.png)
+!(/html/2407.03257/assets/x3.png)
 
 (a) classification
 
-![Refer to caption](/html/2407.03257/assets/x4.png)
+!(/html/2407.03257/assets/x4.png)
 
 (b) regression
 
@@ -379,26 +333,25 @@ As mentioned before, SNS randomly samples a subset of training data for each min
 We consider another two sampling strategies in addition to the fully random one we used before. First is class-wise random sampling, which means that given a proportion, we sample from each class in the training set and combine them together. This strategy takes advantage of the training label information and keeps the instances from all classes that will exist in the sampled subset. Besides, we also consider the sampling strategy based on the pairwise distances between instances. Since the neighbors of an instance may contribute more (with larger weights) in [Equation 4](#S4.E4 "Equation 4 ‣ 4 ModernNCA ‣ Modern Neighborhood Components Analysis: A Deep Tabular Baseline Two Decades Later"), so given a mini-batch, we first calculate the Euclidean distance between instances in the batch and all the training set with the embedding function ϕitalic-ϕ\phi in the current epoch. Then we sample the training set based on the reciprocal of the pairwise distance value. In detail, given an instance 𝒙isubscript𝒙𝑖{\bm{x}}\_{i}, we provide instance-specific neighborhood candidates and 𝒙jsubscript𝒙𝑗{\bm{x}}\_{j} in the training set is sampled based on the probability ∼1/(dist​(ϕ​(𝒙i),ϕ​(𝒙j)))τsimilar-toabsent1superscriptdistitalic-ϕsubscript𝒙𝑖italic-ϕsubscript𝒙𝑗𝜏\sim 1/({\rm dist}(\phi({\bm{x}}\_{i}),\phi({\bm{x}}\_{j})))^{\tau}. τ𝜏\tau is a non-negative hyper-parameter to calibrate the distribution.
 The distance calculation requires forward passes of the model ϕitalic-ϕ\phi over all the training instances, and the instance-specific neighborhood makes the loss related to a wide range of the training data. Therefore, the distance-based sampling strategy has a low training speed and high computational burden.
 
-![Refer to caption](/html/2407.03257/assets/x5.png)
-
+!(/html/2407.03257/assets/x5.png)
 
 Figure 3: The influence of different sampling strategies, namely, the random strategy, the label-based strategy, and the distance-based strategy.
 
 The comparison results between different sampling strategies on two classification datasets are listed in [Figure 3](#S5.F3 "Figure 3 ‣ 5.3 Ablation Studies ‣ 5 Experiments ‣ Modern Neighborhood Components Analysis: A Deep Tabular Baseline Two Decades Later"). We find the label-based sampling strategy cannot provide further improvements. Although the distance-based strategy helps in certain cases, the improvements are limited. Taking a holistic consideration of the performance and efficiency, we choose to use the vanilla random sampling in ModernNCA.
 
-![Refer to caption](/html/2407.03257/assets/x6.png)
+!(/html/2407.03257/assets/x6.png)
 
 (a) CA ↓↓\downarrow
 
-![Refer to caption](/html/2407.03257/assets/x7.png)
+!(/html/2407.03257/assets/x7.png)
 
 (b) AD ↑↑\uparrow
 
-![Refer to caption](/html/2407.03257/assets/x8.png)
+!(/html/2407.03257/assets/x8.png)
 
 (c) MIA ↓↓\downarrow
 
-![Refer to caption](/html/2407.03257/assets/x9.png)
+!(/html/2407.03257/assets/x9.png)
 
 (d) PH ↑↑\uparrow
 
@@ -885,69 +838,67 @@ Table 8: Training time and memory usage estimation for different tuned models on
 | Size (MB) | 3.36 | 8.54 | 2.92 | 9.53 | 3.19 | 9.13 | 7.44 | 6.92 |
 | Average Rank | 2.41 | 5.80 | 7.63 | 4.83 | 5.32 | 3.37 | 3.62 | 3.02 |
 
-
-
-![Refer to caption](/html/2407.03257/assets/x10.png)
+!(/html/2407.03257/assets/x10.png)
 
 (a) AD ↑↑\uparrow Raw Feature
 
-![Refer to caption](/html/2407.03257/assets/x11.png)
+!(/html/2407.03257/assets/x11.png)
 
 (b) AD ↑↑\uparrow TabR
 
-![Refer to caption](/html/2407.03257/assets/x12.png)
+!(/html/2407.03257/assets/x12.png)
 
 (c) AD ↑↑\uparrow ModernNCA
 
-![Refer to caption](/html/2407.03257/assets/x13.png)
+!(/html/2407.03257/assets/x13.png)
 
 (c) AD ↑↑\uparrow TabCon
 
-![Refer to caption](/html/2407.03257/assets/x14.png)
+!(/html/2407.03257/assets/x14.png)
 
 (a) PH ↑↑\uparrow Raw Feature
 
-![Refer to caption](/html/2407.03257/assets/x15.png)
+!(/html/2407.03257/assets/x15.png)
 
 (b) PH ↑↑\uparrow TabR
 
-![Refer to caption]()
+!()
 
 (c) PH ↑↑\uparrow ModernNCA
 
-![Refer to caption](/html/2407.03257/assets/x17.png)
+!(/html/2407.03257/assets/x17.png)
 
 (c) PH ↑↑\uparrow TabCon
 
-![Refer to caption](/html/2407.03257/assets/x18.png)
+!(/html/2407.03257/assets/x18.png)
 
 (a) CA↓↓\downarrow Raw Feature
 
-![Refer to caption](/html/2407.03257/assets/x19.png)
+!(/html/2407.03257/assets/x19.png)
 
 (b) CA↓↓\downarrow TabR
 
-![Refer to caption](/html/2407.03257/assets/x20.png)
+!(/html/2407.03257/assets/x20.png)
 
 (c) CA↓↓\downarrow ModernNCA
 
-![Refer to caption](/html/2407.03257/assets/x21.png)
+!(/html/2407.03257/assets/x21.png)
 
 (c) CA↓↓\downarrow TabCon
 
-![Refer to caption](/html/2407.03257/assets/x22.png)
+!(/html/2407.03257/assets/x22.png)
 
 (a) MIA↓↓\downarrow Raw Feature
 
-![Refer to caption](/html/2407.03257/assets/x23.png)
+!(/html/2407.03257/assets/x23.png)
 
 (b) MIA↓↓\downarrow TabR
 
-![Refer to caption](/html/2407.03257/assets/x24.png)
+!(/html/2407.03257/assets/x24.png)
 
 (c) MIA↓↓\downarrow ModernNCA
 
-![Refer to caption](/html/2407.03257/assets/x25.png)
+!(/html/2407.03257/assets/x25.png)
 
 (c) MIA↓↓\downarrow TabCon
 
@@ -987,9 +938,6 @@ Table 9: Test accuracy and standard deviations for 12 classification datasets ac
 |  | ±plus-or-minus\pm 1.55 | ±plus-or-minus\pm 1.55 | ±plus-or-minus\pm 0.85 | ±plus-or-minus\pm 0.91 | ±plus-or-minus\pm 0.50 | ±plus-or-minus\pm 0.80 | ±plus-or-minus\pm 1.29 | ±plus-or-minus\pm 0.00 | ±plus-or-minus\pm 1.35 | ±plus-or-minus\pm 0.82 | ±plus-or-minus\pm 0.00 | ±plus-or-minus\pm 0.00 |
 | rank | 2.000 | 5.917 | 3.833 | 3.750 | 8.000 | 5.417 | 3.083 | 10.000 | 5.667 | 9.250 | 11.333 | 9.750 |
 
-
-
-
 Table 10: Test RMSE and standard deviations for 10 regression datasets across 15 seeds. The best results are highlighted in bold.
 
 | ↓↓\downarrow | M-NCA | TabCon | XGBoost | CatBoost | MLP | FT-T | TabR | KNN | MLPPLR | PTaRL |
@@ -1015,83 +963,3 @@ Table 10: Test RMSE and standard deviations for 10 regression datasets across 15
 | MIA×105absentsuperscript105\times 10^{5} | .8284 | .9322 | .8740 | .8034 | .8973 | .8717 | .8585 | 1.508 | .8562 | .9302 |
 |  | ±plus-or-minus\pm .017 | ±plus-or-minus\pm .014 | ±plus-or-minus\pm .016 | ±plus-or-minus\pm .008 | ±plus-or-minus\pm .011 | ±plus-or-minus\pm .023 | ±plus-or-minus\pm .012 | ±plus-or-minus\pm 0.00 | ±plus-or-minus\pm .012 | ±plus-or-minus\pm .017 |
 | rank | 2.200 | 6.100 | 3.500 | 3.100 | 8.300 | 5.900 | 3.600 | 10.000 | 4.500 | 7.800 |
-
-[◄](/html/2407.03256)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2407.03257)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2407.03257)
-[View original  
-on arXiv](https://arxiv.org/abs/2407.03257)[►](/html/2407.03258)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Aug 5 17:25:15 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

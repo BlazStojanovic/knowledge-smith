@@ -20,50 +20,6 @@ url: http://arxiv.org/abs/1706.05394v2
 year: 2017
 ---
 
-[1706.05394] A Closer Look at Memorization in Deep Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A Closer Look at Memorization in Deep Networks
 
 Devansh Arpit
@@ -183,24 +139,20 @@ For randX, apparent differences in difficulty are well modeled as random Binomia
 For randY, this is not the case, indicating some use of shared patterns.
 Visualizing first-level features learned by a CNN supports this hypothesis (Figure [2](#S3.F2 "Figure 2 ‣ 3.1 Easy Examples as Evidence of Patterns in Real Data ‣ 3 Qualitative Differences of DNNs Trained on Random vs. Real Data ‣ A Closer Look at Memorization in Deep Networks")).
 
-![Refer to caption](/html/1706.05394/assets/fig_png/replacement_figure_1.png)
-
+!(/html/1706.05394/assets/fig_png/replacement_figure_1.png)
 
 Figure 1: Average (over 100 experiments) misclassification rate for each of 1000 examples after one epoch of training.
 This measure of an example’s difficulty is much more variable in real data.
 We conjecture this is because the easier examples are explained by some simple patterns, which are reliably learned within the first epoch of training.
 We include 1000 points samples from a binomial distribution with n=100𝑛100n=100 and p𝑝p equal to the average estimated P(correct) for randX, and note that this curve closely resembles the randX curve, suggesting that random inputs are all equally difficult.
 
-![Refer to caption](/html/1706.05394/assets/x1.png)
-
+!(/html/1706.05394/assets/x1.png)
 
 Figure 2: Filters from first layer of network trained on CIFAR10 (left) and randY (right).
 
+!(/html/1706.05394/assets/x2.png)
 
-
-![Refer to caption](/html/1706.05394/assets/x2.png)
-
-![Refer to caption](/html/1706.05394/assets/x3.png)
+!(/html/1706.05394/assets/x3.png)
 
 Figure 3: Plots of the Gini coefficient of g¯𝐱subscript¯𝑔𝐱\bar{g}\_{\mathbf{x}} over examples 𝐱𝐱\mathbf{x} (see section [3.2](#S3.SS2 "3.2 Loss-Sensitivity in Real vs. Random Data ‣ 3 Qualitative Differences of DNNs Trained on Random vs. Real Data ‣ A Closer Look at Memorization in Deep Networks")) as training progresses, for a 1000-example real dataset (14x14 MNIST) versus random data. On the left, Y𝑌Y is the normal class label; on the right, there are as many classes as examples, the network has to learn to map each example to a unique class.
 
@@ -235,8 +187,7 @@ training examples of class j𝑗j
 is higher when i=j𝑖𝑗i=j, but more spread out for real data (see Figure [4](#S3.F4 "Figure 4 ‣ 3.2 Loss-Sensitivity in Real vs. Random Data ‣ 3 Qualitative Differences of DNNs Trained on Random vs. Real Data ‣ A Closer Look at Memorization in Deep Networks")).
 An interpretation of this is that for real data there are more interesting cross-category patterns that can be learned than for random data.
 
-![Refer to caption](/html/1706.05394/assets/x4.png)
-
+!(/html/1706.05394/assets/x4.png)
 
 Figure 4: Plots of per-class gxsubscript𝑔𝑥g\_{x} (see previous figure; log scale), a cell i,j
 
@@ -258,16 +209,13 @@ This result contradicts the intuitions of traditional learning theory, which sug
 Given that DNNs can perfectly fit the training set in any case, we hypothesize that that higher capacity allows the network to fit the noise examples in a way that does not interfere with learning the real data.
 In contrast, if we were simply to *remove* noise examples, yielding a smaller (clean) dataset, a *lower* capacity model would be able to achieve optimal performance.
 
-![Refer to caption](/html/1706.05394/assets/fig_png/plot1_.png)
-
+!(/html/1706.05394/assets/fig_png/plot1_.png)
 
 Figure 5: Performance as a function of capacity in 2-layer MLPs trained on (noisy versions of) MNIST. For real data, performance is already very close to maximal with 4096 hidden units, but when there is noise in the dataset, higher capacity is needed.
 
+!(/html/1706.05394/assets/fig_png/plot2_.png)
 
-
-![Refer to caption](/html/1706.05394/assets/fig_png/plot2_.png)
-
-![Refer to caption](/html/1706.05394/assets/fig_png/plot3.png)
+!(/html/1706.05394/assets/fig_png/plot3.png)
 
 Figure 6: 
 Time to convergence as a function of capacity with dataset size fixed to 50000 (left), or dataset size with capacity fixed to 4096 units (right).
@@ -293,31 +241,29 @@ Thus, in the limit, an idealized learner should be able to predict unseen exampl
 Our experiments demonstrate that time-to-convergence is not only longer on noise data (as noted by Zhang et al. ([2017](#bib.bib40))), but also, *increases* substantially as a function of dataset size, relative to real data.
 Following the reasoning above, this suggests that our networks are learning to extract patterns in the data, rather than memorizing.
 
-![Refer to caption](/html/1706.05394/assets/fig_png/mnist_noisex_accuracy_2.png)
+!(/html/1706.05394/assets/fig_png/mnist_noisex_accuracy_2.png)
 
-![Refer to caption](/html/1706.05394/assets/fig_png/mnist_noisex_critical_valid_2.png)
+!(/html/1706.05394/assets/fig_png/mnist_noisex_critical_valid_2.png)
 
 (a) Noise added on classification inputs.
 
-![Refer to caption](/html/1706.05394/assets/fig_png/mnist_noisey_accuracy_2.png)
+!(/html/1706.05394/assets/fig_png/mnist_noisey_accuracy_2.png)
 
-![Refer to caption](/html/1706.05394/assets/fig_png/mnist_noisey_critical_valid_2.png)
+!(/html/1706.05394/assets/fig_png/mnist_noisey_critical_valid_2.png)
 
 (b) Noise added on classification labels.
 
 Figure 7: Accuracy (left in each pair, solid is train, dotted is validation) and Critical sample ratios (right in each pair) for MNIST.
 
+!(/html/1706.05394/assets/fig_png/cifar10_noisex_accuracy_2.png)
 
-
-![Refer to caption](/html/1706.05394/assets/fig_png/cifar10_noisex_accuracy_2.png)
-
-![Refer to caption](/html/1706.05394/assets/fig_png/cifar10_noisex_critical_valid_2.png)
+!(/html/1706.05394/assets/fig_png/cifar10_noisex_critical_valid_2.png)
 
 (a) Noise added on classification inputs.
 
-![Refer to caption](/html/1706.05394/assets/fig_png/cifar10_noisey_accuracy_2.png)
+!(/html/1706.05394/assets/fig_png/cifar10_noisey_accuracy_2.png)
 
-![Refer to caption](/html/1706.05394/assets/fig_png/cifar10_noisey_critical_valid_2.png)
+!(/html/1706.05394/assets/fig_png/cifar10_noisey_critical_valid_2.png)
 
 (b) Noise added on classification labels.
 
@@ -392,8 +338,7 @@ Algorithm 1  Langevin Adversarial Sample Search (LASS)
 
 13:  end while
 
-![Refer to caption](/html/1706.05394/assets/fig_png/valid_stability.png)
-
+!(/html/1706.05394/assets/fig_png/valid_stability.png)
 
 Figure 9: Critical sample ratio throughout training on CIFAR-10, random input (randX), and random label (randY) datasets.
 
@@ -433,16 +378,13 @@ Our results show that different regularizers target memorization behavior to dif
 We find that dropout, especially coupled with adversarial training, is best at hindering memorization without reducing the model’s ability to learn.
 Figure [11](#S5.F11 "Figure 11 ‣ 5 Effect of Regularization on Learning ‣ A Closer Look at Memorization in Deep Networks") additionally shows this effect for selected experiments (i.e. selected hyperparameter values) in terms of train loss.
 
-![Refer to caption](/html/1706.05394/assets/fig_png/reg_pattern.png)
-
+!(/html/1706.05394/assets/fig_png/reg_pattern.png)
 
 Figure 10: Effect of different regularizers on train accuracy (on noise dataset) vs. validation accuracy (on real dataset). Flatter curves indicate that memorization (on noise) can be capped without sacrificing generalization (on real data).
 
+!(/html/1706.05394/assets/fig_png/randY_capping.png)
 
-
-![Refer to caption](/html/1706.05394/assets/fig_png/randY_capping.png)
-
-![Refer to caption](/html/1706.05394/assets/fig_png/realY_capping.png)
+!(/html/1706.05394/assets/fig_png/realY_capping.png)
 
 Figure 11: Training curves for different regularization techniques on random label (left) and real (right) data. The vertical ordering of the curves is different for random labels than for real data, indicating differences in the propensity of different regularizers to slow-down memorization.
 
@@ -725,83 +667,3 @@ Experiments were carried out using Theano (Theano Development Team, [2016](#bi
   Understanding deep learning requires rethinking generalization.
   *International Conference on Learning Representations (ICLR)*,
   2017.
-
-[◄](/html/1706.05393)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1706.05394)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1706.05394)
-[View original  
-on arXiv](https://arxiv.org/abs/1706.05394)[►](/html/1706.05395)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 09:13:28 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

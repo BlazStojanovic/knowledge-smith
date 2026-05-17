@@ -12,55 +12,6 @@ url: http://arxiv.org/abs/2312.07577v3
 year: 2023
 ---
 
-[2312.07577] Benchmarking Distribution Shift in Tabular Data with TableShift
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\NewDocumentCommand\rot
-
-O45 O1em m
-
-#3
-
 # Benchmarking Distribution Shift in Tabular Data with TableShift
 
 Josh Gardner♮
@@ -91,8 +42,7 @@ However, in tandem with the growing deployment of machine learning models, resea
 
 This is particularly concerning in light of the known differences between tabular data and the modalities mentioned above (images, text, audio). First, in contrast to these modalities, where large neural models are the undisputed state-of-the-art, there is considerable debate about whether deep learning models improve performance over non-neural baselines (e.g. XGBoost, LightGBM) for tabular data, even without the presence of distribution shift [[46](#bib.bib46), [15](#bib.bib15), [78](#bib.bib78)]. Second, tabular data tends to contain structured features extracted from raw data (e.g. counts of activities, coded responses to questions), as opposed to the raw signals (e.g. activity event streams, pixel values, audio of responses) where modern machine learning methods perform well and where previous studies of distribution shift have focused. Third, tabular data requires fundamentally different preprocessing procedures, and the impact of these decisions is not widely understood, despite being known to have empirical impact [[31](#bib.bib31)]. Finally, high-quality tabular datasets can be difficult to access [[35](#bib.bib35)]; for example, due to the personal nature of many tabular datasets, tabular data cannot simply be scraped at Internet scale as many text and image datasets are. This makes finding high-quality tabular *distribution shift* datasets particularly challenging.
 
-![Refer to caption](/html/2312.07577/assets/x1.png)
-
+!(/html/2312.07577/assets/x1.png)
 
 Figure 1: In-domain (ID) and out-of-domain (OOD) accuracy show a linear trend across 15 TableShift tasks and 19 model types (ρ=0.81𝜌0.81\rho=0.81). ID accuracy (x𝑥x-axis values) and change in the label distribution ΔysubscriptΔ𝑦\Delta\_{y} (color) together explain 99% of the variance in OOD accuracy (R2=0.993superscript𝑅20.993R^{2}=0.993). For exact results see Section [E.3](#A5.SS3 "E.3 Detailed Results Per Task ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
@@ -134,113 +84,77 @@ Table 1: Summary of TableShift tasks and their associated distribution shifts. F
 
 Task
 
-
 Target
-
 
 Shift
 Domain
 Baseline
 
-
-
-
-
-
-
 Generalization
 Gap ΔAccsubscriptΔAcc\Delta\_{\textrm{Acc}}
 SE(ΔAccsubscriptΔAcc\Delta\_{\textrm{Acc}})
 
-
-
 ASSISTments
 
-
 Next Answer Correct
-
 
 School
 ✓
 −34.485838-34.485838-34.485838%
 0.0112560.0112560.011256
 
-
-
 College Scorecard
 
-
 Low Degree Completion Rate
-
 
 Institution Type
 ✓
 −11.162496-11.162496-11.162496%
 0.0104190.0104190.010419
 
-
-
 ICU Hospital
   
 Mortality
 
-
 ICU patient expires in hospital during current visit
-
 
 Insurance Type
 ✓
 −6.301814-6.301814-6.301814%
 0.0081190.0081190.008119
 
-
-
 Hospital
   
 Readmission
 
-
 30-day readmission of diabetic hospital patients
-
 
 Admission source
 ✓
 −5.944901-5.944901-5.944901%
 0.0017310.0017310.001731
 
-
-
 Diabetes
 
-
 Diabetes diagnosis
-
 
 Race
 ✓
 −4.479577-4.479577-4.479577%
 0.0012470.0012470.001247
 
-
-
 ICU Length of Stay
 
-
 Length of stay >= 3 hrs in ICU
-
 
 Insurance Type
 ✓
 −3.394978-3.394978-3.394978%
 0.0147280.0147280.014728
 
-
-
 Voting
 
-
 Voted in U.S. presidential election
-
 
 Geographic
   
@@ -249,13 +163,9 @@ Region
 −2.579088-2.579088-2.579088%
 0.0156840.0156840.015684
 
-
-
 Food Stamps
 
-
 Food stamp recipiency in past year for households with child
-
 
 Geographic
   
@@ -264,26 +174,18 @@ Region
 −2.392745-2.392745-2.392745%
 0.0021610.0021610.002161
 
-
-
 Unemployment
 
-
 Unemployment for non-social security-eligible adults
-
 
 Education Level
 ✓
 −1.275219-1.275219-1.275219%
 0.0006260.0006260.000626
 
-
-
 Income
 
-
 Income >= 56k for employed adults
-
 
 Geographic
   
@@ -292,65 +194,45 @@ Region
 −1.254151-1.254151-1.254151%
 0.0017180.0017180.001718
 
-
-
 FICO HELOC
 
-
 Repayment of Home Equity Line of Credit loan
-
 
 Est. third-party risk level
 
 −22.576253-22.576253-22.576253%
 0.0292850.0292850.029285
 
-
-
 Public Health Insurance
 
-
 Coverage of non-Medicare eligible low-income individuals
-
 
 Disability Status
 
 −14.455649-14.455649-14.455649%
 0.0007650.0007650.000765
 
-
-
 Sepsis
 
-
 Sepsis onset within next 6hrs for hospital patients
-
 
 Length of Stay
 
 −6.046012-6.046012-6.046012%
 0.0007630.0007630.000763
 
-
-
 Childhood Lead
 
-
 Blood lead levels above CDC Blood Level Reference Value
-
 
 Poverty level
 
 −5.119165-5.119165-5.119165%
 0.0050530.0050530.005053
 
-
-
 Hypertension
 
-
 Hypertension diagnosis for high-risk age (50+)
-
 
 BMI Category
 
@@ -430,39 +312,37 @@ Finally, we evaluate the trained models on the test splits of each dataset. As r
 
 ## 5 Empirical Results
 
-![Refer to caption](/html/2312.07577/assets/x2.png)
+!(/html/2312.07577/assets/x2.png)
 
-![Refer to caption](/html/2312.07577/assets/x3.png)
+!(/html/2312.07577/assets/x3.png)
 
-![Refer to caption](/html/2312.07577/assets/x4.png)
+!(/html/2312.07577/assets/x4.png)
 
-![Refer to caption](/html/2312.07577/assets/x5.png)
+!(/html/2312.07577/assets/x5.png)
 
-![Refer to caption](/html/2312.07577/assets/x6.png)
+!(/html/2312.07577/assets/x6.png)
 
-![Refer to caption](/html/2312.07577/assets/x7.png)
+!(/html/2312.07577/assets/x7.png)
 
-![Refer to caption](/html/2312.07577/assets/x8.png)
+!(/html/2312.07577/assets/x8.png)
 
-![Refer to caption](/html/2312.07577/assets/x9.png)
+!(/html/2312.07577/assets/x9.png)
 
-![Refer to caption](/html/2312.07577/assets/x10.png)
+!(/html/2312.07577/assets/x10.png)
 
-![Refer to caption](/html/2312.07577/assets/x11.png)
+!(/html/2312.07577/assets/x11.png)
 
-![Refer to caption](/html/2312.07577/assets/x12.png)
+!(/html/2312.07577/assets/x12.png)
 
-![Refer to caption](/html/2312.07577/assets/x13.png)
+!(/html/2312.07577/assets/x13.png)
 
 Figure 2: Results for baselines, robust learning, and domain generalization models across the 15 TableShift benchmark tasks. The y=x𝑦𝑥y=x line indicates a model with no shift gap, ΔAcc=0subscriptΔAcc0\Delta\_{\textrm{Acc}}=0 (see Equation [1](#S2.E1 "In 2.1 Task and Setting ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift")). Clopper-Pearson confidence intervals at α=0.05𝛼0.05\alpha=0.05 shown for all points. Note that domain generalization models are only used on domain generalization tasks (cf. Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift")). Results for the remaining TableShift tasks are shown in Figure [3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"). For exact results see Section [E.3](#A5.SS3 "E.3 Detailed Results Per Task ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
+!(/html/2312.07577/assets/x14.png)
 
+!(/html/2312.07577/assets/x15.png)
 
-![Refer to caption](/html/2312.07577/assets/x14.png)
-
-![Refer to caption](/html/2312.07577/assets/x15.png)
-
-![Refer to caption](/html/2312.07577/assets/x16.png)
+!(/html/2312.07577/assets/x16.png)
 
 Figure 3: Additional results (cf. Figure [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift")). For exact results see Section [E.3](#A5.SS3 "E.3 Detailed Results Per Task ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
@@ -475,13 +355,11 @@ We investigate the empirical performance of several methods designed to improve 
 However, it is important to note that this gap reduction comes at the cost of in-distribution performance: as Figure [4(b)](#S5.F4.sf2 "In Figure 4 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") shows, all robustness-enhancing models tend to shrink gaps by *reducing average ID performance, not by improving OOD performance*. This is shown in Figure [4(b)](#S5.F4.sf2 "In Figure 4 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") by the two parallel lines: one set of blue points representing baselines + tabular NNs, and another, shifted left, representing robustness-engancing and domain generalization models.
 Furthermore, we note that all domain generalization and domain robustness methods evaluated (excluding DRO) require additional information that is only present for some datasets – namely, the discrete variable over which a shift will occur (e.g. “race” for diabetes task) and data from at least 2 categories of this variable.
 
-![Refer to caption](/html/2312.07577/assets/x17.png)
-
+!(/html/2312.07577/assets/x17.png)
 
 (a)
 
-![Refer to caption](/html/2312.07577/assets/x18.png)
-
+!(/html/2312.07577/assets/x18.png)
 
 (b)
 
@@ -489,8 +367,7 @@ Figure 4: (a): Percentage of Maximum OOD Accuracy (PMA-OOD) across tasks (see Ta
 
 Change in label distribution is correlated with shift gap. We investigate the degree to which the three factors mentioned previously (p​(x)𝑝𝑥p(x), p​(y|x)𝑝conditional𝑦𝑥p(y|x), p​(y)𝑝𝑦p(y)) are related to model performance. Our results, in Figures [5](#S5.F5 "Figure 5 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") and [8](#A5.F8 "Figure 8 ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), show that change in the label distribution ΔysubscriptΔ𝑦\Delta\_{y} is correlated with shift gap ΔAccsubscriptΔAcc\Delta\_{\textrm{Acc}} (Pearson correlation ρ=0.71𝜌0.71\rho=0.71). This persists even after accounting for ID accuracy: a simple linear regression of OOD accuracy on [ID accuracy, ΔysubscriptΔ𝑦\Delta\_{y}] obtains R2=0.996superscript𝑅20.996R^{2}=0.996. This suggests that the change in the label distribution is an important factor in understanding tabular shifts (for example, the outliers in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") are from the four tasks with largest label shift: Public Coverage, HELOC, ASSISTments, College Scorecard; see Figures [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") and Table [3](#A5.T3 "Table 3 ‣ E.2 Domain Shift Metrics (Covariate, Concept, and Label Shift) ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift")). Label shift robustness methods in our study *did not* eliminate performance gaps under shift; in fact, label shift robustness methods often degraded both ID and OOD accuracy (e.g. Figure [4(b)](#S5.F4.sf2 "In Figure 4 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift")). We provide similar analyses relating shift gap to (i)𝑖(i) covariate shift and (i​i)𝑖𝑖(ii) concept shift in Figure [8](#A5.F8 "Figure 8 ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), but find that they are not clearly related.
 
-![Refer to caption](/html/2312.07577/assets/x19.png)
-
+!(/html/2312.07577/assets/x19.png)
 
 Figure 5:  Label shift (ΔysubscriptΔ𝑦\Delta\_{y}, measured via Equation ([3](#A5.E3 "In E.2 Domain Shift Metrics (Covariate, Concept, and Label Shift) ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"))) and absolute shift gap ΔAccsubscriptΔAcc\Delta\_{\textrm{Acc}} show moderate correlation across datasets and models (Pearson correlation ρ=0.70𝜌0.70\rho=0.70). Exact ΔysubscriptΔ𝑦\Delta\_{y} values in Table [3](#A5.T3 "Table 3 ‣ E.2 Domain Shift Metrics (Covariate, Concept, and Label Shift) ‣ Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
@@ -1350,30 +1227,25 @@ Thus, while limited individual benchmarks do exist for tabular data modeling (wi
 
 ## Appendix E Additional Dataset Details and Results
 
-![Refer to caption](/html/2312.07577/assets/x20.png)
-
+!(/html/2312.07577/assets/x20.png)
 
 (a) Out-of-Distribution Accuracy vs. Shift Gap ΔAccsubscriptΔAcc\Delta\_{\textrm{Acc}} across all TableShift tasks.
 
-![Refer to caption](/html/2312.07577/assets/x21.png)
-
+!(/html/2312.07577/assets/x21.png)
 
 (b) Percentage of Maximum In-Distribution Accuracy (PMA-ID) across all TableShift tasks.
 
 Figure 6: Additional results.
 
-![Refer to caption](/html/2312.07577/assets/x22.png)
-
+!(/html/2312.07577/assets/x22.png)
 
 Figure 7: Pairwise scatterplots of shifts. Each point represents one dataset. Metrics are computed according to the domain split for each dataset (ID test vs. OOD test) according to the metric definitions for ΔxsubscriptΔ𝑥\Delta\_{x}, Δy|xsubscriptΔconditional𝑦𝑥\Delta\_{y|x}, ΔysubscriptΔ𝑦\Delta\_{y} in Section [E](#A5 "Appendix E Additional Dataset Details and Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"). (a) left: Covariate shift ΔxsubscriptΔ𝑥\Delta\_{x} (computed via Optimal Transport Data Distance) vs. concept shift Δy|xsubscriptΔconditional𝑦𝑥\Delta\_{y|x} (computed via Frechet Dataset Distance); ρ=0.99𝜌0.99\rho=0.99. (b) center: Covariate shift ΔxsubscriptΔ𝑥\Delta\_{x} vs. label shift ΔysubscriptΔ𝑦\Delta\_{y}; ρ=−0.20𝜌0.20\rho=-0.20. (c) left: Concept shift Δy|xsubscriptΔconditional𝑦𝑥\Delta\_{y|x} vs. label shift ΔysubscriptΔ𝑦\Delta\_{y}; ρ=−0.20𝜌0.20\rho=-0.20.
 
-![Refer to caption](/html/2312.07577/assets/x23.png)
-
+!(/html/2312.07577/assets/x23.png)
 
 Figure 8: Domain shift metrics vs. (absolute) shift gap. Each point represents a tuned model on a given dataset. Only Label shift shows a strong correlation with shift gap (ρ=0.73𝜌0.73\rho=0.73).
 
-![Refer to caption](/html/2312.07577/assets/x24.png)
-
+!(/html/2312.07577/assets/x24.png)
 
 Figure 9: TableShift benchmark results, mean per model (left: non-domain generalization tasks, ρ=0.834𝜌0.834\rho=0.834; right: domain generalization tasks, ρ=963𝜌963\rho=963). In-domain and out-of-domain accuracy show a general linear trend. Baseline models (blue) consistently match or outperform domain robustness and domain generalization methods.
 
@@ -1475,9 +1347,6 @@ Table 4: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MixUp | ♢♢\diamondsuit | ♢♢\diamondsuit | ♢♢\diamondsuit | ♢♢\diamondsuit | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 | VREX | ♢♢\diamondsuit | ♢♢\diamondsuit | ♢♢\diamondsuit | ♢♢\diamondsuit | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 
-
-
-
 Table 5: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
 | Estimator | College Scorecard | | | | Diabetes | | | |
@@ -1502,9 +1371,6 @@ Table 5: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MMD | 0.925 | (0.92, 0.929) | 0.795 | (0.773, 0.816) | 0.873 | (0.871, 0.875) | 0.826 | (0.825, 0.828) |
 | MixUp | 0.912 | (0.907, 0.917) | 0.746 | (0.721, 0.769) | 0.873 | (0.871, 0.875) | 0.826 | (0.824, 0.827) |
 | VREX | 0.907 | (0.902, 0.912) | 0.754 | (0.731, 0.777) | 0.873 | (0.871, 0.875) | 0.826 | (0.824, 0.827) |
-
-
-
 
 Table 6: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
@@ -1531,9 +1397,6 @@ Table 6: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MixUp | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | 0.819 | (0.816, 0.821) | 0.785 | (0.782, 0.789) |
 | VREX | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | 0.809 | (0.806, 0.812) | 0.78 | (0.776, 0.784) |
 
-
-
-
 Table 7: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
 | Estimator | Hospital Readmission | | | | Hypertension | | | |
@@ -1558,9 +1421,6 @@ Table 7: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MMD | 0.626 | (0.611, 0.64) | 0.57 | (0.565, 0.574) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 | MixUp | 0.589 | (0.574, 0.604) | 0.567 | (0.563, 0.572) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 | VREX | 0.584 | (0.569, 0.599) | 0.506 | (0.502, 0.51) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
-
-
-
 
 Table 8: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"). ♡♡\heartsuit: the large feature dimensionality of both ICU datasets makes training Transformer-based models impractical (e.g. even a single-layer SAINT model requires >>13B trainable parameters on both ICU datasets)
 
@@ -1588,9 +1448,6 @@ Table 8: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MixUp | 0.915 | (0.893, 0.931) | 0.876 | (0.87, 0.882) | 0.602 | (0.572, 0.631) | 0.544 | (0.535, 0.553) |
 | VREX | 0.913 | (0.893, 0.931) | 0.876 | (0.87, 0.882) | 0.597 | (0.567, 0.627) | 0.545 | (0.536, 0.554) |
 
-
-
-
 Table 9: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. □□\square: the large dataset size makes training adversarial label DRO models impractical (since per-example gradients must be computed). We leave these experiments to future work. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
 | Estimator | Income | | | | Public Health Ins. | | | |
@@ -1615,9 +1472,6 @@ Table 9: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed o
 | MMD | 0.816 | (0.814, 0.818) | 0.768 | (0.765, 0.771) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 | MixUp | 0.821 | (0.819, 0.823) | 0.794 | (0.791, 0.797) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
 | VREX | 0.714 | (0.712, 0.716) | 0.64 | (0.637, 0.644) | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star |
-
-
-
 
 Table 10: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. Note that domain generalization models can only be trained on datasets with more than one training subdomain (see Table [1](#S2.T1 "Table 1 ‣ 2.2 Related Work ‣ 2 Setup, Task, and Notation ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for domain generalization datasets and Section [4.1](#S4.SS1 "4.1 Tabular Data Classification Techniques in our Comparison ‣ 4 Experiment Setup ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") for a list of domain generalization models). ⋆⋆\star: domain generalization models cannot be trained when only one training subdomain is present. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
@@ -1644,9 +1498,6 @@ Table 10: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed 
 | MixUp | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | 0.844 | (0.842, 0.846) | 0.776 | (0.774, 0.778) |
 | VREX | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | ⋆⋆\star | 0.873 | (0.871, 0.874) | 0.8 | (0.798, 0.802) |
 
-
-
-
 Table 11: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed on each benchmark task. See also Figures [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"), [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift"),[3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
 
 | Estimator | Voting | | | |
@@ -1672,46 +1523,39 @@ Table 11: Best (In-Distribution and Out-Of-Distribution) accuracy pair observed 
 | MixUp | 0.892 | (0.862, 0.918) | 0.851 | (0.837, 0.864) |
 | VREX | 0.804 | (0.767, 0.837) | 0.754 | (0.737, 0.77) |
 
+!(/html/2312.07577/assets/x25.png)
 
+!(/html/2312.07577/assets/x26.png)
 
-![Refer to caption](/html/2312.07577/assets/x25.png)
+!(/html/2312.07577/assets/x27.png)
 
-![Refer to caption](/html/2312.07577/assets/x26.png)
+!(/html/2312.07577/assets/x28.png)
 
-![Refer to caption](/html/2312.07577/assets/x27.png)
+!(/html/2312.07577/assets/x29.png)
 
-![Refer to caption](/html/2312.07577/assets/x28.png)
+!(/html/2312.07577/assets/x30.png)
 
-![Refer to caption](/html/2312.07577/assets/x29.png)
+!(/html/2312.07577/assets/x31.png)
 
-![Refer to caption](/html/2312.07577/assets/x30.png)
+!(/html/2312.07577/assets/x32.png)
 
-![Refer to caption](/html/2312.07577/assets/x31.png)
+!(/html/2312.07577/assets/x33.png)
 
-![Refer to caption](/html/2312.07577/assets/x32.png)
+!(/html/2312.07577/assets/x34.png)
 
-![Refer to caption](/html/2312.07577/assets/x33.png)
+!(/html/2312.07577/assets/x35.png)
 
-![Refer to caption](/html/2312.07577/assets/x34.png)
-
-![Refer to caption](/html/2312.07577/assets/x35.png)
-
-![Refer to caption](/html/2312.07577/assets/x36.png)
+!(/html/2312.07577/assets/x36.png)
 
 Figure 10: Alternate version of Figure [2](#S5.F2 "Figure 2 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") with adjusted scaling for increased detail.
 
+!(/html/2312.07577/assets/x37.png)
 
+!(/html/2312.07577/assets/x38.png)
 
-![Refer to caption](/html/2312.07577/assets/x37.png)
-
-![Refer to caption](/html/2312.07577/assets/x38.png)
-
-![Refer to caption](/html/2312.07577/assets/x39.png)
+!(/html/2312.07577/assets/x39.png)
 
 Figure 11: Alternate version of Figure [3](#S5.F3 "Figure 3 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift") with adjusted scaling for increased detail.
-
-
-
 
 Table 12: Sample sizes by split. In particular, large *test* sizes are desirable for benchmarking, as they reduce the statistical uncertainty of comparing model performance.
 
@@ -1733,9 +1577,6 @@ Table 12: Sample sizes by split. In particular, large *test* sizes are desirable
 | ASSISTments | 266566266566266566 | 190619061906 | 212212212 | 213252621325262132526 | 266566266566266566 | 266777626677762667776 |
 | College Scorecard | 123201232012320 | 135213521352 | 151151151 | 985569855698556 | 123201232012320 | 124699124699124699 |
 
-
-
-
 Table 13: Label summary statistics for test sets in TableShift. Y¯¯𝑌\bar{Y} gives the proportion of positive labels for the respective split, and Var​(Y¯)Var¯𝑌\textrm{Var}(\bar{Y}) the variance of the sample proportion.
 
 |  | ID | | OOD | |
@@ -1756,9 +1597,6 @@ Table 13: Label summary statistics for test sets in TableShift. Y¯¯𝑌\bar{Y}
 | Public Health Ins. | 0.22378799557492080.22378799557492080.2237879955749208 | 0.00058895785114971190.00058895785114971190.0005889578511497119 | 0.63627049055053510.63627049055053510.6362704905505351 | 0.00053194430245536970.00053194430245536970.0005319443024553697 |
 | Sepsis | 0.01199674954379560.01199674954379560.0119967495437956 | 0.000290670341512729150.000290670341512729150.00029067034151272915 | 0.07507328759988690.07507328759988690.0750732875998869 | 0.00071877590952894470.00071877590952894470.0007187759095289447 |
 | Unemployment | 0.0338239395160040.0338239395160040.033823939516004 | 0.00045002387988310490.00045002387988310490.0004500238798831049 | 0.05151242887091940.05151242887091940.0515124288709194 | 0.00054646907064368910.00054646907064368910.0005464690706436891 |
-
-
-
 
 Table 14: PMA-OOD results (cf. Figure ) and standard deviation of PMA-OOD over benchmark tasks. (Cf. Figure [4(a)](#S5.F4.sf1 "In Figure 4 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").)
 
@@ -1783,9 +1621,6 @@ Table 14: PMA-OOD results (cf. Figure ) and standard deviation of PMA-OOD over b
 | XGBoost | 0.96406059890316910.96406059890316910.9640605989031691 | 0.064876000146305370.064876000146305370.06487600014630537 |
 | FT-Transformer | 0.9684908714598690.9684908714598690.968490871459869 | 0.068939268718942760.068939268718942760.06893926871894276 |
 | CatBoost | 0.99382057060704020.99382057060704020.9938205706070402 | 0.0140035996366247510.0140035996366247510.014003599636624751 |
-
-
-
 
 Table 15: Label summary statistics for test sets in TableShift. Y¯¯𝑌\bar{Y} gives the proportion of positive labels for the respective split, and Var​(Y¯)Var¯𝑌\textrm{Var}(\bar{Y}) the variance of the sample proportion. (Cf. Figure [4(b)](#S5.F4.sf2 "In Figure 4 ‣ 5 Empirical Results ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").)
 
@@ -2062,8 +1897,6 @@ QRandInt(5,100,5)51005(5,100,5)
 Dropout
 Unif(0,0.5)00.5(0,0.5)
 
-
-
 Batch Size
 {4096}4096\{4096\}
 
@@ -2090,17 +1923,11 @@ Uniform{0.5,1.}\{0.5,1.\}
 γ𝛾\gamma
 LogUniform{1​e−8,1​e​2}1𝑒81𝑒2\{1e-8,1e2\}
 
-
-
 λ𝜆\lambda
 LogUniform{1​e−8,1​e​2}1𝑒81𝑒2\{1e-8,1e2\}
 
-
-
 α𝛼\alpha
 LogUniform{1​e−8,1​e​2}1𝑒81𝑒2\{1e-8,1e2\}
-
-
 
 Max. Bins
 {128,256,512}128256512\{128,256,512\}
@@ -2125,17 +1952,11 @@ Max. Depth
 Column Subsample (Tree)
 Uniform{0.5,1.}\{0.5,1.\}
 
-
-
 Column Subsample (Level)
 Uniform{0.5,1.}\{0.5,1.\}
 
-
-
 λ𝜆\lambda
 LogUniform{1​e−8,1​e​2}1𝑒81𝑒2\{1e-8,1e2\}
-
-
 
 α𝛼\alpha
 LogUniform{1​e−8,1​e​2}1𝑒81𝑒2\{1e-8,1e2\}
@@ -2167,22 +1988,17 @@ LogUniform{1​e−5,1​e−1}1𝑒51𝑒1\{1e-5,1e-1\}
 WeightDecayGsubscriptWeightDecay𝐺\textrm{WeightDecay}\_{G}
 LogUniform{1​e−6,1}1𝑒61\{1e-6,1\}
 
-
 LRdsubscriptLR𝑑\textrm{LR}\_{d}
 LogUniform{1​e−5,1​e−1}1𝑒51𝑒1\{1e-5,1e-1\}
-
 
 WeightDecayDsubscriptWeightDecay𝐷\textrm{WeightDecay}\_{D}
 LogUniform{1​e−6,1}1𝑒61\{1e-6,1\}
 
-
 D steps per G step
 LogUniform{2,23}2superscript23\{2,2^{3}\}
 
-
 Grad Penalty
 LogUniform{1​e−2,1​e​1}1𝑒21𝑒1\{1e-2,1e1\}
-
 
 Loss λ𝜆\lambda
 LogUniform{1​e−2,1​e​2}1𝑒21𝑒2\{1e-2,1e2\}
@@ -2217,8 +2033,6 @@ MMD ♣♣\clubsuit
 
 MMD γ𝛾\gamma
 Uniform{1​e−1,1​e​1}1𝑒11𝑒1\{1e-1,1e1\}
-
-
 
 Model
 
@@ -2283,21 +2097,15 @@ Uniform(0,0.5)00.5(0,0.5)
 Attention Dropout
 Uniform(0,0.5)00.5(0,0.5)
 
-
-
 Model Dimension
 32,64,128,256
 
 3264128256{32,64,128,256}
 
-
-
 Depth
 3,4,5,6
 
 3456{3,4,5,6}
-
-
 
 Num. Heads
 2,4,8
@@ -2332,12 +2140,8 @@ Tree Output Dim.
 FFN Factor
 {64,128,256,512}64128256512\{64,128,256,512\}
 
-
-
 Learning Rate
 LogUniform(1​e−5,1​e−1)1superscript𝑒51superscript𝑒1(1e^{-5},1e^{-1})
-
-
 
 Weight Decay
 LogUniform(1​e−6,1)1superscript𝑒61(1e^{-6},1)
@@ -2366,14 +2170,10 @@ LogUniform(1​e−6,1)1superscript𝑒61(1e^{-6},1)
 FFN Dropout
 Uniform(0.1,0.8)0.10.8(0.1,0.8)
 
-
-
 Heads
 4,8
 
 48{4,8}
-
-
 
 Attention Type
 Row, Col, RowCol
@@ -2412,94 +2212,10 @@ LogUniform{1​e−4,1​e−1}1𝑒41𝑒1\{1e-4,1e-1\}
 Adv. radius r𝑟r
 LogUniform{1​e−5,0.5}1𝑒50.5\{1e-5,0.5\}
 
-
-
 Clip max r𝑟r
 LogUniform{1​e−1,10}1𝑒110\{1e-1,10\}
-
-
 
 ϵitalic-ϵ\epsilon
 LogUniform{1​e−4,1​e−1}1𝑒41𝑒1\{1e-4,1e-1\}
 
 Table 20: Hyperparameter grids used in all experiments. ♣♣\clubsuit: all MLP parameters also tuned. Continued from Table [19](#A9.T19 "Table 19 ‣ Appendix I Hyperparameter Grids ‣ Benchmarking Distribution Shift in Tabular Data with TableShift").
-
-[◄](/html/2312.07576)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2312.07577)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2312.07577)
-[View original  
-on arXiv](https://arxiv.org/abs/2312.07577)[►](/html/2312.07578)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Feb 27 14:42:12 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

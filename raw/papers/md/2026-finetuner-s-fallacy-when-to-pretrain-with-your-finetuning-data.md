@@ -43,50 +43,7 @@ url: https://arxiv.org/abs/2603.16177
 year: 2026
 ---
 
-[2603.16177] The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-# [Uncaptioned image]   The Finetuner’s Fallacy When to Pretrain with Your Finetuning Data
+#    The Finetuner’s Fallacy When to Pretrain with Your Finetuning Data
 
 DatologyAI Team
 See Contributions (§ [Contributions](#Sx1 "Contributions ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data")) for full author list.
@@ -100,9 +57,9 @@ Our observations reveal the *finetuner’s fallacy*: while finetuning may appear
 SPT yields better specialized domain performance (via reduced overfitting across repeated exposures) and better general domain performance (via reduced forgetting during finetuning), ultimately achieving stronger results with fewer parameters and less total compute when amortized over inference.
 To get the most out of domain data, incorporate it as early in training as possible.
 
-![Refer to caption](/html/2603.16177/assets/x1.png)
+!(/html/2603.16177/assets/x1.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig0_main_schematic.png)
+!(/html/2603.16177/assets/figures/fig0_main_schematic.png)
 
 Figure 1: Specialized pretraining (SPT) mixes the finetuning dataset into pretraining as a small fraction of tokens, repeating it 10–50× over the course of training. Compared to general pretraining (dashed), SPT (solid) achieves lower domain test loss (blue) and less forgetting of general knowledge (gold) throughout finetuning. For narrow domains, these gains can overcome differences in model scale.
 
@@ -130,8 +87,7 @@ small fraction of the training tokens (often repeating it up to 50 times), and t
 finetune on the same data as usual (Figure [1](#S0.F1 "Figure 1 ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data")). We refer to this
 strategy as *specialized pretraining* (SPT). We observe that interleaving domain tokens with general data allows the model to tolerate far more repetitions before overfitting than it would during finetuning.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig1_perf_across_domains.png)
-
+!(/html/2603.16177/assets/figures/fig1_perf_across_domains.png)
 
 Figure 2: Specialized pretraining (SPT) outperforms finetuning-only
 across domains. We pretrain models with a small fraction (δ\delta) of domain-specific
@@ -159,8 +115,7 @@ preferable as training lengthens to avoid overfitting from excessive repetition
 
 Finally, we derive overfitting scaling laws to model the total overfitting incurred by specialized pretraining and finetuning for different mixture fractions (§ [5](#S5 "5 Predicting Overfitting with Scaling Laws ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data")), which include new expressions for modeling the effects of repeated data. Specifically, the test loss decomposes as the sum of two parts: the training loss w.r.t. pretraining tokens is modeled as a power law with a negative exponent, while the growing train-test gap is modeled as a power law with a positive exponent. This allows us to predict the optimal domain-data fraction for a given compute budget and forecast when aggressive mixing begins to hurt test loss, without running the full training sweep. In practice, this means practitioners can select the right SPT configuration from a small number of pilot runs rather than exhaustive search.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig13_finetuners_tax.png)
-
+!(/html/2603.16177/assets/figures/fig13_finetuners_tax.png)
 
 Figure 3: The finetuner’s tax. Training a 1B model with specialized
 pretraining (SPT) costs more upfront than finetuning a 3B model on
@@ -173,8 +128,7 @@ This intuition is often misleading. Those who rely on finetuning alone need a la
 Early integration of domain data during pretraining is one way to reduce this cost, and is compatible with other data curation strategies like synthetic augmentation.
 As the cost of pretraining continues to fall, the case for early integration only strengthens. To get the most out of domain data, incorporate it as early in training as possible.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig2_bar_plots.png)
-
+!(/html/2603.16177/assets/figures/fig2_bar_plots.png)
 
 Figure 4: Specialized pretraining (SPT) is more effective than scaling
 tokens or parameters. We compare models that include domain data during pretraining
@@ -243,16 +197,15 @@ more modest 0.8% improvement, which we attribute to chemistry text being closer 
 Dolma distribution. We return to the impact of distributional overlap in
 § [3.1](#S3.SS1 "3.1 Domain Similarity ‣ 3 Factors governing the relative gain of specialized pretraining ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data").
 
-![Refer to caption](/html/2603.16177/assets/figures/fig3_forgetting.png)
-
+!(/html/2603.16177/assets/figures/fig3_forgetting.png)
 
 (a)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig5b_MusicTheory_acc_vs_tokens.png)
+!(/html/2603.16177/assets/figures/fig5b_MusicTheory_acc_vs_tokens.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig5b_ChemBench_acc_vs_tokens.png)
+!(/html/2603.16177/assets/figures/fig5b_ChemBench_acc_vs_tokens.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig5b_MATH_acc_vs_tokens.png)
+!(/html/2603.16177/assets/figures/fig5b_MATH_acc_vs_tokens.png)
 
 (b)
 
@@ -326,8 +279,7 @@ one.
 
 To understand why SPT reduces overfitting, we compare how the domain train-test gap evolves across pretraining and finetuning (Figure [6](#S2.F6 "Figure 6 ‣ 2.4 Specialized Pretraining Reduces Overfitting During Finetuning ‣ 2 Specialized Pretraining Drives Domain Specific Capabilities ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data")). The key insight is that overfitting to domain data is far more of a risk during finetuning than during pretraining. During pretraining, domain tokens make up only a small fraction of each batch, and the surrounding general data acts as a natural regularizer, preventing the model from memorizing the domain corpus even after tens of repetitions.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig4_pt_to_ft_train_vs_test.png)
-
+!(/html/2603.16177/assets/figures/fig4_pt_to_ft_train_vs_test.png)
 
 Figure 6: SPT regularizes finetuning. Domain training loss (x-axis)
 versus domain test loss (y-axis) across the pretraining and finetuning stages for
@@ -391,8 +343,7 @@ translation data is included during pretraining at mixture fraction δ\delta) ag
 NPT→\toFT (monolingual pretraining only), while holding the total number of
 pretraining tokens fixed.
 
-![Refer to caption](/html/2603.16177/assets/x2.png)
-
+!(/html/2603.16177/assets/x2.png)
 
 Figure 7: Benefits of SPT increase as pretraining and finetuning
 domains diverge. We vary the percentage of Japanese monolingual text in the
@@ -441,9 +392,9 @@ MusicPile (2.0%), followed by ProofPile (1.5%) and ChemPile (0.8%). Of the metri
 we tested, only the post-finetuning domain loss, a direct measure of how well
 NPT generalizes to each domain, correctly ranks all three domains (detailed analysis in Appendix [E](#A5 "Appendix E Distribution Similarity Metrics: Detailed Analysis ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data")).
 
-![Refer to caption](/html/2603.16177/assets/figures/fig4a_data_size_by_rgain.png)
+!(/html/2603.16177/assets/figures/fig4a_data_size_by_rgain.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig4b_model_size.png)
+!(/html/2603.16177/assets/figures/fig4b_model_size.png)
 
 Figure 8: Effect of domain data size and model size on
 ℛgain\mathcal{R}\_{\text{gain}}. *Left:* Relative gain of SPT over
@@ -523,8 +474,7 @@ repetition leads to overfitting, shifting the optimal regime toward smaller mixt
 fractions. Consequently, practitioners should treat δ\delta as a function of training
 horizon: higher mixtures for short pretraining runs and lower mixtures for longer ones.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig7_optimal_mix.png)
-
+!(/html/2603.16177/assets/figures/fig7_optimal_mix.png)
 
 Figure 9: The optimal mixture shifts with compute budget. Domain test loss on
 MusicPile throughout SPT for mixture fractions δ∈{0%,2%,5%,10%}\delta\in\{0\%,2\%,5\%,10\%\}. At small compute budgets (left region), high domain mixtures (δ=10%\delta=10\%)
@@ -542,8 +492,7 @@ We evaluate replay rates {0%,10%,20%}\{0\%,10\%,20\%\} tuning the learning rate 
 
 Across all replay settings, SPT →\to FT consistently achieves lower domain test loss than NPT →\to FT, reinforcing the core thesis that *when* domain data is seen matters. Notably, 10% replay helps NPT, but NPT →\to FT falls well short of SPT →\to FT with no replay. We hypothesize that these two forms of data mixing, diffuse domain exposure during pretraining versus general-data replay during finetuning, induce qualitatively different effects. As shown in Section [2.4](#S2.SS4 "2.4 Specialized Pretraining Reduces Overfitting During Finetuning ‣ 2 Specialized Pretraining Drives Domain Specific Capabilities ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), SPT’s benefit is more implicit, surfacing only after finetuning. The precise mechanism behind this asymmetry remains an open question.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig12_musicpile_replay_val_loss_1e5_standalone.png)
-
+!(/html/2603.16177/assets/figures/fig12_musicpile_replay_val_loss_1e5_standalone.png)
 
 Figure 10: Replay is not a substitute for early domain exposure.
 MusicPile validation-loss trajectories during replay-based continued pretraining.
@@ -558,9 +507,9 @@ Specialized pretrained models see multiple repetitions of finetuning data starti
 Addressing this question is challenging since we explicitly have to model the overfitting regime, which the standard power law cannot anticipate. Furthermore, it’s unclear
 how to predict scaling laws post-finetuning. We divide modeling overfitting scaling laws into two steps. First, we separately model how domain train and test losses scale during SPT as a function of δ\delta. Second, we measure the difference in test loss before and after finetuning, which we find also scales reliably with the pretraining tokens.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig9_musicpile_pt_law.png)
+!(/html/2603.16177/assets/figures/fig9_musicpile_pt_law.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig9_musicpile_test_combo.png)
+!(/html/2603.16177/assets/figures/fig9_musicpile_test_combo.png)
 
 Figure 11: Repetition scaling laws as the sum of two powers. As the domain data is repeated throughout pretraining during specialized pretraining, for high mixture percentages, the model may overfit and the test loss goes back up. A single power law cannot model this overfitting stage. Instead, we fit a power law separately, for the domain training loss and the domain train-test gap. The latter also follows a power law with a positive exponent. Then the test loss can be modeled using the sum of two powers. Furthermore, we model all coefficients as a function of the mixture percentage, according to Equation [4](#S5.E4 "Equation 4 ‣ 5.1 Overfitting during Specialized Pretraining ‣ 5 Predicting Overfitting with Scaling Laws ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data").
 
@@ -602,12 +551,9 @@ The exponent in particular has an interpretable form. The rate at which the spec
 
 The key insight is that btrain​(δ)b\_{\mathrm{train}}(\delta) is strictly negative, indicating that training loss decreases monotonically throughout pretraining. Notably, the train-test gap also follows a power law, but with a positive bg​a​pb\_{gap}, meaning that overfitting increases monotonically with more epochs over the dataset. However,bg​a​pb\_{gap} remains below 1 across all mixture percentages up to 10%, implying that overfitting grows sublinearly over extended pretraining horizons. This accounts for the sustained effectiveness of SPT over prolonged training.
 
+!(/html/2603.16177/assets/figures/fig10_delta_notation.png)
 
-
-
-![Refer to caption](/html/2603.16177/assets/figures/fig10_delta_notation.png)
-
-![Refer to caption](/html/2603.16177/assets/figures/fig10_new_delta_scatter.png)
+!(/html/2603.16177/assets/figures/fig10_new_delta_scatter.png)
 
 Figure 12: Predicting loss after finetuning. We measure the difference in domain-specific test loss right after pretraining versus the best test loss after finetuning (Δ​Test\Delta\ \mathrm{Test}) as a function of the pretraining tokens. We observe that this difference follows a power law relationship.
 
@@ -626,13 +572,11 @@ where ℓt​e​s​t​(θP​T)\ell\_{test}({\theta\_{PT}}) denotes the test 
 Empirically, we observe that this change in test loss follows a remarkably consistent power-law relationship as a function of the number of pretraining steps
 T: Δ​ℓt​e​s​t=a​Tb+c\Delta\ell\_{test}=aT^{b}+c. Intuitively, this relationship captures how the benefit conferred by finetuning varies depending on the stage of pretraining at which the model is finetuned. We illustrate the power-law relationship in MusicPile in Figure [12](#S5.F12 "Figure 12 ‣ Interpreting the exponent ‣ 5.1 Overfitting during Specialized Pretraining ‣ 5 Predicting Overfitting with Scaling Laws ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data") and provide supporting evidence for the other domains in Appendix [D](#A4 "Appendix D Overfitting Scaling Laws Extended ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data").
 
-![Refer to caption](/html/2603.16177/assets/figures/fig11a_predicting_pt_loss.png)
-
+!(/html/2603.16177/assets/figures/fig11a_predicting_pt_loss.png)
 
 (a) Predicting 10%10\% Pretraining Curve
 
-![Refer to caption](/html/2603.16177/assets/figures/fig11_post_ft_loss_forecast.png)
-
+!(/html/2603.16177/assets/figures/fig11_post_ft_loss_forecast.png)
 
 (b) Post-FT Loss past 120B PT Tokens
 
@@ -1117,43 +1061,37 @@ These function choices were made by first learning separate coefficients AδA\_{
 
 Below, we plot the learned coefficients for each δ\delta as scatter points and demonstrate that they roughly follow the Gamma kernel function for AδA\_{\delta} and log linear function for CδC\_{\delta}. In Figures [15](#A4.F15 "Figure 15 ‣ D.1 Justification for 𝐴_gap and 𝐶ₜᵣₐᵢₙ ‣ Appendix D Overfitting Scaling Laws Extended ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), [16](#A4.F16 "Figure 16 ‣ D.1 Justification for 𝐴_gap and 𝐶ₜᵣₐᵢₙ ‣ Appendix D Overfitting Scaling Laws Extended ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), and [17](#A4.F17 "Figure 17 ‣ D.1 Justification for 𝐴_gap and 𝐶ₜᵣₐᵢₙ ‣ Appendix D Overfitting Scaling Laws Extended ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), we provide the final scaling law fits, where we directly optimize over our final model from Equation [1](#S5.E1 "Equation 1 ‣ 5.1 Overfitting during Specialized Pretraining ‣ 5 Predicting Overfitting with Scaling Laws ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), jointly learning the A​(δ)A(\delta) and C​(δ)C(\delta) parameters.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_musicpile_individual.png)
+!(/html/2603.16177/assets/figures/fig15_musicpile_individual.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_chempile_individual.png)
+!(/html/2603.16177/assets/figures/fig15_chempile_individual.png)
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_proofpile_individual.png)
+!(/html/2603.16177/assets/figures/fig15_proofpile_individual.png)
 
 Figure 14: Gamma and log-linear fits over learned coefficients.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_musicpile_joint_prediction.png)
-
+!(/html/2603.16177/assets/figures/fig15_musicpile_joint_prediction.png)
 
 Figure 15: All power law fits over the training loss, train-test gap on MusicPile-300M over the course of SPT. Finally, test loss as the sum of two powers.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_chempile_joint_prediction.png)
-
+!(/html/2603.16177/assets/figures/fig15_chempile_joint_prediction.png)
 
 Figure 16: All power law fits over the training loss, train-test gap on ChemPile-300M over the course of SPT. Finally, test loss as the sum of two powers.
 
-![Refer to caption](/html/2603.16177/assets/figures/fig15_proofpile_joint_prediction.png)
-
+!(/html/2603.16177/assets/figures/fig15_proofpile_joint_prediction.png)
 
 Figure 17: All power law fits over the training loss, train-test gap on ProofPile-300M over the course of SPT. Finally, test loss as the sum of two powers.
 
 ### D.2 Modeling Difference in Test Loss Post-Finetuning Across PT Tokens
 
-![Refer to caption](/html/2603.16177/assets/figures/fig10_new_delta_scatter_musicpile.png)
-
+!(/html/2603.16177/assets/figures/fig10_new_delta_scatter_musicpile.png)
 
 (a) MusicPile
 
-![Refer to caption](/html/2603.16177/assets/figures/fig10_new_delta_scatter_chempile.png)
-
+!(/html/2603.16177/assets/figures/fig10_new_delta_scatter_chempile.png)
 
 (b) ChemPile
 
-![Refer to caption](/html/2603.16177/assets/figures/fig10_new_delta_scatter_proofpile.png)
-
+!(/html/2603.16177/assets/figures/fig10_new_delta_scatter_proofpile.png)
 
 (c) ProofPile
 
@@ -1161,8 +1099,7 @@ Figure 18: Δ\Delta Test follows a power law relationship with respect to the pr
 
 ## Appendix E Distribution Similarity Metrics: Detailed Analysis
 
-![Refer to caption](/html/2603.16177/assets/x3.png)
-
+!(/html/2603.16177/assets/x3.png)
 
 Figure 19: Comparison of Pearson correlations between the Japanese overlap sweep and cross-domain analysis. C2ST AUC flips from r=+0.90r=+0.90 to r=−0.98r=-0.98.
 
@@ -1200,8 +1137,7 @@ For the cross-domain analysis, we compare each specialized domain (ChemPile, Mus
 
 Figure [20](#A5.F20 "Figure 20 ‣ Japanese Overlap Sweep. ‣ E.3 Results ‣ Appendix E Distribution Similarity Metrics: Detailed Analysis ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data") shows scatter plots of each metric against ℛgain\mathcal{R}\_{\text{gain}} for the Japanese overlap sweep. All five metrics correlate strongly with ℛgain\mathcal{R}\_{\text{gain}} in the expected direction, with Pearson |r|>0.85|r|>0.85 in every case. The JSD metrics show positive correlations (higher divergence corresponds to higher gain), MAUVE shows negative correlation (lower similarity corresponds to higher gain), and C2ST AUC shows positive correlation (higher separability corresponds to higher gain). These strong correlations validate that the metrics capture meaningful distributional differences relevant to SPT benefit.
 
-![Refer to caption](/html/2603.16177/assets/x4.png)
-
+!(/html/2603.16177/assets/x4.png)
 
 Figure 20: Japanese overlap sweep: each metric plotted against ℛgain\mathcal{R}\_{\text{gain}}. All metrics show strong correlations (|r|>0.85|r|>0.85) in the expected direction.
 
@@ -1209,8 +1145,7 @@ Figure 20: Japanese overlap sweep: each metric plotted against ℛgain\mathcal{R
 
 Figure [21](#A5.F21 "Figure 21 ‣ Cross-Domain Analysis. ‣ E.3 Results ‣ Appendix E Distribution Similarity Metrics: Detailed Analysis ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data") shows the same analysis for our three benchmark domains. The pattern is strikingly different. JSD metrics show weak positive correlations ranging from r=0.32r=0.32 (unigram) to r=0.57r=0.57 (trigram), with longer n-grams performing better. MAUVE shows weak negative correlation (r=−0.23r=-0.23). Most dramatically, C2ST AUC flips from r=+0.90r=+0.90 on the Japanese sweep to r=−0.98r=-0.98 on cross-domain, meaning it predicts the opposite of what we observe.
 
-![Refer to caption](/html/2603.16177/assets/x5.png)
-
+!(/html/2603.16177/assets/x5.png)
 
 Figure 21: Cross-domain analysis: each metric plotted against ℛgain\mathcal{R}\_{\text{gain}} for ChemPile, MusicPile, and ProofPile. Correlations are much weaker than the Japanese sweep, and C2ST AUC flips sign.
 
@@ -1222,84 +1157,3 @@ On the Japanese sweep, C2ST correctly identifies that pretraining mixes with mor
 
 We plot the Dolma loss over pretraining scales across all domains and SPT configurations. As we discuss in Section [2.3](#S2.SS3 "2.3 SPT Learns More and Forgets Less ‣ 2 Specialized Pretraining Drives Domain Specific Capabilities ‣ The Finetuner’s FallacyWhen to Pretrain with Your Finetuning Data"), SPT replaces a small fraction of general pretraining tokens with domain-specific data, but this has a marginal impact on the general pretraining loss over Dolma for mixture percentages up to 5%5\%. However, we do observe notable degradation once we push the percentage up to 10%10\%.
 
-![[Uncaptioned image]](/html/2603.16177/assets/figures/appendix_general_loss.png)
-
-[◄](/html/2603.16176)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.16177)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.16177)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.16177)[►](/html/2603.16178)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 08:14:14 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -12,49 +12,6 @@ url: https://arxiv.org/abs/2405.10938
 year: 2024
 ---
 
-[2405.10938] Observational Scaling Laws and the Predictability of Language Model Performance
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Observational Scaling Laws and the Predictability of Language Model Performance
 
 Yangjun Ruan1,2,3
@@ -84,8 +41,7 @@ Scaling laws [[34](#bib.bib34), [42](#bib.bib42), [7](#bib.bib7), [35](#bib.bib3
 
 Although the high costs of compute scaling laws are unavoidable when optimizing pre-training hyperparameters (e.g., Hoffmann et al. [[35](#bib.bib35)]), this is not true of *all* scaling analyses. In this work, we show that many other types of scaling studies, such as understanding complex model capabilities (e.g. agentic or “emergent” behaviors) and post-training interventions, can be done using a lower-cost, higher-resolution, and broader-coverage alternative to the standard approach of training (or using) a single family of LMs across compute scales.
 
-![Refer to caption](/html/2405.10938/assets/x1.png)
-
+!(/html/2405.10938/assets/x1.png)
 
 Figure 1: Observational scaling laws generalize existing compute scaling laws which directly relate training compute to downstream capabilities (dashed line) by hypothesizing the existence of a low-rank space of LM capabilities that have a log-linear relationship with compute (center), and can be predicted directly from standardized LM benchmarks (left). This enables us to get low-cost, high-resolution scaling predictions using nearly 80 publicly available LMs (right).
 
@@ -205,13 +161,11 @@ In [Sec. 4](#S4 "4 Validating Observational Scaling Laws ‣ Observational Scal
 
 ### 3.2 Identifying a Low-Dimensional Capability Space ([Eq. 5](#S3.E5 "In Observational scaling ‣ 3.1 Generalizing Compute Scaling Laws ‣ 3 Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance"))
 
-![Refer to caption](/html/2405.10938/assets/x2.png)
-
+!(/html/2405.10938/assets/x2.png)
 
 (a) PCA explained variance
 
-![Refer to caption](/html/2405.10938/assets/x3.png)
-
+!(/html/2405.10938/assets/x3.png)
 
 (b) Principal component weights
 
@@ -248,8 +202,7 @@ We observe that the extracted PC measures are predominantly low-rank, with the t
 Specifically, PC-1 represents the “general capability” as a weighted average of all metrics; PC-2 corresponds to the “reasoning capability”, emphasizing mathematical and coding benchmarks; and PC-3 primarily reflects the “programming capability”.
 These findings suggest that many simple LM capabilities (as covered in our benchmarks) can be expressed as a linear combination of just a few “principal capabilities” S𝑆S.
 
-![Refer to caption](/html/2405.10938/assets/x4.png)
-
+!(/html/2405.10938/assets/x4.png)
 
 Figure 3: The extracted PC measures *linearly correlate* with log-compute within each model family. The linearity generally holds for various model families, and also for lower-ranked PCs ([Fig. C.2](#A3.F2 "In Single benchmark metric suffers from limited dynamic range ‣ C.2 Properties of PC measures ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance")).
 
@@ -350,13 +303,11 @@ We will assess the accuracy of these scaling laws (without refitting) using mode
 
 ### 4.1 Predictability of “Emergent” Capabilities
 
-![Refer to caption](/html/2405.10938/assets/x5.png)
-
+!(/html/2405.10938/assets/x5.png)
 
 (a) Training FLOP based scaling law
 
-![Refer to caption](/html/2405.10938/assets/x6.png)
-
+!(/html/2405.10938/assets/x6.png)
 
 (b) Observational scaling laws
 
@@ -387,20 +338,18 @@ Additional results of the model size baseline are included in [Sec. C.4](#A3.SS
 
 ### 4.2 Predictability of Agentic Capabilities
 
-![Refer to caption](/html/2405.10938/assets/x7.png)
-
+!(/html/2405.10938/assets/x7.png)
 
 (a) AgentBench
 
-![Refer to caption](/html/2405.10938/assets/x8.png)
-
+!(/html/2405.10938/assets/x8.png)
 
 (b) AgentBoard
 
 AgentBench
-![Refer to caption](/html/2405.10938/assets/x9.png)
+!(/html/2405.10938/assets/x9.png)
 AgentBoard
-![Refer to caption](/html/2405.10938/assets/x10.png)
+!(/html/2405.10938/assets/x10.png)
 
 (c) Weight visualization
 
@@ -438,14 +387,13 @@ on AgentBench, and reasoning capabilities (GSM8K) on AgentBoard, suggesting that
 
 ### 4.3 Predicting the Impact of Post-Training Techniques
 
-![Refer to caption](/html/2405.10938/assets/x11.png)
+!(/html/2405.10938/assets/x11.png)
 
-![Refer to caption](/html/2405.10938/assets/x12.png)
+!(/html/2405.10938/assets/x12.png)
 
 (a) Scaling prediction of post-training techniques
 
-![Refer to caption](/html/2405.10938/assets/x13.png)
-
+!(/html/2405.10938/assets/x13.png)
 
 (b) Weight visualization
 
@@ -477,14 +425,13 @@ Notably, the scaling trends between the two techniques differ; CoT shows a much 
 Another advantage of observational scaling laws over scaling laws constructed on single families is that we can visualize the capabilities that are important to the post-training intervention.
 [Fig. 6(b)](#S4.F6.sf2 "In Fig. 6 ‣ 4.3 Predicting the Impact of Post-Training Techniques ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance") visualizes the fitted regression weights β𝛽\beta, mapped to the space of base capability benchmarks B𝐵B via β⊤​γsuperscript𝛽top𝛾\beta^{\top}\gamma. We clearly see that when we go from Naive to CoT, there are significantly higher weights placed on MMLU and HumanEval - meaning that scaling models in a way that enhances general knowledge (MMLU) and code (HumanEval) leads to greater gaps between CoT and the baseline, while improving along commonsense, such as Winogrande does not necessarily lead to improvements at scale. These analyses can inform how different post-training interventions affect different scaling recipes – such as code models vs general-purpose LLMs.
 
-![Refer to caption](/html/2405.10938/assets/x14.png)
-
+!(/html/2405.10938/assets/x14.png)
 
 (a) Prediction error vs model counts
 
-![Refer to caption](/html/2405.10938/assets/x15.png)
+!(/html/2405.10938/assets/x15.png)
 
-![Refer to caption](/html/2405.10938/assets/x16.png)
+!(/html/2405.10938/assets/x16.png)
 
 (b) Prediction results with only 12 models chosen by V-optimality
 
@@ -545,13 +492,11 @@ Updating this list with other constraints (e.g., total inference FLOPs) or new m
 
 Our work validates the hypothesis that there is a low-dimensional space of LM capabilities that captures their scaling behaviors and can be measured via a low-rank decomposition of existing LM benchmarks. While the majority of our work focuses on applications to scaling laws and predictions, we also find that the shared, low-dimensional capabilities could potentially be used as an evaluation metric and optimization target for LMs. We discuss some of these possibilities here.
 
-![Refer to caption](/html/2405.10938/assets/x17.png)
-
+!(/html/2405.10938/assets/x17.png)
 
 Figure 8: PC-1 provides a smooth capability measure with a wider dynamic range than specific benchmarks like MMLU ([Fig. C.4](#A3.F4 "In Single benchmark metric suffers from limited dynamic range ‣ C.2 Properties of PC measures ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance")). In contrast to compute scale measures, it also enables the comparison of models from heterogeneous sources on a unified scale.
 
-![Refer to caption](/html/2405.10938/assets/x18.png)
-
+!(/html/2405.10938/assets/x18.png)
 
 Figure 9: By transforming the fitted scaling curves to f𝑓f-equivalent scales for different model families, we can compare their scaling properties with CoT and analyze the effect of training recipes on the scaling behavior.
 
@@ -1420,9 +1365,6 @@ Table B.1: Collected metadata and base evaluation metrics for base pretrained mo
 | deepseek-coder-6.7b-base | 6.7 | 2.0 | 80.40 | 0.3839 | 0.3703 | 0.5346 | 0.5809 | 0.4028 | 0.6789 | 0.4760 |
 | deepseek-coder-33b-base | 33.0 | 2.0 | 396.00 | 0.4091 | 0.4249 | 0.5999 | 0.6243 | 0.3997 | 0.6961 | 0.5120 |
 
-
-
-
 Table B.2: Collected metadata and base evaluation metrics for instruction-tuned models used in [Sec. 4.2](#S4.SS2 "4.2 Predictability of Agentic Capabilities ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance"). Model names follow the HuggingFace naming for open models. See data collection details in [Sec. B.1.2](#A2.SS1.SSS2 "B.1.2 Instruction-Tuned Models ‣ B.1 Model Collection & Evaluation ‣ Appendix B Experimental Details ‣ Observational Scaling Laws and the Predictability of Language Model Performance").
 
 |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -1485,13 +1427,11 @@ Similar to PCA imputation, we only fitted the PCA on the training set and applie
 In [Fig. C.1](#A3.F1 "In C.1 PC Analysis of Instruction-Tuned LMs ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance"), we conducted a PC analysis for instruction-tuned models (see the model list in [table B.2](#A2.T2 "In Benchmark collection & evaluation ‣ B.1.2 Instruction-Tuned Models ‣ B.1 Model Collection & Evaluation ‣ Appendix B Experimental Details ‣ Observational Scaling Laws and the Predictability of Language Model Performance")) following exactly the same procedure as [Fig. 2](#S3.F2 "In 3.2 Identifying a Low-Dimensional Capability Space (Eq. 5) ‣ 3 Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance").
 We find that the extracted PC measures for instruction-tuned LMs follow similar patterns as pretrained models and exhibit an even more significant low-rank structure, with the top 3 PCs explaining about 98.6% of the variance in the benchmark performance.
 
-![Refer to caption](/html/2405.10938/assets/x19.png)
-
+!(/html/2405.10938/assets/x19.png)
 
 (a) PCA explained variance
 
-![Refer to caption](/html/2405.10938/assets/x20.png)
-
+!(/html/2405.10938/assets/x20.png)
 
 (b) Principal component weights
 
@@ -1518,60 +1458,49 @@ In [Fig. 9](#S6.F9 "In 6 Discussion and Other Applications of Observational Sca
 In [Fig. C.4](#A3.F4 "In Single benchmark metric suffers from limited dynamic range ‣ C.2 Properties of PC measures ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance"), we show that using a single benchmark metric as LM capability measures amy suffer from a limited dynamic range.
 In particular, they may either saturate quickly for large models (e.g., HellaSwag, Winogrande) or provide random readouts for weak models (e.g., MMLU, GSM8K).
 
-![Refer to caption](/html/2405.10938/assets/x21.png)
-
+!(/html/2405.10938/assets/x21.png)
 
 (a) PC-2
 
-![Refer to caption](/html/2405.10938/assets/x22.png)
-
+!(/html/2405.10938/assets/x22.png)
 
 (b) PC-3
 
 Figure C.2: The lower-ranked PC measures also linearly correlate with log-compute measures within each comparable model family, though the correlation decreases with lower-rank PCs.
 
-![Refer to caption](/html/2405.10938/assets/x23.png)
-
+!(/html/2405.10938/assets/x23.png)
 
 Figure C.3: The aggregated PC measures exhibit a strong linear correlation with the log-compute measures within each comparable model family, especially for Llama-2 which we have used as the default reference family for computing the f𝑓f-equivalent FLOPs in our experiments.
 
-![Refer to caption](/html/2405.10938/assets/x24.png)
-
+!(/html/2405.10938/assets/x24.png)
 
 (a) MMLU
 
-![Refer to caption](/html/2405.10938/assets/x25.png)
-
+!(/html/2405.10938/assets/x25.png)
 
 (b) HellaSwag
 
-![Refer to caption](/html/2405.10938/assets/x26.png)
-
+!(/html/2405.10938/assets/x26.png)
 
 (c) Winogrande
 
-![Refer to caption](/html/2405.10938/assets/x27.png)
-
+!(/html/2405.10938/assets/x27.png)
 
 (d) ARC-C
 
-![Refer to caption](/html/2405.10938/assets/x28.png)
-
+!(/html/2405.10938/assets/x28.png)
 
 (e) TruthfulQA
 
-![Refer to caption](/html/2405.10938/assets/x29.png)
-
+!(/html/2405.10938/assets/x29.png)
 
 (f) XWinogrande
 
-![Refer to caption](/html/2405.10938/assets/x30.png)
-
+!(/html/2405.10938/assets/x30.png)
 
 (g) GSM8K
 
-![Refer to caption](/html/2405.10938/assets/x31.png)
-
+!(/html/2405.10938/assets/x31.png)
 
 (h) HumanEval
 
@@ -1587,54 +1516,43 @@ The results are in [Fig. C.5](#A3.F5 "In Number of PC selection ‣ C.3 Robustn
 Our results indicate that using more than 2 PCs leads to better prediction performance than using compute measures like FLOPs, and using 3 PCs consistently leads to the most robust predictions across all the tasks.
 These validate our choice of using 3 PCs as the default number of PCs and indicate the robustness of our results to the choice of the number of PCs.
 
-![Refer to caption](/html/2405.10938/assets/x32.png)
-
+!(/html/2405.10938/assets/x32.png)
 
 (a) Naive + Greedy
 
-![Refer to caption](/html/2405.10938/assets/x33.png)
-
+!(/html/2405.10938/assets/x33.png)
 
 (b) CoT + Greedy
 
-![Refer to caption](/html/2405.10938/assets/x34.png)
-
+!(/html/2405.10938/assets/x34.png)
 
 (c) CoT + SC + 5 Samples
 
 Figure C.5: Comparing the prediction performance of using different numbers of PCs for observational scaling laws on the post-training analysis tasks included in [Sec. 4.3](#S4.SS3 "4.3 Predicting the Impact of Post-Training Techniques ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance"). Using PC measures consistently leads to better prediction performance than using compute measures like FLOPs with 3 PCs being the best across different tasks.
 
-
-
-![Refer to caption](/html/2405.10938/assets/x35.png)
-
+!(/html/2405.10938/assets/x35.png)
 
 (a) Word Unscramble
 
-![Refer to caption](/html/2405.10938/assets/x36.png)
-
+!(/html/2405.10938/assets/x36.png)
 
 (b) Persian QA
 
-![Refer to caption](/html/2405.10938/assets/x37.png)
-
+!(/html/2405.10938/assets/x37.png)
 
 (c) 3-Digit Substraction
 
-![Refer to caption](/html/2405.10938/assets/x38.png)
-
+!(/html/2405.10938/assets/x38.png)
 
 (d) 2-Digit Multiplication
 
 Figure C.6: Comparing the prediction performance of using different numbers of PCs for observational scaling laws on different “emergent” capability tasks included in [Sec. 4.1](#S4.SS1 "4.1 Predictability of “Emergent” Capabilities ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance"). Using 3 PCs consistently leads to the best prediction performance across different tasks.
 
-![Refer to caption](/html/2405.10938/assets/x39.png)
-
+!(/html/2405.10938/assets/x39.png)
 
 (a) AgentBench
 
-![Refer to caption](/html/2405.10938/assets/x40.png)
-
+!(/html/2405.10938/assets/x40.png)
 
 (b) AgentBoard
 
@@ -1654,20 +1572,15 @@ The results are depicted in [Fig. C.8](#A3.F8 "In Holdout cutoff selection ‣ 
 We observe that in most of our evaluated setups, using our PC measures (especially with 3 PCs) generally leads to an earlier transition to the low prediction error region and much lower AUE compared to using compute scales like training FLOPs and model size.
 This indicates that PC measures are more robust under different cutoffs and more sample-efficient for scaling analysis.
 
-![Refer to caption](/html/2405.10938/assets/x41.png)
-
+!(/html/2405.10938/assets/x41.png)
 
 Figure C.8: Comparing different scale measures under different holdout cutoffs on post-training analysis tasks in [Sec. 4.3](#S4.SS3 "4.3 Predicting the Impact of Post-Training Techniques ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance"). The training/test data size is varied by changing the FLOPs cutoff and the area under the test error curves (AUE) is used to measure the overall prediction errors. PC measures (with # = 3) consistently lead to an earlier transition to low prediction error region and much lower AUE compared to compute measures like training FLOPs and model size.
 
-
-
-![Refer to caption](/html/2405.10938/assets/x42.png)
-
+!(/html/2405.10938/assets/x42.png)
 
 (a) Varying FLOPs cutoff
 
-![Refer to caption](/html/2405.10938/assets/x43.png)
-
+!(/html/2405.10938/assets/x43.png)
 
 (b) Varying accuracy cutoff
 
@@ -1695,44 +1608,33 @@ Similar to the main tasks ([Fig. 4](#S4.F4 "In 4.1 Predictability of “Emergen
 We find that using PC measures consistently leads to the best prediction performance compared to using model size or training FLOPs.
 While the extrapolation does not exactly match the trend of the ground truth on the IPA Transliterate task, possibly due to the fact that the specific task capabilities are not well covered by our collected benchmark metrics, it still provides a reasonable forecast of the “emergence” behavior.
 
-![Refer to caption](/html/2405.10938/assets/x44.png)
-
+!(/html/2405.10938/assets/x44.png)
 
 Figure C.10: Using model sizes gives poor predictions for the “emergent” capabilities of LMs.
 
-
-
-![Refer to caption](/html/2405.10938/assets/x45.png)
-
+!(/html/2405.10938/assets/x45.png)
 
 (a) Model size based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x46.png)
-
+!(/html/2405.10938/assets/x46.png)
 
 (b) Training FLOP based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x47.png)
-
+!(/html/2405.10938/assets/x47.png)
 
 (c) Observational scaling laws
 
 Figure C.11: Using the default FLOPs cutoff on arithmetic tasks makes the prediction tasks trivial with too many data points close to perfect performance. Observational scaling laws using PC measures (with # = 3) still outperform compute scaling laws using model size and training FLOPs.
 
-
-
-![Refer to caption](/html/2405.10938/assets/x48.png)
-
+!(/html/2405.10938/assets/x48.png)
 
 (a) Model size based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x49.png)
-
+!(/html/2405.10938/assets/x49.png)
 
 (b) Training FLOP based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x50.png)
-
+!(/html/2405.10938/assets/x50.png)
 
 (c) Observational scaling laws
 
@@ -1745,18 +1647,15 @@ Figure C.12: Results on additional “emergent” capability tasks included in W
 In [Fig. C.13](#A3.F13 "In Prediction results with different scale measures ‣ C.5 Post-Training Method Analysis ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance"), we show the prediction performance of using different scale measures on various prediction tasks for the post-training method analysis on GSM8K.
 Similarly, using PC measures well captures the scaling trend and consistently leads to the best prediction performance across all tasks.
 
-![Refer to caption](/html/2405.10938/assets/x51.png)
-
+!(/html/2405.10938/assets/x51.png)
 
 (a) Model size based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x52.png)
-
+!(/html/2405.10938/assets/x52.png)
 
 (b) Trainig FLOP based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x53.png)
-
+!(/html/2405.10938/assets/x53.png)
 
 (c) Observational scaling laws
 
@@ -1771,18 +1670,15 @@ The results are depicted in [Fig. C.14](#A3.F14 "In Results on BBH ‣ C.5 Post
 Surprisingly, we observe that using training FLOPs leads to reasonable predictions of LM performance with and without CoT on BBH tasks, possibly due to the denoising effect of aggregation over all tasks.
 Furthermore, using PC measures accurately captures the scaling trends in both setups, even when using training FLOPs leads to less tight captures in the “Naive” setup or fails to capture the behavior of models trained on synthetic data (Phi).
 
-![Refer to caption](/html/2405.10938/assets/x54.png)
-
+!(/html/2405.10938/assets/x54.png)
 
 (a) Model size based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x55.png)
-
+!(/html/2405.10938/assets/x55.png)
 
 (b) Trainig FLOP based scaling laws
 
-![Refer to caption](/html/2405.10938/assets/x56.png)
-
+!(/html/2405.10938/assets/x56.png)
 
 (c) Observational scaling laws
 
@@ -1796,23 +1692,19 @@ In [Fig. 7(a)](#S4.F7.sf1 "In Fig. 7 ‣ Interpreting the capability dimensions
 Here we present a qualitative analysis of the prediction results with different numbers of models selected in [Fig. C.15](#A3.F15 "In Prediction results with different number of models selected by V-optimality ‣ C.6 Model Subset Selection ‣ Appendix C Additional Results ‣ Observational Scaling Laws and the Predictability of Language Model Performance").
 We find that with more than 8 models, the fitted scaling curves have already converged to accurately capture the scaling trend, indicating the efficiency of our method.
 
-![Refer to caption](/html/2405.10938/assets/x57.png)
-
+!(/html/2405.10938/assets/x57.png)
 
 (a) 4 models
 
-![Refer to caption](/html/2405.10938/assets/x58.png)
-
+!(/html/2405.10938/assets/x58.png)
 
 (b) 8 models
 
-![Refer to caption](/html/2405.10938/assets/x59.png)
-
+!(/html/2405.10938/assets/x59.png)
 
 (c) 12 models
 
-![Refer to caption](/html/2405.10938/assets/x60.png)
-
+!(/html/2405.10938/assets/x60.png)
 
 (d) 16 models
 
@@ -1824,23 +1716,19 @@ We present the prediction results with randomly selected models from all availab
 All these results are produced with a fixed random seed.
 We find that using randomly selected models leads to a much worse prediction performance, even with 16 models, demonstrating the critical need to carefully select models for effective scaling analyses.
 
-![Refer to caption](/html/2405.10938/assets/x61.png)
-
+!(/html/2405.10938/assets/x61.png)
 
 (a) 4 models
 
-![Refer to caption](/html/2405.10938/assets/x62.png)
-
+!(/html/2405.10938/assets/x62.png)
 
 (b) 8 models
 
-![Refer to caption](/html/2405.10938/assets/x63.png)
-
+!(/html/2405.10938/assets/x63.png)
 
 (c) 12 models
 
-![Refer to caption](/html/2405.10938/assets/x64.png)
-
+!(/html/2405.10938/assets/x64.png)
 
 (d) 16 models
 
@@ -1863,8 +1751,6 @@ Table C.1: The functional forms of the fitted scaling laws included in our paper
 | Agentic capabilities ([Sec. 4.2](#S4.SS2 "4.2 Predictability of Agentic Capabilities ‣ 4 Validating Observational Scaling Laws ‣ Observational Scaling Laws and the Predictability of Language Model Performance")) | AgentBench | ϕ−1​(Y,0.99)=0.44​log⁡(C¯Llama-2)−5.57=2.34​PC1+0.82​PC2+2.94​PC3−2.98=2.46​MMLU+0.85​ARC-C+0.25​HellaSwag+0.58​Winogrande+0.65​TruthfulQA−0.48​GSM8K+2.63​HumanEval−6.45missing-subexpressionsuperscriptitalic-ϕ1𝑌0.990.44subscript¯𝐶Llama-25.572.34PC10.82PC22.94PC32.982.46MMLU0.85ARC-C0.25HellaSwaglimit-from0.58Winograndemissing-subexpression0.65TruthfulQA0.48GSM8K2.63HumanEval6.45\begin{aligned} &\phi^{-1}(Y,0.99)\\ =~{}&0.44\log\left(\bar{C}\_{\text{Llama-2}}\right)-5.57\\ =~{}&2.34\text{PC1}+0.82\text{PC2}+2.94\text{PC3}-2.98\\ =~{}&2.46\text{MMLU}+0.85\text{ARC-C}+0.25\text{HellaSwag}+0.58\text{Winogrande}~{}+\\ &0.65\text{TruthfulQA}-0.48\text{GSM8K}+2.63\text{HumanEval}-6.45\end{aligned} |
 | AgentBoard | ϕ−1​(Y,0.97)=0.43​log⁡(C¯Llama-2)−6.60=3.02​PC1+2.60​PC2−1.17​PC3−2.98=−0.10​MMLU−0.31​ARC-C−0.55​HellaSwag+0.14​Winogrande+0.56​TruthfulQA+2.28​GSM8K+3.36​HumanEval−5.06missing-subexpressionsuperscriptitalic-ϕ1𝑌0.970.43subscript¯𝐶Llama-26.603.02PC12.60PC21.17PC32.980.10MMLU0.31ARC-C0.55HellaSwag0.14Winograndemissing-subexpression0.56TruthfulQA2.28GSM8K3.36HumanEval5.06\begin{aligned} &\phi^{-1}(Y,0.97)\\ =~{}&0.43\log\left(\bar{C}\_{\text{Llama-2}}\right)-6.60\\ =~{}&3.02\text{PC1}+2.60\text{PC2}-1.17\text{PC3}-2.98\\ =~{}&-0.10\text{MMLU}-0.31\text{ARC-C}-0.55\text{HellaSwag}+0.14\text{Winogrande}\\ &+0.56\text{TruthfulQA}+2.28\text{GSM8K}+3.36\text{HumanEval}-5.06\end{aligned} |
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | Setup | Task | Functional Form |
@@ -1873,83 +1759,3 @@ Table C.1: The functional forms of the fitted scaling laws included in our paper
 | GSM CoT + SC | ϕ−1​(Y,1.00)=0.95​log⁡(C¯Llama-2)−5.75=2.71​PC1+4.81​PC2+5.04​PC3−2.49=5.64​MMLU+2.27​ARC-C−0.10​HellaSwag+1.10​Winogrande+1.98​TruthfulQA−2.82​XWinogrande+2.41​HumanEval−4.93missing-subexpressionsuperscriptitalic-ϕ1𝑌1.000.95subscript¯𝐶Llama-25.752.71PC14.81PC25.04PC32.495.64MMLU2.27ARC-C0.10HellaSwaglimit-from1.10Winograndemissing-subexpression1.98TruthfulQA2.82XWinogrande2.41HumanEval4.93\begin{aligned} &\phi^{-1}(Y,1.00)\\ =~{}&0.95\log\left(\bar{C}\_{\text{Llama-2}}\right)-5.75\\ =~{}&2.71\text{PC1}+4.81\text{PC2}+5.04\text{PC3}-2.49\\ =~{}&5.64\text{MMLU}+2.27\text{ARC-C}-0.10\text{HellaSwag}+1.10\text{Winogrande}~{}+\\ &1.98\text{TruthfulQA}-2.82\text{XWinogrande}+2.41\text{HumanEval}-4.93\end{aligned} |
 | BBH Naive + Greedy | ϕ−1​(Y,1.00)=0.55​log⁡(C¯Llama-2)−4.89=2.65​PC1+3.08​PC2−0.69​PC3−3.22=1.48​MMLU+1.05​ARC-C+0.69​HellaSwag+0.37​Winogrande+0.16​TruthfulQA+0.52​XWinogrande+3.58​HumanEval−5.42missing-subexpressionsuperscriptitalic-ϕ1𝑌1.000.55subscript¯𝐶Llama-24.892.65PC13.08PC20.69PC33.221.48MMLU1.05ARC-C0.69HellaSwaglimit-from0.37Winograndemissing-subexpression0.16TruthfulQA0.52XWinogrande3.58HumanEval5.42\begin{aligned} &\phi^{-1}(Y,1.00)\\ =~{}&0.55\log\left(\bar{C}\_{\text{Llama-2}}\right)-4.89\\ =~{}&2.65\text{PC1}+3.08\text{PC2}-0.69\text{PC3}-3.22\\ =~{}&1.48\text{MMLU}+1.05\text{ARC-C}+0.69\text{HellaSwag}+0.37\text{Winogrande}~{}+\\ &0.16\text{TruthfulQA}+0.52\text{XWinogrande}+3.58\text{HumanEval}-5.42\end{aligned} |
 | BBH CoT + Greedy | ϕ−1​(Y,1.00)=0.70​log⁡(C¯Llama-2)−5.05=4.05​PC1+3.86​PC2−2.60​PC3−3.10=0.99​MMLU+1.29​ARC-C+1.42​HellaSwag+0.42​Winogrande−0.32​TruthfulQA+1.75​XWinogrande+5.48​HumanEval−6.44missing-subexpressionsuperscriptitalic-ϕ1𝑌1.000.70subscript¯𝐶Llama-25.054.05PC13.86PC22.60PC33.100.99MMLU1.29ARC-C1.42HellaSwaglimit-from0.42Winograndemissing-subexpression0.32TruthfulQA1.75XWinogrande5.48HumanEval6.44\begin{aligned} &\phi^{-1}(Y,1.00)\\ =~{}&0.70\log\left(\bar{C}\_{\text{Llama-2}}\right)-5.05\\ =~{}&4.05\text{PC1}+3.86\text{PC2}-2.60\text{PC3}-3.10\\ =~{}&0.99\text{MMLU}+1.29\text{ARC-C}+1.42\text{HellaSwag}+0.42\text{Winogrande}~{}-\\ &0.32\text{TruthfulQA}+1.75\text{XWinogrande}+5.48\text{HumanEval}-6.44\end{aligned} |
-
-[◄](/html/2405.10937)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2405.10938)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2405.10938)
-[View original  
-on arXiv](https://arxiv.org/abs/2405.10938)[►](/html/2405.10939)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Jun 5 17:31:46 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

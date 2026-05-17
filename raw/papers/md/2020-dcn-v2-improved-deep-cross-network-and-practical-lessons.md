@@ -17,49 +17,6 @@ url: http://arxiv.org/abs/2008.13535v2
 year: 2020
 ---
 
-[2008.13535] DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems
 
 Ruoxi Wang, Rakesh Shivanna, Derek Z. Cheng, Sagar Jain, Dong Lin, Lichan Hong, Ed H. Chi
@@ -161,13 +118,11 @@ Despite many advances made, our comprehensive experiments ([Section 7](#S7 "7. 
 This section describes a novel model architecture — DCN-V2 — to learn both explicit and implicit feature interactions. DCN-V2 starts with an *embedding layer*, followed by a *cross network* containing multiple cross layers that models explicit feature interactions, and then combines with a *deep network* that models implicit feature interactions. The improvements made in DCN-V2 are critical for putting DCN into practice for highly-optimized production systems. DCN-V2 significantly improves the expressiveness of DCN (Wang
 et al., [2017](#bib.bib51)) in modeling complex explicit cross terms in web-scale production data, while maintaining its elegant formula for easy deployment. The function class modeled by DCN-V2 is a strict superset of that modeled by DCN. The overall model architecture is depicted in Fig. [1](#S3.F1 "Figure 1 ‣ 3. Proposed Architecture: DCN-V2 ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems"), with two ways to combine the cross network with the deep network: (1) stacked and (2) parallel. In addition, observing the low-rank nature of the cross layers, we propose to leverage a mixture of low-rank cross layers to achieve healthier trade-off between model performance and efficiency.
 
-![Refer to caption](/html/2008.13535/assets/x1.png)
-
+!(/html/2008.13535/assets/x1.png)
 
 (a) Stacked
 
-![Refer to caption](/html/2008.13535/assets/x2.png)
-
+!(/html/2008.13535/assets/x2.png)
 
 (b) Parallel
 
@@ -197,8 +152,7 @@ The core of DCN-V2 lies in the cross layers that create explicit feature crosses
 
 where 𝐱0∈ℝd{\bf x}\_{0}\in\mathbb{R}^{d} is the base layer that contains the original features of order 1, and is normally set as the embedding (input) layer. 𝐱l,𝐱l+1∈ℝd{\bf x}\_{l},{\bf x}\_{l+1}\in\mathbb{R}^{d}, respectively, represents the input and output of the (l+1)(l+1)-th cross layer. Wl∈ℝd×dW\_{l}\in\mathbb{R}^{d\times d} and 𝐛l∈ℝd{\bf b}\_{l}\in\mathbb{R}^{d} are the learned weight matrix and bias vector. [Figure 2](#S3.F2 "Figure 2 ‣ 3.2. Cross Network ‣ 3. Proposed Architecture: DCN-V2 ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems") shows how an individual cross layer functions.
 
-![Refer to caption](/html/2008.13535/assets/dcn-formula.png)
-
+!(/html/2008.13535/assets/dcn-formula.png)
 
 Figure 2. Visualization of a cross layer.
 
@@ -243,13 +197,11 @@ Mahoney, [2005](#bib.bib10)) to reduce the computational cost. It approximates a
 
 Fig. [3(a)](#S3.F3.sf1 "In Figure 3 ‣ 3.5. Cost-Effective Mixture of Low-Rank DCN ‣ 3. Proposed Architecture: DCN-V2 ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems") shows the singular decay pattern of the learned matrix WW in DCN-V2 (see Eq. ([1](#S3.E1 "In 3.2. Cross Network ‣ 3. Proposed Architecture: DCN-V2 ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems"))) from a production model. Compared to the initial matrix, the learned matrix shows a much faster spectrum decay pattern. Let’s define the numerical rank RTR\_{T} with tolerance T to be argmink​(σk<T⋅σ1)\text{argmin}\_{k}(\sigma\_{k}<T\cdot\sigma\_{1}), where σ1≥σ2≥,…,≥σn\sigma\_{1}\geq\sigma\_{2}\geq,\ldots,\geq\sigma\_{n} are the singular values. Then, RTR\_{T} means majority of the mass up to tolerance TT, is preserved in the top kk singular values. In the field of machine learning and deep learning, a model could still work surprisingly well with a reasonably high tolerance TT 222This is very different from the filed of scientific computing (*e.g.*, solving linear systems), where the approximation accuracy need to be very high. For problems such as CTR prediction, some errors could introduce regularization effect to the model..
 
-![Refer to caption](/html/2008.13535/assets/dcn-sval.png)
-
+!(/html/2008.13535/assets/dcn-sval.png)
 
 (a) Singular Values
 
-![Refer to caption](/html/2008.13535/assets/x3.png)
-
+!(/html/2008.13535/assets/x3.png)
 
 (b) Mixture of Low-rank Experts
 
@@ -446,9 +398,9 @@ We also conducted ablation studies on homogeneous polynomials of order 3 and 4, 
 
 Fig. [4](#S6.F4 "Figure 4 ‣ 6. Empirical understanding of feature crossing techniques (RQ1) ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems") also reveals the limited expressiveness of DCN in modeling complicated cross patterns.
 
-![Refer to caption](/html/2008.13535/assets/dcn-layer-depth-order3-v1.png)
+!(/html/2008.13535/assets/dcn-layer-depth-order3-v1.png)
 
-![Refer to caption](/html/2008.13535/assets/dcn-layer-depth-order4-v1.png)
+!(/html/2008.13535/assets/dcn-layer-depth-order4-v1.png)
 
 Figure 4. Homogeneous polynomial fitting of order 3 and 4. xx-axis represents the number of layers used; yy-axis represents RMSE (the lower the better). In the legend, the top 3 models are DCN-V2 with different component(s) included.
 
@@ -632,17 +584,15 @@ By design, the highest feature cross order captured by the cross net increases w
 
 [5(a)](#S7.F5.sf1 "5(a) ‣ Figure 5 ‣ 7.5. How the Choice of Hyper-parameters Affect DCN-V2 Model Performance (RQ4) ‣ 7. Experimental Results (RQ2 - RQ5) ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems") shows the test LogLoss and AUC while increasing layer depth on the Criteo dataset. We see a steady quality improvement with a deeper cross network, indicating that it’s able to capture more meaningful crosses. The rate of improvement, however, slowed down when more layers were used. This suggests the contribution from that of higher-order crosses is less significant than those from lower-order crosses. We also used a same-sized DNN as a reference. When there were ≤2\leq 2 layers, DNN outperformed the cross network; when more layers became available, the cross network started to close the performance gap and even outperformed DNN. In the small-layer regime, the cross network could only approximate very low-order crosses (*e.g.,* 1 ∼\sim 2); in the large-layer regime, those low-order crosses were characterized with more parameters, and those high-order interactions were started to be captured.
 
-![Refer to caption](/html/2008.13535/assets/dcn-layer-depth.png)
+!(/html/2008.13535/assets/dcn-layer-depth.png)
 
-![Refer to caption](/html/2008.13535/assets/dcn-rank-v2.png)
+!(/html/2008.13535/assets/dcn-rank-v2.png)
 
-![Refer to caption](/html/2008.13535/assets/dcn-layer-auc.png)
-
+!(/html/2008.13535/assets/dcn-layer-auc.png)
 
 (a) Layer depth
 
-![Refer to caption](/html/2008.13535/assets/dcn-rank-auc.png)
-
+!(/html/2008.13535/assets/dcn-rank-auc.png)
 
 (b) Matrix rank
 
@@ -672,13 +622,11 @@ One key research question is whether the proposed approaches are indeed learning
 [Figure 6](#S7.F6 "Figure 6 ‣ 7.6. Model Understanding (RQ5) ‣ 7. Experimental Results (RQ2 - RQ5) ‣ DCN V2: Improved Deep & Cross Network and Practical Lessons for Web-scale Learning to Rank Systems") shows the learned weight matrix WW in the first cross layer. Subplot (a) shows the entire matrix with orange boxes highlighting some notable feature crosses. The off-diagonal block corresponds to crosses that are known to be important, suggesting the effectiveness of DCN-V2. The diagonal block represents self-interaction ( x2x^{2}’s).
 Subplot (b) shows each block’s Frobenius norm and indicates some strong interactions learned, *e.g.*, Gender ×\times UserId, MovieId ×\times UserId.
 
-![Refer to caption](/html/2008.13535/assets/dcn-prod-visualization.png)
-
+!(/html/2008.13535/assets/dcn-prod-visualization.png)
 
 (a) Production data
 
-![Refer to caption](/html/2008.13535/assets/dcn-movielen-visualization.png)
-
+!(/html/2008.13535/assets/dcn-movielen-visualization.png)
 
 (b) Movielen-1M
 
@@ -1363,83 +1311,3 @@ where P𝜶P\_{\bm{\alpha}} is the set of all the permutations of (1​⋯​1�
 
 The second equality combined the first and the third summations into a single one summing over a new set Spc:=[c]pS\_{p}^{c}:=[c]^{p}. The third equality re-represented the cross terms (monomials) using multi-index 𝜶{\bm{\alpha}}, and modified the index for weights ww’s accordingly. The last equality combined the first two summations. Thus the proof.
 ∎
-
-[◄](/html/2008.13534)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2008.13535)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2008.13535)
-[View original  
-on arXiv](https://arxiv.org/abs/2008.13535)[►](/html/2008.13536)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Dec 17 11:12:28 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

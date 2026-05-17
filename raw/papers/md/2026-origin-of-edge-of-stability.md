@@ -10,49 +10,6 @@ url: https://arxiv.org/abs/2604.20446
 year: 2026
 ---
 
-[2604.20446] The Origin of Edge of Stability
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # The Origin of Edge of Stability
 
 Elon Litman
@@ -69,9 +26,9 @@ Full-batch gradient descent on neural networks drives the largest Hessian eigenv
 
 Classical optimization theory guarantees monotonic loss decrease whenever η<2/λmax​(∇2L)\eta<2/\lambda\_{\max}(\nabla^{2}L), where λmax​(∇2L)\lambda\_{\max}(\nabla^{2}L) is the largest Hessian eigenvalue, called the *sharpness* (nesterov2004introductory; nocedal2006numerical). cohen2021gradient discovered that in practice the opposite occurs: when a fixed learning rate is used, the sharpness rises during training until it reaches the value 2/η2/\eta, at which point it saturates and the training loss begins to oscillate on short timescales while continuing to decrease on longer ones. They termed this the *Edge of Stability* (EoS) and documented it across architectures, datasets, and loss functions. In the closely related *catapult phase* (lewkowycz2020large), large learning rates initially drive sharpness down before progressive sharpening returns it to 2/η2/\eta. Progressive sharpening had been studied by jastrzebski2017three, wu2018sgd, and ghorbani2019investigation, who connected it to the Hessian spectrum and implicit selection of flat minima; lyu2020gradient established a related bias toward margin maximization. Together, these observations established 2/η2/\eta as a universal threshold of full-batch gradient descent. [Figure 1](#S1.F1 "Figure 1 ‣ The Edge of Stability. ‣ 1 Introduction ‣ The Origin of Edge of Stability") illustrates both phases.
 
-![Refer to caption](/html/2604.20446/assets/x1.png)
+!(/html/2604.20446/assets/x1.png)
 
-![Refer to caption](/html/2604.20446/assets/x2.png)
+!(/html/2604.20446/assets/x2.png)
 
 Figure 1: Edge of Stability on a 3-layer MLP (CIFAR-10).
 Full-batch GD, η=0.5\eta=0.5, GELU activations, MSE loss.
@@ -324,9 +281,9 @@ For Lh​(W1,W2)=12​‖W2​W1−M‖F2L\_{h}(W\_{1},W\_{2})=\frac{1}{2}\|W\_{
 
 so the first period-doubling occurs for η>ηc=1/σ1\eta>\eta\_{c}=1/\sigma\_{1} and the branch emerges continuously from zero at ηc\eta\_{c} for every h≥rh\geq r ([Figure 2](#S2.F2 "Figure 2 ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability"); proof in [appendix˜G](#A7 "Appendix G Transverse edge normal form for two-layer linear networks ‣ The Origin of Edge of Stability")).
 
-![Refer to caption](/html/2604.20446/assets/x3.png)
+!(/html/2604.20446/assets/x3.png)
 
-![Refer to caption](/html/2604.20446/assets/x4.png)
+!(/html/2604.20446/assets/x4.png)
 
 Figure 2: Continuous onset of period-doubling in a two-layer linear network ([Proposition˜2.6](#S2.Thmtheorem6 "Proposition 2.6 (Transverse edge normal form for two-layer linear networks). ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability")).
 p=5p\!=\!5, h=3h\!=\!3, d=10d\!=\!10, rank-3 target, n=200n=200 samples.
@@ -462,9 +419,9 @@ No monotone-descent assumption is needed; the controlling quantity is finiteness
 
 *Proof sketch.* Decompose 2/η−r~k2/\eta-\widetilde{r}\_{k} into positive and negative parts; Markov-type estimates yield the window bounds. See [appendix˜A](#A1 "Appendix A Proofs from the Main Text ‣ The Origin of Edge of Stability"). Panel (b) of [Figure 3](#S4.F3 "Figure 3 ‣ Why the dynamics is forced toward 𝟐/𝜼. ‣ 4 The Origin of Edge of Stability ‣ The Origin of Edge of Stability") validates the loss-change formula step by step: the scatter of actual Δ​Lk\Delta L\_{k} against the prediction from r¯k\bar{r}\_{k} lies tightly along y=xy=x, confirming both [Theorem˜2.2](#S2.Thmtheorem2 "Theorem 2.2 (Propagator and One-Step Loss Change). ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability")(ii) and that r¯k\bar{r}\_{k} and r~k\widetilde{r}\_{k} nearly coincide ([Theorem˜4.3](#S4.Thmtheorem3 "Theorem 4.3 (Localization to the true Hessian). ‣ Exact sharpness forcing on each edge. ‣ 4 The Origin of Edge of Stability ‣ The Origin of Edge of Stability")).
 
-![Refer to caption](/html/2604.20446/assets/x5.png)
+!(/html/2604.20446/assets/x5.png)
 
-![Refer to caption](/html/2604.20446/assets/x6.png)
+!(/html/2604.20446/assets/x6.png)
 
 Figure 3: Validation of [Theorems˜4.1](#S4.Thmtheorem1 "Theorem 4.1 (Curvature concentration at 𝟐/𝜼). ‣ Why the dynamics is forced toward 𝟐/𝜼. ‣ 4 The Origin of Edge of Stability ‣ The Origin of Edge of Stability") and [2.2](#S2.Thmtheorem2 "Theorem 2.2 (Propagator and One-Step Loss Change). ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability").
 Four learning rates, 4,0004{,}000 steps, shared initialization.
@@ -900,8 +857,7 @@ By the mean value theorem, H¯k​dk=∇L​(wk+1)−∇L​(wk)\bar{H}\_{k}d\_{
 Taking the inner product with dkd\_{k}, dividing by ‖dk‖22\|d\_{k}\|\_{2}^{2}, and applying Cauchy–Schwarz to the displacement term gives [Equation˜50](#S4.E50 "In Corollary 4.4 (Near-Periodicity Implies Near-Critical Sharpness). ‣ Discrete stability and near-periodicity. ‣ 4 The Origin of Edge of Stability ‣ The Origin of Edge of Stability").
 ∎
 
-![Refer to caption](/html/2604.20446/assets/x7.png)
-
+!(/html/2604.20446/assets/x7.png)
 
 Figure 4: Two-step return ratio.
 ‖wk+2−wk‖/‖dk‖\|w\_{k+2}-w\_{k}\|/\|d\_{k}\| vs. training step for two learning rates (solid: rolling median; faint: raw). Before EoS onset the ratio exceeds 11, reflecting the progressive sharpening phase in which consecutive steps reinforce rather than reverse. At EoS onset, the ratio drops from O​(1)O(1) toward ∼0.15\sim 0.15, indicating
@@ -1595,83 +1551,3 @@ The quartic coefficient is −1<0-1<0, so by [Corollary˜2.5](#S2.Thmtheorem5 "C
 #### Experimental validation.
 
 [Figure 2](#S2.F2 "Figure 2 ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability") validates the prediction for a two-layer linear network (p=5p=5, h=3h=3, d=10d=10, rank-3 target, n=200n=200 samples). At the global minimizer w¯\bar{w}, the computed quartic term satisfies 𝒬⟂​(uc)<0\mathcal{Q}^{\perp}(u\_{c})<0, predicting that the period-doubling branch appears for η>ηc\eta>\eta\_{c} and emerges continuously from zero at ηc\eta\_{c}. Full-batch GD at learning rates η\eta near ηc=1/σ1\eta\_{c}=1/\sigma\_{1} confirms this: the oscillation amplitude grows continuously from zero for η>ηc\eta>\eta\_{c} and tracks the η−ηc\sqrt{\eta-\eta\_{c}} scaling of [Corollary˜2.5](#S2.Thmtheorem5 "Corollary 2.5 (Generic branching at the edge). ‣ 2 The Edge Coupling ‣ The Origin of Edge of Stability"), with oscillations concentrated along ucu\_{c}.
-
-[◄](/html/2604.20445)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.20446)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.20446)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.20446)[►](/html/2604.20447)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 22:41:55 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

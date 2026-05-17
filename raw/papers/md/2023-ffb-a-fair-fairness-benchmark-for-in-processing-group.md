@@ -12,51 +12,6 @@ url: https://arxiv.org/abs/2306.09468
 year: 2023
 ---
 
-[2306.09468] FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\doparttoc\faketableofcontents
-
 # FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods
 
 Xiaotian Han1  Jianfeng Chi2  Yu Chen2  Qifan Wang2  Han Zhao3  Na Zou1  Xia Hu4
@@ -280,23 +235,19 @@ The presence of bias in the current widely used dataset is not well examined and
 
 In this section, we present comprehensive experiments to benchmark the performance of existing in-processing group fairness methods. We aim to provide a holistic overview of the group fairness methods, identifying both their strengths and areas for improvement.
 
-![Refer to caption](/html/2306.09468/assets/x1.png)
-
+!(/html/2306.09468/assets/x1.png)
 
 (a) Tabular Data, across Adult, German, Bank, KDDCensus, ACS-I/E/P/M/T datasets.
 
-![Refer to caption](/html/2306.09468/assets/x2.png)
-
+!(/html/2306.09468/assets/x2.png)
 
 (b) Image Data, across CelebA-A/W/S, UTKFace datasets with multiple targets.
 
-![Refer to caption](/html/2306.09468/assets/x3.png)
-
+!(/html/2306.09468/assets/x3.png)
 
 (c) Tabular Data on eodd and eodd.
 
-![Refer to caption](/html/2306.09468/assets/x4.png)
-
+!(/html/2306.09468/assets/x4.png)
 
 (d) Image Data on eodd and eodd.
 
@@ -318,8 +269,7 @@ In this section, we present the results of experiments conducted to assess the p
 
 Hereby we investigate the extent to which the utility-fairness trade-offs can be controlled and fine-tuned. We conduct experiments using various in-processing fairness methods and analyze the ability to adjust the trade-offs to cater to specific needs and requirements while maintaining a balance between accuracy and fairness.
 
-![Refer to caption](/html/2306.09468/assets/x5.png)
-
+!(/html/2306.09468/assets/x5.png)
 
 Figure 2: The fairness performance with varying fairness control hyperparameters. The intensity of the color represents the size of the control parameters. In most cases, the larger value of control parameters yields better fairness performance, while small ones have worse fairness performance. These figures are generated from 𝟏𝟑𝟏𝟏𝟎13110\mathbf{13110} runs of experiments.
 
@@ -327,13 +277,11 @@ Figure 2: The fairness performance with varying fairness control hyperparameters
 
 #### 5.3 How do Utility and Fairness Performance Change During Training Process?
 
-![Refer to caption](/html/2306.09468/assets/x6.png)
-
+!(/html/2306.09468/assets/x6.png)
 
 Figure 3: The training curves on tabular dataset. The training curves for fairness metrics typically have lager standard deviation than utility performance, showing the instability of fairness performance.
 
-![Refer to caption](/html/2306.09468/assets/x7.png)
-
+!(/html/2306.09468/assets/x7.png)
 
 Figure 4: The training curves on image dataset. The results are similar to tabular dataset that training curves for fairness metrics typically have lager standard deviation than utility performance.
 
@@ -347,8 +295,7 @@ In this section, we thoroughly examine the training curves of existing in-proces
 
 We conduct experiments to explore the influence of model size on fairness performance. We use various neural networks with the number of neural network trainable parameters spanning from 11.6M to 126.9M.444We use the following architectures: ResNet-18 (11.6M), ResNet-34 (21.8M), ResNet-50 (25.6M), ResNet-101 (44.5M), ResNet-152 (60.2M), ResNext-50 (25.0M), ResNext101 (88.8M), wide\_ResNet-50 (68.9M), and wide\_ResNet101 (126.9M). The results are presented in [Figure 5](#S5.F5 "In 5.4 How does Model Size Influence Fairness Performance? ‣ 5 Benchmarking Current Fairness Methods ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods").
 
-![Refer to caption](/html/2306.09468/assets/x8.png)
-
+!(/html/2306.09468/assets/x8.png)
 
 Figure 5: The performance with varying size of neural networks. The x-axis is the number of model parameters. There is no clear relationship between model size and performance.
 
@@ -823,9 +770,6 @@ Table 5: Common Hyper-parameters.
 | Tabular | 0.01 | Adam | 0.0 | StepLR | 50 | 0.1 | 150 |
 | Image | 0.01 | Adam | 0.0 | StepLR | 50 | 0.1 | 150 |
 
-
-
-
 Table 6: The fairness control hyperparameter selections.
 
 | Dataset | Control hyperparameter |
@@ -837,9 +781,6 @@ Table 6: The fairness control hyperparameter selections.
 | HSIC | 50,100,150,200,250,300,350,400,450,500,600,700,800,900,1000  50100150200250300350400450500600700800900100050,100,150,200,250,300,350,400,450,500,600,700,800,900,1000 |
 | AdvDebias | 0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.5,3.0,3.5,4  0.20.40.60.81.01.21.41.61.82.02.53.03.540.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.5,3.0,3.5,4 |
 | LAFTR | 0.1,0.2,0.3,0.4,0.5,1,2,3,4,5  0.10.20.30.40.5123450.1,0.2,0.3,0.4,0.5,1,2,3,4,5 |
-
-
-
 
 Table 7: The batch size for different datasets during the training.
 
@@ -855,49 +796,47 @@ In this appendix, we present the experimental results on Adult datasets.
 
 We plot the utility-fairness trade-offs for the Adult dataset with gender as the sensitive attribute and present the results in [Figures 6](#A4.F6 "In D.1 Utility-Fairness Trade-offs ‣ Appendix D More Experiment Results on Adult ‣ Appendix of FFB ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods") and [7](#A4.F7 "Figure 7 ‣ D.1 Utility-Fairness Trade-offs ‣ Appendix D More Experiment Results on Adult ‣ Appendix of FFB ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods").
 
-![Refer to caption](/html/2306.09468/assets/x9.png)
+!(/html/2306.09468/assets/x9.png)
 
-![Refer to caption](/html/2306.09468/assets/x10.png)
+!(/html/2306.09468/assets/x10.png)
 
-![Refer to caption](/html/2306.09468/assets/x11.png)
+!(/html/2306.09468/assets/x11.png)
 
-![Refer to caption](/html/2306.09468/assets/x12.png)
+!(/html/2306.09468/assets/x12.png)
 
-![Refer to caption](/html/2306.09468/assets/x13.png)
+!(/html/2306.09468/assets/x13.png)
 
-![Refer to caption](/html/2306.09468/assets/x14.png)
+!(/html/2306.09468/assets/x14.png)
 
-![Refer to caption](/html/2306.09468/assets/x15.png)
+!(/html/2306.09468/assets/x15.png)
 
-![Refer to caption](/html/2306.09468/assets/x16.png)
+!(/html/2306.09468/assets/x16.png)
 
-![Refer to caption](/html/2306.09468/assets/x17.png)
+!(/html/2306.09468/assets/x17.png)
 
-![Refer to caption](/html/2306.09468/assets/x18.png)
+!(/html/2306.09468/assets/x18.png)
 
 Figure 6: The Utility-Fairness Trade-offs with acc as utility metric.
 
+!(/html/2306.09468/assets/x19.png)
 
+!(/html/2306.09468/assets/x20.png)
 
-![Refer to caption](/html/2306.09468/assets/x19.png)
+!(/html/2306.09468/assets/x21.png)
 
-![Refer to caption](/html/2306.09468/assets/x20.png)
+!(/html/2306.09468/assets/x22.png)
 
-![Refer to caption](/html/2306.09468/assets/x21.png)
+!(/html/2306.09468/assets/x23.png)
 
-![Refer to caption](/html/2306.09468/assets/x22.png)
+!(/html/2306.09468/assets/x24.png)
 
-![Refer to caption](/html/2306.09468/assets/x23.png)
+!(/html/2306.09468/assets/x25.png)
 
-![Refer to caption](/html/2306.09468/assets/x24.png)
+!(/html/2306.09468/assets/x26.png)
 
-![Refer to caption](/html/2306.09468/assets/x25.png)
+!(/html/2306.09468/assets/x27.png)
 
-![Refer to caption](/html/2306.09468/assets/x26.png)
-
-![Refer to caption](/html/2306.09468/assets/x27.png)
-
-![Refer to caption](/html/2306.09468/assets/x28.png)
+!(/html/2306.09468/assets/x28.png)
 
 Figure 7: The Utility-Fairness Trade-offs with auc as utility metric.
 
@@ -905,8 +844,7 @@ Figure 7: The Utility-Fairness Trade-offs with auc as utility metric.
 
 We plot the utility and fairness training curves for varying fairness control hyperparameters on the Adult dataset, and present the results in [Figure 8](#A4.F8 "In D.2 Training Curves and Hyperparameters for Controlling Fairness ‣ Appendix D More Experiment Results on Adult ‣ Appendix of FFB ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods"). The intensity of the color represents the size of the control parameters. In most cases, the larger value of control parameters yields better fairness performance, while small ones have worse fairness performance.
 
-![Refer to caption](/html/2306.09468/assets/x29.png)
-
+!(/html/2306.09468/assets/x29.png)
 
 Figure 8: Hyperparameters for Controlling Fairness on Adult dataset.
 
@@ -918,8 +856,7 @@ In this appendix, we present the experimental results on the CelebA-A dataset.
 
 We plot the utility-fairness trade-offs for the CelebA-A dataset with gender as the sensitive attribute and present the results in [Figure 9](#A5.F9 "In E.1 Utility-Fairness Trade-offs ‣ Appendix E More Experiment Results on CelebA-A ‣ Appendix of FFB ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods"). The results show the utility-fairness trade-offs in CelebA-A dataset.
 
-![Refer to caption](/html/2306.09468/assets/x30.png)
-
+!(/html/2306.09468/assets/x30.png)
 
 Figure 9: The Utility-Fairness Trade-offs
 
@@ -927,8 +864,7 @@ Figure 9: The Utility-Fairness Trade-offs
 
 We plot the utility and fairness training curves for varying fairness control hyperparameters on the CelebA-A dataset, and present the results in [Figure 10](#A5.F10 "In E.2 Training Curves and Hyperparameters for Controlling Fairness ‣ Appendix E More Experiment Results on CelebA-A ‣ Appendix of FFB ‣ FFB: A Fair Fairness Benchmark for In-Processing Group Fairness Methods"). The intensity of the color represents the size of the control parameters. In most cases, the larger value of control parameters yields better fairness performance, while small ones have worse fairness performance.
 
-![Refer to caption](/html/2306.09468/assets/x31.png)
-
+!(/html/2306.09468/assets/x31.png)
 
 Figure 10: Training Curves and Hyperparameters for Controlling Fairness one CelebA-A dataset.
 
@@ -1015,10 +951,6 @@ if i % 200 == 0:
 
 ... # logging
 
-
-
-
-
 Algorithm 2  AdvDebias in FairLearn
 
 [⬇](data:text/plain;base64,Y2xhc3MgX0FkdmVyc2FyaWFsRmFpcm5lc3MoQmFzZUVzdGltYXRvcik6CgogICAgZGVmIF9faW5pdF9fKHNlbGYpOgogICAgICAgIC4uLgoKICAgIGRlZiBfX3NldHVwKHNlbGYsIFgsIFksIEEpOgogICAgICAgIC4uLgoKICAgIGRlZiBmaXQoc2VsZiwgWCwgeSwgKiwgc2Vuc2l0aXZlX2ZlYXR1cmVzPU5vbmUpOgogICAgICAgIFgsIFksIEEgPSBzZWxmLl92YWxpZGF0ZV9pbnB1dChYLCB5LCBzZW5zaXRpdmVfZmVhdHVyZXMsIHJlaW5pdGlhbGl6ZT1UcnVlKQoKICAgICAgICAuLi4KCiAgICAgICAgZm9yIGVwb2NoIGluIHJhbmdlKGVwb2Nocyk6CiAgICAgICAgICAgIGJhdGNoX3NsaWNlID0gc2xpY2UoCiAgICAgICAgICAgICAgICAgICAgYmF0Y2ggKiBiYXRjaF9zaXplLAogICAgICAgICAgICAgICAgICAgIG1pbigoYmF0Y2ggKyAxKSAqIGJhdGNoX3NpemUsIFguc2hhcGVbMF0pLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAoTFAsIExBKSA9IHNlbGYuYmFja2VuZEVuZ2luZV8udHJhaW5fc3RlcCgKICAgICAgICAgICAgICAgIFhbYmF0Y2hfc2xpY2VdLCBZW2JhdGNoX3NsaWNlXSwgQVtiYXRjaF9zbGljZV0KICAgICAgICAgICAgKQogICAgICAgICAgICBwcmVkaWN0b3JfbG9zc2VzLmFwcGVuZChMUCkKICAgICAgICAgICAgYWR2ZXJzYXJ5X2xvc3Nlcy5hcHBlbmQoTEEpCgogICAgICAgICAgICAuLi4KCiAgICBkZWYgcGFydGlhbF9maXQoc2VsZiwgWCwgeSwgKiwgc2Vuc2l0aXZlX2ZlYXR1cmVzPU5vbmUpOgogICAgICAgIC4uLgoKICAgIGRlZiBkZWNpc2lvbl9mdW5jdGlvbihzZWxmLCBYKToKICAgICAgICAuLi4KCiAgICBkZWYgcHJlZGljdChzZWxmLCBYKToKICAgICAgICAuLi4KCiAgICBkZWYgX3ZhbGlkYXRlX2lucHV0KHNlbGYsIFgsIFksIEEsIHJlaW5pdGlhbGl6ZT1GYWxzZSk6CiAgICAgICAgLi4uCgogICAgZGVmIF92YWxpZGF0ZV9iYWNrZW5kKHNlbGYpOgogICAgICAgIC4uLgoKICAgIGRlZiBfc2V0X3ByZWRpY3Rvcl9mdW5jdGlvbihzZWxmKToKICAgICAgICAuLi4KCmNsYXNzIEFkdmVyc2FyaWFsRmFpcm5lc3NDbGFzc2lmaWVyKF9BZHZlcnNhcmlhbEZhaXJuZXNzLCBDbGFzc2lmaWVyTWl4aW4pOgogICAgZGVmIF9faW5pdF9fKHNlbGYpOgogICAgICAgICIiIkluaXRpYWxpemUgbW9kZWwgYnkgc2V0dGluZyB0aGUgcHJlZGljdG9yIGxvc3MgYW5kIGZ1bmN0aW9uLiIiIgogICAgICAgIHNlbGYuX2VzdGltYXRvcl90eXBlID0gImNsYXNzaWZpZXIiCiAgICAgICAgc3VwZXIoQWR2ZXJzYXJpYWxGYWlybmVzc0NsYXNzaWZpZXIsIHNlbGYpLl9faW5pdF9fKCkKCg==)
@@ -1095,10 +1027,6 @@ self.\_estimator\_type = "classifier"
 
 super(AdversarialFairnessClassifier, self).\_\_init\_\_()
 
-
-
-
-
 Algorithm 3  AdvDebias in FFB
 
 [⬇](data:text/plain;base64,Y2xhc3MgQWR2ZXJzYXJ5KG5uLk1vZHVsZSk6CiAgICAuLi4KCmNsYXNzIE1MUChubi5Nb2R1bGUpOgogICAgLi4uCgpkZWYgdGVzdChtb2RlbCwgdGVzdF9sb2FkZXIsIGNyaXRlcmlvbiwgZGV2aWNlLCBhcmdzPU5vbmUpOgogICAgLi4uCgpkZWYgdHJhaW4oY2xmLCBhZHYsIGRhdGFfbG9hZGVyLCBjbGZfY3JpdGVyaW9uLCBhZHZfY3JpdGVyaW9uLCBjbGZfb3B0aW1pemVyLCBhZHZfb3B0aW1pemVyKToKICAgIC4uLgoKaWYgX19uYW1lX18gPT0gJ19fbWFpbl9fJzoKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKCkKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoJy0tZGF0YXNldCcsIHR5cGU9c3RyLCBkZWZhdWx0PSJhZHVsdCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCctLW1vZGVsJywgdHlwZT1zdHIsIGRlZmF1bHQ9Ik1MUCIpCiAgICAuLi4KICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgIyBEYXRhc2V0IHNlbGVjdGlvbgogICAgaWYgYXJncy5kYXRhc2V0ID09ICJhZHVsdCI6CiAgICAgICAgWCwgeSwgcyA9IGxvYWRfYWR1bHRfZGF0YShzZW5zaXRpdmVfYXR0cmlidXRlPWFyZ3Muc2Vuc2l0aXZlX2F0dHIpCiAgICBlbGlmIGFyZ3MuZGF0YXNldCA9PSAiY29tcGFzIjoKICAgICAgICBYLCB5LCBzID0gbG9hZF9jb21wYXNfZGF0YSggc2Vuc2l0aXZlX2F0dHJpYnV0ZT1hcmdzLnNlbnNpdGl2ZV9hdHRyKQogICAgLi4uCgogICAgIyBVbmlmaWVkIERhdGFzZXQgcHJlcHJvY2Vzc2luZyAoZS5nLiwgdHJhaW4vdGVzdCBzcGxpdCwgKQogICAgLi4uCgogICAgIyBkZWZpbmUgbmV0d29yayBhcmNoaXRlY3R1cmUsIGV0Yy4gb3B0aW1pemVyCiAgICBjbGYgPSBNTFAobl9mZWF0dXJlcz1uX2ZlYXR1cmVzLCBudW1fY2xhc3Nlcz0xLCBtbHBfbGF5ZXJzPVs1MTIsIDI1NiwgNjRdKS50byhkZXZpY2UpCiAgICBjbGZfY3JpdGVyaW9uID0gbm4uQkNFTG9zcygpCiAgICBjbGZfb3B0aW1pemVyID0gb3B0aW0uQWRhbSggY2xmLnBhcmFtZXRlcnMoKSwgbHI9YXJncy5scikKCiAgICBhZHYgPSBBZHZlcnNhcnkoIG5fc2Vuc2l0aXZlID0gMSApLnRvKGRldmljZSkKICAgIGFkdl9jcml0ZXJpb24gPSBubi5CQ0VMb3NzKHJlZHVjdGlvbj0ibWVhbiIpCiAgICBhZHZfb3B0aW1pemVyID0gb3B0aW0uQWRhbShhZHYucGFyYW1ldGVycygpLCBscj1hcmdzLmxyKQoKCiAgICBmb3IgZXBvY2ggaW4gcmFuZ2UoMSwgYXJncy5udW1fZXBvY2hzKzEpOgogICAgICAgICMgYmVnaW4gdHJhaW5pbmcKICAgICAgICB0cmFpbihjbGYsIGFkdiwgdHJhaW5fbG9hZGVyLCBjbGZfY3JpdGVyaW9uLCBhZHZfY3JpdGVyaW9uLCBjbGZfb3B0aW1pemVyLCBhZHZfb3B0aW1pemVyKQoKICAgICAgICBpZiBlcG9jaCAlIGFyZ3MubG9nZ2luZ19zdGVwcyA9PSAwIG9yIGVwb2NoID09IGFyZ3MubnVtX2Vwb2NoczoKICAgICAgICAgICAgdGVzdF9tZXRyaWNzICA9ICB0ZXN0KG1vZGVsPWNsZiwgdGVzdF9sb2FkZXI9dGVzdF9sb2FkZXIsIGNyaXRlcmlvbj1jbGZfY3JpdGVyaW9uLCBkZXZpY2U9ZGV2aWNlKQogICAgICAgICAgICAjIGxvZ2dpbmcgbWV0cmljcwogICAgICAgICAgICAuLi4K)
@@ -1174,83 +1102,3 @@ test\_metrics = test(model=clf, test\_loader=test\_loader, criterion=clf\_criter
 # logging metrics
 
 ...
-
-[◄](/html/2306.09467)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2306.09468)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2306.09468)
-[View original  
-on arXiv](https://arxiv.org/abs/2306.09468)[►](/html/2306.09469)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 00:20:15 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

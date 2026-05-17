@@ -14,54 +14,6 @@ url: https://arxiv.org/abs/2303.09540
 year: 2023
 ---
 
-[2303.09540] SemDeDup: Data-efficient learning at web-scale through semantic deduplication
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\contourlength
-
-0.1pt
-\contournumber10
-
 # SemDeDup: Data-efficient learning at web-scale through semantic deduplication
 
 Amro Abbas1
@@ -84,20 +36,17 @@ Progress in machine learning has been driven in large part by massive increases 
 
 ## 1 Introduction
 
-![Refer to caption](/html/2303.09540/assets/x1.png)
-
+!(/html/2303.09540/assets/x1.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x2.png)
-
+!(/html/2303.09540/assets/x2.png)
 
 (b)
 
 Figure 1: Data efficiency from semantic deduplication (SemDeDup) (a): A schematic of the SemDeDup algorithm which efficiently removes semantic duplicates from web-scale data. (b): When SemDeDup removes 50% of the LAION-440M dataset, training on this semantically nonredundant subset achieves almost the same performance as training on the entire 440M dataset. Also, training speed is twice as fast and completes in half the time.
 
-![Refer to caption](/html/2303.09540/assets/figures/semantic_duplicates.png)
-
+!(/html/2303.09540/assets/figures/semantic_duplicates.png)
 
 Figure 2: Mapping cosine similarity to perceptual and semantic similarity. We visualize pairs of images with cosine similarity 1−ϵ1italic-ϵ1-\epsilon in the CLIP image encoder embedding space. The left most image is a random seed image from LAION, while the remaining images are sorted by their dissimilarity ϵitalic-ϵ\epsilon to the seed image. Roughly, as ϵitalic-ϵ\epsilon increases from left to right, we move from perceptual to semantic duplicates, while at large values of ϵitalic-ϵ\epsilon we see semantically redundant pairs. Note the red labelled “semantic duplicate" is a view of the original left-most seed image from a slightly different perspective. We visualize more examples in Figure [A9](#A4.F9 "Figure A9 ‣ Appendix D Visualizing Examples Before and After De-duplication ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication").
 
@@ -164,18 +113,15 @@ Our method makes use of pre-trained foundation models to embed data examples. Co
 
 The time complexity of naive de-duplication is 𝒪​(n2)𝒪superscript𝑛2\mathcal{O}(n^{2}) where n𝑛n is the number of data points, making this approach impractical for large web-scale data. For example, the LAION-440M dataset would require ≈1.9​x1017absent1.9superscriptx1017\approx 1.9\mathrm{x}10^{17} similarity computations. The k-means clustering step in SemDeDup reduces this complexity substantially from 𝒪​(n2)𝒪superscript𝑛2\mathcal{O}(n^{2}) to 𝒪​(n2/k)𝒪superscript𝑛2𝑘\mathcal{O}(n^{2}/k) assuming approximately uniform cluster size111Note that our choice of k𝑘k depends on n𝑛n, it is not a constant in the context of this complexity analysis.. This means we only require ≈4.6​x1012absent4.6superscriptx1012\approx 4.6\mathrm{x}10^{12} intra-cluster comparisons instead of ≈1.9​x1017absent1.9superscriptx1017\approx 1.9\mathrm{x}10^{17} across all pairs, a 5-order of magnitude improvement.
 
-![Refer to caption](/html/2303.09540/assets/x3.png)
-
+!(/html/2303.09540/assets/x3.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x4.png)
-
+!(/html/2303.09540/assets/x4.png)
 
 (b)
 
-![Refer to caption](/html/2303.09540/assets/x5.png)
-
+!(/html/2303.09540/assets/x5.png)
 
 (c)
 
@@ -238,38 +184,30 @@ Because SemDeDup reduces the number of training points, it enables substantially
 
 Why do models trained on uncurated data exhibit slower learning? We posit that successive learning iterations involving semantic duplicates yield redundant information, thereby wasting valuable computation on data points that are highly similar to those the model has already seen. By removing these semantic duplicates, we increase the fraction of data points which provide a marginal information gain to the model, thereby increasing learning speed [[13](#bib.bib13)].
 
-![Refer to caption](/html/2303.09540/assets/x6.png)
-
+!(/html/2303.09540/assets/x6.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x7.png)
-
+!(/html/2303.09540/assets/x7.png)
 
 (b)
 
 Figure 4: SemDeDup allows better average zero-shot accuracy across 24 tasks with less data and faster pre-training. (a): Performance of SemDeDup (blue) and random pruning (orange) for different amounts of retained data. Down to using only 50% of LAION-440M for pre-training CLIP, we are able to match the zero-shot ImageNet accuracy of the baseline model trained on 100% of the data (black dashed line) with a small drop of 0.47% only, while we outperform the baseline model with only 63% of data. (b): Average zero-shot performance for CLIP measured on 24 datasets. Average performance improves across 242424 tasks down to 63%percent6363\% of the pre-training data, yielding better performance with almost 1.6×1.6\times faster pre-training.
 
-
-
-![Refer to caption](/html/2303.09540/assets/x8.png)
-
+!(/html/2303.09540/assets/x8.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x9.png)
-
+!(/html/2303.09540/assets/x9.png)
 
 (b)
 
 Figure 5: SemDeDup allows better average performance across 6 ImageNet OOD tasks with less data and faster pre-training. (a) zeroshot validation accuracy averaged over 6 ImageNet-1k OOD tasks for CLIP models pre-trained on deduplicated LAION data with different thresholds ϵitalic-ϵ\epsilon. We outperform the baseline model with only 63% of pre-training data from LAION-440M.
 (b) We track zeroshot ImageNet-1K performance as a function of LAION-440M pre-training iterations at different deduplication thresholds. The models trained on smaller deduplicated datasets actually learn faster, thereby allowing them to converge to almost baseline performance (black dashed line) in far fewer iterations.
 
+!(/html/2303.09540/assets/x10.png)
 
-
-![Refer to caption](/html/2303.09540/assets/x10.png)
-
-![Refer to caption](/html/2303.09540/assets/x11.png)
+!(/html/2303.09540/assets/x11.png)
 
 Figure 6: SemDeDup improves zeroshot and OOD performance in many tasks with less pre-training. A comparison of zeroshot evaluation performance between our CLIP model trained on 63% of LAION-440M after de-duplication to a baseline CLIP model trained on 100% of the data (left), and OpenAI CLIP [[31](#bib.bib31)] (right) on 303030 tasks. The green bars show when SemDeDup outperforms the baseline model.
 
@@ -296,17 +234,15 @@ On the C4 validation set, we observe that SemDeDup still outperforms random prun
 
 In Fig. [A22](#A6.F22 "Figure A22 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") and Fig. [A23](#A6.F23 "Figure A23 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") we choose specific clusters and show a random sample of documents retained in the cluster after performing SemDeDup for different values of ϵitalic-ϵ\epsilon. In Fig. [A22](#A6.F22 "Figure A22 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"), we observe that at low values of ϵitalic-ϵ\epsilon, we find semantic duplicates in the form of templated text, where typically few words (e.g. a geographic location or a name) is changed. This successfully evades exact-string deduplication methods but contains highly redundant information as seen in Fig. [A22](#A6.F22 "Figure A22 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"). In Fig. [A23](#A6.F23 "Figure A23 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"), we show an example of a cluster with semantically redundant duplicates — most examples in this cluster are advertisements about Nike shoes. These examples are not necessarily templated text or have exact string matches, but are highly redundant nonetheless. We see in Fig. [A23](#A6.F23 "Figure A23 ‣ Appendix F Qualitative Examples of SemDeDup on C4 ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") that at more aggressive pruning (i.e. higher ϵitalic-ϵ\epsilon) these semantically redundant duplicates get pruned. We note that exact string duplicates (i.e.“perceptual duplicates for text") are rare since duplicate occurrences of any three-sentence spans were removed in C4 already.
 
-![Refer to caption](/html/2303.09540/assets/x12.png)
+!(/html/2303.09540/assets/x12.png)
 
-![Refer to caption](/html/2303.09540/assets/x13.png)
+!(/html/2303.09540/assets/x13.png)
 
 Figure 7: SemDeDup applied to C4. The x-axis corresponds to different percents of data kept, and the y-axis represents the perplexity on validation sets described in Section [5.1](#S5.SS1 "5.1 Methods ‣ 5 SemDeDup on Natural Language ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") (lower is better). Each point is a separate 125M model trained on one-pass of its respective pruned dataset (mean and standard deviation across 3 random training seeds). The green point represents a 125M model trained on a version of C4 deduplicated via the NearDup method [[19](#bib.bib19)]. Note that NearDup (the single green point) keeps 96.1% of the data. SemDeDup can match this baseline performance while keeping only 80% of the data (see Table [A13](#A5.F13 "Figure A13 ‣ Appendix E Perplexity Values for SemDeDup on Language Modeling ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") for numerical comparison).
 
+!(/html/2303.09540/assets/x14.png)
 
-
-![Refer to caption](/html/2303.09540/assets/x14.png)
-
-![Refer to caption](/html/2303.09540/assets/x15.png)
+!(/html/2303.09540/assets/x15.png)
 
 Figure 8: SemDeDup allows compute efficiency gains by training on much smaller datasets for slightly longer. We prune datasets via SemDeDup and continue training past one epoch until we reach baseline model perplexity. The x-axis is the percentage of data kept, and the y-axis is the percentage of FLOPs saved. For example, training on the 80% pruned dataset reaches baseline model perplexity on prompts\_with\_answer in  95.0% of the baseline training, saving  5.0% compute. Mean and standard deviation provided across 3 random training seeds.
 
@@ -717,7 +653,7 @@ We also show in figure [A1](#A1.F1 "Figure A1 ‣ A.1 Number of k-means Clusters
 
   
 
-![Refer to caption](/html/2303.09540/assets/x16.png)
+!(/html/2303.09540/assets/x16.png)
 
 Figure A1: Deduplicated dataset size as a function of the deduplication threshold for different values of k-means clusters k𝑘k. Note that the range in the dataset size is 0.003% when ϵitalic-ϵ\epsilon is 0.00095 and 2% when ϵitalic-ϵ\epsilon is 0.26.
 
@@ -727,9 +663,9 @@ Figure A1: Deduplicated dataset size as a function of the deduplication threshol
 
   
 
-![Refer to caption](/html/2303.09540/assets/x17.png)
-![Refer to caption](/html/2303.09540/assets/x18.png)
-![Refer to caption](/html/2303.09540/assets/x19.png)
+!(/html/2303.09540/assets/x17.png)
+!(/html/2303.09540/assets/x18.png)
+!(/html/2303.09540/assets/x19.png)
 
 Figure A2: Intersection between different deduplicated LAION datasets using different values for the number of k-means clusters k𝑘k. Each cell corresponds to the percentage of intersection between two datasets deduplicated using different k𝑘k values. At the 72% dataset size, more than 97% of data examples are shared between all the datasets regardless of the value of k𝑘k. This shows the robustness of SemDeDup to the number of clusters parameter k𝑘k.
 
@@ -750,9 +686,6 @@ Table A1: Percentage of duplicates detected (η𝜂\eta) by SemDeDup at differen
 | Num. of Clusters | 70K | 50K | 10K | 70K | 50K | 10K | 70K | 50K | 10K |
 | η𝜂\eta | 94.4 | 94.6 | 95.3 | 90.1 | 90.6 | 91.3 | 88.3 | 89.0 | 90.8 |
 
-
-
-
 Table A2: Time for running SemDeDup on LAION440M. Note that we report the total time for deduplication to different dataset size ratios.
 
 | Operation / Time | Clustering Time | DeDup. Time | Total Time |
@@ -767,30 +700,23 @@ Table A2: Time for running SemDeDup on LAION440M. Note that we report the total 
 
 In this section, we show the result of zeroshot evaluation for CLIP. We note that the models trained on dataset deduplicated using SemDeDup outperform the baseline model in many tasks. In Table [A4](#A2.T4 "Table A4 ‣ Appendix B CLIP Zeroshot Evaluation ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") we list the top1 zeroshot accuracy on 24 tasks and in Table [A5](#A2.T5 "Table A5 ‣ Appendix B CLIP Zeroshot Evaluation ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") we show the top1 zeroshot accuracy on 6 datasets for out-of-distribution robustness evaluation. Our complete evaluation set has 303030 different datasets in total. When using only 63% of LAION-440M, SemDeDup outperforms the baseline model in 19 out of the 30 tasks. Fig. ([A4](#A2.F4 "Figure A4 ‣ Appendix B CLIP Zeroshot Evaluation ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication")) and Fig. ([A5](#A2.F5 "Figure A5 ‣ Appendix B CLIP Zeroshot Evaluation ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication")) show the performance of different models as a function of training dataset size.
 
-![Refer to caption](/html/2303.09540/assets/x20.png)
-
+!(/html/2303.09540/assets/x20.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x21.png)
-
+!(/html/2303.09540/assets/x21.png)
 
 (b)
 
-![Refer to caption](/html/2303.09540/assets/x22.png)
-
+!(/html/2303.09540/assets/x22.png)
 
 (c)
 
-![Refer to caption](/html/2303.09540/assets/x23.png)
-
+!(/html/2303.09540/assets/x23.png)
 
 (d)
 
 Figure A3: SemDeDup is always better than training on random subset from LAION-440M. The plots show zeroshot top1 accuracy on ImageNet for CLIP models trained on different fractions of data.
-
-
-
 
 Table A3: Training parameters for CLIP
 
@@ -803,9 +729,6 @@ Table A3: Training parameters for CLIP
 | Batch size | 33,792 |
 | Learning rate | 5.0e-4, cosine scheduler |
 | Optimizer | AdamW, wd=0.2, betas=(0.9, 0.98), eps=1.0e-6 |
-
-
-
 
 Table A4: Zeroshot evaluation top1 accuracy on different datasets. Training CLIP on 63% of the data gives a higher performance in 17/24 datasets. In the first row, model names are represented by the pruning method (Dedup, Baseline, and Rand for SemDeDup, no pruning, and random pruning respectively), and the fraction of data used for training.
 
@@ -837,9 +760,6 @@ Table A4: Zeroshot evaluation top1 accuracy on different datasets. Training CLIP
 | SVHN | 34.80 | 33.64 | 26.24 | 40.87 | 33.96 | 32.68 | 35.18 | 26.77 | 26.67 | 32.70 | 25.26 |
 | Average | 49.4 | 52.91 | 52.44 | 55.66 | 55.43 | 55.41 | 54.12 | 53.77 | 52.56 | 51.21 | 47.73 |
 
-
-
-
 Table A5: Out-of-distribution Robustness for CLIP models we trained on a different number of examples. The two models trained on 63% and 72% of LAION440M with our de-duplication method have higher average accuracy over 6 datasets. In the first column, model names are represented by the pruning method (Dedup, Baseline, and Rand for SemDeDup, no pruning, and random pruning respectively), and the fraction of data used for training.
 
 | Model/Dataset | ImageNet-A | ImageNet-O | ImageNet-R | ImageNet-Sketch | ImageNet-V2 | ObjectNet | Average |
@@ -856,17 +776,15 @@ Table A5: Out-of-distribution Robustness for CLIP models we trained on a differe
 | Rand40 | 31.88 | 49.1 | 73.65 | 49.02 | 56.83 | 49.57 | 51.67 |
 | Rand20 | 23.43 | 49.4 | 66.74 | 43.76 | 50.67 | 43.57 | 46.26 |
 
-
   
 
-![Refer to caption](/html/2303.09540/assets/x24.png)
+!(/html/2303.09540/assets/x24.png)
 
 Figure A4: Zeroshot performance of CLIP on 24 datasets. The last plot shows the average performance over all datasets.
 
-
   
 
-![Refer to caption](/html/2303.09540/assets/x25.png)
+!(/html/2303.09540/assets/x25.png)
 
 Figure A5: Out-of-distribution zeroshot performance on 6 datasets. SemDeDup outperforms random pruning on all datasets for all fractions of dataset kept. The last plot shows the average performance over all datasets.
 
@@ -875,13 +793,9 @@ Figure A5: Out-of-distribution zeroshot performance on 6 datasets. SemDeDup outp
 To support our results on LAION-440M, we also de-duplicate a much smaller dataset of 233 million images. We call this dataset LAION-233M. Usually, CLIP needs to be trained on more than 400 million images as introduced in [[31](#bib.bib31)], so de-duplicating LAION-233M is more challenging in this respect.
 We train a baseline model on the 233 million images and two models on 55% of the data, one on a random subset and the other on deduplicated subset using SemDeDup. We trained all the models using the same hyperparameters we used for training on LAION-440M. We show ImageNet top1 zeroshot accuracy for these models in Fig. [A6](#A3.F6 "Figure A6 ‣ Appendix C LAION-233M De-duplication ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"). The baseline model achieved 64.62% accuracy, while the SemDeDup model achieved 63.61% outperforming the model trained on the random subset (61.3% accuracy).
 
-![Refer to caption](/html/2303.09540/assets/x26.png)
-
+!(/html/2303.09540/assets/x26.png)
 
 Figure A6: Performance when deduplicating 233 million images from LAION-2B. We deduplicte LAION233M to 55% of its size and train CLIP model on it. SemDeDup performs better than random pruning (63.61% vs 61.3%). Training on the whole 233 million examples gives 64.62%. Note that the deduplicated dataset size here is 128 million only.
-
-
-
 
 Table A6: Performance after training on deduplicated data for the same number of iterations as training on 100% of the data.
 
@@ -890,22 +804,17 @@ Table A6: Performance after training on deduplicated data for the same number of
 | Top1 IN Zeroshot Acc. | 68.35 | 68.92 | 69.04 | 69.14 | 68.74 |
 | Top5 IN Zeroshot Acc. | 91.64 | 91.82 | 91.86 | 91.73 | 91.42 |
 
-
   
 
-![Refer to caption](/html/2303.09540/assets/x27.png)
+!(/html/2303.09540/assets/x27.png)
 
 Figure A7: How many images can we remove from each cluster? Moving from top to down we increase ϵitalic-ϵ\epsilon value. The x-axis corresponds to the cluster size. The y-axis corresponds to the fraction of data removed from each cluster by SemDeDup. As we increase ϵitalic-ϵ\epsilon, more examples are removed from each cluster. We notice that most of the examples from the large clusters (the points to the right) are removed when ϵitalic-ϵ\epsilon becomes large. The points in this figure are for 2000 clusters sampled randomly from a total of 50,000 clusters.
 
-
   
 
-![Refer to caption](/html/2303.09540/assets/x28.png)
+!(/html/2303.09540/assets/x28.png)
 
 Figure A8: The number of images in each cluster for 50,000 clusters of LAION-440M images after running k-means clustering in the embedding space. The average cluster size is 8748, but we also see a few clusters with more than 300,000 examples.
-
-
-
 
 Table A7:
 
@@ -917,27 +826,23 @@ Table A7:
 
 To visually show which images are removed by SemDeDup from LAION440M dataset, we visualize some images from a random cluster before and after deduplication. To do that, we choose a cluster randomly and sort its examples by the cosine similarity to the centroid. By doing that, we can show similar images next to each other in a sequence. Then we visualize a sequence of images before de-duplication. After that, we run SemDeDup, remove duplicates, and sort the remaining examples again. Finally, we visualize the sequence of images from the same indices we visualize before de-duplication. Figures ([A10](#A4.F10 "Figure A10 ‣ Appendix D Visualizing Examples Before and After De-duplication ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") and [A11](#A4.F11 "Figure A11 ‣ Appendix D Visualizing Examples Before and After De-duplication ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication")) show that after applying SemDeDup with different values for the de-duplication threshold ϵitalic-ϵ\epsilon, we keep the unique images.
 
-![Refer to caption](/html/2303.09540/assets/figures/semantically_similar_images.png)
+!(/html/2303.09540/assets/figures/semantically_similar_images.png)
 
 Figure A9: For each of the source images (left column), we can retrieve a set of similar images from LAION440M. For each of the source images, we show a set of images with the highest cosine similarity to it. Images are sorted from left to right by their cosine similarity (1- ϵitalic-ϵ\epsilon) to the source image. By changing ϵitalic-ϵ\epsilon value, we can identify perceptual duplicates, semantic duplicates, and semantically redundant examples for the source images. As we see in the first row, by increasing ϵitalic-ϵ\epsilon we can remove many examples that are semantically similar to the source image.
 
+!(/html/2303.09540/assets/x29.png)
 
+!(/html/2303.09540/assets/x30.png)
 
-![Refer to caption](/html/2303.09540/assets/x29.png)
-
-![Refer to caption](/html/2303.09540/assets/x30.png)
-
-![Refer to caption](/html/2303.09540/assets/x31.png)
+!(/html/2303.09540/assets/x31.png)
 
 Figure A10: Examples from the same cluster from LAION-440M dataset before and after de-duplication. Images are sorted by cosine similarity to the cluster centroid. As we increase the deduplication threshold we start to see more unique images.
 
+!(/html/2303.09540/assets/x32.png)
 
+!(/html/2303.09540/assets/x33.png)
 
-![Refer to caption](/html/2303.09540/assets/x32.png)
-
-![Refer to caption](/html/2303.09540/assets/x33.png)
-
-![Refer to caption](/html/2303.09540/assets/x34.png)
+!(/html/2303.09540/assets/x34.png)
 
 Figure A11: Examples from the same cluster from LAION440M dataset before and after de-duplication. Images are sorted by cosine similarity to the cluster centroid. As we increase the deduplication threshold we start to see more unique images.
 
@@ -952,8 +857,6 @@ Figure A11: Examples from the same cluster from LAION440M dataset before and aft
 
 Figure A12: Comparison of perplexity values for 125M OPT model after pruning via different methods at 96% pruning. Note that [[19](#bib.bib19)] pruned 3.9 % of examples, while above Random and SemDeDup prune 4% of examples. Mean and standard deviation provided across 3 training seeds. Note that the Baseline column does not prune data (which is why the perplexities are lower) and bolded numbers compare between Random, SemDedup, and NearDup.
 
-
-
 | method | Baseline (no pruning) | Random | SemDedup |
 | --- | --- | --- | --- |
 | validation set |  |  |  |
@@ -962,8 +865,6 @@ Figure A12: Comparison of perplexity values for 125M OPT model after pruning via
 | prompts\_with\_answers | 29.60 +/- 0.15 | 31.65 +/- 0.16 | 30.98 +/- 0.13 |
 
 Figure A13: Comparison of perplexity values for 125M OPT model after pruning via different methods at 80% pruning. Mean and standard deviation provided across 3 training seeds. Note that the Baseline column does not prune data (which is why the perplexities are lower) and bolded numbers compare between Random and SemDedup.
-
-
 
 | method | Baseline | Random | SemDedup |
 | --- | --- | --- | --- |
@@ -974,8 +875,6 @@ Figure A13: Comparison of perplexity values for 125M OPT model after pruning via
 
 Figure A14: Comparison of perplexity values for 125M OPT model after pruning via different methods at 20% pruning. Mean and standard deviation provided across 3 training seeds. Note that the Baseline column does not prune data (which is why the perplexities are lower) and bolded numbers compare between Random and SemDedup.
 
-
-
 | method | Baseline (no pruning) | NearDup from [[19](#bib.bib19)] | Random | SemDedup |
 | --- | --- | --- | --- | --- |
 | validation set |  |  |  |  |
@@ -984,8 +883,6 @@ Figure A14: Comparison of perplexity values for 125M OPT model after pruning via
 | prompts\_with\_answers | 34.04 +/- 0.00 | 33.93 +/- 0.00 | 33.91 +/- 0.00 | 33.83 +/- 0.00 |
 
 Figure A15: Comparison of perplexity values for 1.3b OPT model after pruning via different methods at 96% pruning. Note that [[19](#bib.bib19)] pruned 3.9 % of examples, while above Random and SemDeDup prune 4% of examples. Due to compute restrictions we do not provide random seed standard deviations.
-
-
 
 | method | Baseline (no pruning) | Random | SemDedup |
 | --- | --- | --- | --- |
@@ -998,66 +895,49 @@ Figure A16: Comparison of perplexity values for 1.3b OPT model after pruning via
 
 ## Appendix F Qualitative Examples of SemDeDup on C4
 
-![Refer to caption](/html/2303.09540/assets/x35.png)
-
+!(/html/2303.09540/assets/x35.png)
 
 Figure A17: Percent Data Remaining versus ϵitalic-ϵ\epsilon for C4. The x-axis corresponds to different values of ϵitalic-ϵ\epsilon from Section [3](#S3 "3 SemDeDup ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"), and the y-axis represents the corresponding fraction of data in our subset of C4.
 
-
-
-![Refer to caption](/html/2303.09540/assets/x36.png)
-
+!(/html/2303.09540/assets/x36.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x37.png)
-
+!(/html/2303.09540/assets/x37.png)
 
 (b)
 
-![Refer to caption](/html/2303.09540/assets/x38.png)
-
+!(/html/2303.09540/assets/x38.png)
 
 (c)
 
 Figure A18: SemDeDup performance at different fractions of data for the 125M OPT model. We show results for the C4 validation set (top left), opt\_valid (top right), and prompts\_with\_answers (bottoms). These are the same graphs as Figure [7](#S5.F7 "Figure 7 ‣ 5.3 What is being pruned in language data? ‣ 5 SemDeDup on Natural Language ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication"), but for a wider range of percentage of data kept. We note that SemDeDup consistently outperforms random pruning at lower percentages of data kept.
 
-
-
-![Refer to caption](/html/2303.09540/assets/x39.png)
-
+!(/html/2303.09540/assets/x39.png)
 
 (a)
 
-![Refer to caption](/html/2303.09540/assets/x40.png)
-
+!(/html/2303.09540/assets/x40.png)
 
 (b)
 
-![Refer to caption](/html/2303.09540/assets/x41.png)
-
+!(/html/2303.09540/assets/x41.png)
 
 (c)
 
 Figure A19: SemDeDup performance at different fractions of data for the 1.3B OPT model. We show results for the C4 validation set (top left), opt\_valid (top right), and prompts\_with\_answers (bottoms). These are similar to tables [A15](#A5.F15 "Figure A15 ‣ Appendix E Perplexity Values for SemDeDup on Language Modeling ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") and [A16](#A5.F16 "Figure A16 ‣ Appendix E Perplexity Values for SemDeDup on Language Modeling ‣ SemDeDup: Data-efficient learning at web-scale through semantic deduplication") but for a range of percentage of data kept (96 %, 90%, 80%). We note that SemDeDup consistently outperforms random pruning at lower percentages of data kept.
 
-![Refer to caption](/html/2303.09540/assets/x42.png)
-
+!(/html/2303.09540/assets/x42.png)
 
 Figure A20: Percentage of Data Kept vs. Perplexity on individual validation sets within opt\_valid. Runs are averages across 3 training seeds, and shaded regions represent 1 standard deviation from the mean. The title of each plot represents the name of the individual validation set within opt\_valid. Note that on all tasks, SemDedup significantly random pruning, especially at low percentages of data kept.
 
-![Refer to caption](/html/2303.09540/assets/x43.png)
-
+!(/html/2303.09540/assets/x43.png)
 
 Figure A21: Percentage of Data Kept vs. Efficiency Gain on individual validation sets within opt\_valid. Runs are averaged across training seeds where the model achieves baseline perplexity at some point in training, and shaded regions represent 1 standard deviation from the mean. The title of each plot represents the name of the individual validation set within opt\_valid.
-
-
 
 Keeping 90% data
 
 text
-
-
 
 It appears that you already have an account on this site associated with . To connect your existing account…
 
@@ -1065,58 +945,32 @@ Keeping 100% data (i.e. no pruning)
 
 text
 
-
-
-
 It appears that you already have an account on this site associated with. To connect your existing account…
-
-
 
 You are visiting the placeholder page for Wells Williams. This page is here because someone used our placeholder…
 
-
-
 You are visiting the placeholder page for Mathew Barrett. This page is here because someone used our placeholder…
-
-
 
 You are visiting the placeholder page for Marcus Slatar. This page is here because someone used our placeholder…
 
-
-
 You are visiting the placeholder page for Bernice Andrews. This page is here because someone used our placeholder…
 
-
-
 You are visiting the placeholder page for Emiko Chille. This page is here because someone used our placeholder…
-
-
 
 You are visiting the placeholder page for Landon Buckland. This page is here because
 Someone used our placeholder…
 
-
-
 ….
-
-
 
 You are visiting the placeholder page for Kylie Dickens. This page is here because someone used our placeholder utility …
 
 Figure A22: Example of semantic de-duplication with SemDeDup (cluster 4500)
 
-
-
 Keeping 20% data
 
 text
 
-
-
-
 cheap jordan shoes from china free shipping,order maroon foams , jordan blue retro 12 , jordans sz 10 , all white 14s…
-
-
 
 Booming business thanks to Cristiano Ronaldo! Nike Presents Cristiano Ronaldo – CR7 Winter Collection. Cristiano Ronaldo …
 
@@ -1124,36 +978,19 @@ Keeping 90% data
 
 text
 
-
-
-
 Purchase from us, you can get max discount and free shipping.Free shipping and returns on Nike Jordans at Nordstrom.com….
-
-
 
 Product range. Adidas collections are divided into three groups: Sport Performance, Originals, and Sport Style. Originals that …
 
-
-
 cool jordans for boys , foamposite paranorman , new black and white foams , lebron 1’s ,cheap jordans online for sale …
-
-
 
 This Comfortable Nike Huarache Free Basketball And Running has 1600 x 900 pixel resolution with jpeg format. ..
 
-
-
 Top Rating: “Best high performance product.” Performance efficiency. That is the motto of our textile engineers by…
-
-
 
 cheap jordan shoes online free shipping order cheap jordans for sale free shipping. Air Jordan 1’s new theme color matching …
 
-
-
 …
-
-
 
 Trendy Men’s Nike Kyrie 1 Best Seller ’All Star’ Multicolor at high discount. Buy Nike Trainers - The Kyrie 1 All Star comes …
 
@@ -1162,83 +999,3 @@ Figure A23: Example of semantically redundant de-duplication with SemDeDup (clus
 ## Appendix G K-means Clustering Details
 
 We use the f​a​i​s​s𝑓𝑎𝑖𝑠𝑠faiss library for clustering. f​a​i​s​s𝑓𝑎𝑖𝑠𝑠faiss is a library for efficient clustering on millions of vectors with GPU support. We use Spherical k-means as we found it better for clustering on ImageNet. Spherical k-means normalizes the cluster centroids after every iteration to have a unit length. This requires the data to also be normalized before clustering. In all our experiments, we run 100 clustering iterations for LAION440M and 20 iterations for C4. We found that centroids do not move after this number of iterations.
-
-[◄](/html/2303.09539)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2303.09540)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2303.09540)
-[View original  
-on arXiv](https://arxiv.org/abs/2303.09540)[►](/html/2303.09541)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 19:49:57 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -7,7 +7,7 @@ authors:
 - Dezhi Hong
 - Thomas Butler
 parser: ar5iv
-retrieved: '2026-05-11'
+retrieved: '2026-05-15'
 source: paper
 title: 'English is Not All You Need: Systematically Exploring the Role of Multilinguality
   in LLM Post-Training'
@@ -16,45 +16,6 @@ year: 2026
 ---
 
 [2604.13286] English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
 
 
 
@@ -88,9 +49,6 @@ Prior work on multilingual post-training suggests a nuanced picture: replacing s
 However, these findings remain fragmented and leave several questions unresolved.
 Existing studies typically focus on a narrow set of languages, tasks, and/or model scales, making it difficult to understand how increasing language coverage systematically affects model behavior. In particular, we lack a clear characterization of how trade-offs manifest across (i) English vs. non-English performance, (ii) different task types, and (iii) varying model capacities.
 This gap is especially important in light of multilingual pre-training literature, which highlights a fundamental trade-off under fixed model capacity: expanding language coverage can dilute performance in high-resource languages–a phenomenon often termed the “curse of multilinguality” or “negative interference” (Conneau et al., [2020](#bib.bib3); Chang et al., [2024](#bib.bib1); Longpre et al., [2025](#bib.bib13)). While cross-lingual transfer can provide gains, it is still unclear when benefits outweigh interference effects during post-training and how these effects scale with model size and task complexity.
-
-![Refer to caption](/html/2604.13286/assets/x1.png)
-
 
 Figure 1: Overview of the experimental design. We start from a task-specific multilingual parallel data pool consisting of five core languages, which are used to construct exhaustive data mixture combinations, and five additional languages that enable scaling the experiments to up to ten languages. We generate 22 data mixtures with increasing language counts and varying combinations; within the multilingual data mixtures, languages shown in blue indicate one possible combination, while languages shown in grey are fixed for the corresponding number of languages. We train five models from two model families on each mixture for two tasks, resulting in 22 × 2 × 5 = 220 total training runs.
 
@@ -189,9 +147,6 @@ We train each model on each data mixture for six epochs using 8 NVIDIA A100 80GB
 
 ### 4.1 Multilingual Scaling is Largely Beneficial Across Tasks and Model Scales
 
-![Refer to caption](/html/2604.13286/assets/x2.png)
-
-
 Figure 2: Effect of increasing training language coverage on model performance for Qwen-3 and Gemma-3 models. Plots show average accuracy (%) with 95% Wilson confidence intervals as a function of the number of training languages, grouped by high-resource and low-resource evaluation languages, for API calling (top) and math reasoning (bottom).
 
 We first analyze the overall impact of scaling multilinguality by increasing training language coverage. Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Multilingual Scaling is Largely Beneficial Across Tasks and Model Scales ‣ 4 Results ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training") reports mean accuracy (95% Wilson confidence intervals) for Qwen-3 and Gemma-3 models of varying sizes, evaluated across both tasks and grouped by high- and low-resource languages, as a function of the number of training languages.
@@ -205,9 +160,6 @@ Due to experimental noise, we validate these trends using a pooled regression an
 In the following subsections, we zoom in on specific regions of this trend to better understand the effects of multilinguality. We first examine the low-diversity (bilingual) setting (Section [4.2](#S4.SS2 "4.2 English Is Not All You Need: Even Minimal Multilinguality Helps ‣ 4 Results ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training")), and then analyze the high-diversity regime (Section [4.3](#S4.SS3 "4.3 High Linguistic Diversity Supports Generalization Comparable to Direct Exposure ‣ 4 Results ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training")), where increased language coverage enables stronger cross-lingual generalization.
 
 ### 4.2 English Is Not All You Need: Even Minimal Multilinguality Helps
-
-![Refer to caption](/html/2604.13286/assets/x3.png)
-
 
 Figure 3: Median accuracy (%) change from bilingual versus English-only post-training across evaluation settings for API calling and math reasoning. Error bars show 95% bootstrap confidence intervals. Bilingual training yields consistent gains across evaluation settings, with the largest improvements under direct exposure and smaller but reliable gains under cross-lingual transfer.
 
@@ -234,9 +186,6 @@ We next turn to higher-diversity settings to examine how increasing language cov
 Table 2: Win rates of bilingual post-training over English-only post-training across evaluation settings, aggregated across tasks and models. A win is defined as a configuration where bilingual training achieves higher accuracy than English-only training.
 
 ### 4.3 High Linguistic Diversity Supports Generalization Comparable to Direct Exposure
-
-![Refer to caption](/html/2604.13286/assets/x4.png)
-
 
 Figure 4: Comparison of zero-shot cross-lingual transfer versus direct bilingual exposure at varying levels of language diversity for Qwen-3 8B (top) and Gemma-3 4B (bottom), with 4 (left), 6 (middle), and 9 (right) training languages. High-resource languages (red) tend to cluster near the diagonal, indicating strong zero-shot generalization that can compensate for the absence of direct inclusion. Low-resource languages (blue) more often fall below the diagonal, suggesting greater benefit of direct inclusion.
 
@@ -381,9 +330,6 @@ Our work provides a systematic study of multilingual post-training under control
 
 ## Appendix A mAPICall-Bank Construction
 
-![Refer to caption](/html/2604.13286/assets/figures/mapicallbank-example.png)
-
-
 Figure 5: Example showing the final turns of a parallel multi-turn API calling interaction from mAPICall-Bank in three languages: (a) English, (b) Spanish, and (c) Bengali.
 
 We construct mAPICall-Bank by translating the API calling subset of the original English API-Bank dataset into multiple target languages using a state-of-the-art large language model. The full translation prompt is provided in Figure [6](#A1.F6 "Figure 6 ‣ Appendix A mAPICall-Bank Construction ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training").
@@ -393,9 +339,6 @@ During translation, we preserve the full structure of each example, including us
 The translation prompt was iteratively refined to ensure structural validity and parseability of model outputs. In particular, we enforce that translated examples retain the original formatting and can be reliably parsed into API name and argument–value pairs. We perform automated checks to validate output structure (e.g., JSON format) and manually inspect a subset of examples across languages, with native speakers verifying linguistic accuracy and consistency with the source data.
 
 Figure [6](#A1.F6 "Figure 6 ‣ Appendix A mAPICall-Bank Construction ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training") shows the prompt used to translate API-Bank to create mAPICall-Bank. Figure [5](#A1.F5 "Figure 5 ‣ Appendix A mAPICall-Bank Construction ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training") shows an example of a parallel multi-turn interaction involving a single API call across three languages. Dataset statistics including the number of queries, unique APIs, and examples of APIs in the train and test split of mAPICall-Bank are shown in Table [4](#A1.T4 "Table 4 ‣ Appendix A mAPICall-Bank Construction ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training").
-
-![Refer to caption](/html/2604.13286/assets/figures/prompt.png)
-
 
 Figure 6: Prompt used to create mAPICall-Bank
 
@@ -413,13 +356,7 @@ Table 4: Statistics of the mAPICall-Bank dataset, including the number of user q
 
 ## Appendix B Monolingual vs. Bilingual Transfer Heatmaps
 
-![Refer to caption](/html/2604.13286/assets/figures/monolingual_vs_bilingual_qwen.png)
-
-
 (a) Qwen-3 Models
-
-![Refer to caption](/html/2604.13286/assets/figures/monolingual_vs_bilingual_gemma.png)
-
 
 (b) Gemma-3 Models
 
@@ -433,13 +370,7 @@ Further, the heatmaps show that gains are broadly distributed across language pa
 
 ## Appendix C Multilingual Scaling Trends Per Language
 
-![Refer to caption](/html/2604.13286/assets/figures/multilingual_scaling_qwen.png)
-
-
 (a) Qwen-3 Models
-
-![Refer to caption](/html/2604.13286/assets/figures/multilingual_scaling_gemma.png)
-
 
 (b) Gemma-3 Models
 
@@ -451,91 +382,8 @@ These results complement the aggregated trends shown in Figure [2](#S4.F2 "Figu
 
 ## Appendix D Additional Results on Linguistic Diversity Driven Cross-Lingual Generalization
 
-![Refer to caption](/html/2604.13286/assets/x5.png)
-
-
 Figure 9: Comparison of zero-shot cross-lingual transfer and direct bilingual exposure for smaller models. Rows correspond to Qwen-3 1.7B (top), Qwen-3 0.6B (middle), and Gemma-3 1B (bottom), with columns showing 4 (left), 6 (middle), and 9 (right) training languages.
 
 Figure [9](#A4.F9 "Figure 9 ‣ Appendix D Additional Results on Linguistic Diversity Driven Cross-Lingual Generalization ‣ English is Not All You Need: Systematically Exploring the Role of Multilinguality in LLM Post-Training") presents the corresponding plots from Section 4.3 for smaller-scale models (Qwen-3 1.7B, Qwen-3 0.6B, and Gemma-3 1B).
 
 We observe consistent trends with those reported for larger models: high-resource languages (in red) tend to lie close to the diagonal, indicating that language diversity enables strong zero-shot cross-lingual transfer that matches or approaches the performance of direct inclusion at these scales. Low-resource languages often benefit from explicit language inclusion, particularly at the smallest scale (Qwen-3 0.6B). This is consistent with our findings in Section 4.1, where we observe capacity-driven interference at higher levels of multilinguality for this model.
-
-[◄](/html/2604.13285)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.13286)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.13286)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.13286)[►](/html/2604.13287)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 00:30:59 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

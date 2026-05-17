@@ -36,62 +36,18 @@ url: https://arxiv.org/abs/2506.03524
 year: 2025
 ---
 
-[2506.03524] Seed-Coder: Let the Code Model Curate Data for Itself
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-# [Uncaptioned image] Seed-Coder: Let the Code Model Curate Data for Itself
+#  Seed-Coder: Let the Code Model Curate Data for Itself
 
 ByteDance Seed
   
 
-![[Uncaptioned image]](/html/2506.03524/assets/logo/website.png)  [Homepage](https://bytedance-seed-coder.github.io)      ![[Uncaptioned image]](/html/2506.03524/assets/x1.png)  [GitHub](https://github.com/ByteDance-Seed/Seed-Coder)    ![[Uncaptioned image]](/html/2506.03524/assets/x2.png)  [Hugging Face](https://huggingface.co/collections/ByteDance-Seed/seed-coder-680de32c15ead6555c75b0e4)
+  [Homepage](https://bytedance-seed-coder.github.io)        [GitHub](https://github.com/ByteDance-Seed/Seed-Coder)      [Hugging Face](https://huggingface.co/collections/ByteDance-Seed/seed-coder-680de32c15ead6555c75b0e4)
 
 ###### Abstract
 
 Code data in large language model (LLM) pretraining is recognized crucial not only for code-related tasks but also for enhancing general intelligence of LLMs. Current open-source LLMs often heavily rely on human effort to produce their code pretraining data, such as employing hand-crafted filtering rules tailored to individual programming languages, or using human-annotated data to train quality filters. However, these approaches are inherently limited in scalability, prone to subjective biases, and costly to extend and maintain across diverse programming languages. To address these challenges, we introduce Seed-Coder, a series of open-source LLMs comprising base, instruct and reasoning models of 8B size, minimizing human involvement in data construction. Our code pretraining data is produced by a model-centric data pipeline, which predominantly leverages LLMs for scoring and filtering code data. The instruct model is further trained via supervised fine-tuning and preference optimization, and the reasoning model leverages Long-Chain-of-Thought (LongCoT) reinforcement learning to improve multi-step code reasoning. Seed-Coder achieves state-of-the-art results among open-source models of similar size and even surpasses some much larger models, demonstrating superior performance in code generation, code completion, code editing, code reasoning, and software engineering tasks.
 
-![Refer to caption](/html/2506.03524/assets/x3.png)
-
+!(/html/2506.03524/assets/x3.png)
 
 Figure 1: Benchmark performance of instruct and reasoning variants of Seed-Coder-8B.
 
@@ -157,8 +113,7 @@ Building on this foundation, we introduce Seed-Coder, a family of state-of-the-a
 
 ### 2.1 Data Pipeline
 
-![Refer to caption](/html/2506.03524/assets/x4.png)
-
+!(/html/2506.03524/assets/x4.png)
 
 Figure 2: Processing pipeline for pretraining data. We collected data from GitHub and web archives. The raw data were processed into four categories: file-level codes (yellow), repository-level codes (blue), GitHub commits (red) and code-related web data (green). For each phase in pretraining, we combined and reorganized the processed data from the four categories, indicated by colors on the top-right of the blocks.
 
@@ -225,8 +180,6 @@ def main(temp):
  return
 
 Figure 3: Sample Python script with decent structure but logical errors.
-
-
 
 [⬇](data:text/plain;base64,dDMgPSBbCiAgICBbMCwgMCwgNywgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgNywgMCwgMF0sCiAgICBbMCwgNywgNywgNywgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgNywgNywgNywgMF0sCiAgICBbMCwgMCwgNywgNywgNywgMCwgMCwgMCwgMCwgMCwgMCwgNywgNywgNywgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgMCwgMCwgMCwgMCwgMCwgMCwgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgMCwgMCwgMCwgMCwgNywgNywgMCwgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgMCwgNywgNywgNywgNywgNywgNywgMCwgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgNywgNywgNywgNywgNywgNywgMCwgMCwgNywgNywgNywgNywgNywgNywgMF0sCiAgICBbMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgMCwgNywgNywgNywgNywgNywgNywgNywgNywgMCwgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgMCwgMCwgNywgNywgMCwgMCwgNywgNywgMCwgMCwgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgMCwgMCwgNywgNywgMCwgMCwgNywgNywgMCwgMCwgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgMCwgNywgNywgNywgMCwgMCwgNywgNywgNywgMCwgMCwgMCwgMF0sCiAgICBbMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMF0KXQ==)
 
@@ -389,18 +342,15 @@ These standards primarily apply to substantial code files. However, randomly sam
 
 The oracle was required to give an overall score ranging from 0 to 10 that evaluates the quality of code files (higher indicates better quality), with detailed explanations to support the score. Subsequently, only the score itself was extracted from the oracle’s response to serve as the ground-truth label for each file. To scale the scorer to the full GitHub data, we opted for a regression model rather than a binary classifier. This approach allows for finer-grained quality evaluation, avoiding the rigidity of rule-based pass-or-fail filtering. Prioritizing efficiency for large-scale inference, we rescaled the ground-truth scores to the range [0,1] and fine-tuned a pretrained 1.3B model of Llama 2 [Touvron et al., [2023](#bib.bib56)] structure with a regression head for one epoch as the quality scorer. To balance the quality and diversity of code pretraining data, we filtered out from the entire GitHub dataset the bottom ~10% files, aggregating to ~1T unique tokens based on this quality scoring method. This corpus supports 89 programming languages, forged into both the repository-level and file-level code data shown in Figure [2](#S2.F2 "Figure 2 ‣ 2.1 Data Pipeline ‣ 2 Pretraining ‣ Seed-Coder: Let the Code Model Curate Data for Itself"). The list of supported languages can be found in Appendix [A.1](#A1.SS1 "A.1 Programming Languages in GitHub Data ‣ Appendix A Appendix ‣ Seed-Coder: Let the Code Model Curate Data for Itself"). Figure [6](#S2.F6 "Figure 6 ‣ 2.2.1 GitHub Data ‣ 2.2 Data Ingredients ‣ 2 Pretraining ‣ Seed-Coder: Let the Code Model Curate Data for Itself") offers a glimpse into the effectiveness of LLM-based filters by presenting a snapshot of benchmark performance during pretraining. Further details on oracle selection, ground-truth generation, model architecture, and ablation studies can be found in Appendix [A.2](#A1.SS2 "A.2 Configuration of Quality Scorer ‣ Appendix A Appendix ‣ Seed-Coder: Let the Code Model Curate Data for Itself").
 
-![Refer to caption](/html/2506.03524/assets/x5.png)
-
+!(/html/2506.03524/assets/x5.png)
 
 Figure 5: Pipeline of our data quality scorer.
 
+!(/html/2506.03524/assets/x6.png)
 
+!(/html/2506.03524/assets/x7.png)
 
-![Refer to caption](/html/2506.03524/assets/x6.png)
-
-![Refer to caption](/html/2506.03524/assets/x7.png)
-
-![Refer to caption](/html/2506.03524/assets/x8.png)
+!(/html/2506.03524/assets/x8.png)
 
 Figure 6: On-the-fly performance over benchmarks during pretraining, from data with minimal rules only (orange) and LLM-based filters involved (purple).
 
@@ -417,8 +367,7 @@ After deduplication and preprocessing, we obtained a curated corpus of approxima
 
 #### 2.2.3 Code-Related Web Data
 
-![Refer to caption](/html/2506.03524/assets/x9.png)
-
+!(/html/2506.03524/assets/x9.png)
 
 Figure 7: Pipeline of extracting high-quality code-related data from web archives.
 
@@ -480,8 +429,7 @@ Our pretraining consumed 6 trillion tokens in total. Initially, we pretrained th
 
 ### 3.1 Instruct Model
 
-![Refer to caption](/html/2506.03524/assets/x10.png)
-
+!(/html/2506.03524/assets/x10.png)
 
 Figure 8: Pipeline of synthetic data curation for our instruct model training.
 
@@ -541,8 +489,7 @@ During the warmup phase, we observed that model performance improvements were po
 
 During the RL training process, similar to DeepCoder [Luo et al., [2025](#bib.bib41)], we used the open-source verl framework [Sheng et al., [2025](#bib.bib54)] for GRPO training [Shao et al., [2024](#bib.bib53)], and adopted optimization techniques similar to DAPO [Yu et al., [2025](#bib.bib60), ByteDance Seed, [2025](#bib.bib9)]. The training configuration included a batch size of 128, an initial learning rate of 1​e−61\mathrm{e}{-6}, a temperature of 0.6, and we removed the KL loss. We set the clip ratio high at 0.28, filtered overlong samples, and applied the token-wise loss during training. In Figure [9](#S3.F9 "Figure 9 ‣ 3.2.3 Training Recipe for Reasoning Model ‣ 3.2 Reasoning Model ‣ 3 Post-training ‣ Seed-Coder: Let the Code Model Curate Data for Itself"), we present the training trajectories of response length, rewards, and benchmark performance of our reasoning model.
 
-![Refer to caption](/html/2506.03524/assets/x11.png)
-
+!(/html/2506.03524/assets/x11.png)
 
 Figure 9: RL training trajectories: smoothed average response token length (left), smoothed average rewards (middle), LiveCodeBench pass@1 performance (right). The area to the left of the dashed line corresponds to a 16K window, and the area to the right corresponds to a 32K window.
 
@@ -621,8 +568,6 @@ In this section, we report the evaluation results of our pretrained base model S
 
 Table 1: Performance of various base models on HumanEval(+) and MBPP(+).
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Model | Size | Python | C++ | Java | PHP | TS | C# | Bash | JS | Average |
@@ -676,8 +621,6 @@ Code completion is one of the most essential features that code LLMs provide to 
 
 Table 3: Performance of base models on CrossCodeEval.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Model | Size | Line | | Function | | API | | Average | |
@@ -719,8 +662,6 @@ RepoEval [Zhang et al., [2023](#bib.bib64)] features API invocation and functi
 
 Table 5: Exact Match scores of base models on the task of single-line MultiPL-HumanEval FIM.
 
-
-
 |  |  |  |  |
 | --- | --- | --- | --- |
 | Model | Size | Input-CoT | Output-CoT |
@@ -754,8 +695,7 @@ Table [6](#S5.T6 "Table 6 ‣ 5.1.2 Code Completion ‣ 5.1 Evaluation of Base 
 
 Needle in the Code. To unlock the potential of our code model in understanding repository-level code contexts and benefit real-world software development, it is vital to involve long-context capability in the pretraining phase. To this end, we build a “Needle in the Code” pressure test. The needle construction method is a specialized evaluation technique designed to assess LLM’s ability to handle long contexts. This approach involves carefully placing a relevant code snippet (the “needle”) in broader code functions (the “haystack”). The model is then presented with a specific query related to the embedded code and is required to find and identify the particular code snippet within the larger functional context. Figure [10](#S5.F10 "Figure 10 ‣ 5.1.4 Long-Context Capability ‣ 5.1 Evaluation of Base Models ‣ 5 Results ‣ Seed-Coder: Let the Code Model Curate Data for Itself") shows that Seed-Coder-8B-Base achieves 100% accuracy in the “Needle in the Code” pressure test under 32K context length.
 
-![Refer to caption](/html/2506.03524/assets/x12.png)
-
+!(/html/2506.03524/assets/x12.png)
 
 Figure 10: Evaluation results of the “Needle in the Code” pressure test.
 
@@ -790,8 +730,6 @@ In this section, we report comprehensive evaluation results of our instruct mode
 | Qwen2.5-Coder-32B-Instruct | 32B | 92.7 | 87.2 | 90.2 | 75.1 | 42.4 | 52.3 | 20.9 | 30.7 |
 
 Table 7: Performance of instruct models on HumanEval(+), MBPP(+), MHPP, BigCodeBench-Completion and LiveCodeBench (2410 – 2502).
-
-
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -886,8 +824,6 @@ We evaluated the performance of various instruct models on both the Chinese (zh)
 | Qwen2.5-Coder-32B-Instruct | 32B | 51.9 | 60.9 | 43.0 | 73.1 | 69.9 | 47.1 | 55.0 | 44.9 | 56.4 | 61.7 | 61.8 | 60.6 | 56.9 |
 
 Table 10: Performance of instruct models on FullStack Bench, which covers major real-world code development domains including Basic Programming (BP), Advanced Programming (AP), Software Engineering (SE), Data Analysis (DA), Mathematics (MA), Desktop and Web Development (DW), Machine Learning (ML), Scientific Computing (SC), Database (DB), Multimedia (MM), Operating System (OS), and Others.
-
-
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1004,8 +940,6 @@ CodeEditorBench. A recent code editing benchmark CodeEditorBench [Guo et al., 
 
 Table 14: Performance of instruct models on CodeEditorBench.
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Model | Size | SWE-bench Verified | | Multi-SWE-bench mini |
@@ -1098,9 +1032,9 @@ The evaluation results of IOI and Codeforces are shown in Figure [11](#S5.F11 "
 
 However, we also observed notable gaps between the models’ scores and the IOI bronze medal threshold, indicating that substantial capability improvements are still required, particularly for solving difficult subtasks where models of similar sizes typically fail to generate correct solutions. Additionally, our model’s accuracy on Codeforces problems rated above 2000 points remains very low, and its performance around the 88th percentile still exhibits a significant gap compared to top-tier competitors.
 
-![Refer to caption]()
+!()
 
-![Refer to caption](/html/2506.03524/assets/x14.png)
+!(/html/2506.03524/assets/x14.png)
 
 Figure 11: Performance of reasoning models on IOI’2024 (left) and Codeforces (right).
 
@@ -1762,14 +1696,13 @@ Table 17: Language distribution of the quality scorer training set.
 
 Figure [12](#A1.F12 "Figure 12 ‣ A.2.2 Ground-Truth Quality Scores and Comparison of Oracles ‣ A.2 Configuration of Quality Scorer ‣ Appendix A Appendix ‣ Seed-Coder: Let the Code Model Curate Data for Itself") compares the ground-truth scores from the responses of three oracles. We used GPT-4 Turbo as the baseline, comparing it with DeepSeek-Coder-33B and DeepSeek-V2-Chat. We observed that despite minor discrepancies in determining whether a file meets the zero score conditions, all models produced consistent scores, both on a per-sample basis and in the overall distribution. In practice, we used DeepSeek-V2-Chat as the oracle for training the quality scorer, balancing efficiency and accuracy.
 
-![Refer to caption](/html/2506.03524/assets/x15.png)
+!(/html/2506.03524/assets/x15.png)
 
-![Refer to caption](/html/2506.03524/assets/x16.png)
+!(/html/2506.03524/assets/x16.png)
 
 Figure 12: Comparison of quality scores from three oracles. Score distributions from individual oracles are presented along the top and right edges of the heatmap.
 
-![Refer to caption](/html/2506.03524/assets/x17.png)
-
+!(/html/2506.03524/assets/x17.png)
 
 Figure 13: Boxplot of predicted scores from the quality filter corresponding to each individual ground-truth score. Means are indicated with small white squares in the bars.
 
@@ -1782,83 +1715,3 @@ The quality scorer is designed to filter out low-quality code files from the dat
 |  | ϵc​M​A​E=111​∑i=010(1|Ci|​∑j∈Ci|y^j−i|),ϵM​A​E=∑i=010∑j∈Ci|y^j−i|∑i=010|Ci|,\begin{split}\epsilon\_{cMAE}=\frac{1}{11}\sum\_{i=0}^{10}\left(\frac{1}{|C\_{i}|}\sum\_{j\in C\_{i}}|\hat{y}\_{j}-i|\right),\quad\epsilon\_{MAE}=\frac{\sum\_{i=0}^{10}\sum\_{j\in C\_{i}}|\hat{y}\_{j}-i|}{\sum\_{i=0}^{10}|C\_{i}|},\end{split} |  |
 
 where CiC\_{i} is the subset of samples with ground-truth score ii and y^j\hat{y}\_{j} is the predicted fractional score of sample jj. Both metrics indicate that the scorer performs reliably.
-
-[◄](/html/2506.03523)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2506.03524)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2506.03524)
-[View original  
-on arXiv](https://arxiv.org/abs/2506.03524)[►](/html/2506.03525)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Jul 5 13:58:23 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

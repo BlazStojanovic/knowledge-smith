@@ -37,7 +37,7 @@ authors:
 - Ari Morcos
 - Matthew Leavitt
 parser: ar5iv
-retrieved: '2026-05-11'
+retrieved: '2026-05-15'
 source: paper
 title: 'ÜberWeb: Insights from Multilingual Curation for a 20-Trillion-Token Dataset'
 url: https://arxiv.org/abs/2602.15210
@@ -48,46 +48,7 @@ year: 2026
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-# [Uncaptioned image] Insights from Multilingual Curation for a 20-Trillion-Token Dataset
+# Insights from Multilingual Curation for a 20-Trillion-Token Dataset
 
 ###### Abstract
 
@@ -108,9 +69,6 @@ English benefits from multiple large-scale, carefully curated public corpora
 (Penedo et al., [2024](#bib.bib70 "The fineweb datasets: decanting the web for the finest text data at scale"); Li et al., [2024](#bib.bib37 "Datacomp-lm: in search of the next generation of training sets for language models"); Su et al., [2025](#bib.bib43 "Nemotron-cc: transforming common crawl into a refined long-horizon pretraining dataset"); Olmo et al., [2025](#bib.bib44 "Olmo 3")),
 whereas multilingual corpora are far more fragmented.
 Many non-English languages occupy a long tail characterized by limited, noisy, or inconsistently curated data, constraining multilingual model performance regardless of architectural capacity.
-
-![Refer to caption](/html/2602.15210/assets/x1.png)
-
 
 Figure 1: A new compute-performance Pareto frontier for English and multilingual capabilities. We report
 error rate (log-scale; 1-accuracy, lower is better)
@@ -322,9 +280,6 @@ Cross-lingual impact of English curation.
 Figure [2](#S4.F2 "Figure 2 ‣ 4.1.1 Improving English data quality improves cross-lingual performance ‣ 4.1 The impact of curation on multilingual transfer dynamics and language-specific performance ‣ 4 Main Findings ‣ Insights from Multilingual Curation for a 20-Trillion-Token Dataset") summarizes performance across 13 languages, reporting average scores over multilingual MMLU, ARC Challenge, and Belebele. English-only curation (light blue bars) yields consistent gains over the uncurated baseline (dark purple bars) in every language except Bengali, indicating that improving English data quality alone can measurably strengthen multilingual capabilities in otherwise uncurated languages.
 Averaged across languages, English curation yields a 3.91% relative improvement in non-English performance compared to an uncurated baseline.
 
-![Refer to caption](/html/2602.15210/assets/x2.png)
-
-
 Figure 2: Impact of Curation Strategy on Multilingual Performance (bilingual models).
 Performance comparison for 3B parameter models trained on 60BT tokens (50:50 English:non-English ratio). Results are averaged across multilingual MMLU, ARC, and Belebele.
 Across 13 languages, results show that improved English curation (light blue bars) consistently improves performance over the uncurated baseline (dark purple bars; improvement in 12 of 13 languages), while combining curated English with curated multilingual data (dark blue bars) yields the highest average scores across all languages.
@@ -352,9 +307,6 @@ provide evidence that language similarity, quantified using
 two distinct approaches,
 is significantly correlated with the
 cross-lingual gains from English-only curation.
-
-![Refer to caption](/html/2602.15210/assets/x3.png)
-
 
 Figure 3: Correlation between language similarity to English and cross-lingual transfer benefit. We evaluate linguistic distance using two proxies: (a) average log embedding distance across LaBSE, e5-small, and sentence-transformers, and (b) log perplexity of the target language under an English-only model. Both metrics show a significant negative correlation (Pearson r=−0.62r=-0.62 and r=−0.70r=-0.70 respectively) with the performance uplift gained from English data curation. These results demonstrate that linguistically similar languages, such as Spanish and French, receive the most pronounced benefits from high-quality English data, while more distant languages like Bengali and Arabic show significantly lower transfer gains.
 
@@ -385,9 +337,6 @@ The results demonstrate an average relative improvement of 1.2%. Concretely, in
 the bilingual model trained with fully curated data (i.e., both English and non-English data curated) outperformed the
 version with uncurated non-English data.
 
-![Refer to caption](/html/2602.15210/assets/x4.png)
-
-
 Figure 4: Non-English Curation Benefits English Performance.
 Performance comparison for 3B parameter models trained on 60BT tokens (50:50 English:non-English ratio).
 Results are average of English MMLU and ARC. We contrast performance when
@@ -410,9 +359,6 @@ as a tool within multilingual data curation,
 we conducted controlled experiments on three languages: Hindi, Bengali, and Arabic.
 We trained 3B parameter models for 60B tokens, keeping the English component fixed and curated, while varying the non-English strategy.
 We compared three approaches: (1) an uncurated baseline, (2) augmenting the baseline with translations of randomly selected English data (i.e., blind translations), and (3) augmenting with translations of high-quality, scored English data. When scoring English data, we used a fasttext classifier similar to Penedo et al. ([2024](#bib.bib70 "The fineweb datasets: decanting the web for the finest text data at scale")).
-
-![Refer to caption](/html/2602.15210/assets/x5.png)
-
 
 Figure 5: Evaluation of benefits associated with Random vs Scored Translation for Low-Resource Languages. Performance curves for Hindi, Bengali and Arabic showing that while augmenting training data with translated English text (red and cyan lines) improves over the uncurated baseline (dark gray), it still falls short of the performance achieved by bespoke DatologyAI curation (dark blue).
 
@@ -931,17 +877,11 @@ Table 3: Estimated training compute (FLOPs) for the open-source baselines in Fig
 
 ### A.3 Per language evaluation performance
 
-![Refer to caption](/html/2602.15210/assets/x6.png)
-
-
 Figure 6: Per-language performance vs. training compute for latin-script languages. Rows correspond to Spanish, Portuguese, French, German, Vietnamese, and Indonesian. Columns 1–3 report performance on MMLU, ARC, and Belebele as a function of training FLOPs (x-axis). The rightmost column compares each model’s language-specific average score (y-axis) to its all-language average across multilingual evaluations (x-axis); the dashed line indicates parity (y = x).
-
-![Refer to caption](/html/2602.15210/assets/x7.png)
-
 
 Figure 7: Per-language performance vs. training compute for Indic and Arabic-script languages. Rows correspond to Hindi, Bengali, and Arabic. Columns 1–3 report performance on MMLU, ARC, and Belebele as a function of training FLOPs (x-axis). The rightmost column compares each model’s language-specific average score (y-axis) to its all-language average across multilingual evaluations (x-axis); the dashed line indicates parity (y = x).
 
-![Refer to caption](/html/2602.15210/assets/x8.png)
+
 
 
 Figure 8: Per-language performance vs. training compute for CJK languages and Russian. Rows correspond to Chinese, Japanese, Korean, and Russian. Columns 1–3 report performance on MMLU, ARC, and Belebele as a function of training FLOPs (x-axis). The rightmost column compares each model’s language-specific average score (y-axis) to its all-language average across multilingual evaluations (x-axis); the dashed line indicates parity (y = x). We note that there is no ARC Challenge evaluation available for Japanese.
@@ -975,9 +915,6 @@ estimate of per-language tokens using public information. These models are:
   DatologyAI: as referenced in section [4.3](#S4.SS3 "4.3 Integrating multilingual curation into a general pretraining mix ‣ 4 Main Findings ‣ Insights from Multilingual Curation for a 20-Trillion-Token Dataset"), DatologyAI models were trained for 1T tokens with a 7.75% multilingual component. This corresponds to a total of 75B multilingual tokens across thirteen languages, approximately 6B tokens per language.
 
 Figure [9](#A1.F9 "Figure 9 ‣ A.4 Multilingual data efficiency gains ‣ Appendix A Appendix ‣ Insights from Multilingual Curation for a 20-Trillion-Token Dataset") visualizes the performance across various languages as a function of estimated tokens in that language. We observe that DatologyAI curation has orders of magnitude gains in token efficiency.
-
-![Refer to caption](/html/2602.15210/assets/x9.png)
-
 
 Figure 9: Per-Language Performance vs. Multilingual Training Tokens.
 We visualize the number of language-specific training tokens (x-axis, billions) and the
@@ -1224,83 +1161,3 @@ Table 15: Evaluations for language Korean
 | Trinity Large (MoE) | 0.76 | 0.91 | 0.92 |
 
 Table 16: Evaluations for language Russian
-
-[◄](/html/2602.15209)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.15210)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.15210)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.15210)[►](/html/2602.15211)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 16:43:07 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

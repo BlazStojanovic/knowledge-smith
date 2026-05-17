@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/1512.03385v1
 year: 2015
 ---
 
-[1512.03385] Deep Residual Learning for Image Recognition
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Deep Residual Learning for Image Recognition
 
 Kaiming He   Xiangyu Zhang   Shaoqing Ren   Jian Sun
@@ -82,8 +39,7 @@ Driven by the significance of depth, a question arises: *Is learning better netw
 as stacking more layers?*
 An obstacle to answering this question was the notorious problem of vanishing/exploding gradients [[1](#bib.bib1), [9](#bib.bib9)], which hamper convergence from the beginning. This problem, however, has been largely addressed by normalized initialization [[23](#bib.bib23), [9](#bib.bib9), [37](#bib.bib37), [13](#bib.bib13)] and intermediate normalization layers [[16](#bib.bib16)], which enable networks with tens of layers to start converging for stochastic gradient descent (SGD) with backpropagation [[22](#bib.bib22)].
 
-![Refer to caption](/html/1512.03385/assets/x1.png)
-
+!(/html/1512.03385/assets/x1.png)
 
 Figure 1: Training error (left) and test error (right) on CIFAR-10 with 20-layer and 56-layer “plain” networks. The deeper network has higher training error, and thus test error. Similar phenomena on ImageNet is presented in Fig. [4](#S3.F4 "Figure 4 ‣ 3.3 Network Architectures ‣ 3 Deep Residual Learning ‣ Deep Residual Learning for Image Recognition").
 
@@ -97,8 +53,7 @@ We hypothesize that it is easier to optimize the residual mapping than to optimi
 
 The formulation of ℱ​(𝐱)+𝐱ℱ𝐱𝐱\mathcal{F}(\mathbf{x})+\mathbf{x} can be realized by feedforward neural networks with “shortcut connections” (Fig. [2](#S1.F2 "Figure 2 ‣ 1 Introduction ‣ Deep Residual Learning for Image Recognition")). Shortcut connections [[2](#bib.bib2), [34](#bib.bib34), [49](#bib.bib49)] are those skipping one or more layers. In our case, the shortcut connections simply perform *identity* mapping, and their outputs are added to the outputs of the stacked layers (Fig. [2](#S1.F2 "Figure 2 ‣ 1 Introduction ‣ Deep Residual Learning for Image Recognition")). Identity shortcut connections add neither extra parameter nor computational complexity. The entire network can still be trained end-to-end by SGD with backpropagation, and can be easily implemented using common libraries (*e.g*., Caffe [[19](#bib.bib19)]) without modifying the solvers.
 
-![Refer to caption](/html/1512.03385/assets/x2.png)
-
+!(/html/1512.03385/assets/x2.png)
 
 Figure 2: Residual learning: a building block.
 
@@ -161,8 +116,7 @@ The form of the residual function ℱℱ\mathcal{F} is flexible. Experiments in 
 
 We also note that although the above notations are about fully-connected layers for simplicity, they are applicable to convolutional layers. The function ℱ​(𝐱,{Wi})ℱ𝐱subscript𝑊𝑖\mathcal{F}(\mathbf{x},\{W\_{i}\}) can represent multiple convolutional layers. The element-wise addition is performed on two feature maps, channel by channel.
 
-![Refer to caption](/html/1512.03385/assets/x3.png)
-
+!(/html/1512.03385/assets/x3.png)
 
 Figure 3: Example network architectures for ImageNet. Left: the VGG-19 model [[41](#bib.bib41)] (19.6 billion FLOPs) as a reference. Middle: a plain network with 34 parameter layers (3.6 billion FLOPs). Right: a residual network with 34 parameter layers (3.6 billion FLOPs). The dotted shortcuts increase dimensions. Table [1](#S3.T1 "Table 1 ‣ 3.3 Network Architectures ‣ 3 Deep Residual Learning ‣ Deep Residual Learning for Image Recognition") shows more details and other variants.
 
@@ -199,8 +153,7 @@ For both options, when the shortcuts go across feature maps of two sizes, they a
 
 Table 1: Architectures for ImageNet. Building blocks are shown in brackets (see also Fig. [5](#S4.F5 "Figure 5 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition")), with the numbers of blocks stacked. Downsampling is performed by conv3\_1, conv4\_1, and conv5\_1 with a stride of 2.
 
-![Refer to caption](/html/1512.03385/assets/x4.png)
-
+!(/html/1512.03385/assets/x4.png)
 
 Figure 4: Training on ImageNet. Thin curves denote training error, and bold curves denote validation error of the center crops. Left: plain networks of 18 and 34 layers. Right: ResNets of 18 and 34 layers. In this plot, the residual networks have no extra parameter compared to their plain counterparts.
 
@@ -263,8 +216,6 @@ When the net is “not overly deep” (18 layers here), the current SGD solver i
 Table 3: Error rates (%, 10-crop testing) on ImageNet validation.
 VGG-16 is based on our test. ResNet-50/101/152 are of option B that only uses projections for increasing dimensions.
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | method | top-1 err. | top-5 err. |
@@ -299,8 +250,7 @@ In Table [3](#S4.T3 "Table 3 ‣ 4.1 ImageNet Classification ‣ 4 Experiments 
 Table [3](#S4.T3 "Table 3 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition") shows that all three options are considerably better than the plain counterpart.
 B is slightly better than A. We argue that this is because the zero-padded dimensions in A indeed have no residual learning. C is marginally better than B, and we attribute this to the extra parameters introduced by many (thirteen) projection shortcuts. But the small differences among A/B/C indicate that projection shortcuts are not essential for addressing the degradation problem. So we do not use option C in the rest of this paper, to reduce memory/time complexity and model sizes. Identity shortcuts are particularly important for not increasing the complexity of the bottleneck architectures that are introduced below.
 
-![Refer to caption](/html/1512.03385/assets/x5.png)
-
+!(/html/1512.03385/assets/x5.png)
 
 Figure 5: A deeper residual function ℱℱ\mathcal{F} for ImageNet. Left: a building block (on 56×\times56 feature maps) as in Fig. [3](#S3.F3 "Figure 3 ‣ 3.2 Identity Mapping by Shortcuts ‣ 3 Deep Residual Learning ‣ Deep Residual Learning for Image Recognition") for ResNet-34. Right: a “bottleneck” building block for ResNet-50/101/152.
 
@@ -318,8 +268,7 @@ Remarkably, although the depth is significantly increased, the 152-layer ResNet 
 
 The 50/101/152-layer ResNets are more accurate than the 34-layer ones by considerable margins (Table [3](#S4.T3 "Table 3 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition") and [5](#S4.T5 "Table 5 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition")). We do not observe the degradation problem and thus enjoy significant accuracy gains from considerably increased depth. The benefits of depth are witnessed for all evaluation metrics (Table [3](#S4.T3 "Table 3 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition") and [5](#S4.T5 "Table 5 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition")).
 
-![Refer to caption](/html/1512.03385/assets/x6.png)
-
+!(/html/1512.03385/assets/x6.png)
 
 Figure 6: Training on CIFAR-10. Dashed lines denote training error, and bold lines denote testing error. Left: plain networks. The error of plain-110 is higher than 60% and not displayed. Middle: ResNets. Right: ResNets with 110 and 1202 layers.
 
@@ -372,8 +321,7 @@ Fig. [6](#S4.F6 "Figure 6 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣
 
 We further explore n=18𝑛18n=18 that leads to a 110-layer ResNet. In this case, we find that the initial learning rate of 0.1 is slightly too large to start converging555With an initial learning rate of 0.1, it starts converging (<<90% error) after several epochs, but still reaches similar accuracy.. So we use 0.01 to warm up the training until the training error is below 80% (about 400 iterations), and then go back to 0.1 and continue training. The rest of the learning schedule is as done previously. This 110-layer network converges well (Fig. [6](#S4.F6 "Figure 6 ‣ 4.1 ImageNet Classification ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition"), middle). It has *fewer* parameters than other deep and thin networks such as FitNet [[35](#bib.bib35)] and Highway [[42](#bib.bib42)] (Table [6](#S4.T6 "Table 6 ‣ 4.2 CIFAR-10 and Analysis ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition")), yet is among the state-of-the-art results (6.43%, Table [6](#S4.T6 "Table 6 ‣ 4.2 CIFAR-10 and Analysis ‣ 4 Experiments ‣ Deep Residual Learning for Image Recognition")).
 
-![Refer to caption](/html/1512.03385/assets/x7.png)
-
+!(/html/1512.03385/assets/x7.png)
 
 Figure 7: Standard deviations (std) of layer responses on CIFAR-10. The responses are the outputs of each 3×\times3 layer, after BN and before nonlinearity. Top: the layers are shown in their original order. Bottom: the responses are ranked in descending order.
 
@@ -728,8 +676,6 @@ For completeness, we report the improvements made for the competitions. These im
 
 Table 9: Object detection improvements on MS COCO using Faster R-CNN and ResNet-101.
 
-
-
 | system | net | data | mAP | areo | bike | bird | boat | bottle | bus | car | cat | chair | cow | table | dog | horse | mbike | person | plant | sheep | sofa | train | tv |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | baseline | VGG-16 | 07+12 | 73.2 | 76.5 | 79.0 | 70.9 | 65.5 | 52.1 | 83.1 | 84.7 | 86.4 | 52.0 | 81.9 | 65.7 | 84.8 | 84.6 | 77.5 | 76.7 | 38.8 | 73.6 | 73.9 | 83.0 | 72.6 |
@@ -829,83 +775,3 @@ For each training image, the highest scored 200 proposals are extracted as train
 This R-CNN network is fine-tuned on the training set using a mini-batch size of 256 in the RoI-centric fashion. For testing, the RPN generates the highest scored 200 proposals for each predicted class, and the R-CNN network is used to update these proposals’ scores and box positions.
 
 This method reduces the top-5 localization error to 10.6% (Table [13](#A3.T13 "Table 13 ‣ Appendix C ImageNet Localization ‣ Deep Residual Learning for Image Recognition")). This is our single-model result on the validation set. Using an ensemble of networks for both classification and localization, we achieve a top-5 localization error of 9.0% on the test set. This number significantly outperforms the ILSVRC 14 results (Table [14](#A3.T14 "Table 14 ‣ Appendix C ImageNet Localization ‣ Deep Residual Learning for Image Recognition")), showing a 64% relative reduction of error. *This result won the 1st place in the ImageNet localization task in ILSVRC 2015.*
-
-[◄](/html/1512.03384)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1512.03385)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1512.03385)
-[View original  
-on arXiv](https://arxiv.org/abs/1512.03385)[►](/html/1512.03386)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 15 23:30:49 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

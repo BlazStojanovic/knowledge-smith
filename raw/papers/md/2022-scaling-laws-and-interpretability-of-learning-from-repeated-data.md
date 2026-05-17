@@ -27,49 +27,6 @@ url: https://arxiv.org/abs/2205.10487
 year: 2022
 ---
 
-[2205.10487] Scaling Laws and Interpretability of Learning from Repeated Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Scaling Laws and Interpretability of Learning from Repeated Data
 
 Danny Hernandez
@@ -96,8 +53,7 @@ Recent large language models have been trained on vast datasets, but also often 
 
 ## 1 Introduction
 
-![Refer to caption](/html/2205.10487/assets/x1.png)
-
+!(/html/2205.10487/assets/x1.png)
 
 Figure 1: Experimental Setup. From a large original text dataset (left), we draw 90% of our desired training dataset in a non-repeated fashion, and 10% as repeats of a tiny portion of the original dataset (right). We hold constant that 10% of total training tokens will come from repeats, but we vary the repeated fraction in our runs. In other words, the sample to be repeated might be very small, like 0.01% of the total training tokens repeated 1000x, or relatively large, like 1% of the total training tokens repeated 10x. A small, held-back portion of the original dataset (yellow in left figure), not including any repeated data, is used as a test set and is the test loss reported in all subsequent figures.
 
@@ -111,9 +67,9 @@ Together, the two lenses provide an integrated picture of how repeated data migh
 
 ### 1.1 Summary of Results
 
-![Refer to caption](/html/2205.10487/assets/figures/double_10_v2.jpg)
+!(/html/2205.10487/assets/figures/double_10_v2.jpg)
 
-![Refer to caption](/html/2205.10487/assets/x2.png)
+!(/html/2205.10487/assets/x2.png)
 
 Figure 2: Models of different sizes show a degradation in performance at a specific range of repeats that shrinks with model size (left panel). At its peak the degradation sometimes reaches the equivalent of a 2x decrease in model size. The right panel shows that divergence (blue line) from a healthy, straight scaling law (red) lines up with when the models start to dramatically overfit the repeated subset (green curve). The blue line on the right corresponds to a vertical slice of models in the left diagram trained on the repeated subset for 120 epochs. All these models were trained on 90% unique data and 10% repeated tokens.
 
@@ -146,9 +102,9 @@ To systematically study repeated data, we trained transformer [[Vaswani et al.,
 
 ## 2 Results
 
-![Refer to caption](/html/2205.10487/assets/x3.png)
+!(/html/2205.10487/assets/x3.png)
 
-![Refer to caption](/html/2205.10487/assets/x4.png)
+!(/html/2205.10487/assets/x4.png)
 
 Figure 3:  Learning curves for test loss on 800M models with 90% repeated data (left) and 50% repeated data (right), each with varying numbers of repeats/sizes of the repeated fraction. The graph on the left shows characteristic double descent curves. Repeated epochs corresponds to the number of epochs on the repeated tokens, the rest of the data is seen only once. For several models, test loss drops as normal during the beginning of training, but then starts to rise during the middle of training before dropping again. In the graph on the right with only 50% repeated data, we see that the double descent bumps have turned into long plateaus for highly affected models.
 
@@ -159,9 +115,9 @@ Figure [3](#S2.F3 "Figure 3 ‣ 2 Results ‣ Scaling Laws and Interpretability 
 
 Repeated data can cause a divergence from power-law scaling. Figure [4](#S2.F4 "Figure 4 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") zooms in on the degradation of performance, measured as a function of model size for different repetition frequencies of the repeated data. For example, models trained for 1,220 repeats and 10% repeated data show a dip in performance to the equivalent of a model 0.55x as large, when the model size is 10M to 100M parameters. As the model size continues to increase, performance recovers to 0.8x model-size equivalent for a 1B parameter model. For a smaller number of repeats (122 repeats), the dip occurs later, centered around 1B parameters.
 
-![Refer to caption](/html/2205.10487/assets/x5.png)
+!(/html/2205.10487/assets/x5.png)
 
-![Refer to caption](/html/2205.10487/assets/figures/poor_region.png)
+!(/html/2205.10487/assets/figures/poor_region.png)
 
 Figure 4: On the left we plot the same results as in Figure [2](#S1.F2 "Figure 2 ‣ 1.1 Summary of Results ‣ 1 Introduction ‣ Scaling Laws and Interpretability of Learning from Repeated Data"), re-parameterized in terms of the effective model size multiplier implied by the test loss (performance equal to a model with x times as many parameters). For a given number of repetitions, degradation occurs only for a specific range of model sizes. For example, for the blue curve (122 repeated epochs), we see almost no performance deviation from a power law scaling law (line on log-log graph) until the model is scaled up to 100M parameters, after which we see a divergence. We see the same divergence around 400M parameters for 12,200 repeated epochs. The right graph shows a large, predictable region over which the degradation occurs, and suggests that large models like GPT-3, Gopher, and PALM [[Brown et al., 2020](#bib.bibx6), [Rae et al., 2021](#bib.bibx32), [Bi et al., 2020](#bib.bibx5)] need to be careful about overfitting their high quality distributions like Wikipedia and books – although note that this holds constant the number of total training tokens. The blue and green curves correspond to the right and left sides of the double descent region where we observe 50% of the maximum effect. They are an aggregation of that curve for the scans where we trained on 3%, 10%, 20%, 50%, and 90% repeated data. The details of both fits are in Appendix [A](#A1 "Appendix A Model Size Multiplier and Poor Performance Region Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data"). A large number of runs needed to be aggregated to produce a clean fit for region of reduced performance.
 
@@ -189,9 +145,9 @@ To do this constructed a simple evaluation in which copying is heavily emphasize
 
 To get another view on the same phenomenon, we measured the loss of various models on the X𝑋Xth consecutive copy of the Harry Potter paragraph, where X𝑋X runs from 1 to 12. As shown in Figure [7](#S2.F7 "Figure 7 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") (left), for most models the loss gradually decreases with increasing numbers of copies of the paragraph (i.e. the model has an easier time predicting an additional copies after seeing more consecutive copies), but at the peak of the double descent phenomenon, the loss is much higher and, strikingly, does not decrease at all with additional copies of the paragraph. This large aberration shows how strong the selective effect of the double descent phenomenon on copying is. General in-context learning is also harmed at the pessimal number of repeated epochs (Figure [7](#S2.F7 "Figure 7 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") right), though to a lesser extent than copying.
 
-![Refer to caption](/html/2205.10487/assets/x6.png)
+!(/html/2205.10487/assets/x6.png)
 
-![Refer to caption](/html/2205.10487/assets/x7.png)
+!(/html/2205.10487/assets/x7.png)
 
 Figure 5: We constructed a simple measure of the model’s copying ability, consisting of the loss on the first paragraph of Harry Potter repeated 11 times. We measured the double descent peak performance for a given model size and fraction of repeated data and compared that to a fit of these evaluations on the control model (trained on unique text) scan to generate an effective model size. We observe that 3% repeated data at the pessimal number of repeated epochs caused a 3x reduction in effective model size on this task for a for several model sizes, whereas it only caused at most a 1.15x reduction in effective model size on test loss. We see much larger effects on the copying evaluation than on overall performance for repeated data fractions between 3% and 20%. The model size multiplier for copying is based on interpolation and the model size multiplier for test loss is based on a power law fit (see Appendix [C](#A3 "Appendix C Appendix: Copying and Prefix Matching Score Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data") for more details).
 
@@ -200,9 +156,9 @@ Having connected the damage associated with repeated data with a measure of gene
 
 [[Olsson et al., 2022](#bib.bibx26)] defines induction heads by their ability to facilitate simple copying given a repeated random sequence of tokens (though in practice this definition ends up including heads with more complex behaviors too). Induction heads use a circuit of 2 attention heads to "complete the pattern by copying and completing sequences." This can be split up into attending to the relevant token (prefix matching) and increasing the logit corresponding to the attended-to token.
 
-![Refer to caption](/html/2205.10487/assets/x8.png)
+!(/html/2205.10487/assets/x8.png)
 
-![Refer to caption](/html/2205.10487/assets/x9.png)
+!(/html/2205.10487/assets/x9.png)
 
 Figure 6: Comparison of degradation of prefix matching score with repeated data, compared to general degradation of the test loss. We measured the double descent peak performance for a given model size and fraction of repeated data and compared that to a fit of the prefix matching score on the control model scan to generate an effective model size. We observe that 3% repeated data causes on average [21](#A3.F21 "Figure 21 ‣ Appendix C Appendix: Copying and Prefix Matching Score Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data") a 1.47 model size multiplier on prefix matching score while causing less than a 1.15x model size reduction in effective model size on test loss. Again we see much larger effects on the prefix matching score than on overall performance for repeated data fractions between 3% and 20%. The model size multiplier for prefix matching is based on a linear fit (see Appendix [C](#A3 "Appendix C Appendix: Copying and Prefix Matching Score Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data") for more details of fit). The test loss shown on the right is the same graph as in Figure 5, but with differently scaled axes for ease of comparison.
 
@@ -212,9 +168,9 @@ As another example, we find it interesting that the sharp drop in prefix matchin
 
 Although not as conclusive as the previous results, these clearly show that prefix matching is preferentially degraded in some cases.
 
-![Refer to caption](/html/2205.10487/assets/x10.png)
+!(/html/2205.10487/assets/x10.png)
 
-![Refer to caption](/html/2205.10487/assets/x11.png)
+!(/html/2205.10487/assets/x11.png)
 
 Figure 7: Degradation of copying and in-context learning at the peak of the double descent curve. On the left we show the 2-layer models trained on 50% repeated data from Figure [5](#S2.F5 "Figure 5 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data"), evaluated on the first paragraph of Harry Potter copied X times where X runs from 1 to 11. In Appendix [D](#A4 "Appendix D Appendix: Harry Potter Copying Evaluation with Fewer Characters ‣ Scaling Laws and Interpretability of Learning from Repeated Data"), we explore shortening the length of the paragraph to verify the problem is with copying rather than long contexts. The right shows per token losses on the test set. Both graphs show dramatically reduced performance (higher copying loss, lower benefit to in-context learning) at the peak of the double descent.
 
@@ -222,8 +178,7 @@ One and two-layer attention only models are worse at copying and fuzzily copying
 
 For 1-layer attention only models, where copying takes the form of skip-trigrams, we can easily see that the repeated data model is worse at a form of copying associated with these skip trigrams. Namely, we compare the probabilities that the repeated data and control models assign to each token in a paragraph, and focus especially on proper names which occur repeatedly in the paragraph (Figure [8](#S2.F8 "Figure 8 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")). The most obvious way to correctly predict these re-occurring names is by copying, and we see that in most cases the control model (trained on unique text) performs much better than the one with repeated data (yellow underlines).
 
-![Refer to caption](/html/2205.10487/assets/figures/1l_attn_hp.jpg)
-
+!(/html/2205.10487/assets/figures/1l_attn_hp.jpg)
 
 Figure 8: Visualization of the difference in loss on the first paragraph of Harry Potter for control and 10%-repeated-data runs of a 1-layer attention-only model. Orange highlights correspond to the control model performing better, purple corresponds to the repeated data performing, and the intensity corresponds to the magnitude of the difference in per token losses. Proper names (which are a good target for copying when they occur more than once) are underlined in yellow on second or later occurance; it is clear that the control model performs better on these. Often the difference is dramatic: for the last three appearances of “Potters” the control model puts a >97% chance on “ters” given “Pot”, whereas the repeated data model puts <4% chance on that token.
 
@@ -239,8 +194,7 @@ Very specifically, predicting repeated names requires exactly a skip-trigram pat
 
 We also plotted the same visualization for a 2-layer attention-only model (which is known to contain simple induction heads), and find the control model is better at fuzzy copying (Figure [9](#S2.F9 "Figure 9 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")).
 
-![Refer to caption](/html/2205.10487/assets/figures/2l_attn_per_token.jpg)
-
+!(/html/2205.10487/assets/figures/2l_attn_per_token.jpg)
 
 Figure 9: Same as Figure 9, but for 2-layer attention-only models. Proper names (which are a good target for copying when they occur more than once) are underlined in yellow on second or later occurance. Here the repeated-data model sometimes does better on repeated proper names, but there are still clear examples of the control performing much better. These examples are highlighted in green and discussed. On the token [ley] in the second appearance of [D][urs][ley] the control model places a 92% likelihood on [ley] whereas the repeated data model places a 10% likelihood. On the token [leys] in the second appearance of [D][urs][leys] the control model places a 44% likelihood on [leys] whereas the repeated data model places a 4.9% likelihood. On the [ley] in [ un][D][urs][ley][ish] the control model places a 68% likelihood on [ley] whereas the repeated data model places a 0.4% likelihood.
 
@@ -250,9 +204,9 @@ We attempted to leverage logit attribution (which earlier tokens contributed to 
 
 Repeated data causes a smaller, disproportionate performance drop on our out-of-distribution evaluations.
 
-![Refer to caption](/html/2205.10487/assets/x12.png)
+!(/html/2205.10487/assets/x12.png)
 
-![Refer to caption](/html/2205.10487/assets/x13.png)
+!(/html/2205.10487/assets/x13.png)
 
 Figure 10: We observe that training on high levels of repeated data causes a small disproportionate drop on out-of-distribution performance (Python loss). The effect is noisy, but since we do not see a model size effect we take the average in the figure on the right (harmonic mean of multipliers). For large repeated fractions of 50% and 90% we see model size multipliers of .84 and .75.
 
@@ -260,9 +214,9 @@ Given that we overfit the model, we expected it to perform worse off distributio
 
 We observe a double descent phenomenon in sparse sweep of models trained on python, but we the Python scans exhibit a somewhat different overall shape. To add more generality to our results, we repeated the same experiments on a Python dataset instead of natural language (Figure [11](#S2.F11 "Figure 11 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")). If we use the same method to fit the poor performance region, we see a broadly similar fit and a second epoch for today’s large models (approximately 200B parameters) is still robustly in the reduced performance region for python. However the fit is noisier than the fit for text and the two lines are no longer parallel.
 
-![Refer to caption](/html/2205.10487/assets/x14.png)
+!(/html/2205.10487/assets/x14.png)
 
-![Refer to caption](/html/2205.10487/assets/figures/poor_region_py.png)
+!(/html/2205.10487/assets/figures/poor_region_py.png)
 
 Figure 11: Double descent phenomenon for models trained on python. Training on Python gives similar results to what Figure 2 and Figure 4 show for language models. Here 50% of the dataset consists of repeats and 50% is unique. On the left side is degradation in performance, occurring over a specific range of repetition that varies with model size. On the right, we again see a large region of poor performance as we did in Figure [4](#S2.F4 "Figure 4 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data"), although the fit is noisier. Again the blue and green curves correspond to the right and left sides of the double descent curve where we observe 50% of the maximum effect.
 
@@ -270,9 +224,9 @@ The noise may partially be explained by the Python fits being averaged over half
 
 Pre-training on repeated data hurts fine-tuned performance We find that the negative impact of repeated data persists after fine-tuning natural-language models on Python (Figure [12](#S2.F12 "Figure 12 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")).
 
-![Refer to caption](/html/2205.10487/assets/x15.png)
+!(/html/2205.10487/assets/x15.png)
 
-![Refer to caption](/html/2205.10487/assets/x16.png)
+!(/html/2205.10487/assets/x16.png)
 
 Figure 12: Effect of repeated data during pre-training on fine-tuning. Models were pre-trained on 90% repeated data (red lines) or on totally unique data (blue lines), and then fine-tuned on Python (always unique data). The repetition frequency was chosen to maximize the performance hit. The model pre-trained on repeated data encounters a sizable performance hit during fine-tuning (left panel), causing it to not only perform worse than the model pre-trained on unique data, but also worse than a model trained from scratch (green line). The right panel shows fine-tuning curves of the two models. The model pretrained on repeated data performs much worse for several billion tokens (red line), but eventually catches up to the model pretrained on unique data (blue line).
 
@@ -419,9 +373,9 @@ Sam McCandlish led pre-training efforts and advised the project.
 
 ## Appendix A Model Size Multiplier and Poor Performance Region Fits
 
-![Refer to caption](/html/2205.10487/assets/x17.png)
+!(/html/2205.10487/assets/x17.png)
 
-![Refer to caption](/html/2205.10487/assets/x18.png)
+!(/html/2205.10487/assets/x18.png)
 
 Figure 13: We see a power laws provide good fits for both language and Python data. We can use these fit to re-parameterize loss for our models trained on repeated data into model size multipliers.
 
@@ -431,9 +385,9 @@ When we graph repeated epochs vs model size multiplier with a given fraction of 
 
 We estimate how many repeated epochs half of the maximum effect size (on a log scale) would be observed using linear interpolation on the left and right side of the double descent peak for each fraction of repeated data. We then averaged these curves to make an overall estimate for the left and right boundaries of the poor performance region shown in Figure [4](#S2.F4 "Figure 4 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") and Figure [11](#S2.F11 "Figure 11 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data"). For text this produces a relatively clean overall fit, but the the individual curves for text are relatively noisy as shown in [14](#A1.F14 "Figure 14 ‣ Appendix A Model Size Multiplier and Poor Performance Region Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data"). Some potential explanations for the noise are i) Given the resolution of our scan we do not always get a good estimate of the peak effect for a given curve (the peak can easily be between two points we measured ii) our linear interpolation also introduces error as our underlying curves only have 6 points.
 
-![Refer to caption](/html/2205.10487/assets/x19.png)
+!(/html/2205.10487/assets/x19.png)
 
-![Refer to caption](/html/2205.10487/assets/x20.png)
+!(/html/2205.10487/assets/x20.png)
 
 Figure 14: We estimate how many repeated epochs half of the maximum effect size (on a log scale) would be observed using linear interpolation on the left and right side of the double descent peak for each fraction of repeated data. We then averaged these curves to make an overall estimate for the left and right boundaries of the poor performance region shown in Figure [4](#S2.F4 "Figure 4 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")
 
@@ -441,23 +395,21 @@ Overall we think the region of poor performances we showed in Figure [4](#S2.F4 
 
 For Python, the aggregate shown in Figure [11](#S2.F11 "Figure 11 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") is quite a bit noisier. A lot of the noise is explained by only aggregating two scans rather than 5. But we see the individual scans for Python are also noiser as shown in Figure [16](#A1.F16 "Figure 16 ‣ Appendix A Model Size Multiplier and Poor Performance Region Fits ‣ Scaling Laws and Interpretability of Learning from Repeated Data")
 
-![Refer to caption](/html/2205.10487/assets/x21.png)
+!(/html/2205.10487/assets/x21.png)
 
-![Refer to caption](/html/2205.10487/assets/x22.png)
+!(/html/2205.10487/assets/x22.png)
 
-![Refer to caption](/html/2205.10487/assets/x23.png)
+!(/html/2205.10487/assets/x23.png)
 
-![Refer to caption](/html/2205.10487/assets/x24.png)
+!(/html/2205.10487/assets/x24.png)
 
 Figure 15: it is easier to see the sharpness of the double descent peaks in this diagram than Figure [2](#S1.F2 "Figure 2 ‣ 1.1 Summary of Results ‣ 1 Introduction ‣ Scaling Laws and Interpretability of Learning from Repeated Data"). The 1% runs was much noisier than the rest so we excluded it from our fits
 
 .
 
+!(/html/2205.10487/assets/x25.png)
 
-
-![Refer to caption](/html/2205.10487/assets/x25.png)
-
-![Refer to caption](/html/2205.10487/assets/x26.png)
+!(/html/2205.10487/assets/x26.png)
 
 Figure 16: We estimate how many repeated epochs half would cause half of the maximum effect size (on a log scale) for our Python models using linear interpolation on the left and right side of the double descent peak for each fraction of repeated data. We then averaged these two curves to make an overall estimate for the left and right boundaries of the poor performance region shown in Figure [11](#S2.F11 "Figure 11 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data")
 
@@ -465,43 +417,37 @@ Figure 16: We estimate how many repeated epochs half would cause half of the max
 
 For attention only models we can directly attribute contributions of the attention heads to the logits. We attempted to use this technique to better understand how the induction heads were disrupted for 2 layer models. For instance, it could be they were firing more weakly, or it could be activity from other attention heads were interfering with their ability to copy.
 
-![Refer to caption](/html/2205.10487/assets/figures/logit_red.png)
-
+!(/html/2205.10487/assets/figures/logit_red.png)
 
 Figure 17: For attention only models we can directly attribute contributions of the attention heads to the logits as shown in [[Elhage et al., 2021](#bib.bibx9), [Olsson et al., 2022](#bib.bibx26)]. Both models were evaluated on the first paragraph of Harry Potter copied twice. The induction head appeared to be head 0, shown in red for both models. The control model’s logit attribution is shown for the first two paragraph, and the third paragraph shown is from the repeated model at the double descent peak for comparison.
 
-![Refer to caption](/html/2205.10487/assets/figures/logit_all.png)
-
+!(/html/2205.10487/assets/figures/logit_all.png)
 
 Figure 18: For attention only models we can directly attribute contributions of the attention heads to the logits as shown in [[Elhage et al., 2021](#bib.bibx9), [Olsson et al., 2022](#bib.bibx26)]. Similar to Figure [17](#A2.F17 "Figure 17 ‣ Appendix B Appendix: Logit Attribution Analysis, 2 Layer Models ‣ Scaling Laws and Interpretability of Learning from Repeated Data") both models were evaluated on the first paragraph of Harry Potter copied twice, but here the contribution of all attention heads is shown. The other attention heads in the repeated data model appears more active (several of the reddish tokens in the second paragraph are brown in the third paragraph).
 
 Overall it feels like both effects happen weakly, and that it was easier to understand the disruption to induction heads through the per token losses shown in Figures [8](#S2.F8 "Figure 8 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") and [9](#S2.F9 "Figure 9 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data"), than through logit attribution.
 
-![Refer to caption](/html/2205.10487/assets/x27.png)
-
+!(/html/2205.10487/assets/x27.png)
 
 Figure 19: We still observe double descent on repeated data with 1 layer attention only models, so it is possible we’d observe double descent on repeated data for simpler model types.
 
 ## Appendix C Appendix: Copying and Prefix Matching Score Fits
 
-![Refer to caption](/html/2205.10487/assets/x28.png)
+!(/html/2205.10487/assets/x28.png)
 
-![Refer to caption](/html/2205.10487/assets/x29.png)
+!(/html/2205.10487/assets/x29.png)
 
 Figure 20: In order to do the model size interpolation used in Figure [5](#S2.F5 "Figure 5 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") we use the loss on Harry Potter’s first paragraph copied 11 times for our control models (no repeated data). it is relatively well behaved, but it was not obvious how to extrapolate the curve. On the right, as a sanity check, we check to make sure we still see peaks moving left as model size increases that approximately line up with what was observed in [2](#S1.F2 "Figure 2 ‣ 1.1 Summary of Results ‣ 1 Introduction ‣ Scaling Laws and Interpretability of Learning from Repeated Data")
 
+!(/html/2205.10487/assets/x30.png)
 
-
-![Refer to caption](/html/2205.10487/assets/x30.png)
-
-![Refer to caption](/html/2205.10487/assets/x31.png)
+!(/html/2205.10487/assets/x31.png)
 
 Figure 21: For the model size multiplier in Figure [6](#S2.F6 "Figure 6 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") we a linear fit on the prefix matching score for the control models shown on the left. On the right, similar to [10](#S2.F10 "Figure 10 ‣ 2 Results ‣ Scaling Laws and Interpretability of Learning from Repeated Data") we show that if we take an average over model size (harmonic mean of multiplier), we get a relatively clean relationship.
 
 ## Appendix D Appendix: Harry Potter Copying Evaluation with Fewer Characters
 
-![Refer to caption](/html/2205.10487/assets/x32.png)
-
+!(/html/2205.10487/assets/x32.png)
 
 Figure 22: In order to make sure the copying eval was not merely evaluating in context learning, we tried a much shorter copied sequence (approximately 10x shorter, 125 characters instead of 1463). We still observe approximately no learning from repeated copying for the 2L model trained on 50% repeated data at the double descent peak
 
@@ -727,83 +673,3 @@ Figure 22: In order to make sure the copying eval was not merely evaluating in c
   Lhoest, Q., and Rush, A. M. (2019).
   Huggingface’s transformers: State-of-the-art natural language
   processing.
-
-[◄](/html/2205.10486)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2205.10487)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2205.10487)
-[View original  
-on arXiv](https://arxiv.org/abs/2205.10487)[►](/html/2205.10488)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 15:17:18 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

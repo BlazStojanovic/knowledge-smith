@@ -2,7 +2,6 @@
 arxiv: '2602.15210'
 authors:
 - DatologyAI
-- ':'
 - Aldo Gael Carranza
 - Kaleigh Mentzer
 - Ricardo Pio Monti
@@ -52,19 +51,23 @@ slug: berweb-insights-from-multilingual-curation-for-a-20-trillion-token-dataset
 tags:
 - type/paper
 - status/stub
+- multilingual
+- data-curation
+- pretraining
+- llm
 title: 'ÜberWeb: Insights from Multilingual Curation for a 20-Trillion-Token Dataset'
 type: note
-updated: '2026-05-11'
+updated: '2026-05-15'
 year: 2026
 ---
 
 # ÜberWeb: Insights from Multilingual Curation for a 20-Trillion-Token Dataset
 
-> *DatologyAI, :, Aldo Gael Carranza, Kaleigh Mentzer, Ricardo Pio Monti, et al.* — arXiv 2026
+> *DatologyAI: Aldo Gael Carranza, Kaleigh Mentzer, Ricardo Pio Monti, et al.* — arXiv 2026
 
 ## TL;DR
 
-(stub — fill in after reading)
+Curse of multilinguality looks more like a data quality problem than a capacity limit. In bilingual runs (3B, 60B tokens, 50:50 split, 13 pairs), curating English improves non-English in 12/13 languages (+3.91% avg), while curating non-English reciprocally improves English (+1.21%) in 12/13. So multilingual data does not inherently hurt English; noisy or poorly mixed multilingual data does. Bespoke per-language curation beats English-curation-alone by a lot (+16.87% within-language vs +3.91% cross-lingual). **Key**: multilingual data needs language-specific curation, not one English-centric pipeline. Cross-lingual transfer correlates with similarity to English (Spanish/French/German +8.56%, Hindi/Arabic +3.94%). Translation helps but only on score-filtered high-quality English docs (+5.09%); random-translation augmentation is weak, bespoke per-language still wins. (tl;dr by Blaz.)
 
 ## Abstract
 

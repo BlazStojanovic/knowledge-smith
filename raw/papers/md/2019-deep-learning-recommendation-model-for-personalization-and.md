@@ -33,49 +33,6 @@ url: http://arxiv.org/abs/1906.00091v1
 year: 2019
 ---
 
-[1906.00091] Deep Learning Recommendation Model for Personalization and Recommendation Systems
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Deep Learning Recommendation Model for Personalization and Recommendation Systems
 
 Maxim Naumov, Dheevatsa Mudigere, Hao-Jun Michael Shi, Jianyu Huang,
@@ -114,8 +71,7 @@ In this section, we will describe the design of DLRM. We will begin with the hig
 
 ### 2.1 Components of DLRM
 
-![Refer to caption](/html/1906.00091/assets/net.png)
-
+!(/html/1906.00091/assets/net.png)
 
 Figure 1: A deep learning recommendation model
 
@@ -230,8 +186,7 @@ As described in the previous section, DLRMs process both categorical features (w
 
 On the other hand, the MLP parameters are smaller in memory but translate into sizeable amounts of compute. Hence, data-parallelism is preferred for MLPs since this enables concurrent processing of the samples on different devices and only requires communication when accumulating updates. Our parallelized DLRM will use a combination of model parallelism for the embeddings and data parallelism for the MLPs to mitigate the memory bottleneck produced by the embeddings while parallelizing the forward and backward propagations over the MLPs. Combined model and data parallelism is a unique requirement of DLRM as a result of its architecture and large model sizes. Such combined parallelism is not supported in either Caffe2 or PyTorch (as well as other popular deep learning frameworks), therefore we design a custom implementation. We plan to provide its detailed performance study in forthcoming work.
 
-![Refer to caption](/html/1906.00091/assets/a2aP.png)
-
+!(/html/1906.00091/assets/a2aP.png)
 
 Figure 2: Butterfly shuffle for the all-to-all (personalized) communication
 
@@ -251,12 +206,9 @@ Recall that DLRM accepts continuous and categorical features as inputs. The form
 
 To generate categorical features, we need to determine how many non-zero elements we would like have in a given multi-hot vector. The benchmark allows this number to be either fixed or random within a range333see options --num-indices-per-lookup=k and --num-indices-per-lookup-fixed [1,k]1𝑘[1,k]. Then, we generate the corresponding number of integer indices, within a range [1,m]1𝑚[1,m], where m𝑚m is the number of rows in the embedding W𝑊W in ([2](#S2.E2 "In 2.1.1 Embeddings ‣ 2.1 Components of DLRM ‣ 2 Model Design and Architecture ‣ Deep Learning Recommendation Model for Personalization and Recommendation Systems")). Finally, in order to create a mini-batch of lookups, we concatenate the above indices and delineate each individual lookup with lengths (SparseLengthsSum) or offsets (nn.EmbeddingBag)444For instance, in order to represent three embedding lookups, with indices {0,2}02\{0,2\}, {0,1,5}015\{0,1,5\} and {3}3\{3\} we use
 
-
-
 lengths/offsets
 =\displaystyle=
 {2,3,1}/{0,2,5}231025\displaystyle\{2,3,1\}/\{0,2,5\}
-
 
 indices
 =\displaystyle=
@@ -297,9 +249,6 @@ Algorithm 1  Profile (Original) Trace
 
 13:  end for
 
-
-
-
 Algorithm 2  Generate (Synthetic) Trace
 
 1:  Let u be input list of unique accesses and p probability distribution of distances, while tr output trace.
@@ -328,18 +277,15 @@ Algorithm 2  Generate (Synthetic) Trace
 
 Note that we can only generate a stack distance up to s number of unique accesses we have seen so far, therefore s is used to control the support of the distribution p in Alg. [2](#alg2 "Algorithm 2 ‣ 4.2 Synthetic ‣ 4 Data ‣ Deep Learning Recommendation Model for Personalization and Recommendation Systems"). Given a fixed number of unique accesses, the longer input trace will result in lower probability being assigned to them in Alg. [1](#alg1 "Algorithm 1 ‣ 4.2 Synthetic ‣ 4 Data ‣ Deep Learning Recommendation Model for Personalization and Recommendation Systems"), which will lead to longer time to achieve full distribution support in Alg. [2](#alg2 "Algorithm 2 ‣ 4.2 Synthetic ‣ 4 Data ‣ Deep Learning Recommendation Model for Personalization and Recommendation Systems"). In order to address this problem, we increase the probability for the unique accesses up to a minimum threshold and adjust support to remove unique accesses from it once all have been seen. A visual comparison of probability distribution p based on original and synthetic traces is shown in Fig. [3](#S4.F3 "Figure 3 ‣ 4.2 Synthetic ‣ 4 Data ‣ Deep Learning Recommendation Model for Personalization and Recommendation Systems"). In our experiments original and adjusted synthetic traces produce similar cache hit/miss rates.
 
-![Refer to caption](/html/1906.00091/assets/dist_from_original_trace_v2.png)
-
+!(/html/1906.00091/assets/dist_from_original_trace_v2.png)
 
 (a) original
 
-![Refer to caption](/html/1906.00091/assets/dist_from_synthetic_trace_v2.png)
-
+!(/html/1906.00091/assets/dist_from_synthetic_trace_v2.png)
 
 (b) synthetic trace
 
-![Refer to caption](/html/1906.00091/assets/dist_from_adjusted_synthetic_trace_v2.png)
-
+!(/html/1906.00091/assets/dist_from_adjusted_synthetic_trace_v2.png)
 
 (c) adjusted synthetic trace
 
@@ -355,8 +301,7 @@ The Criteo Ad Kaggle data set contains approximately 45 million samples over 7 d
 
 ## 5 Experiments
 
-![Refer to caption](/html/1906.00091/assets/bigbasin.png)
-
+!(/html/1906.00091/assets/bigbasin.png)
 
 Figure 4: Big Basin AI platform
 
@@ -366,13 +311,11 @@ Let us now illustrate the performance and accuracy of DLRM. The model is impleme
 
 We evaluate the accuracy of the model on Criteo Ad Kaggle data set and compare the performance of DLRM against a Deep and Cross network (DCN) as-is without extensive tuning [[27](#bib.bib27)]. We compare with DCN because it is one of the few models that has comprehensive results on the same data set. Notice that in this case the models are sized to accommodate the number of features present in the data set. In particular, DLRM consists of both a bottom MLP for processing dense features consisting of three hidden layers with 512512512, 256256256 and 646464 nodes, respectively, and a top MLP consisting of two hidden layers with 512512512 and 256256256 nodes. On the other hand DCN consists of six cross layers and a deep network with 512512512 and 256256256 nodes. An embedding dimension of 161616 is used. Note that this yields a DLRM and DCN both with approximately 540​M540𝑀540M parameters.
 
-![Refer to caption](/html/1906.00091/assets/x1.png)
-
+!(/html/1906.00091/assets/x1.png)
 
 (a) SGD
 
-![Refer to caption](/html/1906.00091/assets/x2.png)
-
+!(/html/1906.00091/assets/x2.png)
 
 (b) Adagrad
 
@@ -387,13 +330,11 @@ For instance, this configuration can be achieved with the following command line
   
 --arch-embedding-size=1000000-1000000-1000000-1000000-1000000-1000000-1000000-1000000 --arch-sparse-feature-size=64 --arch-mlp-bot=512-512-64 --arch-mlp-top=1024-1024-1024-1 --data-generation=random --mini-batch-size=2048 --num-batches=1000 --num-indices-per-lookup=100 [--use-gpu] [--enable-profiling].
 
-![Refer to caption](/html/1906.00091/assets/profiling_caffe2_ops_v3.png)
-
+!(/html/1906.00091/assets/profiling_caffe2_ops_v3.png)
 
 (a) Caffe2
 
-![Refer to caption](/html/1906.00091/assets/profiling_pytorch_ops_v3.png)
-
+!(/html/1906.00091/assets/profiling_pytorch_ops_v3.png)
 
 (b) PyTorch
 
@@ -572,83 +513,3 @@ The authors would like to acknowledge AI Systems Co-Design, Caffe2, PyTorch and 
   Deep interest network for click-through rate prediction.
   In Proc. of the 24th ACM SIGKDD International Conference on
   Knowledge Discovery & Data Mining, pages 1059–1068. ACM, 2018.
-
-[◄](/html/1906.00090)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1906.00091)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1906.00091)
-[View original  
-on arXiv](https://arxiv.org/abs/1906.00091)[►](/html/1906.00092)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 16:48:07 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

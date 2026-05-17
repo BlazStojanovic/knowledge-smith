@@ -17,49 +17,6 @@ url: http://arxiv.org/abs/2207.12560v2
 year: 2022
 ---
 
-[2207.12560] AMLB: an AutoML Benchmark
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # AMLB: an AutoML Benchmark
 
 \namePieter Gijsbers1 \emailp.gijsbers@tue.nl
@@ -481,17 +438,17 @@ Properties of the tasks are shown in Appendix [A](#S1a "A OpenML Benchmark Suit
 While the selection spans a wide range of data types and problem domains, we recognize that there is room for improvement.
 Restricting ourselves to open data sets without text features severely limits options, especially for big data sets. We hope to address this in future work.
 
-![Refer to caption](/html/2207.12560/assets/x1.png)
+!(/html/2207.12560/assets/x1.png)
 
-![Refer to caption](/html/2207.12560/assets/x2.png)
+!(/html/2207.12560/assets/x2.png)
 
-![Refer to caption](/html/2207.12560/assets/x3.png)
+!(/html/2207.12560/assets/x3.png)
 
-![Refer to caption](/html/2207.12560/assets/x4.png)
+!(/html/2207.12560/assets/x4.png)
 
-![Refer to caption](/html/2207.12560/assets/x5.png)
+!(/html/2207.12560/assets/x5.png)
 
-![Refer to caption](/html/2207.12560/assets/x6.png)
+!(/html/2207.12560/assets/x6.png)
 
 Figure 1: Properties of the tasks in both benchmarking suites.
 
@@ -657,43 +614,35 @@ We may then test for the presence of statistically significant differences in th
 For each benchmarking suite and time budget, the CD diagrams are shown in Figure [2](#S6.F2 "Figure 2 ‣ 6.1 Predictive Performance ‣ 6 Results ‣ AMLB: an AutoML Benchmark"), which displays the rank of each framework (lower is better) averaged over all results from the given benchmarking suite and budget.
 AUTO-SKLEARN 2 is excluded in this comparison due to the meta-learning issues discussed in Section [5.3.3](#S5.SS3.SSS3 "5.3.3 Meta-learning ‣ 5.3 Limitations ‣ 5 Benchmark Design ‣ AMLB: an AutoML Benchmark").
 
-![Refer to caption](/html/2207.12560/assets/x7.png)
-
+!(/html/2207.12560/assets/x7.png)
 
 (a) Binary Classification, 1 hour
 
-![Refer to caption](/html/2207.12560/assets/x8.png)
-
+!(/html/2207.12560/assets/x8.png)
 
 (b) Binary Classification, 4 hours
 
-![Refer to caption](/html/2207.12560/assets/x9.png)
-
+!(/html/2207.12560/assets/x9.png)
 
 (c) Multi-class Classification, 1 hour
 
-![Refer to caption](/html/2207.12560/assets/x10.png)
-
+!(/html/2207.12560/assets/x10.png)
 
 (d) Multi-class Classification, 4 hours
 
-![Refer to caption](/html/2207.12560/assets/x11.png)
-
+!(/html/2207.12560/assets/x11.png)
 
 (e) Regression, 1 hour
 
-![Refer to caption](/html/2207.12560/assets/x12.png)
-
+!(/html/2207.12560/assets/x12.png)
 
 (f) Regression, 4 hours
 
-![Refer to caption](/html/2207.12560/assets/x13.png)
-
+!(/html/2207.12560/assets/x13.png)
 
 (g) All tasks, 1 hour
 
-![Refer to caption](/html/2207.12560/assets/x14.png)
-
+!(/html/2207.12560/assets/x14.png)
 
 (h) All tasks, 4 hours
 
@@ -703,17 +652,17 @@ Overall, we observe that AUTOGLUON(B) and TPOT respectively achieve the best and
 In all cases, the baselines obtain worse ranks than any AutoML framework except TPOT, although the tuned random forest is a strong baseline. Only AUTOGLUON(B) and LIGHTAUTOML achieve significantly better ranks across all settings.
 All AutoML frameworks except AUTOGLUON(B) and TPOT are generally ranked close to each other, with small differences across the various suites and budgets.
 
-![Refer to caption](/html/2207.12560/assets/x15.png)
+!(/html/2207.12560/assets/x15.png)
 
-![Refer to caption](/html/2207.12560/assets/x16.png)
+!(/html/2207.12560/assets/x16.png)
 
-![Refer to caption](/html/2207.12560/assets/x17.png)
+!(/html/2207.12560/assets/x17.png)
 
-![Refer to caption](/html/2207.12560/assets/x18.png)
+!(/html/2207.12560/assets/x18.png)
 
-![Refer to caption](/html/2207.12560/assets/x19.png)
+!(/html/2207.12560/assets/x19.png)
 
-![Refer to caption](/html/2207.12560/assets/x20.png)
+!(/html/2207.12560/assets/x20.png)
 
 Figure 3: Boxplots of framework performance across tasks after scaling the performance values from random forest (0) to best observed (1). The number of outliers for each framework that are not shown in the plot are denoted on the x-axis. An asterisk (\*) next to a framework name means the results were obtained in 2021.
 
@@ -729,13 +678,11 @@ Similarly, while TPOT’s average rank is generally close to that of the Tuned R
 
 Finally, we take a closer look at the difference in performance for different time constraints in Figure [4](#S6.F4 "Figure 4 ‣ 6.1 Predictive Performance ‣ 6 Results ‣ AMLB: an AutoML Benchmark"). Performance is scaled between 1 hour random forest performance (0) and best observed performance (1). We only include frameworks for which we evaluated all tasks on both constraints. We see that the performance is very similar overall, though generally results improve slightly with a larger time budget. The performance of AUTOGLUON confirms that better performance is still possible for other frameworks, but we suspect that those frameworks are limited by their search space. For example, if a stacking ensemble is required to reach the best performance, then the other methods will not achieve the best performance regardless of time constraint.
 
-![Refer to caption](/html/2207.12560/assets/x21.png)
-
+!(/html/2207.12560/assets/x21.png)
 
 Figure 4: Scaled performance for each framework under different time constraints. Only frameworks which have evaluations on all tasks for both time constraints are shown. Performance generally does not improve much with more time.
 
-![Refer to caption](/html/2207.12560/assets/x22.png)
-
+!(/html/2207.12560/assets/x22.png)
 
 Figure 5: Bradley-Terry tree of depth three for classification tasks. Results from the one hour classification benchmark were used, and missing values were imputed by constant predictor performance. One observation within the BT tree equals the preference ranking of one fold on one data set. The n𝑛n value denotes the number of observations in the leaf node.
 
@@ -795,9 +742,9 @@ Transferring data between our Python-based benchmark tool and H2O AUTOML’s Jav
 Here we see that the high accuracy of AUTOGLUON(B) comes at the cost of extremely slow inference times. This is explained by the large models produced by combining both stacking and ensembling to form ensembles of multiple layers. In general, we see that ensemble models are slower (AUTO-SKLEARN, GAMA, and MLJAR(B) also do ensembling), and GAMA and AUTO-SKLEARN with the same search space and ensemble methods have comparable inference speeds. H2O AUTOML and AUTOGLUON(HQIL) maintain fast inference speed despite making use of ensembles, by building on more optimized models or explicitly selecting for fast inference when building the ensemble.
 FLAML stand out as having very fast inference time, a potential explanation is that FLAML’s cost-frugal optimization also indirectly takes inference time into account, as it is part of the time estimate which is used to consider which model to tune.
 
-![Refer to caption](/html/2207.12560/assets/x23.png)
+!(/html/2207.12560/assets/x23.png)
 
-![Refer to caption](/html/2207.12560/assets/x24.png)
+!(/html/2207.12560/assets/x24.png)
 
 Figure 6: Inference speed on unseen data in rows per second, normalized from inference on 10 thousand rows from solid-state drive (left) or single rows in memory (right). Measured for models created with the one hour time constraint and all scenarios.
 
@@ -805,11 +752,11 @@ In Figure [7](#S6.F7 "Figure 7 ‣ 6.3 Model Accuracy vs. Inference Time Trade-
 
 It should also be noted that with sufficient computing infrastructure and effort, scoring across rows or chunks of data could be parallelized in a production system, which would reduce the overall prediction time as compared to predicting a single test set on a single machine. However, our goal in this section was to compare the inference time of the high-accuracy models derived from different AutoML frameworks to each each other rather than evaluate different techniques for speeding up the inference of any individual system.
 
-![Refer to caption](/html/2207.12560/assets/x25.png)
+!(/html/2207.12560/assets/x25.png)
 
-![Refer to caption](/html/2207.12560/assets/x26.png)
+!(/html/2207.12560/assets/x26.png)
 
-![Refer to caption](/html/2207.12560/assets/x27.png)
+!(/html/2207.12560/assets/x27.png)
 
 Figure 7: Pareto Frontiers of framework performance across tasks after scaling the performance values from the random forest (0) to best observed (1) for each task type on a one hour time budget.
 
@@ -838,13 +785,11 @@ This is also the case for the failures on the two small classification data sets
 Interestingly, the distribution of the type of errors observed is different under different time constraints (as shown in Figure [14(a)](#S4.F14.sf1 "In Figure 14 ‣ D AutoML Framework Errors ‣ AMLB: an AutoML Benchmark") of Appendix [D](#S4a "D AutoML Framework Errors ‣ AMLB: an AutoML Benchmark")).
 Both memory and time constraint violations happen more frequently, which may potentially be explained by frameworks saving increasingly more models or building increasingly larger pipelines. It is worth noting the stability of the different systems is varied, with some systems being far more stable than others. Some types of errors, such as memory errors, could potentially be easily resolved by running the AutoML system on a machine with more RAM. However, the implementation errors are more problematic because they represent an error from the code of the AutoML system. Those are not currently resolvable without changes to the AutoML system itself, which may or may not be fixed by code authors in the future.
 
-![Refer to caption](/html/2207.12560/assets/x28.png)
-
+!(/html/2207.12560/assets/x28.png)
 
 (a) Errors by type for each framework.
 
-![Refer to caption](/html/2207.12560/assets/x29.png)
-
+!(/html/2207.12560/assets/x29.png)
 
 (b) Number of errors by size of the dataset.
 
@@ -854,9 +799,9 @@ In the figure, the training duration for each individual job (task and fold comb
 These plots reveal different design decisions around the specified runtime, with some frameworks never exceeding the limit by more than a few minutes, while others violate it by a larger margin with some regularity.
 Interestingly, we see that a number of frameworks consistently tend to stop far before the specified runtime limit.
 
-![Refer to caption](/html/2207.12560/assets/x30.png)
+!(/html/2207.12560/assets/x30.png)
 
-![Refer to caption](/html/2207.12560/assets/x31.png)
+!(/html/2207.12560/assets/x31.png)
 
 Figure 9: Time spent during search with a one hour budget (left) and four hour budget (right). The grey line indicates the specified time limit, and the red line denotes the end of the leniency period. The number of timeout errors for each framework are shown beside it.
 
@@ -964,9 +909,6 @@ Table 2: Tasks in the AutoML regression suite.
 | 359935 | wine\_quality | 6497 | 12 |
 | 317614 | Yolanda | 400000 | 101 |
 | 359940 | yprop\_4\_1 | 8885 | 252 |
-
-
-
 
 Table 3: Tasks in the AutoML classification suite.
 
@@ -1099,8 +1041,6 @@ A ‘\*’ next to a framework name denotes experiments that were conducted on a
 
 Table 4: Results for binary classification (in AUC) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
 
-
-
 |  | framework | lightautoml | MLJAR(B) | MLJAR(P) | TPOT | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |  |
@@ -1147,8 +1087,6 @@ Table 4: Results for binary classification (in AUC) on a one hour budget,denoted
 | 3945 | KDDCup09… | 0.851(0.012)absent{}^{\hskip 1.39998pt} | - | 0.837(0.015)absent{}^{\hskip 1.39998pt} | 0.831(0.017)2 | 0.500(0.000)absent{}^{\hskip 1.39998pt} | 0.796(0.018)absent{}^{\hskip 1.39998pt} | 0.795(0.021)absent{}^{\hskip 1.39998pt} |
 
 Table 5: Results for binary classification (in AUC) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
-
-
 
 |  | framework | AutoGluon(B) | AutoGluon(HQ) | autosklearn | autosklearn2\* | flaml | GAMA(B)\* | H2OAutoML |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1197,8 +1135,6 @@ Table 5: Results for binary classification (in AUC) on a one hour budget,denoted
 
 Table 6: Results for binary classification (in AUC) on a four hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}. Results obtained in 2021 are denoted with a ‘\*’ next to the framework name.
 
-
-
 |  | framework | lightautoml | MLJAR(B)\* | TPOT\* | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |
@@ -1246,8 +1182,6 @@ Table 6: Results for binary classification (in AUC) on a four hour budget,denote
 
 Table 7: Results for binary classification (in AUC) on a four hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}. Results obtained in 2021 are denoted with a ‘\*’ next to the framework name.
 
-
-
 |  | framework | AutoGluon(B) | AutoGluon(HQ) | AutoGluon(HQIL) | autosklearn | autosklearn2 | flaml | GAMA(B) | H2OAutoML |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |  |  |
@@ -1283,8 +1217,6 @@ Table 7: Results for binary classification (in AUC) on a four hour budget,denote
 | 7593 | covertype | 0.057(0.001)absent{}^{\hskip 1.39998pt} | 0.059(0.002)absent{}^{\hskip 1.39998pt} | 0.067(0.012)absent{}^{\hskip 1.39998pt} | 0.147(0.003)absent{}^{\hskip 1.39998pt} | 0.117(0.011)absent{}^{\hskip 1.39998pt} | 0.068(0.002)absent{}^{\hskip 1.39998pt} | 0.526(0.026)absent{}^{\hskip 1.39998pt} | 0.253(0.208)absent{}^{\hskip 1.39998pt} |
 
 Table 8: Results for multiclass classification (in logloss) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
-
-
 
 |  | framework | lightautoml | MLJAR(B) | MLJAR(P) | TPOT | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1322,8 +1254,6 @@ Table 8: Results for multiclass classification (in logloss) on a one hour budget
 
 Table 9: Results for multiclass classification (in logloss) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
 
-
-
 |  | framework | AutoGluon(B) | AutoGluon(HQ) | autosklearn | autosklearn2\* | flaml | GAMA(B)\* | H2OAutoML |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |  |
@@ -1360,8 +1290,6 @@ Table 9: Results for multiclass classification (in logloss) on a one hour budget
 
 Table 10: Results for multiclass classification (in logloss) on a four hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}. Results obtained in 2021 are denoted with a ‘\*’ next to the framework name.
 
-
-
 |  | framework | lightautoml | MLJAR(B)\* | TPOT\* | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |
@@ -1397,8 +1325,6 @@ Table 10: Results for multiclass classification (in logloss) on a four hour budg
 | 7593 | covertype | 0.069(0.001)absent{}^{\hskip 1.39998pt} | 0.083(0.006)absent{}^{\hskip 1.39998pt} | 0.459(0.139)absent{}^{\hskip 1.39998pt} | 1.205(0.000)absent{}^{\hskip 1.39998pt} | 0.161(0.001)absent{}^{\hskip 1.39998pt} | 0.099(0.001)absent{}^{\hskip 1.39998pt} |
 
 Table 11: Results for multiclass classification (in logloss) on a four hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}. Results obtained in 2021 are denoted with a ‘\*’ next to the framework name.
-
-
 
 |  | framework | AutoGluon(B) | AutoGluon(HQ) | AutoGluon(HQIL) | autosklearn | flaml | GAMA(B) | H2OAutoML |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1439,8 +1365,6 @@ Table 11: Results for multiclass classification (in logloss) on a four hour budg
 
 Table 12: Results for regression (in RMSE) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
 
-
-
 |  | framework | lightautoml | MLJAR(B) | MLJAR(P) | TPOT | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |  |
@@ -1480,8 +1404,6 @@ Table 12: Results for regression (in RMSE) on a one hour budget,denoted as mean(
 
 Table 13: Results for regression (in RMSE) on a one hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}.
 
-
-
 |  | framework | AutoGluon(B) | AutoGluon(HQ) | AutoGluon(HQIL) | autosklearn | flaml | GAMA(B)\* | H2OAutoML |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | task id | task name |  |  |  |  |  |  |  |
@@ -1520,8 +1442,6 @@ Table 13: Results for regression (in RMSE) on a one hour budget,denoted as mean(
 | 360945 | MIP-2016… | 2.1e+04(1.5e+03)absent{}^{\hskip 1.39998pt} | 2.1e+04(1.7e+03)absent{}^{\hskip 1.39998pt} | 2.1e+04(1.6e+03)absent{}^{\hskip 1.39998pt} | 2.2e+04(1.5e+03)absent{}^{\hskip 1.39998pt} | 2.1e+04(1.6e+03)absent{}^{\hskip 1.39998pt} | 2.1e+04(1.4e+03)absent{}^{\hskip 1.39998pt} | 2.1e+04(1.7e+03)absent{}^{\hskip 1.39998pt} |
 
 Table 14: Results for regression (in RMSE) on a four hour budget,denoted as mean(std)failsfails{}^{\mbox{{fails}}}. Results obtained in 2021 are denoted with a ‘\*’ next to the framework name.
-
-
 
 |  | framework | lightautoml | MLJAR(B) | TPOT\* | constantpredictor | RandomForest | TunedRandomForest\* |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1570,41 +1490,31 @@ We observe that AUTOGLUON(B) is the preferred framework in many cases, especiall
 In contrast, differences in small datasets are generally smaller, and distinct preferred frameworks often emerge for various task types.
 The online visualization tool may be used to generate additional BT trees, from different subsets of tasks or allowing for different meta-features when calculating splits.
 
-![Refer to caption](/html/2207.12560/assets/x32.png)
-
+!(/html/2207.12560/assets/x32.png)
 
 (a) Binary classification datasets, 1h.
 
-![Refer to caption](/html/2207.12560/assets/x33.png)
-
+!(/html/2207.12560/assets/x33.png)
 
 (b) Binary classification datasets, 4h.
 
 Figure 10: Binary classification datasets, 1h and 4h.
 
-
-
-![Refer to caption](/html/2207.12560/assets/x34.png)
-
+!(/html/2207.12560/assets/x34.png)
 
 (a) Multiclass classification datasets, 1h.
 
-![Refer to caption](/html/2207.12560/assets/x35.png)
-
+!(/html/2207.12560/assets/x35.png)
 
 (b) Multiclass classification datasets, 4h.
 
 Figure 11: Multiclass classification datasets, 1h and 4h.
 
-
-
-![Refer to caption](/html/2207.12560/assets/x36.png)
-
+!(/html/2207.12560/assets/x36.png)
 
 (a) Regression datasets, 1h.
 
-![Refer to caption](/html/2207.12560/assets/x37.png)
-
+!(/html/2207.12560/assets/x37.png)
 
 (b) Regression datasets, 4h.
 
@@ -1634,8 +1544,7 @@ The local machine will observe this shutdown and subsequently fetch the download
 As you can see, with this setup there are almost no requirements to the local machine.
 Provided the docker images are built and published, the specified benchmark tool version is available online and OpenML is used, the only data transfer between the local machine and the cloud is the upload of configuration files and the download of results.
 
-![Refer to caption](/html/2207.12560/assets/figures/amlb_aws_archi.png)
-
+!(/html/2207.12560/assets/figures/amlb_aws_archi.png)
 
 Figure 13: Architecture Overview of the AWS+docker mode, as used for this paper
 
@@ -1688,13 +1597,11 @@ We suspect a number of implementation errors on the one hour constraints are due
 Figure [14(b)](#S4.F14.sf2 "In Figure 14 ‣ D AutoML Framework Errors ‣ AMLB: an AutoML Benchmark"), which shows the time at which various errors occurred, supports this hypothesis for the one hour classification tasks where the majority of implementation errors occur.
 With a more generous time budget, the AutoML framework might be able to fall back on already optimized models, which could explain why we see fewer implementation errors under a larger time constraint.
 
-![Refer to caption](/html/2207.12560/assets/x38.png)
-
+!(/html/2207.12560/assets/x38.png)
 
 (a) Error count by category and time constraint.
 
-![Refer to caption](/html/2207.12560/assets/x39.png)
-
+!(/html/2207.12560/assets/x39.png)
 
 (b) Distribution of when errors occurred.
 
@@ -1757,11 +1664,11 @@ We developed the NAIVEAUTOML integration together with the framework authors. We
 
 We evaluated NAIVEAUTOML on a one hour budget for both the classification and regression benchmark suites. Figure [15](#S5.F15 "Figure 15 ‣ E Naive AutoML ‣ AMLB: an AutoML Benchmark") shows NAIVEAUTOML achieving poor performance compared to other AutoML frameworks. This low performance contrasts the evaluation by Mohr and Wever ([2023](#bib.bib45)), where it achieves performance similar to AUTO-SKLEARN.
 
-![Refer to caption](/html/2207.12560/assets/x40.png)
+!(/html/2207.12560/assets/x40.png)
 
-![Refer to caption](/html/2207.12560/assets/x41.png)
+!(/html/2207.12560/assets/x41.png)
 
-![Refer to caption](/html/2207.12560/assets/x42.png)
+!(/html/2207.12560/assets/x42.png)
 
 Figure 15: Performance and inference time trade-off as in Figure [7](#S6.F7 "Figure 7 ‣ 6.3 Model Accuracy vs. Inference Time Trade-offs ‣ 6 Results ‣ AMLB: an AutoML Benchmark") of Section [6.3](#S6.SS3 "6.3 Model Accuracy vs. Inference Time Trade-offs ‣ 6 Results ‣ AMLB: an AutoML Benchmark"), but with NAIVEAUTOML results included. NAIVEAUTOML has bad performance but fast inference speeds due to a bad configuration.
 
@@ -2222,83 +2129,3 @@ The framework authors state that they plan to integrate their work on learning c
   Benchmark and survey of automated machine learning frameworks.
   *J. Artif. Intell. Res.*, 70:409–472, 2021.
   doi: 10.1613/jair.1.11854.
-
-[◄](/html/2207.12559)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2207.12560)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2207.12560)
-[View original  
-on arXiv](https://arxiv.org/abs/2207.12560)[►](/html/2207.12561)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 13 14:00:09 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

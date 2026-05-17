@@ -18,49 +18,6 @@ url: https://arxiv.org/abs/2006.16668
 year: 2020
 ---
 
-[2006.16668] GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding
 
 Dmitry Lepikhin
@@ -93,8 +50,7 @@ Scaling neural networks brings dramatic quality gains over a wide array of machi
 For computer vision, increasing the model capacity has led to better image classification and detection accuracy for various computer vision architectures [[7](#bib.bib7), [8](#bib.bib8), [9](#bib.bib9)]. Similarly in natural language processing, scaling Transformers [[10](#bib.bib10)] yielded consistent gains on language understanding tasks [[4](#bib.bib4), [11](#bib.bib11), [12](#bib.bib12)], cross-lingual down-stream transfer [[4](#bib.bib4), [13](#bib.bib13)] and (massively-)multilingual neural machine translation [[14](#bib.bib14), [15](#bib.bib15), [16](#bib.bib16)].
 This general tendency motivated recent studies to scrutinize the factors playing a critical role in the success of scaling [[17](#bib.bib17), [18](#bib.bib18), [19](#bib.bib19), [20](#bib.bib20), [3](#bib.bib3)], including the amounts of training data, the model size, and the computation being utilized as found by past studies. While the final model quality was found to have a power-law relationship with the amount of data, compute and model size [[18](#bib.bib18), [3](#bib.bib3)], the significant quality gains brought by larger models also come with various practical challenges. Training efficiency among the most important ones, which we define as the amount of compute and training time being used to achieve a superior model quality against the best system existed, is oftentimes left out.
 
-![Refer to caption](/html/2006.16668/assets/main_plot.png)
-
+!(/html/2006.16668/assets/main_plot.png)
 
 Figure 1: Multilingual translation quality (average ΔΔ\DeltaBLEU comparing to bilingual baselines) improved as MoE model size grows up to 600B, while the end-to-end training cost (in terms of TPU v3 core-year) only increased sublinearly. Increasing the model size from 37.5B to 600B (16x), results in computation cost increase from 6 to 22 years (3.6x). The 600B parameters model that achieved the best translation quality was trained with 2048 TPU v3 cores for 4 days, a total cost of 22 TPU v3 core-years. In contrast, training all 100 bilingual baseline models would have required 29 TPU v3 core-years. Our best quality dense single Transformer model (2.3B parameters) achieving ΔΔ\DeltaBLEU of 6.1, was trained with GPipe [[15](#bib.bib15)] on 2048 TPU v3 cores for 6 weeks or total of 235.5 TPU v3 core-years.
 
@@ -131,13 +87,11 @@ First, model architecture should be designed to keep the computation and communi
 
 Second, the model description should be separated from the partitioning implementation and optimization. This separation of concerns let model developers focus on the network architecture and flexibly change the partitioning strategy, while the underlying system applies semantic-preserving transformations and implements efficient parallel execution. To this end we propose a module, GShard, which only requires the user to annotate a few critical tensors in the model with partitioning policies. It consists of a set of simple APIs for annotations, and a compiler extension in XLA [[28](#bib.bib28)] for automatic parallelization. Model developers write models as if there is a single device with huge memory and computation capacity, and the compiler automatically partitions the computation for the target based on the annotations and their own heuristics. We provide more annotation examples in Section [3.2](#S3.SS2 "3.2 GShard Annotation API for Parallel Execution ‣ 3 Highly Parallel Implementation using GShard ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding").
 
-![Refer to caption](/html/2006.16668/assets/x1.png)
-
+!(/html/2006.16668/assets/x1.png)
 
 (a) MPMD Partition
 
-![Refer to caption](/html/2006.16668/assets/x2.png)
-
+!(/html/2006.16668/assets/x2.png)
 
 (b) SPMD Partition
 
@@ -160,8 +114,7 @@ We sparsely scale Transformer with conditional computation by replacing every ot
 
 Each training example consists of a pair of sequences of subword tokens. Each token activates a sub-network of the MoE Transformer during both training and inference. The size of the sub-network is roughly independent of the number of experts per MoE Layer, allowing sublinear scaling of the computation cost as described in the previous section. Computation complexity is further analyzed in Section [3.1](#S3.SS1 "3.1 Positions-wise Mixture-of-Expert Layer Expressed in Linear Algebra ‣ 3 Highly Parallel Implementation using GShard ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding") and training performance in Section [5](#S5 "5 Performance and Memory Consumption ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding").
 
-![Refer to caption](/html/2006.16668/assets/transformer_encoder_moe_extension.png)
-
+!(/html/2006.16668/assets/transformer_encoder_moe_extension.png)
 
 Figure 3: Illustration of scaling of Transformer Encoder with MoE Layers. The MoE layer replaces the every other Transformer feed-forward layer. Decoder modification is similar. (a) The encoder of a standard Transformer model is a stack of self-attention and feed forward layers interleaved with residual connections and layer normalization. (b) By replacing every other feed forward layer with a MoE layer, we get the model structure of the MoE Transformer Encoder. (c) When scaling to multiple devices, the MoE layer is sharded
 across devices, while all other layers are replicated.
@@ -553,18 +506,15 @@ Einsum is the most critical operator in implementing the MoE model. They are rep
 
 Sharding propagation prioritizes choosing the same sharding on batch dimensions of LHS, RHS and output, because that would avoid any cross-partition communication. However, that is not always possible, and we need cross-partition communication in the following three cases.
 
-![Refer to caption](/html/2006.16668/assets/x3.png)
-
+!(/html/2006.16668/assets/x3.png)
 
 (a) A partitioned Einsum operator. Colored letters (G𝐺G and E𝐸E) represent the partitioned dimension of each tensor. The partitioner decides to first execute a batch-parallel Einsum along the G𝐺G dimension, then reshard the result to the E𝐸E dimension.
 
-![Refer to caption](/html/2006.16668/assets/x4.png)
-
+!(/html/2006.16668/assets/x4.png)
 
 (b) A simple Einsum (Matmul) partitioned on the contracting dimension.
 
-![Refer to caption](/html/2006.16668/assets/x5.png)
-
+!(/html/2006.16668/assets/x5.png)
 
 (c) An Einsum (Matmul) where we use collective-permute in a loop to compute one slice at a time. There is no full-sized tensor during the entire process.
 
@@ -602,18 +552,15 @@ XLA operators have static configurations, like the padding, stride, and dilation
 
 Certain operators have a communication pattern which involves partial data exchange with neighboring partitions, which we call *halo exchange*. We use the CollectivePermute operator to exchange halo data between partitions.
 
-![Refer to caption](/html/2006.16668/assets/x6.png)
-
+!(/html/2006.16668/assets/x6.png)
 
 (a) Convolution
 
-![Refer to caption](/html/2006.16668/assets/x7.png)
-
+!(/html/2006.16668/assets/x7.png)
 
 (b) Pad
 
-![Refer to caption](/html/2006.16668/assets/x8.png)
-
+!(/html/2006.16668/assets/x8.png)
 
 (c) Reshape with unevenly partitioned input and evenly partitioned output
 
@@ -664,7 +611,7 @@ We aim for practical training time and seek for architectures that warrant train
 
 To detail the model specifics, each expert is designed to have the same shape of a regular Transformer feed-forward network, and experts (MoE layers) are distributed once in every other Transformer layer. We tied the number of devices used for training to the number of experts per MoE layer for simplicity, although this is not a requirement. During training, we use float32 for both model weights and activations in order to ensure training stability. We ran additional scalability experiments with MoE(2048E, 60L) with bfloat16 [[53](#bib.bib53)] activations with total of 1 trillion model weights. Although trainable by careful and manual diagnostics, with deep 1 trillion model we encountered several trainability issues with numerical stability, hence did not include the results for the sake of reproducibility. For more model and training details, please see Appendix [A.2](#A1.SS2 "A.2 Machine Translation Experiments Details ‣ Appendix A Appendix ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding").
 
-![Refer to caption](/html/2006.16668/assets/x9.png)
+!(/html/2006.16668/assets/x9.png)
 
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -796,15 +743,13 @@ The O​(1)𝑂1O(1) memory scaling is demonstrated in Figure [7](#S5.F7 "Figur
 
 On this other hand, weight memory and activation memory both scale linearly with the number of layers. When the memory requirement exceeds available memory on each device, compiler-based rematerialization will automatically recompute part of the activations in the backward pass in order to reduce peak activation memory. This is why the activation size for MoE(2048E, 60L) is smaller than MoE(2048E, 36L). The overhead of rematerialization is also optimized, e.g. only 28% and 34% of the total cycles are spent on recomputation for 36L and 60L models respectively, and 0% for 12L and 24L since they fit in device memory without rematerialization.
 
-![Refer to caption](/html/2006.16668/assets/x10.png)
-
+!(/html/2006.16668/assets/x10.png)
 
 Figure 7: Per-device memory consumption in gigabytes.
 
 ### 5.2 Runtime Efficiency and Scalability
 
-![Refer to caption](/html/2006.16668/assets/x11.png)
-
+!(/html/2006.16668/assets/x11.png)
 
 Figure 8: Measured vs roofline execution time breakdown. Only the forward pass is shown, and the backward pass has similar breakdown. “MoE dispatch and combine” represents cross-partition communication with AllToAll.
 
@@ -844,12 +789,9 @@ Comparing 2048 partitions and 16 partitions, while D𝐷D grows by 128 times, th
 AllGather and CollectivePermute are easier to analyze.
 AllGather’s output is D𝐷D larger than the input, and if we fix input size, then its communication cost is O​(D)𝑂𝐷O(D). CollectivePermute has a one-to-one communication pattern, and with reasonable device arrangement where the source-destination pairs are close, its cost is O​(1)𝑂1O(1) for a fixed input size.
 
-![Refer to caption](/html/2006.16668/assets/x12.png)
-
+!(/html/2006.16668/assets/x12.png)
 
 Figure 9: Performance scaling of communication, AllReduce and AllToAll. Log scale on both axes. AllReduce cost is roughly O​(1)𝑂1O(1), and AllToAll cost is roughly O​(D)𝑂𝐷O(\sqrt{D}), where D𝐷D is the number of partitions. We measure their performance with 8MB and 32MB data. For AllToAll, that means each partition initially has 8MB (or 32MB) data, then divides it to D𝐷D pieces, and sends each piece to a different receiving partition.
-
-
 
 |  | O​(D)𝑂𝐷O(D) | Total | Per-partition | |
 | --- | --- | --- | --- | --- |
@@ -1520,8 +1462,7 @@ shard(tensor, device\_assignment) annotates tensor to be partitioned with the pr
 
 3816[3,8,16], and the order of elements in device assignment determines which slice each partition occupies.
 
-![Refer to caption](/html/2006.16668/assets/x13.png)
-
+!(/html/2006.16668/assets/x13.png)
 
 Figure 10: An example of two different device assignments based on the device topology. A 2D tensor is split by 2x4 partitions and the communication pattern is between partitions along the rows of the tensor. The numbers represent device ids.
 
@@ -1567,20 +1508,17 @@ We first introduce the window configurations that the SPMD partitioner has to co
 
 We demonstrate that non-constant halo size is common using a simple example, which does not have dilation. Figure [11](#A1.F11 "Figure 11 ‣ Non-constant halo size. ‣ A.4 SPMD Partitioning for Convolution and Window-Based Operators ‣ Appendix A Appendix ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding") shows a 4-way partitioned convolution, where the right halo sizes for the partitions are (1, 2, 3, 4) and can be expressed as a linear function of the partition ID: p​a​r​t​i​t​i​o​n​\_​i​d+1𝑝𝑎𝑟𝑡𝑖𝑡𝑖𝑜𝑛\_𝑖𝑑1partition\\_id+1. Partition 1 is in charge of generating 2 output elements (red cells), which means that the partition needs to get 0 elements from Partition 0, and 2 elements from Partition 2 (area covered by two dotted red windows).
 
-![Refer to caption](/html/2006.16668/assets/x14.png)
-
+!(/html/2006.16668/assets/x14.png)
 
 Figure 11: Convolution with non-constant halo size.
 
 Figure [12](#A1.F12 "Figure 12 ‣ Non-constant halo size. ‣ A.4 SPMD Partitioning for Convolution and Window-Based Operators ‣ Appendix A Appendix ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding") describes the sequence of operations for a general halo exchange. First, we calculate the maximum size of left and right halo across partitions and perform the halo exchange of the maximum size (Steps 1 and 2). Since some partitions may have excessive halos than needed, we use DynamicSlice (based on the partition ID) to slice off the valid region for the current partition (Step 3). Finally, some partitions may include garbage values (e.g., halos from out-of-range input data), so we apply masking as described in Section [3.3.3](#S3.SS3.SSS3 "3.3.3 Supporting a Complete Set of Operators ‣ 3.3 The XLA SPMD Partitioner for GShard ‣ 3 Highly Parallel Implementation using GShard ‣ GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding").
 
-![Refer to caption](/html/2006.16668/assets/x15.png)
-
+!(/html/2006.16668/assets/x15.png)
 
 Figure 12: Sequence of operations for a general halo exchange.
 
-![Refer to caption](/html/2006.16668/assets/x16.png)
-
+!(/html/2006.16668/assets/x16.png)
 
 Figure 13: Partitioned convolution with base dilation.
 
@@ -1613,83 +1551,3 @@ Base dilation adds additional complexities to halo exchange, since the offset of
 ##### Window dilation.
 
 If the RHS is replicated, window dilation only affects the effective window size when partitioning the operator based on its LHS. If the dilated RHS is also partitioned, which typically occurs in the gradient computation of strided convolutions, handling window dilation is still simpler than handling base dilation, because there is no low/high padding on the RHS. We skip the details of the implementation.
-
-[◄](/html/2006.16667)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2006.16668)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2006.16668)
-[View original  
-on arXiv](https://arxiv.org/abs/2006.16668)[►](/html/2006.16669)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 10:32:44 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

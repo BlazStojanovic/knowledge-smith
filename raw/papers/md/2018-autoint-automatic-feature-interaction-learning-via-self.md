@@ -17,50 +17,6 @@ url: http://arxiv.org/abs/1810.11921v2
 year: 2018
 ---
 
-[1810.11921] AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks
 
 Weiping Song
@@ -217,8 +173,7 @@ DEFINITION 3. (Problem Definition) Given an input feature vector 𝐱∈ℝn𝐱
 
 In this section, we first give an overview of the proposed approach AutoInt, which can automatically learn feature interactions for CTR prediction. Next, we present a comprehensive description of how to learn a low-dimensional representation that models high-order combinatorial features without manual feature engineering.
 
-![Refer to caption](/html/1810.11921/assets/x1.png)
-
+!(/html/1810.11921/assets/x1.png)
 
 Figure 1. Overview of our proposed model AutoInt. The details of embedding layer and interacting layer are illustrated in Figure [2](#S4.F2 "Figure 2 ‣ 4.2. Input Layer ‣ 4. AutoInt: Automatic Feature Interaction Learning ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks") and Figure [3](#S4.F3 "Figure 3 ‣ 4.4. Interacting Layer ‣ 4. AutoInt: Automatic Feature Interaction Learning ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks") respectively.
 
@@ -239,8 +194,7 @@ We first represent user’s profiles and item’s attributes as a sparse vector,
 
 where M𝑀M is the number of total feature fields, and 𝐱𝐢subscript𝐱𝐢\mathbf{x\_{i}} is the feature representation of the i𝑖i-th field. 𝐱𝐢subscript𝐱𝐢\mathbf{x\_{i}} is a one-hot vector if the i𝑖i-th field is categorical (e.g., 𝐱𝟏subscript𝐱1\mathbf{x\_{1}} in Figure [2](#S4.F2 "Figure 2 ‣ 4.2. Input Layer ‣ 4. AutoInt: Automatic Feature Interaction Learning ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks")). 𝐱𝐢subscript𝐱𝐢\mathbf{x\_{i}} is a scalar value if the i𝑖i-th field is numerical (e.g., 𝐱𝐌subscript𝐱𝐌\mathbf{x\_{M}} in Figure [2](#S4.F2 "Figure 2 ‣ 4.2. Input Layer ‣ 4. AutoInt: Automatic Feature Interaction Learning ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks")).
 
-![Refer to caption](/html/1810.11921/assets/x2.png)
-
+!(/html/1810.11921/assets/x2.png)
 
 Figure 2. Illustration of input and embedding layer, where both categorical and numerical fields are represented by low-dimensional dense vectors.
 
@@ -296,8 +250,7 @@ where 𝐖𝐕𝐚𝐥𝐮𝐞(𝐡)∈ℝd′×dsubscriptsuperscript𝐖𝐡�
 
 Since 𝐞~𝐦(𝐡)∈ℝd′superscriptsubscript~𝐞𝐦𝐡superscriptℝsuperscript𝑑′\mathbf{\widetilde{e}\_{m}^{(h)}}\in\mathbb{R}^{d^{\prime}} is a combination of feature m𝑚m and its relevant features (under head hℎh), it represents a new combinatorial feature learned by our method. Furthermore, a feature is also likely to be involved in different combinatorial features, and we achieve this by using multiple heads, which create different subspaces and learn distinct feature interactions separately. We collect combinatorial features learned in all subspaces as follows:
 
-![Refer to caption](/html/1810.11921/assets/x3.png)
-
+!(/html/1810.11921/assets/x3.png)
 
 Figure 3. The architecture of interacting layer. Combinatorial features are conditioned on attention weights, i.e., α𝐦(𝐡)superscriptsubscript𝛼𝐦𝐡\mathbf{\alpha\_{m}^{(h)}}.
 
@@ -408,9 +361,6 @@ Table 1. Statistics of evaluation data sets.
 | KDD12 | 149,639,105 | 13 | 6,019,086 |
 | MovieLens-1M | 739,012 | 7 | 3,529 |
 
-
-
-
 Table 2. Effectiveness Comparison of Different Algorithms. We highlight that our proposed model almost outperforms all baselines across four data sets and both metrics. Further analysis is provided in Section [5.2](#S5.SS2 "5.2. Quantitative Results (RQ1) ‣ 5. Experiment ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks").
 
 |  |  |  |  |  |  |  |  |  |  |
@@ -472,23 +422,19 @@ et al., [2016a](#bib.bib6)) and [He and Chua](#bib.bib14) (He and Chua, [2017]
 
 We will compare with the full models of CrossNet and CIN, i.e., Deep&Cross and xDeepFM, under the setting of joint training with plain DNN later (i.e., Section [5.5](#S5.SS5 "5.5. Integrating Implicit Interactions (RQ4) ‣ 5. Experiment ‣ AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks")).
 
-![Refer to caption](/html/1810.11921/assets/x4.png)
-
+!(/html/1810.11921/assets/x4.png)
 
 (a) Criteo
 
-![Refer to caption](/html/1810.11921/assets/x5.png)
-
+!(/html/1810.11921/assets/x5.png)
 
 (b) Avazu
 
-![Refer to caption](/html/1810.11921/assets/x6.png)
-
+!(/html/1810.11921/assets/x6.png)
 
 (c) KDD12
 
-![Refer to caption](/html/1810.11921/assets/x7.png)
-
+!(/html/1810.11921/assets/x7.png)
 
 (d) MovieLens-1M
 
@@ -524,9 +470,6 @@ Table 3. Efficiency Comparison of Different Algorithms in terms of Model Size on
 | Model | DC | CN | CIN | NFM | AutoInt |
 | --- | --- | --- | --- | --- | --- |
 | #Params | 1.6×1051.6superscript1051.6\times 10^{5} | 3×1033superscript1033\times 10^{3} | 1.9×1061.9superscript1061.9\times 10^{6} | 4×1034superscript1034\times 10^{3} | 3.9×1043.9superscript1043.9\times 10^{4} |
-
-
-
 
 Table 4. Ablation study comparing the performance of AutoInt with and without residual connections. AutoIntw/w/{}\_{\text{{w/}}} is the complete model while the AutoIntw/ow/o{}\_{\text{{w/o}}} is the model without residual connection.
 
@@ -570,29 +513,21 @@ Table 5. Results of Integrating Implicit Feature Interactions. We indicate the b
 
   AutoInt+ outperforms the strongest baseline w.r.t. each data at the: \*\* 0.01 and \* 0.05 level, unpaired t-test.
 
-
-
-![Refer to caption](/html/1810.11921/assets/x8.png)
-
+!(/html/1810.11921/assets/x8.png)
 
 (a) AUC
 
-![Refer to caption](/html/1810.11921/assets/x9.png)
-
+!(/html/1810.11921/assets/x9.png)
 
 (b) Logloss
 
 Figure 5. Performance w.r.t. the number of interacting layers. Results on Criteo and Avazu data sets are similar and hence omitted.
 
-
-
-![Refer to caption](/html/1810.11921/assets/x10.png)
-
+!(/html/1810.11921/assets/x10.png)
 
 (a) AUC
 
-![Refer to caption](/html/1810.11921/assets/x11.png)
-
+!(/html/1810.11921/assets/x11.png)
 
 (b) Logloss
 
@@ -602,13 +537,11 @@ Figure 6. Performance w.r.t. number of embedding dimensions. Results on Criteo a
 
 Next, we investigate the performance w.r.t. the parameter d𝑑d, which is the output dimension of the embedding layer. On the KDD12 dataset, we can see that the performance continuously increase as we increase the dimension size since larger models are used for prediction. The results are different on the MovieLens-1M dataset. When the dimension size reaches 24, the performance begins to decrease. The reason is that this data set is small, and the model is overfitted when too many parameters are used.
 
-![Refer to caption](/html/1810.11921/assets/x12.png)
-
+!(/html/1810.11921/assets/x12.png)
 
 (a) Label=1, Predicted CTR=0.89
 
-![Refer to caption](/html/1810.11921/assets/x13.png)
-
+!(/html/1810.11921/assets/x13.png)
 
 (b) Overall feature interactions
 
@@ -1097,83 +1030,3 @@ Weiping Song and Ming Zhang are supported by National Key Research and Developme
   deep embedding features. In *Proceedings of the
   23rd ACM SIGKDD International Conference on Knowledge Discovery and Data
   Mining*. ACM, 1703–1711.
-
-[◄](/html/1810.11920)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1810.11921)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1810.11921)
-[View original  
-on arXiv](https://arxiv.org/abs/1810.11921)[►](/html/1810.11922)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 20:11:50 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

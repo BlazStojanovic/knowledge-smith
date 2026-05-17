@@ -19,49 +19,6 @@ url: https://arxiv.org/abs/2506.13351
 year: 2025
 ---
 
-[2506.13351] Direct Reasoning Optimization: LLMs Can Reward And Refine Their Own Reasoning for Open-Ended Tasks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Direct Reasoning Optimization: LLMs Can Reward And Refine Their Own Reasoning for Open-Ended Tasks
 
 Yifei Xu  12,
@@ -89,14 +46,12 @@ Building on the success of reasoning capabilities in math, programming, and MCQ 
 
 To address these challenges, we first introduce a new token-level dense reward called the Reasoning Reflection Reward (R3). Owing to the autoregressive nature of LLMs, the CoT reasoning serves as a latent prefix that conditions the model’s generation of the final outcome. Consequently, the LLM’s token-level certainty of the reference outcome – measured under this reasoning prefix – effectively captures how likely the generated reasoning is to produce the correct outcome. However, in long-form generation, only a limited subset of tokens in the reference intrinsically reflect variations in reasoning paths, while many others are less informative and may dilute the reward signal. To overcome this, R3 selectively identifies and emphasizes the key tokens in the reference that are most sensitive to variations in reasoning, shaping the reward signal to focus on these reasoning-reflective tokens (Fig. [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Direct Reasoning Optimization: LLMs Can Reward And Refine Their Own Reasoning for Open-Ended Tasks")). This approach enables the model to directly optimize its reasoning paths toward achieving the reference outcomes in open-ended tasks, promoting outcome-driven reasoning in a manner analogous to RLVR.
 
-![Refer to caption](/html/2506.13351/assets/x1.png)
-
+!(/html/2506.13351/assets/x1.png)
 
 Figure 1: Illustrative example of Reasoning Reflection Reward (R3). For the paper revision task, the model is prompted to revise a paragraph based on reviewer comments (upper left). R3 computes per-token self-certainty (log-probabilities) in the reference revision (upper right) for each sampled reasoning trace, and highlights reasoning-reflective tokens using σ​(certainty)\sigma(\text{certainty}).
 In this example, Reasoning A correctly identifies that Section 4 (overview) has been moved earlier and adjusts the paragraph structure accordingly, with a minor omission of section numbers. Reasoning B gives up. While a vanilla aggregate of certainty prefers B over A due to A’s lower certainty on the token “2”, R3 successfully aligns with the desired ranking by up-weighting high-σ​(certainty)\sigma(\text{certainty}) tokens “gives”, “existing” and “.” that better reflect reasoning effectiveness.
 
-![Refer to caption](/html/2506.13351/assets/x2.png)
-
+!(/html/2506.13351/assets/x2.png)
 
 Figure 2: Overview of Direct Reasoning Optimization (DRO), a framework that rewards and refines reasoning by directly leveraging feedback from the training model. DRO operates within the GRPO framework, where a group of CoT reasoning traces sampled from the actor policy (πθ\pi\_{\theta}) are scored primarily using the R3 score along with length penalty on final outcome. The reward is computed via an internal policy (πrwd\pi\_{\text{rwd}}), derived from the same base reference policy (πref\pi\_{\text{ref}}) being optimized. DRO employs R3-based dynamic training data filtering for open-ended reasoning tasks to improve data efficiency and downstream task performance.
 
@@ -256,18 +211,15 @@ Compared to the ROUGE-rewarded baseline, R3 yields a win rate improvement of 16.
 R3 also outperforms aggregate-certainty rewards.
 Compared to aggregated certainty rewards, R3 leads to consistently higher win rates regardless of length control settings. Against the same base model, DRO-R3 achieves up to a 4.25×4.25\times improvement over DRO-Aggr-R, highlighting the importance of reasoning-reflective token weighting. Furthermore, strict length control (DRO-Aggr-S) degrades performance, suggesting that rigid enforcement of output length may suppress effective reasoning and degrade revision quality.
 
-![Refer to caption](/html/2506.13351/assets/x3.png)
-
+!(/html/2506.13351/assets/x3.png)
 
 (a) Aggregate vs. R3
 
-![Refer to caption](/html/2506.13351/assets/x4.png)
-
+!(/html/2506.13351/assets/x4.png)
 
 (b) Rouge
 
-![Refer to caption](/html/2506.13351/assets/x5.png)
-
+!(/html/2506.13351/assets/x5.png)
 
 (c) Filtering
 
@@ -297,18 +249,15 @@ On FinQA, a math-like task with reliably verifiable outcomes, DRO-R3 achieves ga
 R3 outperforms aggregate-certainty rewards even in short-outcome tasks.
 Although FinQA involves relatively short outputs where most tokens appear to contribute directly to the final answer, R3 still outperforms the aggregate-certainty reward. Compared to the base model, DRO-R3 achieves a 4.15×4.15\times higher improvement than DRO-Aggr. This indicates that reasoning-reflective tokens are not exclusive to long-form generation. For example, in math-like tasks, tokens such as the decimal point “.” may reflect reasoning quality more than trailing digits.
 
-![Refer to caption](/html/2506.13351/assets/x6.png)
-
+!(/html/2506.13351/assets/x6.png)
 
 (a) R3
 
-![Refer to caption](/html/2506.13351/assets/x7.png)
-
+!(/html/2506.13351/assets/x7.png)
 
 (b) Standard deviation of R3
 
-![Refer to caption](/html/2506.13351/assets/x8.png)
-
+!(/html/2506.13351/assets/x8.png)
 
 (c) Generation length
 
@@ -745,83 +694,3 @@ Now please rank the models by the quality of their revisions, so that the model 
   
 Your response must be a valid Python dictionary and should contain nothing else because we will directly execute it in Python. DO NOT include formatting characters like ‘‘‘python‘‘‘. Please provide the ranking that the majority of humans would give.
 <|im\_end|>
-
-[◄](/html/2506.13350)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2506.13351)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2506.13351)
-[View original  
-on arXiv](https://arxiv.org/abs/2506.13351)[►](/html/2506.13352)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Jul 5 15:06:45 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

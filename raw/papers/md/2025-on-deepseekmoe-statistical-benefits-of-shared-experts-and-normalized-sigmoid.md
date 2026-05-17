@@ -18,26 +18,6 @@ year: 2025
 
 [2505.10860] 1 Introduction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
 else if(!window.matchMedia) { return false; }
 else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
 theme = "dark"; }
@@ -45,7 +25,7 @@ if (theme=="dark") {
 document.documentElement.setAttribute("data-theme", "dark");
 } else {
 document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
+
 function toggleColorScheme(){
 var current\_theme = localStorage.getItem("ar5iv\_theme");
 if (current\_theme) {
@@ -56,8 +36,6 @@ localStorage.setItem("ar5iv\_theme", "light"); } }
 else {
 localStorage.setItem("ar5iv\_theme", "dark"); }
 detectColorScheme(); }
-
-
 
 On DeepSeekMoE: Statistical Benefits of Shared Experts
 and Normalized Sigmoid Gating
@@ -118,8 +96,6 @@ Table 1: Summary of expert estimation rates in DeepSeek-V2’s MoE with softmax 
 | DeepSeek-V2’s MoE | ReLU FFN Experts | Linear Experts |
 | Shared Experts | 𝒪~P​(n−1/4)\widetilde{\mathcal{O}}\_{P}(n^{-1/4}) | 𝒪~P​(n−1/4)\widetilde{\mathcal{O}}\_{P}(n^{-1/4}) |
 | Routed Experts | 𝒪~P​(n−1/4)\widetilde{\mathcal{O}}\_{P}(n^{-1/4}) | 𝒪~P​(n−1/r2​(|𝒱2,j|))\widetilde{\mathcal{O}}\_{P}(n^{-1/r\_{2}(|\mathcal{V}\_{2,j}|)}) |
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -287,8 +263,7 @@ Table 2: Performance comparisons of different Sparse Mixture of Experts (SMoE) m
 | CommonSenseQA | 24.65% | 25.47% | 24.98% | 24.90% | 26.54% | 28.09% | 27.35% | 28.50% |
 | Average | 42.90% | 43.21% | 43.11% | 43.04% | 47.71% | 48.29% | 47.91% | 48.06% |
 
-![Refer to caption](/html/2505.10860/assets/x1.png)
-
+!(/html/2505.10860/assets/x1.png)
 
 Figure 1: Average performance (%) over training steps in language modeling tasks. Left: Model with 158M parameters; Right: Model with 679M parameters.
 
@@ -314,8 +289,7 @@ Table 3: Vision-language model performance across benchmarks. (SMoE-SG refers to
 | DeepSeek-V2 | 64.70% | 41.55% | 85.80% | 82.20% | 40.51% | 60.15% | 31.11% | 25.72% | 31.00% | 51.41% |
 | SMoE-SR | 64.64% | 41.51% | 85.87% | 82.17% | 40.54% | 60.07% | 31.68% | 25.95% | 31.00% | 51.49% |
 
-![Refer to caption](/html/2505.10860/assets/x2.png)
-
+!(/html/2505.10860/assets/x2.png)
 
 Figure 2: Average performance (%) over training steps on vision-language pretraining tasks. Left: Vanilla SMoE vs. DeepSeek-V3; Center: Vanilla SMoE vs. DeepSeek-V2; Right: DeepSeek-V2 vs. DeepSeek-V3.
 
@@ -327,8 +301,7 @@ Convergence Rate. Figure [2](#S3.F2 "Figure 2 ‣ 3.2 Vision-Language Modeling 
 
 We now explore the router behavior by empirically examining the router saturation and change rate.
 
-![Refer to caption](/html/2505.10860/assets/x3.png)
-
+!(/html/2505.10860/assets/x3.png)
 
 Figure 3: Evolution of router saturation (averaged across all layers) during training for language-modeling tasks with 158 M (left) and 679 M (right) parameter models. We compute saturation by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
@@ -336,8 +309,7 @@ Router Saturation.
 Router Saturation, first introduced in OLMoE [[51](#bib.bib51)], quantifies the proportion of overlapping activated experts between the final checkpoint and an intermediary checkpoint at time tt. It serves as a measure of the router’s convergence over the course of training. A higher router saturation value indicates stronger alignment in expert selection, signifying that the router’s decisions become increasingly consistent with its final configuration. The formal definition and formula are defined in the Appendix [H.1](#A8.SS1 "H.1 Router Saturation ‣ Appendix H Additional Router Analysis").
 Figure [3](#S3.F3 "Figure 3 ‣ 3.3 Router Analysis ‣ 3 Experiments") shows that, after 5% of training, up to ~60% of router decisions have already saturated. This early saturation aligns with prior findings in OLMoE [[51](#bib.bib51)] and OpenMoE [[76](#bib.bib76)], supporting the validity of our experimental setup. When comparing model configurations, we observe that models equipped with normalized sigmoid gating achieve noticeably faster saturation than those using softmax gating. In particular, the SMoE Sigmoid Gating exhibits consistently steeper saturation curves compared to Vanilla SMoE, reflecting more rapid convergence in expert selection. A similar pattern is observed in the comparison between DeepSeek-V3 and DeepSeek-V2 under the shared expert configuration. These findings highlight the effectiveness of normalized sigmoid gating in accelerating router convergence, potentially reducing the training time required for convergence.
 
-![Refer to caption](/html/2505.10860/assets/x4.png)
-
+!(/html/2505.10860/assets/x4.png)
 
 Figure 4: Router Change Rate (averaged across all layers) during training for language-modeling tasks with 158 M (left) and 679 M (right) parameter models. We compute router change rate by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
@@ -3424,23 +3396,19 @@ In this appendix, we provide supplementary experimental results that reinforce a
 
 ### G.1 Numerical Experiments
 
-![Refer to caption](/html/2505.10860/assets/x5.png)
-
+!(/html/2505.10860/assets/x5.png)
 
 (a) Theorem 1
 
-![Refer to caption](/html/2505.10860/assets/x6.png)
-
+!(/html/2505.10860/assets/x6.png)
 
 (b) Theorem 2
 
-![Refer to caption](/html/2505.10860/assets/x7.png)
-
+!(/html/2505.10860/assets/x7.png)
 
 (c) Theorem 3
 
-![Refer to caption](/html/2505.10860/assets/x8.png)
-
+!(/html/2505.10860/assets/x8.png)
 
 (d) Theorem 4
 
@@ -3470,23 +3438,19 @@ The problem setting is defined in Equation [1](#S2.E1 "In 2 On Shared Expert St
 
 As illustrated in Figure [6(a)](#A7.F6.sf1 "In Figure 6 ‣ G.1.2 Theorem 1 ‣ G.1 Numerical Experiments ‣ Appendix G Additional Experiments"), the maximum likelihood estimator MLE (G^1n,G^2n)(\widehat{G}^{n}\_{1},\widehat{G}^{n}\_{2}) exhibits empirical convergence to the true mixing measure G∗G^{\*} under the Voronoi metric 𝒟1\mathcal{D}\_{1} (Equation [2.1](#S2.Ex5 "2.1 Strongly Identifiable Experts ‣ 2 On Shared Expert Strategy")) at the rate of order 𝒪P​([log⁡(n)/n]0.451)\mathcal{O}\_{P}([\log(n)/n]^{0.451}). This empirically observed rate closely matches the theoretical parametric convergence rate 𝒪P​([log⁡(n)/n]1/2)\mathcal{O}\_{P}([\log(n)/n]^{1/2}) established in Theorem [1](#Thmtheorem1 "Theorem 1. ‣ 2.1 Strongly Identifiable Experts ‣ 2 On Shared Expert Strategy"), thereby validating the practical applicability of the theoretical result under strongly identifiable expert assumptions.
 
-![Refer to caption](/html/2505.10860/assets/x9.png)
-
+!(/html/2505.10860/assets/x9.png)
 
 (a) Theorem 1
 
-![Refer to caption](/html/2505.10860/assets/x10.png)
-
+!(/html/2505.10860/assets/x10.png)
 
 (b) Theorem 2
 
-![Refer to caption](/html/2505.10860/assets/x11.png)
-
+!(/html/2505.10860/assets/x11.png)
 
 (c) Theorem 3
 
-![Refer to caption](/html/2505.10860/assets/x12.png)
-
+!(/html/2505.10860/assets/x12.png)
 
 (d) Theorem 4
 
@@ -3542,8 +3506,7 @@ Figure [6(d)](#A7.F6.sf4 "In Figure 6 ‣ G.1.2 Theorem 1 ‣ G.1 Numerical Exp
 
 ### G.2 Language Modeling
 
-![Refer to caption](/html/2505.10860/assets/x13.png)
-
+!(/html/2505.10860/assets/x13.png)
 
 Figure 7: Average performance (%) compared in pairs with Vanilla SMoE across three model settings over training steps on language modeling tasks. Left: Vanilla SMoE vs. DeepSeek-V3; Center: Vanilla SMoE vs. DeepSeek-V2; Right: Vanilla SMoE vs. SMoE Sigmoid Gating.
 
@@ -3551,8 +3514,7 @@ Figure [7](#A7.F7 "Figure 7 ‣ G.2 Language Modeling ‣ Appendix G Additional
 
 ### G.3 Vision-Language Modeling
 
-![Refer to caption](/html/2505.10860/assets/x14.png)
-
+!(/html/2505.10860/assets/x14.png)
 
 Figure 8: Average performance (%) over training steps on vision-language pretraining tasks, comparing SMoE variants across three model configurations. Left: Full comparison among Vanilla SMoE, SMoE with Sigmoid Gating, DeepSeek-V2, and DeepSeek-V3; Right: Focused comparison between Vanilla SMoE and SMoE Sigmoid Gating.
 
@@ -3564,8 +3526,7 @@ In this appendix, we provide further analyses regarding router behavior. Formal 
 
 ### H.1 Router Saturation
 
-![Refer to caption](/html/2505.10860/assets/x15.png)
-
+!(/html/2505.10860/assets/x15.png)
 
 Figure 9: Router saturation across layers for 158M-parameter models in language modeling tasks. We compute saturation by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
@@ -3599,8 +3560,7 @@ Figure [9](#A8.F9 "Figure 9 ‣ H.1 Router Saturation ‣ Appendix H Additional
 
 ### H.2 Router Change Rate
 
-![Refer to caption](/html/2505.10860/assets/x16.png)
-
+!(/html/2505.10860/assets/x16.png)
 
 Figure 10: Router change rate across layers for 158M-parameter models in language modeling tasks. We compute router change rate by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
@@ -3628,13 +3588,11 @@ Where:
 
   |ℰi(t)\ℰi(T)|\left|\mathcal{E}\_{i}^{(t)}\backslash\mathcal{E}\_{i}^{(T)}\right|: The number of non-intersecting experts activated for the ii-th token between the (t+1)(t+1)-th and the tt-th checkpoint
 
-![Refer to caption](/html/2505.10860/assets/x17.png)
-
+!(/html/2505.10860/assets/x17.png)
 
 Figure 11: Router saturation across layers for 679M-parameter models in language modeling tasks. We compute saturation by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
-![Refer to caption](/html/2505.10860/assets/x18.png)
-
+!(/html/2505.10860/assets/x18.png)
 
 Figure 12: Router change rate across layers for 679M-parameter models in language modeling tasks. We compute router change rate by comparing the routing to the top-8 experts with SMoE and SMoE Sigmoid Gating, and the top-6 experts with DeepSeek variants.
 
@@ -3644,8 +3602,7 @@ Figure [9](#A8.F9 "Figure 9 ‣ H.1 Router Saturation ‣ Appendix H Additional
 
 ### H.3 Expert Utilization
 
-![Refer to caption](/html/2505.10860/assets/x19.png)
-
+!(/html/2505.10860/assets/x19.png)
 
 Figure 13: Jain’s Fairness Index across MoE layers for language-modeling tasks with 158 M (left) and 679 M (right) parameter models.
 
@@ -3773,18 +3730,15 @@ Table 5: Training Time and GPU Resource Allocation Across All Experimental Setti
 | DeepSeek-V2 | 71 | 4xA100 |
 | DeepSeek-V3 | 71.5 | 4xA100 |
 
-![Refer to caption](/html/2505.10860/assets/x20.png)
-
+!(/html/2505.10860/assets/x20.png)
 
 Figure 14: Benchmark curves during training in language modeling tasks for models with 158M parameters.
 
-![Refer to caption](/html/2505.10860/assets/x21.png)
-
+!(/html/2505.10860/assets/x21.png)
 
 Figure 15: Benchmark curves during training in language modeling tasks for models with 679M parameters.
 
-![Refer to caption](/html/2505.10860/assets/x22.png)
-
+!(/html/2505.10860/assets/x22.png)
 
 Figure 16: Benchmark curves during training in vision-language modeling tasks.
 
@@ -4316,83 +4270,3 @@ Figure 16: Benchmark curves during training in vision-language modeling tasks.
   Mme-realworld: Could your multimodal llm challenge high-resolution
   real-world scenarios that are difficult for humans?
   arXiv preprint arXiv:2408.13257, 2024.
-
-[◄](/html/2505.10859)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2505.10860)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2505.10860)
-[View original  
-on arXiv](https://arxiv.org/abs/2505.10860)[►](/html/2505.10861)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Jun 5 21:12:51 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

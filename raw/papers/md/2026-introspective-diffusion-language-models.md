@@ -24,87 +24,6 @@ url: https://arxiv.org/abs/2604.11035
 year: 2026
 ---
 
- [2604.11035] Introspective Diffusion Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-[Skip to main content](#content)
-
-
-[![Cornell University](/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)
-
-[Learn about arXiv becoming an independent nonprofit.](https://tech.cornell.edu/arxiv/)
-
-We gratefully acknowledge support from the Simons Foundation, [member institutions](https://info.arxiv.org/about/ourmembers.html), and all contributors.
-[Donate](https://info.arxiv.org/about/donate.html)
-
-[![arxiv logo](/static/browse/0.3.4/images/arxiv-logo-one-color-white.svg)](/) > [cs](/list/cs/recent) > arXiv:2604.11035
-
-[Help](https://info.arxiv.org/help) | [Advanced Search](https://arxiv.org/search/advanced)
-
-All fields
-Title
-Author
-Abstract
-Comments
-Journal reference
-ACM classification
-MSC classification
-Report number
-arXiv identifier
-DOI
-ORCID
-arXiv author ID
-Help pages
-Full text
-
-Search
-
-[![arXiv logo](/static/browse/0.3.4/images/arxiv-logomark-small-white.svg)](https://arxiv.org/)
-
-[![Cornell University Logo](/static/browse/0.3.4/images/icons/cu/cornell-reduced-white-SMALL.svg)](https://www.cornell.edu/)
-
-GO
-
-## quick links
-
-* [Login](https://arxiv.org/login)
-* [Help Pages](https://info.arxiv.org/help)
-* [About](https://info.arxiv.org/about)
-
-
-
 # Computer Science > Artificial Intelligence
 
 **arXiv:2604.11035** (cs)
@@ -184,8 +103,6 @@ Data provided by:
 
 [![BibSonomy](/static/browse/0.3.4/images/icons/social/bibsonomy.png)](http://www.bibsonomy.org/BibtexHandler?requTask=upload&url=https://arxiv.org/abs/2604.11035&description=Introspective Diffusion Language Models "Bookmark on BibSonomy")
 [![Reddit](/static/browse/0.3.4/images/icons/social/reddit.png)](https://reddit.com/submit?url=https://arxiv.org/abs/2604.11035&title=Introspective Diffusion Language Models "Bookmark on Reddit")
-
-
 
 Bibliographic Tools
 
@@ -268,7 +185,6 @@ CORE Recommender *([What is CORE?](https://core.ac.uk/services/recommender))*
 * Institution
 * Topic
 
-
 About arXivLabs
 
 # arXivLabs: experimental projects with community collaborators
@@ -284,8 +200,6 @@ Have an idea for a project that will add value for arXiv's community? [**Learn m
 
 mathjaxToggle();
 
-
-
 * [About](https://info.arxiv.org/about)
 * [Help](https://info.arxiv.org/help)
 
@@ -293,8 +207,6 @@ mathjaxToggle();
    [Contact](https://info.arxiv.org/help/contact.html)
 * subscribe to arXiv mailingsClick here to subscribe
    [Subscribe](https://info.arxiv.org/help/subscribe)
-
-
 
 * [Copyright](https://info.arxiv.org/help/license/index.html)
 * [Privacy Policy](https://info.arxiv.org/help/policies/privacy_policy.html)

@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/2307.14338v2
 year: 2023
 ---
 
-[2307.14338] TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023
 
 Yury Gorishniy††{\dagger}
@@ -200,8 +157,7 @@ To build a retrieval-based tabular DL model, we choose an incremental approach, 
 Let’s consider a generic feed-forward retrieval-free network f​(x)=P​(E​(x))𝑓𝑥𝑃𝐸𝑥f(x)=P(E(x)) informally partitioned into two parts: encoder E:𝕏→ℝd:𝐸→𝕏superscriptℝ𝑑E:\mathbb{X}\rightarrow\mathbb{R}^{d} and predictor P:ℝd→𝕐^:𝑃→superscriptℝ𝑑^𝕐P:\mathbb{R}^{d}\rightarrow\hat{\mathbb{Y}}.
 To incrementally make it retrieval-based, we add retrieval module R𝑅R in a residual branch after E𝐸E as illustrated in [Figure 2](#S3.F2 "Figure 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"), where x~∈ℝd~𝑥superscriptℝ𝑑\tilde{x}\in\mathbb{R}^{d} is the intermediate representation of the target object, {x~i}i∈Ic​a​n​d⊂ℝdsubscriptsubscript~𝑥𝑖𝑖subscript𝐼𝑐𝑎𝑛𝑑superscriptℝ𝑑\{\tilde{x}\_{i}\}\_{i\in I\_{cand}}\subset\mathbb{R}^{d} are the intermediate representations of the candidates and {yi}i∈Ic​a​n​d⊂𝕐subscriptsubscript𝑦𝑖𝑖subscript𝐼𝑐𝑎𝑛𝑑𝕐\{y\_{i}\}\_{i\in I\_{cand}}\subset\mathbb{Y} are the labels of the candidates.
 
-![Refer to caption](/html/2307.14338/assets/x1.png)
-
+!(/html/2307.14338/assets/x1.png)
 
 Figure 2: 
 The generic retrieval-based architecture introduced in [subsection 3.2](#S3.SS2 "3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") and used to build TabR.
@@ -213,8 +169,7 @@ The bold path highlights the structure of the feed-forward retrieval-free model 
 Encoder and predictor.
 The encoder E𝐸E and predictor P𝑃P modules ([Figure 2](#S3.F2 "Figure 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023")) are not the focus of this work, so we keep them simple as illustrated in [Figure 3](#S3.F3 "Figure 3 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
 
-![Refer to caption](/html/2307.14338/assets/x2.png)
-
+!(/html/2307.14338/assets/x2.png)
 
 Figure 3: 
 Encoder E𝐸E and predictor P𝑃P introduced in [Figure 2](#S3.F2 "Figure 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
@@ -223,8 +178,7 @@ The Input Module encapsulates the input processing routines (feature normalizati
 In particular, Input Module can contain embeddings for continuous features (Gorishniy et al., [2022](#bib.bib12)).
 (∗ LayerNorm is omitted in the first Block of E𝐸E.)
 
-![Refer to caption](/html/2307.14338/assets/x3.png)
-
+!(/html/2307.14338/assets/x3.png)
 
 Figure 4: 
 Simplified illustration of the retrieval module R𝑅R introduced in [Figure 2](#S3.F2 "Figure 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") (the omitted details are provided in the main text).
@@ -457,14 +411,10 @@ Additionally, this approach can be used to scale TabR to large datasets by trai
 Overall, we consider the conducted experiment as a preliminary exploration and leave a systematic study of continual updates for future work.
 See [subsection D.3](#A4.SS3 "D.3 Implementation details of subsection 5.2 ‣ Appendix D Implementation details ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") for implementation details.
 
-![[Uncaptioned image]](/html/2307.14338/assets/x4.png)
-
 Figure 5: 
 ΔΔ\Delta-context (explained below) averaged over training objects until the early stopping while training TabR-S.
 On a given epoch, for a given object, ΔΔ\Delta-context shows the portion of its context (the top-m𝑚m candidates and their weights) changed compared to the previous epoch (i.e., the lower the value, the smaller the change; see [subsection D.2](#A4.SS2 "D.2 Implementation details of subsection 5.1 ‣ Appendix D Implementation details ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") for formal details).
 The plot shows that context updates become less intensive during the course of training, which motivates the optimization described in [subsection 5.1](#S5.SS1 "5.1 Freezing contexts for faster training of TabR ‣ 5 Analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
-
-![[Uncaptioned image]](/html/2307.14338/assets/x5.png)
 
 Figure 6: 
 Training TabR-S on various portions of the training data of the full “Weather prediction” dataset and gradually adding the remaining unseen training data to the set of candidates without retraining as described in [subsection 5.2](#S5.SS2 "5.2 Updating TabR with new training data without retraining ‣ 5 Analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
@@ -956,13 +906,9 @@ Table 11: Results for ensembles of tuned models. “XGBoost + retrieval” stand
 We report the extended results for [subsection 5.1](#S5.SS1 "5.1 Freezing contexts for faster training of TabR ‣ 5 Analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") in [Figure 7](#A1.F7 "Figure 7 ‣ A.6 Additional results for the “context freeze” technique ‣ Appendix A Additional analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"), [Table 12](#A1.T12 "Table 12 ‣ A.6 Additional results for the “context freeze” technique ‣ Appendix A Additional analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") and [Table 13](#A1.T13 "Table 13 ‣ A.6 Additional results for the “context freeze” technique ‣ Appendix A Additional analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
 For the formal definition of the ΔΔ\Delta-context metric, see [subsection D.2](#A4.SS2 "D.2 Implementation details of subsection 5.1 ‣ Appendix D Implementation details ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
 
-![Refer to caption](/html/2307.14338/assets/x6.png)
-
+!(/html/2307.14338/assets/x6.png)
 
 Figure 7: The extended version of [Figure 5](#S5.F5 "Figure 5 ‣ 5.2 Updating TabR with new training data without retraining ‣ 5 Analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023") with more datasets.
-
-
-
 
 Table 12: 
 The extended version of [Table 6](#S5.T6 "Table 6 ‣ 5.1 Freezing contexts for faster training of TabR ‣ 5 Analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023").
@@ -978,9 +924,6 @@ The speedups are provided in [Table 13](#A1.T13 "Table 13 ‣ A.6 Additional re
 | TabR-S (CF-4) | 0.8580.858\mathbf{0.858} | 0.4090.409\mathbf{0.409} | 3.0873.087\mathbf{3.087} | 0.8570.857\mathbf{0.857} | 0.1360.1360.136 | 0.8160.816\mathbf{0.816} | 0.7170.7170.717 | 0.6910.691\mathbf{0.691} | 1.7631.7631.763 | 0.9730.973\mathbf{0.973} | – | 1.3±0.5plus-or-minus1.30.51.3\pm 0.5 |
 | TabR-S (CF-8) | 0.8580.858\mathbf{0.858} | 0.4070.407\mathbf{0.407} | 3.1183.1183.118 | 0.8570.857\mathbf{0.857} | 0.1350.1350.135 | 0.8170.817\mathbf{0.817} | 0.7190.719\mathbf{0.719} | 0.6910.691\mathbf{0.691} | 1.7611.7611.761 | 0.9730.973\mathbf{0.973} | – | 1.3±0.5plus-or-minus1.30.51.3\pm 0.5 |
 | TabR-S | 0.8590.859\mathbf{0.859} | 0.4060.406\mathbf{0.406} | 3.0933.093\mathbf{3.093} | 0.8580.858\mathbf{0.858} | 0.1330.133\mathbf{0.133} | 0.8160.816\mathbf{0.816} | 0.7190.719\mathbf{0.719} | 0.6910.691\mathbf{0.691} | 1.7551.755\mathbf{1.755} | 0.9730.973\mathbf{0.973} | 1.3151.315\mathbf{1.315} | 1.0±0.0plus-or-minus1.00.01.0\pm 0.0 |
-
-
-
 
 Table 13: Fraction of time spent on training in [Table 12](#A1.T12 "Table 12 ‣ A.6 Additional results for the “context freeze” technique ‣ Appendix A Additional analysis ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"), relative to the training time without the context freeze (the last row; the format is hours:minutes:seconds).
 
@@ -1213,11 +1156,7 @@ Then, we define a set of the best algorithms (i.e. their results are in bold in 
 
 ### D.7 Embeddings for numerical features
 
-![[Uncaptioned image]](/html/2307.14338/assets/data/A-fig-mlp-without-embeddings.png)
-
 Figure 8: (Copied from Gorishniy et al. [[2022](#bib.bib12)]) The vanilla MLP. The model takes two numerical features as input.
-
-![[Uncaptioned image]](/html/2307.14338/assets/data/A-fig-mlp-with-embeddings.png)
 
 Figure 9: (Copied from Gorishniy et al. [[2022](#bib.bib12)]) The same MLP as in [Figure 8](#A4.F8 "Figure 8 ‣ D.7 Embeddings for numerical features ‣ Appendix D Implementation details ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"), but now with embeddings for numerical features.
 
@@ -1615,9 +1554,6 @@ Table 25: Extended results for the default benchmark. Results are grouped by dat
 | WE ↓  Method Single model Ensemble  Tuned Hyperparameters  kNN 2.296±0.000plus-or-minus2.2960.0002.296\pm 0.000 –  DNNR 1.913±0.000plus-or-minus1.9130.0001.913\pm 0.000 –  DKL – –  ANP 1.902±0.009plus-or-minus1.9020.0091.902\pm 0.009 –  NPT 1.947±0.006plus-or-minus1.9470.0061.947\pm 0.006 –  SAINT 1.933±0.028plus-or-minus1.9330.0281.933\pm 0.028 –  MLP 1.905±0.005plus-or-minus1.9050.0051.905\pm 0.005 –  MLP-PLR 1.860±0.002plus-or-minus1.8600.0021.860\pm 0.002 1.833±0.002plus-or-minus1.8330.0021.833\pm 0.002  TabR-S 1.747±0.002plus-or-minus1.7470.0021.747\pm 0.002 1.718±0.001plus-or-minus1.7180.0011.718\pm 0.001  TabR 1.690±0.003plus-or-minus1.6900.0031.690\pm 0.003 1.661±0.002plus-or-minus1.6610.0021.661\pm 0.002  CatBoost 1.807±0.002plus-or-minus1.8070.0021.807\pm 0.002 1.773±0.001plus-or-minus1.7730.0011.773\pm 0.001  XGBoost 1.784±0.001plus-or-minus1.7840.0011.784\pm 0.001 1.769±0.001plus-or-minus1.7690.0011.769\pm 0.001  LightGBM 1.771±0.001plus-or-minus1.7710.0011.771\pm 0.001 1.761±0.001plus-or-minus1.7610.0011.761\pm 0.001  Default hyperparameters  CatBoost 1.895±0.001plus-or-minus1.8950.0011.895\pm 0.001 1.886±0.000plus-or-minus1.8860.0001.886\pm 0.000  XGBoost 1.920±0.000plus-or-minus1.9200.0001.920\pm 0.000 1.920±0.000plus-or-minus1.9200.0001.920\pm 0.000  LightGBM 1.845±0.003plus-or-minus1.8450.0031.845\pm 0.003 1.817±0.001plus-or-minus1.8170.0011.817\pm 0.001  TabR-S 1.755±0.002plus-or-minus1.7550.0021.755\pm 0.002 1.721±0.002plus-or-minus1.7210.0021.721\pm 0.002  Tuned hyperparameters ([Table 2](#S3.T2 "Table 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"))  step-0 1.903±0.004plus-or-minus1.9030.0041.903\pm 0.004 1.835±0.004plus-or-minus1.8350.0041.835\pm 0.004  step-1 1.906±0.003plus-or-minus1.9060.0031.906\pm 0.003 1.845±0.001plus-or-minus1.8450.0011.845\pm 0.001  step-2 1.804±0.003plus-or-minus1.8040.0031.804\pm 0.003 1.754±0.001plus-or-minus1.7540.0011.754\pm 0.001  step-3 1.814±0.003plus-or-minus1.8140.0031.814\pm 0.003 1.765±0.001plus-or-minus1.7650.0011.765\pm 0.001 | CO ↑  Method Single model Ensemble  Tuned Hyperparameters  kNN 0.927±0.000plus-or-minus0.9270.0000.927\pm 0.000 –  DNNR – –  DKL – –  ANP – –  NPT 0.966±0.001plus-or-minus0.9660.0010.966\pm 0.001 –  SAINT 0.964±0.010plus-or-minus0.9640.0100.964\pm 0.010 –  MLP 0.963±0.001plus-or-minus0.9630.0010.963\pm 0.001 –  MLP-PLR 0.970±0.001plus-or-minus0.9700.0010.970\pm 0.001 0.974±0.000plus-or-minus0.9740.0000.974\pm 0.000  TabR-S 0.973±0.000plus-or-minus0.9730.0000.973\pm 0.000 0.974±0.000plus-or-minus0.9740.0000.974\pm 0.000  TabR 0.976±0.000plus-or-minus0.9760.0000.976\pm 0.000 0.977±0.000plus-or-minus0.9770.0000.977\pm 0.000  CatBoost 0.968±0.000plus-or-minus0.9680.0000.968\pm 0.000 0.969±0.000plus-or-minus0.9690.0000.969\pm 0.000  XGBoost 0.971±0.000plus-or-minus0.9710.0000.971\pm 0.000 0.971±0.000plus-or-minus0.9710.0000.971\pm 0.000  LightGBM 0.971±0.000plus-or-minus0.9710.0000.971\pm 0.000 0.971±0.000plus-or-minus0.9710.0000.971\pm 0.000  Default hyperparameters  CatBoost 0.923±0.000plus-or-minus0.9230.0000.923\pm 0.000 0.924±0.000plus-or-minus0.9240.0000.924\pm 0.000  XGBoost 0.966±0.000plus-or-minus0.9660.0000.966\pm 0.000 0.966±0.000plus-or-minus0.9660.0000.966\pm 0.000  LightGBM 0.884±0.016plus-or-minus0.8840.0160.884\pm 0.016 0.899±0.005plus-or-minus0.8990.0050.899\pm 0.005  TabR-S 0.973±0.001plus-or-minus0.9730.0010.973\pm 0.001 0.974±0.000plus-or-minus0.9740.0000.974\pm 0.000  Tuned hyperparameters ([Table 2](#S3.T2 "Table 2 ‣ 3.2 Architecture ‣ 3 TabR ‣ TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023"))  step-0 0.957±0.002plus-or-minus0.9570.0020.957\pm 0.002 0.965±0.001plus-or-minus0.9650.0010.965\pm 0.001  step-1 0.960±0.002plus-or-minus0.9600.0020.960\pm 0.002 0.967±0.001plus-or-minus0.9670.0010.967\pm 0.001  step-2 0.972±0.000plus-or-minus0.9720.0000.972\pm 0.000 0.973±0.000plus-or-minus0.9730.0000.973\pm 0.000  step-3 0.975±0.001plus-or-minus0.9750.0010.975\pm 0.001 0.976±0.000plus-or-minus0.9760.0000.976\pm 0.000 |
 | MI ↓  Method Single model Ensemble  Tuned Hyperparameters  kNN 0.764±0.000plus-or-minus0.7640.0000.764\pm 0.000 –  DNNR 0.765±0.000plus-or-minus0.7650.0000.765\pm 0.000 –  DKL – –  ANP – –  NPT 0.753±0.001plus-or-minus0.7530.0010.753\pm 0.001 –  SAINT 0.763±0.007plus-or-minus0.7630.0070.763\pm 0.007 –  MLP 0.748±0.000plus-or-minus0.7480.0000.748\pm 0.000 –  MLP-PLR 0.744±0.000plus-or-minus0.7440.0000.744\pm 0.000 0.743±0.000plus-or-minus0.7430.0000.743\pm 0.000  TabR-S 0.750±0.001plus-or-minus0.7500.0010.750\pm 0.001 0.749±0.000plus-or-minus0.7490.0000.749\pm 0.000  TabR 0.750±0.001plus-or-minus0.7500.0010.750\pm 0.001 0.748±0.000plus-or-minus0.7480.0000.748\pm 0.000  CatBoost 0.741±0.000plus-or-minus0.7410.0000.741\pm 0.000 0.741±0.000plus-or-minus0.7410.0000.741\pm 0.000  XGBoost 0.741±0.000plus-or-minus0.7410.0000.741\pm 0.000 0.741±0.000plus-or-minus0.7410.0000.741\pm 0.000  LightGBM 0.742±0.000plus-or-minus0.7420.0000.742\pm 0.000 0.741±0.000plus-or-minus0.7410.0000.741\pm 0.000  Default hyperparameters  CatBoost 0.745±0.000plus-or-minus0.7450.0000.745\pm 0.000 0.744±0.000plus-or-minus0.7440.0000.744\pm 0.000  XGBoost 0.750±0.000plus-or-minus0.7500.0000.750\pm 0.000 0.750±0.000plus-or-minus0.7500.0000.750\pm 0.000  LightGBM 0.747±0.000plus-or-minus0.7470.0000.747\pm 0.000 0.744±0.000plus-or-minus0.7440.0000.744\pm 0.000  TabR-S 0.757±0.001plus-or-minus0.7570.0010.757\pm 0.001 0.752±0.001plus-or-minus0.7520.0010.752\pm 0.001 |  |
 
-
-
-
 Table 26: Extended results for Grinsztajn et al. [[2022](#bib.bib13)] benchmark. Results are grouped by datasets and span multiple pages below. Notation: ↓ corresponds to RMSE, ↑ corresponds to accuracy.
 
 |  |  |
@@ -1644,83 +1580,3 @@ Table 26: Extended results for Grinsztajn et al. [[2022](#bib.bib13)] benchmark
 | visualizing soil ↓  Method Single model Ensemble  Tuned Hyperparameters  MLP 0.138±0.012plus-or-minus0.1380.0120.138\pm 0.012 0.132±0.010plus-or-minus0.1320.0100.132\pm 0.010  MLP-PLR 0.158±0.067plus-or-minus0.1580.0670.158\pm 0.067 0.144±0.060plus-or-minus0.1440.0600.144\pm 0.060  TabR-S 0.398±0.352plus-or-minus0.3980.3520.398\pm 0.352 0.387±0.375plus-or-minus0.3870.3750.387\pm 0.375  TabR 0.227±0.264plus-or-minus0.2270.2640.227\pm 0.264 0.202±0.147plus-or-minus0.2020.1470.202\pm 0.147  CatBoost 0.055±0.006plus-or-minus0.0550.0060.055\pm 0.006 0.047±0.006plus-or-minus0.0470.0060.047\pm 0.006  XGBoost 0.176±0.071plus-or-minus0.1760.0710.176\pm 0.071 0.154±0.054plus-or-minus0.1540.0540.154\pm 0.054  LightGBM 0.062±0.016plus-or-minus0.0620.0160.062\pm 0.016 0.062±0.017plus-or-minus0.0620.0170.062\pm 0.017  Default hyperparameters  TabR-S 0.327±0.254plus-or-minus0.3270.2540.327\pm 0.254 0.310±0.257plus-or-minus0.3100.2570.310\pm 0.257  CatBoost 0.064±0.005plus-or-minus0.0640.0050.064\pm 0.005 0.058±0.005plus-or-minus0.0580.0050.058\pm 0.005  XGBoost 0.066±0.009plus-or-minus0.0660.0090.066\pm 0.009 0.066±0.010plus-or-minus0.0660.0100.066\pm 0.010  LightGBM 0.061±0.013plus-or-minus0.0610.0130.061\pm 0.013 0.061±0.014plus-or-minus0.0610.0140.061\pm 0.014 | wine ↑  Method Single model Ensemble  Tuned Hyperparameters  MLP 0.769±0.015plus-or-minus0.7690.0150.769\pm 0.015 0.784±0.010plus-or-minus0.7840.0100.784\pm 0.010  MLP-PLR 0.771±0.016plus-or-minus0.7710.0160.771\pm 0.016 0.783±0.014plus-or-minus0.7830.0140.783\pm 0.014  TabR-S 0.794±0.011plus-or-minus0.7940.0110.794\pm 0.011 0.805±0.006plus-or-minus0.8050.0060.805\pm 0.006  TabR 0.780±0.015plus-or-minus0.7800.0150.780\pm 0.015 0.795±0.012plus-or-minus0.7950.0120.795\pm 0.012  CatBoost 0.799±0.013plus-or-minus0.7990.0130.799\pm 0.013 0.806±0.010plus-or-minus0.8060.0100.806\pm 0.010  XGBoost 0.795±0.018plus-or-minus0.7950.0180.795\pm 0.018 0.801±0.019plus-or-minus0.8010.0190.801\pm 0.019  LightGBM 0.789±0.016plus-or-minus0.7890.0160.789\pm 0.016 0.793±0.011plus-or-minus0.7930.0110.793\pm 0.011  Default hyperparameters  TabR-S 0.791±0.012plus-or-minus0.7910.0120.791\pm 0.012 0.800±0.008plus-or-minus0.8000.0080.800\pm 0.008  CatBoost 0.796±0.010plus-or-minus0.7960.0100.796\pm 0.010 0.799±0.010plus-or-minus0.7990.0100.799\pm 0.010  XGBoost 0.796±0.010plus-or-minus0.7960.0100.796\pm 0.010 0.796±0.010plus-or-minus0.7960.0100.796\pm 0.010  LightGBM 0.798±0.004plus-or-minus0.7980.0040.798\pm 0.004 0.798±0.004plus-or-minus0.7980.0040.798\pm 0.004 |
 | wine quality ↓  Method Single model Ensemble  Tuned Hyperparameters  MLP 0.672±0.015plus-or-minus0.6720.0150.672\pm 0.015 0.659±0.016plus-or-minus0.6590.0160.659\pm 0.016  MLP-PLR 0.654±0.018plus-or-minus0.6540.0180.654\pm 0.018 0.634±0.018plus-or-minus0.6340.0180.634\pm 0.018  TabR-S 0.632±0.010plus-or-minus0.6320.0100.632\pm 0.010 0.620±0.010plus-or-minus0.6200.0100.620\pm 0.010  TabR 0.641±0.011plus-or-minus0.6410.0110.641\pm 0.011 0.620±0.007plus-or-minus0.6200.0070.620\pm 0.007  CatBoost 0.609±0.013plus-or-minus0.6090.0130.609\pm 0.013 0.606±0.014plus-or-minus0.6060.0140.606\pm 0.014  XGBoost 0.604±0.013plus-or-minus0.6040.0130.604\pm 0.013 0.602±0.014plus-or-minus0.6020.0140.602\pm 0.014  LightGBM 0.613±0.014plus-or-minus0.6130.0140.613\pm 0.014 0.612±0.014plus-or-minus0.6120.0140.612\pm 0.014  Default hyperparameters  TabR-S 0.628±0.015plus-or-minus0.6280.0150.628\pm 0.015 0.614±0.015plus-or-minus0.6140.0150.614\pm 0.015  CatBoost 0.628±0.012plus-or-minus0.6280.0120.628\pm 0.012 0.626±0.012plus-or-minus0.6260.0120.626\pm 0.012  XGBoost 0.648±0.008plus-or-minus0.6480.0080.648\pm 0.008 0.648±0.008plus-or-minus0.6480.0080.648\pm 0.008  LightGBM 0.641±0.011plus-or-minus0.6410.0110.641\pm 0.011 0.641±0.012plus-or-minus0.6410.0120.641\pm 0.012 | year ↓  Method Single model Ensemble  Tuned Hyperparameters  MLP 8.964±0.018plus-or-minus8.9640.0188.964\pm 0.018 8.901±0.003plus-or-minus8.9010.0038.901\pm 0.003  MLP-PLR 8.927±0.013plus-or-minus8.9270.0138.927\pm 0.013 8.901±0.006plus-or-minus8.9010.0068.901\pm 0.006  TabR-S 9.007±0.015plus-or-minus9.0070.0159.007\pm 0.015 8.913±0.009plus-or-minus8.9130.0098.913\pm 0.009  TabR 8.972±0.010plus-or-minus8.9720.0108.972\pm 0.010 8.917±0.003plus-or-minus8.9170.0038.917\pm 0.003  CatBoost 9.037±0.007plus-or-minus9.0370.0079.037\pm 0.007 9.005±0.003plus-or-minus9.0050.0039.005\pm 0.003  XGBoost 9.031±0.003plus-or-minus9.0310.0039.031\pm 0.003 9.024±0.001plus-or-minus9.0240.0019.024\pm 0.001  LightGBM 9.020±0.002plus-or-minus9.0200.0029.020\pm 0.002 9.013±0.001plus-or-minus9.0130.0019.013\pm 0.001  Default hyperparameters  TabR-S 9.067±0.022plus-or-minus9.0670.0229.067\pm 0.022 8.893±0.008plus-or-minus8.8930.0088.893\pm 0.008  CatBoost 9.073±0.008plus-or-minus9.0730.0089.073\pm 0.008 9.046±0.001plus-or-minus9.0460.0019.046\pm 0.001  XGBoost 9.376±0.000plus-or-minus9.3760.0009.376\pm 0.000 9.376±0.000plus-or-minus9.3760.0009.376\pm 0.000  LightGBM 9.214±0.000plus-or-minus9.2140.0009.214\pm 0.000 9.214±0.000plus-or-minus9.2140.0009.214\pm 0.000 |
 | yprop 4 1 ↓  Method Single model Ensemble  Tuned Hyperparameters  MLP 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  MLP-PLR 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  TabR-S 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  TabR 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000  CatBoost 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  XGBoost 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  LightGBM 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000  Default hyperparameters  TabR-S 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  CatBoost 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000  XGBoost 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001 0.027±0.001plus-or-minus0.0270.0010.027\pm 0.001  LightGBM 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 0.027±0.000plus-or-minus0.0270.0000.027\pm 0.000 |  |
-
-[◄](/html/2307.14337)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2307.14338)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2307.14338)
-[View original  
-on arXiv](https://arxiv.org/abs/2307.14338)[►](/html/2307.14339)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 16:45:16 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

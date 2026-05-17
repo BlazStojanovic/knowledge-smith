@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/2410.24210v3
 year: 2024
 ---
 
-[2410.24210] TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling
 
 Yury Gorishniy
@@ -269,8 +226,7 @@ We are not aware of similar results for BatchEnsemble in general, and share some
 Second, TabMnaive right away outperforms FT-Transformer, which demonstrates the great potential of parameter-efficient ensembling for MLPs.
 This motivates further exploration.
 
-![Refer to caption](/html/2410.24210/assets/x1.png)
-
+!(/html/2410.24210/assets/x1.png)
 
 Figure 1: 
 (Upper left)
@@ -289,8 +245,7 @@ Input transformations such as one-hot-encoding, feature embeddings (Gorishniy et
 In practice, they are applied (and the result is flattened) before the Clone module.
 Drop denotes dropout (Srivastava et al., [2014](#bib.bib41)).
 
-![Refer to caption](/html/2410.24210/assets/x2.png)
-
+!(/html/2410.24210/assets/x2.png)
 
 Figure 2: 
 The performance of models described in [subsection 3.3](#S3.SS3 "3.3 \"TabM\"_\"mini\" & TabM ‣ 3 TabM ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling") on 46 datasets from [Table 1](#S3.T1 "Table 1 ‣ 3.1 Preliminaries ‣ 3 TabM ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling"); plus several baselines on the left.
@@ -371,8 +326,7 @@ In fact, some other baselines, such as Excel (Chen et al., [2023a](#bib.bib8)))
 
 We provide results for more baselines in [Appendix B](#A2 "Appendix B Extended results ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 
-![Refer to caption](/html/2410.24210/assets/x3.png)
-
+!(/html/2410.24210/assets/x3.png)
 
 Figure 3: 
 The task performance of tabular models on the 46 datasets from [Table 1](#S3.T1 "Table 1 ‣ 3.1 Preliminaries ‣ 3 TabM ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
@@ -384,18 +338,13 @@ The box plots visualize the 10th, 25th, 50th, 75th and 90th percentiles of the j
 Outliers are clipped.
 The separation in random and domain-aware dataset splits is explained in [subsection 3.1](#S3.SS1 "3.1 Preliminaries ‣ 3 TabM ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 
+!(/html/2410.24210/assets/x4.png)
 
-
-![Refer to caption](/html/2410.24210/assets/x4.png)
-
-![Refer to caption](/html/2410.24210/assets/x5.png)
+!(/html/2410.24210/assets/x5.png)
 
 Figure 4: 
 Training times (left) and inference throughput (right) of the models from [Figure 3](#S4.F3 "Figure 3 ‣ 4.1 Baselines ‣ 4 Evaluating tabular deep learning architectures ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 One dot represents a measurement on one dataset.
-
-
-
 
 Table 2: 
 RMSE (upper rows) and training times (lower rows) on two large datasets.
@@ -470,11 +419,11 @@ Overall, MLP-like models, including TabM, form a representative set of practical
 
 ### 5.1 Performance and training dynamics of the individual submodels
 
-![Refer to caption](/html/2410.24210/assets/x6.png)
+!(/html/2410.24210/assets/x6.png)
 
-![Refer to caption](/html/2410.24210/assets/x7.png)
+!(/html/2410.24210/assets/x7.png)
 
-![Refer to caption](/html/2410.24210/assets/x8.png)
+!(/html/2410.24210/assets/x8.png)
 
 Figure 5: 
 The training profiles of TabMminik=32superscriptsubscriptTabMmini𝑘32\mbox{\text{TabM}}\_{\text{mini}}^{k=32} and TabMminik=1superscriptsubscriptTabMmini𝑘1\mbox{\text{TabM}}\_{\text{mini}}^{k=1} as described in [subsection 5.1](#S5.SS1 "5.1 Performance and training dynamics of the individual submodels ‣ 5 Analysis ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
@@ -534,13 +483,9 @@ See [subsection D.6](#A4.SS6 "D.6 Implementation details of subsection 5.2 ‣ 
 
 ### 5.3 How the performance of TabM depends on k𝑘k?
 
-![[Uncaptioned image]](/html/2410.24210/assets/x9.png)
-
 Figure 6: 
 The performance on the 46 datasets from [Table 1](#S3.T1 "Table 1 ‣ 3.1 Preliminaries ‣ 3 TabM ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 TabM​[B]TabMdelimited-[]B\text{\mbox{\text{TabM}}}[\text{B}] and TabM​[G]TabMdelimited-[]G\text{\mbox{\text{TabM}}}[\text{G}] are described in [subsection 5.1](#S5.SS1 "5.1 Performance and training dynamics of the individual submodels ‣ 5 Analysis ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling") and [subsection 5.2](#S5.SS2 "5.2 Selecting submodels after training ‣ 5 Analysis ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
-
-![[Uncaptioned image]](/html/2410.24210/assets/x10.png)
 
 Figure 7: 
 The average performance of TabM and TabMminisubscriptTabMmini\mbox{\text{TabM}}\_{\text{mini}} over 999 datasets with different values of k𝑘k.
@@ -950,15 +895,13 @@ Overall, none of the additional baselines affects our main story.
 
 [Figure 9](#A2.F9 "Figure 9 ‣ B.2 Task performance ‣ Appendix B Extended results ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling") is the critical difference diagram (CDD) computed over exactly the same results that were used for building [Figure 3](#S4.F3 "Figure 3 ‣ 4.1 Baselines ‣ 4 Evaluating tabular deep learning architectures ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 
-![Refer to caption](/html/2410.24210/assets/x11.png)
-
+!(/html/2410.24210/assets/x11.png)
 
 Figure 8: 
 An extended comparison of tabular models as in [Figure 3](#S4.F3 "Figure 3 ‣ 4.1 Baselines ‣ 4 Evaluating tabular deep learning architectures ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling").
 Note that the ranks (left) are computed only over the 37 datasets with random splits, because ResNet, AutoInt and MLP-Mixer were evaluated only on one 111 out of 999 datasets with domain-aware splits.
 
-![Refer to caption](/html/2410.24210/assets/x12.png)
-
+!(/html/2410.24210/assets/x12.png)
 
 Figure 9: 
 Critical difference diagram.
@@ -990,16 +933,13 @@ Motivation for the two setups for measuring inference throughput.
 
   The setup in the right side of [Figure 10](#A2.F10 "Figure 10 ‣ B.3 Efficiency ‣ Appendix B Extended results ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling") simulates the offline batched computations.
 
-![Refer to caption](/html/2410.24210/assets/x13.png)
+!(/html/2410.24210/assets/x13.png)
 
-![Refer to caption](/html/2410.24210/assets/x14.png)
+!(/html/2410.24210/assets/x14.png)
 
 Figure 10: 
 (Left) Training time on datasets with less than 100K objects.
 (Right) Inference throughput on GPU with maximum possible batch size (i.e. the batch size depends of a model).
-
-
-
 
 Table 3: Mean number of parameters with std. dev. for 7 different tuned models across all 46 datasets.
 
@@ -1071,9 +1011,6 @@ The table is taken from (Gorishniy et al., [2024](#bib.bib15)).
 | Black Friday | 106 764106764106\,764 | 26 6922669226\,692 | 33 3653336533\,365 | 444 | 111 | 444 | Regression | 512 |
 | Covertype | 371 847371847371\,847 | 92 9629296292\,962 | 116 203116203116\,203 | 151515 | 444 | 111 | Multiclass | 1024 |
 | Microsoft | 723 412723412723\,412 | 235 259235259235\,259 | 241 521241521241\,521 | 131131131 | 555 | 00 | Regression | 1024 |
-
-
-
 
 Table 5: 
 Properties of the datasets from the TabReD benchmark (Rubachev et al., [2024](#bib.bib38)).
@@ -1148,8 +1085,7 @@ Thus, this experiment can be seen as a quick assessment of the applicability of 
 All models, except for FT-Transformer, were evaluated under 333 random seeds.
 FT-Transformer was evaluated under 111 random seed.
 
-![Refer to caption](/html/2410.24210/assets/x15.png)
-
+!(/html/2410.24210/assets/x15.png)
 
 Figure 11: 
 Same as [Figure 3](#S4.F3 "Figure 3 ‣ 4.1 Baselines ‣ 4 Evaluating tabular deep learning architectures ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling"), but ROC-AUC is used as the metric for all classification datasets.
@@ -1225,9 +1161,6 @@ Table 6: The hyperparameter tuning space for TabM. Here, (B) = {Covertype, Micro
 | Weight decay | {0,LogUniform​[1​e​-​4,1​e​-​1]}0LogUniform1𝑒-41𝑒-1\{0,\mathrm{LogUniform}[1e\text{-}4,1e\text{-}1]\} |
 | # Tuning iterations | (A) 100 (B) 50 |
 
-
-
-
 Table 7: The hyperparameter tuning space for TabMmini†superscriptsubscriptTabMmini†\mbox{\text{TabM}}\_{\text{mini}}^{\dagger}  that uses PiecewiseLinearEncoding embeddings from Gorishniy et al. ([2022](#bib.bib14)). Here, (B) = {Covertype, Microsoft, [Table 5](#A3.T5 "Table 5 ‣ Appendix C Datasets ‣ TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling")} and (A) contains all other datasets.
 
 | Parameter | Distribution or Value |
@@ -1283,9 +1216,6 @@ Here, (C) = {[Table 5](#A3.T5 "Table 5 ‣ Appendix C Datasets ‣ TabM: Advanc
 | Learning rate | LogUniform​[1​e​-​5,1​e​-​1]LogUniform1𝑒-51𝑒-1\mathrm{LogUniform}[1e\text{-}5,1e\text{-}1] |
 | Weight decay | {0,LogUniform​[1​e​-​6,1​e​-​3]}0LogUniform1𝑒-61𝑒-3\{0,\mathrm{LogUniform}[1e\text{-}6,1e\text{-}3]\} |
 | # Tuning iterations | (A) 100 (B, C) 50 |
-
-
-
 
 Table 10: 
 The hyperparameter tuning space for ModernNCA††\dagger.
@@ -1379,9 +1309,6 @@ Table 14: The hyperparameter tuning space for MLP.
 | Weight decay | {0,LogUniform​[1​e​-​4,1​e​-​1]}0LogUniform1𝑒-41𝑒-1\{0,\mathrm{LogUniform}[1e\text{-}4,1e\text{-}1]\} |
 | # Tuning iterations | 100 |
 
-
-
-
 Table 15: The hyperparameter tuning space for MLP†superscriptMLP†\mathrm{MLP}^{\dagger} that uses piecewise-linear embeddings from Gorishniy et al. ([2022](#bib.bib14)).
 
 | Parameter | Distribution |
@@ -1435,9 +1362,6 @@ Table 17: Extended results for the main benchmark. Results are grouped by datase
 | higgs-small ↑  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.7180±0.0027plus-or-minus0.71800.00270.7180\pm 0.0027 0.7192±0.0005plus-or-minus0.71920.00050.7192\pm 0.0005  TabPFNTabPFN\mathrm{TabPFN} – 0.6727±0.0034plus-or-minus0.67270.00340.6727\pm 0.0034  ResNetResNet\mathrm{ResNet} 0.7256±0.0020plus-or-minus0.72560.00200.7256\pm 0.0020 0.7307±0.0001plus-or-minus0.73070.00010.7307\pm 0.0001  DCN2DCN2\mathrm{DCN2} 0.7164±0.0030plus-or-minus0.71640.00300.7164\pm 0.0030 0.7237±0.0011plus-or-minus0.72370.00110.7237\pm 0.0011  SNNSNN\mathrm{SNN} 0.7142±0.0024plus-or-minus0.71420.00240.7142\pm 0.0024 0.7171±0.0020plus-or-minus0.71710.00200.7171\pm 0.0020  TromptTrompt\mathrm{Trompt} 0.7262±n​a​nplus-or-minus0.7262𝑛𝑎𝑛0.7262\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.7240±0.0028plus-or-minus0.72400.00280.7240\pm 0.0028 0.7287±0.0008plus-or-minus0.72870.00080.7287\pm 0.0008  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.7248±0.0023plus-or-minus0.72480.00230.7248\pm 0.0023 0.7334±0.0007plus-or-minus0.73340.00070.7334\pm 0.0007  ExcelExcel\mathrm{Excel} 0.7262±0.0017plus-or-minus0.72620.00170.7262\pm 0.0017 0.7329±n​a​nplus-or-minus0.7329𝑛𝑎𝑛0.7329\pm nan  SAINTSAINT\mathrm{SAINT} 0.7236±0.0019plus-or-minus0.72360.00190.7236\pm 0.0019 0.7295±0.0011plus-or-minus0.72950.00110.7295\pm 0.0011  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.7281±0.0016plus-or-minus0.72810.00160.7281\pm 0.0016 0.7334±0.0013plus-or-minus0.73340.00130.7334\pm 0.0013  T2GT2G\mathrm{T2G} 0.7352±0.0037plus-or-minus0.73520.00370.7352\pm 0.0037 0.7400±n​a​nplus-or-minus0.7400𝑛𝑎𝑛0.7400\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.7260±0.0017plus-or-minus0.72600.00170.7260\pm 0.0017 0.7304±0.0008plus-or-minus0.73040.00080.7304\pm 0.0008  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.7261±0.0010plus-or-minus0.72610.00100.7261\pm 0.0010 0.7270±0.0003plus-or-minus0.72700.00030.7270\pm 0.0003  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.7210±0.0016plus-or-minus0.72100.00160.7210\pm 0.0016 0.7252±0.0005plus-or-minus0.72520.00050.7252\pm 0.0005  XGBoostXGBoost\mathrm{XGBoost} 0.7246±0.0015plus-or-minus0.72460.00150.7246\pm 0.0015 0.7264±0.0013plus-or-minus0.72640.00130.7264\pm 0.0013  LightGBMLightGBM\mathrm{LightGBM} 0.7256±0.0009plus-or-minus0.72560.00090.7256\pm 0.0009 0.7263±0.0007plus-or-minus0.72630.00070.7263\pm 0.0007  CatBoostCatBoost\mathrm{CatBoost} 0.7260±0.0011plus-or-minus0.72600.00110.7260\pm 0.0011 0.7273±0.0010plus-or-minus0.72730.00100.7273\pm 0.0010  TabRTabR\mathrm{TabR} 0.7223±0.0010plus-or-minus0.72230.00100.7223\pm 0.0010 0.7257±0.0008plus-or-minus0.72570.00080.7257\pm 0.0008  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.7294±0.0014plus-or-minus0.72940.00140.7294\pm 0.0014 –  MNCAMNCA\mathrm{MNCA} 0.7263±0.0023plus-or-minus0.72630.00230.7263\pm 0.0023 0.7292±0.0006plus-or-minus0.72920.00060.7292\pm 0.0006  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.7300±0.0020plus-or-minus0.73000.00200.7300\pm 0.0020 0.7348±0.0008plus-or-minus0.73480.00080.7348\pm 0.0008  TabMTabM\mathrm{TabM} 0.7383±0.0028plus-or-minus0.73830.00280.7383\pm 0.0028 0.7409±0.0010plus-or-minus0.74090.00100.7409\pm 0.0010  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.7372±0.0021plus-or-minus0.73720.00210.7372\pm 0.0021 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.7344±0.0016plus-or-minus0.73440.00160.7344\pm 0.0016 0.7366±0.0012plus-or-minus0.73660.00120.7366\pm 0.0012  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.7348±0.0017plus-or-minus0.73480.00170.7348\pm 0.0017 0.7379±0.0006plus-or-minus0.73790.00060.7379\pm 0.0006 | black-friday ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.6955±0.0004plus-or-minus0.69550.00040.6955\pm 0.0004 0.6942±0.0002plus-or-minus0.69420.00020.6942\pm 0.0002  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} 0.6929±0.0008plus-or-minus0.69290.00080.6929\pm 0.0008 0.6907±0.0002plus-or-minus0.69070.00020.6907\pm 0.0002  DCN2DCN2\mathrm{DCN2} 0.6968±0.0013plus-or-minus0.69680.00130.6968\pm 0.0013 0.6936±0.0007plus-or-minus0.69360.00070.6936\pm 0.0007  SNNSNN\mathrm{SNN} 0.6996±0.0013plus-or-minus0.69960.00130.6996\pm 0.0013 0.6978±0.0004plus-or-minus0.69780.00040.6978\pm 0.0004  TromptTrompt\mathrm{Trompt} 0.6983±n​a​nplus-or-minus0.6983𝑛𝑎𝑛0.6983\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.6994±0.0082plus-or-minus0.69940.00820.6994\pm 0.0082 0.6927±0.0021plus-or-minus0.69270.00210.6927\pm 0.0021  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.6905±0.0021plus-or-minus0.69050.00210.6905\pm 0.0021 0.6851±0.0011plus-or-minus0.68510.00110.6851\pm 0.0011  ExcelExcel\mathrm{Excel} 0.6947±0.0016plus-or-minus0.69470.00160.6947\pm 0.0016 0.6908±n​a​nplus-or-minus0.6908𝑛𝑎𝑛0.6908\pm nan  SAINTSAINT\mathrm{SAINT} 0.6934±0.0009plus-or-minus0.69340.00090.6934\pm 0.0009 0.6879±0.0006plus-or-minus0.68790.00060.6879\pm 0.0006  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.6987±0.0192plus-or-minus0.69870.01920.6987\pm 0.0192 0.6879±0.0023plus-or-minus0.68790.00230.6879\pm 0.0023  T2GT2G\mathrm{T2G} 0.6887±0.0046plus-or-minus0.68870.00460.6887\pm 0.0046 0.6832±n​a​nplus-or-minus0.6832𝑛𝑎𝑛0.6832\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.6849±0.0006plus-or-minus0.68490.00060.6849\pm 0.0006 0.6824±0.0002plus-or-minus0.68240.00020.6824\pm 0.0002  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.6857±0.0004plus-or-minus0.68570.00040.6857\pm 0.0004 0.6838±0.0002plus-or-minus0.68380.00020.6838\pm 0.0002  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.6836±0.0006plus-or-minus0.68360.00060.6836\pm 0.0006 0.6812±0.0002plus-or-minus0.68120.00020.6812\pm 0.0002  XGBoostXGBoost\mathrm{XGBoost} 0.6806±0.0001plus-or-minus0.68060.00010.6806\pm 0.0001 0.6805±0.0000plus-or-minus0.68050.00000.6805\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.6799±0.0003plus-or-minus0.67990.00030.6799\pm 0.0003 0.6795±0.0001plus-or-minus0.67950.00010.6795\pm 0.0001  CatBoostCatBoost\mathrm{CatBoost} 0.6822±0.0003plus-or-minus0.68220.00030.6822\pm 0.0003 0.6813±0.0002plus-or-minus0.68130.00020.6813\pm 0.0002  TabRTabR\mathrm{TabR} 0.6899±0.0004plus-or-minus0.68990.00040.6899\pm 0.0004 0.6883±0.0002plus-or-minus0.68830.00020.6883\pm 0.0002  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.6761±0.0009plus-or-minus0.67610.00090.6761\pm 0.0009 –  MNCAMNCA\mathrm{MNCA} 0.6893±0.0004plus-or-minus0.68930.00040.6893\pm 0.0004 0.6883±0.0000plus-or-minus0.68830.00000.6883\pm 0.0000  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.6885±0.0007plus-or-minus0.68850.00070.6885\pm 0.0007 0.6863±0.0003plus-or-minus0.68630.00030.6863\pm 0.0003  TabMTabM\mathrm{TabM} 0.6875±0.0015plus-or-minus0.68750.00150.6875\pm 0.0015 0.6866±0.0003plus-or-minus0.68660.00030.6866\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.6870±0.0014plus-or-minus0.68700.00140.6870\pm 0.0014 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.6865±0.0016plus-or-minus0.68650.00160.6865\pm 0.0016 0.6843±0.0005plus-or-minus0.68430.00050.6843\pm 0.0005  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.6807±0.0013plus-or-minus0.68070.00130.6807\pm 0.0013 0.6783±0.0009plus-or-minus0.67830.00090.6783\pm 0.0009 |
 | covtype2 ↑  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.9630±0.0012plus-or-minus0.96300.00120.9630\pm 0.0012 0.9664±0.0004plus-or-minus0.96640.00040.9664\pm 0.0004  TabPFNTabPFN\mathrm{TabPFN} – 0.7606±0.0022plus-or-minus0.76060.00220.7606\pm 0.0022  ResNetResNet\mathrm{ResNet} 0.9638±0.0005plus-or-minus0.96380.00050.9638\pm 0.0005 0.9685±0.0003plus-or-minus0.96850.00030.9685\pm 0.0003  DCN2DCN2\mathrm{DCN2} 0.9622±0.0019plus-or-minus0.96220.00190.9622\pm 0.0019 0.9673±0.0011plus-or-minus0.96730.00110.9673\pm 0.0011  SNNSNN\mathrm{SNN} 0.9636±0.0010plus-or-minus0.96360.00100.9636\pm 0.0010 0.9677±0.0002plus-or-minus0.96770.00020.9677\pm 0.0002  TromptTrompt\mathrm{Trompt} 0.9286±n​a​nplus-or-minus0.9286𝑛𝑎𝑛0.9286\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.9614±0.0016plus-or-minus0.96140.00160.9614\pm 0.0016 0.9696±0.0005plus-or-minus0.96960.00050.9696\pm 0.0005  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.9663±0.0019plus-or-minus0.96630.00190.9663\pm 0.0019 0.9699±0.0014plus-or-minus0.96990.00140.9699\pm 0.0014  ExcelExcel\mathrm{Excel} 0.9606±0.0018plus-or-minus0.96060.00180.9606\pm 0.0018 0.9670±n​a​nplus-or-minus0.9670𝑛𝑎𝑛0.9670\pm nan  SAINTSAINT\mathrm{SAINT} 0.9669±0.0010plus-or-minus0.96690.00100.9669\pm 0.0010 0.9725±n​a​nplus-or-minus0.9725𝑛𝑎𝑛0.9725\pm nan  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.9698±0.0008plus-or-minus0.96980.00080.9698\pm 0.0008 0.9731±0.0006plus-or-minus0.97310.00060.9731\pm 0.0006  T2GT2G\mathrm{T2G} 0.9668±0.0008plus-or-minus0.96680.00080.9668\pm 0.0008 0.9708±n​a​nplus-or-minus0.9708𝑛𝑎𝑛0.9708\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.9690±0.0008plus-or-minus0.96900.00080.9690\pm 0.0008 0.9721±0.0006plus-or-minus0.97210.00060.9721\pm 0.0006  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.9713±0.0006plus-or-minus0.97130.00060.9713\pm 0.0006 0.9758±0.0000plus-or-minus0.97580.00000.9758\pm 0.0000  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.9697±0.0008plus-or-minus0.96970.00080.9697\pm 0.0008 0.9721±0.0005plus-or-minus0.97210.00050.9721\pm 0.0005  XGBoostXGBoost\mathrm{XGBoost} 0.9710±0.0002plus-or-minus0.97100.00020.9710\pm 0.0002 0.9713±0.0000plus-or-minus0.97130.00000.9713\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.9709±0.0003plus-or-minus0.97090.00030.9709\pm 0.0003 –  CatBoostCatBoost\mathrm{CatBoost} 0.9670±0.0003plus-or-minus0.96700.00030.9670\pm 0.0003 0.9680±0.0002plus-or-minus0.96800.00020.9680\pm 0.0002  TabRTabR\mathrm{TabR} 0.9737±0.0005plus-or-minus0.97370.00050.9737\pm 0.0005 0.9745±0.0006plus-or-minus0.97450.00060.9745\pm 0.0006  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.9752±0.0003plus-or-minus0.97520.00030.9752\pm 0.0003 –  MNCAMNCA\mathrm{MNCA} 0.9724±0.0003plus-or-minus0.97240.00030.9724\pm 0.0003 0.9729±0.0001plus-or-minus0.97290.00010.9729\pm 0.0001  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.9747±0.0002plus-or-minus0.97470.00020.9747\pm 0.0002 0.9747±0.0002plus-or-minus0.97470.00020.9747\pm 0.0002  TabMTabM\mathrm{TabM} 0.9712±0.0008plus-or-minus0.97120.00080.9712\pm 0.0008 0.9729±0.0003plus-or-minus0.97290.00030.9729\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.9707±0.0008plus-or-minus0.97070.00080.9707\pm 0.0008 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.9693±0.0008plus-or-minus0.96930.00080.9693\pm 0.0008 0.9713±0.0001plus-or-minus0.97130.00010.9713\pm 0.0001  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.9740±0.0006plus-or-minus0.97400.00060.9740\pm 0.0006 0.9754±0.0001plus-or-minus0.97540.00010.9754\pm 0.0001 | microsoft ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.7475±0.0003plus-or-minus0.74750.00030.7475\pm 0.0003 0.7460±0.0003plus-or-minus0.74600.00030.7460\pm 0.0003  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} 0.7472±0.0004plus-or-minus0.74720.00040.7472\pm 0.0004 0.7452±0.0004plus-or-minus0.74520.00040.7452\pm 0.0004  DCN2DCN2\mathrm{DCN2} 0.7499±0.0003plus-or-minus0.74990.00030.7499\pm 0.0003 0.7477±0.0001plus-or-minus0.74770.00010.7477\pm 0.0001  SNNSNN\mathrm{SNN} 0.7488±0.0004plus-or-minus0.74880.00040.7488\pm 0.0004 0.7470±0.0001plus-or-minus0.74700.00010.7470\pm 0.0001  TromptTrompt\mathrm{Trompt} 0.7476±n​a​nplus-or-minus0.7476𝑛𝑎𝑛0.7476\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.7482±0.0005plus-or-minus0.74820.00050.7482\pm 0.0005 0.7455±0.0002plus-or-minus0.74550.00020.7455\pm 0.0002  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.7482±0.0008plus-or-minus0.74820.00080.7482\pm 0.0008 0.7436±0.0001plus-or-minus0.74360.00010.7436\pm 0.0001  ExcelExcel\mathrm{Excel} 0.7479±0.0007plus-or-minus0.74790.00070.7479\pm 0.0007 0.7442±n​a​nplus-or-minus0.7442𝑛𝑎𝑛0.7442\pm nan  SAINTSAINT\mathrm{SAINT} 0.7625±0.0066plus-or-minus0.76250.00660.7625\pm 0.0066 –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.7460±0.0007plus-or-minus0.74600.00070.7460\pm 0.0007 0.7422±0.0004plus-or-minus0.74220.00040.7422\pm 0.0004  T2GT2G\mathrm{T2G} 0.7460±0.0006plus-or-minus0.74600.00060.7460\pm 0.0006 0.7427±n​a​nplus-or-minus0.7427𝑛𝑎𝑛0.7427\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.7446±0.0002plus-or-minus0.74460.00020.7446\pm 0.0002 0.7434±0.0002plus-or-minus0.74340.00020.7434\pm 0.0002  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.7444±0.0003plus-or-minus0.74440.00030.7444\pm 0.0003 0.7429±0.0001plus-or-minus0.74290.00010.7429\pm 0.0001  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.7465±0.0005plus-or-minus0.74650.00050.7465\pm 0.0005 0.7448±0.0001plus-or-minus0.74480.00010.7448\pm 0.0001  XGBoostXGBoost\mathrm{XGBoost} 0.7413±0.0001plus-or-minus0.74130.00010.7413\pm 0.0001 0.7410±0.0000plus-or-minus0.74100.00000.7410\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.7417±0.0001plus-or-minus0.74170.00010.7417\pm 0.0001 0.7413±0.0000plus-or-minus0.74130.00000.7413\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.7412±0.0001plus-or-minus0.74120.00010.7412\pm 0.0001 0.7406±0.0000plus-or-minus0.74060.00000.7406\pm 0.0000  TabRTabR\mathrm{TabR} 0.7503±0.0006plus-or-minus0.75030.00060.7503\pm 0.0006 0.7485±0.0002plus-or-minus0.74850.00020.7485\pm 0.0002  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.7501±0.0005plus-or-minus0.75010.00050.7501\pm 0.0005 –  MNCAMNCA\mathrm{MNCA} 0.7458±0.0003plus-or-minus0.74580.00030.7458\pm 0.0003 0.7448±0.0002plus-or-minus0.74480.00020.7448\pm 0.0002  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.7460±0.0008plus-or-minus0.74600.00080.7460\pm 0.0008 0.7435±0.0004plus-or-minus0.74350.00040.7435\pm 0.0004  TabMTabM\mathrm{TabM} 0.7434±0.0003plus-or-minus0.74340.00030.7434\pm 0.0003 0.7424±0.0001plus-or-minus0.74240.00010.7424\pm 0.0001  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.7435±0.0003plus-or-minus0.74350.00030.7435\pm 0.0003 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.7444±0.0003plus-or-minus0.74440.00030.7444\pm 0.0003 0.7431±0.0002plus-or-minus0.74310.00020.7431\pm 0.0002  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.7427±0.0002plus-or-minus0.74270.00020.7427\pm 0.0002 0.7416±0.0002plus-or-minus0.74160.00020.7416\pm 0.0002 |
 
-
-
-
 Table 18: Extended results for the main benchmark. Results are grouped by datasets.
 
 |  |  |
@@ -1459,9 +1383,6 @@ Table 18: Extended results for the main benchmark. Results are grouped by datase
 | nyc-taxi-green-dec-2016 ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.3951±0.0009plus-or-minus0.39510.00090.3951\pm 0.0009 0.3921±0.0003plus-or-minus0.39210.00030.3921\pm 0.0003  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} 0.3899±0.0016plus-or-minus0.38990.00160.3899\pm 0.0016 0.3873±0.0009plus-or-minus0.38730.00090.3873\pm 0.0009  DCN2DCN2\mathrm{DCN2} 0.3919±0.0009plus-or-minus0.39190.00090.3919\pm 0.0009 0.3889±0.0003plus-or-minus0.38890.00030.3889\pm 0.0003  SNNSNN\mathrm{SNN} 0.3933±0.0013plus-or-minus0.39330.00130.3933\pm 0.0013 0.3899±0.0004plus-or-minus0.38990.00040.3899\pm 0.0004  TromptTrompt\mathrm{Trompt} 0.3979±n​a​nplus-or-minus0.3979𝑛𝑎𝑛0.3979\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.4084±0.0256plus-or-minus0.40840.02560.4084\pm 0.0256 0.3967±0.0059plus-or-minus0.39670.00590.3967\pm 0.0059  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.3914±0.0026plus-or-minus0.39140.00260.3914\pm 0.0026 0.3861±0.0013plus-or-minus0.38610.00130.3861\pm 0.0013  ExcelExcel\mathrm{Excel} 0.3969±0.0036plus-or-minus0.39690.00360.3969\pm 0.0036 0.3897±n​a​nplus-or-minus0.3897𝑛𝑎𝑛0.3897\pm nan  SAINTSAINT\mathrm{SAINT} 0.3905±0.0013plus-or-minus0.39050.00130.3905\pm 0.0013 0.3876±0.0002plus-or-minus0.38760.00020.3876\pm 0.0002  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.3937±0.0064plus-or-minus0.39370.00640.3937\pm 0.0064 0.3889±0.0018plus-or-minus0.38890.00180.3889\pm 0.0018  T2GT2G\mathrm{T2G} 0.3908±0.0045plus-or-minus0.39080.00450.3908\pm 0.0045 0.3858±n​a​nplus-or-minus0.3858𝑛𝑎𝑛0.3858\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.3812±0.0018plus-or-minus0.38120.00180.3812\pm 0.0018 0.3761±0.0016plus-or-minus0.37610.00160.3761\pm 0.0016  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.3795±0.0016plus-or-minus0.37950.00160.3795\pm 0.0016 0.3733±0.0013plus-or-minus0.37330.00130.3733\pm 0.0013  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.3680±0.0006plus-or-minus0.36800.00060.3680\pm 0.0006 0.3653±0.0005plus-or-minus0.36530.00050.3653\pm 0.0005  XGBoostXGBoost\mathrm{XGBoost} 0.3792±0.0002plus-or-minus0.37920.00020.3792\pm 0.0002 0.3787±0.0000plus-or-minus0.37870.00000.3787\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.3688±0.0002plus-or-minus0.36880.00020.3688\pm 0.0002 0.3684±0.0000plus-or-minus0.36840.00000.3684\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.3647±0.0005plus-or-minus0.36470.00050.3647\pm 0.0005 0.3632±0.0003plus-or-minus0.36320.00030.3632\pm 0.0003  TabRTabR\mathrm{TabR} 0.3577±0.0222plus-or-minus0.35770.02220.3577\pm 0.0222 0.3380±0.0027plus-or-minus0.33800.00270.3380\pm 0.0027  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.3725±0.0091plus-or-minus0.37250.00910.3725\pm 0.0091 –  MNCAMNCA\mathrm{MNCA} 0.3728±0.0012plus-or-minus0.37280.00120.3728\pm 0.0012 0.3720±0.0010plus-or-minus0.37200.00100.3720\pm 0.0010  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.3536±0.0052plus-or-minus0.35360.00520.3536\pm 0.0052 0.3407±0.0009plus-or-minus0.34070.00090.3407\pm 0.0009  TabMTabM\mathrm{TabM} 0.3866±0.0006plus-or-minus0.38660.00060.3866\pm 0.0006 0.3855±0.0003plus-or-minus0.38550.00030.3855\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.3862±0.0005plus-or-minus0.38620.00050.3862\pm 0.0005 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.3877±0.0009plus-or-minus0.38770.00090.3877\pm 0.0009 0.3857±0.0004plus-or-minus0.38570.00040.3857\pm 0.0004  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.3527±0.0112plus-or-minus0.35270.01120.3527\pm 0.0112 0.3478±0.0009plus-or-minus0.34780.00090.3478\pm 0.0009 | particulate-matter-ukair-2017 ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.3759±0.0004plus-or-minus0.37590.00040.3759\pm 0.0004 0.3729±0.0003plus-or-minus0.37290.00030.3729\pm 0.0003  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} 0.3743±0.0007plus-or-minus0.37430.00070.3743\pm 0.0007 0.3718±0.0005plus-or-minus0.37180.00050.3718\pm 0.0005  DCN2DCN2\mathrm{DCN2} 0.3759±0.0012plus-or-minus0.37590.00120.3759\pm 0.0012 0.3738±0.0004plus-or-minus0.37380.00040.3738\pm 0.0004  SNNSNN\mathrm{SNN} 0.3790±0.0007plus-or-minus0.37900.00070.3790\pm 0.0007 0.3744±0.0002plus-or-minus0.37440.00020.3744\pm 0.0002  TromptTrompt\mathrm{Trompt} 0.3700±n​a​nplus-or-minus0.3700𝑛𝑎𝑛0.3700\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.3723±0.0011plus-or-minus0.37230.00110.3723\pm 0.0011 0.3692±0.0010plus-or-minus0.36920.00100.3692\pm 0.0010  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.3741±0.0010plus-or-minus0.37410.00100.3741\pm 0.0010 0.3698±0.0004plus-or-minus0.36980.00040.3698\pm 0.0004  ExcelExcel\mathrm{Excel} 0.3699±0.0014plus-or-minus0.36990.00140.3699\pm 0.0014 0.3652±n​a​nplus-or-minus0.3652𝑛𝑎𝑛0.3652\pm nan  SAINTSAINT\mathrm{SAINT} 0.3704±0.0014plus-or-minus0.37040.00140.3704\pm 0.0014 0.3672±0.0009plus-or-minus0.36720.00090.3672\pm 0.0009  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.3735±0.0012plus-or-minus0.37350.00120.3735\pm 0.0012 0.3686±0.0004plus-or-minus0.36860.00040.3686\pm 0.0004  T2GT2G\mathrm{T2G} 0.3676±0.0024plus-or-minus0.36760.00240.3676\pm 0.0024 0.3631±n​a​nplus-or-minus0.3631𝑛𝑎𝑛0.3631\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.3665±0.0008plus-or-minus0.36650.00080.3665\pm 0.0008 0.3642±0.0003plus-or-minus0.36420.00030.3642\pm 0.0003  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.3657±0.0007plus-or-minus0.36570.00070.3657\pm 0.0007 0.3629±0.0002plus-or-minus0.36290.00020.3629\pm 0.0002  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.3649±0.0011plus-or-minus0.36490.00110.3649\pm 0.0011 0.3637±0.0008plus-or-minus0.36370.00080.3637\pm 0.0008  XGBoostXGBoost\mathrm{XGBoost} 0.3641±0.0001plus-or-minus0.36410.00010.3641\pm 0.0001 0.3640±0.0000plus-or-minus0.36400.00000.3640\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.3637±0.0001plus-or-minus0.36370.00010.3637\pm 0.0001 0.3635±0.0000plus-or-minus0.36350.00000.3635\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.3647±0.0004plus-or-minus0.36470.00040.3647\pm 0.0004 0.3637±0.0002plus-or-minus0.36370.00020.3637\pm 0.0002  TabRTabR\mathrm{TabR} 0.3613±0.0005plus-or-minus0.36130.00050.3613\pm 0.0005 0.3590±0.0002plus-or-minus0.35900.00020.3590\pm 0.0002  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.3596±0.0004plus-or-minus0.35960.00040.3596\pm 0.0004 –  MNCAMNCA\mathrm{MNCA} 0.3670±0.0004plus-or-minus0.36700.00040.3670\pm 0.0004 0.3649±0.0002plus-or-minus0.36490.00020.3649\pm 0.0002  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.3646±0.0001plus-or-minus0.36460.00010.3646\pm 0.0001 0.3643±0.0000plus-or-minus0.36430.00000.3643\pm 0.0000  TabMTabM\mathrm{TabM} 0.3686±0.0006plus-or-minus0.36860.00060.3686\pm 0.0006 0.3679±0.0003plus-or-minus0.36790.00030.3679\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.3683±0.0007plus-or-minus0.36830.00070.3683\pm 0.0007 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.3690±0.0009plus-or-minus0.36900.00090.3690\pm 0.0009 0.3675±0.0004plus-or-minus0.36750.00040.3675\pm 0.0004  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.3603±0.0005plus-or-minus0.36030.00050.3603\pm 0.0005 0.3589±0.0003plus-or-minus0.35890.00030.3589\pm 0.0003 |
 | road-safety ↑  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.7857±0.0019plus-or-minus0.78570.00190.7857\pm 0.0019 0.7873±0.0004plus-or-minus0.78730.00040.7873\pm 0.0004  TabPFNTabPFN\mathrm{TabPFN} – 0.7338±0.0032plus-or-minus0.73380.00320.7338\pm 0.0032  ResNetResNet\mathrm{ResNet} 0.7875±0.0007plus-or-minus0.78750.00070.7875\pm 0.0007 0.7898±0.0008plus-or-minus0.78980.00080.7898\pm 0.0008  DCN2DCN2\mathrm{DCN2} 0.7781±0.0014plus-or-minus0.77810.00140.7781\pm 0.0014 0.7823±0.0012plus-or-minus0.78230.00120.7823\pm 0.0012  SNNSNN\mathrm{SNN} 0.7847±0.0010plus-or-minus0.78470.00100.7847\pm 0.0010 0.7865±0.0002plus-or-minus0.78650.00020.7865\pm 0.0002  TromptTrompt\mathrm{Trompt} 0.7804±n​a​nplus-or-minus0.7804𝑛𝑎𝑛0.7804\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 0.7826±0.0030plus-or-minus0.78260.00300.7826\pm 0.0030 0.7883±0.0013plus-or-minus0.78830.00130.7883\pm 0.0013  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 0.7878±0.0032plus-or-minus0.78780.00320.7878\pm 0.0032 0.7919±0.0015plus-or-minus0.79190.00150.7919\pm 0.0015  ExcelExcel\mathrm{Excel} 0.7864±0.0053plus-or-minus0.78640.00530.7864\pm 0.0053 0.7907±n​a​nplus-or-minus0.7907𝑛𝑎𝑛0.7907\pm nan  SAINTSAINT\mathrm{SAINT} 0.7584±0.0584plus-or-minus0.75840.05840.7584\pm 0.0584 0.7846±0.0021plus-or-minus0.78460.00210.7846\pm 0.0021  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.7907±0.0012plus-or-minus0.79070.00120.7907\pm 0.0012 0.7943±0.0007plus-or-minus0.79430.00070.7943\pm 0.0007  T2GT2G\mathrm{T2G} 0.7912±0.0026plus-or-minus0.79120.00260.7912\pm 0.0026 0.7961±n​a​nplus-or-minus0.7961𝑛𝑎𝑛0.7961\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.7867±0.0018plus-or-minus0.78670.00180.7867\pm 0.0018 0.7903±0.0002plus-or-minus0.79030.00020.7903\pm 0.0002  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.7853±0.0014plus-or-minus0.78530.00140.7853\pm 0.0014 0.7881±0.0007plus-or-minus0.78810.00070.7881\pm 0.0007  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.7899±0.0009plus-or-minus0.78990.00090.7899\pm 0.0009 0.7935±0.0003plus-or-minus0.79350.00030.7935\pm 0.0003  XGBoostXGBoost\mathrm{XGBoost} 0.8101±0.0017plus-or-minus0.81010.00170.8101\pm 0.0017 0.8129±0.0004plus-or-minus0.81290.00040.8129\pm 0.0004  LightGBMLightGBM\mathrm{LightGBM} 0.7982±0.0012plus-or-minus0.79820.00120.7982\pm 0.0012 0.7996±0.0005plus-or-minus0.79960.00050.7996\pm 0.0005  CatBoostCatBoost\mathrm{CatBoost} 0.8012±0.0009plus-or-minus0.80120.00090.8012\pm 0.0009 0.8022±0.0002plus-or-minus0.80220.00020.8022\pm 0.0002  TabRTabR\mathrm{TabR} 0.8403±0.0014plus-or-minus0.84030.00140.8403\pm 0.0014 0.8441±0.0005plus-or-minus0.84410.00050.8441\pm 0.0005  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.8374±0.0013plus-or-minus0.83740.00130.8374\pm 0.0013 –  MNCAMNCA\mathrm{MNCA} 0.8080±0.0013plus-or-minus0.80800.00130.8080\pm 0.0013 0.8121±0.0006plus-or-minus0.81210.00060.8121\pm 0.0006  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.8232±0.0017plus-or-minus0.82320.00170.8232\pm 0.0017 0.8287±0.0008plus-or-minus0.82870.00080.8287\pm 0.0008  TabMTabM\mathrm{TabM} 0.7946±0.0013plus-or-minus0.79460.00130.7946\pm 0.0013 0.7961±0.0005plus-or-minus0.79610.00050.7961\pm 0.0005  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.7945±0.0009plus-or-minus0.79450.00090.7945\pm 0.0009 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.7931±0.0011plus-or-minus0.79310.00110.7931\pm 0.0011 0.7946±0.0010plus-or-minus0.79460.00100.7946\pm 0.0010  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.8015±0.0034plus-or-minus0.80150.00340.8015\pm 0.0034 0.8060±0.0015plus-or-minus0.80600.00150.8060\pm 0.0015 | year ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 8.9628±0.0232plus-or-minus8.96280.02328.9628\pm 0.0232 8.8931±0.0066plus-or-minus8.89310.00668.8931\pm 0.0066  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} 8.9658±0.0239plus-or-minus8.96580.02398.9658\pm 0.0239 8.8755±0.0066plus-or-minus8.87550.00668.8755\pm 0.0066  DCN2DCN2\mathrm{DCN2} 9.2761±0.0401plus-or-minus9.27610.04019.2761\pm 0.0401 9.0640±0.0156plus-or-minus9.06400.01569.0640\pm 0.0156  SNNSNN\mathrm{SNN} 9.0054±0.0256plus-or-minus9.00540.02569.0054\pm 0.0256 8.9351±0.0073plus-or-minus8.93510.00738.9351\pm 0.0073  TromptTrompt\mathrm{Trompt} 8.9707±n​a​nplus-or-minus8.9707𝑛𝑎𝑛8.9707\pm nan –  AutoIntAutoInt\mathrm{AutoInt} 9.0430±0.0280plus-or-minus9.04300.02809.0430\pm 0.0280 8.9619±0.0092plus-or-minus8.96190.00928.9619\pm 0.0092  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} 8.9589±0.0182plus-or-minus8.95890.01828.9589\pm 0.0182 8.9086±0.0177plus-or-minus8.90860.01778.9086\pm 0.0177  ExcelExcel\mathrm{Excel} 9.0395±0.0266plus-or-minus9.03950.02669.0395\pm 0.0266 8.9551±n​a​nplus-or-minus8.9551𝑛𝑎𝑛8.9551\pm nan  SAINTSAINT\mathrm{SAINT} 9.0248±0.0225plus-or-minus9.02480.02259.0248\pm 0.0225 8.9548±0.0102plus-or-minus8.95480.01028.9548\pm 0.0102  FT​-​TFT-T\mathrm{FT\texttt{-}T} 9.0005±0.0215plus-or-minus9.00050.02159.0005\pm 0.0215 8.9360±0.0013plus-or-minus8.93600.00138.9360\pm 0.0013  T2GT2G\mathrm{T2G} 8.9775±0.0138plus-or-minus8.97750.01388.9775\pm 0.0138 8.8979±n​a​nplus-or-minus8.8979𝑛𝑎𝑛8.8979\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 8.9355±0.0103plus-or-minus8.93550.01038.9355\pm 0.0103 8.9063±0.0030plus-or-minus8.90630.00308.9063\pm 0.0030  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 8.9455±0.0173plus-or-minus8.94550.01738.9455\pm 0.0173 8.9083±0.0046plus-or-minus8.90830.00468.9083\pm 0.0046  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 8.9379±0.0206plus-or-minus8.93790.02068.9379\pm 0.0206 8.8753±0.0038plus-or-minus8.87530.00388.8753\pm 0.0038  XGBoostXGBoost\mathrm{XGBoost} 9.0307±0.0028plus-or-minus9.03070.00289.0307\pm 0.0028 9.0245±0.0015plus-or-minus9.02450.00159.0245\pm 0.0015  LightGBMLightGBM\mathrm{LightGBM} 9.0200±0.0025plus-or-minus9.02000.00259.0200\pm 0.0025 9.0128±0.0015plus-or-minus9.01280.00159.0128\pm 0.0015  CatBoostCatBoost\mathrm{CatBoost} 9.0370±0.0073plus-or-minus9.03700.00739.0370\pm 0.0073 9.0054±0.0028plus-or-minus9.00540.00289.0054\pm 0.0028  TabRTabR\mathrm{TabR} 9.0069±0.0152plus-or-minus9.00690.01529.0069\pm 0.0152 8.9132±0.0088plus-or-minus8.91320.00888.9132\pm 0.0088  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 8.9721±0.0105plus-or-minus8.97210.01058.9721\pm 0.0105 –  MNCAMNCA\mathrm{MNCA} 8.9476±0.0152plus-or-minus8.94760.01528.9476\pm 0.0152 8.8977±0.0037plus-or-minus8.89770.00378.8977\pm 0.0037  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 8.8973±0.0082plus-or-minus8.89730.00828.8973\pm 0.0082 8.8550±0.0031plus-or-minus8.85500.00318.8550\pm 0.0031  TabMTabM\mathrm{TabM} 8.8701±0.0110plus-or-minus8.87010.01108.8701\pm 0.0110 8.8517±0.0022plus-or-minus8.85170.00228.8517\pm 0.0022  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 8.8715±0.0116plus-or-minus8.87150.01168.8715\pm 0.0116 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 8.8958±0.0087plus-or-minus8.89580.00878.8958\pm 0.0087 8.8810±0.0020plus-or-minus8.88100.00208.8810\pm 0.0020  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 8.8825±0.0087plus-or-minus8.88250.00878.8825\pm 0.0087 8.8560±0.0015plus-or-minus8.85600.00158.8560\pm 0.0015 |
 
-
-
-
 Table 19: Extended results for the main benchmark. Results are grouped by datasets.
 
 |  |  |
@@ -1470,83 +1391,3 @@ Table 19: Extended results for the main benchmark. Results are grouped by datase
 | maps-routing ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.1625±0.0001plus-or-minus0.16250.00010.1625\pm 0.0001 0.1621±0.0000plus-or-minus0.16210.00000.1621\pm 0.0000  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 0.1656±0.0004plus-or-minus0.16560.00040.1656\pm 0.0004 0.1636±0.0001plus-or-minus0.16360.00010.1636\pm 0.0001  SNNSNN\mathrm{SNN} 0.1634±0.0002plus-or-minus0.16340.00020.1634\pm 0.0002 0.1625±0.0000plus-or-minus0.16250.00000.1625\pm 0.0000  TromptTrompt\mathrm{Trompt} 0.1624±n​a​nplus-or-minus0.1624𝑛𝑎𝑛0.1624\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 0.1628±0.0001plus-or-minus0.16280.00010.1628\pm 0.0001 0.1621±n​a​nplus-or-minus0.1621𝑛𝑎𝑛0.1621\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.1625±0.0003plus-or-minus0.16250.00030.1625\pm 0.0003 0.1619±0.0001plus-or-minus0.16190.00010.1619\pm 0.0001  T2GT2G\mathrm{T2G} 0.1616±0.0001plus-or-minus0.16160.00010.1616\pm 0.0001 0.1608±n​a​nplus-or-minus0.1608𝑛𝑎𝑛0.1608\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.1618±0.0002plus-or-minus0.16180.00020.1618\pm 0.0002 0.1613±0.0000plus-or-minus0.16130.00000.1613\pm 0.0000  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.1618±0.0002plus-or-minus0.16180.00020.1618\pm 0.0002 0.1613±0.0001plus-or-minus0.16130.00010.1613\pm 0.0001  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.1620±0.0002plus-or-minus0.16200.00020.1620\pm 0.0002 0.1614±0.0000plus-or-minus0.16140.00000.1614\pm 0.0000  XGBoostXGBoost\mathrm{XGBoost} 0.1616±0.0001plus-or-minus0.16160.00010.1616\pm 0.0001 0.1614±0.0000plus-or-minus0.16140.00000.1614\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.1618±0.0000plus-or-minus0.16180.00000.1618\pm 0.0000 0.1616±0.0000plus-or-minus0.16160.00000.1616\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.1619±0.0001plus-or-minus0.16190.00010.1619\pm 0.0001 0.1615±0.0000plus-or-minus0.16150.00000.1615\pm 0.0000  TabRTabR\mathrm{TabR} 0.1639±0.0003plus-or-minus0.16390.00030.1639\pm 0.0003 0.1622±0.0002plus-or-minus0.16220.00020.1622\pm 0.0002  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.1622±0.0002plus-or-minus0.16220.00020.1622\pm 0.0002 –  MNCAMNCA\mathrm{MNCA} 0.1625±0.0001plus-or-minus0.16250.00010.1625\pm 0.0001 0.1621±0.0001plus-or-minus0.16210.00010.1621\pm 0.0001  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.1627±0.0002plus-or-minus0.16270.00020.1627\pm 0.0002 0.1623±0.0001plus-or-minus0.16230.00010.1623\pm 0.0001  TabMTabM\mathrm{TabM} 0.1612±0.0001plus-or-minus0.16120.00010.1612\pm 0.0001 0.1609±0.0000plus-or-minus0.16090.00000.1609\pm 0.0000  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.1612±0.0001plus-or-minus0.16120.00010.1612\pm 0.0001 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.1613±0.0002plus-or-minus0.16130.00020.1613\pm 0.0002 0.1609±0.0000plus-or-minus0.16090.00000.1609\pm 0.0000  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.1610±0.0001plus-or-minus0.16100.00010.1610\pm 0.0001 0.1607±0.0001plus-or-minus0.16070.00010.1607\pm 0.0001 | homesite-insurance ↑  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.9506±0.0005plus-or-minus0.95060.00050.9506\pm 0.0005 0.9514±0.0001plus-or-minus0.95140.00010.9514\pm 0.0001  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 0.9398±0.0053plus-or-minus0.93980.00530.9398\pm 0.0053 0.9432±0.0018plus-or-minus0.94320.00180.9432\pm 0.0018  SNNSNN\mathrm{SNN} 0.9473±0.0013plus-or-minus0.94730.00130.9473\pm 0.0013 0.9484±0.0007plus-or-minus0.94840.00070.9484\pm 0.0007  TromptTrompt\mathrm{Trompt} 0.9588±n​a​nplus-or-minus0.9588𝑛𝑎𝑛0.9588\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 0.9622±0.0004plus-or-minus0.96220.00040.9622\pm 0.0004 0.9635±n​a​nplus-or-minus0.9635𝑛𝑎𝑛0.9635\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.9622±0.0006plus-or-minus0.96220.00060.9622\pm 0.0006 0.9633±0.0001plus-or-minus0.96330.00010.9633\pm 0.0001  T2GT2G\mathrm{T2G} 0.9624±0.0006plus-or-minus0.96240.00060.9624\pm 0.0006 0.9637±n​a​nplus-or-minus0.9637𝑛𝑎𝑛0.9637\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.9609±0.0009plus-or-minus0.96090.00090.9609\pm 0.0009 0.9626±0.0003plus-or-minus0.96260.00030.9626\pm 0.0003  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.9617±0.0004plus-or-minus0.96170.00040.9617\pm 0.0004 0.9630±0.0002plus-or-minus0.96300.00020.9630\pm 0.0002  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.9582±0.0014plus-or-minus0.95820.00140.9582\pm 0.0014 0.9599±0.0002plus-or-minus0.95990.00020.9599\pm 0.0002  XGBoostXGBoost\mathrm{XGBoost} 0.9601±0.0002plus-or-minus0.96010.00020.9601\pm 0.0002 0.9602±0.0000plus-or-minus0.96020.00000.9602\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.9603±0.0002plus-or-minus0.96030.00020.9603\pm 0.0002 0.9604±0.0001plus-or-minus0.96040.00010.9604\pm 0.0001  CatBoostCatBoost\mathrm{CatBoost} 0.9606±0.0003plus-or-minus0.96060.00030.9606\pm 0.0003 0.9609±0.0001plus-or-minus0.96090.00010.9609\pm 0.0001  TabRTabR\mathrm{TabR} 0.9487±0.0014plus-or-minus0.94870.00140.9487\pm 0.0014 0.9505±0.0001plus-or-minus0.95050.00010.9505\pm 0.0001  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.9556±0.0021plus-or-minus0.95560.00210.9556\pm 0.0021 –  MNCAMNCA\mathrm{MNCA} 0.9514±0.0038plus-or-minus0.95140.00380.9514\pm 0.0038 0.9522±0.0027plus-or-minus0.95220.00270.9522\pm 0.0027  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.9620±0.0006plus-or-minus0.96200.00060.9620\pm 0.0006 0.9635±0.0002plus-or-minus0.96350.00020.9635\pm 0.0002  TabMTabM\mathrm{TabM} 0.9641±0.0004plus-or-minus0.96410.00040.9641\pm 0.0004 0.9644±0.0003plus-or-minus0.96440.00030.9644\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.9640±0.0004plus-or-minus0.96400.00040.9640\pm 0.0004 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.9642±0.0003plus-or-minus0.96420.00030.9642\pm 0.0003 0.9644±0.0001plus-or-minus0.96440.00010.9644\pm 0.0001  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.9627±0.0002plus-or-minus0.96270.00020.9627\pm 0.0002 0.9630±0.0001plus-or-minus0.96300.00010.9630\pm 0.0001 |
 | cooking-time ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.4828±0.0002plus-or-minus0.48280.00020.4828\pm 0.0002 0.4822±0.0000plus-or-minus0.48220.00000.4822\pm 0.0000  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 0.4834±0.0003plus-or-minus0.48340.00030.4834\pm 0.0003 0.4822±0.0001plus-or-minus0.48220.00010.4822\pm 0.0001  SNNSNN\mathrm{SNN} 0.4835±0.0006plus-or-minus0.48350.00060.4835\pm 0.0006 0.4818±0.0002plus-or-minus0.48180.00020.4818\pm 0.0002  TromptTrompt\mathrm{Trompt} 0.4809±n​a​nplus-or-minus0.4809𝑛𝑎𝑛0.4809\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 0.4821±0.0005plus-or-minus0.48210.00050.4821\pm 0.0005 0.4808±n​a​nplus-or-minus0.4808𝑛𝑎𝑛0.4808\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.4820±0.0008plus-or-minus0.48200.00080.4820\pm 0.0008 0.4813±0.0005plus-or-minus0.48130.00050.4813\pm 0.0005  T2GT2G\mathrm{T2G} 0.4809±0.0008plus-or-minus0.48090.00080.4809\pm 0.0008 0.4797±n​a​nplus-or-minus0.4797𝑛𝑎𝑛0.4797\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.4811±0.0004plus-or-minus0.48110.00040.4811\pm 0.0004 0.4805±0.0001plus-or-minus0.48050.00010.4805\pm 0.0001  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.4809±0.0006plus-or-minus0.48090.00060.4809\pm 0.0006 0.4804±0.0003plus-or-minus0.48040.00030.4804\pm 0.0003  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.4812±0.0004plus-or-minus0.48120.00040.4812\pm 0.0004 0.4807±0.0002plus-or-minus0.48070.00020.4807\pm 0.0002  XGBoostXGBoost\mathrm{XGBoost} 0.4823±0.0001plus-or-minus0.48230.00010.4823\pm 0.0001 0.4821±0.0000plus-or-minus0.48210.00000.4821\pm 0.0000  LightGBMLightGBM\mathrm{LightGBM} 0.4826±0.0001plus-or-minus0.48260.00010.4826\pm 0.0001 0.4825±0.0001plus-or-minus0.48250.00010.4825\pm 0.0001  CatBoostCatBoost\mathrm{CatBoost} 0.4823±0.0001plus-or-minus0.48230.00010.4823\pm 0.0001 0.4820±0.0001plus-or-minus0.48200.00010.4820\pm 0.0001  TabRTabR\mathrm{TabR} 0.4828±0.0008plus-or-minus0.48280.00080.4828\pm 0.0008 0.4814±0.0004plus-or-minus0.48140.00040.4814\pm 0.0004  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.4818±0.0006plus-or-minus0.48180.00060.4818\pm 0.0006 –  MNCAMNCA\mathrm{MNCA} 0.4825±0.0004plus-or-minus0.48250.00040.4825\pm 0.0004 0.4819±0.0003plus-or-minus0.48190.00030.4819\pm 0.0003  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.4818±0.0005plus-or-minus0.48180.00050.4818\pm 0.0005 0.4809±0.0003plus-or-minus0.48090.00030.4809\pm 0.0003  TabMTabM\mathrm{TabM} 0.4803±0.0006plus-or-minus0.48030.00060.4803\pm 0.0006 0.4797±0.0003plus-or-minus0.47970.00030.4797\pm 0.0003  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.4803±0.0005plus-or-minus0.48030.00050.4803\pm 0.0005 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.4804±0.0006plus-or-minus0.48040.00060.4804\pm 0.0006 0.4796±0.0000plus-or-minus0.47960.00000.4796\pm 0.0000  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.4805±0.0007plus-or-minus0.48050.00070.4805\pm 0.0007 0.4795±0.0003plus-or-minus0.47950.00030.4795\pm 0.0003 | homecredit-default ↑  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.8538±0.0014plus-or-minus0.85380.00140.8538\pm 0.0014 0.8566±0.0005plus-or-minus0.85660.00050.8566\pm 0.0005  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 0.8471±0.0019plus-or-minus0.84710.00190.8471\pm 0.0019 0.8549±0.0002plus-or-minus0.85490.00020.8549\pm 0.0002  SNNSNN\mathrm{SNN} 0.8541±0.0016plus-or-minus0.85410.00160.8541\pm 0.0016 0.8569±0.0010plus-or-minus0.85690.00100.8569\pm 0.0010  TromptTrompt\mathrm{Trompt} 0.8355±n​a​nplus-or-minus0.8355𝑛𝑎𝑛0.8355\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 0.8513±0.0024plus-or-minus0.85130.00240.8513\pm 0.0024 0.8564±n​a​nplus-or-minus0.8564𝑛𝑎𝑛0.8564\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.8571±0.0023plus-or-minus0.85710.00230.8571\pm 0.0023 0.8611±0.0013plus-or-minus0.86110.00130.8611\pm 0.0013  T2GT2G\mathrm{T2G} 0.8597±0.0007plus-or-minus0.85970.00070.8597\pm 0.0007 0.8629±n​a​nplus-or-minus0.8629𝑛𝑎𝑛0.8629\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.8598±0.0009plus-or-minus0.85980.00090.8598\pm 0.0009 0.8607±0.0003plus-or-minus0.86070.00030.8607\pm 0.0003  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.8572±0.0011plus-or-minus0.85720.00110.8572\pm 0.0011 0.8590±0.0003plus-or-minus0.85900.00030.8590\pm 0.0003  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.8568±0.0039plus-or-minus0.85680.00390.8568\pm 0.0039 0.8614±0.0014plus-or-minus0.86140.00140.8614\pm 0.0014  XGBoostXGBoost\mathrm{XGBoost} 0.8670±0.0005plus-or-minus0.86700.00050.8670\pm 0.0005 0.8674±0.0001plus-or-minus0.86740.00010.8674\pm 0.0001  LightGBMLightGBM\mathrm{LightGBM} 0.8664±0.0004plus-or-minus0.86640.00040.8664\pm 0.0004 0.8667±0.0000plus-or-minus0.86670.00000.8667\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.8627±n​a​nplus-or-minus0.8627𝑛𝑎𝑛0.8627\pm nan –  TabRTabR\mathrm{TabR} 0.8501±0.0027plus-or-minus0.85010.00270.8501\pm 0.0027 0.8548±0.0003plus-or-minus0.85480.00030.8548\pm 0.0003  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.8547±0.0021plus-or-minus0.85470.00210.8547\pm 0.0021 –  MNCAMNCA\mathrm{MNCA} 0.8531±0.0018plus-or-minus0.85310.00180.8531\pm 0.0018 0.8569±0.0004plus-or-minus0.85690.00040.8569\pm 0.0004  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.8544±0.0033plus-or-minus0.85440.00330.8544\pm 0.0033 0.8606±0.0024plus-or-minus0.86060.00240.8606\pm 0.0024  TabMTabM\mathrm{TabM} 0.8583±0.0010plus-or-minus0.85830.00100.8583\pm 0.0010 0.8599±0.0006plus-or-minus0.85990.00060.8599\pm 0.0006  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.8583±0.0011plus-or-minus0.85830.00110.8583\pm 0.0011 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.8577±0.0017plus-or-minus0.85770.00170.8577\pm 0.0017 0.8598±0.0004plus-or-minus0.85980.00040.8598\pm 0.0004  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.8632±0.0017plus-or-minus0.86320.00170.8632\pm 0.0017 0.8656±0.0003plus-or-minus0.86560.00030.8656\pm 0.0003 |
 | delivery-eta ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 0.5493±0.0007plus-or-minus0.54930.00070.5493\pm 0.0007 0.5478±0.0006plus-or-minus0.54780.00060.5478\pm 0.0006  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 0.5516±0.0014plus-or-minus0.55160.00140.5516\pm 0.0014 0.5495±0.0004plus-or-minus0.54950.00040.5495\pm 0.0004  SNNSNN\mathrm{SNN} 0.5495±0.0008plus-or-minus0.54950.00080.5495\pm 0.0008 0.5479±0.0001plus-or-minus0.54790.00010.5479\pm 0.0001  TromptTrompt\mathrm{Trompt} 0.5519±n​a​nplus-or-minus0.5519𝑛𝑎𝑛0.5519\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 0.5552±0.0030plus-or-minus0.55520.00300.5552\pm 0.0030 0.5524±n​a​nplus-or-minus0.5524𝑛𝑎𝑛0.5524\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 0.5542±0.0026plus-or-minus0.55420.00260.5542\pm 0.0026 0.5523±0.0018plus-or-minus0.55230.00180.5523\pm 0.0018  T2GT2G\mathrm{T2G} 0.5527±0.0016plus-or-minus0.55270.00160.5527\pm 0.0016 0.5512±n​a​nplus-or-minus0.5512𝑛𝑎𝑛0.5512\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 0.5521±0.0014plus-or-minus0.55210.00140.5521\pm 0.0014 0.5512±0.0005plus-or-minus0.55120.00050.5512\pm 0.0005  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 0.5535±0.0019plus-or-minus0.55350.00190.5535\pm 0.0019 0.5526±0.0009plus-or-minus0.55260.00090.5526\pm 0.0009  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 0.5521±0.0019plus-or-minus0.55210.00190.5521\pm 0.0019 0.5511±0.0007plus-or-minus0.55110.00070.5511\pm 0.0007  XGBoostXGBoost\mathrm{XGBoost} 0.5468±0.0002plus-or-minus0.54680.00020.5468\pm 0.0002 0.5463±0.0001plus-or-minus0.54630.00010.5463\pm 0.0001  LightGBMLightGBM\mathrm{LightGBM} 0.5468±0.0001plus-or-minus0.54680.00010.5468\pm 0.0001 0.5465±0.0000plus-or-minus0.54650.00000.5465\pm 0.0000  CatBoostCatBoost\mathrm{CatBoost} 0.5465±0.0001plus-or-minus0.54650.00010.5465\pm 0.0001 0.5461±0.0000plus-or-minus0.54610.00000.5461\pm 0.0000  TabRTabR\mathrm{TabR} 0.5514±0.0024plus-or-minus0.55140.00240.5514\pm 0.0024 0.5480±0.0005plus-or-minus0.54800.00050.5480\pm 0.0005  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 0.5520±0.0015plus-or-minus0.55200.00150.5520\pm 0.0015 –  MNCAMNCA\mathrm{MNCA} 0.5498±0.0007plus-or-minus0.54980.00070.5498\pm 0.0007 0.5488±0.0002plus-or-minus0.54880.00020.5488\pm 0.0002  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 0.5507±0.0013plus-or-minus0.55070.00130.5507\pm 0.0013 0.5494±0.0006plus-or-minus0.54940.00060.5494\pm 0.0006  TabMTabM\mathrm{TabM} 0.5510±0.0015plus-or-minus0.55100.00150.5510\pm 0.0015 0.5504±0.0004plus-or-minus0.55040.00040.5504\pm 0.0004  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 0.5517±0.0016plus-or-minus0.55170.00160.5517\pm 0.0016 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 0.5519±0.0015plus-or-minus0.55190.00150.5519\pm 0.0015 0.5511±0.0006plus-or-minus0.55110.00060.5511\pm 0.0006  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 0.5508±0.0013plus-or-minus0.55080.00130.5508\pm 0.0013 0.5497±0.0003plus-or-minus0.54970.00030.5497\pm 0.0003 | weather ↓  Method Single model Ensemble  MLPMLP\mathrm{MLP} 1.5378±0.0054plus-or-minus1.53780.00541.5378\pm 0.0054 1.5111±0.0029plus-or-minus1.51110.00291.5111\pm 0.0029  TabPFNTabPFN\mathrm{TabPFN} – –  ResNetResNet\mathrm{ResNet} – –  DCN2DCN2\mathrm{DCN2} 1.5606±0.0057plus-or-minus1.56060.00571.5606\pm 0.0057 1.5292±0.0028plus-or-minus1.52920.00281.5292\pm 0.0028  SNNSNN\mathrm{SNN} 1.5280±0.0085plus-or-minus1.52800.00851.5280\pm 0.0085 1.5013±0.0034plus-or-minus1.50130.00341.5013\pm 0.0034  TromptTrompt\mathrm{Trompt} 1.5187±n​a​nplus-or-minus1.5187𝑛𝑎𝑛1.5187\pm nan –  AutoIntAutoInt\mathrm{AutoInt} – –  MLP​-​MixerMLP-Mixer\mathrm{MLP\texttt{-}Mixer} – –  ExcelExcel\mathrm{Excel} 1.5131±0.0022plus-or-minus1.51310.00221.5131\pm 0.0022 1.4707±n​a​nplus-or-minus1.4707𝑛𝑎𝑛1.4707\pm nan  SAINTSAINT\mathrm{SAINT} – –  FT​-​TFT-T\mathrm{FT\texttt{-}T} 1.5104±0.0097plus-or-minus1.51040.00971.5104\pm 0.0097 1.4719±0.0040plus-or-minus1.47190.00401.4719\pm 0.0040  T2GT2G\mathrm{T2G} 1.4849±0.0087plus-or-minus1.48490.00871.4849\pm 0.0087 1.4513±n​a​nplus-or-minus1.4513𝑛𝑎𝑛1.4513\pm nan  MLPP−LitesuperscriptMLPPLite\mathrm{MLP^{P-Lite}} 1.5170±0.0040plus-or-minus1.51700.00401.5170\pm 0.0040 1.4953±0.0023plus-or-minus1.49530.00231.4953\pm 0.0023  MLPPsuperscriptMLPP\mathrm{MLP^{P}} 1.5139±0.0031plus-or-minus1.51390.00311.5139\pm 0.0031 1.4978±0.0020plus-or-minus1.49780.00201.4978\pm 0.0020  MLP†superscriptMLP†\mathrm{MLP^{\dagger}} 1.5162±0.0020plus-or-minus1.51620.00201.5162\pm 0.0020 1.5066±0.0008plus-or-minus1.50660.00081.5066\pm 0.0008  XGBoostXGBoost\mathrm{XGBoost} 1.4671±0.0006plus-or-minus1.46710.00061.4671\pm 0.0006 1.4629±0.0002plus-or-minus1.46290.00021.4629\pm 0.0002  LightGBMLightGBM\mathrm{LightGBM} 1.4625±0.0008plus-or-minus1.46250.00081.4625\pm 0.0008 1.4581±0.0003plus-or-minus1.45810.00031.4581\pm 0.0003  CatBoostCatBoost\mathrm{CatBoost} 1.4688±0.0019plus-or-minus1.46880.00191.4688\pm 0.0019 –  TabRTabR\mathrm{TabR} 1.4666±0.0039plus-or-minus1.46660.00391.4666\pm 0.0039 1.4547±0.0008plus-or-minus1.45470.00081.4547\pm 0.0008  TabR†superscriptTabR†\mathrm{TabR^{\dagger}} 1.4458±0.0018plus-or-minus1.44580.00181.4458\pm 0.0018 –  MNCAMNCA\mathrm{MNCA} 1.5062±0.0054plus-or-minus1.50620.00541.5062\pm 0.0054 1.4822±0.0013plus-or-minus1.48220.00131.4822\pm 0.0013  MNCA†superscriptMNCA†\mathrm{MNCA^{\dagger}} 1.5008±0.0034plus-or-minus1.50080.00341.5008\pm 0.0034 1.4782±0.0011plus-or-minus1.47820.00111.4782\pm 0.0011  TabMTabM\mathrm{TabM} 1.4786±0.0039plus-or-minus1.47860.00391.4786\pm 0.0039 1.4715±0.0020plus-or-minus1.47150.00201.4715\pm 0.0020  TabM​[GH]TabMdelimited-[]GH\mathrm{TabM[GH]} 1.4796±0.0037plus-or-minus1.47960.00371.4796\pm 0.0037 –  TabMminisubscriptTabMmini\mathrm{TabM\_{mini}} 1.4809±0.0027plus-or-minus1.48090.00271.4809\pm 0.0027 1.4717±0.0012plus-or-minus1.47170.00121.4717\pm 0.0012  TabMmini†superscriptsubscriptTabMmini†\mathrm{TabM\_{mini}^{\dagger}} 1.4709±0.0047plus-or-minus1.47090.00471.4709\pm 0.0047 1.4611±0.0023plus-or-minus1.46110.00231.4611\pm 0.0023 |
-
-[◄](/html/2410.24209)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2410.24210)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2410.24210)
-[View original  
-on arXiv](https://arxiv.org/abs/2410.24210)[►](/html/2410.24211)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Nov 5 17:43:57 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

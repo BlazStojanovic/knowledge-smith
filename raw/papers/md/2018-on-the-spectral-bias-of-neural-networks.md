@@ -17,50 +17,6 @@ url: http://arxiv.org/abs/1806.08734v3
 year: 2018
 ---
 
-[1806.08734] On the Spectral Bias of Neural Networks
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On the Spectral Bias of Neural Networks
 
 Nasim Rahaman
@@ -205,15 +161,15 @@ Further, the Lipschitz constant Lfsubscript𝐿𝑓L\_{f} can be bounded as (cf.
 
 where ∥⋅∥\|\cdot\| is the spectral norm and ∥⋅∥∞\|\cdot\|\_{\infty} the max norm, and dksubscript𝑑𝑘d\_{k} is the number of units in the k𝑘k-th layer. This makes the bound on Lfsubscript𝐿𝑓L\_{f} scale exponentially in depth and polynomial in width. As for the number Nfsubscript𝑁𝑓N\_{f} of linear regions, Montufar et al. ([2014](#bib.bib24)) and Raghu et al. ([2016](#bib.bib30)) obtain tight bounds that exhibit the same scaling behaviour (Raghu et al., [2016](#bib.bib30), Theorem 1). In Appendix [A.5](#A1.SS5 "A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks"), we qualitatively ablate over the depth and width of the network to expose how this reflects on the Fourier spectrum of the network.
 
-![Refer to caption](/html/1806.08734/assets/x1.png)
+!(/html/1806.08734/assets/x1.png)
 
-![Refer to caption](/html/1806.08734/assets/x2.png)
+!(/html/1806.08734/assets/x2.png)
 
 (a) Equal Amplitudes
 
-![Refer to caption](/html/1806.08734/assets/x3.png)
+!(/html/1806.08734/assets/x3.png)
 
-![Refer to caption](/html/1806.08734/assets/x4.png)
+!(/html/1806.08734/assets/x4.png)
 
 (b) Increasing Amplitudes
 
@@ -225,23 +181,19 @@ We now present experiments
 showing that networks tend to fit *lower frequencies first* during training. We refer to this phenomenon as the *spectral bias*, and discuss it in light of the results of
 Section [2](#S2 "2 Fourier analysis of ReLU networks ‣ On the Spectral Bias of Neural Networks").
 
-![Refer to caption](/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_100.png)
-
+!(/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_100.png)
 
 (a) Iteration 100
 
-![Refer to caption](/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_1000.png)
-
+!(/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_1000.png)
 
 (b) Iteration 1000
 
-![Refer to caption](/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_10000.png)
-
+!(/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_10000.png)
 
 (c) Iteration 10000
 
-![Refer to caption](/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_80000.png)
-
+!(/html/1806.08734/assets/figures/learntfunc_eq_amp_iter_80000.png)
 
 (d) Iteration 80000
 
@@ -264,8 +216,7 @@ lower frequencies (i.e. smaller kisubscript𝑘𝑖k\_{i}’s) are regressed fir
 
 ###### Experiment 2.
 
-![Refer to caption](/html/1806.08734/assets/figures/better_normalized_robustness.png)
-
+!(/html/1806.08734/assets/figures/better_normalized_robustness.png)
 
 Figure 3: Normalized spectrum of the model (x-axis for frequency, colorbar for magnitude) with perturbed parameters as a function of parameter perturbation (y-axis). The colormap is clipped between 0 and 1. We observe that the lower frequencies are more robust to parameter perturbations than the higher frequencies.
 
@@ -275,23 +226,19 @@ where θ^^𝜃\hat{\theta} is a random unit vector in parameter space. We evalua
 
 𝜃subscript𝑘𝑖|\tilde{f}\_{\theta\*}({k\_{i}})|. Finally, we average over the phases ϕitalic-ϕ\phi (see Eqn [8](#S3.E8 "In Experiment 1. ‣ 3.1 Synthetic Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks")). The result, shown in Figure [3](#S3.F3 "Figure 3 ‣ Experiment 2. ‣ 3.1 Synthetic Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks"), demonstrates that higher frequencies are significantly less robust than the lower ones, guiding the intuition that expressing higher frequencies requires the parameters to be finely-tuned to work together. In other words, parameters that contribute towards expressing high-frequency components occupy a small volume in the parameter space. We formalize this in Appendix [D](#A4 "Appendix D Volume of High-Frequency Parameters in Parameter Space ‣ On the Spectral Bias of Neural Networks").
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_0_1_amp_var_val_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_0_1_amp_var_val_ch_n.png)
 
 (a) k=0.1𝑘0.1k=0.1
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_1_amp_var_val_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_1_amp_var_val_ch_n.png)
 
 (b) k=1𝑘1k=1
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_0_5_val_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_0_5_val_ch_n.png)
 
 (c) β=0.5𝛽0.5\beta=0.5
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_1_val_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_1_val_ch_n.png)
 
 (d) β=1.𝛽1\beta=1.
 
@@ -341,13 +288,11 @@ subscript𝑓ℋsubscript𝜑𝑛
 
 where N𝑁N is the number of available samples and γ=2𝛾2\gamma=2. Like in Experiment [3](#Thmexperiment3 "Experiment 3. ‣ 3.2 Real-Data Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks"), the target function is given by τ=τ0+β​ψ𝜏subscript𝜏0𝛽𝜓\tau=\tau\_{0}+\beta\psi, and the same network is trained to regress τ𝜏\tau. Figure [5](#S3.F5 "Figure 5 ‣ 3.2 Real-Data Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks") shows the (generalized) spectrum τ𝜏\tau and τ0subscript𝜏0\tau\_{0}, and that of f𝑓f as training progresses. Figure [13](#A1.F13 "Figure 13 ‣ A.4.1 Loss Curves Accompanying Figure 5 ‣ A.4 Experiment 4 ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") (in appendix) shows the corresponding dip in validation loss, where the validation set is same as the training set but with true target function τ0subscript𝜏0\tau\_{0} instead of the noised target τ𝜏\tau.
 
-![Refer to caption](/html/1806.08734/assets/figures/kernel_hfn_bias.png)
-
+!(/html/1806.08734/assets/figures/kernel_hfn_bias.png)
 
 Figure 5: Spectrum of the network as it is trained on MNIST target with high-frequency noise (*Noised Target*). We see that the network fits the true target at around the 200200200th iteration, which is when the validation score dips (Figure [13](#A1.F13 "Figure 13 ‣ A.4.1 Loss Curves Accompanying Figure 5 ‣ A.4 Experiment 4 ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") in appendix).
 
-![Refer to caption](/html/1806.08734/assets/figures/rbf_freq_of_eigvecs.png)
-
+!(/html/1806.08734/assets/figures/rbf_freq_of_eigvecs.png)
 
 Figure 6: Spectrum (x-axis for frequency, colorbar for magnitude) of the n𝑛n-th (y-axis) eigenvector of the Gaussian RBF kernel matrix Ki​j=k​(𝐱i,𝐱j)subscript𝐾𝑖𝑗𝑘subscript𝐱𝑖subscript𝐱𝑗K\_{ij}=k(\mathbf{x}\_{i},\mathbf{x}\_{j}), where the sample set is {xi∈[0,1]}i=150superscriptsubscriptsubscript𝑥𝑖01𝑖150\{x\_{i}\in[0,1]\}\_{i=1}^{50} is N=50𝑁50N=50 uniformly spaced points between 00 and 111 and k𝑘k is the Gaussian RBF kernel function. Gist: The eigenfunctions with increasing n𝑛n roughly correspond to sinusoids of increasing frequency. Refer to Appendix [A.4](#A1.SS4 "A.4 Experiment 4 ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") for more details.
 
@@ -381,44 +326,38 @@ Experimental set up. The experimental setting is designed to afford control over
 | --- | --- | --- | --- | --- |
 |  | where | RL​(z)=1+12​sin⁡(2​π​L​z)subscript𝑅𝐿𝑧1122𝜋𝐿𝑧\displaystyle R\_{L}(z)=1+\frac{1}{2}\sin(2\pi Lz) |  | (13) |
 
-![Refer to caption](/html/1806.08734/assets/figures/func_k=200-L=20.png)
+!(/html/1806.08734/assets/figures/func_k=200-L=20.png)
 
-![Refer to caption](/html/1806.08734/assets/figures/func_k=200-L=20_2.png)
+!(/html/1806.08734/assets/figures/func_k=200-L=20_2.png)
 
 Figure 7: Functions learned by two identical networks (up to initialization) to classify the binarized value of a sine wave of frequency k=200𝑘200k=200 defined on a γL=20subscript𝛾𝐿20\gamma\_{L=20} manifold. Both yield close to perfect accuracy for the samples defined on the manifold (scatter plot), yet they differ significantly elsewhere. The shaded regions show the predicted class (Red or Blue) whereas contours show the confidence (absolute value of logits).
 
 Here, γL​([0,1])subscript𝛾𝐿01\gamma\_{L}([0,1]) defines the data-manifold and corresponds to a flower-shaped curve with L𝐿L petals, or a unit circle when L=0𝐿0L=0 (see e.g. Fig [7](#S4.F7 "Figure 7 ‣ 4 Not all Manifolds are Learned Equal ‣ On the Spectral Bias of Neural Networks")). Given a signal λ:[0,1]→ℝ:𝜆→01ℝ\lambda:[0,1]\rightarrow\mathbb{R} defined on the latent space [0,1]01[0,1], the task entails learning a network f:ℝ2→ℝ:𝑓→superscriptℝ2ℝf:\mathbb{R}^{2}\rightarrow\mathbb{R} such that f∘γL𝑓subscript𝛾𝐿f\circ\gamma\_{L} matches the signal λ𝜆\lambda.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_evo_eq_amps_L-0.png)
-
+!(/html/1806.08734/assets/figures/spec_evo_eq_amps_L-0.png)
 
 (a) L=0𝐿0L=0
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_evo_eq_amps_L-4.png)
-
+!(/html/1806.08734/assets/figures/spec_evo_eq_amps_L-4.png)
 
 (b) L=4𝐿4L=4
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_evo_eq_amps_L-10.png)
-
+!(/html/1806.08734/assets/figures/spec_evo_eq_amps_L-10.png)
 
 (c) L=10𝐿10L=10
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_evo_eq_amps_L-16.png)
-
+!(/html/1806.08734/assets/figures/spec_evo_eq_amps_L-16.png)
 
 (d) L=16𝐿16L=16
 
-![Refer to caption](/html/1806.08734/assets/figures/loss_curve_eq_amp_L=0-4-10-16.png)
-
+!(/html/1806.08734/assets/figures/loss_curve_eq_amp_L=0-4-10-16.png)
 
 (e) Loss curves
 
 Figure 8: (a,b,c,d): Evolution of the network spectrum (x-axis for frequency, colorbar for magnitude) during training (y-axis) for the same target functions defined on manifolds γLsubscript𝛾𝐿\gamma\_{L} for various L𝐿L. Since the target function has amplitudes Ai=1subscript𝐴𝑖1A\_{i}=1 for all frequencies kisubscript𝑘𝑖k\_{i} plotted, the colorbar is clipped between 0 and 1. (e): Corresponding learning curves.
 Gist: Some manifolds (here with larger L𝐿L) make it easier for the network to learn higher frequencies than others.
 
-![Refer to caption](/html/1806.08734/assets/figures/Lvk_classification_4.png)
-
+!(/html/1806.08734/assets/figures/Lvk_classification_4.png)
 
 Figure 9: Heatmap of training accuracies of a network trained to predict the binarized value of a sine wave of given frequency (x-axis) defined on γLsubscript𝛾𝐿\gamma\_{L} for various L𝐿L (y-axis).
 
@@ -735,13 +674,11 @@ We fit a 6 layer ReLU network with 256 units per layer fθsubscript𝑓𝜃f\_{\
 
 where ki=(5,10,15,…,50)subscript𝑘𝑖51015…50k\_{i}=(5,10,15,...,50), and φisubscript𝜑𝑖\varphi\_{i} is sampled from the uniform distribution U​(0,2​π)𝑈02𝜋U(0,2\pi). In the first setting, we set equal amplitude for all frequencies, i.e. Ai=1​∀isubscript𝐴𝑖1for-all𝑖A\_{i}=1\,\forall\,i, while in the second setting we assign larger amplitudes to the higher frequencies, i.e. Ai=(0.1,0.2,…,1)subscript𝐴𝑖0.10.2…1A\_{i}=(0.1,0.2,...,1). We sample λ𝜆\lambda on 200 uniformly spaced points in [0,1]01[0,1] and train the network for 800008000080000 steps of full-batch gradient descent with Adam (Kingma & Ba, [2014](#bib.bib18)). Note that we do not use stochastic gradient descent to avoid the stochasticity in parameter updates as a confounding factor. We evaluate the network on the same 200 point grid every 100 training steps and compute the magnitude of its (single-sided) discrete fourier transform at frequencies kisubscript𝑘𝑖k\_{i} which we denote with |f~ki|subscript~𝑓subscript𝑘𝑖|\tilde{f}\_{k\_{i}}|. Finally, we plot in figure [1](#S2.F1 "Figure 1 ‣ 2.2 Fourier Spectrum ‣ 2 Fourier analysis of ReLU networks ‣ On the Spectral Bias of Neural Networks") the normalized magnitudes |f~ki|Aisubscript~𝑓subscript𝑘𝑖subscript𝐴𝑖\frac{|\tilde{f}\_{k\_{i}}|}{A\_{i}} averaged over 10 runs (with different sets of sampled phases φisubscript𝜑𝑖\varphi\_{i}). We also record the spectral norms of the weights at each layer as the training progresses, which we plot in figure [1](#S2.F1 "Figure 1 ‣ 2.2 Fourier Spectrum ‣ 2 Fourier analysis of ReLU networks ‣ On the Spectral Bias of Neural Networks") for both settings (the spectral norm is evaluated with 10 power iterations). In figure [2](#S3.F2 "Figure 2 ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks"), we show an example target function and the predictions of the network trained on it (over the iterations), and in figure [10](#A1.F10 "Figure 10 ‣ A.1 Experiment 1 ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") we plot the loss curves.
 
-![Refer to caption](/html/1806.08734/assets/figures/loss_curve_eq_amp.png)
-
+!(/html/1806.08734/assets/figures/loss_curve_eq_amp.png)
 
 (a) Equal Amplitudes.
 
-![Refer to caption](/html/1806.08734/assets/figures/loss_curve_inc_amp.png)
-
+!(/html/1806.08734/assets/figures/loss_curve_inc_amp.png)
 
 (b) Increasing Amplitudes.
 
@@ -763,23 +700,19 @@ where ki=(20,40,…,180,200)subscript𝑘𝑖2040…180200k\_{i}=(20,40,...,180,
 
 In Figure [11](#A1.F11 "Figure 11 ‣ A.3 Experiment 3 ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks"), we show the training curves corresponding to Figure [4](#S3.F4 "Figure 4 ‣ 3.1 Synthetic Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks").
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_0_1_amp_var_tra_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_0_1_amp_var_tra_ch_n.png)
 
 (a) k=0.1𝑘0.1k=0.1
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_1_amp_var_tra_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_1_amp_var_tra_ch_n.png)
 
 (b) k=1𝑘1k=1
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_0_5_tra_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_0_5_tra_ch_n.png)
 
 (c) β=0.5𝛽0.5\beta=0.5
 
-![Refer to caption](/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_1_tra_ch_n.png)
-
+!(/html/1806.08734/assets/figures/mnist_noise_freq_var_amp_1_tra_ch_n.png)
 
 (d) β=1.𝛽1\beta=1.
 
@@ -831,13 +764,11 @@ Like in (Braun et al., [2006](#bib.bib6)), we define the *spectrum* f~​[n]~�
 
 where 𝐟=(f​(𝐱1),…,f​(𝐱N))𝐟𝑓subscript𝐱1…𝑓subscript𝐱𝑁\mathbf{f}=(f(\mathbf{x}\_{1}),...,f(\mathbf{x}\_{N})). The value n𝑛n can be thought of a generalized notion of *frequency*. Indeed, it is known (Fasshauer, [2011](#bib.bib13); Rasmussen, [2004](#bib.bib31)), for instance, that the eigenfunctions φnsubscript𝜑𝑛\varphi\_{n} resemble sinusoids with increasing frequencies (for increasing n𝑛n or decreasing λnsubscript𝜆𝑛\lambda\_{n}). In Figure [6](#S3.F6 "Figure 6 ‣ 3.2 Real-Data Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks"), we plot the eigenvectors 𝐯0subscript𝐯0\mathbf{v}\_{0} and 𝐯Nsubscript𝐯𝑁\mathbf{v}\_{N} for {𝐱i}i=150superscriptsubscriptsubscript𝐱𝑖𝑖150\{\mathbf{x}\_{i}\}\_{i=1}^{50} uniformly spaced between [0,1]01[0,1]. Further, in Figure ? we evaluate the discrete Fourier transform of all N=50𝑁50N=50 eigenvectors, and find that the eigenfunction index n𝑛n does indeed coincide with frequency k𝑘k. Finally, we remark that the link between signal complexity and the spectrum is extensively studied in (Braun et al., [2006](#bib.bib6)).
 
-![Refer to caption](/html/1806.08734/assets/figures/exploratory_ev0.png)
-
+!(/html/1806.08734/assets/figures/exploratory_ev0.png)
 
 (a) Eigenvector with the largest eigenvalue (n=1𝑛1n=1).
 
-![Refer to caption](/html/1806.08734/assets/figures/exploratory_ev49.png)
-
+!(/html/1806.08734/assets/figures/exploratory_ev49.png)
 
 (b) Eigenvector with the smallest eigenvalue (n=50𝑛50n=50).
 
@@ -845,20 +776,17 @@ Figure 12: Two extreme eigenvectors of the Gaussian RBF kernel for 505050 unifor
 
 #### A.4.1 Loss Curves Accompanying Figure [5](#S3.F5 "Figure 5 ‣ 3.2 Real-Data Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks")
 
-![Refer to caption](/html/1806.08734/assets/figures/kernel_hfn_loss.png)
-
+!(/html/1806.08734/assets/figures/kernel_hfn_loss.png)
 
 Figure 13: Loss curves for the Figure [5](#S3.F5 "Figure 5 ‣ 3.2 Real-Data Experiments ‣ 3 Lower Frequencies are Learned First ‣ On the Spectral Bias of Neural Networks"). We find that the validation loss dips at around the 200200200th iteration.
 
 ### A.5 Qualitative Ablation over Architectures
 
-![Refer to caption](/html/1806.08734/assets/figures/delta_fn.png)
-
+!(/html/1806.08734/assets/figures/delta_fn.png)
 
 (a) Sampled δ𝛿\delta-function at x=0.5𝑥0.5x=0.5.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_delta_fn.png)
-
+!(/html/1806.08734/assets/figures/spec_delta_fn.png)
 
 (b) Constant Spectrum of the δ𝛿\delta-function.
 
@@ -870,95 +798,73 @@ Theorem [1](#Thmtheorem1 "Theorem 1. ‣ 2.2 Fourier Spectrum ‣ 2 Fourier anal
 
 In this experiment, we fit various networks to the δ𝛿\delta-function at x=0.5𝑥0.5x=0.5 (see Fig [14(a)](#A1.F14.sf1 "In Figure 14 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks")). Its spectrum is constant for all frequencies (Fig [14(b)](#A1.F14.sf2 "In Figure 14 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks")), which makes it particularly useful for testing how well a given network can fit large frequencies. Fig [17](#A1.F17 "Figure 17 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") shows the ablation over weight clip (i.e. max parameter max-norm), Fig [15](#A1.F15 "Figure 15 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") over depth and Fig [16](#A1.F16 "Figure 16 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") over width. Fig [18](#A1.F18 "Figure 18 ‣ A.5 Qualitative Ablation over Architectures ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") exemplarily shows how the network prediction evolves with training iterations. All networks are trained for 60K iterations of full-batch gradient descent under identical conditions (Adam optimizer with l​r=0.0003𝑙𝑟0.0003lr=0.0003, no weight decay).
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=16-d=3-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=16-d=3-K=10.png)
 
 (a) Depth =3absent3=3.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=16-d=4-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=16-d=4-K=10.png)
 
 (b) Depth =4absent4=4.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=16-d=5-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=16-d=5-K=10.png)
 
 (c) Depth =5absent5=5.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=16-d=6-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=16-d=6-K=10.png)
 
 (d) Depth =6absent6=6.
 
 Figure 15: Evolution with training iterations (y-axis) of the Fourier spectrum (x-axis for frequency, and colormap for magnitude) for a network with varying depth, width =16absent16=16 and weight clip =10absent10=10. The spectrum of the target function is a constant 0.0050.0050.005 for all frequencies.
 
-
-
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=16-d=3-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=16-d=3-K=10.png)
 
 (a) Width =16absent16=16.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=32-d=3-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=32-d=3-K=10.png)
 
 (b) Width =32absent32=32.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=64-d=3-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=64-d=3-K=10.png)
 
 (c) Width =64absent64=64.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=128-d=3-K=10.png)
-
+!(/html/1806.08734/assets/figures/spec_w=128-d=3-K=10.png)
 
 (d) Width =128absent128=128.
 
 Figure 16: Evolution with training iterations (y-axis) of the Fourier spectrum (x-axis for frequency, and colormap for magnitude) for a network with varying width, depth =3absent3=3 and weight clip =10absent10=10. The spectrum of the target function is a constant 0.0050.0050.005 for all frequencies.
 
-
-
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_1.png)
-
+!(/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_1.png)
 
 (a) Weight Clip =0.1absent0.1=0.1.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_15.png)
-
+!(/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_15.png)
 
 (b) Weight Clip =0.15absent0.15=0.15.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_2.png)
-
+!(/html/1806.08734/assets/figures/spec_w=64-d=6-K=0_2.png)
 
 (c) Weight Clip =0.2absent0.2=0.2.
 
-![Refer to caption](/html/1806.08734/assets/figures/spec_w=64-d=6-K=2.png)
-
+!(/html/1806.08734/assets/figures/spec_w=64-d=6-K=2.png)
 
 (d) Weight Clip =2absent2=2.
 
 Figure 17: Evolution with training iterations (y-axis) of the Fourier spectrum (x-axis for frequency, and colormap for magnitude) for a network with varying weight clip, depth =6absent6=6 and width =64absent64=64. The spectrum of the target function is a constant 0.0050.0050.005 for all frequencies.
 
-
-
-![Refer to caption](/html/1806.08734/assets/figures/space_w=64-d=6-K=0_1.png)
-
+!(/html/1806.08734/assets/figures/space_w=64-d=6-K=0_1.png)
 
 (a) Weight Clip =0.1absent0.1=0.1.
 
-![Refer to caption](/html/1806.08734/assets/figures/space_w=64-d=6-K=0_15.png)
-
+!(/html/1806.08734/assets/figures/space_w=64-d=6-K=0_15.png)
 
 (b) Weight Clip =0.15absent0.15=0.15.
 
-![Refer to caption](/html/1806.08734/assets/figures/space_w=64-d=6-K=0_2.png)
-
+!(/html/1806.08734/assets/figures/space_w=64-d=6-K=0_2.png)
 
 (c) Weight Clip =0.2absent0.2=0.2.
 
-![Refer to caption](/html/1806.08734/assets/figures/space_w=64-d=6-K=2.png)
-
+!(/html/1806.08734/assets/figures/space_w=64-d=6-K=2.png)
 
 (d) Weight Clip =2absent2=2.
 
@@ -988,8 +894,7 @@ In this experiment, we investigate if it is easier to learn a signal on a more r
 
 This result complements the findings of (Arpit et al., [2017](#bib.bib2)) and (Zhang et al., [2017a](#bib.bib39)), which show that it’s easier to fit random labels to random inputs if the latter is defined on the full dimensional input space (i.e. the dimension of the flat manifold is the same as that of the input space, and not that of the underlying data-manifold being used for comparison).
 
-![Refer to caption](/html/1806.08734/assets/figures/loss_curves_short.png)
-
+!(/html/1806.08734/assets/figures/loss_curves_short.png)
 
 Figure 19: Loss curves of two identical networks trained to regress white-noise under identical conditions, one on MNIST reconstructions from a DAE with 64 encoder features (blue), and the other on 64-dimensional random vectors (green).
 
@@ -997,8 +902,7 @@ Figure 19: Loss curves of two identical networks trained to regress white-noise 
 
 We have seen that deep neural networks are biased towards learning low frequency functions. This should have as a consequence that isolated *bubbles* of constant prediction are rare. This in turn implies that given any two points in the input space and a network function that predicts the same class for the said points, there should be a path connecting them such that the network prediction does not change along the path. In the following, we present an experiment where we use a path finding method to find such a path between all Cifar-10 input samples indeed exist.
 
-![Refer to caption](/html/1806.08734/assets/x5.png)
-
+!(/html/1806.08734/assets/x5.png)
 
 Figure 20: Path between CIFAR-10 adversarial examples (e.g. “frog” and “automobile”, such that all images are classified as “airplane”).
 
@@ -1032,8 +936,7 @@ We use the formulation of NEB without springs (Draxler et al., [2018](#bib.bib1
 The result is very clear: We can find paths between *all* pairs of images for all CIFAR10 labels that do not cross a single decision boundary.
 This means that all paths belong to the same connected component regarding the output of the DNN. This holds for all possible combinations of images in the above list. Figure [21](#A1.F21 "Figure 21 ‣ A.7 Cifar-10: It’s All Connected ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") shows connecting training to adversarial images and Figure [20](#A1.F20 "Figure 20 ‣ A.7 Cifar-10: It’s All Connected ‣ Appendix A Experimental Details ‣ On the Spectral Bias of Neural Networks") paths between pairs of adversarial images. Paths between training images are not shown, they provide no further insight. Note that the paths are strikingly simple: Visually, they are hard to distinguish from the linear interpolation. Quantitatively, they are essentially (but not exactly) linear, with an average length (3.0±0.3)%percentplus-or-minus3.00.3(3.0\pm 0.3)\% longer than the linear connection.
 
-![Refer to caption](/html/1806.08734/assets/x6.png)
-
+!(/html/1806.08734/assets/x6.png)
 
 Figure 21: Each row is a path through the image space from an adversarial sample (right) to a true training image (left). All images are classified by a ResNet-20 to be of the class of the training sample on the right with at least 95% softmax certainty. This experiment shows we can find a path from adversarial examples (right, Eg. ”(cat)”) that are classified as a particular class (”airplane”) are connected to actual training samples from that class (left, ”airplane”) such that all samples along that path are also predicted by the network to be of the same class.
 
@@ -1419,109 +1322,24 @@ K𝐾K-nearest neighbor (K𝐾KNN) also has a historical importance as a classif
 
 Finally, we plot ζ​(k)𝜁𝑘\zeta(k) for various K𝐾K in figure [22(e)](#A5.F22.sf5 "In Figure 22 ‣ E.2 K-NN Classifier vs. DNN classifier ‣ Appendix E Kernel Machines and KNNs ‣ On the Spectral Bias of Neural Networks"). Furthermore, we train a DNN on the very same dataset and overlay the radial spectrum of the resulting probability map on the same plot. We find that while DNN’s are as expressive as a K=1𝐾1K=1 KNN classifier at lower (radial) frequencies, the frequency spectrum of DNNs decay faster than KNN classifier for all values of K𝐾K considered, indicating that the DNN is smoother than the K𝐾KNNs considered. We also repeat the experiment corresponding to Fig. [9](#S4.F9 "Figure 9 ‣ 4 Not all Manifolds are Learned Equal ‣ On the Spectral Bias of Neural Networks") with KNNs (see Fig. [22(d)](#A5.F22.sf4 "In Figure 22 ‣ E.2 K-NN Classifier vs. DNN classifier ‣ Appendix E Kernel Machines and KNNs ‣ On the Spectral Bias of Neural Networks")) for various K𝐾K’s, to find that unlike DNNs, KNNs do not necessarily perform better for larger L𝐿L’s, suggesting that KNNs do not exploit the geometry of the manifold like DNNs do.
 
-![Refer to caption](/html/1806.08734/assets/figures/lvk_k5.png)
-
+!(/html/1806.08734/assets/figures/lvk_k5.png)
 
 (a) K=5𝐾5K=5.
 
-![Refer to caption](/html/1806.08734/assets/figures/lvk_k10.png)
-
+!(/html/1806.08734/assets/figures/lvk_k10.png)
 
 (b) K=10𝐾10K=10.
 
-![Refer to caption](/html/1806.08734/assets/figures/lvk_k15.png)
-
+!(/html/1806.08734/assets/figures/lvk_k15.png)
 
 (c) K=15𝐾15K=15.
 
-![Refer to caption](/html/1806.08734/assets/figures/lvk_k20.png)
-
+!(/html/1806.08734/assets/figures/lvk_k20.png)
 
 (d) K=20𝐾20K=20.
 
-![Refer to caption](/html/1806.08734/assets/x7.png)
-
+!(/html/1806.08734/assets/x7.png)
 
 (e) Frequency spectrum
 
 Figure 22: (a,b,c,d): Heatmaps of training accuracies (L𝐿L-vs-k𝑘k) of KNNs for various K𝐾K. When comparing with figure [9](#S4.F9 "Figure 9 ‣ 4 Not all Manifolds are Learned Equal ‣ On the Spectral Bias of Neural Networks"), note that the y-axis is flipped. (e): The frequency spectrum of K𝐾KNNs with different values of K𝐾K, and a DNN. The DNN learns a smoother function compared with the K𝐾KNNs considered since the spectrum of the DNN decays faster compared with K𝐾KNNs.
-
-[◄](/html/1806.08733)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1806.08734)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1806.08734)
-[View original  
-on arXiv](https://arxiv.org/abs/1806.08734)[►](/html/1806.08735)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 07:25:49 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,53 +15,6 @@ url: https://arxiv.org/abs/2603.23198
 year: 2026
 ---
 
-[2603.23198] Sparser, Faster, Lighter Transformer Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\correspondingauthor
-
-Edoardo Cetin (edo@sakana.ai), Emilio Castillo (ecastillo@nvidia.com)
-
 # Sparser, Faster, Lighter Transformer Language Models
 
 Edoardo Cetin\*
@@ -92,12 +45,11 @@ Sakana AI
 
 Scaling autoregressive large language models (LLMs) has driven unprecedented progress but comes with vast computational costs. In this work, we tackle these costs by leveraging unstructured sparsity within an LLM’s feedforward layers, the components accounting for most of the model parameters and execution FLOPs. To achieve this, we introduce a new sparse packing format and a set of CUDA kernels designed to seamlessly integrate with the optimized execution pipelines of modern GPUs, enabling efficient sparse computation during LLM inference and training. To substantiate our gains, we provide a quantitative study of LLM sparsity, demonstrating that simple L1 regularization can induce over 99% sparsity with negligible impact on downstream performance. When paired with our kernels, we show that these sparsity levels translate into substantial throughput, energy efficiency, and memory usage benefits that increase with model scale. We will release all code and kernels under an open-source license to promote adoption and accelerate research toward establishing sparsity as a practical axis for improving the efficiency and scalability of modern foundation models.
 
-![[Uncaptioned image]](/html/2603.23198/assets/x1.png)  Code: [github.com/SakanaAI/sparser-faster-llms](https://github.com/SakanaAI/sparser-faster-llms)
+  Code: [github.com/SakanaAI/sparser-faster-llms](https://github.com/SakanaAI/sparser-faster-llms)
 
 ## 1 Introduction
 
-![Refer to caption](/html/2603.23198/assets/x2.png)
-
+!(/html/2603.23198/assets/x2.png)
 
 Figure 1: Comparison of ELL with our new TwELL and Hybrid sparse formats designed for LLM inference and training, respectively.
 
@@ -196,9 +148,6 @@ hI∈ℕM×N/Ch\_{I}\!\in\!\mathbb{N}^{M\times N/C}, hn​z∈ℕM×NTh\_{nz}\!\
 
 19: end for
 
-
-
-
 Algorithm 2  Algorithmic description of fused up and down projections from gate activations in the TwELL format
 
   
@@ -284,14 +233,10 @@ Crucially, our execution logic reflects a deliberate design choice: rather than 
 
 ## 4 Experimental Results
 
-![Refer to caption](/html/2603.23198/assets/x3.png)
+!(/html/2603.23198/assets/x3.png)
   
 
-
 Figure 2: Training curves of LLMs across L1 regularization levels.
-
-
-
 
 Algorithm 3  Algorithmic description of matmul from input activations in the hybrid format
 
@@ -338,22 +283,19 @@ We provide quantitative results evaluating the performance and efficiency of LLM
 
 To measure model performance, we use cross-entropy scores and seven different common downstream tasks assessing logic and reasoning capabilities after pretraining (bench\_1\_arc; bench\_2\_hellaswag; bench\_3\_openbook\_qa; bench\_4\_piqa; bench\_5\_winogrande; bench\_6\_commonsenseqa). In this Section, we focus on aggregated performance metrics for conciseness, and we refer to Appendix [D](#A4 "Appendix D Extended Results ‣ Sparser, Faster, Lighter Transformer Language Models") for the full per-task breakdowns. To measure efficiency, we analyze the throughput gains at different sparsity levels when integrating our training and inference kernels by recording execution times, memory requirements, and energy consumption at each stage. Across our experiments, we keep a fixed sequence length of 2048 and vary the micro batch size based on the available memory. Unless otherwise specified, we train and collect our results on a single node of eight H100 PCIe GPUs, a commonly available infrastructure in current listings of cloud providers and scientific clusters. We refer to Appendix [B](#A2 "Appendix B Hyperparameters and Datasets ‣ Sparser, Faster, Lighter Transformer Language Models") for further details on our training and evaluation settings, together with full hyperparameters specific to each of the considered model sizes.
 
-![Refer to caption](/html/2603.23198/assets/x4.png)
+!(/html/2603.23198/assets/x4.png)
   
-
 
 Figure 3: Downstream accuracy and sparsity statistics of LLMs across L1 regularization levels.
 
-![Refer to caption](/html/2603.23198/assets/x5.png)
+!(/html/2603.23198/assets/x5.png)
   
-
 
 Figure 4: Forward pass speedups and energy savings from our sparse LLM inference kernels across L1 regularization levels.
 
 ### 4.2 More Efficient LLMs with Unstructured Sparsity
 
-![Refer to caption](/html/2603.23198/assets/x6.png)
-
+!(/html/2603.23198/assets/x6.png)
 
 Figure 5: Training speedups and peak memory reduction from our sparse LLM training kernels across L1 regularization levels.
 
@@ -381,8 +323,7 @@ These findings suggest that sparsity aligns well with recently prevailing scalin
 
 ### 4.3 The Properties of Sparse Large Language Models
 
-![Refer to caption](/html/2603.23198/assets/x7.png)
-
+!(/html/2603.23198/assets/x7.png)
 
 Figure 6: Sparsity statistics and speedup contributions across different layers of our sparse LLMs.
 
@@ -393,8 +334,7 @@ In particular, the first two layers are the least active, followed by a pronounc
 This sparsity pattern, peaking during early-middle layers, appears consistent with prior work suggesting that a substantial portion of an LLM’s reasoning and knowledge retrieval occurs precisely at these depths (llamas\_eng\_an).
 Furthermore, within each layer, the maximum number of non-zeros often exceeds the layer’s mean by more than an order of magnitude and shows no consistent pattern across the architecture. We also observe an intuitive and pronounced inverse correlation between each layer’s average non-zeros and its relative speed-up, with a Pearson coefficient of over -0.996. In contrast, the maximum activation counts have a more limited effect on inference speedups, only noticeably in layer 8. This robustness is due to our kernel design, which hides the latency of highly activated tokens through maximally parallelized execution.
 
-![Refer to caption](/html/2603.23198/assets/x8.png)
-
+!(/html/2603.23198/assets/x8.png)
 
 Figure 7: Sparsity statistics across LLM input tokens and positions.
 
@@ -2522,11 +2462,9 @@ Table 5: Comparison of performance and efficiency statistics of sparse LLMs leve
 | Dead neuron reinit. | ✓ | 2×10−52\times 10^{-5} | 46.6% | 2.298 | 29 | 139.4 (+19.1%) | 4.96 (-14.0%) |
 | Sparsity warmup | ✓ | 3×10−43\times 10^{-4} | 45.9% | 2.293 | 108 | 119.3 (+1.9%) | 5.76 (-0.1%) |
 
+!(/html/2603.23198/assets/x9.png)
 
-
-![Refer to caption](/html/2603.23198/assets/x9.png)
-
-![Refer to caption](/html/2603.23198/assets/x10.png)
+!(/html/2603.23198/assets/x10.png)
 
 Figure 8: Number of non-zeros and fraction of dead neurons of LLMs with different strategies for dead neuron mitigation throughout training.
 
@@ -2546,9 +2484,9 @@ In Table [5](#A3.T5 "Table 5 ‣ C.3 Strategies for Dead Neuron Mitigation ‣ A
 
 ### D.1 Sparsity and Dead Neurons During Training
 
-![Refer to caption](/html/2603.23198/assets/x11.png)
+!(/html/2603.23198/assets/x11.png)
 
-![Refer to caption](/html/2603.23198/assets/x12.png)
+!(/html/2603.23198/assets/x12.png)
 
 Figure 9: Number of non-zeros and fraction of dead neurons of LLMs across L1 regularization levels throughout training.
 
@@ -2575,18 +2513,15 @@ To complement the results in Section [4](#S4.2 "4 Experimental Results ‣ Spars
 
 ### D.3 Activation Sparsity at High and Low Levels
 
-![Refer to caption](/html/2603.23198/assets/x13.png)
-
+!(/html/2603.23198/assets/x13.png)
 
 Figure 10: Sparsity statistics and speedup contributions across different layers of non-sparse LLMs.
 
-![Refer to caption](/html/2603.23198/assets/x14.png)
-
+!(/html/2603.23198/assets/x14.png)
 
 Figure 11: Sparsity statistics and speedup contributions across different layers of an LLM with high regularization L1=104L\_{1}=10^{4}.
 
-![Refer to caption](/html/2603.23198/assets/x15.png)
-
+!(/html/2603.23198/assets/x15.png)
 
 Figure 12: Training speedups from our sparse LLM training kernels across L1 regularization levels for both H100 and RTX6000 devices.
 
@@ -2619,83 +2554,3 @@ UltraMem [huang2025ultrasparsememorynetwork] improves PKM and scales to 20 milli
 Fast Feedforward Networks [belcak2023fastfeedforwardnetworks] use differentiable binary trees to achieve 99% sparsity.
 
 While these architectural approaches achieve extreme sparsity, they require substantial modifications to standard Transformer training pipelines. Our approach instead works with conventional architectures, requiring only a change of activation function and optional regularization, making it readily applicable to existing models and training infrastructure.
-
-[◄](/html/2603.23197)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.23198)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.23198)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.23198)[►](/html/2603.23199)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 05:45:15 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

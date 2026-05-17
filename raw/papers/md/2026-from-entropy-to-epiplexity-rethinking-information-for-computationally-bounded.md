@@ -16,49 +16,6 @@ url: https://arxiv.org/abs/2601.03220
 year: 2026
 ---
 
-[2601.03220] From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence
 
 Marc Finzi∗1  Shikai Qiu∗2  Yiding Jiang∗1  Pavel Izmailov2  J. Zico Kolter1
@@ -90,7 +47,7 @@ Questions about what information is transferred to a given model seem naturally 
 Even basic questions, such as the source of the information in the weights of an AlphaZero game-playing model (Silver et al., [2018](#bib.bib84)), are surprisingly tricky to answer. AlphaZero takes in zero human data, learning merely from the deterministic rules of the game and the AlphaZero RL algorithm, both of which are simple to describe. Yet the resulting models achieve superhuman performance and are large in size.
 To assert that AlphaZero has learned little to no information in this process is clearly missing the mark, and yet both Shannon and algorithmic information theory appear to say so.
 
-![Refer to caption](/html/2601.03220/assets/x1.png)
+!(/html/2601.03220/assets/x1.png)
 
 Figure 1: 
 Illustration of random vs structural information. (Left) Illustration of random vs structural information of different data for computationally-bounded observers, which we formalize with time-bounded entropy and epiplexity ([Section˜3](#S3 "3 Epiplexity: Structural Information Extractable by a Computationally Bounded Observer ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence")) and can be estimated from loss curves of neural networks trained on that data ([Section˜4](#S4 "4 Measuring Epiplexity and Time-Bounded Entropy ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence")).
@@ -287,14 +244,10 @@ We define epiplexity and time-bounded entropy in terms of the program which achi
 
 Consider a random variable XX on {0,1}n\{0,1\}^{n}. Let
 
-
-
 P⋆=arg​minP∈𝒫T⁡{|P|+𝔼​[log⁡1/P​(X)]}\mathrm{P^{\star}}=\operatorname\*{arg\,min}\_{\mathrm{P}\in\mathcal{P}\_{T}}\quantity{|\mathrm{P}|+\mathbb{E}[\log 1/P(X)]}
 
 (3)
 be the program that minimizes the time bounded MDL with ties broken by the smallest program, and expectations taken over XX. |P||\mathrm{P}| denotes the length of the program P\mathrm{P} in bits, and logarithms are in base 22. We define the TT-bounded *epiplexity* ST\mathrm{S}\_{T} and *entropy* HT\mathrm{H}\_{T} of the random variable XX as
-
-
 
 ST​(X):=|P⋆|,andHT​(X):=𝔼​[log⁡1/P⋆​(X)].\mathrm{S}\_{T}(X):=|\mathrm{P}^{\star}|,\quad\text{and}\quad\mathrm{H}\_{T}(X):=\mathbb{E}[\log 1/P^{\star}(X)].
 
@@ -305,20 +258,14 @@ Random variables with very simple patterns, like 0101010101​…0101010101... w
 
 Basic Properties
 
-
-
-
 (1)
 ST​(X)≥0,HT​(X)≥0,\displaystyle\mathrm{S}\_{T}(X)\geq 0,\quad\mathrm{H}\_{T}(X)\geq 0,
-
 
 (2)
 H​(X)≤ST​(X)+HT​(X)≤n+c1,\displaystyle\mathrm{H}(X)\leq\mathrm{S}\_{T}(X)+\mathrm{H}\_{T}(X)\leq n+c\_{1},
 
-
 (3)
 MDLT′​(X)≤MDLT​(X)whenever ​T′​(n)≥T​(n),\displaystyle\mathrm{MDL}\_{T^{\prime}}(X)\leq\mathrm{MDL}\_{T}(X)\quad\text{whenever }\ T^{\prime}(n)\geq T(n),
-
 
 (4)
 MDLT′​(f−1​(X))≤MDLT​(X)+|f|+c2,with ​T′​(n)=T​(n)+𝖳𝗂𝗆𝖾​(f).\displaystyle\mathrm{MDL}\_{T^{\prime}}(f^{-1}(X))\leq\mathrm{MDL}\_{T}(X)+|\mathrm{f}|+c\_{2},\text{with }T^{\prime}(n)=T(n)+\mathsf{Time}(\mathrm{f}).
@@ -406,18 +353,15 @@ Fortunately, both approaches often yield comparable rankings of epiplexity acros
 
 Moving forward, we will measure time by the number of floating-point operations (FLOPs) and dataset size by number of tokens, so that training a model with NN parameters on DD tokens takes time approximately 6​N​D6ND (Kaplan et al., [2020](#bib.bib48)), while evaluating it on XX takes time 2​N​𝒟2N\mathcal{D} with 𝒟=|X|\mathcal{D}=|X| the number of tokens in X.X. To distinguish XX from the training dataset, which we are free to choose, we will refer to XX as the test dataset, as it is the data we need to perform inference on.
 
-![Refer to caption](/html/2601.03220/assets/x2.png)
-
+!(/html/2601.03220/assets/x2.png)
 
 (a) Estimate information in model
 
-![Refer to caption](/html/2601.03220/assets/x3.png)
-
+!(/html/2601.03220/assets/x3.png)
 
 (b) Compute-optimal 2-part code
 
-![Refer to caption](/html/2601.03220/assets/x4.png)
-
+!(/html/2601.03220/assets/x4.png)
 
 (c) Requential vs Prequential
 
@@ -479,9 +423,9 @@ How can we reconcile this fact with algorithms like AlphaZero (Silver et al., [2
 
 We also have evidence that synthetic data is helpful (Liu et al., [2024](#bib.bib55); Gerstgrasser et al., [2024](#bib.bib34); Maini et al., [2024](#bib.bib58); OpenAI, [2025](#bib.bib68)) is helpful for model capabilities and moreover, if we believe that the processes that create natural data could in principle have been simulated to sufficient precision on a large computer, then all data could have been equivalently replaced with synthetic data. For practical synthetic data produced from transformations of samples from a given model and prompt, this sampling is performed with pseudorandom number generators, making the entire transformation deterministic. If we consider ff as the transformations we use to produce synthetic data and xx was the limited real data we started with, these inequalities appear to state very concretely that our synthetic data adds no additional information beyond the model and training data.
 
-![Refer to caption](/html/2601.03220/assets/x5.png)
+!(/html/2601.03220/assets/x5.png)
 
-![Refer to caption](/html/2601.03220/assets/x6.png)
+!(/html/2601.03220/assets/x6.png)
 
 Figure 3: 
 
@@ -522,18 +466,15 @@ As a corollary, we show no polynomial time probability model which can fit a one
 
 In [Figure 4](#S5.F4 "Figure 4 ‣ 5.2 Paradox 2: Information Content is Independent of Factorization ‣ 5 Three Apparent Paradoxes of Information ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence")(a), we choose ff to be given by the 88 steps of evolution of the ECA rule 30 with state size nn and periodic boundary conditions (Wolfram and Gad-el Hak, [2003](#bib.bib97)). Though distinct from the one way functions used in cryptography, rule 30 is believed to be one way (Wolfram and Gad-el Hak, [2003](#bib.bib97)) and unlike typical one way functions, the forward pass of rule 30 can be modeled by an autoregressive transformer, which we demonstrate by constructing an explicit RASP-L (Zhou et al., [2023](#bib.bib104); Weiss et al., [2021](#bib.bib96)) program in Appendix [D](#A4 "Appendix D RASP-L for Elementary Cellular Automata ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence"). As shown in [Figure 4](#S5.F4 "Figure 4 ‣ 5.2 Paradox 2: Information Content is Independent of Factorization ‣ 5 Three Apparent Paradoxes of Information ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence")(a), the model achieves the Shannon entropy (gray) in the forward direction, but has a consistent gap in the reverse direction.
 
-![Refer to caption](/html/2601.03220/assets/x7.png)
-
+!(/html/2601.03220/assets/x7.png)
 
 (a) One way functions
 
-![Refer to caption](/html/2601.03220/assets/x8.png)
-
+!(/html/2601.03220/assets/x8.png)
 
 (b) Factorization order
 
-![Refer to caption](/html/2601.03220/assets/x9.png)
-
+!(/html/2601.03220/assets/x9.png)
 
 (c) Chess orderings
 
@@ -553,18 +494,15 @@ the test NLL is minimized when the two distributions match. The extent to which 
 
 #### 5.3.1 Induction
 
-![Refer to caption](/html/2601.03220/assets/x10.png)
-
+!(/html/2601.03220/assets/x10.png)
 
 (a) Data generating process
 
-![Refer to caption](/html/2601.03220/assets/x11.png)
-
+!(/html/2601.03220/assets/x11.png)
 
 (b) Induction (hard)
 
-![Refer to caption](/html/2601.03220/assets/x12.png)
-
+!(/html/2601.03220/assets/x12.png)
 
 (c) Induction (easy)
 
@@ -611,14 +549,10 @@ and let {Xn}n≥1\{X\_{n}\}\_{n\geq 1} be random variables over {0,1}n\{0,1\}^{n
 We say (Φ,X)(\Phi,X) is *epiplexity-emergent* if there exist
 time bounds T1,T2T\_{1},T\_{2} with T1​(n)=o​(T2​(n))T\_{1}(n)=o(T\_{2}(n)) and an iteration schedule k​(n)k(n) such that as n→∞n\to\infty,
 
-
-
-
 ST1​(Φ​(X)∣X,n)−ST2​(Φ​(X)∣X,n)\displaystyle\mathrm{S}\_{T\_{1}}(\Phi(X)\mid X,n)-\mathrm{S}\_{T\_{2}}(\Phi(X)\mid X,n)
 =Θ​(1),\displaystyle=\Theta(1)\,,
 
 (10)
-
 
 ST1​(Φk​(X)∣X,n,k)−ST2​(Φk​(X)∣X,n,k)\displaystyle\mathrm{S}\_{T\_{1}}(\Phi^{k}(X)\mid X,n,k)-\mathrm{S}\_{T\_{2}}(\Phi^{k}(X)\mid X,n,k)
 =ω​(1),\displaystyle=\omega(1),
@@ -629,8 +563,7 @@ In words, Φ,X\Phi,X displays emergent phenomena if two observers see equivalent
 
 Considering Φ\Phi from the Game of Life as an example, P​(Φ​(X)∣X,n)P(\Phi(X)\mid X,n) could be well estimated by both T1T\_{1} and T2T\_{2}-bounded observers using the exact time evolution rule, using constant bits for both. P​(Φk​(X)∣X,n,k)P(\Phi^{k}(X)\mid X,n,k) could be estimated by T2T\_{2} using the iterated rule, but not by T1T\_{1}. Using knowledge of the different pattern species improves predictions of Φk​(X)∣X\Phi^{k}(X)\mid X, so they would need to be learned; however, the number of patterns that needs to be considered in the time-bounded optimal solution is unbounded, and grows with the size of the board nn, and thus the gap in epiplexity for the two time bounds grows with nn. We have not proven that the Game of Life satisfies this definition, which is likely difficult as small changes to the evolution rule can destroy the emergent behavior; however, we provide empirical evidence for this set being non-empty with the example below.
 
-![Refer to caption](/html/2601.03220/assets/x13.png)
-
+!(/html/2601.03220/assets/x13.png)
 
 Figure 6: Emergence in ECA. Compute-constrained models extract high epiplexity from data generated by simple rules, trading increased program length for reduced computation.
 
@@ -649,26 +582,22 @@ As a motivating toy example, Zhang et al. ([2024](#bib.bib102)) observed that ty
 
 ### 6.1 Epiplexity Correlates with OOD Generalization in Chess
 
-![Refer to caption](/html/2601.03220/assets/x14.png)
-
+!(/html/2601.03220/assets/x14.png)
 
 Figure 7: Epiplexity and OOD performance in chess. Models trained on the higher epiplexity reverse order performs better in OOD tasks.
 
 We finetune models trained on either ordering from [Section˜5.2](#S5.SS2 "5.2 Paradox 2: Information Content is Independent of Factorization ‣ 5 Three Apparent Paradoxes of Information ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence") on two downstream tasks: (1) solving chess puzzles, where the model must predict the *optimal* next move given a board state (Burns et al., [2023](#bib.bib16)), and (2) predicting centipawn evaluation, where the model evaluates positional advantage from FEN notation—a more substantial distribution shift from next-move prediction learned in pre-training. Experiment details are in [Section˜C.4](#A3.SS4 "C.4 Chess ‣ Appendix C Experiment Details ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence").
 As shown in [Figure 7](#S6.F7 "Figure 7 ‣ 6.1 Epiplexity Correlates with OOD Generalization in Chess ‣ 6 Epiplexity, Pre-Training, and OOD Generalization ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence"), the reverse (board-then-moves) ordering yields higher epiplexity and better downstream performance: matching accuracy on chess puzzles but significantly higher accuracy on the centipawn task. This result supports our hypothesis: the reverse order forces the model to develop richer board-state representations needed to infer the intermediate moves, and these representations transfer to OOD tasks like centipawn evaluation that similarly require understanding the board state. This example reflects a more general principle: epiplexity measures the learnable structural information a model extracts from data to its weights, which is precisely the source of the information transferable to novel tasks, making epiplexity a plausible indicator for the potential of OOD generalization. However, we emphasize that higher epiplexity does not guarantee better generalization to any specific task: epiplexity measures the amount of structural information, irrespective of its content. A model trained on high epiplexity data can learn a lot of structures, but these structures may or may not be relevant to the particular downstream task of interest.
 
-![Refer to caption](/html/2601.03220/assets/x15.png)
-
+!(/html/2601.03220/assets/x15.png)
 
 (a) Epiplexity in natural data
 
-![Refer to caption](/html/2601.03220/assets/x16.png)
-
+!(/html/2601.03220/assets/x16.png)
 
 (b) Estimation via scaling laws
 
-![Refer to caption](/html/2601.03220/assets/x17.png)
-
+!(/html/2601.03220/assets/x17.png)
 
 (c) ADO: epiplexity and downstream metrics
 
@@ -682,8 +611,7 @@ Epiplexity reveals differences in the structural information across data modalit
 
 Among different modalities of natural data, language has proven uniquely fruitful for pre-training, not only for improving in-distribution performance such as language understanding (Radford et al., [2019](#bib.bib73)), but also for out-of-distribution tasks such as robotics control (Ahn et al., [2022](#bib.bib3)), formal theorem proving (Song et al., [2024](#bib.bib86)), and time-series forecasting (Gruver et al., [2023](#bib.bib40)). While equally abundant information (as measured by raw bytes) is available in other modalities, such as images and videos, pre-training on those data sources typically does not confer a similarly broad increase in capabilities. We now show that epiplexity helps explain this asymmetry by revealing differences in structural information across datasets. In [Figure˜8](#S6.F8 "In 6.1 Epiplexity Correlates with OOD Generalization in Chess ‣ 6 Epiplexity, Pre-Training, and OOD Generalization ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence"), we show the estimated decomposition of the information in 5B tokens of data from OpenWebText, Lichess, and CIFAR-5M (Nakkiran et al., [2020](#bib.bib66)) into epiplexity (structural) and time-bounded entropy (random) with a time-bound of 6×10186\times 10^{18} FLOPs, by training models of up to 160M parameters on at most 5B tokens using requential coding. In all cases, epiplexity accounts for only a tiny fraction of the total information, with the OpenWebText data carrying the most epiplexity, followed by chess data. Despite carrying the most total information, CIFAR-5M data has the least epiplexity, as over 99%99\% of its information is random (e.g., unpredictability of the exact pixels).
 
-![Refer to caption](/html/2601.03220/assets/x18.png)
-
+!(/html/2601.03220/assets/x18.png)
 
 Figure 9: Epiplexity and optimal training tokens for each fixed dataset converge to predictable limits as compute increases.
 
@@ -2003,8 +1931,7 @@ To identify models that lead to compute-optimal two-part code, we need to optimi
 
 In each experiment, we first identify a good learning rate for a small model size and use the Maximum Update Parameterization (Yang et al., [2022](#bib.bib100)) and CompleteP (Dey et al., [2025](#bib.bib24)) to transfer the found learning rate to larger models. We also optimize the EMA time scale and maximum KL threshold for the small model when using requential coding. We then train models of various depths and widths to simultaneously sweep over model size and width-depth ratios, for a total number of training tokens chosen to be larger than the test dataset size 𝒟,\mathcal{D}, motivated by the observation that the optimal training tokens typically grows with the model size but do not exceed 𝒟\mathcal{D} (see [Section˜B.4](#A2.SS4 "B.4 How Epiplexity and Time-Bounded Entropy Scale with Compute and Dataset Size ‣ Appendix B Measuring Epiplexity ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence")). To avoid separately training a model for intermediate training token budgets, we record an EMA of the iterates (for requential coding, this is done for the student) under a constant learning rate schedule, rather than using a decaying learning rate schedule, following Hägele et al. ([2024](#bib.bib41)). Each training run traces a curve in the |P|+𝔼​[1/log⁡P​(X)]|\mathrm{P}|+\mathbb{E}[1/\log P(X)] vs TT plane as more training tokens are seen. The Pareto frontier of all such curves yields the optimal hyperparameters (N,D,N,D, width, depth, etc.) as a function of the compute budget.
 
-![Refer to caption](/html/2601.03220/assets/x19.png)
-
+!(/html/2601.03220/assets/x19.png)
 
 Figure 10: 
 Estimating the Pareto frontier from a finite number of training runs. While the exact Pareto frontier is smooth and the optimal model size and training tokens increase smoothly with compute, the empirical frontier is jagged and includes many spurious points due to selecting over only a finite number of hyperparameter combinations. Replacing the empirical Pareto frontier with the lower convex hull and retaining only the median point (ordered by compute) belong to a single training run with a fixed model size results in a much more accurate estimate of the true Pareto frontier. The example training curves are generated using the scaling laws in Hoffmann et al. ([2022](#bib.bib44)) and prequential coding. The exact frontier is found via root finding for [Equation˜56](#A2.E56 "In Solution. ‣ B.3 A Solvable Model Using Scaling Laws ‣ Appendix B Measuring Epiplexity ‣ From Entropy to Epiplexity: Rethinking Information for Computationally Bounded Intelligence").
@@ -2682,13 +2609,11 @@ Conway’s Game of Life (Gardner, [1970](#bib.bib32)) is a cellular automaton de
 
 ## Appendix F Emergence
 
-![Refer to caption](/html/2601.03220/assets/x20.png)
-
+!(/html/2601.03220/assets/x20.png)
 
 (a)
 
-![Refer to caption](/html/2601.03220/assets/x21.png)
-
+!(/html/2601.03220/assets/x21.png)
 
 (b)
 
@@ -2783,83 +2708,3 @@ However, if we forgo the two-part code formulation and use the regret as a measu
 We will refer to this regret-based formulation as *generalized epiplexity*.
 The main benefit of generalized epiplexity is that it applies to a much wider range of coding schemes (i.e., both one-part and two-part codes), as it only requires the total length of the data and model, and a reference probability model.
 Unfortunately, the theoretical results based on two-part epiplexity do not immediately transfer to generalized epiplexity. It remains an open question whether similar results can be obtained.
-
-[◄](/html/2601.03219)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.03220)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.03220)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.03220)[►](/html/2601.03221)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 19:05:30 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2506.19004
 year: 2025
 ---
 
-[2506.19004] Broken Tokens? Your Language Model can Secretly Handle No n - Ca noni cal Tokenizations
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Broken Tokens? Your Language Model can Secretly Handle No n - Ca noni cal Tokenizations
 
 Brian Siyuan Zheng♡ Alisa Liu♡ Orevaoghene Ahia♡ 
@@ -93,9 +50,9 @@ Surprisingly, we find that instruction-tuned LMs across many model families are 
 For example, when evaluated across 20 benchmarks, Qwen-2.5-7B-Instruct retains 93.4% of its original performance when presented with a random non-canonical tokenization, and 90.8% when presented with character-level tokens (see [Figure 1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Broken Tokens? Your Language Model can Secretly Handle No n - Ca noni cal Tokenizations")).
 Thus, far from not understanding the makeup of their tokens, LMs are able to compose token sequences in entirely new ways at inference time [[30](#bib.bib30)].
 
-![Refer to caption](/html/2506.19004/assets/Images/figure1.png)
+!(/html/2506.19004/assets/Images/figure1.png)
 
-![Refer to caption](/html/2506.19004/assets/Images/figure1.jpg)
+!(/html/2506.19004/assets/Images/figure1.jpg)
 
 Figure 1: Left: An example of how Llama-3.1-8B-Instruct responds when given canonically tokenized input, versus a random tokenization and character-level tokenization.
 The responses are surprisingly similar, demonstrating their ability to handle non-canonical tokenizations.
@@ -179,8 +136,7 @@ This can be achieved by recursively splitting individual tokens into a valid pai
 (2) Character-level tokenization decomposes the string into character tokens, i.e., using no subword token from the vocabulary.
 For text containing only English letters and punctuation (where each character is exactly one byte), this produces the most granular possible tokenization.
 
-![Refer to caption](/html/2506.19004/assets/Images/granularity.jpg)
-
+!(/html/2506.19004/assets/Images/granularity.jpg)
 
 Figure 2: Model performance generally declines as the tokenization becomes more granular. We achieve variation in tokenization length using different values of pp in BPE-dropout, and group tokenizations into buckets based on how many times longer it is than the canonical tokenization.
 
@@ -299,7 +255,7 @@ We use LanguageTool’s grammar checker333<https://github.com/languagetool-org/l
 To measure overall generation quality, we use alpaca\_eval\_gpt4 as an LM judge in the AlpacaEval framework and report the win rate of the generation given alternative against canonical tokenizations of the context.
 Unlike the previous two metrics, this measures not only the quality of the generation but also its relevance to the context.
 
-![Refer to caption](/html/2506.19004/assets/Images/combined_posttraining_robustness.jpg)
+!(/html/2506.19004/assets/Images/combined_posttraining_robustness.jpg)
 
 Figure 3: Pretrained-only models completely fail to generate coherent output conditioned on non-canonical tokenizations of context; robustness is gained in the SFT stage. We evaluate the spelling, grammaticality, and AlpacaEval win rate of model generations.
 Note that since Tulu3 uses Llama-3 as the base model, its base scores are computed using Llama-3’s base model scores.
@@ -362,8 +318,7 @@ To test this hypothesis, we construct two simple tests:
 
    Identifying Misspellings: To determine if a model perceives a misspelling, we ask it to identify the word with a misspelling among two options: a (correctly tokenized) misspelling of a word and an non-canonical tokenization of that word (correctly spelled).
 
-![Refer to caption](/html/2506.19004/assets/Images/ablation.jpg)
-
+!(/html/2506.19004/assets/Images/ablation.jpg)
 
 Figure 4: Ablations on the SFT training data and procedure indicate that the separation of the context and expected continuation — as different turns of dialogue demarcated with a special token — is key to robustness to non-canonical tokenizations.
 
@@ -1169,83 +1124,3 @@ Question:
 A. farmer (character-level tokenization)
 B. farme (canonical tokenization)
 ```
-
-[◄](/html/2506.19003)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2506.19004)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2506.19004)
-[View original  
-on arXiv](https://arxiv.org/abs/2506.19004)[►](/html/2506.19005)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Jul 5 19:16:41 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

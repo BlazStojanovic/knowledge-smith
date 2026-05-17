@@ -15,50 +15,6 @@ url: http://arxiv.org/abs/2305.06090v1
 year: 2023
 ---
 
-[2305.06090] XTab: Cross-table Pretraining for Tabular Transformers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # XTab: Cross-table Pretraining for Tabular Transformers
 
 Bingzhao Zhu
@@ -126,7 +82,7 @@ As for tabular learning, one may question if there is shared knowledge across ta
 
 Previous works have proposed various pretraining methods for tabular learning (Bahri et al., [2021](#bib.bib3); Ucar et al., [2021](#bib.bib31); Rubachev et al., [2022](#bib.bib28); Somepalli et al., [2021](#bib.bib30)). However, existing pretrained models are still domain-specific since they were pretrained on the training set of each individual tabular prediction task. As a result, existing pretrained models lack generalizability and fail to cover downstream tasks on other types of tables. Here, we propose XTab to pretrain transformer models using the information from multiple tables. With cross-table pretraining, XTab aims to learn the shareable knowledge that can boost the performance for various downstream regression and classification tasks.
 
-![Refer to caption](/html/2305.06090/assets/figures/model_structure.png)
+!(/html/2305.06090/assets/figures/model_structure.png)
 
 Figure 1: The model structure of XTab. XTab is pretrained on multiple tabular tasks (Tab. #1, #2, #3). Samples from different tables are featurized and fed into a transformer model with N blocks. The output of the transformer is further processed by projection heads to derive the pretraining losses. Featurizers and projection heads are data-specific since tables may have different input/output dimensions. The transformer backbone is shared across all pretraining tables to capture the general knowledge.
 
@@ -236,13 +192,11 @@ Data pre-processing: Following Bahri et al. ([2021](#bib.bib3)); Somepalli et 
 
 Table corruption: Self-supervised learning objectives, including both contrastive and reconstruction losses, require a corrupted view of the input sample. In this work, we follow Bahri et al. ([2021](#bib.bib3)); Rubachev et al. ([2022](#bib.bib28)) to randomly resample features and construct a corrupted sample. Specifically, we randomly select a fraction of features at each row of the table. Those features are corrupted by resampling from the empirical marginal distribution of the column. For all datasets, the corruption ratio was set to 60% as suggested in Bahri et al. ([2021](#bib.bib3)). In other words, for each sample x𝑥x and its corrupted view x~~𝑥\tilde{x}, 60% of entries are resampled whereas 40% of features remain unchanged.
 
-![Refer to caption](/html/2305.06090/assets/figures/performance.png)
+!(/html/2305.06090/assets/figures/performance.png)
 
 Figure 2: Tabular prediction performance of XTab using various evaluation criteria under the light finetuning setting. (a) The win rate of the pretrained transformer with respect to baseline. (b) The average rank of the models. (c) The normalized prediction performance. (d) The average error reduction rate compared to baseline. Each dot indicates a trial of the downstream task (5 trials per dataset). The error bars show standard deviations in (b) and (c). As the backbone is pretrained for more steps, we observe an increase in all evaluation criteria.
 
-
-
-![Refer to caption](/html/2305.06090/assets/figures/objectives.png)
+!(/html/2305.06090/assets/figures/objectives.png)
 
 Figure 3: Comparison of different pretraining objectives under the light (a, c) and heavy (b, d) finetuning settings. We show the win rate of XTab with different objectives with (a) light and (b) heavy finetuning settings. We also compared the performance of pretraining objectives in terms of the model rank with (c) light and (d) heavy finetuning. We observe a consistent improvement of XTab compared to baseline models with all objectives. The reconstruction pretraining objective achieves the best performance, with 71.0% win rate under light finetuning and 56.1% for heavy finetuning at 2000 pretraining steps.
 
@@ -262,7 +216,7 @@ We choose the evaluation metrics as suggested by AMLB (Gijsbers et al., [2022](
 
 Cross-table pretraining improves downstream task performance. As shown in Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers"), we compare the downstream prediction performance of FT-Transformer before (baseline) and after cross-table pretraining. Reconstruction objective is used for pretraining and all downstream tasks are finetuned for 3 epochs (light finetuning). We checkpoint the pretrained backbone after a certain number of pretraining steps and finetune downstream tasks from various checkpoints (250/500/1000/1500/2000). In Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers")(a), we show the win rate of the pretrained transformer on all downstream tasks with respect to baseline. Both classification and regression tasks benefit from our proposed cross-table pretraining. As the backbone is pretrained for more steps, we observe an increase in the win rate. We also calculate the rank of the model for each downstream task (Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers")(b)). Model rank is an integer from 1 to 6, with a lower number indicating better performance. Equal values are assigned a rank that is the average of the ranks of those values. The rank of the model improves with XTab pretraining. To further validate the advantage of XTab over transformers without cross-table pretraining, we further look into the normalized prediction performance and error reduction rate (Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers")(c, d)). We min-max normalize the prediction performance of all models, such that the worst model receives a score of 0 and the best model receives 1. Similarly, errors are also normalized to the best and worst models. Negative numbers indicate a model with lower error (1−AUC scores1AUC scores1-\text{AUC scores} for binary classification) or loss (log loss for multiclass classification and RMSE for regression) than baseline. The mean error (or loss) is indicated by the stars. FT-Transformers pretrained with XTab on average obtain higher normalized performance and reduced error compared to traditional random initialization.
 
-![Refer to caption](/html/2305.06090/assets/figures/backbone.png)
+!(/html/2305.06090/assets/figures/backbone.png)
 
 Figure 4: XTab with transformer variants including FT-Transformer, Fastformer, and Saint-v. We use different transformer models as the shared backbone in XTab. We calculate the win rate of the pretrained backbone over randomly initialized transformers. (a) shows the results for light finetuning and (b) represents heavy finetuning. FT-Transformer, Fastformer, and Saint-v all benefit from our proposed cross-table pretraining, achieving >>50% win rate in all experiments.
 
@@ -554,7 +508,7 @@ Here, we extensively present the performance of XTab with reconstruction, contra
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/performance_supp.png)
+!(/html/2305.06090/assets/figures/performance_supp.png)
 
 Figure 5: The figure is similar to Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers") in the main paper, but contains more pretraining/finetuning configurations. See the caption and explanation there for more details.
 
@@ -562,7 +516,7 @@ Figure 5: The figure is similar to Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Datasets 
 
 In XTab, we separate a model into data-specific components (e.g., featurizers and projection heads) and shareable components (Transformer blocks). Only the shareable components are pretrained and contain general knowledge of tabular learning. Therefore, identifying the shareable (or pretrainable) components is critical to the success of cross-table pretraining. In Figure [6](#A2.F6 "Figure 6 ‣ Appendix B Identifying the shareable components in XTab ‣ XTab: Cross-table Pretraining for Tabular Transformers"), we run an experiment to pretrain on different FT-Transformer components with the supervised objective. For example, pretraining tasks may share only the first Transformer block and the later two blocks are marked as data-specific. We also let the pretraining tasks share all Transformer blocks, [CLS] token, and all blocks with [CLS] token. As expected, pretraining on the [CLS] token does not lead to improved downstream performance, since [CLS] token is directly related to downstream prediction and thereby highly data-specific. From Figure [6](#A2.F6 "Figure 6 ‣ Appendix B Identifying the shareable components in XTab ‣ XTab: Cross-table Pretraining for Tabular Transformers"), we find that it is most beneficial to pretrain on all Transformer blocks without the [CLS] token. Featurizers and projection heads are not shareable since the input/output spaces can be different across tasks.
 
-![Refer to caption](/html/2305.06090/assets/figures/shareable_blocks.png)
+!(/html/2305.06090/assets/figures/shareable_blocks.png)
 
 Figure 6: Comparison of XTab with various pretrained components in FT-Transformer. We run this study to understand which component carries general knowledge of tabular tasks and benefits from cross-table pretraining. Several settings are tested, sharing the first block of Transformer, all blocks, [CLS] token, all blocks with [CLS] token, or no component (baseline). Performance is compared in terms of (a) win rate and (b) model rank with light finetuning. Pretraining on the Transformer blocks leads to improved performance, whereas sharing the data-specific [CLS] token is hardly beneficial.
 
@@ -574,10 +528,9 @@ All settings in Figure [7](#A3.F7 "Figure 7 ‣ Appendix C Finetuning on subsamp
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/Few_shot.png)
+!(/html/2305.06090/assets/figures/Few_shot.png)
 
   
-
 
 Figure 7: Downstream prediction performance with different sizes of finetuning set. We subsample the rows of tables (i.e., samples) used for finetuning to a fraction of 25%, 50%, 75%, and 100% (no subsampling). The comparison is performed with (a) light and (b) heavy finetuning.
 
@@ -587,7 +540,7 @@ The pretrained backbone is expected to host general knowledge that is shared acr
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/num_tasks.png)
+!(/html/2305.06090/assets/figures/num_tasks.png)
 
 Figure 8: Comparison of XTab pretrained on different numbers of tabular tasks. We pretrain the FT-Transformer backbone using 1 task, 18 tasks and 52 tasks. We compare the downstream prediction performance using (a) win rate and (b) model rank of different approaches. As we use more tasks for pretraining, we observe an improvement in downstream performance.
 
@@ -597,7 +550,7 @@ XTab uses federated learning to account for a large number of pretraining tasks.
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/federated_parameters.png)
+!(/html/2305.06090/assets/figures/federated_parameters.png)
 
 Figure 9: Comparison of federated pretraining settings in XTab. We test FedAvg with different values of N𝑁N, which represents the number of local optimization steps per global aggregation. We compare the downstream prediction performance in terms of (a) win rate and (b) model rank. Both figures suggest that the downstream performance decreases with more local steps in FedAvg.
 
@@ -634,7 +587,7 @@ In Figure [10](#A7.F10 "Figure 10 ‣ Appendix G Implementation of Saint-v ‣ X
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/saint_v.png)
+!(/html/2305.06090/assets/figures/saint_v.png)
 
 Figure 10: Model structure of Saint and Saint-v. The difference lies in the reshaping operation. Here, b𝑏b refers to batch size, n𝑛n is the length of the sequence, and d𝑑d is the dimension of embedding. The parameter count of Saint is dependent on the number of table columns (i.e., n𝑛n), whereas Saint-v is applicable to all tables with the same structure.
 
@@ -644,7 +597,7 @@ To understand the impact of cross-table pretraining on Transformer parameters, w
 
   
 
-![Refer to caption](/html/2305.06090/assets/figures/weights.png)
+!(/html/2305.06090/assets/figures/weights.png)
 
 Figure 11: Parameters of FT-Transformer before cross-table pretraining (left), 50 steps after cross-table pretraining (middle), and 500 steps after pretraining (right). The model weights are initialized using a Kaiming uniform distribution. With XTab pretraining, the weights converge to a normal distribution.
 
@@ -681,9 +634,6 @@ Table 3: XGBoost hyperparameter space.
 | --- | --- | --- |
 | of 20 and maximal patience of 300 rounds. | | |
 
-
-
-
 Table 4: LighGBM hyperparameter space.
 
   
@@ -704,9 +654,6 @@ Table 4: LighGBM hyperparameter space.
 | --- | --- | --- |
 | of 20 and maximal patience of 300 rounds. | | |
 
-
-
-
 Table 5: CatBoost hyperparameter space.
 
   
@@ -724,9 +671,6 @@ Table 5: CatBoost hyperparameter space.
 | ∗ The early\_stopping\_rounds depends on the size of data with a minimal patience | | |
 | --- | --- | --- |
 | of 20 and maximal patience of 300 rounds. | | |
-
-
-
 
 Table 6: Random forest hyperparameter space.
 
@@ -757,9 +701,6 @@ Table 7: Neural network hyperparameter space.
 | weight\_decay | 1e-6 | UniformLog[1e-12, 0.1] |
 | num\_layers | 4 | Categorical[2, 3, 4] |
 | hidden\_size | 128 | Categorical[128, 256, 512] |
-
-
-
 
 Table 8: FastAI hyperparameter space.
 
@@ -843,9 +784,6 @@ Table 11: XTab hyperparameter space.
 | N\_FedAvg | 1 | 1 |
 | pretrain\_objective | reconstruction | reconstruction |
 | num\_pretrain\_rounds | 2000 | Categorical[0, 250, 1000, 2000] |
-
-
-
 
 Table 12: This table is similar to Table [1](#S4.T1 "Table 1 ‣ 4.4 Performance compared to traditional baselines ‣ 4 Experiments ‣ XTab: Cross-table Pretraining for Tabular Transformers"), but compares the tabular models on 48 classification tasks. Since TransTab v0.0.3 does not supports regression tasks, we include this table for classification tasks only.
 
@@ -1027,9 +965,6 @@ Table 14: Raw prediction performance on AutoML Benchmark of the following models
 | wine\_quality | regression | RMSE | 0.6089 | 0.6211 | 0.6227 | 0.6186 | 0.6767 | 0.712 | NaN |
 | yprop\_4\_1 | regression | RMSE | 0.0297 | 0.03 | 0.0299 | 0.0298 | 0.0311 | 0.0344 | NaN |
 
-
-
-
 Table 15: Raw prediction performance on AutoML Benchmark of the following models: FT-Transformer with light finetuning (FTT-l), XTab with light finetuning (XTab-l), FT-Transformer with heavy finetuning (FTT-h), XTab with heavy finetuning (XTab-h), FT-Transformer with model soup (FTT-best), and XTab with model soup (XTab-best). All models use the default hyperparameters as specified in Appendix [I](#A9 "Appendix I Benchmark configurations ‣ XTab: Cross-table Pretraining for Tabular Transformers"). We use AUC scores as the evaluation metric for binary classification (↑↑\uparrow), log loss for multicloass classification (↓↓\downarrow) and RMSE for regression tasks (↓↓\downarrow). Zoom in for better view.
 
 | name | task type | metrics | FTT-l | XTab-l | FTT-h | XTab-h | FTT-best | XTab-best |
@@ -1119,9 +1054,6 @@ Table 15: Raw prediction performance on AutoML Benchmark of the following models
 | wine\_quality | regression | RMSE | 0.7117 | 0.7066 | 0.7021 | 0.701 | 0.6812 | 0.6801 |
 | yprop\_4\_1 | regression | RMSE | 0.0304 | 0.0303 | 0.0303 | 0.0303 | 0.0303 | 0.0302 |
 
-
-
-
 Table 16: Raw prediction performance on AutoML Benchmark under the HPO setting. All models use the HPO search spaces as specified in Appendix [I](#A9 "Appendix I Benchmark configurations ‣ XTab: Cross-table Pretraining for Tabular Transformers").
 
 | name | task\_type | metrics | RF | XGB | LGBM | CAT | FastAI | NN | FTT | XTab |
@@ -1210,83 +1142,3 @@ Table 16: Raw prediction performance on AutoML Benchmark under the HPO setting. 
 | us\_crime | regression | RMSE | 0.1379 | 0.1343 | 0.1372 | 0.1354 | 0.1391 | 0.1392 | 0.1351 | 0.1351 |
 | wine\_quality | regression | RMSE | 0.6004 | 0.6046 | 0.6261 | 0.5972 | 0.6767 | 0.6864 | 0.682 | 0.6761 |
 | yprop\_4\_1 | regression | RMSE | 0.0295 | 0.0334 | 0.0298 | 0.0296 | 0.0791 | 0.0303 | 0.0303 | 0.0301 |
-
-[◄](/html/2305.06089)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2305.06090)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2305.06090)
-[View original  
-on arXiv](https://arxiv.org/abs/2305.06090)[►](/html/2305.06091)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 08:46:29 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

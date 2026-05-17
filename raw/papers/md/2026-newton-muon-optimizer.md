@@ -11,50 +11,6 @@ url: https://arxiv.org/abs/2604.01472
 year: 2026
 ---
 
-[2604.01472] The Newton–Muon Optimizer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # The Newton–Muon Optimizer
 
 Zhehang Du
@@ -117,9 +73,9 @@ Because this optimization method is derived in the same spirit as Newton’s met
 
 The right-preconditioning by the input data distribution in the update rule endows Newton–Muon with its empirical advantage over standard Muon. Indeed, compared to our reproduction of the earliest publicly logged Modded-NanoGPT speedrun (modded\_nanogpt\_2024) configuration using Muon, Newton–Muon achieves a notable 6%6\% reduction in the number of iterations required to reach the target validation loss, as shown in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ The Newton–Muon Optimizer"). In terms of wall-clock time, replacing standard Muon with Newton–Muon yields a reduction of about 4%4\%.
 
-![Refer to caption](/html/2604.01472/assets/x1.png)
+!(/html/2604.01472/assets/x1.png)
 
-![Refer to caption](/html/2604.01472/assets/x2.png)
+!(/html/2604.01472/assets/x2.png)
 
 Figure 1: Top: short track Record #4 validation loss comparison on the Modded-NanoGPT speedrun benchmark. Record #4 is the earliest publicly released configuration using Muon, and our reproduction on a single H100 GPU is denoted Muon. Newton–Muon adds the activation right-preconditioner before the Newton–Schulz iterations. Newton–Muon reaches the Muon baseline final validation loss in 6%6\% fewer steps; despite a 1.8%1.8\% higher per-step cost from right-preconditioning, it reduces wall-clock time to that loss by about 4%4\%. Bottom: CIFAR-10 experiments (Appendix [C](#A3 "Appendix C CIFAR-10 Experiment ‣ The Newton–Muon Optimizer")) on a 32-layer residual MLP show that Newton–Muon outperforms both Muon and AdamW in both per-step efficiency and overall wall-clock time.
 
@@ -532,8 +488,7 @@ so that λm=λmin\lambda\_{m}=\lambda\_{\min}, then sample a random orthogonal P
 
 Figure [3](#S4.F3 "Figure 3 ‣ 4.2 Numerical Study with Spiked Activation ‣ 4 One-Step Analysis of Newton–Muon ‣ The Newton–Muon Optimizer") shows substantially higher scores for Newton–Muon than for Muon when both activation anisotropy and curvature anisotropy are strong, with Newton–Muon being closer to the optimal Newton direction. Muon also substantially outperforms gradient descent when the curvature is anisotropic.
 
-![Refer to caption](/html/2604.01472/assets/x3.png)
-
+!(/html/2604.01472/assets/x3.png)
 
 Figure 3: Numerical study with spiked activation second moment diag​(κ,1,…,1)\mathrm{diag}(\kappa,1,\ldots,1) and κ=64\kappa=64. Top: baseline case (N,p)=(8192,0.3)(N,p)=(8192,0.3). Middle: more uniform curvature (N,p)=(8192,2.4)(N,p)=(8192,2.4). Bottom: smaller sample size (N,p)=(1024,0.3)(N,p)=(1024,0.3). The left column shows the spectrum of H{H}, and the right column shows the corresponding mean absolute scores s​(Q)s({Q}).
 
@@ -605,14 +560,12 @@ Unless otherwise stated, we fix the Newton–Muon settings to learning rate 0.00
 shows a two-dimensional sweep over refresh interval kk and EWMA coefficient β\beta.
 Figure [5](#S5.F5 "Figure 5 ‣ Ablation for baseline. ‣ 5.1 Pretraining Benchmark Records on Modded-NanoGPT ‣ 5 LLM Experiments ‣ The Newton–Muon Optimizer") sweeps ridge scaling γ\gamma and the learning rate.
 
-![Refer to caption](/html/2604.01472/assets/x4.png)
-
+!(/html/2604.01472/assets/x4.png)
 
 Figure 4: Refresh ablation for Newton–Muon on short track Record #4. Grouped bar plot over refresh interval kk, with one bar
 per EWMA coefficient β\beta (ridge scaling fixed at γ=0.2\gamma=0.2 and learning rate fixed at 0.00400.0040).
 
-![Refer to caption](/html/2604.01472/assets/x5.png)
-
+!(/html/2604.01472/assets/x5.png)
 
 Figure 5: Left: Ridge-scaling ablation for Newton–Muon on short track Record #4. Bar plot over ridge scaling γ\gamma with
 k=32k=32, β=0.95\beta=0.95, and learning rate 0.00400.0040 fixed. Right: Learning-rate ablation for Newton–Muon on short track Record #4. Bar plot over learning rate with
@@ -643,8 +596,7 @@ the second-best run (by final validation loss) from each group. Although Newton�
 
 Table 2: Short track Record #28 setting (single L40S).
 
-![Refer to caption](/html/2604.01472/assets/x6.png)
-
+!(/html/2604.01472/assets/x6.png)
 
 Figure 6: Validation loss trajectories for the short track Record #28 setting (single L40S). We plot the second-best run for AdamW, Muon, and Newton–Muon, and show loss versus step (left) and loss versus wall-clock time (right).
 
@@ -706,11 +658,9 @@ Table [4](#S5.T4 "Table 4 ‣ Results. ‣ 5.2 Quadratic Score ‣ 5 LLM Experi
 
 Table 4: Diagnostics of the activation second moment Z​Z⊤{Z}{Z}^{\top} for four modules at step 1000 (top block) and step 50000 (bottom block). Here dmind\_{\min}, dmeand\_{\mathrm{mean}}, and dmaxd\_{\max} are the minimum, mean, and maximum diagonal entries of Z​Z⊤{Z}{Z}^{\top}, o¯=(1/n)​∑i∑j≠i|(Z​Z⊤)i​j|\bar{o}=(1/n)\sum\_{i}\sum\_{j\neq i}|({Z}{Z}^{\top})\_{ij}|, and κ​(Z​Z⊤)\kappa({Z}{Z}^{\top}) is the condition number of Z​Z⊤{Z}{Z}^{\top}. The value κ​(Z​Z⊤)\kappa({Z}{Z}^{\top}) is reported when eigenvalues were explicitly computed; “∞\infty” indicates numerical instability in the eigenspectrum estimate (a tiny negative eigenvalue at step 1000), and “–” indicates that the spectrum was not explicitly computed at n=2048n=2048. The last column reports the relative damping level selected by the adaptive Cholesky procedure.
 
+!(/html/2604.01472/assets/x7.png)
 
-
-![Refer to caption](/html/2604.01472/assets/x7.png)
-
-![Refer to caption](/html/2604.01472/assets/x8.png)
+!(/html/2604.01472/assets/x8.png)
 
 Figure 7: Quadratic score comparison on four layer matrices from Pythia at checkpoints step 1000 (top) and step 50000 (bottom), corresponding to the one-step analysis in ([20](#S5.E20 "In 5.2 Quadratic Score ‣ 5 LLM Experiments ‣ The Newton–Muon Optimizer")).
 
@@ -960,8 +910,6 @@ XT←XT−1​QT{X}\_{T}\leftarrow{X}\_{T-1}{Q}\_{T}
 return Kγ−1~←α​XT\widetilde{{K}\_{\gamma}^{-1}}\leftarrow\alpha{X}\_{T} such that ‖In−Kγ​Kγ−1~‖2≤sout\left\|{I}\_{n}-{K}\_{\gamma}\widetilde{{K}\_{\gamma}^{-1}}\right\|\_{2}\leq s\_{\mathrm{out}}, where souts\_{\mathrm{out}} is the certified residual bound associated with the selected plan
 
 Algorithm 2 Inverse of Kγ=K+γ​In{K}\_{\gamma}={K}+\gamma{I}\_{n} via polynomial approximation
-
-
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
@@ -1372,9 +1320,9 @@ Figure [8](#A5.F8 "Figure 8 ‣ Baseline (𝑁=8192, 𝑝=0.3). ‣ E.2 Isotrop
 In this ill-conditioned regime, both Muon and Newton–Muon yield substantial score improvements over the raw
 GD direction, and Newton–Muon is slightly better than Muon.
 
-![Refer to caption](/html/2604.01472/assets/x9.png)
+!(/html/2604.01472/assets/x9.png)
 
-![Refer to caption](/html/2604.01472/assets/x10.png)
+!(/html/2604.01472/assets/x10.png)
 
 Figure 8: Baseline configuration (N=8192N=8192, p=0.3p=0.3): spectrum of H{H} (left) and mean absolute
 scores s​(Q)s({Q}) for GD, Muon, Newton–Muon, and Newton (right).
@@ -1384,9 +1332,9 @@ scores s​(Q)s({Q}) for GD, Muon, Newton–Muon, and Newton (right).
 Figure [9](#A5.F9 "Figure 9 ‣ Uniform curvature (𝑁=8192, 𝑝=2.4). ‣ E.2 Isotropic Baseline Numerical Study ‣ Appendix E Theoretical Quadratic Score Under Isotropic Activation ‣ The Newton–Muon Optimizer") corresponds to a spectrum that is nearly flat at the top and drops sharply only near the tail.
 In this more uniform-curvature setting, the score gaps among GD, Muon, and Newton–Muon narrow, indicating that Newton–Muon and Muon help when H{H} is strongly anisotropic. Here, Newton–Muon is still slightly better than Muon.
 
-![Refer to caption](/html/2604.01472/assets/x11.png)
+!(/html/2604.01472/assets/x11.png)
 
-![Refer to caption](/html/2604.01472/assets/x12.png)
+!(/html/2604.01472/assets/x12.png)
 
 Figure 9: More top-uniform curvature (N=8192N=8192, p=2.4p=2.4): spectrum of H{H} (left) and mean absolute scores (right).
 
@@ -1394,9 +1342,9 @@ Figure 9: More top-uniform curvature (N=8192N=8192, p=2.4p=2.4): spectrum of H{H
 
 Figure [10](#A5.F10 "Figure 10 ‣ Smaller data (𝑁=1024, 𝑝=0.3). ‣ E.2 Isotropic Baseline Numerical Study ‣ Appendix E Theoretical Quadratic Score Under Isotropic Activation ‣ The Newton–Muon Optimizer") keeps the same curvature shape as the baseline but uses a smaller sample size NN to form Z​Z⊤/N{Z}{Z}^{\top}/N, making the empirical second moment noisier. Relative to Figure [8](#A5.F8 "Figure 8 ‣ Baseline (𝑁=8192, 𝑝=0.3). ‣ E.2 Isotropic Baseline Numerical Study ‣ Appendix E Theoretical Quadratic Score Under Isotropic Activation ‣ The Newton–Muon Optimizer"), the gap between Newton–Muon and Muon becomes much larger, suggesting that Newton–Muon more effectively compensates for activation anisotropy when the sample size is small.
 
-![Refer to caption](/html/2604.01472/assets/x13.png)
+!(/html/2604.01472/assets/x13.png)
 
-![Refer to caption](/html/2604.01472/assets/x14.png)
+!(/html/2604.01472/assets/x14.png)
 
 Figure 10: Smaller-NN data (N=1024N=1024, p=0.3p=0.3): spectrum of H{H} (left) and mean absolute scores (right).
 
@@ -1506,83 +1454,3 @@ Despite being inexpensive, this diagonal ΣW{\Sigma}\_{{W}} variant did not outp
 
 Overall, if the update direction is systematically misaligned with W−W⋆{W}-W^{\star}, then the resulting estimate of ΣW{\Sigma}\_{{W}} inherits this bias, and since the next update direction depends on this estimate, the bias can reinforce itself, leading to slower training.
 By using an isotropic proxy (i.e., ΣW∝Im{\Sigma}\_{{W}}\propto{I}\_{m}), we avoid imposing assumptions about the unknown distribution of displacements while still capturing the most robust geometric component of the update through the matrix sign. This helps explain both the computational simplicity and the stability of Newton–Muon.
-
-[◄](/html/2604.01471)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.01472)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.01472)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.01472)[►](/html/2604.01473)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 02:47:34 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

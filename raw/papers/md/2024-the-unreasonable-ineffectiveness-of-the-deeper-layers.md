@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2403.17887
 year: 2024
 ---
 
-[2403.17887] The Unreasonable Ineffectiveness of the Deeper Layers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # The Unreasonable Ineffectiveness of the Deeper Layers
 
 Andrey Gromov
@@ -188,7 +145,7 @@ we can eliminate up to roughly *half* of the layers
 before the performance collapses.
 An overview of our strategy and the results of pruning Llama-2-70B are shown in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ The Unreasonable Ineffectiveness of the Deeper Layers").
 
-![Refer to caption](/html/2403.17887/assets/x1.png)
+!(/html/2403.17887/assets/x1.png)
 
 Figure 1: Overview of our layer-pruning strategy and example results:
 *(a)* a flowchart describing the algorithm: if removing n𝑛n layers, we find the layer, ℓ∗superscriptℓ\ell^{\*}, that minimizes the angular distance, d𝑑d, between layers ℓℓ\ell and ℓ+nℓ𝑛\ell\!+\!n; we then remove the n𝑛n layers beginning with layer ℓ∗superscriptℓ\ell^{\*}; finally, if necessary, we can “heal” the damage with a small amount of (parameter-efficient) finetuning.
@@ -785,7 +742,7 @@ normalize the x𝑥x-axis by the
 fraction of layers removed (rather than the absolute number of layers removed).
 Note that since MMLU contains multiple choice questions with four possible responses, the expected accuracy of random guessing is 25%.
 
-![Refer to caption](/html/2403.17887/assets/x2.png)
+!(/html/2403.17887/assets/x2.png)
 
 Figure 2: MMLU accuracy (5-shot) vs. fraction of layers
 dropped
@@ -866,7 +823,7 @@ that
 argued
 jumps in one kind of metric may not be visible in others.
 
-![Refer to caption](/html/2403.17887/assets/x3.png)
+!(/html/2403.17887/assets/x3.png)
 
 Figure 3: Normalized C4 validation loss vs. fraction of layers dropped
 before healing (*left*) and after healing (*right*);
@@ -912,7 +869,7 @@ this
 likely
 explains the shorter region of robust performance in Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Accuracy on QA benchmarks ‣ 4 Results ‣ The Unreasonable Ineffectiveness of the Deeper Layers").
 
-![Refer to caption](/html/2403.17887/assets/x4.png)
+!(/html/2403.17887/assets/x4.png)
 
 Figure 4: 
 Normalized angular distance ([7](#S3.E7 "In 3.2 Layer-pruning algorithm(s) ‣ 3 Method ‣ The Unreasonable Ineffectiveness of the Deeper Layers"))
@@ -976,7 +933,7 @@ and not
 the
 acquisition of additional knowledge.
 
-![Refer to caption](/html/2403.17887/assets/x5.png)
+!(/html/2403.17887/assets/x5.png)
 
 Figure 5: Evaluation of Llama-2-70B
 with
@@ -1764,10 +1721,9 @@ For BoolQ accuracy:
   for MMLU in Figure [2](#S4.F2 "Figure 2 ‣ 4.1 Accuracy on QA benchmarks ‣ 4 Results ‣ The Unreasonable Ineffectiveness of the Deeper Layers"), after healing we still have a characteristic flat region of robust performance;
   as before, the capabilities required to achieve a model’s top score isn’t removed by significant layer pruning until a critical model-dependent threshold.
 
-![Refer to caption](/html/2403.17887/assets/x6.png)
+!(/html/2403.17887/assets/x6.png)
 
   
-
 
 Figure 6: BoolQ accuracy (0-shot)
 vs. fraction of layers
@@ -1820,10 +1776,9 @@ in the left panel of Figure [7](#A2.F7 "Figure 7 ‣ B.1 Prompting ‣ Appendix
 changing the ordering of the few-shot examples in the prompt,
 and in the right panel the same figure, we show results for changing the number of few-shot examples. Broadly we see that the layer-pruning method is robust to these changes.
 
-![Refer to caption](/html/2403.17887/assets/x7.png)
+!(/html/2403.17887/assets/x7.png)
 
   
-
 
 Figure 7: Effect of prompt ablations on MMLU accuracy vs. fraction of layers dropped for
 Llama-2-13B.
@@ -1849,7 +1804,7 @@ finetuning seed
 for our principal similarity-informed pruning described in §[3.2](#S3.SS2 "3.2 Layer-pruning algorithm(s) ‣ 3 Method ‣ The Unreasonable Ineffectiveness of the Deeper Layers") when applied to
 Llama-2-13B: in Figure [8](#A2.F8 "Figure 8 ‣ B.2 Finetuning seed ‣ Appendix B Ablations ‣ The Unreasonable Ineffectiveness of the Deeper Layers") we observe that the layer-pruning method is robust to the choice of seed.
 
-![Refer to caption](/html/2403.17887/assets/x8.png)
+!(/html/2403.17887/assets/x8.png)
 
 Figure 8: Effect of varying the finetuning seed on MMLU accuracy vs. fraction of layers dropped for Llama-2-13B: there is no meaningful effect.
 
@@ -1891,7 +1846,7 @@ improves performance. In the top left and middle panels of Figure [9](#A2.F9 "F
 we see that for this pruning method both models are much more robust,
 though rank 2 is still the top performing rank for Llama-2-7B.
 
-![Refer to caption](/html/2403.17887/assets/x9.png)
+!(/html/2403.17887/assets/x9.png)
 
 Figure 9: Effect of varying the LoRA rank.
 Top: 5-shot MMLU accuracy vs. fraction of layers dropped
@@ -1922,83 +1877,3 @@ the actual pretraining datasets for the models we consider are *(a)* unknown to 
 We investigate this directly for Mistral-7B. In the bottom right panel of Figure [9](#A2.F9 "Figure 9 ‣ B.3 LoRA rank ‣ Appendix B Ablations ‣ The Unreasonable Ineffectiveness of the Deeper Layers") we plot the C4 validation loss
 across different LoRA ranks: we see that while decreasing the LoRA rank generally improves MMLU accuracy (cf. left-most panels), at the same time it harms the C4 validation loss.
 This supports our overfitting hypothesis. In a greater-resourced future, it would be interesting to improve the healing process by considering other forms of regularization and learning rate tuning.
-
-[◄](/html/2403.17886)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2403.17887)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2403.17887)
-[View original  
-on arXiv](https://arxiv.org/abs/2403.17887)[►](/html/2403.17888)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Apr 5 17:20:05 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

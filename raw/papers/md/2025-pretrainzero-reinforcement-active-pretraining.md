@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2512.03442
 year: 2025
 ---
 
-[2512.03442] PretrainZero: Reinforcement Active Pretraining
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # PretrainZero: Reinforcement Active Pretraining
 
 Xingrun Xing1,2, Zhiyuan Fan2, Jie Lou2🖂, Guoqi Li1, Jiajun Zhang1🖂, Debing Zhang2
@@ -80,7 +37,7 @@ without any verifiable labels, pretrained reward models, or supervised fine-tuni
 3) Verification scaling:
 by tackling increasingly challenging masked spans, PretrainZero substantially enhances the general reasoning abilities of pretrained base models. In reinforcement pretraining, PretrainZero improves Qwen3-4B-Base for 8.43, 5.96 and 10.60 on MMLU-Pro, SuperGPQA and math average benchmarks. In post-training, the pretrained models can also serve as reasoning foundation models for downstream RLVR tasks.
 
-![Refer to caption](/html/2512.03442/assets/fig1.png)
+!(/html/2512.03442/assets/fig1.png)
 
 Figure 1: 
 Reinforcement Pre-Training (RLPT) performance in pre-training and post-training stages.
@@ -119,7 +76,7 @@ Our contributions are summarized as follows:
 
   We evaluate PretrainZero in both the pretraining and post-training stages, showing that it effectively mitigates the general reasoning data-wall with pretraining data, and finally the pretrained reasoning models can serve as the reasoning foundation models for general downstream RLVR tasks.
 
-![Refer to caption](/html/2512.03442/assets/x1.png)
+!(/html/2512.03442/assets/x1.png)
 
 Figure 2: 
 An overview of Reinforcement Active Pretraining. Compared with vanilla RLPT, PretrainZero actively explores and learns from the informative contexts on the pretraining corpus.
@@ -182,7 +139,7 @@ Based on the empirical observations, we then propose a unified and active pretra
 
 ### 3.1 Reinforcement Pretraining Baselines
 
-![Refer to caption](/html/2512.03442/assets/fig3.png)
+!(/html/2512.03442/assets/fig3.png)
 
 Figure 3: 
 MMLU-Pro performance for foundational RLPT methods. (a) Reinforcement next token prediction and reinforcement masked token prediction. (b) Reinforcement next token prediction with entropy and random token selection.
@@ -218,7 +175,7 @@ Findings 2. In real-world pretraining data distributions, selecting high-entropy
 
 ### 3.2 Active Pretraining Tasks
 
-![Refer to caption](/html/2512.03442/assets/x2.png)
+!(/html/2512.03442/assets/x2.png)
 
 Figure 4: 
 Pretraining Mask Prediction and Mask Generation tasks with GRPO.
@@ -247,7 +204,6 @@ The final generated masked words must be placed inside `\mask{}`.
 There is a passage with masked words by [mask]:
 <paragraph with mask>
 Please reason step by step, and put the predicted masked words within `\boxed{}`.
-
 
 Figure 5: Prompt for Mask Generation and Prediction.
 
@@ -320,23 +276,17 @@ Evaluation. We evaluate on both general-domin and math-domin reasoning benchmark
 
 ### 4.2 Pretraining Results
 
-![Refer to caption](/html/2512.03442/assets/fig6.png)
+!(/html/2512.03442/assets/fig6.png)
 
   
-
 
 Figure 6: 
 Training dynamic comparisons between PretrainZero and Random RLPT on Qwen3-4B-Base: (a) entropy of model outputs; (b) response length of overall samples; (c) the overall reward.
 
-
-
-![Refer to caption](/html/2512.03442/assets/fig7.png)
+!(/html/2512.03442/assets/fig7.png)
 
 Figure 7: 
 Evaluation comparisons between PretrainZero and Random RLPT on Qwen3-4B-Base: (a) the average accuracy on 3 general reasoning benchmarks; (b) the average accuracy on 6 math reasoning benchmarks; (c) response length on a fixed subset from MMLU-Pro.
-
-
-
 
 Table 1: Results on general-domain reasoning benchmarks. We compare the Base Model, Continue Pre-Training, Supervised Fine-Tuning, our Random RLPT baseline and PretrainZero. We highlight the best performance in bold and the second performance in underline.
 
@@ -363,9 +313,6 @@ Table 1: Results on general-domain reasoning benchmarks. We compare the Base Mod
 | Base Model | 38.88 | 52.49 | 33.73 | 10.51 | 58.79 |
 | Random RLPT | 40.38 | 52.62 | 36.33 | 12.99 | 59.57 |
 | PretrainZero | 43.55 | 58.12 | 36.58 | 14.91 | 64.59 |
-
-
-
 
 Table 2: Results on math-domain reasoning benchmarks. We highlight the best performance in bold and the second performance in underline.
 
@@ -402,13 +349,9 @@ Reasoning Patterns: Random RLPT / PretrainZero
 
 Paragraph: In addition to his 1983 Triple Crown wins, Ralph Hanover won seventeen additional [mask] events, including the very important Adios and Meadowlands Pace …
 
-
-
 Random RLPT: Here is the passage with the masked words filled in:
 In addition to his 1983 Triple Crown wins, Ralph Hanover won seventeen additional stakes …
 `\boxed{stakes}` …
-
-
 
 PretrainZero: To determine the masked word in the sentence:
 "In addition to his 1983 Triple Crown wins, Ralph Hanover won seventeen …"
@@ -419,7 +362,6 @@ PretrainZero: To determine the masked word in the sentence:
 5. \*\*Conclusion\*\*: The missing word is "stakes."
 Therefore, the predicted masked word is:
 In addition to his 1983 Triple Crown wins, Ralph Hanover won seventeen additional `\boxed{stakes}` events …
-
 
 Figure 8: Reasoning pattern comparison between Random RLPT and PretrainZero.
 
@@ -434,10 +376,9 @@ Reasoning Pattern.
 As shown in Fig. [8](#S4.F8 "Figure 8 ‣ 4.2 Pretraining Results ‣ 4 Experimental Results ‣ PretrainZero: Reinforcement Active Pretraining"), we compare the reasoning patterns between Random RLPT and PretrainZero from the Qwen3-8B-Base. Given the same masked target, Random RLPT directly outputs the answer without any explicit reasoning. In contrast, PretrainZero first explores multiple possibilities, analyzes and verifies them step by step, and finally summarizes to reach a conclusion.
 Since the mask-prediction objective does not appear in downstream RL tasks, the emergence of such reasoning behavior during pretraining provides a stronger reasoning ability for generalization.
 
-![Refer to caption](/html/2512.03442/assets/fig9.png)
+!(/html/2512.03442/assets/fig9.png)
 
   
-
 
 Figure 9: 
 RLPT performance after the same RLVR post-training.
@@ -465,9 +406,6 @@ Table 3: Results on general-domain reasoning benchmarks after the RLVR post-trai
 | PretrainZero | 1000 / 400 | 39.15 | 51.84 | 32.32 | 12.39 | 60.03 |
 | PretrainZero | 2000 / 400 | 40.46 | 53.77 | 33.30 | 13.61 | 61.15 |
 
-
-
-
 Table 4: Results on math-domain reasoning benchmarks after the RLVR post-training. RLPT / RLVR indicates RL steps in RLPT and RLVR stages respectively.
 
 | Model Name | RLPT / RLVR | AVG | MATH-500 | Olympiad | Minerva | GSM8K | AMC | AIME24 |
@@ -490,10 +428,9 @@ To confirm RLPT over 2000 steps, we evaluate different mask regularization strat
 3) PretrainZero-Words: Since PretrainZero may produce masks that cover incomplete words—reducing interpretability—we filter masks that keep only complete word spans.
 As shown in Fig. [10](#S4.F10 "Figure 10 ‣ 4.4 Ablation Studies ‣ 4 Experimental Results ‣ PretrainZero: Reinforcement Active Pretraining") (b), three recipes can be trained stably, and PretrainZero consistently achieves better performance.
 
-![Refer to caption](/html/2512.03442/assets/fig10.png)
+!(/html/2512.03442/assets/fig10.png)
 
   
-
 
 Figure 10: 
 Comparisons for data domain and mask regularization. (a) MMLU-Pro performance on MathPile and Wikipedia. (b) MMLU-Pro performance with different mask regularization strategies.
@@ -517,83 +454,3 @@ Despite these advantages, the foundational questions in RLPT remain unexplored: 
 ## 6 Conclusion
 
 This work introduces the stand-alone reinforcement pretraining method in a real-world pretraining corpus, named PretrainZero. Coupled with PretrainZero, a new reinforcement active pretraining framework is proposed to explore informative, verifiable, and not-yet-mastered content in noisy pretraining data. Thanks to active learning ability, PretrainZero significantly surpasses previous fixed learning patterns, such as continued pretraining, supervised fine-tuning, and random or entropy-based reinforcement pretraining. We reveal that even Wikipedia, which has already been trained during base model pretraining, can successfully improve end-task performance with reinforcement and active learning methods. We believe that there would be great potential to explore more efficient learning patterns to discover latent information from the pretraining corpus in the future.
-
-[◄](/html/2512.03441)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.03442)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.03442)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.03442)[►](/html/2512.03443)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 08:09:48 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2306.15595
 year: 2023
 ---
 
-[2306.15595] Extending Context Window of Large Language Models via Position Interpolation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Extending Context Window of Large Language Models via Position Interpolation
 
 Shouyuan Chen     Sherman Wong     Liangjian Chen     Yuandong Tian
@@ -81,8 +38,7 @@ While certain techniques such as ALiBi (Press et al., [2022](#bib.bib29)) and 
 
 In this work, we introduce Position Interpolation to enable context window extensions for certain existing pre-trained LLMs, including LLaMA. The key idea is, instead of extrapolation, we directly down-scale the position indices so that the maximum position index matches the previous context window limit in the pre-training stage. See Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Extending Context Window of Large Language Models via Position Interpolation") for an illustration. In other words, to accommodate more input tokens, we interpolate the position encodings at neighboring integer positions, utilizing the fact that position encodings can be applied on non-integer positions, as opposed to extrapolating outside the trained positions, which may lead to catastrophic values. We verify our approach theoretically, by showing that the interpolated attention score has a much smaller upper bound (∼600×\sim 600\times smaller in LLaMA 7B setting) than the extrapolated one, and is thus much more stable. Therefore, interpolated position encodings are easier for the model to adapt.
 
-![Refer to caption](/html/2306.15595/assets/x1.png)
-
+!(/html/2306.15595/assets/x1.png)
 
 Figure 1: An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a 2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices (blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them to reside in the pretrained range.
 
@@ -134,8 +90,7 @@ While the attention score in RoPE only depends on the relative positions, which 
 
 Ideally, we want to see the model trained on a context window of size L=2048𝐿2048L=2048 to still work reasonably well on longer context window, but may not have the capability to leverage information that appears beyond L𝐿L. For example, to answer a question located at 3000, the model trained on maximal window size of L=2048𝐿2048L=2048 cannot leverage evidences provided at location 0, but still can leverage the evidences provided at location 2900. In contrast, in reality we see catastrophic behaviors, i.e., question at location 3000 cannot be answered correctly, even if the evidences are located at location 2900.
 
-![Refer to caption](/html/2306.15595/assets/x2.png)
-
+!(/html/2306.15595/assets/x2.png)
 
 Figure 2: Extrapolation versus interpolation. Left: a fitted attention score function (in red) in the form of Eqn. [3](#S2.E3 "In 2.2 Direct Extrapolation ‣ 2 Method ‣ Extending Context Window of Large Language Models via Position Interpolation") with d=dmodel/nhead=4096/32=128𝑑subscript𝑑modelsubscript𝑛head409632128d=d\_{\mathrm{model}}/n\_{\mathrm{head}}=4096/32=128 (setting of LLaMA 7B). Dots are random input points to be fitted and red curve is the fitted score function via least square, which is approximately within [−1,1]11[-1,1]. Middle: While the fitted function seems to be well bounded in [0,L]0𝐿[0,L], where L=2048𝐿2048L=2048, out of this region it may goes beyond 800080008000, causing catastrophic issues in attention computation. Note that here we do not cherry pick at all: almost every learned curve from a set of randomly generated input points within [0,L]0𝐿[0,L] has the extrapolation issue. Right: On the other hand, interpolation is much more stable. Curves in between vertical dotted lines (i.e., integer positional difference) are smooth and well-behaved. Please check Appendix [C.1](#A3.SS1 "C.1 Code for Fig. 2 ‣ Appendix C Code ‣ Extending Context Window of Large Language Models via Position Interpolation") for the source code used to generate the figure.
 
@@ -290,8 +245,6 @@ At 1000 steps, we can see the models have improved steadily and achieve a signif
 
 Table 1: Evaluation perplexity on PG19 dataset (Rae et al., [2020](#bib.bib30)). FT: Direct Fine-tuning. PI: Position Interpolation. Model fine-tuned with PI shows progressively lower perplexity with longer context window, showing that PI can leverage long context well, while the perplexity of FT increases over longer window. Note that overall the perplexity is higher compared to Table [2](#S3.T2 "Table 2 ‣ 3.2 Long Sequence Language Modeling ‣ 3 Experiments ‣ Extending Context Window of Large Language Models via Position Interpolation") since PG19 has very different writing styles.
 
-
-
 |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Model | | | Evaluation Context Window Size | | | | |
@@ -314,8 +267,6 @@ Table 1: Evaluation perplexity on PG19 dataset (Rae et al., [2020](#bib.bib30))
 | 65B | 8192 | PI | 2.43 | 2.26 | 2.12 | - | - |
 
 Table 2: Evaluation perplexity on Arxiv Math Proof-pile dataset (Azerbayev et al., [2022](#bib.bib2)). FT: Direct Fine-tuning. PI: Position Interpolation.
-
-
 
 |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -362,8 +313,6 @@ fine-tuning for more than 10000 steps, with no clear indication of an accelerati
 | 33B | 16384 | PI | 16384 | 16384 | 16384 | 16384 | 16384 | - |
 
 Table 4: Effective context window sizes after fine-tuning. FT: Direct fine-tuning. PI: Position Interpolation.
-
-
 
 There is an important info hidden inside a lot of irrelevant text. Find it and memorize them. I will quiz you about the important information there.
   
@@ -433,8 +382,6 @@ Now summarize the above article.
 Summary:
 
 Figure 4: Input format for long doc summarization.
-
-
 
 | Model | | Evaluation Score | | |
 | --- | --- | --- | --- | --- |
@@ -841,8 +788,7 @@ As a result:
 
 As shown in Eqn. [8](#S2.E8 "In 2.3 Proposed approach: Position Interpolation (PI) ‣ 2 Method ‣ Extending Context Window of Large Language Models via Position Interpolation"), the extrapolation bound contains the term B​(s):=∑k=0d/2−1|Ak+1​(s)|assign𝐵𝑠superscriptsubscript𝑘0𝑑21subscript𝐴𝑘1𝑠B(s):=\sum\_{k=0}^{d/2-1}|A\_{k+1}(s)| where Ak​(s):=∑j=0k−1ei​s​θjassignsubscript𝐴𝑘𝑠superscriptsubscript𝑗0𝑘1superscript𝑒i𝑠subscript𝜃𝑗A\_{k}(s):=\sum\_{j=0}^{k-1}e^{\mathrm{i}s\theta\_{j}}. Here we check how large the bound is. We use θj=c−2​j/dsubscript𝜃𝑗superscript𝑐2𝑗𝑑\theta\_{j}=c^{-2j/d} with c=10000𝑐10000c=10000 and d=4096/32=128𝑑409632128d=4096/32=128 (LLaMA-7B setting), and Fig. [5](#A2.F5 "Figure 5 ‣ Appendix B Visualization of quantities in extrapolation bound ‣ Extending Context Window of Large Language Models via Position Interpolation") shows that B​(s)/d𝐵𝑠𝑑B(s)/d almost always larger than 111 and in many places it is much larger than 111.
 
-![Refer to caption](/html/2306.15595/assets/x3.png)
-
+!(/html/2306.15595/assets/x3.png)
 
 Figure 5: The bound B​(s)/d𝐵𝑠𝑑B(s)/d decays with s𝑠s. While the bounds goes down with large positional difference s𝑠s, numerically B​(s)/d≥1𝐵𝑠𝑑1B(s)/d\geq 1 and at many s𝑠s much larger than 111 (the dotted horizontal line). Please check Appendix [C.2](#A3.SS2 "C.2 Code for Fig. 5 ‣ Appendix C Code ‣ Extending Context Window of Large Language Models via Position Interpolation") for the source code used to draw the figure.
 
@@ -903,7 +849,6 @@ plt.axvline(L, color="k", linestyle="--", linewidth=0.5)
 plt.title("Effect of Extrapolation")
 plt.xlabel("Positional difference $s$")
 
-
 plt.subplot(1, 3, 3)
 plt.plot(x3, y3, "r")
 for i in range(25,75):
@@ -932,83 +877,3 @@ plt.xlabel("Positional difference $s$")
 plt.ylabel("$B(s)/d$")
 plt.show()
 ```
-
-[◄](/html/2306.15594)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2306.15595)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2306.15595)
-[View original  
-on arXiv](https://arxiv.org/abs/2306.15595)[►](/html/2306.15596)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 22:00:20 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2603.12273
 year: 2026
 ---
 
-[2603.12273] Aligning Language Models from User Interactions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Aligning Language Models from User Interactions
 
 Thomas Kleine Buening11   Jonas Hübotter11   Barna Pásztor11  
@@ -91,8 +48,7 @@ Building on recent work on self-distillation (Hübotter et al., [2026](#bib.bib
 we refer to this approach as Self-Distillation Policy Optimization (SDPO) from User Interactions.
 We show that this approach (illustrated in [Figure˜1](#S1.F1 "In Introduction ‣ Aligning Language Models from User Interactions")) is simple and scalable, and enables language models to improve from raw, real-world user conversations without explicit supervision, reward models, or preference labels. Remarkably, when applied to real-world user interactions from WildChat (Zhao et al., [2024](#bib.bib15 "Wildchat: 1m chatgpt interaction logs in the wild")), SDPO from User Interactions improves alignment and instruction-following performance across standard benchmarks without degrading other capabilities. We also demonstrate that the same self-distillation mechanism naturally supports personalization and continual adaptation, allowing models to adapt to individual users purely through continued interaction.
 
-![Refer to caption](/html/2603.12273/assets/figures/figure_1_2.png)
-
+!(/html/2603.12273/assets/figures/figure_1_2.png)
 
 Figure 1: Direct Learning from User Interactions via Self-Distillation. From multi-turn user conversations, we obtain several interactions (x,y,o)(x,y,o) that consist of the conversation history xx, the model’s response yy, and the subsequent user message oo. By conditioning on the user’s follow-up, we form the *hindsight policy* and compare it to the original policy, producing token-level advantages that reinforce or penalize parts of the model’s original response. In this example, the user’s follow-up requests a more direct answer, leading to penalizing filler tokens and reinforcing the answer.
 
@@ -116,8 +72,7 @@ More specifically, can we both improve general alignment capabilities and enable
 
 ## Directly Learning from User Interactions via Self-Distillation
 
-![Refer to caption](/html/2603.12273/assets/illustrations/water_logratios.png)
-
+!(/html/2603.12273/assets/illustrations/water_logratios.png)
 
 Figure 2: Example of the token-level advantages ([1](#S3.E1 "Equation 1 ‣ Policy Gradient. ‣ Directly Learning from User Interactions via Self-Distillation ‣ Aligning Language Models from User Interactions")) where the user complains with oo = “I said YES or NO only” after the assistant failed to follow the instruction.
 
@@ -165,8 +120,6 @@ Algorithm 1  SDPO: Self-Distillation Policy Optimization from User Interactions
 
 8: until converged
 
-
-
 |  |  |
 | --- | --- |
 | User: | <conversation history including most recent user prompt> xx   <hindsight context> The following is a future user message.  Use this to guide your answer to the user prompt: oo |
@@ -210,8 +163,7 @@ Under idealized assumptions on user responses and model conditioning, the sequen
 
 where Z​(x,y)Z(x,y) is a normalization term. In other words, under idealized assumptions, SDPO can be interpreted as implicitly maximizing the interacting user’s latent reward function.
 
-![Refer to caption](/html/2603.12273/assets/images/qwen3_8b_all_benchmarks.png)
-
+!(/html/2603.12273/assets/images/qwen3_8b_all_benchmarks.png)
 
 Figure 3: Training on real-world user conversations, SDPO improves general alignment and instruction-following performance across benchmarks, without degrading other capabilities. Results for Qwen3-8B before and after training on 14,000 real-world user conversations.
 
@@ -289,8 +241,6 @@ In practice, due to the abundant nature of user conversations filtering down to 
 
 Table 3: Even on fully uncurated user interactions, SDPO still yields improvements in alignment and instruction-following and only mild degradation in math and coding. Results for training on a randomly sampled subset of 14,000 conversations (about 50,000 interactions (x,y,o)(x,y,o)) from WildChat. For comparison, we here include the results for training on WildFeedback from [Table˜2](#S4.T2 "In General Alignment from Real-World User Conversations ‣ Experimental Results ‣ Aligning Language Models from User Interactions").
 
-
-
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
 |  | AlpacaEval 2.0 (LC Winrate) | IFEval (Prompt-Level) | ArenaHard-v2 (Hard Prompt) | ArenaHard-v2 (Creative Writing) | MMLU-Pro (Chain-of-Thought) |
@@ -311,13 +261,11 @@ As shown in [Table˜4](#S4.T4 "In How important is the quality of user conversat
 
 ### Continual Personalization and Adaptation from User Interactions
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate.png)
-
+!(/html/2603.12273/assets/images/personalization/pure_winrate.png)
 
 Figure 4: SDPO adapts online to changing user preferences. The user’s preference about how the model should respond is flipped to its opposite after the first 250 interactions. SDPO with Qwen3-4B is able to quickly reverse the learned behavior.
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/concise_casual_beginner.png)
-
+!(/html/2603.12273/assets/images/personalization/pure_winrate/concise_casual_beginner.png)
 
 Figure 5: SDPO rapidly personalizes to individual users from interaction alone. Win rate of SDPO against its base model (Qwen3-4B) for a user that prefers concise, casual, and beginner-friendly model responses.
 
@@ -328,8 +276,7 @@ In the first, we study stylistic personalization in a controlled summarization t
 
 In the second setting, we consider more complex and complementary user preferences on a broad set of real-world prompts from HelpSteer2 (Wang et al., [2024b](#bib.bib59 "Helpsteer 2: open-source dataset for training top-performing reward models")). Here, preferences emphasize different aspects of responses that are not mutually exclusive. We train Qwen3-8B with SDPO, using Claude Haiku 4.5 to simulate user follow-ups and act as a judge.
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/winrate_with_sd.png)
-
+!(/html/2603.12273/assets/images/personalization/winrate_with_sd.png)
 
 Figure 6: SDPO enables continual personalization without catastrophic forgetting.
 We train a single Qwen3-8B model online with SDPO for 1500 user interactions, during which three complementary user preferences are introduced sequentially (500 interactions each). Each curve reports the win rate of the current model with respect to the model checkpoint at the time the corresponding preference was introduced, thereby isolating the relative improvement along that specific preference dimension. Earlier preferences remain strong as new ones are learned, indicating that SDPO can accumulate complementary preferences over time without forgetting previously learned behavior. Shaded regions indicate standard error over 256 evaluation prompts.
@@ -354,18 +301,16 @@ In contrast, when user follow-ups are unrelated to the model’s previous output
 
 Overall, these visualizations highlight two key properties of our self-distillation approach. First, the token-level advantages are highly interpretable and align with intuitive notions of user feedback when such feedback is present. Second, SDPO is robust to irrelevant or uninformative user follow-ups, naturally suppressing learning updates when the interaction does not convey actionable information about the preceding model output.
 
-![Refer to caption](/html/2603.12273/assets/images/log_ratio_visuals/heatmap_relevant.png)
+!(/html/2603.12273/assets/images/log_ratio_visuals/heatmap_relevant.png)
 
-![Refer to caption](/html/2603.12273/assets/images/log_ratio_visuals/case1_conversation_followup.png)
+!(/html/2603.12273/assets/images/log_ratio_visuals/case1_conversation_followup.png)
 
 Figure 7: When user follow-ups are relevant to the model’s completion, we observe strong positive and negative SDPO advantages. We visualize the advantages with Qwen3-8B for user follow-ups that carry relevant information about the model’s answer, such as requests for revisions, positive reactions, or other relevant feedback.
 Below: Example (second line in the heatmap), where the user requests a more formal rewrite of the assistant’s draft (*“Rewrite in a formal, professional tone”*). Informal expressions have large negative advantages. Accordingly, SDPO adapts the policy to respond more formally when the user needs help with work emails in the future.
 
+!(/html/2603.12273/assets/images/log_ratio_visuals/heatmap_irrelevant.png)
 
-
-![Refer to caption](/html/2603.12273/assets/images/log_ratio_visuals/heatmap_irrelevant.png)
-
-![Refer to caption](/html/2603.12273/assets/images/log_ratio_visuals/case1_conversation_unrelated.png)
+!(/html/2603.12273/assets/images/log_ratio_visuals/case1_conversation_unrelated.png)
 
 Figure 8: When user follow-ups are unrelated to the model’s response, SDPO advantages are close to zero. We visualize the advantages with Qwen3-8B for user follow-ups that are unrelated to the model’s generation.
 Below: Following the request to write an email, the user responds with *“What is 27×\times4?”*, which is unrelated to the original request. The advantages are close to zero everywhere, which means that SDPO does not meaningfully update the policy from these interactions.
@@ -821,17 +766,17 @@ Table 6: SDPO preserves performance on pre-training benchmarks. We additionally 
 
 [Figure˜9](#A4.F9 "In Additional Results from Section˜4.2 ‣ Appendix D Additional Experimental Results ‣ Aligning Language Models from User Interactions") includes the additional results for the personalization results from [Section˜4.2](#S4.SS2 "Continual Personalization and Adaptation from User Interactions ‣ Experimental Results ‣ Aligning Language Models from User Interactions"). Similarly to [Figure˜5](#S4.F5 "In Continual Personalization and Adaptation from User Interactions ‣ Experimental Results ‣ Aligning Language Models from User Interactions") in the main text, we here consider the adaptation of SDPO for Qwen3-4B to a user with a preference profile across three dimensions detailed/concise, casual/professional, beginner/expert. Across all user profiles, we observe that SDPO is able to quickly adapt from only a handful of user interactions, sometimes even exceeding the performance of the in-context oracle that is queried with the user preferences in context.
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/detailed_professional_expert.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/detailed_professional_expert.png)
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/concise_professional_expert.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/concise_professional_expert.png)
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/detailed_casual_beginner.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/detailed_casual_beginner.png)
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/concise_casual_expert.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/concise_casual_expert.png)
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/detailed_professional_beginner.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/detailed_professional_beginner.png)
 
-![Refer to caption](/html/2603.12273/assets/images/personalization/pure_winrate/detailed_casual_expert.png)
+!(/html/2603.12273/assets/images/personalization/pure_winrate/detailed_casual_expert.png)
 
 Figure 9: Additional personalization results from [Section˜4.2](#S4.SS2 "Continual Personalization and Adaptation from User Interactions ‣ Experimental Results ‣ Aligning Language Models from User Interactions") with Qwen3-4B. The win rate is computed against the base model and judged by Qwen3-8B. The In-Context Oracle baseline is obtained by prompting Qwen3-4B directly with the desired writing style.
 
@@ -903,83 +848,3 @@ Response A:
 Response B:
 ⟨RESPONSE\_B⟩
 Which response do you prefer as this user? Output only A, B, or C.
-
-[◄](/html/2603.12272)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.12273)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.12273)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.12273)[►](/html/2603.12274)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Apr 6 02:59:08 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

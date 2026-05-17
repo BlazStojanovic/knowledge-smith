@@ -25,95 +25,37 @@ url: https://arxiv.org/abs/2601.18089
 year: 2026
 ---
 
-[2601.18089] LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts
 
 Venmugil Elango
 
-
  Nidhi Bhatia
-
 
  Roger Waleffe
 
-
  Rasoul Shafipour
-
 
  Tomer Asida
 
-
  Abhinav Khattar
-
 
  Nave Assaf
 
-
  Maximilian Golub
-
 
  Joey Guman
 
-
  Tiyasa Mitra
-
 
  Ritchie Zhao
 
-
  Ritika Borkar
-
 
  Ran Zilberstein
 
-
  Mostofa Patwary
 
-
  Mohammad Shoeybi
-
 
  Bita Rouhani
 
@@ -131,13 +73,11 @@ Mixture-of-Experts (MoE) architectures have emerged as a promising approach towa
 
 We argue that effective MoE design must be evaluated along two complementary dimensions: accuracy per FLOP and accuracy per parameter. While accuracy per FLOP captures computational efficiency, accuracy per parameter reflects memory footprint, memory bandwidth demands, routing-induced communication, and sharding overheads (factors that are often the dominant bottlenecks in interactive, low-latency inference). Neglecting these factors can lead to architectures that appear efficient in aggregate compute, yet incur substantial inefficiencies in practical deployment.
 
-![Refer to caption](/html/2601.18089/assets/figures/standard_moe.png)
-
+!(/html/2601.18089/assets/figures/standard_moe.png)
 
 (a) Standard MoE architecture.
 
-![Refer to caption](/html/2601.18089/assets/figures/latent_moe.png)
-
+!(/html/2601.18089/assets/figures/latent_moe.png)
 
 (b) LatentMoE architecture.
 
@@ -160,8 +100,7 @@ N=128N=128 experts, K=8K=8 active experts per token, a hidden dimension d=4096d=
 
 In highly interactive (*i.e*., low-latency) settings that typically use small batch sizes, MoE computation is primarily bottlenecked by memory bandwidth. Figure [2](#S2.F2 "Figure 2 ‣ 2.1 Memory Bandwidth Bottleneck ‣ 2 LatentMoE Core Design Principles ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts") provides a high-level roof-line analysis of performance versus arithmetic intensity.
 
-![Refer to caption](/html/2601.18089/assets/x1.png)
-
+!(/html/2601.18089/assets/x1.png)
 
 Figure 2: Roofline Analysis for serving Qwen3-235B-A22B.
 Operating points correspond to different per-expert token counts texpt\_{\mathrm{exp}} (i.e., effective expert batch sizes after MoE routing), mapped to arithmetic intensity I=2⋅texp⋅d⋅md⋅m+texp⋅(d+m)I=\frac{2\cdot t\_{\mathrm{exp}}\cdot d\cdot m}{d\cdot m+t\_{\mathrm{exp}}\cdot(d+m)}. At latency-critical batch sizes (low II), MoE expert computation is constrained by HBM bandwidth rather than compute, and the operating points lie in the bandwidth-bound regime.
@@ -222,8 +161,6 @@ Substituting the parameters for the GB200 NVL72 and Qwen3-235B-A22B yields a rat
 Design Principle II
 
 Improving performance in throughput-oriented MoE deployments requires minimizing the data volume of all-to-all operations. This volume is proportional to:
-
-
 
 Mcomm∝NEP⋅texp⋅d=ttotal⋅K⋅dEP.M\_{\mathrm{comm}}\propto\frac{N}{\mathrm{EP}}\cdot t\_{\mathrm{exp}}\cdot d=\frac{t\_{\mathrm{total}}\cdot K\cdot d}{\mathrm{EP}}.
 Consequently, communication overhead can be mitigated by reducing the routed hidden dimension dd or the number of active experts KK. Note that modifying the intermediate dimension mm does not affect the token size and thus yields no direct improvement.
@@ -326,13 +263,11 @@ Table 2: Architectural specifications of the baseline models used for design spa
 Impact of compression ratio.  Design Principle IV (Section [2](#S2 "2 LatentMoE Core Design Principles ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts")) hypothesizes that there exists an intrinsic rank reffr\_{\mathrm{eff}} such that compressing the latent dimension to ℓ≥reff\ell\geq r\_{\mathrm{eff}} results in negligible information loss. To empirically validate this and estimate reffr\_{\mathrm{eff}}, we pretrain and sweep different compression ratios on top of the ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} configuration, holding all other hyperparameters constant.
 Results in Figure [3](#S4.F3 "Figure 3 ‣ 4.1 LatentMoE Ablations ‣ 4 Evaluation ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts") indicate that model quality is preserved for compression ratios α≤4\alpha\leq 4. Consequently, we adopt α=4\alpha=4 for all subsequent experiments. We empirically verified that this setting remains effective at larger scales as well (i.e., 95B total and 8B active).
 
-![Refer to caption](/html/2601.18089/assets/figures/2B_vary_alpha_lmoe_eff.png)
-
+!(/html/2601.18089/assets/figures/2B_vary_alpha_lmoe_eff.png)
 
 Figure 3: Effect of compression ratio on model quality. Validation loss for the 16BT-2BA model using the ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} configuration across varying compression ratios α=d/ℓ\alpha=d/\ell. The total number of experts is scaled by α\alpha, while the base model configuration follows Table [2](#S4.T2 "Table 2 ‣ 4 Evaluation ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts").
 
-![Refer to caption](/html/2601.18089/assets/figures/2B_reduced_params.png)
-
+!(/html/2601.18089/assets/figures/2B_reduced_params.png)
 
 Figure 4: Impact of expert scaling on model quality. Comparison of validation loss for the 16BT-2BA model using the ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} configuration when the hidden dimension is compressed by 4×4\times. The green curve utilizes the proposed expert scaling (N′=α​NN^{\prime}=\alpha N), while the red curve does not. Scaling the expert count effectively mitigates the accuracy loss caused by compression, eliminating the need for extensive hyperparameter retuning.
 
@@ -342,8 +277,7 @@ In Section [3](#S3 "3 LatentMoE Architecture ‣ LatentMoE: Toward Optimal Accur
 Comparison between the two variants of LatentMoE. 
 In Section [3](#S3 "3 LatentMoE Architecture ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts"), we introduced two LatentMoE variants: ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}}, designed to improve inference efficiency while maintaining baseline accuracy, and ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}}, designed to enhance accuracy at a comparable inference cost. Figure [5](#S4.F5 "Figure 5 ‣ 4.1 LatentMoE Ablations ‣ 4 Evaluation ‣ LatentMoE: Toward Optimal Accuracy per FLOP and Parameter in Mixture of Experts") compares the validation loss of these configurations against the baseline for the 16B total and 2B active parameter model using a latent dimension of ℓ=512\ell=512 (α=4\alpha=4). Consistent with our expectations, ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} matches the baseline accuracy, whereas ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} achieves a noticeably lower validation loss. We recommend ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} for Pareto-optimal accuracy versus inference cost.
 
-![Refer to caption](/html/2601.18089/assets/figures/2b_latent512_baseline_leff_lacc.png)
-
+!(/html/2601.18089/assets/figures/2b_latent512_baseline_leff_lacc.png)
 
 Figure 5: Comparison between LatentMoE variants. Training trajectories for the baseline 16BT-2BA
 model versus the ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} and ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} (ℓ=512\ell=512). ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} matches baseline convergence, while ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} outperforms the baseline.
@@ -354,13 +288,9 @@ Leveraging the insights from the 16B model ablations, we train a 95B parameter T
 We report Code as the average over HumanEval, HumanEval+, MBPP, and MBPP+, Math as the average of GSM8K CoT and MATH-500, and Commonsense understanding as the average of RACE, ARC-Challenge, HellaSwag, and Winogrande.
 For simplicity, we used the exact same hyperparameters optimized for the baseline Transformer for LatentMoE. Further hyperparameter tuning might lead to even better accuracy.
 
-![Refer to caption](/html/2601.18089/assets/figures/8B_val_loss.png)
-
+!(/html/2601.18089/assets/figures/8B_val_loss.png)
 
 Figure 6: 95B Model Training Convergence. Validation loss curves for the 95BT-8BA baseline, ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}}, and ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} configurations (ℓ=1024,α=4\ell=1024,\alpha=4). ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} matches baseline convergence, while ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} outperforms the baseline.
-
-
-
 
 Table 3: Accuracy comparisons of the 95BT-8BA model with and without LatentMoE. Compared to the baseline, with equivalent parameters, ℓ−MoEacc\operatorname{\ell-MoE}\_{\mathrm{acc}} provides higher accuracy across all downstream tasks, while ℓ−MoEeff\operatorname{\ell-MoE}\_{\mathrm{eff}} provides comparable to or better accuracy with much fewer FLOPs.
 
@@ -410,8 +340,7 @@ The measurements show that at higher concurrencies, per-GPU throughput drops by 
 
 Inference efficiency can be characterized as a three-dimensional trade-off surface, with accuracy along one axis, throughput per GPU along a second axis, and latency (user interactivity) along the third axis. Thus far, we have discussed the accuracy of LatentMoE and presented measured performance at the 95B-parameter scale. In the following section, we examine a two-dimensional slice of this trade-off at the trillion-parameter scale by projecting throughput per GPU and latency Pareto frontiers for accuracy-matched models.
 
-![Refer to caption](/html/2601.18089/assets/figures/normalized_plot.png)
-
+!(/html/2601.18089/assets/figures/normalized_plot.png)
 
 Figure 7: Projected throughput-latency Pareto frontiers at trillion-parameter scale.
 Left: Decode-heavy traffic modeled with chunked piggybacking serving. Right: Prefill-heavy traffic modeled with disaggregated serving.
@@ -461,83 +390,3 @@ Achieving this requires a materially different residual topology (multi-stream r
 We presented LatentMoE, a revised Mixture-of-Experts architecture designed to maximize accuracy per FLOP and per parameter by explicitly accounting for the dominant memory bandwidth and communication bottlenecks in modern inference systems. By projecting tokens into a lower-dimensional latent space, LatentMoE reduces routing all-to-all communication as well as the memory bandwidth and computation required per expert. These savings are then reinvested into scaling expert count and routing diversity without increasing inference cost. Across extensive experiments up to 95B parameters, hybrid architectures, and projected trillion-parameter serving scenarios, LatentMoE consistently outperforms standard MoEs on the accuracy–efficiency Pareto frontier.
 
 ## References
-
-[◄](/html/2601.18088)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.18089)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.18089)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.18089)[►](/html/2601.18090)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 14:08:02 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2206.00664
 year: 2022
 ---
 
-[2206.00664] Hopular: Modern Hopfield Networks for Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Hopular: Modern Hopfield Networks for Tabular Data
 
 Bernhard Schäfl22footnotemark: 2 ,,~{}^{,}  Lukas Gruber22footnotemark: 2  Angela Bitto-Nemling22footnotemark: 2 ,,~{}^{,}33footnotemark: 3  Sepp Hochreiter22footnotemark: 2 ,,~{}^{,}33footnotemark: 3
@@ -360,8 +317,7 @@ a point 𝒙~isubscript~𝒙𝑖\tilde{\bm{x}}\_{i} that is at least
 ϵitalic-ϵ\epsilon-close to the single fixed point 𝒙i∗∈Sisuperscriptsubscript𝒙𝑖subscriptS𝑖\bm{x}\_{i}^{\*}\in\mathrm{S}\_{i}.
 The retrieval error is ‖𝒙~i−𝒙i‖normsubscript~𝒙𝑖subscript𝒙𝑖{{\left\|\tilde{\bm{x}}\_{i}-\bm{x}\_{i}\right\|}}.
 
-![Refer to caption](/html/2206.00664/assets/x1.png)
-
+!(/html/2206.00664/assets/x1.png)
 
 Figure 1: Architecture overview of Hopular. Hopular consists of three different types of layers or blocks. (I) Embedding Layer—each attribute of an original input sample is represented in an e𝑒e-dimensional space. The original input sample itself is then represented by the concatenation of all of its attribute representations. (II) Hopular Block—the input representation is then refined by L𝐿L consecutive Hopular blocks. This is achieved by applying the two Hopfield modules Hssubscript𝐻𝑠H\_{s} and Hfsubscript𝐻𝑓H\_{f} in an alternating way. (III) Summarization Layer—lastly, this refined current prediction is summarized by an attribute-wise mapping, leading to the final prediction.
 
@@ -399,8 +355,7 @@ Even for hundreds of thousands of training samples, the
 continuous modern Hopfield network is able to store the training set
 if the dimension of the pattern is large enough.
 
-![Refer to caption](/html/2206.00664/assets/x2.png)
-
+!(/html/2206.00664/assets/x2.png)
 
 Figure 2: A Hopular Block. The first Hopfield module stores the whole training set and identifies sample-sample relations. The second Hopfield module stores the embedded input features and extracts feature-feature and feature-target relations. The Hopfield
 modules refine the current prediction by combining the aggregated retrievals
@@ -1154,8 +1109,7 @@ The ELLIS Unit Linz, the LIT AI Lab, the Institute for Machine Learning, are sup
 
 ### A.1 Architecture
 
-![Refer to caption](/html/2206.00664/assets/x3.png)
-
+!(/html/2206.00664/assets/x3.png)
 
 Figure A.3: Embedding Layer. All attributes of an original input sample
 are mapped to an e𝑒e-dimensional embedding space. The position of an
@@ -1164,8 +1118,7 @@ three embedding vectors are summed and serve as the final
 representation of an input attribute. The input sample is represented
 by the concatenation of all its attribute representations.
 
-![Refer to caption](/html/2206.00664/assets/x4.png)
-
+!(/html/2206.00664/assets/x4.png)
 
 Figure A.4: Summarization Layer. The current prediction vector on the right is mapped to the final prediction vector on the left by separately mapping each current attribute
 prediction to its respective final prediction. This final prediction vector lives
@@ -1626,83 +1579,3 @@ algorithms which Hopular can mimic.
 ### A.7 Source code
 
 Source code is available at: <https://github.com/ml-jku/hopular>
-
-[◄](/html/2206.00663)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2206.00664)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2206.00664)
-[View original  
-on arXiv](https://arxiv.org/abs/2206.00664)[►](/html/2206.00665)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 19:41:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

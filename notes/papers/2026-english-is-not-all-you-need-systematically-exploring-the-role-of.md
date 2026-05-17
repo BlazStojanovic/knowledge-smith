@@ -22,10 +22,13 @@ slug: english-is-not-all-you-need-systematically-exploring-the-role-of
 tags:
 - type/paper
 - status/stub
+- multilingual
+- fine-tuning
+- llm
 title: 'English is Not All You Need: Systematically Exploring the Role of Multilinguality
   in LLM Post-Training'
 type: note
-updated: '2026-05-11'
+updated: '2026-05-15'
 year: 2026
 ---
 
@@ -35,7 +38,7 @@ year: 2026
 
 ## TL;DR
 
-(stub — fill in after reading)
+English-only post-training is usually a weak default for globally deployed LLMs. In 220 fine-tuning runs across math reasoning and API calling, adding multilingual data generally improves or preserves performance, with low-resource languages benefiting most. Even adding one non-English language to English-only SFT lifted English by a median 3.4% on math reasoning and 0.88% on API calling, winning in 75% of configs. **Caveat**: very small models can hit capacity limits, especially on structured API-calling tasks. (tl;dr by Blaz.)
 
 ## Abstract
 

@@ -42,50 +42,7 @@ url: https://arxiv.org/abs/2601.02316
 year: 2026
 ---
 
-[2601.02316] DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-# [Uncaptioned image] DatBench Discriminative, Faithful, and Efficient VLM Evaluations
+#  DatBench Discriminative, Faithful, and Efficient VLM Evaluations
 
 ###### Abstract
 
@@ -93,19 +50,19 @@ Empirical evaluation serves as the primary compass guiding research progress in 
 Rather than discarding existing benchmarks, we curate them via transformation and filtering to maximize their fidelity and discriminability.
 We find that transformations such as converting MCQs to generative tasks reveal sharp capability drops of up to 35%. In addition, filtering blindly-solvable and mislabeled samples enhances the discriminative power of these evaluations, while simultaneously reducing their computational cost. We release DatBench-Full, a cleaned evaluation suite of 33 datasets spanning nine VLM capabilities, and DatBench, a discriminative subset that achieves 13× average speedup (up to 50×) while closely matching the discriminative power of the original datasets. Our work provides a path towards evaluation practices that are both rigorous and sustainable as VLMs continue to scale.
 
-[![[Uncaptioned image]](/html/2601.02316/assets/figures/hf_logo.png) DatBench: https://huggingface.co/datasets/DatologyAI/DatBench](https://huggingface.co/datasets/DatologyAI/DatBench)
+[ DatBench: https://huggingface.co/datasets/DatologyAI/DatBench](https://huggingface.co/datasets/DatologyAI/DatBench)
   
-[![[Uncaptioned image]](/html/2601.02316/assets/figures/hf_logo.png) DatBench-Full: https://huggingface.co/datasets/DatologyAI/DatBench-Full](https://huggingface.co/datasets/DatologyAI/DatBench-Full)
+[ DatBench-Full: https://huggingface.co/datasets/DatologyAI/DatBench-Full](https://huggingface.co/datasets/DatologyAI/DatBench-Full)
   
-[![[Uncaptioned image]](/html/2601.02316/assets/figures/github_logo.png) Code: https://github.com/datologyai/DatBench](https://github.com/datologyai/DatBench)
+[ Code: https://github.com/datologyai/DatBench](https://github.com/datologyai/DatBench)
 
 DatologyAI Team111See Contributions and Acknowledgments (§ [7](#S7 "7 Contributions and Acknowledgements ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")) for full author list.
 
 ## 1 Introduction
 
-![Refer to caption](/html/2601.02316/assets/figures/discrimination_multi_capability_uniform_light.png)
+!(/html/2601.02316/assets/figures/discrimination_multi_capability_uniform_light.png)
 
-![Refer to caption](/html/2601.02316/assets/figures/speedup.png)
+!(/html/2601.02316/assets/figures/speedup.png)
 
 Figure 1: 
 DatBench reduces evaluation cost while increasing discriminative signal.
@@ -261,13 +218,11 @@ Standard MCQ formats systematically overestimate model capability through two pr
 First, multiple-choice questions introduce a non-trivial chance baseline (1/N1/N for NN options), allowing models to achieve inflated scores that add significant noise to performance metrics.
 This inflation is compounded when evaluating across multiple stochastic samples or models; the probability of an item appearing ”solved” by at least one of MM uniform random guesses grows rapidly as 1−(1−1/N)M1-(1-1/N)^{M}. Second, there is a fundamental mismatch between evaluation and deployment: while most VLMs are used in generative contexts, MCQs merely test the ability to pick a candidate from a pre-defined list. This ”closed-set” evaluation fails to capture the generative reasoning required for real-world tasks and allows models to rely on superficial shortcuts or linguistic priors within the options themselves (Chandak et al., [2025](#bib.bib1 "Answer matching outperforms multiple choice for language model evaluation")). As shown in Figure [3](#S3.F3 "Figure 3 ‣ Problem: Chance Baselines and The Evaluation-Deployment Gap ‣ 3.1 MCQ Evaluations: High Noise, Low Fidelity ‣ 3 The Making of DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")a, this creates a ”perceived capability” bubble in which models appear proficient in MCQ formats while failing to produce the same answers in a fully generative regime.
 
-![Refer to caption](/html/2601.02316/assets/figures/ai2d_mcq_vs_gen_by_size_light.png)
-
+!(/html/2601.02316/assets/figures/ai2d_mcq_vs_gen_by_size_light.png)
 
 ((a)) Generative transformation reveals the non-linear capability gap masked by MCQ guessing.
 
-![Refer to caption](/html/2601.02316/assets/figures/circular_eval_vs_vanilla_mcq_by_dataset_light.png)
-
+!(/html/2601.02316/assets/figures/circular_eval_vs_vanilla_mcq_by_dataset_light.png)
 
 ((b)) Circular evaluation yields a more discriminative signal by filtering for consistent reasoning.
 
@@ -289,19 +244,15 @@ Correcting this inflation is crucial: a benchmark is most valuable when it can a
 
 A significant challenge in VLM evaluation is “blind solvability”, a phenomenon in which models correctly answer questions without visual input by exploiting the language priors encoded in their LM backbones. This phenomenon fundamentally decouples benchmark performance from actual multimodal reasoning, inadvertently rewarding models with stronger language priors rather than superior visual understanding. This creates a “mirage” of progress, due to which improvements in the vision encoder or cross-modal connector are masked by the overwhelming influence of the text-based backbone. Consequently, models with more capable LMs are often deemed to be stronger VLMs simply because they are better at guessing answers from context.
 
-![Refer to caption](/html/2601.02316/assets/figures/ai2d_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/ai2d_no_image_distribution_generative_scoring_function.png)
 
 ((a)) AI2D
 
-![Refer to caption](/html/2601.02316/assets/figures/charxiv_descriptive_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/charxiv_descriptive_no_image_distribution_generative_scoring_function.png)
 
 ((b)) CharXiv-Descriptive
 
 Figure 4: Language Priors are often all you need: Histograms show the fraction of dataset examples (yy-axis) correctly answered by a specific number of models (xx-axis) using text alone. Red dashed lines denote rejection thresholds (τ\tau): examples solved by more models than τ\tau are discarded. We apply a strict τ=1\tau=1 for generative tasks, while using higher thresholds for MCQ and constrained-answer tasks to adjust for random guessing baselines (c.f. Appendix [F](#A6 "Appendix F Can be solved blind threshold ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations"))
-
-
 
 | Dataset | Question (text-only part) | Model Output | Ground Truth |
 | --- | --- | --- | --- |
@@ -323,13 +274,11 @@ As illustrated in Figure [4](#S3.F4 "Figure 4 ‣ Problem: Language Priors are 
 
 ### 3.3 Incorrect Ground Truth and Ambiguity
 
-![Refer to caption](/html/2601.02316/assets/figures/ground_truth_quality_vertical_3cat_light.png)
-
+!(/html/2601.02316/assets/figures/ground_truth_quality_vertical_3cat_light.png)
 
 Figure 5: VLM-as-Judge Quality Filtering. Percentage of samples discarded per capability due to ambiguous questions, incorrect ground truth, and samples that are too low resolution (log scale). Spatial capability exhibits the highest discard rate (42.07%), while well-curated capabilities like Grounding and General require minimal filtering (<1%<1\%). Note that a single sample may be labeled under multiple discard categories and is counted in each applicable category.
 
-![Refer to caption](/html/2601.02316/assets/figures/fig5.png)
-
+!(/html/2601.02316/assets/figures/fig5.png)
 
 Figure 6: Top half: Judge identifying incorrect ground-truth samples. Bottom half: Quality control via VLM-as-judge filtering. Examples shown were flagged by unanimous model failure and confirmed as low-quality by the judge.
 
@@ -355,13 +304,11 @@ Instead, we turn to Item Response Theory (IRT) for inspiration, originally forma
 
 Consequently, simply prioritizing rank stability risks overfitting to the evaluated model suite, without guaranteeing the quality or generalizability of the underlying examples. In effect, this produces a “coarse” measuring stick: it yields a subset that is discriminative enough to recover a specific ranking but lacks the resolution to generalize to unseen models or distinguish those with similar capabilities. Therefore, the core optimization problem is not merely to maintain ranking stability, but to maximize total discrimination. By ensuring every sampled example possesses high discriminative power, we can implicitly guarantee robust ranking while maximizing the information content per inference token.
 
-![Refer to caption](/html/2601.02316/assets/figures/discrimination_curve_document_light.png)
-
+!(/html/2601.02316/assets/figures/discrimination_curve_document_light.png)
 
 ((a)) Discrimination vs. Budget
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_curve_document_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_curve_document_full_light.png)
 
 ((b)) Rank Correlation vs. Budget
 
@@ -392,8 +339,7 @@ For the final DatBench subset, we execute steps 1 through 4. However, the discri
 
 We recommend DatBench in high-iteration contexts such as training loops and ablation studies, in which compute costs for evaluation can rapidly balloon but discriminative signal should be maximized. DatBench-Full should be reserved for final model reporting where computational constraints are relaxed and maximum coverage is desired. Collectively, these artifacts transition multimodal evaluation from a regime of noisy data to one of precise measurement.
 
-![Refer to caption](/html/2601.02316/assets/figures/bigtable.png)
-
+!(/html/2601.02316/assets/figures/bigtable.png)
 
 Figure 8: DatBench vs. Original Performance. We plot accuracy on DatBench (yy-axis) against original baselines (xx-axis) for 27 models, demonstrating the impact of our refinements on evaluative faithfulness and discrimination. Points below the diagonal indicate a more rigorous evaluation following the removal of non-discriminative and blind-solvable items, while a larger slope and higher dispersion—most notable in Document Understanding and Math—reveal a higher-resolution instrument that exposes latent differences between models previously masked by noise. Conversely, upward shifts in categories like Counting reflect increased faithfulness achieved by purging incorrectly labeled artifacts that penalized correct reasoning. Despite these interventions, the consistency of model clusters across all nine plots confirms that our methodology establishes a discriminative and efficient evaluation that accurately captures model rankings while remaining sensitive to marginal performance gains.
 
@@ -436,20 +382,17 @@ In this section, we leverage the high-signal artifacts produced by the DatBench 
 
 To identify hidden relationships between tasks, we calculated Pearson correlations (rr) between all capability scores across our model suite (Figure [9(a)](#S5.F9.sf1 "In Figure 9 ‣ Takeaway 1: Capability Correlations Reveal a ”Reasoning vs. Perception” Trade-off. ‣ 5 Diagnosing VLM Pathologies with DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")). We identify a tight Reasoning Cluster in which Chart Understanding, Math, and General VQA exhibit exceptionally high pairwise correlations, such as r=0.90r=0.90 between Chart and General tasks. This analysis confirms that General VQA benchmarks, such as MMBench and MMMU-Pro, primarily test abstract reasoning capabilities that are also fundamental to Math, evidenced by a strong correlation of r=0.76r=0.76 between these two domains. Furthermore, a distinct Spatial-Semantic Trade-off exists: Grounding correlates negatively with text-heavy tasks like Document Understanding (r=−0.29r=-0.29) and OCR (r=−0.19r=-0.19). These negative relationships, alongside the inverse correlation between Math and Spatial Reasoning (r=−0.19r=-0.19), suggest a latent conflict in current training paradigms between high-level semantic processing and low-level perceptual fidelity. Hierarchical clustering (Figure [9(b)](#S5.F9.sf2 "In Figure 9 ‣ Takeaway 1: Capability Correlations Reveal a ”Reasoning vs. Perception” Trade-off. ‣ 5 Diagnosing VLM Pathologies with DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")) corroborates this dichotomy, revealing two distinct clusters: reasoning (Chart, Math, General) and perception (OCR, Spatial, Diagram).
 
-![Refer to caption](/html/2601.02316/assets/figures/capability_heatmap.png)
-
+!(/html/2601.02316/assets/figures/capability_heatmap.png)
 
 ((a)) Strong links exist between reasoning tasks, while spatial tasks often conflict with text-heavy ones.
 
-![Refer to caption](/html/2601.02316/assets/figures/dendrogram.png)
-
+!(/html/2601.02316/assets/figures/dendrogram.png)
 
 ((b)) Hierarchical clustering (average linkage, distance =1−r=1-r) reveals two main clusters: reasoning (Chart, Math, General) and perception (OCR, Spatial, Diagram).
 
 Figure 9: Correlation analysis of model capabilities across 26 vision-language models. Pairwise Pearson correlations are computed between mean accuracy scores for each capability. (a) Capability correlations. (b) Capability clustering.
 
-![Refer to caption](/html/2601.02316/assets/figures/radar.png)
-
+!(/html/2601.02316/assets/figures/radar.png)
 
 Figure 10: Capability Profiles. Models show clear trade-offs between general reasoning and specialized visual tasks.
 
@@ -457,13 +400,11 @@ Figure 10: Capability Profiles. Models show clear trade-offs between general rea
 
 This trade-off manifests in distinct model archetypes (Figure [10](#S5.F10 "Figure 10 ‣ Takeaway 1: Capability Correlations Reveal a ”Reasoning vs. Perception” Trade-off. ‣ 5 Diagnosing VLM Pathologies with DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")). GLM-4.1V-9B acts as a perception specialist, leading in diagram understanding (66.4%) and spatial reasoning (36.8%) but struggling with math (17.4%). Balanced generalists are rare: Qwen3-VL-4B is a notable exception, maintaining strong document understanding (71.0%), OCR (77.9%), and reasoning (59.9%). Most tellingly, R-4B reaches the highest math score (43.4%) at the cost of the lowest spatial performance (11.4%), suggesting that (current) reasoning-focused training can degrade visual grounding.
 
-![Refer to caption](/html/2601.02316/assets/figures/thinking_vs_no_thinking_delta_light.png)
-
+!(/html/2601.02316/assets/figures/thinking_vs_no_thinking_delta_light.png)
 
 ((a)) Inference Scaling Impact
 
-![Refer to caption](/html/2601.02316/assets/figures/thinking_vs_nonthinking_tokens_light.png)
-
+!(/html/2601.02316/assets/figures/thinking_vs_nonthinking_tokens_light.png)
 
 ((b)) Computational Cost of Errors
 
@@ -473,8 +414,7 @@ Figure 11: The Overthinking Penalty. (a) Scaling compute helps reasoning but hur
 
 Comparing Thinking models to standard counterparts reveals that extra test-time compute is a double-edged sword (Figure [11(a)](#S5.F11.sf1 "In Figure 11 ‣ Takeaway 2: Capability Profiles Reveal Specialist-Generalist Trade-offs. ‣ 5 Diagnosing VLM Pathologies with DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")). To quantify this, we define the Thinking relative advantage as the percentage gain in accuracy of the thinking model over its instruct counterpart, normalized by the instruct baseline: (A​c​ct​h​i​n​k​i​n​g−A​c​ci​n​s​t​r​u​c​t)/A​c​ci​n​s​t​r​u​c​t×100(Acc\_{thinking}-Acc\_{instruct})/Acc\_{instruct}\times 100. Scaling helps Math (≈+36.8%\approx+36.8\%) and Charts (≈+10.8%\approx+10.8\%) but causes massive regressions in OCR (≈−53.5%\approx-53.5\%) and Document Understanding (≈−47.8%\approx-47.8\%). This regression is also extremely computationally wasteful: while correct thinking answers use ≈425\approx 425 tokens, incorrect attempts balloon to ≈1196.9\approx 1196.9 tokens, a ≈14×\approx 14\times increase over non-thinking models (Figure [11(b)](#S5.F11.sf2 "In Figure 11 ‣ Takeaway 2: Capability Profiles Reveal Specialist-Generalist Trade-offs. ‣ 5 Diagnosing VLM Pathologies with DatBench ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")). We observed that this is due to models entering unproductive thinking loops on perceptual tasks they cannot solve. Prior work has observed a similar overthinking penalty for language models (Hochlehnert et al., [2025](#bib.bib83 "A sober look at progress in language model reasoning: pitfalls and paths to reproducibility"); Su et al., [2025](#bib.bib80 "Between underthinking and overthinking: an empirical study of reasoning length and correctness in llms"); Wang et al., [2025](#bib.bib81 "Thoughts are all over the place: on the underthinking of o1-like llms"); Wu et al., [2025](#bib.bib82 "When more is less: understanding chain-of-thought length in llms")).
 
-![Refer to caption](/html/2601.02316/assets/figures/vision_delta_by_capability.png)
-
+!(/html/2601.02316/assets/figures/vision_delta_by_capability.png)
 
 Figure 12: Vision vs. Text Priors. Tasks like Counting require seeing the image, whereas Math can often be solved by language prior alone.
 
@@ -967,8 +907,7 @@ Table 4: H100 hours per model and capability. Sample counts are shown in the sec
 
 We provide an example of converting an eval sample from AI2D from MCQ to generative in Fig. [13](#A3.F13 "Figure 13 ‣ C.1 Qualitative Example ‣ Appendix C Considerations converting from MCQ to Generative ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")
 
-![Refer to caption](/html/2601.02316/assets/figures/ai2dmcqgen.png)
-
+!(/html/2601.02316/assets/figures/ai2dmcqgen.png)
 
 Figure 13: Example of converting a sample from AI2D from its native MCQ format to the generative setting
 
@@ -981,13 +920,11 @@ Figure 13: Example of converting a sample from AI2D from its native MCQ format t
 
   MME-Realworld and MMBench - We keep these in their original MCQ format because many questions are underspecified as free-form prompts: the answer choices provide crucial context about what kind of response is expected. Converting these items to generative QA would not give models sufficient signal about the task definition (see Figure [14](#A3.F14 "Figure 14 ‣ C.2 Evals that we had to keep as MCQ ‣ Appendix C Considerations converting from MCQ to Generative ‣ DatBenchDiscriminative, Faithful, and Efficient VLM Evaluations")). Further, many counting questions involve scenes with a very large number of objects, where an exact count is both ambiguous and brittle to minor visual uncertainty. In these cases, the benchmark is primarily probing whether the model can distinguish coarse scales (e.g., few vs many, tens vs hundreds) rather than recover a precise integer, so enforcing an exact-match generative answer would add noise and misrepresent the intended capability being measured.
 
-![Refer to caption](/html/2601.02316/assets/figures/MME_realworld_example.png)
-
+!(/html/2601.02316/assets/figures/MME_realworld_example.png)
 
 ((a)) Samples from MME-Realworld
 
-![Refer to caption](/html/2601.02316/assets/figures/MMBench_example.png)
-
+!(/html/2601.02316/assets/figures/MMBench_example.png)
 
 ((b)) Samples from MMBench
 
@@ -1090,104 +1027,81 @@ Table 6: Quality Filtering Statistics Aggregated by Capability
 
 ## Appendix E Item-Discrimination Subset Selection
 
-![Refer to caption](/html/2601.02316/assets/figures/discrimination_by_capability_k5000_light.png)
-
+!(/html/2601.02316/assets/figures/discrimination_by_capability_k5000_light.png)
 
 Figure 15: Discriminative power of DatBench compared with Random subsets (kk=5000)
 
-
-
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_spatial_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_spatial_light.png)
 
 ((a)) Spatial
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_math_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_math_light.png)
 
 ((b)) Math
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_document_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_document_light.png)
 
 ((c)) Document
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_table_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_table_light.png)
 
 ((d)) Table
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_chart_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_chart_light.png)
 
 ((e)) Chart
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_scene_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_scene_light.png)
 
 ((f)) Scene
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_counting_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_counting_light.png)
 
 ((g)) Counting
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_general_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_general_light.png)
 
 ((h)) General
 
-![Refer to caption](/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_grounding_light.png)
-
+!(/html/2601.02316/assets/figures/discriminative_power_plots/discrimination_curve_grounding_light.png)
 
 ((i)) Grounding
 
 Figure 16: Discriminative power as a function of retained data across all capabilities
 
-
-
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_spatial_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_spatial_full_light.png)
 
 ((a)) Spatial
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_math_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_math_full_light.png)
 
 ((b)) Math
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_document_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_document_full_light.png)
 
 ((c)) Document
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_table_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_table_full_light.png)
 
 ((d)) Table
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_chart_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_chart_full_light.png)
 
 ((e)) Chart
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_scene_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_scene_full_light.png)
 
 ((f)) Scene
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_counting_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_counting_full_light.png)
 
 ((g)) Counting
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_general_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_general_full_light.png)
 
 ((h)) General
 
-![Refer to caption](/html/2601.02316/assets/figures/correlation_plots/correlation_curve_grounding_full_light.png)
-
+!(/html/2601.02316/assets/figures/correlation_plots/correlation_curve_grounding_full_light.png)
 
 ((i)) Grounding
 
@@ -1217,8 +1131,6 @@ Figure 17: Rank correlation as a function of retained data across all capabiliti
 
 Table 7: Can-be-solved-blind thresholds for each evaluation dataset. Thresholds indicate the number of models that can correctly answer a question without visual input, above which the question is considered potentially solvable blind.
 
-
-
 | Capability | Total Samples | Samples Removed | Fraction Removed (%) |
 | --- | --- | --- | --- |
 | General | 220,413 | 158,841 | 72.07% |
@@ -1238,134 +1150,43 @@ For each evaluation subset, we define a *can-be-solved-blind* threshold, corresp
 
 As representative examples, inherently visual tasks such as chart understanding (e.g., ChartQA and related variants) exhibit near-zero blind solvability, with a clear inflection at a single model, motivating a minimal threshold of one. In contrast, multiple-choice evaluations such as RealWorldQA or MMMU-Pro admit non-trivial blind success due to chance-level guessing; in these cases, thresholds are set above random baselines (e.g., exceeding ⌊0.25×N⌋\lfloor 0.25\times N\rfloor models for four-option questions). Similarly, counting benchmarks such as CountBench and TallyQA show systematic biases toward small-number answers, leading to higher blind accuracy despite missing visual input; thresholds are therefore selected at empirical inflection points rather than at one. Finally, for datasets with lenient or continuous scoring metrics (e.g., multi-scene OCR), higher thresholds mitigate false positives arising from partial string matches or overly permissive correctness criteria.
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/chartqa_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/chartqa_no_image_distribution_generative_scoring_function.png)
 
 ((a)) ChartQA
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/tallyqa_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/tallyqa_no_image_distribution_generative_scoring_function.png)
 
 ((b)) TallyQA
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/ai2d_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/ai2d_no_image_distribution_generative_scoring_function.png)
 
 ((c)) AI2D
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/ocr-vqa_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/ocr-vqa_no_image_distribution_generative_scoring_function.png)
 
 ((d)) OCR-VQA
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/text-vqa_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/text-vqa_no_image_distribution_generative_scoring_function.png)
 
 ((e)) TextVQA
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/realworldqa_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/realworldqa_no_image_distribution_generative_scoring_function.png)
 
 ((f)) RealworldQA
 
 Figure 18: Blind solvable thresholds and histograms across datasets (part 1 of 2).
 
-
-
-![Refer to caption](/html/2601.02316/assets/figures/histograms/mathvision_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/mathvision_no_image_distribution_generative_scoring_function.png)
 
 ((a)) Mathvision
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/refcoco_m_val_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/refcoco_m_val_no_image_distribution_generative_scoring_function.png)
 
 ((b)) RefCOCO-M
 
-![Refer to caption](/html/2601.02316/assets/figures/histograms/vqa-v2_no_image_distribution_generative_scoring_function.png)
-
+!(/html/2601.02316/assets/figures/histograms/vqa-v2_no_image_distribution_generative_scoring_function.png)
 
 ((c)) VQAv2
 
 Figure 19: 
 Blind solvable thresholds and histograms across datasets (part 2 of 2).
-
-[◄](/html/2601.02315)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.02316)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.02316)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.02316)[►](/html/2601.02317)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 17:26:35 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

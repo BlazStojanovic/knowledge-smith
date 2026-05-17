@@ -16,50 +16,6 @@ url: https://arxiv.org/abs/2305.05364
 year: 2023
 ---
 
-[2305.05364] Large Language Model Programs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Large Language Model Programs
 
 Imanol Schlag
@@ -110,7 +66,7 @@ Hiding information which is irrelevant to the current step allows us to focus on
 This intuitive approach allows us to extend the ability of an LLM to more complex tasks which are currently too difficult either because of a lack of ability or an architectural constraint such as an insufficiently large context.
 Concurrent work proves that embedding an LLM within a recurrent algorithm which enables the interaction with an external memory component makes the system computationally universal (Schuurmans, [2023](#bib.bib54)).
 
-![Refer to caption](/html/2305.05364/assets/figures/illustration.png)
+!(/html/2305.05364/assets/figures/illustration.png)
 
 Figure 1: An illustration of our two-part LLM program example. The first part (left) of our program filters out irrelevant paragraphs from a large set. This is achieved using an LLM and the current question. The second part (right) depicts the generation of the individual reasoning steps until they result in an answer. The tree search is over the choice of paragraph used within the context when generating a single step in the reasoning chain. We expand the reasoning chain which ranks the highest as described in Section [3.1.2](#S3.SS1.SSS2 "3.1.2 Tree Search Experiment ‣ 3.1 Developing the LLM Program ‣ 3 An LLM Program for Question Answering ‣ Large Language Model Programs").
 
@@ -283,19 +239,15 @@ This is especially powerful if we know what the optimal algorithm or behaviour s
 In this section, we present a more systematic search over reasoning steps to ensure generalisation where we consider it most crucial.
 As in the filtering part, we develop and test the tree search in isolation using a dedicated dataset.
 
-![Refer to caption](/html/2305.05364/assets/figures/probs_over_paragraphs.png)
+!(/html/2305.05364/assets/figures/probs_over_paragraphs.png)
 
   
-
 
 Figure 2: Average likelihood of each question (row) given a paragraph (column) normalised over paragraphs.
 
-
-
-![Refer to caption](/html/2305.05364/assets/figures/top_n.png)
+!(/html/2305.05364/assets/figures/top_n.png)
 
   
-
 
 Figure 3: Top-n accuracy of selecting the true evidence paragraph from our likelihood ranking of 100 paragraphs. The random guessing baseline for top-1 is 1%. The ranking approach significantly outperforms the in-context approach from Table [1](#S3.T1 "Table 1 ‣ Blackbox prompting. ‣ 3.1.1 Evidence Filtering Experiments ‣ 3.1 Developing the LLM Program ‣ 3 An LLM Program for Question Answering ‣ Large Language Model Programs").
 
@@ -1119,83 +1071,3 @@ end for
 end while
 
 return complete
-
-[◄](/html/2305.05363)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2305.05364)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2305.05364)
-[View original  
-on arXiv](https://arxiv.org/abs/2305.05364)[►](/html/2305.05365)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 03:31:21 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

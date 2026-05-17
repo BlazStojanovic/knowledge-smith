@@ -16,28 +16,6 @@ url: http://arxiv.org/abs/2106.02584v2
 year: 2021
 ---
 
-[2106.02584] Untitled Document
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
 else if(!window.matchMedia) { return false; }
 else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
 theme = "dark"; }
@@ -45,7 +23,7 @@ if (theme=="dark") {
 document.documentElement.setAttribute("data-theme", "dark");
 } else {
 document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
+
 function toggleColorScheme(){
 var current\_theme = localStorage.getItem("ar5iv\_theme");
 if (current\_theme) {
@@ -56,8 +34,6 @@ localStorage.setItem("ar5iv\_theme", "light"); } }
 else {
 localStorage.setItem("ar5iv\_theme", "dark"); }
 detectColorScheme(); }
-
-
 
 \doparttoc\faketableofcontents
 
@@ -149,8 +125,7 @@ Additionally, we show that NPTs can solve complex reasoning tasks by combining r
 
 We next discuss the specifics of our model (§[2](#S2 "2 Non-Parametric Transformers")), before moving on to related work (§[3](#S3 "3 Related Work")), empirical results (§[4](#S4 "4 Experiments")), and finally, limitations, future work, and conclusions (§[5](#S5 "5 Limitations, Future Work, and Conclusions")).
 
-![Refer to caption](/html/2106.02584/assets/x1.png)
-
+!(/html/2106.02584/assets/x1.png)
 
 Figure 1: NPTs learn direct interactions between datapoints.
 (a) Input data: predict masked target entry [?] for datapoint 𝑿isubscript𝑿𝑖\bm{X}\_{i}.
@@ -213,8 +188,7 @@ Next, we describe the NPT architecture.
 
 #### 2.2 NPT Architecture
 
-![Refer to caption](/html/2106.02584/assets/x2.png)
-
+!(/html/2106.02584/assets/x2.png)
 
 Figure 2: Overview of the Non-Parametric Transformer.
 (a) The input dataset and mask matrix are stacked and (b) linearly embedded for all datapoints independently.
@@ -499,8 +473,7 @@ We also explore linear patching on CIFAR-10. See
 
 #### 4.2 NPTs Can Learn to Predict Using Attention Between Datapoints
 
-![Refer to caption](/html/2106.02584/assets/x3.png)
-
+!(/html/2106.02584/assets/x3.png)
 
 Figure 3: 
 Demonstrating NPT’s ability to predict from Attention Between Datapoints (ABD).
@@ -577,8 +550,7 @@ However, we stress that these results reflect inductive biases of the NPT archit
 
 #### 4.4 NPTs Rely on Similar Datapoints for Predictions on Real Data
 
-![Refer to caption](/html/2106.02584/assets/x4.png)
-
+!(/html/2106.02584/assets/x4.png)
 
 Figure 4: Fig. 4: Attention weights.
 
@@ -1441,8 +1413,7 @@ Behavior (b) is irrelevant to loss, because NPT does not need to predict anythin
 However, (b) suggests that the query embeddings learned by the self-attention *ignore* the masked out label column in the input.
 Hence, the resulting queries for the originals and the duplicates would be identical – both leading to high attention values for the keys of the duplicates – and ultimately resulting in the double diagonals in [Fig. B.1](#A2.F1 "In B.1.1 Attention Maps for the Semi-Synthetic Experiments ‣ B.1 Semi-Synthetic Experiments ‣ Appendix B Additional Results ‣ Appendix").
 
-![Refer to caption](/html/2106.02584/assets/x5.png)
-
+!(/html/2106.02584/assets/x5.png)
 
 Figure B.1: 
 Visualizations of NPT attention maps for Attention Between Datapoints (ABD) for the semi-synthetic experiment at all model depths, a selection of heads, and a single batch of input data.
@@ -1609,8 +1580,7 @@ Specifically, nearby entries in the attention maps belong to input datapoints th
 With this transformation, the diagonal patterns appearing in [Fig. B.2](#A2.F2 "In B.3.1 Attention Maps on Real Data ‣ B.3 Real Data – To Which Other Points Does NPT Attend? ‣ Appendix B Additional Results ‣ Appendix") clearly suggest that our model is attending more strongly between datapoints that are similar in input space.
 Similar to the semi-synthetic experiments, some but not all attention heads display this pattern of interest.
 
-![Refer to caption](/html/2106.02584/assets/x6.png)
-
+!(/html/2106.02584/assets/x6.png)
 
 Figure B.2: 
 Visualizations of the Attention Between Datapoints (ABD) attention maps for real data – here, the Protein regression dataset – for all depths and a selection of heads.
@@ -1734,8 +1704,7 @@ end while
 
 Algorithm 2 Data Deletion
 
-![Refer to caption](/html/2106.02584/assets/x7.png)
-
+!(/html/2106.02584/assets/x7.png)
 
 Figure B.3: 
 When predicting for any given datapoint, NPT prefers to keep similar datapoints around.
@@ -1929,9 +1898,6 @@ Table 6: Protein dataset (45,730 datapoints): compute and memory requirements of
 | TabNet | 111 | 1h 33m 35s | 16.00 | 3.72 |
 | NPT | 444 | 11h 51m 25s | 4.42 | 6.17 |
 
-
-
-
 Table 7: Higgs dataset (11,000,000 datapoints): compute and memory requirements of hyperparameter tuning for baselines and training time of the selected hyperparameter configuration for NPTs. We report the number of CPUs used in execution, execution time, and peak memory usage, where the relevant bottleneck is main memory usage for CPU-based methods and GPU memory usage for GPU-based methods (i.e., TabNet and NPT).
 
 |  |  |  |  |  |
@@ -1987,9 +1953,6 @@ Table 8: UCI classification datasets: test accuracy. Standard error reported for
 | TabNet888TabNet had notably lower accuracy in our setup on the Poker Hand dataset (which has a fixed test set) than that the 99.2% reported in the original work [[2](#bib.bib2)]. We are in communication with the authors, attempting to improve these results. However, our results on Higgs Boson match the reported performance more closely (78.44%percent78.4478.44\% (theirs) vs 77.1%percent77.177.1\% (ours)). Further, we note that our other baselines achieve significantly better performance on the same datasets than those reported in [[2](#bib.bib2)]; e.g., our MLP achieves 99.5%percent99.599.5\% accuracy on Poker Hand dataset while they report 50.0%percent50.050.0\%; our XGBoost achieves 97.1%percent97.197.1\% on Forest Cover while they report 89.34%percent89.3489.34\%. However, we note that some of the datasets – such as Forest Cover – do not have fixed test sets. Therefore, we cannot exclude the possibility that the performance differences are due to differently chosen train-test splits. | 77.177.177.1 | 53.353.353.3 | 94.294.294.2 | 95.595.595.5 | 89.589.589.5 | 94.91±0.76uncertain94.910.7694.91\pm 0.76 |
 | NPT | 80.780.780.7 | 99.399.399.3 | 96.796.796.7 | 95.695.695.6 | 90.090.090.0 | 94.73±0.69uncertain94.730.6994.73\pm 0.69 |
 
-
-
-
 Table 9: UCI classification datasets: negative log-likelihood (NLL). Standard error reported for datasets with multiple cross-validation splits.
 
 |  |  |  |  |  |  |  |
@@ -2006,9 +1969,6 @@ Table 9: UCI classification datasets: negative log-likelihood (NLL). Standard er
 | NPT | 0.4120.4120.412 | 0.1190.1190.119 | 0.0870.0870.087 | 0.1150.1150.115 | 0.2990.2990.299 | 0.137±0.026uncertain0.1370.0260.137\pm 0.026 |
 |  |  |  |  |  |  |  |
 
-
-
-
 Table 10: UCI classification datasets: test area under the receiver operating characteristic curve (AUROC) on binary classification tasks. Standard error reported for datasets with multiple cross-validation splits.
 
 |  |  |  |  |  |
@@ -2024,9 +1984,6 @@ Table 10: UCI classification datasets: test area under the receiver operating ch
 | TabNet | 0.8570.8570.857 | 0.9480.9480.948 | 0.7450.7450.745 | 0.978±0.005uncertain0.9780.0050.978\pm 0.005 |
 | NPT | 0.8920.8920.892 | 0.9520.9520.952 | 0.7700.7700.770 | 0.997±0.001uncertain0.9970.0010.997\pm 0.001 |
 
-
-
-
 Table 11: UCI regression datasets: test root mean-squared error (RMSE). Standard error reported for datasets with multiple cross-validation splits.
 
 |  |  |  |  |  |
@@ -2041,9 +1998,6 @@ Table 11: UCI regression datasets: test root mean-squared error (RMSE). Standard
 | k-NN | 3.773.773.77 | 8.51±0.3uncertain8.510.38.51\pm 0.3 | 4.27±0.37uncertain4.270.374.27\pm 0.37 | 12.02±0.65uncertain12.020.6512.02\pm 0.65 |
 | TabNet | 3.593.593.59 | 5.85±0.15uncertain5.850.155.85\pm 0.15 | 3.88±0.34uncertain3.880.343.88\pm 0.34 | 3.41±1.12uncertain3.411.123.41\pm 1.12 |
 | NPT | 3.413.413.41 | 5.21±0.20uncertain5.210.205.21\pm 0.20 | 2.92±0.15uncertain2.920.152.92\pm 0.15 | 1.27±0.15uncertain1.270.151.27\pm 0.15 |
-
-
-
 
 Table 12: UCI regression datasets: test mean-squared error (MSE). Standard deviation reported for datasets with multiple cross-validation splits.
 
@@ -2496,9 +2450,6 @@ Table 14: UCI classification dataset statistics and experimental setup details.
 | Fixed Test Set | Yes | Yes | No | Yes | No | No (10-Fold CV) |
 | Uses Minibatching | Yes | Yes | Yes | Yes | Yes | No |
 
-
-
-
 Table 15: UCI regression dataset statistics and experimental setup details.
 
 |  |  |  |  |  |
@@ -2588,9 +2539,6 @@ Random Forest classification hyperparameters.
 | Hyperparameter | criterion | n\_estimators | max\_features |
 | Setting | gini, entropy | [50, 1000] | auto, sqrt, log2 |
 
-
-
-
 Table 18: 
 Random Forest regression hyperparameters.
 
@@ -2599,9 +2547,6 @@ Random Forest regression hyperparameters.
 | Hyperparameter | criterion | n\_estimators | max\_features |
 | Setting | mae, mse | [50, 1000] | auto, sqrt, log2 |
 
-
-
-
 Table 19: 
 Gradient Boosting, XGBoost, LightGBM, and CatBoost hyperparameters (for both regression and classification).
 
@@ -2609,9 +2554,6 @@ Gradient Boosting, XGBoost, LightGBM, and CatBoost hyperparameters (for both reg
 | --- | --- | --- | --- |
 | Hyperparameter | learning\_rate | max\_depth | n\_estimators |
 | Setting | [1e-3, 0.3] | [3, 10] | [50, 1000] |
-
-
-
 
 Table 20: 
 MLP hyperparameters for small datasets (Boston Housing, Breast Cancer, Concrete, and Yacht).
@@ -2626,9 +2568,6 @@ MLP hyperparameters for small datasets (Boston Housing, Breast Cancer, Concrete,
 | Hyperparameter | batch\_size | learning\_rate | learning\_rate\_init |
 | Setting | [32, 256] | constant, invscaling, adaptive | [1e-5, 1e-1] |
 
-
-
-
 Table 21: 
 MLP hyperparameters for medium and large datasets other than Higgs Boson (Protein, Kick, Income, Poker Hand, Forest Cover).
 
@@ -2641,9 +2580,6 @@ MLP hyperparameters for medium and large datasets other than Higgs Boson (Protei
 | --- | --- | --- | --- |
 | Hyperparameter | batch\_size | learning\_rate | learning\_rate\_init |
 | Setting | [128, 256] | constant, invscaling, adaptive | [1e-5, 1e-1] |
-
-
-
 
 Table 22: 
 MLP hyperparameters for the Higgs Boson dataset.
@@ -2658,9 +2594,6 @@ MLP hyperparameters for the Higgs Boson dataset.
 | Hyperparameter | batch\_size | learning\_rate | learning\_rate\_init |
 | Setting | [512, 1024] | constant | [1e-4, 1e-2] |
 
-
-
-
 Table 23: 
 k-NN hyperparameters for small datasets (Boston Housing, Breast Cancer, Concrete, and Yacht).
 
@@ -2669,9 +2602,6 @@ k-NN hyperparameters for small datasets (Boston Housing, Breast Cancer, Concrete
 | Hyperparameter | n\_neighbors | weights | algorithm | leaf\_size | p |
 | Setting | [2, 100] | uniform, distance | ball\_tree, kd\_tree, brute | [10, 100] | 1, 2 |
 
-
-
-
 Table 24: 
 k-NN hyperparameters for medium-large datasets (Protein, Kick, Income, Poker Hand).
 
@@ -2679,9 +2609,6 @@ k-NN hyperparameters for medium-large datasets (Protein, Kick, Income, Poker Han
 | --- | --- | --- | --- | --- | --- |
 | Hyperparameter | n\_neighbors | weights | algorithm | leaf\_size | p |
 | Setting | [2, 1000] | distance | auto | [10, 100] | 2 |
-
-
-
 
 Table 25: 
 k-NN hyperparameters for Forest Cover.
@@ -2754,83 +2681,3 @@ License: Yann LeCun and Corinna Cortes hold the copyright of MNIST dataset, whic
 
 UCI Machine Learning Repository:
 Licenses for all datasets can be found at [archive.ics.uci.edu/ml/](https://archive.ics.uci.edu/ml/index.php).
-
-[◄](/html/2106.02583)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2106.02584)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2106.02584)
-[View original  
-on arXiv](https://arxiv.org/abs/2106.02584)[►](/html/2106.02585)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 19 10:09:26 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

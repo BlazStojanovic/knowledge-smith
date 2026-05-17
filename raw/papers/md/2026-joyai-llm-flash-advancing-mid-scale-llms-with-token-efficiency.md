@@ -78,49 +78,6 @@ url: https://arxiv.org/abs/2604.03044
 year: 2026
 ---
 
-[2604.03044] JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency
 
 JD.com
@@ -239,8 +196,7 @@ establishing a new baseline for strong performance, token
 efficiency, and computational efficiency within the sub-50B
 parameter regime.
 
-![Refer to caption](/html/2604.03044/assets/x1.png)
-
+!(/html/2604.03044/assets/x1.png)
 
 Figure 1: Model performance *vs.* token consumption across different middle-scale LLMs. The accuracy and token consumption averaged across eighteen benchmarks used in post-training evaluation (Table [3](#S3.T3 "Table 3 ‣ 3.4 Instruct Model Evaluation ‣ 3 Post-Training ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency")) are illustrated, where the upper-right region indicates more token-efficient models. Bubble size represents the model parameter count.
 
@@ -250,22 +206,22 @@ We also quantized JoyAI-LLM Flash from bfloat16 to FP8, INT8, FP4 and GGUF. Alon
 
 * •
 
-  [JoyAI-LLM Flash Base](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-Base) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the pre-trained base model
+  [JoyAI-LLM Flash Base](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-Base) : the pre-trained base model
 * •
 
-  [JoyAI-LLM Flash BF16](https://huggingface.co/jdopensource/JoyAI-LLM-Flash) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the post-trained model
+  [JoyAI-LLM Flash BF16](https://huggingface.co/jdopensource/JoyAI-LLM-Flash) : the post-trained model
 * •
 
-  [JoyAI-LLM Flash FP8](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-FP8) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the post-trained model quantized with the FP8 format delivering an excellent trade-off between performance and efficiency
+  [JoyAI-LLM Flash FP8](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-FP8) : the post-trained model quantized with the FP8 format delivering an excellent trade-off between performance and efficiency
 * •
 
-  [JoyAI-LLM Flash INT8](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-INT8) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the post-trained model quantized with the INT8 format achieving an optimal trade-off between performance and efficiency and compatible with some AI accelerators
+  [JoyAI-LLM Flash INT8](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-INT8) : the post-trained model quantized with the INT8 format achieving an optimal trade-off between performance and efficiency and compatible with some AI accelerators
 * •
 
-  [JoyAI-LLM Flash INT4](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-INT4) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the post-trained model quantized with the INT4 format serving as an ultra-compact variant tailored for environments with extremely restricted VRAM, such as consumer-level processors
+  [JoyAI-LLM Flash INT4](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-INT4) : the post-trained model quantized with the INT4 format serving as an ultra-compact variant tailored for environments with extremely restricted VRAM, such as consumer-level processors
 * •
 
-  [JoyAI-LLM Flash GGUF](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-GGUF) ![[Uncaptioned image]](/html/2604.03044/assets/figures/huggingface-color.png): the post-trained model quantized with the GGUF ultra-low-bit format delivering broad compatibility across personal computers
+  [JoyAI-LLM Flash GGUF](https://huggingface.co/jdopensource/JoyAI-LLM-Flash-GGUF) : the post-trained model quantized with the GGUF ultra-low-bit format delivering broad compatibility across personal computers
 
 The rest of this report is arranged as follows. Section
 [2](#S2 "2 Pretraining ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency") describes the pretraining process of
@@ -398,8 +354,7 @@ Long-form reasoning QA synthesis. We construct reasoning-intensive supervision t
 
 Agentic trajectory synthesis. To further augment general agentic capabilities, we complement the reasoning-centric mixture with large-scale tool-use trajectories generated through a staged execution pipeline, as illustrated in Figure [2](#S2.F2 "Figure 2 ‣ 2.3.4 Large-Scale Data Synthesis ‣ 2.3 Pretraining Data ‣ 2 Pretraining ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency"). We first sample diverse atomic tasks across domains, then compose them into more challenging multi-intent tasks while removing repeated goals and duplicate combinations. These tasks are compiled into executable scripts and instantiated via multi-turn simulations, where GLM-4.6 [5team2025glm45agenticreasoningcoding] serves as the primary agentic actor to simulate complex user–agent interactions under varied patterns. We subsequently employ an LLM-based evaluator to filter trajectories against a comprehensive set of rubrics, covering aspects such as role consistency, task completeness, and planning conciseness.
 
-![Refer to caption](/html/2604.03044/assets/x2.png)
-
+!(/html/2604.03044/assets/x2.png)
 
 Figure 2: Agentic trajectory synthesis pipeline
 
@@ -419,13 +374,11 @@ Scaling laws. During our model training process, we utilized the scaling law alg
 The scaling law provided predictive insights throughout the training, particularly in terms of resource allocation, as well as adjustments to training hyperparameters and data compositions. As shown in the Figure [3](#S2.F3 "Figure 3 ‣ 2.4 Training Strategy ‣ 2 Pretraining ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency"), we compared the scaling law with model training loss and domain-specific benchmarks. The learning curve for training loss aligned perfectly with the scaling law’s step predictions. Although downstream tasks displayed more variability, their performance was still commendable, generally fluctuating around the scaling law trend.
 A noteworthy discovery was the use of model merging to simulate a decay in the learning rate. This approach led to more stable improvements in the performance of sub-domain tasks, aligning with the scaling law trajectory. This finding underscores the potential of model merging to optimize learning dynamics within the framework of scaling laws.
 
-![Refer to caption](/html/2604.03044/assets/x3.png)
-
+!(/html/2604.03044/assets/x3.png)
 
 (a) LOSS
 
-![Refer to caption](/html/2604.03044/assets/x4.png)
-
+!(/html/2604.03044/assets/x4.png)
 
 (b) Benchmark
 
@@ -491,8 +444,7 @@ To maximize computational efficiency during training, we pack sequences to a con
 
 #### 3.1.2 Environment and Agent Learning
 
-![Refer to caption](/html/2604.03044/assets/x5.png)
-
+!(/html/2604.03044/assets/x5.png)
 
 Figure 4: Verifiable Environment Pipeline
 
@@ -752,8 +704,7 @@ sign:
 | --- | --- | --- | --- |
 |  | log⁡sτ+:=1Tτ​∑t=0Tτ−1max⁡(log⁡rst​(τ),at​(τ), 0),log⁡sτ−:=1Tτ​∑t=0Tτ−1max⁡(−log⁡rst​(τ),at​(τ), 0).\log s^{+}\_{\tau}:=\frac{1}{T\_{\tau}}\sum\_{t=0}^{T\_{\tau}-1}\max(\log r\_{s\_{t}(\tau),a\_{t}(\tau)},\,0),\qquad\log s^{-}\_{\tau}:=\frac{1}{T\_{\tau}}\sum\_{t=0}^{T\_{\tau}-1}\max(-\log r\_{s\_{t}(\tau),a\_{t}(\tau)},\,0). |  | (3) |
 
-![Refer to caption](/html/2604.03044/assets/figures/fiberpo/fiberpo_fiber_weight.png)
-
+!(/html/2604.03044/assets/figures/fiberpo/fiberpo_fiber_weight.png)
 
 Figure 5: (a) Aggregate gate gaggg^{\rm agg} (Eq. [4](#S3.E4 "In Intuitive example. ‣ 3.3.1 The FiberPO Objective ‣ 3.3 Reinforcement Learning (RL) ‣ 3 Post-Training ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency")) with three regimes: pass-through (|x|≤C|x|\leq C, slope 11), rollback (C<|x|<C∗:=(1+Tτ−1)​CC<|x|<C^{\*}:=(1+T\_{\tau}^{-1})C, slope −Tτ-T\_{\tau}), and zeroed (|x|≥C∗|x|\geq C^{\*}, output 0). As TτT\_{\tau} increases, the rollback zone narrows (width C/TτC/T\_{\tau}) and gaggg^{\rm agg} approaches a hard clip at ±C\pm C.
 (b) Base weight log⁡wτbase\log w\_{\tau}^{\rm base} (Eq. [2](#S3.E2 "In Definition 3.1 (FiberPO). ‣ 3.3.1 The FiberPO Objective ‣ 3.3 Reinforcement Learning (RL) ‣ 3 Post-Training ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency")) in (log⁡s+,log⁡s−)(\log s^{+},\log s^{-})-space with asymmetric thresholds. Dashed lines mark the budget boundaries C±C^{\pm} (onset of rollback), and dotted lines mark the full-gating thresholds C∗±C^{\*\pm} (onset of zeroing). The five global regimes follow a non-monotonic pattern: |log⁡w||\log w| rises through the rollback onset (G-II,r), peaks when one channel is fully gated (G-II), declines under mutual rollback (G-III,r), and collapses to zero when both channels are fully gated (G-III, wτbase=1w^{\rm base}\_{\tau}=1).
@@ -872,8 +823,7 @@ in the latter half of training. All methods are trained in
 verl [sheng2024hybridflow] with matched infrastructure. We
 use a learning rate of 10−610^{-6} for the RL stage.
 
-![Refer to caption](/html/2604.03044/assets/figures/fiberpo/math_comparison.png)
-
+!(/html/2604.03044/assets/figures/fiberpo/math_comparison.png)
 
 Figure 6: Single-domain RLVR on
 DAPO-Math-17k [yu2025dapo]: (a) training reward and
@@ -881,8 +831,7 @@ DAPO-Math-17k [yu2025dapo]: (a) training reward and
 step. GRPO collapses after step 60. GSPO stagnates. FiberPO
 improves steadily on both metrics.
 
-![Refer to caption](/html/2604.03044/assets/x6.png)
-
+!(/html/2604.03044/assets/x6.png)
 
 Figure 7: Training diagnostics for the single-domain DAPO math
 run. Top row (comparative, all three methods): (a) policy
@@ -1058,40 +1007,31 @@ As can be observed, our JoyAI-LLM Flash achieves remarkable token efficiency. Sp
 The token efficiency of JoyAI-LLM Flash is illustrated in Figure [8](#S3.F8 "Figure 8 ‣ 3.4 Instruct Model Evaluation ‣ 3 Post-Training ‣ JoyAI-LLM Flash: Advancing Mid-Scale LLMs with Token Efficiency"). Specifically, the accuracy (left bar) and token usage (right bar) are compared across different models, highlighting our efficiency gains.
 Notably, although JoyAI-LLM Flash consumes more tokens on PinchBench, it achieves the best accuracy compared to other models.
 
-![Refer to caption](/html/2604.03044/assets/x7.png)
-
+!(/html/2604.03044/assets/x7.png)
 
 (a)
 
-![Refer to caption](/html/2604.03044/assets/x8.png)
-
+!(/html/2604.03044/assets/x8.png)
 
 (b)
 
-![Refer to caption](/html/2604.03044/assets/x9.png)
-
+!(/html/2604.03044/assets/x9.png)
 
 (c)
 
-![Refer to caption](/html/2604.03044/assets/x10.png)
-
+!(/html/2604.03044/assets/x10.png)
 
 (d)
 
-![Refer to caption](/html/2604.03044/assets/x11.png)
-
+!(/html/2604.03044/assets/x11.png)
 
 (e)
 
-![Refer to caption](/html/2604.03044/assets/x12.png)
-
+!(/html/2604.03044/assets/x12.png)
 
 (f)
 
 Figure 8: Comparison of model performance (left bars) and token consumption (right bars) across six benchmarks. Qwen3.5-35B-A3B and JoyAI-LLM Flash are instruct models, “GLM-4.7-Flash-T” refers to GLM-4.7-Flash-Thinking, which is included due to its comparable performance.
-
-
-
 
 Table 3: Comparison with baseline models. Qwen3-Next-80B-A3B, Qwen3.5-35B-A3B, and Qwen3-30B-A3B are instruct models; “GLM-4.7-Flash-T” refers to GLM-4.7-Flash-Thinking, which is additionally included due to its more comparable performance. Results marked with asterisk∗ are directly cited from original papers and differ substantially from our reproduced results.
 
@@ -1158,8 +1098,7 @@ apply the aforementioned quantization method within each block,
 perform a global-like quantization across blocks and store the double-quantized scales at lower precision (e.g., 6-bit or 8-bit).
 Experimental results show that this DoubleQuant strategy achieves comparable accuracy to the BF16 baseline, validating the effectiveness of the proposed approach.
 
-![Refer to caption](/html/2604.03044/assets/figures/TecReport_Accuracy-Throughput.png)
-
+!(/html/2604.03044/assets/figures/TecReport_Accuracy-Throughput.png)
 
 Figure 9: Comparison of Accuracy and Throughput for Quantized Models: JoyAI-LLM Flash vs. Qwen3-30B-A3B. The accuracy is measured by the mean accuracy across three distinct domain datasets: MATH-500, GPQA, and MBPP.
 
@@ -1202,8 +1141,7 @@ Compared to the baseline configuration (BF16 with next-n=0), these settings deli
 The overall best performance was observed with W4AFP8 quantization at next-n=2, yielding a 1.96× speedup over the same baseline.
 The experiments indicate that excessively high MTP layers (e.g., next-n¿3) could introduce diminishing or even negative returns, which is attributed to the additional computational overhead incurred in predicting multiple future tokens.
 
-![Refer to caption](/html/2604.03044/assets/figures/mtp_performance_v2_large1.3.png)
-
+!(/html/2604.03044/assets/figures/mtp_performance_v2_large1.3.png)
 
 Figure 10: Joint Optimization of MTP and Quantization (ISL/OSL = 1K/2K, Concurrency = 64)
 
@@ -1276,83 +1214,3 @@ Aichen Cai, Anmeng Zhang, Anson Li, Changjian Jiang, Changkai Lu, Chaocai Liang,
 ##### Acknowledgment
 
 We thank Jiepeng Zhou, Kaiqing Lei, Shaoxiong Zhan, Tshihao Tsu, Yao Yao, Yaren Zhang, Yihui Wang, Zhengda Zhou, Zhenting Huang, and Zhihao Gong for their efforts.
-
-[◄](/html/2604.03043)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.03044)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.03044)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.03044)[►](/html/2604.03045)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 19:44:40 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

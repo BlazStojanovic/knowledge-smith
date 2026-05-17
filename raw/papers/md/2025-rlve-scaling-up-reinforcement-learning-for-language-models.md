@@ -27,50 +27,6 @@ url: https://arxiv.org/abs/2511.07317
 year: 2025
 ---
 
-[2511.07317] RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments
 
 Zhiyuan Zeng
@@ -128,7 +84,7 @@ First, collecting a large number of problems along with their ground-truth answe
 Second, RL training can completely stall when problems are either too easy or too difficult for the policy model (Razin et al., [2024](#bib.bib45), [2025](#bib.bib46)), since too easy ones provide no meaningful learning signal, whereas overly difficult ones yield consistently poor rewards that impede gradient-based updates.
 In typical LM RL training, the problem distribution is predetermined by a specific dataset and remains static, preventing adaptation to the policy model’s evolving capabilities (Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments")(a)).
 
-![Refer to caption](/html/2511.07317/assets/x1.png)
+!(/html/2511.07317/assets/x1.png)
 
 Figure 1: 
 (a) During RL training, some array-sorting problems that were appropriately challenging become too easy, while others that were too hard become learnable as the policy improves (given the upward movement of the  dark region containing many problems for which some rollouts are correct, and others are not).
@@ -192,14 +148,10 @@ We denote this specific problem by Ep=(Ip,Rp)E\_{p}=(I\_{p},R\_{p}), where IpI\_
 The verifier extends the range of rewards adopted in prior works on RLVR (Lambert et al., [2025](#bib.bib30); DeepSeek-AI, [2025](#bib.bib8); Kimi Team, [2025b](#bib.bib27)), as each environment independently defines its own verifier.
 For example, in an environment that asks the LM to solve a Sudoku puzzle, the verifier checks that the output satisfies all Sudoku constraints, rather than comparing it against a pre-computed correct solution, of which multiple, and sometimes many, may exist.
 
-![Refer to caption](/html/2511.07317/assets/x2.png)
-
+!(/html/2511.07317/assets/x2.png)
 
 Figure 2: Illustration of adaptive difficulty enabled by RLVE when training a policy model π\pi on the Sorting environment. Shown are the  adaptive difficulty level hπh\_{\pi} and the model π\pi’s  accuracy on problems generated from this level at each step.
 Whenever the accuracy exceeds the threshold τacc\tau\_{\mathrm{acc}} (90%), RLVE increments hπh\_{\pi} by 1, shifting the difficulty distribution to harder problems.
-
-
-
 
 Table 1: Six representative environment sources in RLVE-Gym, with one example environment per source.
 
@@ -256,7 +208,7 @@ To implement RLVE, we carefully construct a suite of 400 verifiable environment
 We give some representative sources of environments from RLVE-Gym and corresponding example environments in Table [1](#S2.T1 "Table 1 ‣ 2.1 Verifiable Environment ‣ 2 Methodology ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments").
 We next introduce the principles and insights used in our environment engineering, with more details in Appendix [B](#A2 "Appendix B Details of RLVE-Gym ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments").
 
-![Refer to caption](/html/2511.07317/assets/x3.png)
+!(/html/2511.07317/assets/x3.png)
 
 Figure 3: 
 Comparison of RLVE (using dynamically adjusted difficulty range) against three types of static difficulty ranges.
@@ -303,10 +255,9 @@ if a model can sort arrays of length (N+1)(N+1), it must also be able to sort an
 Similarly, integrating all functions whose expression trees have (N+1)(N+1) nodes presupposes the ability to handle all functions with NN nodes (e.g., solving ∫(f+1)\int(f+1) implies solving ∫f\int f).
 Thus, in these two environments, a larger difficulty level dd corresponds to a longer array length and a larger expression tree size, respectively.
 
-![Refer to caption](/html/2511.07317/assets/x4.png)
+!(/html/2511.07317/assets/x4.png)
 
   
-
 
 Figure 4: 
 (a) shows the frequency distribution of the upper-bound difficulty levels hπ(i)h\_{\pi}^{(i)} reached by adaptive environments at step 400.
@@ -333,7 +284,7 @@ These categories correspond to three scenarios studied in LM RL research:
 (2) training from an SFT model (Kimi Team, [2025a](#bib.bib26); Qwen Team, [2025](#bib.bib44); GLM-4.5 Team, [2025](#bib.bib12));
 and (3) continued RL training with new data (Liu et al., [2025e](#bib.bib36)).
 
-![Refer to caption](/html/2511.07317/assets/x5.png)
+!(/html/2511.07317/assets/x5.png)
 
 Figure 5: 
 Comparison of RLVE with joint training on collections of four different sizes of verifiable environments, all under identical training setups.
@@ -399,7 +350,7 @@ Further evaluation details are provided in Appendix [D](#A4 "Appendix D Evaluat
 
 ### 5.1 Scaling beyond Data Saturation
 
-![Refer to caption](/html/2511.07317/assets/x6.png)
+!(/html/2511.07317/assets/x6.png)
 
 Figure 6: 
 Comparison of RL training using  RLVE (jointly across all 400 verifiable environments in RLVE-Gym) versus  continuing original RLVR training.
@@ -426,7 +377,7 @@ Specifically, we start from OpenThinker3-1.5B (Guha et al., [2025](#bib.bib14)
 For comparison, we also train the LM on DeepMath-103K (He et al., [2025](#bib.bib16)) under an identical training setup.
 DeepMath-103K is an RLVR dataset consisting of approximately 103K high-quality mathematical reasoning problems that are generally more challenging than those in comparable reasoning RLVR datasets, e.g., Luo et al. ([2025](#bib.bib37)); Yu et al. ([2025](#bib.bib57)).
 
-![Refer to caption](/html/2511.07317/assets/x7.png)
+!(/html/2511.07317/assets/x7.png)
 
 Figure 7: 
 Comparison of RL training using  RLVE jointly on all 400 verifiable environments in RLVE-Gym against  RLVR on the strong dataset DeepMath-103K (He et al., [2025](#bib.bib16)), both starting from the same strong SFT model OpenThinker3-1.5B (Guha et al., [2025](#bib.bib14)).
@@ -798,14 +749,12 @@ This work is also supported by NSF Grant Nos. IIS2142739, IIS2044660, and CHE250
   APRIL: active partial rollouts in reinforcement learning to tame long-tail generation.
   *arXiv preprint arXiv:2509.18521*, 2025.
 
-![Refer to caption](/html/2511.07317/assets/x8.png)
+!(/html/2511.07317/assets/x8.png)
 
 Figure 8: Results of Figure [6](#S5.F6 "Figure 6 ‣ 5.1 Scaling beyond Data Saturation ‣ 5 Scaling Up RL Training with RLVE ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments") shown separately for each of the six reasoning benchmarks, as detailed in Section [5](#S5 "5 Scaling Up RL Training with RLVE ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments").
 For clarity, each curve has a corresponding horizontal line indicating its highest point.
 
-
-
-![Refer to caption](/html/2511.07317/assets/x9.png)
+!(/html/2511.07317/assets/x9.png)
 
 Figure 9: Results of Figure [7](#S5.F7 "Figure 7 ‣ 5.2 Compute-Efficient Scaling ‣ 5 Scaling Up RL Training with RLVE ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments") shown separately for each of the six reasoning benchmarks, as detailed in Section [5](#S5 "5 Scaling Up RL Training with RLVE ‣ RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments"). For clarity, each curve has a corresponding dotted horizontal line indicating its highest point.
 
@@ -1867,83 +1816,3 @@ For clarity, we list below the specific composition of each collection and its i
 (397) WeightedLIS,
 (399) XorEquationCounting,
 (400) ZeroPrefixSubsetCounting.
-
-[◄](/html/2511.07316)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2511.07317)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2511.07317)
-[View original  
-on arXiv](https://arxiv.org/abs/2511.07317)[►](/html/2511.07318)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Dec 5 14:42:11 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

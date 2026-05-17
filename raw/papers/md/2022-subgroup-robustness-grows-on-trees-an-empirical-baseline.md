@@ -11,49 +11,6 @@ url: https://arxiv.org/abs/2211.12703
 year: 2022
 ---
 
-[2211.12703] Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation
 
 Josh Gardner       Zoran Popović       Ludwig Schmidt
@@ -82,25 +39,25 @@ Our work suggests that tree-based ensemble models make an effective baseline for
 
 Over the past decade, the field of machine learning (ML) has seen a dramatic expansion along two related lines. On one hand, concerns about the fairness of ML models, and more broadly their performance on data outside the training distribution, have grown [[50](#bib.bib50)]. Both theoretical and empirical works have raised these concerns, demonstrating the vulnerability of models to learn biases from data or suffer performance drops under distribution shifts [[44](#bib.bib44), [66](#bib.bib66), [35](#bib.bib35)]. On the other hand, an abundance of methods have been proposed to address these limitations. These include *fairness* methods used to equalize metrics across groups, as well as *distributional robustness* methods which optimize for a worst-case distribution within a bounded distance of the training distribution.
 
-![Refer to caption](/html/2211.12703/assets/img/acsincome_acc_vs_worstgroup_nolegend.png)
+!(/html/2211.12703/assets/img/acsincome_acc_vs_worstgroup_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/acsincome_curves_and_baselines_with_inset_nolegend.png)
+!(/html/2211.12703/assets/img/acsincome_curves_and_baselines_with_inset_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/acsincome_worstgroup_acc_by_selection_metric.png)
+!(/html/2211.12703/assets/img/acsincome_worstgroup_acc_by_selection_metric.png)
 
-![Refer to caption](/html/2211.12703/assets/img/acspubcov_acc_vs_worstgroup_nolegend.png)
+!(/html/2211.12703/assets/img/acspubcov_acc_vs_worstgroup_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/acspubcov_curves_and_baselines_with_inset_nolegend.png)
+!(/html/2211.12703/assets/img/acspubcov_curves_and_baselines_with_inset_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/acspubcov_worstgroup_acc_by_selection_metric.png)
+!(/html/2211.12703/assets/img/acspubcov_worstgroup_acc_by_selection_metric.png)
 
-![Refer to caption](/html/2211.12703/assets/img/larc-grade_acc_vs_worstgroup_nolegend.png)
+!(/html/2211.12703/assets/img/larc-grade_acc_vs_worstgroup_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/larc-grade_curves_and_baselines_with_inset_nolegend.png)
+!(/html/2211.12703/assets/img/larc-grade_curves_and_baselines_with_inset_nolegend.png)
 
-![Refer to caption](/html/2211.12703/assets/img/larc-grade_worstgroup_acc_by_selection_metric.png)
+!(/html/2211.12703/assets/img/larc-grade_worstgroup_acc_by_selection_metric.png)
 
-![Refer to caption](/html/2211.12703/assets/img/legend_only.png)
+!(/html/2211.12703/assets/img/legend_only.png)
 
 Figure 1: Results from three datasets in our study. (a) Left: Tree-based methods such as XGBoost show similar subgroup robustness, with sometimes better overall performance, as robustness-enhancing or disparity-mitigation methods. (b) Center: Model performance frontiers corresponding to (a) show similar accuracy-robustness frontiers for XGBoost and DRO/Group DRO. (c) Right: Tree-based methods’ worst-group accuracy is robust to model selection metrics.
 
@@ -236,18 +193,15 @@ We evaluate the 17 models over eight datasets covering a variety of prediction t
 
 ## 4 Results: Tree Models are Subgroup-Robust Learners
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_grouped_summary_2x4.png)
-
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_grouped_summary_2x4.png)
 
 Figure 2: Overall Accuracy vs. Worst-Group Accuracy of robust, fairness-enhancing, tree-based, and baseline models over eight tabular datasets. Dashed lines indicate y=x𝑦𝑥y=x, when worst-group accuracy equal to overall accuracy (zero accuracy disparity). See Figures [12](#A7.F12 "Figure 12 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation")-[15](#A7.F15 "Figure 15 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") for more detailed results by algorithm. Note: “discretization” artifacts are due to small test/dataset sizes.
 
-![Refer to caption](/html/2211.12703/assets/img/performance_curves_2x3_with_inset.png)
-
+!(/html/2211.12703/assets/img/performance_curves_2x3_with_inset.png)
 
 Figure 3: Model performance frontiers, formed by tracing the convex envelope of model performance. Tree-based models achieve comparable and sometimes improved frontiers with the highest-performing robustness methods. (See also Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") for the remaining three datasets.)
 
-![Refer to caption](/html/2211.12703/assets/img/disparity_curves_2x4.png)
-
+!(/html/2211.12703/assets/img/disparity_curves_2x4.png)
 
 Figure 4: Model disparity frontiers, formed by tracing the convex envelope of model disparity. Tree-based models achieve comparable and sometimes improved frontiers compared to the highest-performing robustness methods, particularly in high-accuracy regions.
 
@@ -263,8 +217,7 @@ To summarize our results over the large hyperparameter sweeps, we use model perf
 
 ## 5 Results: Robust Models Can Be Metric-Brittle
 
-![Refer to caption](/html/2211.12703/assets/img/acsincome_complementary_vs_noncomplementary.png)
-
+!(/html/2211.12703/assets/img/acsincome_complementary_vs_noncomplementary.png)
 
 Figure 5: While “complementary” metrics (those measuring the same event with different conditioning) are closely correlated for all models, non-complementary metrics behave differently by model. Accuracy can vary widely for “robust” models with a fixed robust (CVaR) risk, while for tree models, the best (lowest) CVaR risk is typically associated with the best (highest) accuracy. ACS Income dataset shown; see Supplementary Figure [18](#A7.F18 "Figure 18 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") and Section [G](#A7 "Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") for additional datasets and metrics.
 
@@ -276,8 +229,7 @@ To illustrate the practical implications of this metric brittleness, we also exp
 
 To address this question, we show the worst-group performance of models over our sweeps, selected according to either *best accuracy* or *best CVaR* in Figure [6](#S5.F6 "Figure 6 ‣ 5 Results: Robust Models Can Be Metric-Brittle ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation"). Figure [6](#S5.F6 "Figure 6 ‣ 5 Results: Robust Models Can Be Metric-Brittle ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") demonstrates the downstream impact of the lack of correlation between robust risk metrics and worst-group accuracy: distributionally-robust models can suffer significant drops in worst-group accuracy, when selected based on robust risk. In contrast, tree-based models show “metric robustness” – that is, tree-based models which perform best according to the robust risk measure (CVaR) still achieve worst-group accuracy near the highest-accuracy model of the same class (here, XGBoost).
 
-![Refer to caption](/html/2211.12703/assets/img/worstgroup_acc_by_selection_metric_1x5.png)
-
+!(/html/2211.12703/assets/img/worstgroup_acc_by_selection_metric_1x5.png)
 
 Figure 6: 
 Worst-group accuracy for models with best overall accuracy (solid), and best CVaR (shaded).
@@ -289,8 +241,7 @@ For many practical applications, both the time and financial costs of training m
 
 These results are particularly important in light of the large differences in resources required to achieve similar levels of performance between robust models and the tree-based models: for example, the full hyperparameter grid sweep of size 12​k12𝑘12k XGBoost on the largest dataset in our study, ACS Income, completed in 1 CPU-day; DRO χ2superscript𝜒2\chi^{2} sweep of 3250 training runs completed in 58 *GPU*-days. Due to the differences in hardware required to train various models, we conduct an estimated comparison of the cost of training an individual model, and of the full sweep. These results, shown in Figure [19](#A7.F19 "Figure 19 ‣ G.1 Training Compute Cost ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation"), show that tree-based models are also considerably less expensive to train and tune.
 
-![Refer to caption](/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_worstgroup_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
-
+!(/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_worstgroup_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
 
 Figure 7: Performance over (truncated) hyperparameter grids on all datasets. Tree-based models (orange) show significantly less sensitivity to hyperparameter settings, for both subgroup and overall performance metrics (worst-group accuracy shown here), as indicated by nonoverlapping Clopper-Pearson CIs (α=0.05𝛼0.05\alpha=0.05). For additional results and methodology for constructing these plots, see Section [F.2](#A6.SS2 "F.2 Hyperparameter Sensitivity Analysis ‣ Appendix F Hyperparameter Grids ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation").
 
@@ -1090,8 +1041,6 @@ Min. Samples Split
 Min. Samples Leaf
 {1,2,4,8,16}124816\{1,2,4,8,16\}
 
-
-
 Cost-Complexity α𝛼\alpha
 {0.,0.001,0.01,0.1}\{0.,0.001,0.01,0.1\}
 
@@ -1191,8 +1140,6 @@ Ay
 
 0.0010.010.11100.001,0.01,0.1,1,10
 
-
-
 Az
 0.001,0.01,0.1,1,10
 
@@ -1205,8 +1152,6 @@ Constraint slack ϵitalic-ϵ\epsilon
 
 Constraint Type
 {DP,EO}DPEO\{\textrm{DP},\textrm{EO}\}
-
-
 
 Max Iter.
 200
@@ -1225,17 +1170,15 @@ In the top panel of Figure [8](#A6.F8 "Figure 8 ‣ F.2 Hyperparameter Sensitivi
 
 We provide similar results in the top and bottom rows of Figure [9](#A6.F9 "Figure 9 ‣ F.2 Hyperparameter Sensitivity Analysis ‣ Appendix F Hyperparameter Grids ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation") which include all models; here we omit the confidence intervals due to space (although the intervals would have the same width as in Figure [8](#A6.F8 "Figure 8 ‣ F.2 Hyperparameter Sensitivity Analysis ‣ Appendix F Hyperparameter Grids ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation")).
 
-![Refer to caption](/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
+!(/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
 
-![Refer to caption](/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_worstgroup_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
+!(/html/2211.12703/assets/img/hparam_ranked_plot_accuracy_worstgroup_test_acsincomeacspubcovadultbrfsscommunities-and-crimecompasgermanlarc-grade.png)
 
 Figure 8: Hyperparameter sensitivity plots for χ2superscript𝜒2\chi^{2} DRO, Group DRO, and XGBoost models. The top 8 panels show Accuracy; the lower 8 panels show worst-group accuracy (this is identical to Figure [7](#S6.F7 "Figure 7 ‣ 6 Results: Trees Show Lower Hyperparameter Sensitivity and are Less Costly to Train ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation"), reproduced here for clarity). XGBoost shows considerably lower sensitivity to hyperparameter tuning.
 
+!(/html/2211.12703/assets/img/hparam_relative_ranked_plot_accuracy_test.png)
 
-
-![Refer to caption](/html/2211.12703/assets/img/hparam_relative_ranked_plot_accuracy_test.png)
-
-![Refer to caption](/html/2211.12703/assets/img/hparam_relative_ranked_plot_accuracy_worstgroup_test.png)
+!(/html/2211.12703/assets/img/hparam_relative_ranked_plot_accuracy_worstgroup_test.png)
 
 Figure 9: Hyperparameter sensitivity plots for all models evaluated. (Clopper-Pearson CIs omitted due to space).
 
@@ -1243,101 +1186,85 @@ Figure 9: Hyperparameter sensitivity plots for all models evaluated. (Clopper-Pe
 
 This section contains additional experimental results not included in the main text, along with fine-grained displays of the results summarized in the main figures.
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acsincome_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acsincome_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acspubcov_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acspubcov_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_adult_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_adult_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_brfss_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_brfss_grouped.png)
 
 Figure 10: Overall Accuracy vs. Worst-Group Accuracy of robust, fairness-enhancing, tree-based, and baseline models over eight tabular datasets (ACS Income, ACS Public Coverage, Adult, BRFSS). For results by individual algorithm, see Figures [12](#A7.F12 "Figure 12 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation")- [15](#A7.F15 "Figure 15 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation").
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_communities-and-crime_grouped.png)
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_compas_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_communities-and-crime_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_german_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_compas_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_german_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_larc-grade_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_larc-grade_grouped.png)
 
 Figure 11: Overall Accuracy vs. Worst-Group Accuracy of robust, fairness-enhancing, tree-based, and baseline models over eight tabular datasets (Communities and Crime, COMPAS, German Credit, LARC). For results by individual algorithm, see Figures [12](#A7.F12 "Figure 12 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation")- [15](#A7.F15 "Figure 15 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation").
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acsincome_alg.png)
 
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acsincome_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acspubcov_alg.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_acspubcov_alg.png)
 
 Figure 12: Detailed accuracy vs. worst-group accuracy for ACS Income and ACS Public Coverage datasets.
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_adult_alg.png)
 
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_adult_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_brfss_alg.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_brfss_alg.png)
 
 Figure 13: Detailed accuracy vs. worst-group accuracy for Adult and BRFSS datasets.
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_communities-and-crime_alg.png)
 
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_communities-and-crime_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_compas_alg.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_compas_alg.png)
 
 Figure 14: Detailed accuracy vs. worst-group accuracy for Communities and Crime and COMPAS datasets.
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_german_alg.png)
 
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_german_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_larc-grade_alg.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_accuracy_worstgroup_test_larc-grade_alg.png)
 
 Figure 15: Detailed accuracy vs. worst-group accuracy for German and LARC datasets.
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_acsincome_grouped.png)
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_acspubcov_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_acsincome_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_adult_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_acspubcov_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_adult_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_brfss_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_brfss_grouped.png)
 
 Figure 16: Overall Accuracy vs. Accuracy Disparity of robust, fairness-enhancing, tree-based, and baseline models over datasets ACS Income, ACS Public Coverage, Adult, BRFSS. See also Figure [17](#A7.F17 "Figure 17 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation").
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_communities-and-crime_grouped.png)
 
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_compas_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_communities-and-crime_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_german_grouped.png)
 
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_compas_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_german_grouped.png)
-
-![Refer to caption](/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_larc-grade_grouped.png)
+!(/html/2211.12703/assets/img/accuracy_test_vs_abs_accuracy_disparity_test_larc-grade_grouped.png)
 
 Figure 17: Overall Accuracy vs. Accuracy Disparity of robust, fairness-enhancing, tree-based, and baseline models over datasets Communities and Crime, COMPAS, German, LARC. See also Figure [16](#A7.F16 "Figure 16 ‣ Appendix G Additional Results ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation").
 
+!(/html/2211.12703/assets/img/metrics_scatter_acsincome_alg.png)
 
+!(/html/2211.12703/assets/img/metrics_scatter_acspubcov_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_acsincome_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_adult_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_acspubcov_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_brfss_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_adult_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_communities-and-crime_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_brfss_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_compas_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_communities-and-crime_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_german_alg.png)
 
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_compas_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_german_alg.png)
-
-![Refer to caption](/html/2211.12703/assets/img/metrics_scatter_larc-grade_alg.png)
+!(/html/2211.12703/assets/img/metrics_scatter_larc-grade_alg.png)
 
 Figure 18: Correlation between complementary metrics (top row) and non-complementary metrics (bottom row) for each dataset, for DORO, XGBoost, and Group DRO models. Complementary metrics show strong correlations for all models, while non-complementary metrics do not. Pearson’s r𝑟r correlation coefficient for each pair of complementary metrics shown in the upper-left of each plot.
 
@@ -1345,8 +1272,7 @@ Figure 18: Correlation between complementary metrics (top row) and non-complemen
 
 In Section [6](#S6 "6 Results: Trees Show Lower Hyperparameter Sensitivity and are Less Costly to Train ‣ Subgroup Robustness Grows On Trees: An Empirical Baseline Investigation"), we discuss hyperparameter sensitivity and training time of the various algrorithms present in our study. Here, we provide estimations of the result of conducting our hyperparameter sweeps on modern cloud-based computing platforms, in order to estimate the costs of individual training runs, and the full hyperparameter sweeps, in our study.
 
-![Refer to caption](/html/2211.12703/assets/img/est_cost_per_train_run.png)
-
+!(/html/2211.12703/assets/img/est_cost_per_train_run.png)
 
 Figure 19: Estimated cost per training run, based on the median train time over the iterations in our study and the price of cloud-based computing infrastructure.
 
@@ -1384,8 +1310,6 @@ We provide the best performance per model, in terms of both overall accuracy and
 | XGBoost | 0.824 | 0.79 | 0.875 | 0.899 | 0.894 | 0.725 | 0.88 | 0.748 |
 
 Table 3: Best observed overall accuracy per model, by dataset.
-
-
 
 |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1429,83 +1353,3 @@ For the tree-based models in our summary, we give the performance of the default
 | XGBoost | 0.797 | 0.735 | 0.834 | 0.833 | 0.754 | 0.654 | 0.55 | 0.728 |
 
 Table 5: Performance of default hyperparameters for tree-based models.
-
-[◄](/html/2211.12702)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2211.12703)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2211.12703)
-[View original  
-on arXiv](https://arxiv.org/abs/2211.12703)[►](/html/2211.12704)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 14 05:45:49 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -16,50 +16,6 @@ url: https://arxiv.org/abs/2601.18734
 year: 2026
 ---
 
-[2601.18734] Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models
 
 Siyan Zhao†
@@ -84,8 +40,7 @@ Machine Learning, ICML
 
 ## 1 Introduction
 
-![Refer to caption](/html/2601.18734/assets/x1.png)
-
+!(/html/2601.18734/assets/x1.png)
 
 Figure 1: Overview of On-Policy Self-Distillation (OPSD): Given a reasoning dataset 𝒮={(xi,yi⋆)}i=1N\mathcal{S}=\{(x\_{i},y\_{i}^{\star})\}\_{i=1}^{N}, we instantiate two policies from the same LLM: a *student policy* pS(⋅∣x)p\_{S}(\cdot\mid x) and a *teacher policy* pT(⋅∣x,y⋆)p\_{T}(\cdot\mid x,y^{\star}). The student generates an on-policy response y^∼pS(⋅∣x)\hat{y}\sim p\_{S}(\cdot\mid x). Both policies then evaluate this trajectory to produce next-token distributions pS(⋅∣x,y^<n)p\_{S}(\cdot\mid x,\hat{y}\_{<n}) and pT(⋅∣x,y⋆,y^<n)p\_{T}(\cdot\mid x,y^{\star},\hat{y}\_{<n}) at each step nn. The learning objective minimizes the per-token divergence D​(pT∥pS)D(p\_{T}\|p\_{S}) along the student’s rollout. Crucially, gradients backpropagate only through the student’s logits, allowing the model to self-distil.
 
@@ -378,8 +333,7 @@ Implementation details. For GRPO, we sample 8 responses per problem. For OPSD, w
 
 ### 4.2 Main Results
 
-![Refer to caption](/html/2601.18734/assets/x2.png)
-
+!(/html/2601.18734/assets/x2.png)
 
 Figure 3: Token Efficiency of OPSD. We compare OPSD and GRPO on Qwen3-4B under the same effective training batch size, reporting average@16 performance as a function of gradient update steps and total generated tokens. Both methods are trained with the same effective batch size in terms of sampled generations per update, but differ in generation length: each generation is capped at 2048 tokens for OPSD and 16384 tokens for GRPO. OPSD achieves comparable or better performance with substantially fewer generated tokens, resulting in lower sampling cost and reduced training time. In this experiment, OPSD can be 4-8×\times more token-efficient than GRPO.
 
@@ -393,8 +347,7 @@ Figure [3](#S4.F3 "Figure 3 ‣ 4.2 Main Results ‣ 4 Experiments ‣ Self-Dis
 While GRPO relies on 8 rollouts with long generation budgets of 16k, OPSD achieves higher performance using substantially fewer generated tokens of 2k and needs only 1 rollout per prompt.
 This efficiency stems from dense token-level supervision from the teacher distribution, reducing sampling cost and training time without sacrificing performance. We hypothesize that the early tokens are more important for distillation than the later tokens, as the earlier tokens can represent more important branching points.
 
-![Refer to caption](/html/2601.18734/assets/x3.png)
-
+!(/html/2601.18734/assets/x3.png)
 
 Figure 4: Pass@K performance averaged across four mathematical reasoning benchmarks for Qwen3-4B. We study the effect of the generation length of on-policy sampled student responses in OPSD, comparing 1024, 2048, and 4096 tokens. Longer generations provide more teacher signals. Increasing the generation length from 1k to 2k and 4k consistently improves pass@K, with both 2k and 4k substantially outperforming the 1k setting.
 
@@ -494,9 +447,6 @@ Table 5: Evaluation Parameters.
 | Presence Penalty | 0.0 |
 | Samples per Prompt | 16 |
 
-
-
-
 Table 6: Training Configuration for GRPO and OPSD
 
 |  |  |  |
@@ -516,83 +466,3 @@ Table 6: Training Configuration for GRPO and OPSD
 | KL Coefficient (β\beta) | 0.0 | – |
 
 All experiments were conducted using 8 A100 GPUs with gradient checkpointing and Flash Attention 2 for memory efficiency. We use the AdamW (loshchilov2017decoupled) optimizer and bfloat16 precision for all training runs. For OPSD, unless otherwise stated, we used full-vocabulary logit distillation.
-
-[◄](/html/2601.18733)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.18734)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.18734)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.18734)[►](/html/2601.18735)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 20:28:20 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

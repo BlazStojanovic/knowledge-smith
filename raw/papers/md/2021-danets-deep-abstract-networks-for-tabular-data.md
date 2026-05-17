@@ -14,49 +14,6 @@ url: http://arxiv.org/abs/2112.02962v4
 year: 2021
 ---
 
-[2112.02962] DANets: Deep Abstract Networks for Tabular Data Classification and Regression
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # DANets: Deep Abstract Networks for Tabular Data Classification and Regression
 
 Jintai Chen1,
@@ -76,8 +33,7 @@ Data organized in tabular structures, e.g., medical indicators (Hassan et al. 
 Inspired by the success of ensemble learning (e.g., XGBoost) (Friedman [2001](#bib.bib12); Chen and Guestrin [2016](#bib.bib8); Ke et al. [2017](#bib.bib22); Prokhorenkova et al. [2018](#bib.bib32); Ho [1995](#bib.bib17)) on tabular data, some recent work resorted to combining multiple neural networks within the framework of ensemble learning (Popov et al. [2019](#bib.bib31); Katzir, Elidan et al. [2021](#bib.bib21); Ke et al. [2019](#bib.bib24)).
 Although ensemble learning can boost the performances of neural networks on tabular data (in the cost of increased computational resources), with such methods, the power of neural networks in tabular feature processing is not yet fully exploited. Besides, there are not many efficient neural components specifically designed for tabular data (analogous to convolution for computer vision). Consequently, known neural networks were mainly based on sundry components and thus were not very extensible.
 
-![Refer to caption](/html/2112.02962/assets/x1.png)
-
+!(/html/2112.02962/assets/x1.png)
 
 Figure 1: A running example of health assessment for illustrating our insights.
 (a) A feasible semantics-oriented feature abstraction process. There are three underlying feature groups that can be found to compute high-level features measuring physique, liver health, and kidney health; then these three features are further grouped to estimate the health conditions.
@@ -114,8 +70,7 @@ Various conventional machine learning methods (He et al. [2014](#bib.bib16); B
 
 Currently, a research trend aimed to apply DNNs (Guo, Tang et al. [2017](#bib.bib13); Yang et al. [2018](#bib.bib40)) onto tabular datasets. Some neural networks under the ensemble learning frameworks were presented in (Lay et al. [2018](#bib.bib25); Feng et al. [2018](#bib.bib11)). Recently, NODE (Popov et al. [2019](#bib.bib31)) combined neural oblivious decision trees with dense connections and obtained comparable performances as GBDTs (Friedman [2001](#bib.bib12)). Net-DNF (Katzir, Elidan et al. [2021](#bib.bib21)) implemented soft versions of logical boolean formulas to aggregate the results of a large number of shallow fully-connected models. Both NODE and Net-DNF essentially followed ensemble learning, employing many (e.g., 2048) shallow neural networks, and thus were computing-complex. Such strategies did not explore the potential of deep models, and their performances should be attributed largely to the number of sub-networks. TabNet (Arik and Pfister [2020](#bib.bib3)) computed sparse attentions sequentially to imitate the sequential feature splitting procedure of tree models. However, TabNet was verified to attain slightly inferior performances, as noted in (Katzir, Elidan et al. [2021](#bib.bib21)).
 
-![Refer to caption](/html/2112.02962/assets/x2.png)
-
+!(/html/2112.02962/assets/x2.png)
 
 Figure 2: Our proposed architecture for tabular data processing. (a) Illustrating an AbstLay, which performs three steps: feature selection, feature abstracting, and output fusion. In the example of (a), the number of masks, K𝐾K, is set to 3 (see Eq. ([3](#Sx4.E3 "In Parallel processing and output fusion. ‣ Key Functions and Operation ‣ Abstract Layer ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression"))), the output feature dimension, d𝑑d, is set to 2, and ⊙direct-product\odot indicates the element-wise multiplication. (b) Illustrating a basic block specification. (c) The architecture of DANet is built mainly by stacking several basic blocks.
 
@@ -240,9 +195,6 @@ Table 1: A summary of the seven public datasets. The datasets marked with “†
 | Task types | L2R | L2R | L2R | Clas. | Clas. | Clas. | Clas. |
 | Metric | MSE | MSE | MSE | Acc. | Acc. | Acc. | Acc. |
 
-
-
-
 Table 2: Performance comparison on the seven tabular datasets. The best performances are marked in orange, and the second and third best ones are marked in blue and green, respectively. Note that for classification tasks, a better method gets a higher accuracy, and for learn-to-rank tasks, a better method gets a lower MSE.
 
 |  |  |  |  |  |  |  |  |  |
@@ -284,8 +236,7 @@ The optimizer is the QHAdam optimizer (Ma and Yarats [2019](#bib.bib26)) with d
 Unlike previous methods requiring carefully setting their hyper-parameters (e.g., NODE (Popov et al. [2019](#bib.bib31))), we fix the primary setting of DANets: We set k0=5subscript𝑘05k\_{0}=5, d0=32subscript𝑑032d\_{0}=32, and d1=64subscript𝑑164d\_{1}=64 as default (see Fig. [2](#Sx2.F2 "Figure 2 ‣ Tabular data processing. ‣ Related Work ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression")(b)). For the datasets with large amounts of raw features (e.g., Yahoo with 699 features and Epsilon with 2K features), we set k0=8subscript𝑘08k\_{0}=8, d0=48subscript𝑑048d\_{0}=48, and d1=96subscript𝑑196d\_{1}=96. We use the dropout rate 0.10.10.1 for all the datasets except for Forest Cover Type without using dropout.
 The performances of the other methods are hyperparameter-tuned for best possible results using the Hyperopt library888https://github.com/hyperopt/hyperopt and performed 50 steps of the Tree-structured Parzen Estimator (TPE) optimization algorithm, similar to the settings in (Popov et al. [2019](#bib.bib31)). We set the hyper-parameter search spaces and search algorithms of XGBoost (Chen and Guestrin [2016](#bib.bib8)), CatBoost (Prokhorenkova et al. [2018](#bib.bib32)), NODE (Popov et al. [2019](#bib.bib31)), and FCNN (Nair and Hinton [2010](#bib.bib29)) as in (Popov et al. [2019](#bib.bib31)), while the hyperparameter search settings of Net-DNF (Katzir, Elidan et al. [2021](#bib.bib21)) and TabNet (Arik and Pfister [2020](#bib.bib3)) followed their original papers. The hyperparameters of gcForest (Zhou and Feng [2017](#bib.bib43)) followed its default values. The architectures of FCNN with or without l1superscript𝑙1l^{1}-norm regularization were constructed following the FCNN in (Popov et al. [2019](#bib.bib31)). The hyper-parameters of these compared methods are selected according to the validation performances, and the performances are obtained on the corresponding test sets.
 
-![Refer to caption](/html/2112.02962/assets/x3.png)
-
+!(/html/2112.02962/assets/x3.png)
 
 Figure 3: The performances on various datasets with different kinds of shortcuts. For classification (shown in (a), (b), (c), and (d)), the higher accuracy, the better. For regression (shown in (e), (f), and (g)), the lower MSE, the better. It is obvious that our shortcuts are superior.
 
@@ -308,11 +259,11 @@ Table 3: The mask activation on three synthesized datasets. Each heatmap has two
 |  |  |  |
 | --- | --- | --- |
 | Formulas | Learn-to-rank | Classification |
-| [Uncaptioned image] | [Uncaptioned image] |
-| 1 y=∑i=25(vi2)𝑦subscriptsuperscript5𝑖2subscriptsuperscript𝑣2𝑖y=\sum^{5}\_{i=2}(v^{2}\_{i}) | [Uncaptioned image] | [Uncaptioned image] |
-| 2 y=|log|​v0−v2​|+cos⁡(v5+sin⁡v6)−(10−8×v10)|𝑦subscript𝑣0subscript𝑣2subscript𝑣5subscript𝑣6superscript108subscript𝑣10y=|\log{|v\_{0}-v\_{2}|}+\cos{(v\_{5}+\sin{v\_{6}})-(10^{-8}\times v\_{10})}| | [Uncaptioned image] | [Uncaptioned image] |
-| 3 y=∑(i,j)∈{(6,7),(5,8)}−10​sin⁡(vi+vj)10+(vi+vj)2𝑦subscript𝑖𝑗675810subscript𝑣𝑖subscript𝑣𝑗10superscriptsubscript𝑣𝑖subscript𝑣𝑗2y=\sum\limits\_{(i,j)\in{\{(6,7),(5,8)\}}}{-10}\sin{\frac{(v\_{i}+v\_{j})}{10}}+(v\_{i}+v\_{j})^{2} | [Uncaptioned image] | [Uncaptioned image] |
-| 4 y=𝑦absenty= 1 if v1<0subscript𝑣10v\_{1}<0; y=𝑦absenty= 2 if v1>0subscript𝑣10v\_{1}>0 | [Uncaptioned image] | [Uncaptioned image] |
+|  |  |
+| 1 y=∑i=25(vi2)𝑦subscriptsuperscript5𝑖2subscriptsuperscript𝑣2𝑖y=\sum^{5}\_{i=2}(v^{2}\_{i}) |  |  |
+| 2 y=|log|​v0−v2​|+cos⁡(v5+sin⁡v6)−(10−8×v10)|𝑦subscript𝑣0subscript𝑣2subscript𝑣5subscript𝑣6superscript108subscript𝑣10y=|\log{|v\_{0}-v\_{2}|}+\cos{(v\_{5}+\sin{v\_{6}})-(10^{-8}\times v\_{10})}| |  |  |
+| 3 y=∑(i,j)∈{(6,7),(5,8)}−10​sin⁡(vi+vj)10+(vi+vj)2𝑦subscript𝑖𝑗675810subscript𝑣𝑖subscript𝑣𝑗10superscriptsubscript𝑣𝑖subscript𝑣𝑗2y=\sum\limits\_{(i,j)\in{\{(6,7),(5,8)\}}}{-10}\sin{\frac{(v\_{i}+v\_{j})}{10}}+(v\_{i}+v\_{j})^{2} |  |  |
+| 4 y=𝑦absenty= 1 if v1<0subscript𝑣10v\_{1}<0; y=𝑦absenty= 2 if v1>0subscript𝑣10v\_{1}>0 |  |  |
 
 #### The effects of model depth.
 
@@ -329,13 +280,9 @@ We inspect the effects of the masks on three synthesized datasets with three dif
 0…10x=\{v\_{i}|i=0,\ldots,10\}) generated from an 111111-dimensional Gaussian distribution without feature correlation. Four formulas are used to compute the target y𝑦y in the first column of Table [3](#Sx6.T3 "Table 3 ‣ The effects of shortcuts. ‣ Results and Analyses ‣ Experiments ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression"). As for the learn-to-rank tasks, y𝑦y is used as the prediction targets; as for the classification tasks, y𝑦y is further transformed into “0” or “1” using the median of y𝑦y as the threshold value.
 We build an DANet-2 with K=1𝐾1K=1, and train it with the synthesized datasets. This model has only one basic block, and there are two masks whose input is the raw features (i.e., the mask of the first AbstLay in the main model path and the mask of the AbstLay in the shortcut). In this study, we only inspect these two masks after training to convergence, and check whether the mask activation matches the formulas. The mask activation is visualized in Table [3](#Sx6.T3 "Table 3 ‣ The effects of shortcuts. ‣ Results and Analyses ‣ Experiments ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression").
 
-![Refer to caption](/html/2112.02962/assets/x14.png)
-
+!(/html/2112.02962/assets/x14.png)
 
 Figure 4: DANet performances in different model depths on Forest Cover Type.
-
-
-
 
 Table 4: DANet-20 performances with different widths.
 
@@ -355,8 +302,7 @@ subscript𝑣2subscript𝑣3subscript𝑣4v\_{2},v\_{3},v\_{4}, and v5subscript�
 
 We compare the computational complexities in the inference phases of DANets with the performance-competitive neural networks, TabNet, NODE (Popov et al. [2019](#bib.bib31)), and Net-DNF (Katzir, Elidan et al. [2021](#bib.bib21)) (see Fig. [5](#Sx6.F5 "Figure 5 ‣ Computational complexity comparison. ‣ Results and Analyses ‣ Experiments ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression"))999The hyperparameters of the four compared TabNets are: [λs​p​a​r​s​esubscript𝜆𝑠𝑝𝑎𝑟𝑠𝑒\lambda\_{sparse}, Ndsubscript𝑁𝑑N\_{d}, Nasubscript𝑁𝑎N\_{a}, Ns​t​e​p​ssubscript𝑁𝑠𝑡𝑒𝑝𝑠N\_{steps}, BVsubscript𝐵𝑉B\_{V}, mBsubscript𝑚𝐵m\_{B}] = [1e-4, 32, 32, 3, 256, 0.9], [1e-4, 32, 64, 5, 256, 0.9], [1e-4, 32, 64, 7, 256, 0.9], [1e-4, 64, 64, 10, 256, 0.9]; NODEs: [number of layers, total number of trees, tree depth, output dimension of trees] = [2, 1024, 6, 3], [4, 1024, 6, 3], [4, 2048, 6, 3]; Net-DNFs: [number of formulas, feature selection beta] = [512, 1.0], [1024, 1.3], [2048, 1.6].. The FLOPS of ensemble learning based methods (i.e., NODE and Net-DNF) are generally several times those of DANets and TabNet. Besides, it is obvious that, under some identical complexities, our models are often the best-performed ones. Seeing the grey curve in Fig. [5](#Sx6.F5 "Figure 5 ‣ Computational complexity comparison. ‣ Results and Analyses ‣ Experiments ‣ DANets: Deep Abstract Networks for Tabular Data Classification and Regression"), TabNet cannot obtain the performance gains when keeping enlarging the model size, which are not very extensible compared to ours. After model compression by the structure re-parameterization performed on AbstLays, the FLOPS of our DANets are reduced by 14.8%percent14.814.8\%–23.0%percent23.023.0\% (compared the red and green curves). As for one single AbstLay, the FLOPS are reduced by 49.02%percent49.0249.02\% with the input and output feature sizes of 32.
 
-![Refer to caption](/html/2112.02962/assets/x15.png)
-
+!(/html/2112.02962/assets/x15.png)
 
 Figure 5: The computational complexity comparison on the Click dataset among DANets and other methods.
 
@@ -600,83 +546,3 @@ D. Z. Chen was supported in part by NSF Grant CCF-1617735.
   Zhou, Z.-H.; and Feng, J. 2017.
   Deep Forest: Towards an alternative to deep neural networks.
   In *IJCAI*.
-
-[◄](/html/2112.02961)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2112.02962)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2112.02962)
-[View original  
-on arXiv](https://arxiv.org/abs/2112.02962)[►](/html/2112.02963)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 15:12:53 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2512.04388
 year: 2025
 ---
 
-[2512.04388] Learning to Orchestrate Agents in Natural Language with the Conductor
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Learning to Orchestrate Agents in Natural Language with the Conductor
 
 Stefan Nielsen1  , Edoardo Cetin111footnotemark: 1  , Peter Schwendeman211footnotemark: 1   ,
@@ -82,8 +39,7 @@ More broadly, ours is among the early work demonstrating language model coordina
 
 ## 1 Introduction
 
-![Refer to caption](/html/2512.04388/assets/figs/leaderboard_vert2.png)
-
+!(/html/2512.04388/assets/figs/leaderboard_vert2.png)
 
 Figure 1: Our Conductor attains the state-of-the-art in GPQA and LiveCodeBench.
 
@@ -140,11 +96,9 @@ In this work, we design a new reinforcement learning framework for training a Co
 
 User
 
-
 We call a subarray of an array complete if the number of distinct elements in the subarray is equal to the number of distinct elements in the whole array. Return the number of complete subarrays.
 
   Conductor
-
 
 Here’s the plan: 1) Model 2 will develop an algorithm to efficiently count all possible complete subarrays for a given array, 2) Model 0 will implement the function to solve the problem.
   
@@ -179,8 +133,7 @@ Each agentic workflow outputted by the Conductor is executed sequentially by pro
 
 While training end-to-end with the conductor reward is inherently compatible with any RL algorithm (rl\_alg\_ppo; rl\_alg\_rloo), in this work, we employ the GRPO formulation described in Section [2](#S2 "2 Reinforcement Learning and Reasoning ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"). Training the Conductor with this simple recipe, we observe the emergence of problem breakdowns and prompt-engineered subtasks that match the strengths of each worker, together with communication strategies that combine independent attempts with final debate rounds. As shown in Figure [3](#S3.F3 "Figure 3 ‣ 3.1 Framing agent coordination in natural language ‣ 3 Learning to conduct an orchestra of models ‣ Learning to Orchestrate Agents in Natural Language with the Conductor") and detailed in the following section, these Conductor behaviors lead to our model quickly surpassing each of its much larger workers, yielding state-of-the-art performance far beyond manually-designed multi-agent pipelines.
 
-![Refer to caption](/html/2512.04388/assets/x1.png)
-
+!(/html/2512.04388/assets/x1.png)
 
 Figure 3: Emergence of powerful coordination strategies over training. Early in training, the Conductor issues sound subtasks, but does not tap useful collaborative strategies such as verification (bottom-right). Near convergence, the Conductor has learned to utilize planners, issue targeted instructions, instruct workers to share reasoning, and leverage verification and refinement (top-right), leading to the Conductor surpassing the worker agents’ performance on our training dataset (left).
 
@@ -220,8 +173,7 @@ We first compare the Conductor’s in-domain and out-of-domain performance with 
 
 ### 4.3 Controlled large-scale evaluation
 
-![Refer to caption](/html/2512.04388/assets/figs/fugu_rl_indist_plot_v2.png)
-
+!(/html/2512.04388/assets/figs/fugu_rl_indist_plot_v2.png)
 
 Figure 4: Conductor in-distribution evaluation against multi-agent methods and 5-turn reflection agent baselines. The Conductor surpasses all baselines by substantive margins, exemplifying the Conductor’s ability to amplify the capabilities of its workers. Numerical results in Table [7](#A2.T7 "Table 7 ‣ B.4 Controlled large scale evaluation full results ‣ Appendix B Additional Experimental Results ‣ Learning to Orchestrate Agents in Natural Language with the Conductor").
 
@@ -230,8 +182,7 @@ and prior state-of-the-art adaptive routing strategies trained
 and evaluated with our same worker pool. First, we consider a robust and popular self-reflection agentic approach (selfrefine; multi\_agent\_debate) where for all questions, each agent is prompted up to five times to revise and improve its answers, while keeping all its previous attempts in context. Moreover, we consider four expensive multi-agent
 routing coordination strategies, including MASRouter (yue2025masrouter), Mixture-of-Agents (MoA) (wang2024mixture), RouterDC (chen2024routerdc), and Smoothie (guha2024smoothie). In all multi-agent baselines, we train and evaluate these models with the same set of 7 agents as our Conductor, as described in Section [4.1](#S4.SS1 "4.1 Training and evaluation setup ‣ 4 Evaluating the RL Conductor ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"). These prior multi-agent strategies essentially train a router classifier to construct agentic workflows by simply selecting models and/or human-designed coordination topologies from a set of pre-specified options. We note that the expressivity of these prior strategies is inherently constrained when compared to our new framework, which places complete specification freedom in the Conductor by directly using natural language as its output medium.
 
-![Refer to caption](/html/2512.04388/assets/figs/calls_v_performance.png)
-
+!(/html/2512.04388/assets/figs/calls_v_performance.png)
 
 Figure 5: Performance vs Efficiency. The Conductor far surpasses multi-agent baselines at a fraction of the cost. Scores are task-averages from Fig. [4](#S4.F4 "Figure 4 ‣ 4.3 Controlled large-scale evaluation ‣ 4 Evaluating the RL Conductor ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"). Numerical results in Table [7](#A2.T7 "Table 7 ‣ B.4 Controlled large scale evaluation full results ‣ Appendix B Additional Experimental Results ‣ Learning to Orchestrate Agents in Natural Language with the Conductor")
 
@@ -241,8 +192,7 @@ Quantitative results and analysis. We report the results from this large-scale e
 
 We incorporate the two extensions detailed in Section [3.2](#S3.SS2 "3.2 Extending the RL Conductor ‣ 3 Learning to conduct an orchestra of models ‣ Learning to Orchestrate Agents in Natural Language with the Conductor") into a pretrained Conductor with short finetuning phases. We train using a small subset of questions already seen during training, demonstrating how powerful extensions can be easily integrated without new data. We hope these experiments can provide future work with an inexpensive blueprint to adapt our powerful new model.
 
-![Refer to caption](/html/2512.04388/assets/figs/conductor_generalization.png)
-
+!(/html/2512.04388/assets/figs/conductor_generalization.png)
 
 Figure 6: Finetuned on randomized model pools, the Conductor achieves strong performance over rarely used open-model subsets while maintaining performance on the closed-model subsets.
 
@@ -265,20 +215,16 @@ Table 2: Test-time recursion generates further performance gains. To accommodate
 | Conductor (Ours) | 66.67 | 37.8 | 81.31 | 61.93 |
 | Conductor-Recursive (Ours) | 66.67 | 40.0 | 82.32 | 63.00 |
 
-
-
-
 Figure 7: Conductor Scale. The 3B Conductor still learns optimal agent selection, as shown by the agent distribution converging on the three most powerful models (left). However, when scaling to 7B, the Conductor generates additional performance gains, even for identical agent selection, through its improved prompt engineering (right). Evaluation performance taken from Fig. [4](#S4.F4 "Figure 4 ‣ 4.3 Controlled large-scale evaluation ‣ 4 Evaluating the RL Conductor ‣ Learning to Orchestrate Agents in Natural Language with the Conductor").
 
-![Refer to caption](/html/2512.04388/assets/figs/agent_heat_plot.png)
+!(/html/2512.04388/assets/figs/agent_heat_plot.png)
 
 ### 4.5 Analyzing and ablating the properties of an effective Conductor
 
 Conductor scale. We start our analysis of the Conductor’s remarkable capabilities by investigating the role played by model scale. To this end, we examine and compare the behavior of our 7B Conductor by training a smaller variant with 3B parameters following the same recipe.
 We then analyze how the agentic workflows designed by the two models differ, together with their final performance on LiveCodeBench. As shown in Figure [7](#S4.F7 "Figure 7 ‣ 4.4 User-customization and test-time recursive scaling ‣ 4 Evaluating the RL Conductor ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"), as training progresses, we find that the two Conductors converge to select the same distribution of worker agents. However, while both of our models still display performance well beyond all of our baselines, our larger 7B variant maintains a clear edge at the end of training. Comparing the substasks specified by the 7B Conductor and its 3B counterpart, illustrated respectively in Figures [3](#S3.F3 "Figure 3 ‣ 3.1 Framing agent coordination in natural language ‣ 3 Learning to conduct an orchestra of models ‣ Learning to Orchestrate Agents in Natural Language with the Conductor")) and [15](#A5.F15 "Figure 15 ‣ Appendix E Conductor Prompt and Few-Shot Examples ‣ Learning to Orchestrate Agents in Natural Language with the Conductor") of Appendix [F](#A6 "Appendix F Example Conductor Completions ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"), we trace this performance gap to the larger model’s superior prompt engineering skills. This relationship further highlights how our new framework opens a new axis for scaling multi-agent coordination far beyond prior routing efforts. Together with our results, we believe this analysis further evidences the importance of removing manual constraints on subtask specification: enabling the increased natural language capabilities of larger and newer base models to directly translate into more intelligent prompt engineering and allowing the Conductor to unlock a new level of agency over each of its workers.
 
-![Refer to caption](/html/2512.04388/assets/figs/num_steps_fig.png)
-
+!(/html/2512.04388/assets/figs/num_steps_fig.png)
 
 Figure 8: Task adaptivity. In more straightforward tasks, such as MMLU, the Conductor learns that 2 agents working together is optimal. In more complex settings, such as LiveCodeBench, the Conductor allocates more compute by devising coordination strategies with 3 or even 4 agents.
 
@@ -491,8 +437,7 @@ Table 8: Out-of-Distribution evaluation under cost constraints. The Conductor co
 
 We ablate the subtasks by retraining the Conductor with an alternate prompt, identical to [13](#A5.F13 "Figure 13 ‣ Appendix E Conductor Prompt and Few-Shot Examples ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"), but with the requirement to generate subtasks removed. Instead, all models selected in the coordination strategy are uniformly prompted with ’Solve the user question’. The Conductor is thereby trained only to work out optimal agent combinations and collaboration topologies.
 
-![Refer to caption](/html/2512.04388/assets/figs/training_combined.png)
-
+!(/html/2512.04388/assets/figs/training_combined.png)
 
 Figure 9: OOD few-shot examples improve Conductor performance.
 
@@ -542,8 +487,7 @@ Few-Shot examples. We ablate the effect of the few-shot examples provided to the
 
 We evaluate the performance of the Conductor under an alternate coordination topology specification scheme, in which the Conductor specifies, for each agent, which positions in the topology should be made visible. That is, rather than specifying all or [] for each agent, the Conductor can additionally make visible the output of any agent at a position pp. Hence, the Conductor could specify for some agent their context to be comprised of the outputs of the agents in the 0, 2, and 3 positions as [0,2,3]. This is therefore a generalization of our method, permitting the Conductor more fine-grained control over the composition of each LM agent’s context as they attempt their subtask.
 
-![Refer to caption](/html/2512.04388/assets/figs/worker_distribution.png)
-
+!(/html/2512.04388/assets/figs/worker_distribution.png)
 
 Figure 10: Recursive Conductor worker distribution on BigCodeBench. The Conductor redistributes its agent selection towards Claude and Gemini in recursive rounds, reflecting their superior performance.
 
@@ -561,8 +505,7 @@ We plot the agent distribution for the Conductor when evaluated on BigCodeBench 
 
 We provide a visualization of our Conductor workflow in Figure [11](#A3.F11 "Figure 11 ‣ Appendix C Conductor Schematic ‣ Learning to Orchestrate Agents in Natural Language with the Conductor"). In the provided example, we illustrate a task combining translation (between English and Chinese) and mathematical reasoning. The Conductor receives the request in Chinese, calls a Qwen model to first translate the request into English, before calling Gemini to solve the question. Concurrently, the Conductor passes the user question to DeepSeek to solve in Chinese. GPT is called at the end of the workflow to check both the English attempt by Gemini and the Chinese attempt by DeepSeek, before returning the correct solution in Chinese back to the user.
 
-![Refer to caption](/html/2512.04388/assets/figs/conductor_method_v0.png)
-
+!(/html/2512.04388/assets/figs/conductor_method_v0.png)
 
 Figure 11: Conductor schematic visualization. The Conductor combines the differing specializations of the workers LLMs to answer complex user queries. Here we visualize a workflow bridging both mathematical reasoning and English-Chinese translation.
 
@@ -572,8 +515,7 @@ We show in Figure [12](#A5.F12 "Figure 12 ‣ Appendix E Conductor Prompt and Fe
 
 ## Appendix E Conductor Prompt and Few-Shot Examples
 
-![Refer to caption](/html/2512.04388/assets/figs/recursion_schematic.png)
-
+!(/html/2512.04388/assets/figs/recursion_schematic.png)
 
 Figure 12: Recursive Conductor visualization. At test time, the Conductor is able to adapt its intial coordination strategies on-the-fly.
 
@@ -620,9 +562,6 @@ AVAILABLE LANGUAGE MODELS:
   
 {available\_models}
 
-
-
-
 Figure 14: The recursive prompt. When allowing self-referential recursion, the Conductor views the response obtained from its previously designed coordination strategy and decides whether to iterate on its strategy or pass the existing response back to the user.
 
 Here is the final response obtained at the end of your routing steps:
@@ -640,13 +579,9 @@ together with the history of the previous subtask and response messages specifie
 In case the previous final response obtained from your previous routing steps is already correct, you can pass three empty lists for ”model\_id”, ”subtasks”, and ”access\_list” to return this to the user as is.
 In case you think the previous final response is incorrect or in need of verification, you can devise a sequence of routing steps that will revise or verify the previous response.
 
-
-
-
 Figure 15: Example 3B Conductor completion. The 3B model provides a workable strategy, but suboptimally instructs the first model to hide their reasoning due to the constraint provided by the user, impairing collaboration.
 
 User
-
 
 Solve the following math problem step by step: Let F​(z)=z+iz−iF(z)=\frac{{z+i}}{{z-i}} for all complex numbers z≠i,z\not=i, and let zn=F​(zn−1)z\_{n}=F(z\_{{n-1}}) for all positive integers n.n. Given that z0=1137+i,z\_{0}=\frac{1}{{137}}+i, find z2002.z\_{{2002}}. For your final answer, follow these guidelines:
   
@@ -658,7 +593,6 @@ Solve the following math problem step by step: Let F​(z)=z+iz−iF(z)=\frac{{z
 …
 
   3B Conductor
-
 
 Here’s the approach:
   
@@ -685,9 +619,6 @@ This sequence divides the work:
 2. Model 1 verifies the result by applying the function repeatedly to confirm it converges as expected.
   
 3. Model 2 ensures the accuracy of the solution and formats it according to the guidelines.
-
-
-
 
 Figure 16: In-distribution few-shot examples. The two few-shot examples provided are taken from MATH500 and MMLU.
 
@@ -735,11 +666,9 @@ subtasks = [”Find a set of three consecutive positive integers whose sum is a 
   
 ”Ensure the final answer is formatted correctly according to the rules and provide the necessary LaTeX representation.”]
   
-  
+```
 access\_list = [[], [”all”], [”all”]]
-
-
-
+```
 
 Figure 17: Out-of-distribution few-shot examples. The two few-shot examples provided are taken from deepmath and medreason, which are out-of-distribution relative to the training tasks of MATH500, MMLU, RLPR, and LiveCodeBench.
 
@@ -771,8 +700,6 @@ EXAMPLE 2:
   
   
 Question: Evaluate the limit:
-
-
 
 limt→0(1ln⁡(1+t)+1ln⁡(1−t)).\lim\_{{t\to 0}}\left(\frac{{1}}{{\ln(1+t)}}+\frac{{1}}{{\ln(1-t)}}\right).
 Provide the final answer in <<answer>> <</answer>> tags and use LaTeX notation.
@@ -830,7 +757,6 @@ Figure 18: Example Conductor completion with a 1-shot strategy. In the following
 
 User
 
-
 A heartbroken dog whose owner died two months ago is missing her so much that he attends services every day at the Italian church where her funeral was held, patiently waiting for her to return. Tommy, a seven-year-old dog, belonged to Maria Lochi, 57, and had been her faithful partner after she adopted him when she found him in fields close to her home.
   
   
@@ -853,7 +779,6 @@ D. celebrate Mass with Father Panna
 
   Conductor
 
-
 This is a straightforward comprehension and recall task from the given text, so we only need one model to do that:
 1. First, comprehend and recall the information from the story provided for the dog Tommy, which requires an understanding of the context and deducing Tommy’s reason for going to the church.
 2. Output the most accurate answer from the comprehension of the context.
@@ -865,18 +790,13 @@ subtasks = [”Deduce from the story provided in the user question, why Tommy st
   
 access\_list = [[]]
 
-
-
-
 Figure 19: Example Conductor completion with a tree topology. The Conductor solves the problem with two independent steps followed by an aggregation step, specified by its access list of [[], [], ["all"]].
 
 User
 
-
 One ticket to a show costs $​20\mathdollar 20 at full price. Susan buys 44 tickets using a coupon that gives her a 25%25\% discount. Pam buys 55 tickets using a coupon that gives her a 30%30\% discount. How many more dollars does Pam pay than Susan?
 
   Conductor
-
 
 1. We need to calculate how much Susan pays for her 4 discounted tickets (Model 1). 2. We need to calculate how much Pam pays for her 5 discounted tickets (Model 2). 3. We need to determine the difference in cost between Pam’s and Susan’s tickets (Model 3).
   
@@ -893,13 +813,9 @@ subtasks = [”Calculate the cost of 4 tickets at a 25% discount.”,
   
 access\_list = [[], [], [”all”]]
 
-
-
-
 Figure 20: Example Conductor completion allocating more agents to solve a harder problem. In the following LiveCodeBench example, the Conductor devises an extensive workflow utilizing all 5 possible workflow steps.
 
 User
-
 
 You are given a weighted simple connected undirected graph with N vertices and M edges, where vertices are numbered 1 to N, and edges are numbered 1 to M. Additionally, a positive integer K is given.
 Edge i (1≤i≤M)(1\leq i\leq M) connects vertices uiu\_{i} and viv\_{i} and has a weight of wiw\_{i}.
@@ -909,8 +825,6 @@ Find the minimum cost of a spanning tree of this graph.
   
 The input is given from Standard Input in the following format:
 
-
-
 [u1v1w1u2v2w2⋮⋮⋮uMvMwM]\begin{bmatrix}u\_{1}&v\_{1}&w\_{1}\\
 u\_{2}&v\_{2}&w\_{2}\\
 \vdots&\vdots&\vdots\\
@@ -918,7 +832,6 @@ u\_{M}&v\_{M}&w\_{M}\end{bmatrix}
 Print the answer
 
   Conductor
-
 
 1. The first model (Model 6) should understand the problem statement and define the objectives. 2. The second model (Model 4) should analyze the given graph and its edges to understand the structure. 3. The third model (Model 5) should determine the strategy to find the minimum cost spanning tree. 4. The fourth model (Model 3) will implement the strategy in a Python function. 5. The final model (Model 2) will validate the implemented solution, ensuring it meets all constraints and requirements.
   
@@ -943,13 +856,9 @@ subtasks = [”Understand the problem statement and goals. Define what needs to 
   
 access\_list = [[], [”all”], [”all”], [”all”], [”all”]]
 
-
-
-
 Figure 21: Example Conductor-recursive completion, determining that the original coordination strategy was already sound.
 
 User
-
 
 You are given a string S of length N consisting of lowercase English letters.
   
@@ -957,7 +866,6 @@ You are given a string S of length N consisting of lowercase English letters.
 If there are any adjacent occurrences of a and b in S, print Yes; otherwise, print No. (The order of a and b does not matter.)
 
   Conductor
-
 
 1. First, we’ll directly attempt to solve the problem. 2. Next, we’ll check and refine the solution if necessary. 3. Finally, we’ll provide the most accurate and detailed solution, following all the given instructions.
   
@@ -976,10 +884,6 @@ subtasks = [”Transform the string s into t in exactly k operations and provide
   
 access\_list = [[], [”all”], [”all”]]
 
-
-
-
-
 RESULT OF COORDINATION STRATEGY:
   
   
@@ -997,7 +901,6 @@ class Solution:
 
   Conductor-recursive
 
-
 The previous response provided a correct and efficient solution. It seems well-reasoned and directly addresses the user’s question with the correct Python code. Given that the model’s response is correct and concise, I don’t need to make any further attempts or verify it. Therefore, I will pass three empty lists to return the previous correct response to the user.
   
   
@@ -1007,13 +910,9 @@ subtasks = []
   
 access\_list = []
 
-
-
-
 Figure 22: Example Conductor-recursive completion, determining allocating additional agents to provide feedback and verify in the recursion round.
 
 User
-
 
 You are given a string S of length N consisting of lowercase English letters.
   
@@ -1021,7 +920,6 @@ You are given a string S of length N consisting of lowercase English letters.
 If there are any adjacent occurrences of a and b in S, print Yes; otherwise, print No. (The order of a and b does not matter.)
 
   Conductor
-
 
 1. First, we’ll directly attempt to solve the problem. 2. Next, we’ll check and refine the solution if necessary. 3. Finally, we’ll provide the most accurate and detailed solution, following all the given instructions.
   
@@ -1040,10 +938,6 @@ subtasks = [”Take the string and devise an algorithm for counting adjacent occ
   
 access\_list = [[], [”all”], [”all”]]
 
-
-
-
-
 RESULT OF COORDINATION STRATEGY:
   
   
@@ -1061,7 +955,6 @@ class Solution:
 
   Conductor-recursive
 
-
 The previous response seems to be correct, as it handles the presence of ”ab” or ”ba” in the stripped input string ‘s‘. However, to ensure robustness, I’ll ask one model to provide feedback and another to verify the solution.
   
   
@@ -1076,13 +969,9 @@ subtasks = [”Verify the previous solution and provide your feedback in <<idea>
   
 access\_list = [[”all”], [”all”]]
 
-
-
-
 Figure 23: Utilizing a planner and coder in LiveCodeBench. In this LiveCodeBench problem, the Conductor leverages Gemini 2.5 Pro to first act as a strategist and then GPT to act as a coder.
 
 User
-
 
 There are N cities in a certain country.
   
@@ -1094,7 +983,6 @@ Two types of transportation are available: company car and train. The time requi
   
 
   Conductor
-
 
 First, we need to understand the problem and the transportation options available. Then we need to find the minimum time to travel from city 1 to N, considering the various options. Finally we need to implement the solution in Python and ensure it meets all the constraints and requirements.
   
@@ -1109,13 +997,9 @@ subtasks = [“Understand the problem and the transportation options available. 
   
 access\_list = [[],[[“all”]]
 
-
-
-
 Figure 24: Comprehending, planning, strategizing, and finally coding with 3 agents on LiveCodeBench. In this LiveCodeBench problem, the Conductor leverages Claude Sonnet 4 to first understand the objective and constraints, then Gemini 2.5 Pro strategizes and plans, before GPT-5 implements the final code.
 
 User
-
 
 You are given a 0-indexed integer array nums representing the initial positions of some marbles. You are also given two 0-indexed integer arrays moveFrom and moveTo of equal length.
   
@@ -1125,7 +1009,6 @@ After completing all the steps, return the sorted list of occupied positions.
   
 
   Conductor
-
 
 First, we need to understand the problem, its constraints, and the goal. Then, we need to come up with an efficient strategy for how to solve. Finally we need to write optimized code implementing the plan.
   
@@ -1143,13 +1026,9 @@ subtasks = [”Understand the problem and determine the goal, which is to implem
   
 access\_list = [[],[“all”],[[“all”]]
 
-
-
-
 Figure 25: Understanding the method, analyzing the data, then solving in MMLU. In this MMLU problem, the Conductor leverages Gemini 2.5 Pro and Claude Sonnet 4 to analyze the data and methods, before handing over to GPT-5 to aggregate their work into the final response.
 
 User
-
 
 Flying over a desert in an airplane, two scientists looked down with trained eyes at trees and bushes. After an hour’s flight one of the scientists wrote in his notebook, ”Look here for probable metal.”…
   
@@ -1161,7 +1040,6 @@ The study of trees, branches and roots indicated that \_ .
   
 
   Conductor
-
 
 First, we need to understand the context and scientific method used by the scientists to locate minerals based on the condition of plants and trees. At the same time, we need to analyze specific data provided about gold in different parts of the trees to determine the correct answer.
   
@@ -1179,18 +1057,13 @@ subtasks = [“Understand the scientific method used by the scientists to locate
   
 access\_list = [[],[],[[“all”]]
 
-
-
-
 Figure 26: Factual recall makes use of tree topology. In this Medreason problem, the Conductor explicitly recognizes that agent-to-agent collaboration is unnecessary, and relies instead on querying models independently and aggregating to solve the answer.
 
 User
 
-
 Does brain derived neurotrophic factor enhance the contraction of intestinal muscle strips induced by SP and CGRP in mice?
 
   Conductor
-
 
 The user question is about determining if brain-derived neurotrophic factor (BDNF) enhances the contraction of intestinal muscles stripes induced by SP and CGRP in mice. This seems like a straightforward query that may not require iterative modeling as its more about the availability of scientific data or a standard result from experimentation rather than problem solving or algorithmic implementation.
   
@@ -1210,13 +1083,9 @@ subtasks = [“Does brain derived neurotrophic factor enhance the contraction of
   
 access\_list = [[],[],[[“all”]]
 
-
-
-
 Figure 27: Small models can help format check. In this BigCodeBench problem, we noticed GPT-5 making frequent formatting errors, providing additional information and hyerparameter choices in the dataframe title. Employing Qwen-32B as a final format checker helped solve this problem and raise GPT-5’s performance.
 
 User
-
 
 Create a Pandas DataFrame from a list of pairs and visualize the data using a bar chart. - The title of the barplot should be set to ’Category vs Value’‘.
   
@@ -1226,7 +1095,6 @@ The function should output with:
   
 
   Conductor
-
 
 We’ll have 1 model plan out the requirements for the visualization and how to do the sampling, and a second to implement the code as required. We’ll use a final model to ensure the answer abides by the user’s formatting requirements.
   
@@ -1244,13 +1112,9 @@ subtasks = [“Consider the user question and plan out the key aspects of the vi
   
 access\_list = [[],[“all”],[[“all”]]
 
-
-
-
 Figure 28: Conductor role abdication. The Conductor abdicates its role as a subtask planner to Gemini 2.5 Pro, tasking it with devising subtasks for the other models to enact.
 
 User
-
 
 You are given an array nums consisting of positive integers.
 We call a subarray of an array complete if the following condition is satisfied:
@@ -1263,7 +1127,6 @@ The number of distinct elements in the subarray is equal to the number of distin
 Implement the function ‘countCompleteSubarrays‘ that solves this problem.
 
   Conductor
-
 
 We’ll need models with strategic and analytical skills to implement an efficient algorithm, validate our logic, and handle Python code. Let’s leverage Model 0 (Analytical) to dissect the problem and plan the subtasks. The other models will then follow these subtasks to solve the problem.
   
@@ -1283,83 +1146,3 @@ subtasks = [”Analyze the problem, understand the constraints, and propose a st
   
   
 access\_list = [[],[“all”],[[“all”]]
-
-[◄](/html/2512.04386)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.04388)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.04388)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.04388)[►](/html/2512.04389)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 07:01:23 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

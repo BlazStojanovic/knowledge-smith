@@ -20,49 +20,6 @@ url: https://arxiv.org/abs/2603.29957
 year: 2026
 ---
 
-[2603.29957] Think Anywhere in Code Generation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Think Anywhere in Code Generation
 
 Xue Jiang1,2,🖂, Tianyu Zhang1, Ge Li1,🖂, Mengyang Liu1, Taozhi Chen1, Zhenhua Xu1,
@@ -93,8 +50,7 @@ Motivated by these observations, we desire a mechanism that enables models to in
 
 Realizing the Think-Anywhere mechanism presents significant challenges. Since LLMs do not spontaneously invoke reasoning during code generation, they must be explicitly taught this capability. We achieve this through cold-start training by constructing supervised learning samples that demonstrate reasoning invocation patterns of Think-Anywhere. While cold-start training can teach models to invoke reasoning blocks within code, it cannot effectively teach models where to reasoning is necessary. The decision of which token positions to invoke thinking requires the model to identify its own moments of high complexity or logical risk, which demands adaptive judgment that goes beyond pattern matching in supervised data. To address this challenge, we employ Reinforcement Learning with Verifiable Rewards (RLVR) to enable LLMs to autonomously learn where to trigger reasoning during code generation, allowing the model to discover optimal thinking positions through reward-driven exploration.
 
-![Refer to caption](/html/2603.29957/assets/x1.png)
-
+!(/html/2603.29957/assets/x1.png)
 
 Figure 1: Illustration of Think-Anywhere. Reasoning can be invoked at any token position during code generation. The ellipsis (“…”) within <think> or <thinkanywhere> represents truncated thinking content for brevity.
 
@@ -336,9 +292,6 @@ Table 3: Cross-domain generalization of Think-Anywhere to mathematical reasoning
 | GRPO | 6.0 | 16.8 | 23.3 | 4.7 | 17.2 | 26.7 | 0.3 | 1.7 | 3.3 |
 | Think-Anywhere | 17.3 | 32.9 | 40.2 | 17.7 | 28.0 | 33.2 | 14.4 | 18.5 | 19.6 |
 
-
-
-
 Table 4: Generalizability of Think-Anywhere across different model families and scales.
 
 |  |  |  |
@@ -382,13 +335,11 @@ Third, No Upfront Thinking incurs only a moderate drop (-2.8%), indicating that 
 
 ### 4.4 Further Analysis
 
-![Refer to caption](/html/2603.29957/assets/x2.png)
-
+!(/html/2603.29957/assets/x2.png)
 
 (a) Token entropy analysis.
 
-![Refer to caption](/html/2603.29957/assets/x3.png)
-
+!(/html/2603.29957/assets/x3.png)
 
 (b) Syntactic context analysis.
 
@@ -403,15 +354,13 @@ Figure [2(b)](#S4.F2.sf2 "In Figure 2 ‣ 4.4 Further Analysis ‣ 4 Experiment
 
 #### Computational Efficiency Comparison.
 
-![Refer to caption](/html/2603.29957/assets/x4.png)
-
+!(/html/2603.29957/assets/x4.png)
 
 Figure 3: Token cost of different methods.
 
 We evaluate the inference efficiency of Think-Anywhere by measuring the average number of tokens generated per solution. We compare Think-Anywhere against two reasoning baselines: GRPO (upfront thinking) and CoT prompting. As shown in Figure [3](#S4.F3 "Figure 3 ‣ Computational Efficiency Comparison. ‣ 4.4 Further Analysis ‣ 4 Experiments ‣ Think Anywhere in Code Generation"), Think-Anywhere consistently generates fewer tokens than both baselines across benchmarks. The reduction in total token cost is attributed to the fact that Think-Anywhere shortens the upfront thinking phase while introducing additional <thinkanywhere> tokens on demand. Since GRPO and CoT can only reason before code generation, they are forced to deliberate exhaustively at the upfront thinking stage, anticipating all potential implementation challenges upfront, which results in lengthy reasoning traces. Think-Anywhere, by contrast, invokes deliberation where it is needed. The upfront thinking phase therefore only needs to handle high-level planning, and its length is substantially reduced. The token savings from the shortened upfront thinking far outweigh the cost of the additional <thinkanywhere> blocks, resulting in a net reduction in total token usage. A detailed breakdown of the upfront thinking length and <thinkanywhere> block length is provided in Appendix [A](#A1 "Appendix A Token Cost Breakdown ‣ Think Anywhere in Code Generation").
 
-![Refer to caption](/html/2603.29957/assets/x5.png)
-
+!(/html/2603.29957/assets/x5.png)
 
 Figure 4: Pass@k comparison between GRPO and Think-Anywhere across four benchmarks.
 
@@ -671,83 +620,3 @@ Table 7: Average frequency and length of <thinkanywhere> blocks across training 
 | Think-Anywhere (Prompting) | 0.31 | 219.7 |
 | Think-Anywhere (SFT) | 11.28 | 34.5 |
 | Think-Anywhere (Ours) | 11.26 | 22.9 |
-
-[◄](/html/2603.29955)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2603.29957)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2603.29957)
-[View original  
-on arXiv](https://arxiv.org/abs/2603.29957)[►](/html/2603.29958)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Apr 5 21:59:13 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

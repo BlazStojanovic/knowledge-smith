@@ -196,49 +196,6 @@ url: https://arxiv.org/abs/2602.15763
 year: 2026
 ---
 
-[2602.15763] GLM-5: from Vibe Coding to Agentic Engineering
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # GLM-5: from Vibe Coding to Agentic Engineering
 
 GLM-5 Team
@@ -256,8 +213,7 @@ We present GLM-5, a next-generation foundation model designed to transition the 
 Building upon the agentic, reasoning, and coding (ARC) capabilities of its predecessor, GLM-5 adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity. To advance model alignment and autonomy, we implement a new asynchronous reinforcement learning infrastructure that drastically improves post-training efficiency by decoupling generation from training. Furthermore, we propose novel asynchronous agent RL algorithms that further improve RL quality, enabling the model to learn from complex, long-horizon interactions more effectively. Through these innovations, GLM-5 achieves state-of-the-art performance on major open benchmarks. Most critically, GLM-5 demonstrates unprecedented capability in real-world coding tasks, surpassing previous baselines in handling end-to-end software engineering challenges.
 Code, models, and more information are available at <https://github.com/zai-org/GLM-5>.
 
-![Refer to caption](/html/2602.15763/assets/x1.png)
-
+!(/html/2602.15763/assets/x1.png)
 
 Figure 1: Results of GLM-5, DeepSeek-V3.2, Claude Opus 4.5, Gemini 3 Pro, and GPT-5.2 (xhigh) on 8 agentic, reasoning, and coding benchmarks: Humanity’s Last Exam, SWE-bench Verified, SWE-bench Multilingual, Terminal-Bench 2.0, BrowseComp, MCP-Atlas, τ2\tau^{2}-Bench, Vending Bench 2.
 
@@ -273,24 +229,19 @@ Figure [1](#S0.F1 "Figure 1 ‣ GLM-5: from Vibe Coding to Agentic Engineering"
 
 GLM-5 scores 50 on the Intelligence Index v4.0 and is the new open weights leader (Cf. Figure [2](#S1.F2 "Figure 2 ‣ Results. ‣ 1 Introduction ‣ GLM-5: from Vibe Coding to Agentic Engineering")), up from GLM-4.7’s score of 42 - an 8 point jump driven by improvements across agentic performance and knowledge/hallucination. This is the first time an open weights model has achieved a score of 50 on the Artificial Analysis Intelligence Index v4.0.
 
-![Refer to caption](/html/2602.15763/assets/x2.png)
-
+!(/html/2602.15763/assets/x2.png)
 
 Figure 2: Artificial Analysis Intelligence Index v4.0 incorporates 10 evaluations: GDPval-AA, τ2\tau^{2}-Bench Telecom, Terminal-Bench Hard, SciCode, AA-LCR, AA-Omniscience, IFBench, Humanity’s Last Exam, GPQA Diamond, CritPt.
 
+!(/html/2602.15763/assets/figures/text-arena.jpeg)
 
-
-![Refer to caption](/html/2602.15763/assets/figures/text-arena.jpeg)
-
-![Refer to caption](/html/2602.15763/assets/figures/code-arena.jpeg)
+!(/html/2602.15763/assets/figures/code-arena.jpeg)
 
 Figure 3: On LMArena, GLM-5 is the #1 open model in both Text Arena and Code Arena.
 
+!(/html/2602.15763/assets/figures/vending-bench.jpeg)
 
-
-![Refer to caption](/html/2602.15763/assets/figures/vending-bench.jpeg)
-
-![Refer to caption](/html/2602.15763/assets/x3.png)
+!(/html/2602.15763/assets/x3.png)
 
 Figure 4: Results on several long-horizon tasks. Left: Vending-Bench 2; Right: CC-Bench-V2.
 
@@ -303,8 +254,7 @@ Vending-Bench 2 is a benchmark for measuring AI model performance in running a b
 Figure [4](#S1.F4 "Figure 4 ‣ Results. ‣ 1 Introduction ‣ GLM-5: from Vibe Coding to Agentic Engineering") (left) shows that GLM-5 ranks #1 among all open-source models, finishing with a final account balance of $4,432. It approaches Claude Opus 4.5, demonstrating strong long-term planning and resource management.
 Figure [4](#S1.F4 "Figure 4 ‣ Results. ‣ 1 Introduction ‣ GLM-5: from Vibe Coding to Agentic Engineering") (right) further shows results on our internal evaluation suite CC-Bench-V2. GLM-5 significantly outperforms GLM-4.7 across frontend, backend, and long-horizon tasks, narrowing the gap with Claude Opus 4.5.
 
-![Refer to caption](/html/2602.15763/assets/x4.png)
-
+!(/html/2602.15763/assets/x4.png)
 
 Figure 5: Overall training pipeline of GLM-5.
 
@@ -382,8 +332,7 @@ The core philosophy of DSA [[9](#bib.bib1 "DeepSeek-v3.2: pushing the frontier 
 What makes DSA particularly interesting from a researcher’s perspective is how it was introduced via Continued Pre-Training from a dense base model. This avoided the “astronomical” cost of training from scratch. The transition follows a two-stage “dense warm-up and sparse training adaptation” strategy. DeepSeek-V3.2-Exp maintains the same benchmark performance as its dense predecessor, proving that  90% of attention entries in long contexts are indeed redundant.
 DSA reduces the attention computation by roughly 1.5-2× for long sequences, which is very important for the reasoning-heavy agents we are building, being able to handle 128K contexts at half the GPU cost.
 
-![Refer to caption](/html/2602.15763/assets/x5.png)
-
+!(/html/2602.15763/assets/x5.png)
 
 Figure 6: SFT loss curves comparison between MLA and DSA training. Results are smoothed by Running Average with a window size of 50.
 
@@ -513,8 +462,7 @@ The post-training phase of GLM-5 aims to transform the base model into a highly 
 
 ### 3.1 Supervised Fine-Tuning
 
-![Refer to caption](/html/2602.15763/assets/x6.png)
-
+!(/html/2602.15763/assets/x6.png)
 
 Figure 7: Illustration of Interleaved Thinking and Preserved Thinking.
 
@@ -805,8 +753,7 @@ Building on this, we combine keep-recent with Discard-all to form a hybrid Hiera
 
 As shown in Figure [8](#S4.F8 "Figure 8 ‣ 4.2.4 Inference with Context Management for Search Agents ‣ 4.2 Environment Scaling for Agents ‣ 4 Agentic Engineering ‣ GLM-5: from Vibe Coding to Agentic Engineering"), under different compute budgets, this strategy effectively frees up context space, enabling the model to execute more steps and consistently improving performance. Compared to using Discard-all alone, combining with keep-recent-k achieves consistent gains across all budgets, reaching a final score of 75.9, outperforming all open-source models equipped with context-management.
 
-![Refer to caption](/html/2602.15763/assets/x7.png)
-
+!(/html/2602.15763/assets/x7.png)
 
 Figure 8: Accuracy of BrowseComp with different context management strategies from GLM-4.7 (gray baselines) to GLM-5 (colored strategies).
 
@@ -820,8 +767,7 @@ Level-1: Static markup attributes. This level focuses on declarative attributes 
 
 Level-2: Runtime rendering properties. Unlike static inspection, this level evaluates runtime properties of DOM nodes during rendering, such as element width and height, bounding boxes, and other geometric layout metrics. By constraining these properties, we encourage the generated slides to align more closely with human aesthetic preferences in spatial organization. We develop a distributed rendering service capable of executing rendering jobs at high throughput while extracting the required runtime properties. During training, we observe several forms of reward hacking behaviors, such as hard truncation of overlong content or excessive manipulation of spacing (see Figure [9](#S4.F9 "Figure 9 ‣ 4.2.5 Slide Generation ‣ 4.2 Environment Scaling for Agents ‣ 4 Agentic Engineering ‣ GLM-5: from Vibe Coding to Agentic Engineering")). To mitigate these issues, we refine the renderer implementation to eliminate exploitable loopholes, ensuring that reward signals genuinely incentivize aesthetically coherent layouts rather than superficial compliance with geometric metrics.
 
-![Refer to caption](/html/2602.15763/assets/x8.png)
-
+!(/html/2602.15763/assets/x8.png)
 
 Figure 9: 
 Examples of reward hacking in the slides RL training. Our runtime rendering obtains grounded attribute values, making the evaluation robust to such hacking behaviors.
@@ -1001,8 +947,7 @@ The evaluation process follows a two-stage pipeline: 1) Static Verification: We 
 We define the following metrics: Build Success Rate (BSR) measures the ratio of projects that successfully initialize and run. Instance Success Rate (ISR) measures the ratio of projects that pass all associated specifications. Check-item Success Rate (CSR) measures the fine-grained completion rate across all check-items.
 More details on the data distribution and the construction and validation process are in Appendix [B.4.1](#A2.SS4.SSS1 "B.4.1 Frontend Evaluation ‣ B.4 Evaluation of Real-world Agentic Engineering Experience ‣ Appendix B Evaluation Details ‣ GLM-5: from Vibe Coding to Agentic Engineering").
 
-![Refer to caption](/html/2602.15763/assets/x9.png)
-
+!(/html/2602.15763/assets/x9.png)
 
 Figure 10: Agent-as-a-Judge evaluation pipeline. Each generated frontend project is first built to verify static correctness. Successfully built instances are then interactively tested by an autonomous Judge Agent, which determines the functional correctness of each check item.
 
@@ -1069,8 +1014,7 @@ Table 9: Performance on SWE-rebench, January 2026.
 
 ### 6.3 Evaluation of Real-world General Abilities
 
-![Refer to caption](/html/2602.15763/assets/x10.png)
-
+!(/html/2602.15763/assets/x10.png)
 
 Figure 11: Performance comparison between GLM-4.7 and GLM-5 across five real-world general ability domains.
 
@@ -1642,11 +1586,9 @@ We add a small prompt adjustment in Telecom and Retail to avoid failures caused 
 SYSTEM\_PROMPT = """"
 {global\_user\_sim\_guidelines}
 
-
 <scenario>
 {instructions}
 </scenario>
-
 
 {optimized\_user\_prompt}
 """".strip()
@@ -1753,7 +1695,6 @@ Each test case is composed of three components: the Task, the Checklist, and a D
  Once the drawing is complete, clicking the "Save" button should allow the user to save the image locally.
  Please implement this using the React framework in the current directory.
 
-
  Checklist:
  The user can select the brush color and thickness using the left-hand buttons, and drawing is functional via mouse click-and-drag on the canvas.
  The user can select the eraser size using the left-hand buttons, and erasing is functional via mouse click-and-drag on the canvas.
@@ -1775,83 +1716,3 @@ We implement a rigorous four-stage pipeline to ensure data quality:
 * •
 
   Stage 4: Dynamic Benchmark Iteration. To maintain a high level of discriminative power, we iteratively update the test suite by removing trivial tasks that no longer challenge state-of-the-art coding agents. This expert-led curation process culminated in a final set of 220 high-quality frontend coding tasks and their corresponding checklists.
-
-[◄](/html/2602.15762)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.15763)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.15763)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.15763)[►](/html/2602.15764)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 21:57:43 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

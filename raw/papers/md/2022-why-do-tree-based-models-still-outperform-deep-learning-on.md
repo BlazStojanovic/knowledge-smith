@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/2207.08815v1
 year: 2022
 ---
 
-[2207.08815] Why do tree-based models still outperform deep learning on tabular data?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Why do tree-based models still outperform deep learning on tabular data?
 
 Léo Grinsztajn
@@ -223,21 +180,21 @@ SAINT
 
 Fig. [2](#S4.F2 "Figure 2 ‣ 4.2 Results ‣ 4 Tree-based models still outperform deep learning on tabular data. ‣ Why do tree-based models still outperform deep learning on tabular data?") and [2](#S4.F2 "Figure 2 ‣ 4.2 Results ‣ 4 Tree-based models still outperform deep learning on tabular data. ‣ Why do tree-based models still outperform deep learning on tabular data?") give benchmark results for different types of datasets (appendix [A.2](#A1.SS2 "A.2 More benchmarks ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") gives results as a function of computation time).
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_classif_numerical.jpg)
+!(/html/2207.08815/assets/figures/random_search_classif_numerical.jpg)
 
 Classification (15 datasets)
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_numerical.jpg)
+!(/html/2207.08815/assets/figures/random_search_regression_numerical.jpg)
 
 Regression (19 datasets)
 
 Figure 1: Benchmark on medium-sized datasets, with only numerical features. Dotted lines correspond to the score of the default hyperparameters, which is also the first random search iteration. Each value corresponds to the test score of the best model (on the validation set) after a specific number of random search iterations, averaged on 15 shuffles of the random search order. The ribbon corresponds to the minimum and maximum scores on these 15 shuffles.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_classif.jpg)
+!(/html/2207.08815/assets/figures/benchmark_categorical_classif.jpg)
 
 Classification (7 datasets)
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_categorical.jpg)
+!(/html/2207.08815/assets/figures/random_search_regression_categorical.jpg)
 
 Regression (14 datasets)
 
@@ -263,7 +220,7 @@ For the sake of simplicity, we restrict our analysis to numerical variables and 
 
 ### 5.2 Finding 1: NNs are biased to overly smooth solutions
 
-![Refer to caption](/html/2207.08815/assets/figures/high_frequencies.jpg)
+!(/html/2207.08815/assets/figures/high_frequencies.jpg)
 
 Figure 3: Normalized test accuracy of different models for varying smoothing of the target function on the train set. We smooth the target function through a Gaussian Kernel smoother, whose covariance matrix is the data covariance, multiplied by the (squared) lengthscale of the Gaussian kernel smoother. A lengthscale of 0 corresponds to no smoothing (the original data). All features have been Gaussienized before the smoothing through ScikitLearn’s QuantileTransformer. The boxplots represent the distribution of normalized accuracies across 15 re-orderings of the random search.
 
@@ -286,15 +243,15 @@ For each dataset, we drop an increasingly large fraction of features, according 
 
 Furthermore, the test accuracy of a GBT trained on the removed features (i.e the features below a certain feature importance threshold) is very low up to 20% of features removed, and quite low until 50%, which suggests that most of these features are uninformative, and not solely redundant.
 
-![Refer to caption](/html/2207.08815/assets/figures/removed_features_2.jpg)
+!(/html/2207.08815/assets/figures/removed_features_2.jpg)
 
 Figure 4: Test accuracy of a GBT for varying proportions of removed features, on our classification benchmark on numerical features. Features are removed in increasing order of feature importance (computed with a Random Forest), and the two lines correspond to the accuracy using the (most important) kept features (blue) or the (least important) removed features (red). A score of 1.0 corresponds to the best score across all models and hyperparameters on each dataset, and 0.0 correspond to random chance. These scores are averaged across 30 random search orders, and the ribbons correspond to the 80% interval among the different datasets.
 
-![Refer to caption](/html/2207.08815/assets/figures/useless_features.jpg)
+!(/html/2207.08815/assets/figures/useless_features.jpg)
 
 a. Removing features
 
-![Refer to caption](/html/2207.08815/assets/figures/add_features.jpg)
+!(/html/2207.08815/assets/figures/add_features.jpg)
 
 b. Adding features
 
@@ -317,11 +274,11 @@ Fig. [6](#S5.F6 "Figure 6 ‣ 5.4 Finding 3: Data are non invariant by rotation,
 
 Our findings shed light on the results of Somepalli et al. ([2021](#bib.bib21)) and Gorishniy et al. ([2022](#bib.bib47)), which add an embedding layer, even for numerical features, before MLP or Transformer models. Indeed, this layer breaks rotation invariance. The fact that very different types of embeddings seem to improve performance suggests that the sheer presence of an embedding which breaks the invariance is a key part of these improvements. We note that a promising avenue for further research would be to find other ways to break rotation invariance which might be less computationally costly than embeddings.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_rotation.jpg)
+!(/html/2207.08815/assets/figures/random_rotation.jpg)
 
 a. With all features
 
-![Refer to caption](/html/2207.08815/assets/figures/random_rotation_features_removed.jpg)
+!(/html/2207.08815/assets/figures/random_rotation_features_removed.jpg)
 
 b. With 50% features removed
 
@@ -728,21 +685,21 @@ Evaluation and training time are added. Time is averaged among folds, and cumula
 
 Looking at the results as a function of random search time rather than random search iterations makes tree-based models superiority even more striking. Neural networks and tree-based models were close for some benchmarks after a small number of iterations, but for the same amount of time spent on random search, tree-based models scores are always high above neural networks.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_time_numerical_classif.jpg)
+!(/html/2207.08815/assets/figures/benchmark_time_numerical_classif.jpg)
 
 Classification (15 datasets)
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_time_numerical_regression.jpg)
+!(/html/2207.08815/assets/figures/benchmark_time_numerical_regression.jpg)
 
 Regression (18 datasets)
 
 Figure 7: Time benchmark on medium-sized datasets, with only numerical features. The first random search iteration corresponds to default hyperparameters. Each value corresponds to the test score of the best model (on the validation set) after a specific time spent doing random search, averaged on 15 shuffles of the random search order. The ribbon corresponds to the minimum and maximum scores on these 15 shuffles.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_time_categorical_classif.jpg)
+!(/html/2207.08815/assets/figures/benchmark_time_categorical_classif.jpg)
 
 Classification (7 datasets)
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_time_categorical_regression.jpg)
+!(/html/2207.08815/assets/figures/benchmark_time_categorical_regression.jpg)
 
 Regression (14 datasets)
 
@@ -754,43 +711,41 @@ We extend our benchmark to large-scale datasets: in Figures [10](#A1.F10 "Figure
 
 We only keep datasets with more than 50,000 samples and restrict the train set size to 50,000 samples (vs 10,000 samples for the medium-sized benchmark). Unfortunately, this excludes a lot of datasets, which makes the comparison less clear. However, it seems that, in most cases, increasing the train set size reduces the gap between neural networks and tree-based models. We leave a rigorous study of this trend to future work.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_classif_numerical_medium_comparison.jpg)
+!(/html/2207.08815/assets/figures/random_search_classif_numerical_medium_comparison.jpg)
 
 Medium sized train set
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_classif_numerical_large.jpg)
+!(/html/2207.08815/assets/figures/random_search_classif_numerical_large.jpg)
 
 Large sized train set
 
 Figure 9: Comparison of accuracies on 4 classification tasks for different train set sizes, with only numerical features. Only datasets with more than 50,000 samples were kept, and the train set size was truncated to either 10,000 samples or 50,000 samples. Dotted lines correspond to the score of the default hyperparameters, which is also the first random search iteration. Each value corresponds to the test score of the best model (on the validation set) after a specific number of random search iterations, averaged on 15 shuffles of the random search order. The ribbon corresponds to the minimum and maximum scores on these 15 shuffles.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_numerical_medium_comparison.jpg)
+!(/html/2207.08815/assets/figures/random_search_regression_numerical_medium_comparison.jpg)
 
 Medium sized train set
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_numerical_large.jpg)
+!(/html/2207.08815/assets/figures/random_search_regression_numerical_large.jpg)
 
 Large sized train set
 
 Figure 10: Comparison of R2 scores on 3 regression tasks for different train set sizes, with only numerical features. Only datasets with more than 50,000 samples were kept, and the train set size was truncated to either 10,000 samples or 50,000 samples. Dotted lines correspond to the score of the default hyperparameters, which is also the first random search iteration. Each value corresponds to the test score of the best model (on the validation set) after a specific number of random search iterations, averaged on 15 shuffles of the random search order. The ribbon corresponds to the minimum and maximum scores on these 15 shuffles.
 
-
-
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_classif_medium_comparison.jpg)
+!(/html/2207.08815/assets/figures/benchmark_categorical_classif_medium_comparison.jpg)
 
 Medium sized train set
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_classif_large.jpg)
+!(/html/2207.08815/assets/figures/benchmark_categorical_classif_large.jpg)
 
 Large sized train set
 
 Figure 11: Comparison of accuracies on 2 classification tasks for different train set sizes, with both numerical and categorical features. Only datasets with more than 50,000 samples were kept, and the train set size was truncated to either 10,000 samples or 50,000 samples. Dotted lines correspond to the score of the default hyperparameters, which is also the first random search iteration. Each value corresponds to the test score of the best model (on the validation set) after a specific number of random search iterations, averaged on 15 shuffles of the random search order. The ribbon corresponds to the minimum and maximum scores on these 15 shuffles.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_regression_categorical_medium_comparison.jpg)
+!(/html/2207.08815/assets/figures/benchmark_regression_categorical_medium_comparison.jpg)
 
 Medium sized train set
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_regression_categorical_large.jpg)
+!(/html/2207.08815/assets/figures/benchmark_regression_categorical_large.jpg)
 
 Large sized train set
 
@@ -853,8 +808,6 @@ Default parameters for tree-based models are ScikitLearn’s defaults. All neura
 
 Table 1: FT Transformer hyperparameters space
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | Parameter | Distribution | Default |
@@ -872,8 +825,6 @@ Table 1: FT Transformer hyperparameters space
 
 Table 2: Resnet hyperparameters space
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | Parameter | Distribution | Default |
@@ -887,8 +838,6 @@ Table 2: Resnet hyperparameters space
 
 Table 3: MLP hyperparameters space
 
-
-
 | Parameter | Distribution | Default |
 | --- | --- | --- |
 | Num layers | UniformInt [1,2,3,6,12]  123612[1,2,3,6,12] | 333 |
@@ -899,8 +848,6 @@ Table 3: MLP hyperparameters space
 | Batch size | [128,256]128256[128,256] | 512512512 |
 
 Table 4: SAINT hyperparameters space
-
-
 
 | Parameter | Distribution |
 | --- | --- |
@@ -917,8 +864,6 @@ Table 4: SAINT hyperparameters space
 
 Table 5: XGBoost hyperparameters space
 
-
-
 | Parameter | Distribution |
 | --- | --- |
 | Max depth | [None, 2, 3, 4] ([0.7, 0.1, 0.1, 0.1]) |
@@ -931,8 +876,6 @@ Table 5: XGBoost hyperparameters space
 | Min impurity decrease | [0.0, 0.01, 0.02, 0.05] ([0.85, 0.05, 0.05, 0.05]) |
 
 Table 6: RandomForest hyperparameters space
-
-
 
 | Parameter | Distribution |
 | --- | --- |
@@ -948,8 +891,6 @@ Table 6: RandomForest hyperparameters space
 | Max leaf nodes | [None, 5, 10, 15] ([0.85, 0.05, 0.05, 0.05]) |
 
 Table 7: GradientBoosting hyperparameters space
-
-
 
 | Parameter | Distribution |
 | --- | --- |
@@ -969,43 +910,37 @@ To run the random searches, we use the "sweep" functionality of Weight and Biase
 
 We show all unnormalized benchmark results dataset by dataset: Figure [13](#A1.F13 "Figure 13 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?"), [14](#A1.F14 "Figure 14 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?"), [15](#A1.F15 "Figure 15 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") and [16](#A1.F16 "Figure 16 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") for the medium-size setting, and Figure [18](#A1.F18 "Figure 18 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") and [18](#A1.F18 "Figure 18 ‣ Dataset by dataset ‣ A.3 More details on benchmark ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") for the large-size setting.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_classif_numerical_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/random_search_classif_numerical_datasets.jpg)
 
 Figure 13: Unormalized benchmark results for classification tasks on numerical features only. Medium-sized setting.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_numerical_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/random_search_regression_numerical_datasets.jpg)
 
 Figure 14: Unormalized benchmark results for regression tasks on numerical features only. Medium-sized setting. Negative values are truncated to zero to make the plots easier to read.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_classif_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/benchmark_categorical_classif_datasets.jpg)
 
 Figure 15: Unormalized benchmark results for classification tasks on both categorical and numerical features. Medium-sized setting.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_regression_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/benchmark_categorical_regression_datasets.jpg)
 
 Figure 16: Unormalized benchmark results for regression tasks on both categorical and numerical features. Medium-sized setting. Negative values are truncated to zero to make the plots easier to read.
 
-
-
-![Refer to caption](/html/2207.08815/assets/figures/random_search_classif_numerical_large_datasets.jpg)
+!(/html/2207.08815/assets/figures/random_search_classif_numerical_large_datasets.jpg)
 
 Classification
 
-![Refer to caption](/html/2207.08815/assets/figures/random_search_regression_numerical_large_datasets.jpg)
+!(/html/2207.08815/assets/figures/random_search_regression_numerical_large_datasets.jpg)
 
 Regression
 
 Figure 17: Unormalized benchmark results for large scale datasets, for numerical features only.
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_classif_large_datasets.jpg)
+!(/html/2207.08815/assets/figures/benchmark_categorical_classif_large_datasets.jpg)
 
 Classification
 
-![Refer to caption](/html/2207.08815/assets/figures/benchmark_categorical_regression_large_datasets.jpg)
+!(/html/2207.08815/assets/figures/benchmark_categorical_regression_large_datasets.jpg)
 
 Regression
 
@@ -1046,8 +981,7 @@ with (X1,..XN)(X\_{1},..X\_{N}) the training set covariates and (Y1,…,YN)subsc
 
 Raw results are shown in Figure [19](#A1.F19 "Figure 19 ‣ More details ‣ A.4.1 Finding 1: NNs are biased to overly smooth solutions ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") dataset by dataset.
 
-![Refer to caption](/html/2207.08815/assets/figures/high_frequencies_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/high_frequencies_datasets.jpg)
 
 Figure 19: Test accuracy of different models for varying smoothing of the target function on the train set. We smooth the target function through a Gaussian Kernel smoother, whose covariance matrix is the data covariance, multiplied by the (squared) lengthscale of the Gaussian kernel smoother. A lengthscale of 0 corresponds to no smoothing (the original data). All features have been Gaussienized before the smoothing through ScikitLearn’s QuantileTransformer. The boxplots represent the distribution of accuracies across 15 re-orderings of the random search. Same experiment than Fig. [3](#S5.F3.fig1 "Figure 3 ‣ 5.2 Finding 1: NNs are biased to overly smooth solutions ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?"), shown for each dataset without score normalization
 
@@ -1055,11 +989,11 @@ Figure 19: Test accuracy of different models for varying smoothing of the target
 
 Figure [20](#A1.F20 "Figure 20 ‣ Examples of irregular patterns ‣ A.4.1 Finding 1: NNs are biased to overly smooth solutions ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") shows the decision boundaries of a default MLP and a default RandomForest on the 2 most important features of the electricity dataset. The RandomForest achieve a perfect training accuracy and a test accuracy (85%) higher than the MLP (80%). The features are Gaussienied and we show a zoomed-in part of the feature space. In this part, we can see that the RandomForest is able to learn irregular patterns on the x axis (which corresponds to the date feature) that the MLP does not learn. We show this difference for default hyperparameters but it seems to us that this is a typical behavior of neural networks, and it is actually hard, albeit not impossible, to find hyperparameters to successfully learn these patterns.
 
-![Refer to caption](/html/2207.08815/assets/figures/rf_boundaries_electricity.jpg)
+!(/html/2207.08815/assets/figures/rf_boundaries_electricity.jpg)
 
 RandomForest (85%)
 
-![Refer to caption](/html/2207.08815/assets/figures/mlp_boundaries_electricity.jpg)
+!(/html/2207.08815/assets/figures/mlp_boundaries_electricity.jpg)
 
 MLP (80%)
 
@@ -1071,8 +1005,7 @@ Figure 20: Decision boundaries of a default MLP and RandomForest for the 2 most 
 
 Raw results are shown in Figure [21](#A1.F21 "Figure 21 ‣ Tabular datasets contain a lot of uninformative features ‣ A.4.2 Finding 2: Uninformative features affect more MLP-like NNs ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") dataset by dataset.
 
-![Refer to caption](/html/2207.08815/assets/figures/remove_features_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/remove_features_datasets.jpg)
 
 Figure 21: Test accuracy of a GBT for varying proportions of removed features. Features are removed in increasing order of feature importance (computed with a Random Forest), and the two lines correspond to the accuracy using the (most important) kept features (blue) or the (least important) removed features (red). Scores are normalized between 0 (random chance) and 1 (best score among all hyperparameters). These scores are averaged across 30 random search orders, and the ribbons correspond to the minimum and maximum values among these 30 orders. Same experiment than Fig. [5](#S5.F5 "Figure 5 ‣ Tabular datasets contain many uninformative features ‣ 5.3 Finding 2: Uninformative features affect more MLP-like NNs ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?"), shown for each dataset. Note that axes do not always start at zero.
 
@@ -1080,13 +1013,11 @@ Figure 21: Test accuracy of a GBT for varying proportions of removed features. F
 
 Raw results are shown in Figure [22](#A1.F22 "Figure 22 ‣ Uninformative features affect more MLP-like NNs ‣ A.4.2 Finding 2: Uninformative features affect more MLP-like NNs ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") (uninformative features added) and Figure [23](#A1.F23 "Figure 23 ‣ Uninformative features affect more MLP-like NNs ‣ A.4.2 Finding 2: Uninformative features affect more MLP-like NNs ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") (uninformative features removed).
 
-![Refer to caption](/html/2207.08815/assets/figures/add_features_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/add_features_datasets.jpg)
 
 Figure 22: Test accuracy changes when adding uninformative features. Added features are sampled from standard Gaussians uncorrelated with the target and with other features. Ribbons correspond to the minimum and maximum score among the 30 different random search reorders (starting with the default models). Same experiment that in Figure [5](#S5.F5 "Figure 5 ‣ Tabular datasets contain many uninformative features ‣ 5.3 Finding 2: Uninformative features affect more MLP-like NNs ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?") (b), shown for each dataset without score normalization.
 
-![Refer to caption](/html/2207.08815/assets/figures/useless_features_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/useless_features_datasets.jpg)
 
 Figure 23: Test accuracy changes when removing uninformative features. Features are removed in increasing order of feature
 importance (computed with a Random Forest). Ribbons correspond to the minimum and maximum score among the 30 different random search reorders (starting with the default models). Same experiment that in Figure [5](#S5.F5 "Figure 5 ‣ Tabular datasets contain many uninformative features ‣ 5.3 Finding 2: Uninformative features affect more MLP-like NNs ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?") (a), shown for each dataset without score normalization.
@@ -1099,13 +1030,11 @@ Random rotation were computed using Scipy’s [Virtanen et al., [2020](#bib.bib
 
 Raw results are shown in Figure [24](#A1.F24 "Figure 24 ‣ Details ‣ A.4.3 Finding 3: Data are non invariant by rotation, so should be learning procedures ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") (with all features) and Figure [25](#A1.F25 "Figure 25 ‣ Details ‣ A.4.3 Finding 3: Data are non invariant by rotation, so should be learning procedures ‣ A.4 More details on experiments ‣ Appendix A Appendix ‣ Why do tree-based models still outperform deep learning on tabular data?") (with 50% features) dataset by dataset.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_rotation_datasets.jpg)
-
+!(/html/2207.08815/assets/figures/random_rotation_datasets.jpg)
 
 Figure 24: Test accuracy of different models when randomly rotating our datasets. All features are Gaussianized before the random rotations. The scores are averaged across datasets, and the boxes depict the distribution across random search shuffles. Same experiment that in [6](#S5.F6 "Figure 6 ‣ 5.4 Finding 3: Data are non invariant by rotation, so should be learning procedures ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?") (Left), shown for each dataset without score normalization.
 
-![Refer to caption](/html/2207.08815/assets/figures/random_rotation_datasets_features_removed.jpg)
-
+!(/html/2207.08815/assets/figures/random_rotation_datasets_features_removed.jpg)
 
 Figure 25: Test accuracy of different models when randomly rotating our datasets, with 50% features removed. All features are Gaussianized before the random rotations. The removed features are the least important half (according to a RandomForest), and are removed before the rotation. The scores are averaged across datasets, and the boxes depict the distribution across random search shuffles. Same experiment that in [6](#S5.F6 "Figure 6 ‣ 5.4 Finding 3: Data are non invariant by rotation, so should be learning procedures ‣ 5 Empirical investigation: why do tree-based models still outperform deep learning on tabular data? ‣ Why do tree-based models still outperform deep learning on tabular data?") (Right), shown for each dataset without score normalization.
 
@@ -1193,83 +1122,3 @@ All instructions to use our benchmark and reproduce our results are available at
 * •
 
   The code used to produce our benchmark and our experiments.
-
-[◄](/html/2207.08814)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2207.08815)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2207.08815)
-[View original  
-on arXiv](https://arxiv.org/abs/2207.08815)[►](/html/2207.08816)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Feb 27 03:08:21 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2408.15664
 year: 2024
 ---
 
-[2408.15664] Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts
 
 Lean Wang1,211footnotemark: 1  , Huazuo Gao1, Chenggang Zhao1, Xu Sun222footnotemark: 2 , Damai Dai122footnotemark: 2
@@ -100,8 +57,7 @@ In order to validate the performance of Loss-Free Balancing, we train MoE langua
 Experimental results demonstrate that Loss-Free Balancing produces MoE models with better validation loss than traditional auxiliary-loss-controlled models.
 Meanwhile, keeping the performance advantage, Loss-Free Balancing also achieves a significantly better load balance at the global and batch levels, and is naturally compatible with expert parallelism, which is usually employed for training extremely large MoE models.
 
-![Refer to caption](/html/2408.15664/assets/figs/figure_815.png)
-
+!(/html/2408.15664/assets/figs/figure_815.png)
 
 Figure 1: Loss-Free Balancing selects experts according to a “biased gating score” in each training step and updates this expert-wise bias after each training step.
 
@@ -139,8 +95,7 @@ where N𝑁N is the total number of experts, K𝐾K is the number of experts sel
 
 𝑖𝑡s\_{i,t} is the routing score of Expert i𝑖i for Token t𝑡t, fisubscript𝑓𝑖f\_{i} represents the fraction of tokens routed to Expert i𝑖i, Pisubscript𝑃𝑖P\_{i} denotes the average gating scores of Expert i𝑖i, and α𝛼\alpha is a hyper-parameter controlling the strength of the auxiliary loss.
 
-![Refer to caption](/html/2408.15664/assets/figs/balance_mv_perplexity_new_new.png)
-
+!(/html/2408.15664/assets/figs/balance_mv_perplexity_new_new.png)
 
 Figure 2: The dilemma between load balance and model performance for auxiliary-loss-controlled training. A small auxiliary loss coefficient α𝛼\alpha leads to poor load balance, while a large α𝛼\alpha impairs the model performance. In contrast, our Loss-Free Balancing method breaks this dilemma.
 
@@ -277,8 +232,7 @@ Table 2: Loss-Free Balancing achieves lower perplexity and better load balance o
 | 3B | Loss-Controlled | 7.97 | 0.52 |
 | Loss-Free | 7.92 | 0.04 |
 
-![Refer to caption](/html/2408.15664/assets/x1.png)
-
+!(/html/2408.15664/assets/x1.png)
 
 Figure 3: Loss-Free Balancing maintains a better load balance throughout most of the training time. Here, MaxViobatchsubscriptMaxViobatch\text{MaxVio}\_{\text{batch}} is averaged over 100 neighboring steps for visibility purposes.
 
@@ -290,8 +244,7 @@ We conduct empirical studies on the update rate and variants of the bias update 
 
 The update rate u𝑢u in Algorithm [1](#algorithm1 "In 3 Auxiliary-Loss-Free Load Balancing Strategy ‣ Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts") controls the speed at which the expert bias {bi}i=1Nsuperscriptsubscriptsubscript𝑏𝑖𝑖1𝑁\{{b}\_{i}\}\_{i=1}^{N} converges to the “suitable bias”. Figure [4](#S4.F4 "Figure 4 ‣ Update rate. ‣ 4.3 Empirical Studies on Bias Update Algorithm ‣ 4 Experiments ‣ Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts") illustrates that an overly low update rate u=0.0001𝑢0.0001u=0.0001 may lead to slow convergence, while an unnecessarily high update rate u=0.01𝑢0.01u=0.01 can cause undesirable fluctuations of the expert bias bisubscript𝑏𝑖{b}\_{i} during the later stage of training, deteriorating load balance in this stage. Both situations can impair performance. An appropriate choice is u=0.001𝑢0.001u=0.001, which shows good training balance and validation perplexity.
 
-![Refer to caption](/html/2408.15664/assets/x2.png)
-
+!(/html/2408.15664/assets/x2.png)
 
 Figure 4: The impact of update rate on training load balance. A low update rate shows poor load balance in the early stage of training, while a high update rate deteriorates load balance in the later stage. Validation PPL denotes the validation perplexity.
 
@@ -347,8 +300,7 @@ In Figure [5](#S5.F5 "Figure 5 ‣ 5.1 Loss-Free Balancing Is Compatible with E
 The results show that the load balance of our Loss-Free Balancing always keeps improving as the computation batch size increases, but the load balance of the auxiliary-loss-controlled method approximately maintains a constant level when the computation batch is large.
 Since expert parallelism will significantly increase the computation batch size by ep\_data\_parallel\_size times, Loss-Free Balancing is naturally compatible with large-scale MoE training, and its advantage on the load balance will be further enhanced as the size of expert parallelism increases.
 
-![Refer to caption](/html/2408.15664/assets/x3.png)
-
+!(/html/2408.15664/assets/x3.png)
 
 Figure 5: Loss-Free Balancing achieves improved balance compared to auxiliary-loss training as the computation-batch size increases, demonstrating its superiority when a moderately sized computation-batch is utilized.
 
@@ -358,8 +310,7 @@ For casual language models, load balancing methods must adhere to the causal con
 
 In EC, future tokens can influence the expert assignment of previous tokens. Figure [6](#S5.F6 "Figure 6 ‣ 5.2 Load Balancing and Future Token Leakage ‣ 5 Discussion ‣ Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts") illustrates how information can be easily transmitted within a sequence via such influence. Theoretically, the token assignment of an MoE layer with sparse ratio R𝑅R (average activated experts per token K𝐾K divided by total expert number N𝑁N) can leak more than K​log2⁡1−RR𝐾subscript21𝑅𝑅K\log\_{2}\frac{1-R}{R} bits per token (proof in Appendix [D.1](#A4.SS1 "D.1 Proof for Theoretical Leakage Amount ‣ Appendix D Future Token Leakage in Expert Choice ‣ Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts")). For a 9-layer MoE model with 16 experts and an average of 2 experts per token, this amounts to 50 bits, sufficient for each token to determine its successor’s identity.
 
-![Refer to caption](/html/2408.15664/assets/figs/EC_fig_new.png)
-
+!(/html/2408.15664/assets/figs/EC_fig_new.png)
 
 Figure 6: 
 An example of future token leakage in EC.
@@ -480,8 +431,7 @@ For validation, we leave around 70M tokens from the training corpus as the valid
 
 We compare the sigmoid gate baseline and the softmax gate baseline with varying auxiliary loss coefficients α𝛼\alpha on a 1B-sized model. As shown in Figure [7](#A3.F7 "Figure 7 ‣ C.1 Comparison of Sigmoid Gate Baseline and Softmax Gate Baseline ‣ Appendix C Experiments with Softmax Gate ‣ Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts"), the softmax gate exhibits higher perplexity under similar load balance conditions, and its performance is more sensitive to load imbalance compared to the sigmoid gate.
 
-![Refer to caption](/html/2408.15664/assets/figs/balance_mv_perplexity_softmax_new.png)
-
+!(/html/2408.15664/assets/figs/balance_mv_perplexity_softmax_new.png)
 
 Figure 7: Comparison of the sigmoid gate baseline and the softmax gate baseline. The softmax gate exhibits higher perplexity under similar load balance conditions and is more sensitive to load imbalance compared to the sigmoid gate.
 
@@ -497,8 +447,7 @@ Table 6: For softmax gate, Loss-Free Balancing achieves a slightly lower perplex
 | Loss-Controlled | 9.604 | 0.937 |
 | Loss-Free | 9.599 | 0.027 |
 
-![Refer to caption](/html/2408.15664/assets/x4.png)
-
+!(/html/2408.15664/assets/x4.png)
 
 Figure 8: For softmax gate, Loss-Free Balancing maintains a superior load balance throughout most of the training process.
 
@@ -528,87 +477,6 @@ We investigate the potential future token leakage of the Expert Choice by varyin
 
    Shuffling tokens within a batch before chunking and selecting mitigates the observed loss drop. Such shuffling makes it more challenging for the model to utilize information leakage, as the future tokens are no longer in their original context. This finding supports the hypothesis that the loss drop originates from the model’s accessing and exploiting future token information.
 
-![Refer to caption](/html/2408.15664/assets/x5.png)
-
+!(/html/2408.15664/assets/x5.png)
 
 Figure 9: Comparison of Expert Choice with different chunk sizes and shuffling. Expert Choice with a chunk size of 512 exhibits a significant loss drop compared to chunk sizes of 8192 or 2048. Shuffling tokens eliminates this loss drop, indicating the presence of future token leakage.
-
-[◄](/html/2408.15663)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2408.15664)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2408.15664)
-[View original  
-on arXiv](https://arxiv.org/abs/2408.15664)[►](/html/2408.15666)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Sep 5 14:19:10 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

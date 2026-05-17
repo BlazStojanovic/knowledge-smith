@@ -16,49 +16,6 @@ url: https://arxiv.org/abs/2510.11370
 year: 2025
 ---
 
-[2510.11370] Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers
 
 Wenhan Ma†‡∗ Hailin Zhang‡ Liang Zhao‡ Yifan Song†‡
@@ -127,11 +84,11 @@ On realistic RLVR tasks with MoE models, R3 demonstrates significant improvement
 Our method consistently shows marked improvements in both efficiency and overall performance when compared against existing approaches designed to stabilize RL training.
 Furthermore, its applicability to both on-policy and mini-batch style off-policy RL scenarios underscores the robustness of our approach.
 
-![Refer to caption](/html/2510.11370/assets/x1.png)
+!(/html/2510.11370/assets/x1.png)
 
-![Refer to caption](/html/2510.11370/assets/x2.png)
+!(/html/2510.11370/assets/x2.png)
 
-![Refer to caption](/html/2510.11370/assets/x3.png)
+!(/html/2510.11370/assets/x3.png)
 
 Figure 1: Left: Illustration of the Rollout Routing Replay (R3). Top right: Training and inference discrepancies before and after applying R3. Bottom right: Reinforcement learning training performance before and after applying R3.
 
@@ -183,23 +140,19 @@ This process yields about 20 million response tokens.
 Then these responses are passed through Megatron to obtain the corresponding probabilities assigned by the training engine.
 We use several metrics to quantify the divergence between these two probability distributions.
 
-![Refer to caption](/html/2510.11370/assets/x4.png)
-
+!(/html/2510.11370/assets/x4.png)
 
 (a) MoE
 
-![Refer to caption](/html/2510.11370/assets/x5.png)
-
+!(/html/2510.11370/assets/x5.png)
 
 (b) MoE + R3
 
-![Refer to caption](/html/2510.11370/assets/x6.png)
-
+!(/html/2510.11370/assets/x6.png)
 
 (c) Dense
 
-![Refer to caption](/html/2510.11370/assets/x7.png)
-
+!(/html/2510.11370/assets/x7.png)
 
 (d) Extreme Token Distribution Analysis
 
@@ -237,18 +190,15 @@ Figure [2(d)](#S3.F2.sf4 "In Figure 2 ‣ 3.1 Policy Discrepancies between Train
 
 From the perspective of functional continuity, the key difference between MoE and Dense models lies in the non-continuity introduced by routing. In MoE models, small perturbations in the router input can lead to entirely different experts being selected, causing large changes in layer outputs. Dense models, lacking an explicit expert selection process, do not exhibit this phenomenon.
 
-![Refer to caption](/html/2510.11370/assets/x8.png)
-
+!(/html/2510.11370/assets/x8.png)
 
 (a) Router-level Difference
 
-![Refer to caption](/html/2510.11370/assets/x9.png)
-
+!(/html/2510.11370/assets/x9.png)
 
 (b) Token-level Difference
 
-![Refer to caption](/html/2510.11370/assets/x10.png)
-
+!(/html/2510.11370/assets/x10.png)
 
 (c) Sequence-level Difference
 
@@ -262,8 +212,7 @@ For each token and each MoE layer, we count the number of differing expert choic
 Token-level Comparison:
 For each token, we count the number of differing expert choices made by the MoE Router across all layers. We also determine the frequency of these occurrences. Figure [3(b)](#S3.F3.sf2 "In Figure 3 ‣ 3.2 Routing Discrepancies between Training and Inference in MoE Models ‣ 3 Training-Inference Discrepancies ‣ Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers") presents these findings. It shows that 94% of tokens select a different expert in at least one layer during the forward pass.
 
-![Refer to caption](/html/2510.11370/assets/x11.png)
-
+!(/html/2510.11370/assets/x11.png)
 
 Figure 4: Probabilities obtained by performing forward propagation twice using the Megatron
 
@@ -397,13 +346,11 @@ In PPO-like algorithms, a batch of samples collected in one global step is typic
 We investigate both settings. For multiple mini steps, we set the mini step to 8 and the learning rate to 1×10−61\times 10^{-6}.
 For the single mini step scenario, we set the mini step to 1. Due to fewer updates, we increase the learning rate to 3×10−63\times 10^{-6}.
 
-![Refer to caption](/html/2510.11370/assets/x12.png)
-
+!(/html/2510.11370/assets/x12.png)
 
 Figure 5: Analysis of training–inference collapse. The plot shows the estimated training–inference KL divergence and the extreme token distribution function F​(τ=2)F(\tau=2) (Eq. [3](#S3.E3 "In Extreme Token Distribution Analysis ‣ 3.1 Policy Discrepancies between Training and Inference in MoE Models ‣ 3 Training-Inference Discrepancies ‣ Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers")) at each training step.
 
-![Refer to caption](/html/2510.11370/assets/x13.png)
-
+!(/html/2510.11370/assets/x13.png)
 
 Figure 6: Training dynamics of Qwen3-30B-A3B-Base, including response length, gradient norm, entropy, and average validation score throughout the training process
 
@@ -696,13 +643,11 @@ Our results demonstrate the importance of aligning training and inference in MoE
 
 ## Appendix A Detailed Evaluation Results and Training Metrics
 
-![Refer to caption](/html/2510.11370/assets/x14.png)
-
+!(/html/2510.11370/assets/x14.png)
 
 Figure 7: The detailed evaluation results of the experiment in Section [5](#S5 "5 Experiments ‣ Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers").
 
-![Refer to caption](/html/2510.11370/assets/x15.png)
-
+!(/html/2510.11370/assets/x15.png)
 
 Figure 8: The detailed training metrics of the experiment in Section [5](#S5 "5 Experiments ‣ Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers").
 
@@ -726,94 +671,12 @@ The results are shown in Table [3](#A2.T3 "Table 3 ‣ Appendix B Additional Exp
 
 Table 3: Evaluation results of the RL training process of Qwen3-30B-A3B-ReasoningSFT
 
-![Refer to caption](/html/2510.11370/assets/x16.png)
-
+!(/html/2510.11370/assets/x16.png)
 
 Figure 9: The detailed training metrics and evaluation results of the RL training process of Qwen3-30B-A3B-ReasoningSFT
 
 ## Appendix C Detailed Training Metrics of Multi-Turn Reinforcement Learning
 
-![Refer to caption](/html/2510.11370/assets/x17.png)
-
+!(/html/2510.11370/assets/x17.png)
 
 Figure 10: The detailed training metrics and evaluation results of RL training process on SWE Task with Qwen3-30B-A3B
-
-[◄](/html/2510.11369)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.11370)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.11370)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.11370)[►](/html/2510.11371)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 22:07:31 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

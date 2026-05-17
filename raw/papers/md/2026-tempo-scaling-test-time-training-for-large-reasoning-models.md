@@ -19,49 +19,6 @@ url: https://arxiv.org/abs/2604.19295
 year: 2026
 ---
 
-[2604.19295] TEMPO: Scaling Test-time Training for Large Reasoning Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TEMPO: Scaling Test-time Training for Large Reasoning Models
 
 Qingyang Zhang
@@ -99,8 +56,7 @@ Test-time training (TTT) adapts model parameters on unlabeled test instances dur
 
 [Project Page](https://qingyangzhang.github.io/tempo-homepage)   |   [GitHub](https://github.com/QingyangZhang/TEMPO)   |   [HuggingFace](https://huggingface.co/collections/qingyangzhang/tempo)
 
-![Refer to caption](/html/2604.19295/assets/x1.png)
-
+!(/html/2604.19295/assets/x1.png)
 
 Figure 1: Scalability of TEMPO on the AIME benchmark. TEMPO alternates between an E-Step (critic recalibration on labeled data) and an M-Step (policy refinement on unlabeled test questions), guided by a critic that provides quality-aware scores. Representative self-rewarding TTT baselines such as TTRL (grey curves) plateau and collapse after initial gains. In contrast, TEMPO (blue curve) sustains a consistent upward trajectory over 350 steps by periodically grounding the critic in external supervision, demonstrating that additional test-time compute translates into scalable performance gains on complex open problems.
 
@@ -276,8 +232,7 @@ Update policy θ\theta by minimizing ℒpolicy​(θ)\mathcal{L}\_{\text{policy}
 
 Algorithm 1 Test-time Expectation-Maximization Policy Optimization (TEMPO)
 
-![Refer to caption](/html/2604.19295/assets/x2.png)
-
+!(/html/2604.19295/assets/x2.png)
 
 Figure 2: TEMPO alternates between (i) Critic Recalibration (E-step): the critic is periodically updated using verifiable rewards from DLD\_{L} to maintain a grounded and informative reward signal, and (ii) Policy Refinement (M-step): the actor generates reasoning trajectories on unlabeled questions DuD\_{u} and optimizes against critic-derived rewards. This alternating EM-style procedure enables sustained self-improvement beyond the RLVR plateau.
 
@@ -341,14 +296,12 @@ A critical yet often overlooked aspect of test-time training is the preservation
 
 This performance gap stems from fundamental differences in how each method constructs its self-training signal. EMPO and TTRL rely on entropy or self-consistency to encourage consensus, which inherently favors the most common reasoning path regardless of its quality. As training progresses, the model becomes increasingly confident in its dominant mode, suppressing alternative valid solutions and causing the output distribution to collapse. In contrast, TEMPO employs a dynamically calibrated critic that assigns continuous, quality-aware scores to each generated response. This mechanism naturally preserves diversity among high-quality solutions while down-weighting incorrect but frequently generated patterns.
 
-![Refer to caption](/html/2604.19295/assets/x3.png)
-
+!(/html/2604.19295/assets/x3.png)
 
 Figure 3: TEMPO preserves model diversity. We compare TEMPO with TTRL on Beyond AIME pass@16. While TTRL consistently degrades pass@16 throughout training, TEMPO maintains and steadily improves pass@16. This reveals a fundamental distinction: prior methods trade away exploration
 capacity for short-term performance, whereas TEMPO sustains genuine reasoning diversity as a foundation for continued self-improvement.
 
-![Refer to caption](/html/2604.19295/assets/x4.png)
-
+!(/html/2604.19295/assets/x4.png)
 
 Figure 4: TEMPO continues to improve beyond reported results. The numbers reported in our main table correspond to TEMPO trained on Qwen3-14B for 224 steps. As shown here, performance on both AIME 2024 and AIME 2025 has not plateaued at that
 checkpoint. The avg@16 accuracy continues to rise with further training. This suggests that the results we report are conservative, and TEMPO has the
@@ -394,13 +347,11 @@ We conduct two ablation studies to isolate the contributions of key design choic
 (1) Frozen critic: the critic is trained once on DLD\_{L} and kept fixed throughout all policy updates, removing the E-step recalibration;
 (2) Supervised continuation: the model continues training on the labeled dataset DLD\_{L} using standard PPO without any test-time updates on unlabeled data.
 
-![Refer to caption](/html/2604.19295/assets/x5.png)
-
+!(/html/2604.19295/assets/x5.png)
 
 Figure 5: The Superiority of Test-time training. Starting from a converged OLMO3 model (192 PPO steps on DAPO-Math-17K), we compare continuing supervised PPO on the same labeled data (blue) with TEMPO test-time training on unlabeled questions (orange). Supervised PPO saturates immediately with negligible gains, while TEMPO achieves a steady 15+ point avg@16 accuracy improvement over 200 iterations, confirming that test-time training on novel problems pushes the performance boundary.
 
-![Refer to caption](/html/2604.19295/assets/x6.png)
-
+!(/html/2604.19295/assets/x6.png)
 
 Figure 6: Necessity of alternating critic recalibration. We compare the full TEMPO (orange) with a frozen-critic variant (blue) where the critic is trained once on DLD\_{L} and never updated. The frozen critic initially matches TEMPO but plateaus after ~100 iterations as it becomes misaligned with the evolving policy, while the full model continues to improve. This confirms that periodic E-step recalibration is essential for sustained self-improvement.
 
@@ -437,83 +388,3 @@ We present TEMPO, a scalable test-time training framework for LRMs through an al
 ## 8 Acknowledgement
 
 This work is supported by Shanghai Artificial Intelligence Laboratory. The authors thank the P1 team in Shanghai AI Lab for their extensive support of this work, including computational resources, training recipes and insightful discussions.
-
-[◄](/html/2604.19294)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.19295)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.19295)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.19295)[►](/html/2604.19296)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 01:04:46 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

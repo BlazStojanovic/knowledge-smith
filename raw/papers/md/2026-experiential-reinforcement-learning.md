@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2602.13949
 year: 2026
 ---
 
-[2602.13949] Experiential Reinforcement Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Experiential Reinforcement Learning
 
 Taiwei Shi1 , Sihao Chen2, Bowen Jiang3\*, Linxin Song1, Longqi Yang2, Jieyu Zhao1
@@ -72,16 +29,14 @@ Work done during internship at Microsoft’s Office of Applied Research
 Reinforcement learning has become the central approach for language models (LMs) to learn from environmental reward or feedback. In practice, the environmental feedback is usually sparse and delayed. Learning from such signals is challenging, as LMs must implicitly infer how observed failures should translate into behavioral changes for future iterations.
 We introduce Experiential Reinforcement Learning (ERL), a training paradigm that embeds an explicit experience–reflection–consolidation loop into the reinforcement learning process. Given a task, the model generates an initial attempt, receives environmental feedback, and produces a reflection that guides a refined second attempt, whose success is reinforced and internalized into the base policy. This process converts feedback into structured behavioral revision, improving exploration and stabilizing optimization while preserving gains at deployment without additional inference cost. Across sparse-reward control environments and agentic reasoning benchmarks, ERL consistently improves learning efficiency and final performance over strong reinforcement learning baselines, achieving gains of up to +81% in complex multi-step environments and up to +11% in tool-using reasoning tasks. These results suggest that integrating explicit self-reflection into policy training provides a practical mechanism for transforming feedback into durable behavioral improvement.
 
-![Refer to caption](/html/2602.13949/assets/x1.png)
-
+!(/html/2602.13949/assets/x1.png)
 
 Figure 1: 
 In Experiential Reinforcement Learning (ERL), instead of learning from feedback or outcome directly, an agent learns to (1) verbally reflect on its experience and observed outcome, and (2) internalize the reflections to induce behavioral changes in future iterations.
 
 ## 1 Introduction
 
-![Refer to caption](/html/2602.13949/assets/x2.png)
-
+!(/html/2602.13949/assets/x2.png)
 
 Figure 2: Conceptual comparison of learning dynamics in RLVR and Experiential Reinforcement Learning (ERL). RLVR relies on repeated trial-and-error driven by scalar rewards, leading to back-and-forth exploration without durable correction. ERL augments this process with an experience–reflection–consolidation loop that generates a revised attempt and internalizes successful corrections, enabling persistent behavioral improvement.
 
@@ -111,8 +66,7 @@ Our main contributions are:
 
   We demonstrate that experiential reinforcement learning improves training efficiency and final performance across agentic reasoning tasks.
 
-![Refer to caption](/html/2602.13949/assets/x3.png)
-
+!(/html/2602.13949/assets/x3.png)
 
 Figure 3: 
 Overview of Experiential Reinforcement Learning (ERL).
@@ -237,8 +191,7 @@ In our experiments, we train Olmo-3-7B-Instruct (Olmo et al., [2025](#bib.bib17 
 
 ## 4 Result and Discussion
 
-![Refer to caption](/html/2602.13949/assets/x4.png)
-
+!(/html/2602.13949/assets/x4.png)
 
 Figure 4: Validation reward trajectories versus training wall-clock time on FrozenLake, HotpotQA, and Sokoban for Qwen3-4B-Instruct-2507 and Olmo-3-7B-Instruct. ERL consistently achieves higher reward and faster improvement than RLVR across tasks and models.
 
@@ -254,8 +207,7 @@ HotpotQA shows smaller but reliable gains. A likely explanation lies in differen
 
 Importantly, improvements are observed across both models, indicating that the benefits of ERL arise from enhanced learning dynamics rather than architecture-specific effects.
 
-![Refer to caption](/html/2602.13949/assets/x5.png)
-
+!(/html/2602.13949/assets/x5.png)
 
 Figure 5: Final evaluation reward on FrozenLake, HotpotQA, and Sokoban. ERL consistently outperforms RLVR for both Qwen3-4B-Instruct-2507 and Olmo-3-7B-Instruct.
 
@@ -273,8 +225,7 @@ Figure [6](#S4.F6 "Figure 6 ‣ 4.3 Mechanistic Role of Reflection ‣ 4 Result
 
 This comparison highlights the immediate within-episode effect of reflection. After observing feedback from the first attempt, the model generates a structured revision that guides a second attempt with improved actions. The resulting gain in training reward indicates that reflection produces actionable corrections within the same episode, rather than only shaping behavior over long horizons. The sustained separation between pre- and post-reflection curves throughout training suggests that reflection serves as a systematic revision mechanism. By converting observed outcomes into targeted adjustments, it improves the quality of second attempts, which are subsequently reinforced and contribute to longer-term policy improvement.
 
-![Refer to caption](/html/2602.13949/assets/x6.png)
-
+!(/html/2602.13949/assets/x6.png)
 
 Figure 6: Training reward trajectories for Qwen3-4B-Instruct-2507 and Olmo-3-7B-Instruct comparing RLVR with ERL before and after reflection. Post-reflection trajectories consistently achieve higher reward than both RLVR and pre-reflection trajectories.
 
@@ -294,8 +245,7 @@ Figure 6: Training reward trajectories for Qwen3-4B-Instruct-2507 and Olmo-3-7B-
 
 Table 1: Final evaluation reward on FrozenLake, HotpotQA, and Sokoban. ERL performance is compared against ablation variants, with highlighted drops showing the performance degradation relative to ERL when removing memory reuse (w/o Mem.) or structured reflection (w/o Refl.).
 
-![Refer to caption]()
-
+!()
 
 Figure 7: Ablation study on Qwen3-4B-Instruct-2507 in FrozenLake. We compare full ERL with two variants: (1) no memory, which disables cross-episode reflection reuse, and (2) no reflection, which replaces structured self-reflection with raw first-attempt context and a generic retry instruction.
 
@@ -707,10 +657,7 @@ Always remember:
 - Valid actions: Up, Down, Left, Right.
 - Think step by step, but make the final line only the next action wrapped in triple backticks.
 
-
 Table 2: Initial System used for Frozenlake and Sokoban.
-
-
 
 Initial System Prompt for HotpotQA
 
@@ -747,11 +694,7 @@ Provide your final answer in \boxed{} format.
 ]
 ```
 
-
-
 Table 3: Initial system prompt used for HotpotQA.
-
-
 
 Self-reflection Prompt for Frozen Lake and Sokoban
 
@@ -794,10 +737,7 @@ Your output MUST be a single consolidated <prompt> block representing the new Ma
 </prompt>
   
 
-
 Table 4: Self-reflection prompt used for Frozen Lake and Sokoban.
-
-
 
 Self-reflection Prompt for HotpotQA
 
@@ -807,10 +747,7 @@ When failures occur, explicitly add rules that prevent repeating them (e.g., mis
 Keep the prompt short, actionable, and reusable.
 Output ONLY the improved system prompt wrapped in <prompt>...</prompt> tags.
 
-
 Table 5: Self-reflection prompt used for HotpotQA.
-
-
 
 Example Task for Frozen Lake
 
@@ -832,10 +769,7 @@ Up | Down | Left | Right
 ## Output requirement
 Return reasoning in <reason>...</reason> and final action in triple backticks, e.g., ‘‘‘Right‘‘‘.
 
-
 Table 6: Example Frozen Lake task instance.
-
-
 
 Example Task for Sokoban
 
@@ -857,10 +791,7 @@ Up | Down | Left | Right
 ## Output requirement
 Return reasoning in <reason>...</reason> and final action in triple backticks, e.g., ‘‘‘Right‘‘‘.
 
-
 Table 7: Example Sokoban task instance.
-
-
 
 Example Task for HotpotQA
 
@@ -869,10 +800,7 @@ Question:
 Which university did the author of “The Hobbit” attend?
   
 
-
 Table 8: Example HotpotQA task instance.
-
-
 
 Second-Attempt Prompt Template for the No-Reflection Variant
 
@@ -881,7 +809,6 @@ You are also provided with the model’s past attempt data, including observatio
 Use this information as context to make a better next-attempt decision policy.
 Follow the action/output format exactly.
 {First Attempt’s Trajectory}
-
 
 Table 9: 
 Generic second-attempt system prompt used in the no-reflection ablation. The model is provided with the full first-attempt trajectory (observations, actions, rewards, and feedback) together with a generic instruction encouraging improvement, without any structured reflection signal.
@@ -899,83 +826,3 @@ KL regularization is enabled using a low-variance KL loss with coefficient 0.001
 For RLVR training, we generate 10 samples per prompt. For ERL training, we generate only 4 samples per prompt for each attempt to match the compute budget of RLVR. Evaluation is performed every 5 iterations, and training is manually early stopped upon convergence.
 
 The design and implementation details of the ERL algorithm can be found in Appendix [A](#A1 "Appendix A Full Algorithm and Gated Reflection ‣ Experiential Reinforcement Learning").
-
-[◄](/html/2602.13948)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2602.13949)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2602.13949)
-[View original  
-on arXiv](https://arxiv.org/abs/2602.13949)[►](/html/2602.13950)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 5 17:41:14 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

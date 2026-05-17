@@ -13,51 +13,6 @@ url: http://arxiv.org/abs/2207.03208v2
 year: 2022
 ---
 
-[2207.03208] Revisiting Pretraining Objectives for Tabular Deep Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-00footnotetext: Correspondence to [irubachev@gmail.com](mailto:irubachev@gmail.com)00footnotetext: Code available at [github.com/puhsu/tabular-dl-pretrain-objectives](https://github.com/puhsu/tabular-dl-pretrain-objectives)
-
 # Revisiting Pretraining Objectives for Tabular Deep Learning
 
 Ivan Rubachevα,β  Artem Alekberovα,β  Yury Gorishniy  Artem Babenkoα
@@ -772,8 +727,7 @@ We observe that both pretraining with target aware objectives and using numerica
 
 In this section, we provide a possible explanation of why the incorporation of the target variable into pretraining can lead to better downstream task performance. We do this through the experiments on the controllable synthetic data. Here we describe the properties and the generation process of the data and our observations on the differences of the pretraining schemes.
 
-![Refer to caption](/html/2207.03208/assets/x1.png)
-
+!(/html/2207.03208/assets/x1.png)
 
 Figure 1: The decodability of object feature from the intermediate representations computed by the pretrained models and the models trained from scratch. The pretrained models decently capture the information about all the features, while the randomly initialized models capture the most informative features and suppress the others.
 
@@ -1244,7 +1198,6 @@ WE ↓
 CO ↑
 MI ↓
 
-
 shared wd / shared lr
 0.683±1​e​-​2plus-or-minus0.6831𝑒-20.683\scriptscriptstyle\pm\scriptstyle 1e\text{-}2
 0.857±2​e​-​3plus-or-minus0.8572𝑒-30.857\scriptscriptstyle\pm\scriptstyle 2e\text{-}3
@@ -1325,7 +1278,6 @@ AD ↑
 WE ↓
 CO ↑
 MI ↓
-
 
 CatBoost
 0.683±4.7​e​-​3plus-or-minus0.6834.7𝑒-30.683\scriptscriptstyle\pm\scriptstyle 4.7e\text{-}3
@@ -1775,9 +1727,6 @@ rec + target
 0.968±7.5​e​-​4plus-or-minus0.9687.5𝑒-40.968\scriptscriptstyle\pm\scriptstyle 7.5e\text{-}4
 0.746±3.1​e​-​4plus-or-minus0.7463.1𝑒-40.746\scriptscriptstyle\pm\scriptstyle 3.1e\text{-}4
 
-
-
-
 Table 14: Extended results for ensemble models
 
 GE ↑
@@ -1791,7 +1740,6 @@ AD ↑
 WE ↓
 CO ↑
 MI ↓
-
 
 CatBoost
 0.692±1.8​e​-​3plus-or-minus0.6921.8𝑒-30.692\scriptscriptstyle\pm\scriptstyle 1.8e\text{-}3
@@ -2240,83 +2188,3 @@ rec + target
 1.809±1.0​e​-​3plus-or-minus1.8091.0𝑒-31.809\scriptscriptstyle\pm\scriptstyle 1.0e\text{-}3
 0.972±5.5​e​-​5plus-or-minus0.9725.5𝑒-50.972\scriptscriptstyle\pm\scriptstyle 5.5e\text{-}5
 0.744±3.0​e​-​5plus-or-minus0.7443.0𝑒-50.744\scriptscriptstyle\pm\scriptstyle 3.0e\text{-}5
-
-[◄](/html/2207.03207)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2207.03208)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2207.03208)
-[View original  
-on arXiv](https://arxiv.org/abs/2207.03208)[►](/html/2207.03209)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 13 13:44:09 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

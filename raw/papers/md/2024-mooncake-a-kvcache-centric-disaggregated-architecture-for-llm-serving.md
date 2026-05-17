@@ -16,51 +16,6 @@ url: https://arxiv.org/abs/2407.00079
 year: 2024
 ---
 
-[2407.00079] Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-11footnotetext:  Ruoyu Qin’s part of work done as an intern at Moonshot AI, contributed equally with Zheming Li.22footnotetext:  Corresponding to zhang\_mingxing@mail.tsinghua.edu.cn, xuxinran@moonshot.ai.
-
 # Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving
 
 Ruoyu Qin♠♡1    Zheming Li♠1    Weiran He♠
@@ -79,8 +34,7 @@ Mooncake is the serving platform for Kimi, a leading LLM service provided by Moo
 
 With the rapid adoption of large language models (LLMs) in various scenarios [[1](#bib.bib1), [2](#bib.bib2), [3](#bib.bib3), [4](#bib.bib4)], the workloads for LLM serving have become significantly diversified. These workloads differ in input/output length, frequency and distribution of arrival, and, most importantly, demand different kinds of Service Level Objectives (SLOs). As a Model as a Service (MaaS) provider, one of the primary goals of Kimi [[5](#bib.bib5)] is to solve an optimization problem with multiple complex constraints. The optimization goal is to maximize overall effective throughput, which directly impacts revenue, while the constraints reflect varying levels of SLOs. These SLOs typically involve meeting latency-related requirements, mainly the time to first token (TTFT) and the time between tokens (TBT).
 
-![Refer to caption](/html/2407.00079/assets/x1.png)
-
+!(/html/2407.00079/assets/x1.png)
 
 Figure 1: Mooncake Architecture.
 
@@ -121,8 +75,7 @@ To protect proprietary information and facilitate reproducibility, all the exper
 
 Modern large language models (LLMs) are based on the Transformer architecture, which utilizes attention mechanisms and multilayer perceptrons (MLP) to process input. Popular Transformer-based models, such as GPT [[10](#bib.bib10)] and LLaMA [[11](#bib.bib11)], employ a decoder-only structure. Each inference request is logically divided into two stages: the prefill stage and the decoding stage.
 
-![Refer to caption]()
-
+!()
 
 Figure 2: Normalized throughput and latency of prefill and decoding stages with different sequence lengths or batch sizes for the dummy
 LLaMA2-70B model.
@@ -144,8 +97,7 @@ Our approach differs in that only requests that fully complete their execution a
 As depicted in Figure [1](#S1.F1 "Figure 1 ‣ 1.1 Motivation of Developing Mooncacke ‣ 1 Introduction ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"), Mooncake employs a disaggregated architecture that not only separates prefill from decoding nodes, but also groups the CPU, DRAM, SSD, and RDMA resources of the GPU cluster to implement a disaggregated KVCache.
 This disaggregated cache harnesses underutilized resources to provide ample cache capacity and transfer bandwidth, enabling efficient near-GPU prefix caching without additional costs.
 
-![Refer to caption](/html/2407.00079/assets/x3.png)
-
+!(/html/2407.00079/assets/x3.png)
 
 Figure 3: The KVCache pool in CPU memory. Each block is attached with a hash value determined by both its own hash and its prefix for deduplication.
 
@@ -156,8 +108,7 @@ To schedule all these disaggregated components, at its center, Mooncake implemen
 Conductor is responsible for dispatching requests based on the current distribution of the KVCache and workloads. It also replicates or swaps certain blocks of the KVCache if it is beneficial for future inference.
 Specifically, Figure [4](#S3.F4 "Figure 4 ‣ 3 Overview of Mooncake’s Disaggregated Archtecture ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving") demonstrates the typical workflow of a request. Once tokenizing is finished, the conductor selects a pair of prefill nodes and a decoding node, and starts a workflow comprising four steps:
 
-![Refer to caption](/html/2407.00079/assets/x4.png)
-
+!(/html/2407.00079/assets/x4.png)
 
 Figure 4: Workflow of inference instances. (∗\*) For prefill instances, the load and store operations of the KVCache layer are performed layer-by-layer and in parallel with the prefill computation to mitigate transmission overhead (see §[5.2](#S5.SS2 "5.2 Layer-wise Prefill ‣ 5 Implementation of the Prefill Pool ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving")). (††\dagger) For decoding instances, asynchronous loading is performed concurrently with GPU decoding to prevent GPU idle time.
 
@@ -170,8 +121,7 @@ It leads to a KVCache-centric scheduling that will be further discussed in §[6]
 
 4) Decoding: After all the KVCache is received in the CPU DRAM of the decoding node, the request joins the next batch in a continuous batching manner. Conductor pre-selects the decoding node based on its current load to ensure it does not violate the TBT SLO. However, this SLO is double-checked by the local scheduler because the anticipated load may have changed after the prefill stage. This double-checking may lead to the rejection of the request, in which case the corresponding prefill costs are wasted.
 
-![Refer to caption](/html/2407.00079/assets/x5.png)
-
+!(/html/2407.00079/assets/x5.png)
 
 Figure 5: Input and output length distributions in the request trace.
 
@@ -219,8 +169,7 @@ Timestamp: The timestamp field indicates the relative arrival times of requests,
 
 Input & Output Length: For privacy protection, our trace does not include actual text or tokens. Instead, it uses input\_length and output\_length, representing the number of input and output tokens, similar to Splitwise [[7](#bib.bib7)].
 
-![Refer to caption](/html/2407.00079/assets/x6.png)
-
+!(/html/2407.00079/assets/x6.png)
 
 Figure 6: CDF (Cumulative Distribution Function) of the block hit count in the request trace.
 
@@ -291,8 +240,7 @@ Beyond computational power, the limited size of VRAM is also a precious resource
 Theoretically, if the KVCache size of a request is S𝑆S and the processing time is T𝑇T, its occupation cost is S∗T𝑆𝑇S\*T.
 If a request is chunked and the processing of each chunk is inlined with other decoding requests in chunked prefill, T𝑇T will increase, leading to a larger occupation cost.
 
-![Refer to caption](/html/2407.00079/assets/x7.png)
-
+!(/html/2407.00079/assets/x7.png)
 
 Figure 7: Latency of storing KVCache of different request lengths (Layer-wise latency refers to the difference in latency between Layer-wise Prefill and Prefill without storing KVCache).
 
@@ -403,8 +351,7 @@ In our Mooncake cluster, each prefill machine manages its own set of local prefi
 
 A straw-man solution to this KVCache scheduling problem could be collecting the global usages of each block, using a prediction model to forecast their future usages, and making scheduling decisions accordingly. However, unlike the estimation of prefill time, workloads are highly dynamic and change significantly over time. Especially for a MaaS provider experiencing rapid growth in its user base, it is impossible to accurately predict future usages. Thus, we propose a heuristic-based automated hot-spot migration scheme to enhance cache load balancing.
 
-![Refer to caption](/html/2407.00079/assets/x8.png)
-
+!(/html/2407.00079/assets/x8.png)
 
 Figure 8: The prefill scheduling experiment in the Mooncake cluster.
 
@@ -432,8 +379,7 @@ In practice, the individual load on prefill or decoding instances does not accur
 
 To address this issue, it is natural to advance the load assessment of the decoding instance to precede the beginning of the prefill stage. We refer to this strategy as Early Rejection. Upon the arrival of a request, Conductor evaluates whether to accept the request based on the greater load between the prefill and decoding pools. Early Rejection significantly reduces ineffective computations from rejected requests and enhances load balancing.
 
-![Refer to caption](/html/2407.00079/assets/x9.png)
-
+!(/html/2407.00079/assets/x9.png)
 
 Figure 9: The load of prefill and decoding instances over 20 minutes, before using the prediction-based early rejection.
 
@@ -443,13 +389,11 @@ However, Early Rejection introduces new challenges. Figure [9](#S7.F9 "Figure 9
 
 Upon further exploration, we found that this load fluctuation problem is rooted in the time lag between predicting the decoding load and its actual execution. Scheduling based on the current decoding load is inherently delayed. This delay causes fluctuations and phase staggering between the loads on prefill and decoding instances, as illustrated in the theoretical example described in Figure [10(a)](#S7.F10.sf1 "In Figure 10 ‣ 7.3 Load Fluctuation Caused by Early Rejection ‣ 7 Overload-oriented Scheduling ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"). The green curve represents the load of prefill instances (scaled from 0 to 1), and the yellow curve represents the load of decoding instances.
 
-![Refer to caption](/html/2407.00079/assets/x10.png)
-
+!(/html/2407.00079/assets/x10.png)
 
 (a) Early Rejection.
 
-![Refer to caption](/html/2407.00079/assets/x11.png)
-
+!(/html/2407.00079/assets/x11.png)
 
 (b) Early Rejection Based on Prediction.
 
@@ -492,7 +436,7 @@ Metric In the experiments, we focus on the throughput performance of various s
 
 Baseline We employ vLLM, one of the state-of-the-art open-source LLM serving systems, as our experimental baseline. vLLM incorporates continuous batching and PagedAttention technologies, significantly boosting inference throughput. Despite its strengths, vLLM’s design, which couples the prefill and decoding stages of inference requests, can cause disruptions during decoding in scenarios involving long contexts.
 
-![Refer to caption](/html/2407.00079/assets/x12.png)
+!(/html/2407.00079/assets/x12.png)
 
 ArXiv Summarization                                          L-Eval
 
@@ -502,7 +446,7 @@ Figure 11: End-to-end experiments of Mooncake and vLLM on the ArXiv Summarizatio
 
 This section evaluates the performance of Mooncake and vLLM in end-to-end tests on public datasets using ArXiv Summarization and L-Eval. We establish a baseline using a cluster of four vLLM instances, denoted as vLLM-[4M]. In contrast, Mooncake is configured in two distinct setups: one cluster consists of three prefill instances and one decoding instance, labeled Mooncake-[3P+1D], and the other has two prefill and two decoding instances, labeled Mooncake-[2P+2D]. The results, depicted in Figure [11](#S8.F11 "Figure 11 ‣ 8.1 End-to-end Performance ‣ 8 Evaluation ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"), demonstrate that on the ArXiv Summarization and L-Eval datasets, Mooncake-[3P+1D] achieves throughput improvements of 20% and 40%, respectively, over vLLM-[4M] while satisfying SLOs. Moreover, Mooncake’s throughput on the L-Eval dataset is further enhanced by prefix caching, which significantly reduces prefill time. However, despite having lower TBT latency, Mooncake-[2P+2D] does not perform as well on the TTFT metric compared to Mooncake-[3P+1D] and vLLM-[4M]. This discrepancy arises from an imbalance in the load between prefill and decoding instances. In real-world clusters, the demand for prefill and decoding instances generally remains stable over certain periods, with only minor temporary imbalances. Thus, the proportion of prefill and decoding instances can be preset. Future research will explore more flexible deployment and conversion methods.
 
-![Refer to caption](/html/2407.00079/assets/x13.png)
+!(/html/2407.00079/assets/x13.png)
 
 16k prompt                32k prompt                64k prompt                128k prompt
 
@@ -512,8 +456,7 @@ Figure 12: End-to-end experiments of Mooncake and vLLM on simulated data.
 
 In this section, we employ simulated data for an end-to-end experiment. The cluster configuration is the same as in §[8.1.1](#S8.SS1.SSS1 "8.1.1 Public Datasets ‣ 8.1 End-to-end Performance ‣ 8 Evaluation ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"), utilizing Mooncake configurations of [3P+1D], [2P+2D], and vLLM-[4M]. Notably, the long-context requests in simulated data significantly disrupt the decoding stage of vLLM. To counteract this, vLLM processes requests individually, rather than in batches. The results of the experiment are presented in Figure [12](#S8.F12 "Figure 12 ‣ 8.1.1 Public Datasets ‣ 8.1 End-to-end Performance ‣ 8 Evaluation ‣ Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving"). Although Mooncake employs batch processing, its two-stage disaggregation design effectively minimizes the impact of the prefill stage on the decoding stage, ensuring it never breaks the TBT SLO. Mooncake demonstrates significantly higher throughput, with enhancements ranging from 50% to 525%, while adhering to the same TTFT and TBT SLO constraints compared to vLLM.
 
-![Refer to caption](/html/2407.00079/assets/x14.png)
-
+!(/html/2407.00079/assets/x14.png)
 
 Figure 13: Request TTFT and TBT distributions of Mooncake and vLLM under real workloads
 
@@ -902,83 +845,3 @@ This paper presents Mooncake, a KVCache-centric disaggregated architecture desig
 
   Aleksandar Botev, Soham De, Samuel L Smith, Anushan Fernando, George-Cristian Muraru, Ruba Haroun, Leonard Berrada, Razvan Pascanu, Pier Giuseppe Sessa, Robert Dadashi, Léonard Hussenot, Johan Ferret, Sertan Girgin, Olivier Bachem, Alek Andreev, Kathleen Kenealy, Thomas Mesnard, Cassidy Hardin, Surya Bhupatiraju, Shreya Pathak, Laurent Sifre, Morgane Rivière, Mihir Sanjay Kale, Juliette Love, Pouya Tafti, Armand Joulin, Noah Fiedel, Evan Senter, Yutian Chen, Srivatsan Srinivasan, Guillaume Desjardins, David Budden, Arnaud Doucet, Sharad Vikram, Adam Paszke, Trevor Gale, Sebastian Borgeaud, Charlie Chen, Andy Brock, Antonia Paterson, Jenny Brennan, Meg Risdal, Raj Gundluru, Nesh Devanathan, Paul Mooney, Nilay Chauhan, Phil Culliton, Luiz GUStavo Martins, Elisa Bandy, David Huntsperger, Glenn Cameron, Arthur Zucker, Tris Warkentin, Ludovic Peran, Minh Giang, Zoubin Ghahramani, Clément Farabet, Koray Kavukcuoglu, Demis Hassabis, Raia Hadsell, Yee Whye Teh, and Nando de Frietas.
   Recurrentgemma: Moving past transformers for efficient open language models, 2024.
-
-[◄](/html/2407.00078)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2407.00079)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2407.00079)
-[View original  
-on arXiv](https://arxiv.org/abs/2407.00079)[►](/html/2407.00080)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Aug 5 16:20:23 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

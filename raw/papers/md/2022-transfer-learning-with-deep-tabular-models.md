@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2206.15306
 year: 2022
 ---
 
-[2206.15306] Transfer Learning with Deep Tabular Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Transfer Learning with Deep Tabular Models
 
 Roman Levin 1‡
@@ -117,8 +74,7 @@ Self-supervised learning. Self-supervised learning (SSL) aimed at harnessing unl
 
 Recently, SSL has been adopted in the tabular domain for semi-supervised learning (Yin et al., [2020](#bib.bib88); Yoon et al., [2020](#bib.bib90); Ucar et al., [2021](#bib.bib76); Somepalli et al., [2021](#bib.bib69); Huang et al., [2020](#bib.bib36)). Contrastive pre-training on auxilary unlabelled data (Somepalli et al., [2021](#bib.bib69)) and MLM-like approaches (Huang et al., [2020](#bib.bib36)) have been shown to provide gains over training from scratch for transformer tabular architectures in cases of limited labelled data. Additionaly, Rubachev et al. ([2022](#bib.bib63)) investigate benefits of supervised and unsupervised pre-training when applied to the same data without transferring knowledge between tasks. Finally, self-supervised pre-training was successfully applied to time-series data in medical domain (Yèche et al., [2021](#bib.bib87); McDermott et al., [2021](#bib.bib55)).
 
-![Refer to caption](/html/2206.15306/assets/x1.png)
-
+!(/html/2206.15306/assets/x1.png)
 
 Figure 1: Tabular transfer learning pipeline with MetaMIMIC. We pre-train deep tabular neural networks on abundant upstream patient data with 11 diagnosis targets via multi-label classification. Then, we fine-tune the pre-trained models on limited downstream data with similar features to predict the new target diagnosis.
 
@@ -182,8 +138,7 @@ We tune the hyperparameters of each model with the Optuna library (Akiba et al.
 For deep models with transfer learning, we tune the
 hyperparameters on the full upstream data using the available large upstream validation set with the goal to obtain the best performing feature extractor for the pre-training multi-target task. We then fine-tune this feature extractor with a small learning rate on the downstream data. As this strategy offers considerable performance gains over default hyperparameters, we highlight the importance of tuning the feature extractor and present the comparison with default hyperparameters in Appendix [C](#A3 "Appendix C Hyperparameter Tuning ‣ Transfer Learning with Deep Tabular Models") as well as the details on hyperparameter search spaces for each model.
 
-![Refer to caption](/html/2206.15306/assets/x2.png)
-
+!(/html/2206.15306/assets/x2.png)
 
 Figure 2: Average model ranks across all downstream tasks. Deep tabular models and GBDT performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across all downstream tasks. FT-Transformer fine-tuned end-to-end outperforms all GBDT models, including GBDT with stacking, at all data levels. MLP is highly competitive in low data regimes.
@@ -210,8 +165,7 @@ We summarize the main practical takeaways of Figure [2](#S3.F2 "Figure 2 ‣ 3.4
 
 To verify that transfer learning with deep tabular models works well beyond the medical domain, we conduct experiments on other datasets: Yeast functional genomics data from the biological sciences domain (Elisseeff and Weston, [2001](#bib.bib23)) and Emotions data from the music domain (Trohidis et al., [2008](#bib.bib74)). Both datasets are multilabel, and we treat each classification label as a separate task. Similarly to the experiments with MetaMIMIC, we split the tasks into downstream and upstream by reserving n−1𝑛1n-1 labels for the upstream task and the n𝑛n-th label for the downstream task. We report results of these experiments in Figures [10](#A4.F10 "Figure 10 ‣ D.6 Experiments on Additional Datasets ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"), [11](#A4.F11 "Figure 11 ‣ D.6 Experiments on Additional Datasets ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") in Appendix [D.6](#A4.SS6 "D.6 Experiments on Additional Datasets ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"). We observe similar trends and in particular that deep tabular models pre-trained on upstream data and finetuned with MLP head outperform deep baselines trained from scratch and Catboost models leveraging stacking.
 
-![Refer to caption](/html/2206.15306/assets/x3.png)
-
+!(/html/2206.15306/assets/x3.png)
 
 Figure 3: Comparison of supervised and self-supervised pre-training strategies for FT-Transformer. The left panel illustrates end-to-end fine-tuning with linear head and the right plot illustrates end-to-end fine-tuning with MLP head, the two most effective strategies for FT-Transformer. Within each panel, columns represent pre-training strategies and rows correspond to the number of available downstream samples. FS stands for training from scratch (without pre-training on upstream data), MLM and Contrastive denote masked-language-modeling-style and contrastive self-supervised pre-training strategies, and Supervised denotes supervised pre-training on upstream data. Warmer colors indicate better performance. Contrastive pre-training outperforms from-scratch trained models, while MLM pre-training is not effective. Supervised pre-training outperforms all self-supervised pre-training strategies in our experiments.
 
@@ -233,9 +187,9 @@ We utilize the implementation of contrastive learning from Somepalli et al. ([2
 
 While self-supervised learning makes for transferable feature extractors in other domains, our experiments show that supervised pre-training is consistently better than the recent SSL pre-training methods we try that are designed for tabular data. In Figure [3](#S4.F3 "Figure 3 ‣ 4 Results for Transfer Learning with Deep Tabular Models ‣ Transfer Learning with Deep Tabular Models"), we compare supervised pre-training with contrastive and MLM pre-training strategies and show that supervised pre-training always attains the best average rank. Contrastive pre-training produces better results than training from scratch on the downstream data when using a linear head, but it is still inferior to supervised pre-training. Tabular MLM pre-training also falls behind the supervised strategy and performs comparably to training from scratch in the lower data regimes but leads to a weaker downstream model in the higher data regimes.
 
-![Refer to caption](/html/2206.15306/assets/x4.png)
+!(/html/2206.15306/assets/x4.png)
 
-![Refer to caption](/html/2206.15306/assets/x5.png)
+!(/html/2206.15306/assets/x5.png)
 
 Figure 4: Pseudo-Feature method for aligning upstream and downstream feature sets. Left: Diagram illustrating strategy for handling mismatches between the upstream and downstream features. When upstream data is missing a feature present in downstream data, it is predicted with a model pre-trained on upstream data and fine-tuned to predict the new feature on the downstream data. When a feature is missing in the downstream data, it is predicted with a model trained to predict this feature on the upstream data.
 Right top: Scenario with missing feature in the upstream data. Comparison of ranks of FT-Transformer model trained on data with missing feature, with pseudo-feature and with the original feature. Right bottom: Scenario with missing feature in the downstream data. Comparison of ranks of FT-Transformer model trained and fine-tuned on data with missing feature, fine-tuned with pseudo and with original feature. In both scenarios, using the pseudo-feature is better than training without the feature but worse than worse than the original ground truth feature values.
@@ -904,8 +858,7 @@ To understand how related the MetaMIMIC tasks are, we compute pair-wise correlat
 
 Table 1: Selected targets with corresponding ICD codes and frequency in the considered cohort.
 
-![Refer to caption](/html/2206.15306/assets/x6.png)
-
+!(/html/2206.15306/assets/x6.png)
 
 Figure 5: Correlations between MetaMIMIC targets. The heatmap represents absolute pair-wise correlations between MetaMIMIC targets.
 
@@ -1147,8 +1100,7 @@ Table 10: Comparison of tuned and default configurations of deep tabular neural 
 
 Figure [6](#A4.F6 "Figure 6 ‣ D.1 Results for TabTransformer ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") is equivalent to Figure [2](#S3.F2 "Figure 2 ‣ 3.4 Hyperparameter Tuning ‣ 3 Transfer Learning Setup in Tabular Domain ‣ Transfer Learning with Deep Tabular Models"), but also includes the results for TabTransformer model, a tabular neural network consisting of transformer block for categorical features and an MLP block on top for numerical features. We find that TabTransformer performs poorly compared to other deep tabular neural networks, which might be explained by the fact that the original paper Huang et al. [[2020](#bib.bib36)] only suggests to tune the hyperparameters of transformer block, but not the MLP part, while Meta-MIMIC data has only one categorical features and 171 numerical features.
 
-![Refer to caption](/html/2206.15306/assets/x7.png)
-
+!(/html/2206.15306/assets/x7.png)
 
 Figure 6: Average model ranks including TabTransformer. Deep tabular models and GBDT performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across all downstream tasks.
@@ -1157,8 +1109,7 @@ FS denotes training from scratch (without pre-training on upstream data), LH and
 
 Figure [7](#A4.F7 "Figure 7 ‣ D.2 Ranks Standard Error ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") presents standard errors for ranks in Figure [2](#S3.F2 "Figure 2 ‣ 3.4 Hyperparameter Tuning ‣ 3 Transfer Learning Setup in Tabular Domain ‣ Transfer Learning with Deep Tabular Models") computed across tasks.
 
-![Refer to caption](/html/2206.15306/assets/x8.png)
-
+!(/html/2206.15306/assets/x8.png)
 
 Figure 7: Standard error for model ranks computed across all downstream tasks. This figure complements Figure [2](#S3.F2 "Figure 2 ‣ 3.4 Hyperparameter Tuning ‣ 3 Transfer Learning Setup in Tabular Domain ‣ Transfer Learning with Deep Tabular Models"). Darker colors indicate lower standard errors.
 
@@ -1166,8 +1117,7 @@ Figure 7: Standard error for model ranks computed across all downstream tasks. T
 
 In Figure [8](#A4.F8 "Figure 8 ‣ D.3 Model-Wise Ranks ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") we compare different transfer learning setups for each deep tabular model.
 
-![Refer to caption](/html/2206.15306/assets/x9.png)
-
+!(/html/2206.15306/assets/x9.png)
 
 Figure 8: Model-wise ranks for GBDT and neural networks. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance. FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is computed across training setups for each model and is averaged across all downstream tasks.
 
@@ -1175,8 +1125,7 @@ Figure 8: Model-wise ranks for GBDT and neural networks. Within each panel, colu
 
 In Figure [9](#A4.F9 "Figure 9 ‣ D.4 Average ROC-AUC Improvement over Catboost ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") we display ROC-AUC improvements over Catboost baseline averaged across all downstream tasks. We observe trends similar to ones with ranks; MLP model performs best in low data regimes, while FT-Transformer offers consistent gains across all data levels.
 
-![Refer to caption](/html/2206.15306/assets/x10.png)
-
+!(/html/2206.15306/assets/x10.png)
 
 Figure 9: Average ROC-AUC improvements over Catboost baseline. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance. FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. ROC-AUC improvement is computed as difference in ROC-AUC with Catboost model and is averaged across all downstream tasks.
 
@@ -1192,14 +1141,12 @@ In our experimental setup, we treat each classification label as a separate task
 
 We observe that deep tabular models pre-trained on upstream data and finetuned with MLP head outperform models trained from scratch and Catboost models leveraging stacking. Interestingly, MLP model performs better on the Yeast dataset, while FT-Transformer performs better on the Emotions dataset.
 
-![Refer to caption](/html/2206.15306/assets/x11.png)
-
+!(/html/2206.15306/assets/x11.png)
 
 Figure 10: Average model ranks across downstream tasks in Yeast data. Deep tabular models and Catboost performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across all downstream tasks.
 
-![Refer to caption](/html/2206.15306/assets/x12.png)
-
+!(/html/2206.15306/assets/x12.png)
 
 Figure 11: Average model ranks across downstream tasks in Emotions data. Deep tabular models and Catboost performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across all downstream tasks.
@@ -1208,8 +1155,7 @@ FS denotes training from scratch (without pre-training on upstream data), LH and
 
 To further validate the effectiveness of transfer learning in scenarios where fewer pre-training tasks are available we repeat our experiments with the first 5 targets from Meta-MIMIC dataset: Diabetes, Hypertensive, Ischematic, Heart, Overweight. In particular we pre-train on 4 available targets and finetune on the remaining task. We limit the number of downstream tasks to 5 for consistency of the number of pre-training targets across downstream tasks. Figure [12](#A4.F12 "Figure 12 ‣ D.7 Experiments with Fewer Pre-training Tasks ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models") presents the results of this experiment, we observe similar trends to the original experiments with all targets. In particular, we find that deep neural networks pre-trained even on fewer upstream targets definitively outperform Catboost with stacking with MLP model performing better in low-data regimes and FT-Transformer performing better when more downstream data is available.
 
-![Refer to caption](/html/2206.15306/assets/x13.png)
-
+!(/html/2206.15306/assets/x13.png)
 
 Figure 12: Average model ranks for models pre-trained and finetuned on the first five MetaMIMIC targets. Deep tabular models and Catboost performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across 5 downstream tasks.
@@ -1218,8 +1164,7 @@ FS denotes training from scratch (without pre-training on upstream data), LH and
 
 One might wonder when deep neural networks are effective for transferring knowledge between tasks. We hypothesize that transfer learning is most effective in scenarios where upstream and downstream tasks are related. In the previous experiments with pre-training on fewer tasks (see Appendix [D.7](#A4.SS7 "D.7 Experiments with Fewer Pre-training Tasks ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models")) we found that transfer learning is effective when transferring knowledge between the first five tasks, which include a few cardiovascular-related conditions (hypertensive, ischematic, heart), diabetes and overweight conditions. From the correlation matrix in Figure [5](#A2.F5 "Figure 5 ‣ B.3 Details on MetaMIMIC targets ‣ Appendix B Experimental Details. ‣ Transfer Learning with Deep Tabular Models"), we can see that these tasks are slightly more correlated with each other than with other conditions such as anemia, respiratory, hypotension, purpura, alcohol. We notice that the latter set of tasks is also less related to cardiovascular conditions. To evaluate our hypothesis that transfer learning is less effective when pre-training and downstream tasks are less related, we run experiments with pre-training the model on the first 5 related tasks and transferring knowledge to the set of "less related" tasks. The results for this experiment are presented in Figure [13](#A4.F13 "Figure 13 ‣ D.8 When is Transfer Learning Most Effective? Case Study ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"), we observe that although pre-trained MLP model still provides performance boosts in small data regimes compared to Catboost, the trends are less pronounced compared to results for transferring knowledge to "more related tasks" in Figure [12](#A4.F12 "Figure 12 ‣ D.7 Experiments with Fewer Pre-training Tasks ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models").
 
-![Refer to caption](/html/2206.15306/assets/x14.png)
-
+!(/html/2206.15306/assets/x14.png)
 
 Figure 13: Average model ranks for transferring knowledge to "less related" tasks. Deep tabular models and Catboost performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across 5 "less related tasks".
@@ -1228,8 +1173,7 @@ FS denotes training from scratch (without pre-training on upstream data), LH and
 
 To expand the experimental evaluation to higher data regimes in downstream data we repeat our experiments with 400, 1000 and 2000 samples available for finetuning in the downstream data. The results for this experiment are presented in Figure [14](#A4.F14 "Figure 14 ‣ D.9 Experiments with Higher Data Regimes in Downstream Data ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"). We find that even in higher data regimes pre-training on upstream data provides significant boost to FT-Transformer model compared to Catboost with stacking. At the same time, MLP performs on par with Catboost when there is more downstream data available, which aligns with our previous results.
 
-![Refer to caption](/html/2206.15306/assets/x15.png)
-
+!(/html/2206.15306/assets/x15.png)
 
 Figure 14: Average model ranks in higher-data regimes for downstream tasks. Deep tabular models and Catboost performance is presented on the corresponding panels. Within each panel, columns represent transfer learning setups, and rows correspond to the number of available downstream samples. Warmer colors indicate better performance.
 FS denotes training from scratch (without pre-training on upstream data), LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training. Rank is averaged across all downstream tasks.
@@ -1238,9 +1182,9 @@ FS denotes training from scratch (without pre-training on upstream data), LH and
 
 We further verify the effectiveness of our pseudo-feature method in scenarios with multiple features misaligned between upstream and downstream data. We repeat the experiment from Section [6](#S6 "6 Aligning Upstream and Downstream Feature Sets with Pseudo-Features ‣ Transfer Learning with Deep Tabular Models"), but instead of a single feature we remove three features. In Figure [15](#A4.F15 "Figure 15 ‣ D.10 Additional Experiments with Pseudo-Feature Method ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"), the top left heatmap represents the experiment where the downstream data has three additional features missing from the upstream data. The bottom left heatmap represents the opposite scenario of the upstream data having three additional features not available in the downstream data. To ensure that the features we experiment with are meaningful and contain useful information, we chose important features according to GBDT feature importances. In Figure [15](#A4.F15 "Figure 15 ‣ D.10 Additional Experiments with Pseudo-Feature Method ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"), we include the average ranks of FT-Transformer models pre-trained with missing features, pre-trained with imputed features and with the original features, which we assume are unavailable. Additionaly, in the right panel we present standard errors for model ranks computed across all downstream tasks. From these experiments, we see that pre-training on data with imputed features significantly outperforms pre-training with missing features and that our feature imputation method enables effective transfer learning in scenarios where upstream and downstream feature sets differ in multiple features.
 
-![Refer to caption](/html/2206.15306/assets/x16.png)
+!(/html/2206.15306/assets/x16.png)
 
-![Refer to caption](/html/2206.15306/assets/x17.png)
+!(/html/2206.15306/assets/x17.png)
 
 Figure 15: Pseudo-Feature method for aligning upstream and downstream feature sets with 3 misaligned features. Left: Comparison of ranks of FT-Transformer model trained on data with 3 missing features, with pseudo-features and with the original features. Right: Standard error for ranks computed across all tasks. Figures in the top row correspond to the experiments with missing features in the upstream data, while figures in the bottom row present experiments with missing features in the downstream data.
 
@@ -1250,12 +1194,9 @@ We extend our comparison of supervised pre-training and contrastive pre-training
 
 0.70.8\lambda=0.7,0.8 for contrastive pre-training used in experiments in Section [5](#S5 "5 Self-Supervised Pre-training ‣ Transfer Learning with Deep Tabular Models") (which used λ=0.9𝜆0.9\lambda=0.9). We also include SCARF contrastive pretraining strategy proposed in [Bahri et al., [2021](#bib.bib9)]. For SCARF method we generate a random mask over features, then for each masked feature we sample uniformly from the joint distribution of that feature (in the training set). Then we compute the InfoNCE loss using these corrupted inputs and the clean inputs for contrastive pretraining. We use the default corruption hyperparameter λ=0.6𝜆0.6\lambda=0.6 from the SCARF paper [Bahri et al., [2021](#bib.bib9)]. We compare all contrastive pre-training strategies and supervised pre-training in Figure [16](#A4.F16 "Figure 16 ‣ D.11 Additional Experiments with Contrastive Self-Supervised Learning ‣ Appendix D Additional Results ‣ Transfer Learning with Deep Tabular Models"). We find that increasing the level of corruption (i.e., decreasing λ𝜆\lambda) does not lead to improved performance on downstream tasks for contrastive pre-training. Also, while the SSL methods outperform training from scratch, especially in the lower data regimes, supervised pre-training is consistently better than all considered SSL methods.
 
-![Refer to caption](/html/2206.15306/assets/x18.png)
-
+!(/html/2206.15306/assets/x18.png)
 
 Figure 16: Comparison of different pre-training strategies for FT-Transformer. The left panel illustrates end-to-end fine-tuning with linear head and the right plot illustrates end-to-end fine-tuning with MLP head. Within each panel, columns represent pre-training strategies and rows correspond to the number of available downstream samples. FS stands for training from scratch, λ𝜆\lambda denotes the corruption parameter in contrastive pre-training, SCARF corresponds to contrastive pre-training strategy from [Bahri et al., [2021](#bib.bib9)] and Supervised denotes supervised pre-training on upstream data.
-
-
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1292,8 +1233,6 @@ Figure 16: Comparison of different pre-training strategies for FT-Transformer. T
 
 Table 11: ROC-AUC scores for all models for "Diabetes", "Hypertensive" and "Ischematic" downstream tasks. FT denotes FT-Transformer, Tab denotes TabTransformer. The first two rows in each section correspond to training from scratch, where FS corresponds to deep baseline architecture (tuned on subsample of upstream data), and FS-2 shows the results for the same architecture as one used with transfer learning. LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Dataset | Heart | | | | | Overweight | | | | | Anemia | | | | |
@@ -1328,8 +1267,6 @@ Table 11: ROC-AUC scores for all models for "Diabetes", "Hypertensive" and "Isch
 | XGBoost+stacking | 0.458±0.014plus-or-minus0.014\scriptscriptstyle\pm\scriptstyle 0.014 | 0.567±0.004plus-or-minus0.004\scriptscriptstyle\pm\scriptstyle 0.004 | 0.649±0.004plus-or-minus0.004\scriptscriptstyle\pm\scriptstyle 0.004 | 0.742±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.767±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.511±0.008plus-or-minus0.008\scriptscriptstyle\pm\scriptstyle 0.008 | 0.538±0.005plus-or-minus0.005\scriptscriptstyle\pm\scriptstyle 0.005 | 0.711±0.009plus-or-minus0.009\scriptscriptstyle\pm\scriptstyle 0.009 | 0.789±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.767±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.504±0.009plus-or-minus0.009\scriptscriptstyle\pm\scriptstyle 0.009 | 0.754±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.772±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.788±0.000plus-or-minus0.000\scriptscriptstyle\pm\scriptstyle 0.000 | 0.783±0.000plus-or-minus0.000\scriptscriptstyle\pm\scriptstyle 0.000 |
 
 Table 12: ROC-AUC scores for all models for "Heart", "Overweight" and "Anemia" downstream tasks. FT denotes FT-Transformer, Tab denotes TabTransformer. The first two rows in each section correspond to training from scratch, where FS corresponds to deep baseline architecture (tuned on subsample of upstream data), and FS-2 shows the results for the same architecture as one used with transfer learning. LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training.
-
-
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1366,8 +1303,6 @@ Table 12: ROC-AUC scores for all models for "Heart", "Overweight" and "Anemia" d
 
 Table 13: ROC-AUC scores for all models for "Respiratory", "Hypotension" and "Lipoid" downstream tasks. FT denotes FT-Transformer, Tab denotes TabTransformer. The first two rows in each section correspond to training from scratch, where FS corresponds to deep baseline architecture (tuned on subsample of upstream data), and FS-2 shows the results for the same architecture as one used with transfer learning. LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Dataset | Atrial | | | | | Purpura | | | | | Alcohol | | | | |
@@ -1402,83 +1337,3 @@ Table 13: ROC-AUC scores for all models for "Respiratory", "Hypotension" and "Li
 | XGBoost+stacking | 0.584±0.007plus-or-minus0.007\scriptscriptstyle\pm\scriptstyle 0.007 | 0.636±0.004plus-or-minus0.004\scriptscriptstyle\pm\scriptstyle 0.004 | 0.584±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.627±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.574±0.008plus-or-minus0.008\scriptscriptstyle\pm\scriptstyle 0.008 | 0.568±0.004plus-or-minus0.004\scriptscriptstyle\pm\scriptstyle 0.004 | 0.652±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.763±0.003plus-or-minus0.003\scriptscriptstyle\pm\scriptstyle 0.003 | 0.802±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.878±0.003plus-or-minus0.003\scriptscriptstyle\pm\scriptstyle 0.003 | 0.623±0.004plus-or-minus0.004\scriptscriptstyle\pm\scriptstyle 0.004 | 0.546±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.613±0.002plus-or-minus0.002\scriptscriptstyle\pm\scriptstyle 0.002 | 0.659±0.001plus-or-minus0.001\scriptscriptstyle\pm\scriptstyle 0.001 | 0.505±0.003plus-or-minus0.003\scriptscriptstyle\pm\scriptstyle 0.003 |
 
 Table 14: ROC-AUC scores for all models for "Atrial", "Purpura" and "Alcohol" downstream tasks. FT denotes FT-Transformer, Tab denotes TabTransformer. The first two rows in each section correspond to training from scratch, where FS corresponds to deep baseline architecture (tuned on subsample of upstream data), and FS-2 shows the results for the same architecture as one used with transfer learning. LH and MLP denote linear and MLP heads correspondingly, E2E denotes end-to-end training.
-
-[◄](/html/2206.15305)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2206.15306)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2206.15306)
-[View original  
-on arXiv](https://arxiv.org/abs/2206.15306)[►](/html/2206.15307)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 13 10:08:22 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

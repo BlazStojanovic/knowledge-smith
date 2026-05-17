@@ -14,50 +14,6 @@ url: http://arxiv.org/abs/1807.06699v5
 year: 2018
 ---
 
-[1807.06699] Adaptive Neural Trees
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Adaptive Neural Trees
 
 Ryutaro Tanno
@@ -151,9 +107,9 @@ We now formalise the definition of Adaptive Neural Trees (ANTs), which are a for
 superscript𝐱1superscript𝐲1…superscript𝐱𝑁superscript𝐲𝑁
 𝒳𝒴(\mathbf{x}^{(1)},\mathbf{y}^{(1)}),...,(\mathbf{x}^{(N)},\mathbf{y}^{(N)})\in\mathcal{X}\times\mathcal{Y} as training data.
 
-![Refer to caption](/html/1807.06699/assets/figures/fig_4_3.png)
+!(/html/1807.06699/assets/figures/fig_4_3.png)
 
-![Refer to caption](/html/1807.06699/assets/figures/fig_5_6.png)
+!(/html/1807.06699/assets/figures/fig_5_6.png)
 
 Figure 1: (Left). An example ANT. Data is passed through transformers (black circles on edges), routers (white circles on internal nodes), and solvers (gray circles on leaf nodes). The red shaded path shows routing of 𝐱𝐱\mathbf{x} to reach leaf node 444. Input 𝐱𝐱\mathbf{x} undergoes a series of selected transformations 𝐱→𝐱0𝝍:=t0𝝍​(𝐱)→𝐱1𝝍:=t1𝝍​(𝐱0𝝍)→𝐱4𝝍:=t4𝝍​(𝐱1𝝍)→𝐱subscriptsuperscript𝐱𝝍0assignsubscriptsuperscript𝑡𝝍0𝐱→subscriptsuperscript𝐱𝝍1assignsubscriptsuperscript𝑡𝝍1subscriptsuperscript𝐱𝝍0→subscriptsuperscript𝐱𝝍4assignsubscriptsuperscript𝑡𝝍4subscriptsuperscript𝐱𝝍1\mathbf{x}\rightarrow\mathbf{x}^{\boldsymbol{\psi}}\_{0}:=t^{\boldsymbol{\psi}}\_{0}(\mathbf{x})\rightarrow\mathbf{x}^{\boldsymbol{\psi}}\_{1}:=t^{\boldsymbol{\psi}}\_{1}(\mathbf{x}^{\boldsymbol{\psi}}\_{0})\rightarrow\mathbf{x}^{\boldsymbol{\psi}}\_{4}:=t^{\boldsymbol{\psi}}\_{4}(\mathbf{x}^{\boldsymbol{\psi}}\_{1}) and the solver module yields the predictive distribution p4ϕ,𝝍​(𝐲):=s4ϕ​(𝐱4𝝍)assignsuperscriptsubscript𝑝4
 
@@ -354,25 +310,21 @@ The growth procedure of ANTs is capable of discovering hierarchical structures i
 
 ### 5.3 Effect of refinement phase
 
-![Refer to caption](/html/1807.06699/assets/figures/fig_7_9.png)
-
+!(/html/1807.06699/assets/figures/fig_7_9.png)
 
 (a) Before refinement
 
-![Refer to caption](/html/1807.06699/assets/figures/fig_7_10.png)
-
+!(/html/1807.06699/assets/figures/fig_7_10.png)
 
 (b) After refinement
 
 Figure 2: Visualisation of class distributions (red) and path probabilities (blue) computed over the whole test set at respective nodes of an example ANT (a) before and (b) after the refinement phase. (a) shows that the model captures an interpretable hierarchy, grouping semantically similar images on the same branches. (b) shows that the refinement phase polarises path probabilities, pruning a branch.
 
+!(/html/1807.06699/assets/x1.png)
 
+!(/html/1807.06699/assets/x2.png)
 
-![Refer to caption](/html/1807.06699/assets/x1.png)
-
-![Refer to caption](/html/1807.06699/assets/x2.png)
-
-![Refer to caption](/html/1807.06699/assets/x3.png)
+!(/html/1807.06699/assets/x3.png)
 
 Figure 3: (Left). Test accuracy on CIFAR-10 of ANTs for varying amounts of training data. (Middle) The complexity of the grown ANTs increases with dataset size. (Right) Refinement improves generalisation; the dotted lines show where the refinement phase starts.
 
@@ -893,8 +845,7 @@ Table 5: Training time comparison. Time and number of epochs taken for the growt
 | ANT-CIFAR10-B | 0.8 (hr) | 313 | 0.9 (hr) | 200 |
 | ANT-CIFAR10-C | 0.7 (hr) | 285 | 0.8 (hr) | 200 |
 
-![Refer to caption](/html/1807.06699/assets/figures/fig_patience.png)
-
+!(/html/1807.06699/assets/figures/fig_patience.png)
 
 Figure 4: Effect of patience level on the validation accuracy trajectory during training. Each curve shows the validation accuracy on CIFAR-10 dataset.
 
@@ -923,8 +874,7 @@ Table 6: Comparison of classification performance between the default single-pat
 
 Fig. [5](#A7.F5 "Figure 5 ‣ Appendix G Visualisation of discovered architectures ‣ Adaptive Neural Trees") shows ANT architectures discovered on the MNIST (i-iii) and CIFAR-10 (iv-vi) datasets. We observe three notable trends. Firstly, a large proportion of the learned routers separate examples based on their classes (red histograms) with very high confidence (blue histograms). The ablation study in Sec. 5. 1 (Tab. 4 in the main text) shows that such hierarchical clustering benefits predictive performance, while the conditional computation enables more lightweight inference (Tab. 3 in the main text). Secondly, most architectures learn a few levels of features before resorting to primarily splits. However, over half of the architectures (ii-v) still learn further representations beyond the first split. Secondly, all architectures are unbalanced. This reflects the fact that some groups of samples may be easier to classify than others. This property is reflected by traditional DT algorithms, but not “neural” tree-structured models with pre-specified architectures (Laptev & Buhmann, [2014](#bib.bib36); Frosst & Hinton, [2017](#bib.bib17); Kontschieder et al., [2015](#bib.bib34); Ioannou et al., [2016](#bib.bib26)).
 
-![Refer to caption](/html/1807.06699/assets/x4.png)
-
+!(/html/1807.06699/assets/x4.png)
 
 Figure 5: Illustration of discovered ANT architectures. (i) ANT-MNIST-A, (ii) ANT-MNIST-B, (iii) ANT-MNIST-C, (iv) ANT-CIFAR10-A, (v) ANT-CIFAR10-B, (vi) ANT-CIFAR10-C. Histograms in red and blue show the class distributions and path probabilities at respective nodes. Small black circles on the edges represent transformers, circles in white at the internal nodes represent routers, and circles in gray are solvers. The small white circles on the edges denote specific cases where transformers are identity functions.
 
@@ -964,9 +914,6 @@ Table 8: Comparison of prediction errors of a single ANT versus an ensemble of 8
 | Single model | 0.64 | 0.69 | 8.31 | 8.32 | 1.384 | 1.542 |
 | Ensemble | 0.29 | 0.30 | 7.76 | 7.79 | 1.226 | 1.372 |
 
-
-
-
 Table 9: Parameter counts for a single ANT versus an ensemble of 8.
 
 |  |  |  |  |  |  |  |
@@ -975,83 +922,3 @@ Table 9: Parameter counts for a single ANT versus an ensemble of 8.
 |  | Multi-path | Single-path | Multi-path | Single-path | Multi-path | Single-path |
 | Single model | 100,596 | 84,935 | 1.4M | 1.0M | 103,823 | 61,640 |
 | Ensemble | 850,775 | 655,449 | 8.7M | 7.4M | 598,280 | 360,766 |
-
-[◄](/html/1807.06697)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1807.06699)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1807.06699)
-[View original  
-on arXiv](https://arxiv.org/abs/1807.06699)[►](/html/1807.06701)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 15 23:12:59 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

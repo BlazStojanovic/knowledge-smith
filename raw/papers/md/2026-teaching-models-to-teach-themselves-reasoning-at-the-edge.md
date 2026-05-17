@@ -15,55 +15,6 @@ url: https://arxiv.org/abs/2601.18778
 year: 2026
 ---
 
-[2601.18778] Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1]MIT
-2]Meta FAIR
-3]New York University
-\contribution[\*]Work done during an internship at Meta
-
 # Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability
 
 Shobhita Sundaram
@@ -99,8 +50,7 @@ Third, analyzing the generated questions reveals that structural quality and wel
 
 Shobhita Sundaram at shobhita@mit.edu
 
-![Refer to caption](/html/2601.18778/assets/x1.png)
-
+!(/html/2601.18778/assets/x1.png)
 
 Figure 1: Learning on hard problems by self-generating a
 curriculum. We introduce SOAR: A meta-RL framework for
@@ -255,8 +205,7 @@ Critically, we do not assume automatic verification of synthetic question well-p
 
 In the following sections we detail the outer and inner RL loops. Our high-level procedure is shown in Figure [2](#S3.F2 "Figure 2 ‣ 3.1 Overview ‣ 3 Method ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability"), with a full algorithm in Algorithm [1](#alg1 "Algorithm 1 ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability").
 
-![Refer to caption](/html/2601.18778/assets/x2.png)
-
+!(/html/2601.18778/assets/x2.png)
 
 Figure 2: The SOAR meta-RL Loop. The teacher and student are initialized from the same model. In the outer RL loop the teacher generates candidate question-answer pairs that are partitioned into datasets. In the inner RL loop, the student is trained for 10 steps on the candidate problems and evaluated on sampled hard problems. The teacher is rewarded based on the resulting student improvement over the student baseline, grounding the synthetic curriculum in real learning progress.
 
@@ -351,23 +300,19 @@ We report the pass@k accuracy on the held-out fail@128 test set for k∈{1,4,8,1
 Student Early Stopping. For experiments where we train fresh students, on MATH/HARP we select student checkpoints at the convergence point of the smoothed training reward curve, specifically where the reward gradient falls below a fixed threshold. This alleviates noise from small validation sets and ensures fair comparison between methods with differing convergence rates; full discussion is in Appendix [B.6](#A2.SS6 "B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability").
 On OlympiadBench, where convergence is more uniform, we report at 50 steps. Full training trajectories are in Figure [9](#A2.F9 "Figure 9 ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability").
 
-![Refer to caption](/html/2601.18778/assets/x3.png)
-
+!(/html/2601.18778/assets/x3.png)
 
 Figure 3: Performance on MATH and HARP fail@128 (improvement over Hard-Only). Synthetic problems generated with SOAR (PQ) and inference with the promoted student (PS) outperform direct training on fail@128 train sets (Hard-Only), and sampling from teachers trained with intrinsic rewards (Intrinsic-T). Performance is reported as the delta over Hard-Only. For reference, Hard-Only MATH pass@kk for k∈{1,4,8,16,32}k\in\{1,4,8,16,32\} is {0.5,1.7,3.2,5.7,9.6}\{0.5,1.7,3.2,5.7,9.6\}. Hard-Only training curves are shown in Figure [5](#S4.F5 "Figure 5 ‣ 4.5 Metrics ‣ 4 Experiment Setup ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability"); absolute performance for all methods, and further evaluations, are in Tables [4](#A3.T4 "Table 4 ‣ C.2 Full Evaluation on fail@128 MATH, HARP, and OlympiadBench. ‣ Appendix C Evaluations ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability")-[5](#A3.T5 "Table 5 ‣ C.2 Full Evaluation on fail@128 MATH, HARP, and OlympiadBench. ‣ Appendix C Evaluations ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability"). Shaded regions are ±\pm 1 SD over 6-12 seeds nested across teacher/student training (see [B.8](#A2.SS8 "B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability")).
 
-![Refer to caption](/html/2601.18778/assets/x4.png)
-
+!(/html/2601.18778/assets/x4.png)
 
 Figure 4: Transfer performance to OlympiadBench fail@128 subset (improvement over Hard-Only). Questions optimized for MATH and HARP transfer to a held-out dataset. Performance is reported as the delta over Hard-Only; absolute performance, including PS evaluation, is in Table [6](#A3.T6 "Table 6 ‣ C.2 Full Evaluation on fail@128 MATH, HARP, and OlympiadBench. ‣ Appendix C Evaluations ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability").
 
-![Refer to caption](/html/2601.18778/assets/x5.png)
-
+!(/html/2601.18778/assets/x5.png)
 
 Figure 5: Grounded rewards lead to more stable teacher policies. We evaluate trained teacher policies by sampling questions and training fresh students. (Left) Test pass@32 comparison between students trained with questions sampled from Grounded-T and Base-T (Hard-Only also shown for reference). Grounded-T outperforms Base-T and exhibits more stable student trajectories. (Right) Pass@32 trajectories for fresh students trained with individual Grounded-T teacher seeds (red) and Intrinsic-T teacher seeds (green). Questions from Grounded-T yield consistent student trajectories, whereas Intrinsic-T exhibits higher variance across teachers, including a failure mode where I-T (1) causes student collapse. Shading shows ±1\pm 1 SD. Curves for other pass@k and OlympiadBench are in Figures [10](#A2.F10 "Figure 10 ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability")-[12](#A2.F12 "Figure 12 ‣ B.9 Computational resources ‣ B.8 Seeds ‣ B.7 Hyperparameters ‣ B.6 Evaluation ‣ B.5 Datasets ‣ B.4 Learnability Reward. ‣ B.3 Training Details ‣ B.2 Parsing Teacher Outputs ‣ Student Prompt. ‣ Teacher Prompt. ‣ B.1 Prompts ‣ Appendix B Method and Experiment Details ‣ Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability").
 
-![Refer to caption](/html/2601.18778/assets/x6.png)
-
+!(/html/2601.18778/assets/x6.png)
 
 Figure 6: Qualitative Evolution of Generated Questions. (Left) Baseline student performance during a SOAR run on HARP. The y-axis shows greedy accuracy on the fail@128 train set over promotion stages. (Right) Sampled teacher questions at different promotion points. Content and style shift from word problems and basic formulas (stage 1) to concise, equation-heavy problems in algebra and calculus (stage 2).
 Many effective “stepping stones" include incorrect solutions, suggesting that structural and conceptual content provide sufficient learning signal.
@@ -772,13 +717,11 @@ To avoid biasing results, we select between curriculum/mixed training using our 
 On MATH, while both exhibit similar training dynamics, we found that our Base-T baseline performed better with curriculum and thus adopt it for all MATH experiments (Figure 7). On OlympiadBench and HARP we observed that mixed training yields significantly more stable learning dynamics, even when adding real instead of synthetic data.
 Figure 8 compares mixed/curriculum training on HARP and OlympiadBench fail@128 with 128 real MATH problems. Curriculum training exhibits an early performance spike, followed by a significant and sudden performance decline early in training. Thus for HARP and OlympiadBench we use mixed training in our evaluations.
 
-![Refer to caption](/html/2601.18778/assets/x7.png)
-
+!(/html/2601.18778/assets/x7.png)
 
 Figure 7: Mixed v. Curriculum training on MATH. We compare training the base student on fail@128 + 128 questions sampled from Base-T, for performance on MATH. Curriculum performs better across different inference budgets.
 
-![Refer to caption](/html/2601.18778/assets/x8.png)
-
+!(/html/2601.18778/assets/x8.png)
 
 Figure 8: Mixed v. Curriculum training on HARP/OlympiadBench. We compare training the base student on real fail@128 + 128 random MATH questions, for HARP and OlympiadBench. Mixed training exhibits significantly more stable training dynamics across inference budgets (Pass@8 and Pass@32) and converges to higher final performance points. For both datasets, curriculum training exhibits strong instability with a large early performance spike and then crash.
 
@@ -878,28 +821,23 @@ Table 3: Hyperparameters for SOAR training and evaluation.
 
 Each SOAR training run was executed on 4 nodes (each 8×\times NVIDIA H200 GPUs or 8×\times NVIDIA H100 GPUs) for ≈\approx 48-60 hours. Each RLOO evaluation run (training a fresh student) was executed for ≈\approx 12 hours on 1 H200 node or 1 H100 node.
 
-![Refer to caption](/html/2601.18778/assets/x9.png)
-
+!(/html/2601.18778/assets/x9.png)
 
 Figure 9: Fail@128 test performance during student training for MATH, HARP, and Olympiad. Student learning curves at different pass@k when trained on Hard-Only, PQ, or the Full MATH dataset (PS inference performance shown as a horizontal line). PQ and PS improve performance on all inference budgets and datasets, with increased effect at higher kk. On MATH, PQ exhibits performance gains even after the synthetic-training phase (64 steps), showing that synthetic problems make real hard problems more learnable.
 
-![Refer to caption](/html/2601.18778/assets/x10.png)
-
+!(/html/2601.18778/assets/x10.png)
 
 Figure 10: Fail@128 test performance during student training for MATH with different teachers. Each column compares training a fresh student with 128 questions from Grounded-T to 128 questions from a different teacher (Hard-Only also included for reference). While all teachers outperform Hard-Only, Grounded-T performs best, with increasing effects at higher kk. Grounded-T results in less variance across student outcomes, particularly compared to Base-T and Intrinsic-T. PQ learning curves are in Figure 9.
 
-![Refer to caption](/html/2601.18778/assets/x11.png)
-
+!(/html/2601.18778/assets/x11.png)
 
 Figure 11: Fail@128 test performance during student training for HARP with different teachers. Each column compares training a fresh student with 128 questions from Grounded-T to 128 questions from a different teacher (Hard-Only also included for reference). Grounded-T performs best, with increasing effects at higher kk. Students trained with Base-T and Intrinsic-T tend to decline more for higher kk in the later stages of training, while Grounded-T leads to more stable trajectories.
 
-![Refer to caption](/html/2601.18778/assets/x12.png)
-
+!(/html/2601.18778/assets/x12.png)
 
 Figure 12: Fail@128 test performance during student training for Olympiad with different teachers. Each column compares training a fresh student with 128 questions from Grounded-T (trained with MATH and HARP) to 128 questions from a different teacher (Hard-Only also included for reference). Students trained with Grounded-T teachers have more similar mean performance to Base-T and Intrinsic-T than seen on HARP and MATH (Figures 10-11). However, Grounded-T (HARP) shows more stability and less variance between independent teachers than Intrinsic-T (see Figure 13).
 
-![Refer to caption](/html/2601.18778/assets/x13.png)
-
+!(/html/2601.18778/assets/x13.png)
 
 Figure 13: Test Pass@32 on OlympiadBench for fresh students trained with individual Grounded-T teacher seeds (red) and Intrinsic-T teacher seeds (green). Questions from Grounded-T yield consistent student trajectories on OlympiadBench across different teachers, whereas Intrinsic-T exhibits high variance across teachers, including a failure mode where I-T (1) causes student collapse.
 
@@ -929,8 +867,6 @@ In Figure 9 we show full student training curves for PQ, Hard-Only, and the full
 Table 4: MATH Pass@k (%) Test Accuracy on Fail@128. Mean and SD over seeds are averaged over a 200 step window determined by training reward convergence (see Appendix B.6) with full curves in Figure 9. PQ and PS consistently outperform inference-only, Hard-Only, and intrinsic baselines across all inference budgets, and recover the majority of performance gain from training with real curated problems.
 We boldface the best among “data-free" methods (i.e., only 𝒟t​r​a​i​n\mathcal{D}_{train} available). The bottom three rows serve as upper bounds from using curated, expert-annotated data. PQ datasets contain one of {128,192,256}\{128,192,256\} questions.
 
-
-
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
 |  | k | | | | |
@@ -946,8 +882,6 @@ We boldface the best among “data-free" methods (i.e., only 𝒟t​r​a​i�
 | MATH train (Full) | 1.7±0.21.7\pm 0.2 | 5.1±0.45.1\pm 0.4 | 8.1±0.48.1\pm 0.4 | 11.7±0.311.7\pm 0.3 | 16.2±0.416.2\pm 0.4 |
 
 Table 5: HARP Pass@k (%) Test Accuracy on fail@128. Mean and SD over seeds are reported at the timestep determined by training reward convergence (see Appendix B.6) with full curves in Figure 9. PQ and PS consistently outperform inference-only, Hard-Only, and intrinsic baselines across all inference budgets. Notably, SOAR questions perform better on HARP than similar numbers of questions from the MATH/HARP datasets (which serve as a curated, expert-annotated data source).
-
-
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
@@ -1026,8 +960,6 @@ Our results show that the well-posedness of a problem matters more than the corr
 
 Oracle Prompt
 
-
-
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | Category | Base | Intrinsic | Grounded | PQ |
@@ -1046,8 +978,7 @@ Table 7: Correctness analysis and error taxonomy of synthetic questions, evaluat
 
 ### D.1 Sampled dataset size
 
-![Refer to caption](/html/2601.18778/assets/x14.png)
-
+!(/html/2601.18778/assets/x14.png)
 
 Figure 14: (Left) Sampling different-sized datasets from Grounded-T for MATH (fail@128) Mean and ±\pm 1 SD across 2 teacher seeds and 2 student seeds. (Right) Sampling different-sized datasets from the MATH trainset for MATH (fail@128). Resampled for each seed, 3 seeds.
 
@@ -1066,8 +997,7 @@ Our default configuration (nn=64, τ\tau=0.01) performs best, with n=64n=64 show
 advantages over n=32n=32 at larger evaluation dataset
 sizes, which is consistent with the teacher being trained to produce larger datasets.
 
-![Refer to caption](/html/2601.18778/assets/x15.png)
-
+!(/html/2601.18778/assets/x15.png)
 
 Figure 15: Hyperparameter sensitivity on MATH. We train SOAR with τ∈{0.01,0.015}\tau\in\{0.01,0.015\} and n∈{32,64}n\in\{32,64\}, then evaluate by training students on datasets of size |𝒳|∈{32,64,128}|\mathcal{X}|\in\{32,64,128\}. Shaded regions indicate ±\pm1 SD.
 
@@ -1105,92 +1035,10 @@ In Figure 16 we show a representative teacher training curve for SOAR on HARP. W
 
 Figure 17a shows teacher training curves for Intrinsic-T teachers, aggregated across teacher seeds, which exhibits a smooth upward climb. Figure 17b shows that as the Intrinsic-T reward climbs, the diversity of teacher completions falls (diversity measured as the average pairwise cosine distance of embeddings). Meanwhile Grounded-T preserves the original model diversity throughout the full trajectory. This is consistent with findings in Section 5.2 (Table 1) that Grounded-T achieves similar question diversity to Base-T, whereas Intrinsic-T teachers collapse to a more narrow conceptual space.
 
-![Refer to caption](/html/2601.18778/assets/x16.png)
-
+!(/html/2601.18778/assets/x16.png)
 
 Figure 16: Annotated teacher reward dynamics when training SOAR with HARP. Shows a sample teacher trajectory from a SOAR run on HARP. The teacher follows a cyclical search-exploitation pattern. Student promotions (updating the student baseline to a trained student) are triggered when the 3-step moving average of teacher rewards exceeds τ=0.01\tau=0.01. After each promotion, the improved student baseline makes previous curricula less useful, causing rewards to drop, and then recover as the teacher adapts and discovers questions appropriate for the improved student.
 
-![Refer to caption](/html/2601.18778/assets/x17.png)
-
+!(/html/2601.18778/assets/x17.png)
 
 Figure 17: (Left) Teacher training dynamics when training with Intrinsic-T. Mean and ±\pm 1 SD over three independent training runs. (Right) Teacher completion diversity when training with intrinsic v. grounded rewards. Grounded rewards preserve diversity for the full run, while intrinsic teachers lose diversity as they converge. Mean and ±\pm 1 SD over three training runs for intrinsic and four for grounded (two MATH, two HARP).`
-
-[◄](/html/2601.18777)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.18778)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.18778)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.18778)[►](/html/2601.18779)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 14:35:53 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -45,49 +45,6 @@ url: https://arxiv.org/abs/2509.19249
 year: 2025
 ---
 
-[2509.19249] Reinforcement Learning on Pre-Training Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Reinforcement Learning on Pre-Training Data
 
 Siheng Li1,3,  ,  , Kejiao Li1,†, Zenan Xu1,†, Guanhua Huang1, Evander Yang1, Kun Li1,3,∗,
@@ -114,8 +71,7 @@ Wai Lam3, Bo Zhou1,, Di Wang1
 
 The growing disparity between the exponential scaling of computational resources and the finite growth of high-quality text data now constrains conventional scaling approaches for large language models (LLMs). To address this challenge, we introduce Reinforcement Learning on Pre-Training data (RLPT), a new training-time scaling paradigm for optimizing LLMs. In contrast to prior approaches that scale training primarily through supervised learning, RLPT enables the policy to autonomously explore meaningful trajectories to learn from pre-training data and improve its capability through reinforcement learning (RL). While existing RL strategies such as reinforcement learning from human feedback (RLHF) and reinforcement learning with verifiable rewards (RLVR) rely on human annotation for reward construction, RLPT eliminates this dependency by deriving reward signals directly from pre-training data. Specifically, it adopts a next-segment reasoning objective, rewarding the policy for accurately predicting subsequent text segments conditioned on the preceding context. This formulation allows RL to be scaled on pre-training data, encouraging the exploration of richer trajectories across broader contexts and thereby fostering more generalizable reasoning skills. Extensive experiments on both general-domain and mathematical reasoning benchmarks across multiple models validate the effectiveness of RLPT. For example, when applied to Qwen3-4B-Base, RLPT yields absolute improvements of 3.03.0, 5.15.1, 8.18.1, 6.06.0, 6.66.6, and 5.35.3 on MMLU, MMLU-Pro, GPQA-Diamond, KOR-Bench, AIME24, and AIME25, respectively. The results further demonstrate favorable scaling behavior, suggesting strong potential for continued gains with more compute. In addition, RLPT provides a solid foundation, extending the reasoning boundaries of LLMs and enhancing RLVR performance.
 
-![Refer to caption](/html/2509.19249/assets/x1.png)
-
+!(/html/2509.19249/assets/x1.png)
 
 Figure 1: Scaling law of RLPT performance on various benchmarks with respect to training tokens.
 
@@ -170,8 +126,7 @@ where xx is a token sequence and |x||x| its length. Pre-training and post-traini
 
 To address the limitations of scalability and generalization, we propose Reinforcement Learning on Pre-Training data (RLPT). In this framework, next-segment reasoning serves as the reinforcement learning (RL) objective, where the subsequent segment in unlabeled text acts as the ground truth. This self-supervised objective removes the reliance on human annotation and enables RL to scale directly on large pre-training corpora. An overview of RLPT is shown in Fig. [2](#S3.F2 "Figure 2 ‣ 3 Reinforcement Learning on Pre-Training Data ‣ Reinforcement Learning on Pre-Training Data").
 
-![Refer to caption](/html/2509.19249/assets/x2.png)
-
+!(/html/2509.19249/assets/x2.png)
 
 Figure 2: Overview of RLPT. Raw data from internet corpora is processed into training samples of the form (s<i,si,si+1)(s\_{<i},s\_{i},s\_{i+1}). During the reinforcement pre-training stage, the policy LLM predicts s^i\hat{s}\_{i} conditioned on s<is\_{<i} (ASR) or on (s<i,si+1)(s\_{<i},s\_{i+1}) (MSR). The prediction is then compared with sis\_{i} to compute the reward.
 
@@ -192,12 +147,8 @@ where s<i=[s1,s2,…,si−1]s\_{<i}=[s\_{1},s\_{2},\dots,s\_{i-1}] denotes the c
  `Similarly, the prompt for the MSR task is presented as follows
  
 
-
-
 The reward is defined as the semantic consistency between the predicted and reference segments, evaluated by a generative reward model Gr​mG_{rm}. This model assesses whether the two segments convey equivalent content while allowing for linguistic variation. In practice, we find that directly comparing the predicted segment with the ground-truth next segment is overly strict, since the model may generate outputs that span multiple subsequent segments. To address this issue, we provide Gr​mG_{rm} with several subsequent segments as reference and instruct it to verify whether the predicted segment is a valid prefix of the reference content. The prompt for Gr​mG_{rm} is shown below.
  
-
-
 
 Given a predicted segment s^i\hat{s}_{i} extracted from the model output oo, the reward is specified as
 
@@ -260,8 +211,6 @@ where nn is the number of sampled responses per prompt and cc is the number of c
 
 Table 1: performance on general-domain tasks across different models, with the best results highlighted.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Training | Pass@11 | | | | | Pass@88 | | | | |
@@ -282,8 +231,7 @@ The performance on general-domain tasks is summarized in Tab. 1, where RLPT del
 
 As shown in Tab. 2, RLPT yields substantial gains in mathematical reasoning, improving performance on both Pass@11 and Pass@88. On the challenging AIME24 and AIME25 benchmarks, RLPT achieves absolute improvements of 6.66.6 and 5.35.3 on Pass@11, and 5.05.0 and 1.41.4 on Pass@88, respectively. These improvements indicate that RLPT is effective in unlocking the reasoning boundary, thereby providing a strong basis for subsequent RLVR training. Indeed, when RLPT is used as the initialization for RLVR, it further boosts performance, with absolute gains of 2.32.3 (AIME24) and 1.31.3 (AIME25) on Pass@11, and 3.73.7 (AIME24) and 2.02.0 (AIME25) on Pass@88. This demonstrates that RLPT enhances both exploitation and exploration, which are typically considered competing objectives.
 
-![Refer to caption](/html/2509.19249/assets/x3.png)
-
+!(/html/2509.19249/assets/x3.png)
 
 Figure 3: Comparative scaling properties of RLVR and RLPT ++ RLVR.
 
@@ -306,8 +254,7 @@ To demonstrate the benefits of RLPT, we provide in Tab. 3 an illustrative examp
 
 #### Reward Modeling.
 
-![Refer to caption](/html/2509.19249/assets/x4.png)
-
+!(/html/2509.19249/assets/x4.png)
 
 Figure 4: Comparison between Strict Reward and Prefix Reward: (a) Training Reward, (b) Response Length, (c) Validation Performance (Pass@11).
 
@@ -566,83 +513,3 @@ This work introduces RLPT, a new training-time scaling paradigm that applies rei
   Xinyu Zhu, Mengzhou Xia, Zhepei Wei, Wei-Lin Chen, Danqi Chen, and Yu Meng.
   The surprising effectiveness of negative reinforcement in llm reasoning.
   arXiv preprint arXiv:2506.01347, 2025.`
-
-[◄](/html/2509.19248)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2509.19249)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2509.19249)
-[View original  
-on arXiv](https://arxiv.org/abs/2509.19249)[►](/html/2509.19250)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Oct 7 00:51:25 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

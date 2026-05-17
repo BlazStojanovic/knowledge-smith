@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2509.20837
 year: 2025
 ---
 
-[2509.20837] Verification Limits Code LLM Training
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Verification Limits Code LLM Training
 
 name=Srishti Gureja
@@ -107,8 +64,7 @@ While this strategy has clear appeal, its effectiveness is not guaranteed. For e
 
 These observations point to a deeper and underexplored dependency: The quality of the training data becomes fundamentally constrained by the capabilities of the synthetic verification system itself. When both solutions and their validation are model-generated, we risk creating a closed loop in which only solutions recognizable to the verifier survive, excluding potentially correct, diverse, or complex implementations that exceed its competence. We refer to this bottleneck as the verification ceiling problem.
 
-![Refer to caption](/html/2509.20837/assets/figures3/passrate.png)
-
+!(/html/2509.20837/assets/figures3/passrate.png)
 
 Figure 1: Interaction between test suite complexity design and pass rate thresholds (τ={0.7,1}\tau=\{0.7,1\}) on LBPP performance. Relaxing thresholds under Minimal test suites degrades performance as weak tests admit noisy solutions. In contrast, Structured and Contrastive suites benefit from relaxed thresholds, with Structured yielding the largest gains. Richer test suites provide a higher-resolution verification signal, enabling soft filtering that retains diverse, non-canonical solutions while maintaining some level of correctness.
 
@@ -206,8 +162,7 @@ We first investigate how using more complex unit-tests affects the training dist
 The motivation here is straightforward: if simple tests only capture surface-level correctness, more complex tests may probe deeper semantic understanding and lead to more robust filtering.
 In this setting, we aim to raise the verification ceiling by making each test a stronger signal of correctness.
 
-![Refer to caption](/html/2509.20837/assets/figures3/avg_performance_comparison.png)
-
+!(/html/2509.20837/assets/figures3/avg_performance_comparison.png)
 
 Figure 2: Average pass@1 across all evaluation benchmarks for models trained with different test suite complexities. Base refers to the pretrained model without SFT, while Minimal, Structured, and Contrastive correspond to progressively more sophisticated test suites prompting methods. Structured prompting method yields the largest improvement over Minimal (+3 pass@1), and Contrastive provides further gains (+1 pass@1), showing that increasing test complexity enhances data quality, though improvements taper off at higher levels of strictness.
 
@@ -234,8 +189,7 @@ Moving from Minimal to Structured yields a +3 pass@1 gain, making Structured a s
 Contrastive unit tests provide further improvements over Structured (+1 pass@1) and deliver the highest overall performance, representing a +7 points absolute gain compared to the base model. While the marginal improvement beyond Structured is smaller, this suggests that contrastive tests complement structured ones by capturing a different class of subtle errors and promoting more robust solution quality.
 Taken together, these results show that while increasing test complexity improves filtering precision, the biggest gains come from moving beyond minimal verification. Both Structured and Contrastive test suites highlight that better verification design can directly translate into stronger downstream models.
 
-![Refer to caption](/html/2509.20837/assets/figures3/side_by_side_plots.png)
-
+!(/html/2509.20837/assets/figures3/side_by_side_plots.png)
 
 Figure 3: Effect of increasing the number of required test passes on model performance and training data composition. Left: Average pass@1 across benchmarks shows a non-monotonic trend: moving from one to two tests improves performance (+3 points), but stricter filtering beyond two tests degrades accuracy. Right: Distribution of problem difficulty under different verification regimes, annotated with Command-A. Stricter filtering disproportionately removes harder problems indicating that overzealous verification selects for simplicity rather than robustness.
 
@@ -261,8 +215,7 @@ While stricter verification does reduce incorrect solutions, it also disproporti
 This leads to a subtle but important shift in the training distribution:
 the surviving examples tend to be simpler, biasing the model toward easier patterns and reducing its exposure to complex or creative code.
 
-![Refer to caption](/html/2509.20837/assets/figures3/difficulty-upweight.png)
-
+!(/html/2509.20837/assets/figures3/difficulty-upweight.png)
 
 Figure 4: Impact of problem difficulty on training effectiveness. Models trained with datasets enriched with harder problems (40% hard, 40% medium, 20% easy) consistently outperform those skewed toward easier problems (20% hard, 40% medium, 40% easy).
 
@@ -283,8 +236,7 @@ The underlying set of coding problems remains fixed, and candidate code solution
 We find that using multiple unit test generators significantly improves model performance in C++ and Java (by 3 and 1 points absolute gains respectively), while providing marginal or slightly negative effects in Python and JavaScript (1 and 0.1 degradation respectively).
 These results suggest that diversity in verification sources can enrich training data for some languages, likely by exposing models to a broader set of edge cases and code patterns.
 
-![Refer to caption](/html/2509.20837/assets/figures3/llm-source-div.png)
-
+!(/html/2509.20837/assets/figures3/llm-source-div.png)
 
 Figure 5: Effect of verifier diversity on model performance. Training data filtered with unit tests from three different generators (vs. a single generator) leads to significant gains in C++ and Java, but shows marginal or slightly negative effects in Python and JavaScript.
 
@@ -314,8 +266,7 @@ In Figure [6](#S5.F6 "Figure 6 ‣ 5.1 Relaxing Unit Test Verification criteria 
 enforcing full test suite pass (τ=1\tau=1) does not yield the best downstream performance.
 In fact, moderately relaxed thresholds, particularly in the 0.6 to 0.8 range, tend to produce better results across most programming languages.
 
-![Refer to caption](/html/2509.20837/assets/figures3/programming_language_performance.png)
-
+!(/html/2509.20837/assets/figures3/programming_language_performance.png)
 
 Figure 6: Effect of varying verification thresholds (τ\tau) on downstream performance across programming languages. Strict enforcement (τ=1\tau=1) consistently underperforms, while moderately relaxed thresholds (0.6–0.8) yield the best results. Note that all experiments are conducted with training datasets of equal size.
 
@@ -342,8 +293,7 @@ Under this setup, the training dataset is constructed as:
 | --- | --- | --- | --- |
 |  | 𝒟={(pk,s):s∈𝒮k,Lk​(s;M)≥τ,∀k}\mathcal{D}=\{(p\_{k},s):s\in\mathcal{S}\_{k},L\_{k}(s;M)\geq\tau,\forall k\} |  | (2) |
 
-![Refer to caption](/html/2509.20837/assets/figures3/llm-avg-comparison.png)
-
+!(/html/2509.20837/assets/figures3/llm-avg-comparison.png)
 
 Figure 7: Comparison of unit test–based and LLM-based verification strategies. Structured test suites provide the strongest gains over Minimal verification, while LLM-based filtering performs on par with Structured verification and consistently outperforms Minimal. Overlap analysis reveals that LLM judges select partially overlapping but distinct subsets of data (Claude-3.7 vs. GPT-4.1-mini: 49%; Structured Test Suite vs. Claude-3.7: 32.6%; Structured Test Suite vs. GPT-4.1-mini: 32.9%), suggesting that LLMs capture complementary signals beyond traditional test-based criteria. Per language scores are available in Figure [11](#A1.F11 "Figure 11 ‣ Appendix A Validating Progressive Test suite Complexity ‣ Verification Limits Code LLM Training").
 
@@ -374,9 +324,9 @@ To probe the reliability of synthetic unit tests and their limitations as a stan
 We sample 300 python samples from our synthetic data generation pipeline where 100 samples are labeled as incorrect and 200 samples are labeled as correct by Minimal unit tests.
 Junior coding experts are tasked with labeling the correctness and completeness of unit tests given the instruction. Subsequently, they are asked to provide additional unit tests, specifically targeting edge cases and proper error handling with only problem description and synthetic unit tests provided. Finally, two senior coding experts are asked to further review the unit tests from junior coding experts where they can either fix or provide more test cases. For each sample, the solution is verified against synthetic unit tests, junior-expert-written unit tests and senior-expert-written unit tests. We use Cohen’s Kappa (κ\kappa) to quantify the agreement between different types of unit tests.
 
-![Refer to caption](/html/2509.20837/assets/figures3/unit_tests_correctness_completeness_heatmap.png)
+!(/html/2509.20837/assets/figures3/unit_tests_correctness_completeness_heatmap.png)
 
-![Refer to caption](/html/2509.20837/assets/figures3/pass_fail_heatmap.png)
+!(/html/2509.20837/assets/figures3/pass_fail_heatmap.png)
 
 Figure 8: Left: Human evaluation of synthetic unit tests. 53.6% of unit tests are correct but incomplet suggests that false positives primarily arise from coverage gaps rather than incorrect test logic. Note that 27 samples were labeled “unsure” are excluded from this plot. Right: Agreement count data of synthetic unit tests labels and expert-verified unit tests labels. κ=0.07\kappa=0.07.
 
@@ -389,8 +339,7 @@ Thus, while synthetic unit tests alone are not sufficient, some form of verifica
 
 ### 6.2 Formally Correct vs. Incorrect: A Controlled Comparison
 
-![Refer to caption](/html/2509.20837/assets/figures3/goodbad_horizontal.png)
-
+!(/html/2509.20837/assets/figures3/goodbad_horizontal.png)
 
 Figure 9: Comparison of models trained on solutions for the exact same problems, where one set passes the tests (“Formally correct”) and the other fails (“Formally incorrect”). Models trained on correct solutions outperform those trained on incorrect ones by 3 pass@1 points across all benchmarks, demonstrating that maintaining a verification signal at the solution level is crucial, even when using relaxed thresholds or LLM-based filtering.
 
@@ -417,8 +366,7 @@ To examine this trade-off, we directly compare models finetuned on human-written
 As shown in Figure [10](#S6.F10 "Figure 10 ‣ 6.3 Synthetic Code is Still a Practical Alternative to Human-Written Code ‣ 6 Why We Cannot Skip Verification ‣ Verification Limits Code LLM Training"), models trained on synthetic data achieve performance competitive with those trained on human data, despite the known limitations of synthetic verification.
 This suggests that current pipelines already approximate much of the benefit of human data, while also underscoring the need to continue improving verification systems to capture correctness beyond their current ceilings.
 
-![Refer to caption](/html/2509.20837/assets/figures3/human_synth_comparison.png)
-
+!(/html/2509.20837/assets/figures3/human_synth_comparison.png)
 
 Figure 10: Comparison of models finetuned on human-authored versus synthetically generated solutions for the same set of programming problems. Models trained on synthetic code achieve performance competitive with human-trained models, highlighting that current synthetic pipelines capture much of the value of human data while emphasizing the need for improved verification systems to handle correctness beyond current ceilings.
 
@@ -676,13 +624,11 @@ Together, these results confirm that our test generation pipeline yields progres
 
 Table 2: LLM-based comparison of test suite difficulty. Each row reports the number of times a given test suite was preferred as more challenging in a head-to-head comparison by Command-A (temperature 0).
 
-![Refer to caption](/html/2509.20837/assets/figures3/llm-comparison.png)
-
+!(/html/2509.20837/assets/figures3/llm-comparison.png)
 
 Figure 11: Per language comparison of unit test–based and LLM-based verification strategies.
 
-![Refer to caption](/html/2509.20837/assets/x1.png)
-
+!(/html/2509.20837/assets/x1.png)
 
 Figure 12: Sankey diagram representing the overlap and distribution of sample counts among two verification processes: Synthetic unit tests verification (pass/fail) and Expert-written unit tests (pass/fail), and the correctness of synthetic unit tests.
 
@@ -693,8 +639,7 @@ While these approaches influence which examples are retained, they do not captur
 Code generation tasks often include multiple semantically equivalent but structurally distinct solutions.
 This raises a natural question: can exposing the model to a broader set of valid implementations per problem improve generalization and pass@1 performance?
 
-![Refer to caption](/html/2509.20837/assets/figures3/avg_performance_comparison-1.png)
-
+!(/html/2509.20837/assets/figures3/avg_performance_comparison-1.png)
 
 Figure 13: Impact of increasing solution diversity per problem. We compare models trained on 1, 2, or 5 solutions per coding problem while keeping the problem set fixed. Both the 2-solution and 5-solution settings improve average pass@1 across evaluation sets, demonstrating that exposing the model to multiple semantically correct but structurally distinct implementations enhances generalization and downstream performance.
 
@@ -806,83 +751,3 @@ Your output should be a JSON with the following two keys: a binary 0 or 1 score 
 "assessment\_explanation": "<explanation>",
 "score": <0/1>",
 }
-
-[◄](/html/2509.20836)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2509.20837)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2509.20837)
-[View original  
-on arXiv](https://arxiv.org/abs/2509.20837)[►](/html/2509.20838)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Oct 6 19:47:43 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

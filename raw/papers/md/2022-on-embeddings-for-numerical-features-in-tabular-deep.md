@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/2203.05556v4
 year: 2022
 ---
 
-[2203.05556] On Embeddings for Numerical Features in Tabular Deep Learning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On Embeddings for Numerical Features in Tabular Deep Learning
 
 Yury Gorishniy
@@ -189,8 +146,6 @@ Once the bins are determined, we define the encoding scheme as in [Equation 1](
 |  | PLE​(x)=[e1,…,eT]∈ℝTet={0,x​<bt−1​AND​t>​11,x≥bt​AND​t<Tx−bt−1bt−bt−1,otherwisePLE𝑥  subscript𝑒1…subscript𝑒𝑇superscriptℝ𝑇subscript𝑒𝑡cases0𝑥expectationsubscript𝑏𝑡1AND𝑡11𝑥subscript𝑏𝑡AND𝑡𝑇𝑥subscript𝑏𝑡1subscript𝑏𝑡subscript𝑏𝑡1otherwise\displaystyle\begin{split}&\texttt{PLE}(x)=[e\_{1},\ \dots,\ e\_{T}]\in\mathbb{R}^{T}\\ &e\_{t}=\begin{cases}0,&x<b\_{t-1}\ \texttt{AND}\ t>1\\ 1,&x\geq b\_{t}\ \texttt{AND}\ t<T\\ \frac{x-b\_{t-1}}{b\_{t}-b\_{t-1}},&\text{otherwise}\end{cases}\end{split} | |  | (1) |
 
 where PLE stands for “peicewise linear encoding”. We provide the visualization in [Figure 1](#S3.F1 "Figure 1 ‣ 3.2 Piecewise linear encoding ‣ 3 Embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning").
-
-![[Uncaptioned image]](/html/2203.05556/assets/x1.png)
 
 Figure 1: The piecewise linear encoding (PLE) in action for T=4𝑇4T=4 (see [Equation 1](#S3.E1 "1 ‣ 3.2 Piecewise linear encoding ‣ 3 Embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning")).
 
@@ -956,11 +911,7 @@ Nevertheless, we have only scratched the surface of the new direction. For examp
 We provide visual explanation of how embeddings are passed to MLP in [Figure 2](#A1.F2 "Figure 2 ‣ Appendix A MLP with embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning") and [Figure 3](#A1.F3 "Figure 3 ‣ Appendix A MLP with embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning").
 Also, we provide the formal explanation in [Equation 3](#A1.E3 "3 ‣ Appendix A MLP with embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning") (categorical features are omitted for simplicity).
 
-![[Uncaptioned image]](/html/2203.05556/assets/data/before.png)
-
 Figure 2: The vanilla MLP. The model takes two numerical features as input.
-
-![[Uncaptioned image]](/html/2203.05556/assets/data/after.png)
 
 Figure 3: The same MLP as in [Figure 2](#A1.F2 "Figure 2 ‣ Appendix A MLP with embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning"), but now with embeddings for numerical features.
 
@@ -972,8 +923,7 @@ Figure 3: The same MLP as in [Figure 2](#A1.F2 "Figure 2 ‣ Appendix A MLP wit
 
 We provide visualisation of target-aware PLE ([subsubsection 3.2.2](#S3.SS2.SSS2 "3.2.2 Building target-aware bins ‣ 3.2 Piecewise linear encoding ‣ 3 Embeddings for numerical features ‣ On Embeddings for Numerical Features in Tabular Deep Learning")) in [Figure 4](#A2.F4 "Figure 4 ‣ Appendix B Target-aware piecewise linear encoding ‣ On Embeddings for Numerical Features in Tabular Deep Learning").
 
-![Refer to caption](/html/2203.05556/assets/x2.png)
-
+!(/html/2203.05556/assets/x2.png)
 
 Figure 4: Obtaining bins for PLE from decision trees.
 
@@ -1035,8 +985,7 @@ We used the following datasets:
 
 ### D.1 Testing quantile-based PLE on the synthetic GBDT-friendly dataset
 
-![Refer to caption](/html/2203.05556/assets/x3.png)
-
+!(/html/2203.05556/assets/x3.png)
 
 Figure 5: RMSE (averaged over five random seeds) of different approaches on the same synthetic GBDT-friendly task.
 Using PLE-representations (“-Q”) instead of scalar values improves the performance of MLP and Transformer.
@@ -1305,83 +1254,3 @@ Table 19: Extended results for ensembles
 | Transformer-T-L | 0.693±6.8​e​-​3plus-or-minus0.6936.8𝑒-30.693\scriptscriptstyle\pm\scriptstyle 6.8e\text{-}3 | 0.862±2.4​e​-​4plus-or-minus0.8622.4𝑒-40.862\scriptscriptstyle\pm\scriptstyle 2.4e\text{-}4 | 0.439±1.0​e​-​3plus-or-minus0.4391.0𝑒-30.439\scriptscriptstyle\pm\scriptstyle 1.0e\text{-}3 | 3.136±3.5​e​-​3plus-or-minus3.1363.5𝑒-33.136\scriptscriptstyle\pm\scriptstyle 3.5e\text{-}3 | 0.872±1.3​e​-​4plus-or-minus0.8721.3𝑒-40.872\scriptscriptstyle\pm\scriptstyle 1.3e\text{-}4 | 0.826±2.3​e​-​3plus-or-minus0.8262.3𝑒-30.826\scriptscriptstyle\pm\scriptstyle 2.3e\text{-}3 | 0.731±1.6​e​-​3plus-or-minus0.7311.6𝑒-30.731\scriptscriptstyle\pm\scriptstyle 1.6e\text{-}3 | 5.579±5.2​e​-​2plus-or-minus5.5795.2𝑒-25.579\scriptscriptstyle\pm\scriptstyle 5.2e\text{-}2 | 0.924±4.0​e​-​4plus-or-minus0.9244.0𝑒-40.924\scriptscriptstyle\pm\scriptstyle 4.0e\text{-}4 | 0.977±2.1​e​-​4plus-or-minus0.9772.1𝑒-40.977\scriptscriptstyle\pm\scriptstyle 2.1e\text{-}4 | 0.743±2.3​e​-​4plus-or-minus0.7432.3𝑒-40.743\scriptscriptstyle\pm\scriptstyle 2.3e\text{-}4 |
 | Transformer-T-LR | 0.686±4.1​e​-​3plus-or-minus0.6864.1𝑒-30.686\scriptscriptstyle\pm\scriptstyle 4.1e\text{-}3 | 0.862±1.1​e​-​3plus-or-minus0.8621.1𝑒-30.862\scriptscriptstyle\pm\scriptstyle 1.1e\text{-}3 | 0.423±3.4​e​-​3plus-or-minus0.4233.4𝑒-30.423\scriptscriptstyle\pm\scriptstyle 3.4e\text{-}3 | 3.149±1.4​e​-​2plus-or-minus3.1491.4𝑒-23.149\scriptscriptstyle\pm\scriptstyle 1.4e\text{-}2 | 0.871±8.0​e​-​4plus-or-minus0.8718.0𝑒-40.871\scriptscriptstyle\pm\scriptstyle 8.0e\text{-}4 | 0.823±2.4​e​-​3plus-or-minus0.8232.4𝑒-30.823\scriptscriptstyle\pm\scriptstyle 2.4e\text{-}3 | 0.733±9.4​e​-​4plus-or-minus0.7339.4𝑒-40.733\scriptscriptstyle\pm\scriptstyle 9.4e\text{-}4 | 5.515±2.0​e​-​2plus-or-minus5.5152.0𝑒-25.515\scriptscriptstyle\pm\scriptstyle 2.0e\text{-}2 | 0.924±6.1​e​-​5plus-or-minus0.9246.1𝑒-50.924\scriptscriptstyle\pm\scriptstyle 6.1e\text{-}5 | 0.976±9.2​e​-​5plus-or-minus0.9769.2𝑒-50.976\scriptscriptstyle\pm\scriptstyle 9.2e\text{-}5 | 0.744±2.9​e​-​4plus-or-minus0.7442.9𝑒-40.744\scriptscriptstyle\pm\scriptstyle 2.9e\text{-}4 |
 | Transformer-PLR | 0.686±6.2​e​-​3plus-or-minus0.6866.2𝑒-30.686\scriptscriptstyle\pm\scriptstyle 6.2e\text{-}3 | 0.864±9.4​e​-​4plus-or-minus0.8649.4𝑒-40.864\scriptscriptstyle\pm\scriptstyle 9.4e\text{-}4 | 0.449±1.2​e​-​3plus-or-minus0.4491.2𝑒-30.449\scriptscriptstyle\pm\scriptstyle 1.2e\text{-}3 | 3.091±1.3​e​-​2plus-or-minus3.0911.3𝑒-23.091\scriptscriptstyle\pm\scriptstyle 1.3e\text{-}2 | 0.873±1.5​e​-​3plus-or-minus0.8731.5𝑒-30.873\scriptscriptstyle\pm\scriptstyle 1.5e\text{-}3 | 0.823±1.7​e​-​3plus-or-minus0.8231.7𝑒-30.823\scriptscriptstyle\pm\scriptstyle 1.7e\text{-}3 | 0.734±2.1​e​-​4plus-or-minus0.7342.1𝑒-40.734\scriptscriptstyle\pm\scriptstyle 2.1e\text{-}4 | 5.581±6.4​e​-​2plus-or-minus5.5816.4𝑒-25.581\scriptscriptstyle\pm\scriptstyle 6.4e\text{-}2 | 0.924±1.8​e​-​4plus-or-minus0.9241.8𝑒-40.924\scriptscriptstyle\pm\scriptstyle 1.8e\text{-}4 | 0.975±2.2​e​-​4plus-or-minus0.9752.2𝑒-40.975\scriptscriptstyle\pm\scriptstyle 2.2e\text{-}4 | 0.743±2.4​e​-​4plus-or-minus0.7432.4𝑒-40.743\scriptscriptstyle\pm\scriptstyle 2.4e\text{-}4 |
-
-[◄](/html/2203.05555)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2203.05556)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2203.05556)
-[View original  
-on arXiv](https://arxiv.org/abs/2203.05556)[►](/html/2203.05557)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 07:31:03 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

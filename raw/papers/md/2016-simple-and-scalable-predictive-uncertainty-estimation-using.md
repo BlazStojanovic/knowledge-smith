@@ -12,49 +12,6 @@ url: http://arxiv.org/abs/1612.01474v3
 year: 2016
 ---
 
-[1612.01474] Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles
 
 Balaji Lakshminarayanan  Alexander Pritzel  Charles Blundell
@@ -213,13 +170,13 @@ A commonly used heuristic in practice is to use an ensemble of NNs (trained to 
 
 The results clearly demonstrate that (i) learning variance and training using a scoring rule (NLL) leads to improved predictive uncertainty and (ii) ensemble combination improves performance, especially as we move farther from the observed training data.
 
-![Refer to caption](/html/1612.01474/assets/x1.png)
+!(/html/1612.01474/assets/x1.png)
 
-![Refer to caption](/html/1612.01474/assets/x2.png)
+!(/html/1612.01474/assets/x2.png)
 
-![Refer to caption](/html/1612.01474/assets/x3.png)
+!(/html/1612.01474/assets/x3.png)
 
-![Refer to caption](/html/1612.01474/assets/x4.png)
+!(/html/1612.01474/assets/x4.png)
 
 Figure 1: Results on a toy regression task: x𝑥x-axis denotes x𝑥x. On the y𝑦y-axis, the blue line is the *ground truth* curve, the red dots are observed noisy training data points and the gray lines correspond to the predicted mean along with three standard deviations.
 Left most plot corresponds to empirical variance of 5 networks trained using MSE, second plot shows the effect of training using NLL using a single net, third plot shows the additional effect of adversarial training, and final plot shows the effect of using an ensemble of 5 networks respectively.
@@ -254,13 +211,11 @@ Table [2](#A1.T2 "Table 2 ‣ A.1 Additional results on regression benchmarks �
 Next we evaluate the performance on classification tasks using MNIST and SVHN datasets. Our goal is not to achieve the state-of-the-art performance on these problems, but rather to evaluate the effect of adversarial training as well as the number of networks in the ensemble. To verify if adversarial training helps, we also include a baseline which picks a random signed vector.
 For MNIST, we used an MLP with 3-hidden layers with 200 hidden units per layer and ReLU non-linearities with batch normalization. For MC-dropout, we added dropout after each non-linearity with 0.1 as the dropout rate.777We also tried dropout rate of 0.5, but that performed worse. Results are shown in Figure [2(a)](#S3.F2.sf1 "In Figure 2 ‣ 3.4 Classification on MNIST, SVHN and ImageNet ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). We observe that adversarial training and increasing the number of networks in the ensemble significantly improve performance in terms of both classification accuracy as well as NLL and Brier score, illustrating that our method produces well-calibrated uncertainty estimates. Adversarial training leads to better performance than augmenting with random direction. Our method also performs much better than MC-dropout in terms of all the performance measures. Note that augmenting the training dataset with invariances (such as random crop and horizontal flips) is complementary to adversarial training and can potentially improve performance.
 
-![Refer to caption](/html/1612.01474/assets/x5.png)
-
+!(/html/1612.01474/assets/x5.png)
 
 (a) MNIST dataset using 3-layer MLP
 
-![Refer to caption](/html/1612.01474/assets/x6.png)
-
+!(/html/1612.01474/assets/x6.png)
 
 (b) SVHN using VGG-style convnet
 
@@ -285,13 +240,11 @@ We evaluate the entropy of the predictive distribution and use this to evaluate 
 The results are shown in Figure [3(a)](#S3.F3.sf1 "In Figure 3 ‣ 3.5 Uncertainty evaluation: test examples from known vs unknown classes ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). For known classes (top row), both our method and MC-dropout have low entropy as expected. For unknown classes (bottom row), as M𝑀M increases, the entropy of deep ensembles increases much faster than MC-dropout indicating that our method is better suited for handling unseen test examples. In particular, MC-dropout seems to give high confidence predictions for some of the test examples, as evidenced by the mode around 0 even for unseen classes. Such overconfident wrong predictions can be problematic in practice when tested on a mixture of known and unknown classes, as we will see in Section [3.6](#S3.SS6 "3.6 Accuracy as a function of confidence ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). Comparing different variants of our method, the mode for adversarial training increases slightly faster than the mode for vanilla ensembles indicating that adversarial training is beneficial for quantifying uncertainty on unseen classes.
 We qualitatively evaluate results in Figures [12(a)](#A2.F12.sf1 "In Figure 12 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") and [12(b)](#A2.F12.sf2 "In Figure 12 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") in Appendix [B.2](#A2.SS2 "B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). Figure [12(a)](#A2.F12.sf1 "In Figure 12 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") shows that the ensemble agreement is highest for letter ‘*I*’ which resembles 111 in the MNIST training dataset, and that the ensemble disagreement is higher for examples visually different from the MNIST training dataset.
 
-![Refer to caption](/html/1612.01474/assets/x7.png)
-
+!(/html/1612.01474/assets/x7.png)
 
 (a) MNIST-NotMNIST
 
-![Refer to caption](/html/1612.01474/assets/x8.png)
-
+!(/html/1612.01474/assets/x8.png)
 
 (b) SVHN-CIFAR10
 
@@ -320,9 +273,9 @@ Figure [5](#S3.F5 "Figure 5 ‣ 3.5 Uncertainty evaluation: test examples from 
 Figure 4: Results on ImageNet: Deep
 Ensembles lead to lower classification error as well as better predictive uncertainty as evidenced by lower NLL and Brier score.
 
-![Refer to caption](/html/1612.01474/assets/x9.png)
+!(/html/1612.01474/assets/x9.png)
 
-![Refer to caption](/html/1612.01474/assets/x10.png)
+!(/html/1612.01474/assets/x10.png)
 
 Figure 5: ImageNet trained only on dogs: Histogram of the predictive entropy (left) and maximum predicted probability (right) on test examples from known classes (dogs) and unknown classes (non-dogs), as we vary the ensemble size.
 
@@ -335,8 +288,7 @@ The confidence vs accuracy results are shown in Figure [6](#S3.F6 "Figure 6 ‣
 If the application demands an accuracy x%, we can trust the model only in cases where the confidence is greater than the corresponding threshold. Hence, we can compare accuracy of the models for a desired confidence threshold of the application.
 MC-dropout can produce overconfident wrong predictions as evidenced by low accuracy even for high values of τ𝜏\tau, whereas deep ensembles are significantly more robust.
 
-![Refer to caption](/html/1612.01474/assets/x11.png)
-
+!(/html/1612.01474/assets/x11.png)
 
 Figure 6: Accuracy vs Confidence curves:
 Networks trained on MNIST and tested on both MNIST test containing known classes and the NotMNIST dataset containing unseen classes.
@@ -740,9 +692,9 @@ A commonly used heuristic in practice, is to train an ensemble of NNs to minimi
 As a motivating example, we report calibration curves (also known as reliability diagrams) on the *Year Prediction MSD* dataset in Figure [7](#A1.F7 "Figure 7 ‣ A.2 Effect of training using MSE vs training using NLL ‣ Appendix A Additional results on regression ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles").
 First, we compute the z%percent𝑧z\% (e.g. 90%percent9090\%) prediction interval for each test data point based on Gaussian quantiles using predictive mean and variance. Next, we measure what fraction of test observations fall within this prediction interval. For a well-calibrated regressor, the observed fraction should be close to z%percent𝑧z\%. We compute observed fraction for z=10%𝑧percent10z=10\% to z=90%𝑧percent90z=90\% in increments of 10. A well-calibrated regressor should lie very close to the diagonal; on the left subplot we observe that the proposed method, which learns the predictive variance, leads to a well-calibrated regressor. However, on the right subplot, we observe that the empirical variance obtained from NNs which do not learn the predictive variance (specifically, five NNs trained to minimize MSE) consistently underestimates the true uncertainty. For instance, the 80%percent8080\% prediction interval contains only 20%percent2020\% of the test observations, which means the empirical variance significantly underestimates the true predictive uncertainty.
 
-![Refer to caption](/html/1612.01474/assets/x12.png)
+!(/html/1612.01474/assets/x12.png)
 
-![Refer to caption](/html/1612.01474/assets/x13.png)
+!(/html/1612.01474/assets/x13.png)
 
 Figure 7: Calibration results on the Year Prediction MSD dataset: x𝑥x-axis denotes the expected fraction and y𝑦y-axis denotes the observed fraction; ideal output is the dashed blue line.
 Predicted variance (left) is significantly better calibrated than the empirical variance (right).
@@ -754,13 +706,11 @@ See main text for further details.
 
 Figures [8](#A2.F8 "Figure 8 ‣ B.1 Additional results on MNIST ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") and [9](#A2.F9 "Figure 9 ‣ B.1 Additional results on MNIST ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") report results on MNIST dataset using different architecture than those in Figure [2(a)](#S3.F2.sf1 "In Figure 2 ‣ 3.4 Classification on MNIST, SVHN and ImageNet ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). We observe qualitatively similar results. Ensembles outperform MC-dropout and adversarial training improves performance.
 
-![Refer to caption](/html/1612.01474/assets/x14.png)
-
+!(/html/1612.01474/assets/x14.png)
 
 Figure 8: Results on MNIST dataset using the same setup as that in Figure [2(a)](#S3.F2.sf1 "In Figure 2 ‣ 3.4 Classification on MNIST, SVHN and ImageNet ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") except that we use two hidden layers in the MLP instead of three. Ensembles and adversarial training improve performance and our method outperforms MC-dropout.
 
-![Refer to caption](/html/1612.01474/assets/x15.png)
-
+!(/html/1612.01474/assets/x15.png)
 
 Figure 9: 
 Results on MNIST dataset using a convolutional network as opposed to the 3-layer MLP in Figure [2(a)](#S3.F2.sf1 "In Figure 2 ‣ 3.4 Classification on MNIST, SVHN and ImageNet ‣ 3 Experimental results ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). Even on a different architecture, ensembles and adversarial training improve performance and our method outperforms MC-dropout.
@@ -770,111 +720,25 @@ Results on MNIST dataset using a convolutional network as opposed to the 3-layer
 We qualitatively evaluate the performance of uncertainty in terms of two measures, namely the confidence of the predicted label (i.e. maximum of the softmax output), and the disagreement between the ensemble members in terms of Jensen-Shannon divergence.
 The results on known classes are shown in Figures [10](#A2.F10 "Figure 10 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") and [11](#A2.F11 "Figure 11 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). Similarly, the results on unknown classes are shown in Figures [12(a)](#A2.F12.sf1 "In Figure 12 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles") and [12(b)](#A2.F12.sf2 "In Figure 12 ‣ B.2 Qualitative evaluation of uncertainty ‣ Appendix B Additional results on classification ‣ Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles"). We observe that both measures of uncertainty capture meaningful ambiguity.
 
-![Refer to caption](/html/1612.01474/assets/x16.png)
-
+!(/html/1612.01474/assets/x16.png)
 
 Figure 10: 
 Results on MNIST showing test examples with high or low disagreement between the networks in the ensemble:
 Top two rows denote the test examples with least disagreement and the bottom two rows denote test examples with the most disagreement.
 
-![Refer to caption](/html/1612.01474/assets/x17.png)
-
+!(/html/1612.01474/assets/x17.png)
 
 Figure 11: 
 Results on MNIST showing test examples with high or low confidence:
 Top two rows denote the test examples with highest confidence and the bottom two rows denote test examples with the least confidence.
 
-
-
-![Refer to caption](/html/1612.01474/assets/x18.png)
-
+!(/html/1612.01474/assets/x18.png)
 
 (a) Least and most disagreement
 
-![Refer to caption](/html/1612.01474/assets/x19.png)
-
+!(/html/1612.01474/assets/x19.png)
 
 (b) Highest and least confidence
 
 Figure 12: 
 Deep ensemble trained on MNIST and tested on the NotMNIST dataset containing unseen classes: On the left, top two rows denote the test examples with highest confidence and the bottom two rows denote the test examples with the least confidence. On the right, top two rows denote the test examples with highest confidence and the bottom two rows denote the test examples with the least confidence. We observe that these measures capture meaningful ambiguity: for example, the ensemble agreement is high for letters ‘I’ and some variants of ‘J’ which resemble 1 in the MNIST training dataset. The ensemble disagreement is high and confidence is low for examples visually dis-similar from the MNIST training dataset.
-
-[◄](/html/1612.01473)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1612.01474)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1612.01474)
-[View original  
-on arXiv](https://arxiv.org/abs/1612.01474)[►](/html/1612.01475)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 18 22:32:26 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

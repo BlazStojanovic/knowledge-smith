@@ -11,49 +11,6 @@ url: https://arxiv.org/abs/2604.21999
 year: 2026
 ---
 
-[2604.21999] Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning
 
 Grigory Sapunov
@@ -95,7 +52,6 @@ Our contributions:
 
 m1m\_{1}m2m\_{2}⋯\cdotsmNm\_{N}s1s\_{1}s2s\_{2}⋯\cdotssLs\_{L}memory tokenssequence tokensLearned + Type EmbToken + Type Emb[mem1,…,memN,seq1,…,seqL][\text{mem}\_{1},\ldots,\text{mem}\_{N},\text{seq}\_{1},\ldots,\text{seq}\_{L}] + Step EmbeddingShared Block: DerfNorm →\to MHA + RoPE →\to DerfNorm →\to SwiGLUACTRouter×K\times KACT weighted blend ∑wk​hk\sum w\_{k}h\_{k}   or   last step hKh\_{K}pkp\_{k}, halt?Output Projection →\to predictions
 
-
 Figure 1: UTM architecture. Sequence tokens (orange) and memory tokens (purple) receive separate embeddings, are concatenated, and processed by a single weight-shared block iterated KK times. The ACT router outputs halting probability pkp\_{k} per token at each step; the final output is either the ACT-weighted blend or the last step’s representation.
 
 Our model applies a single UniversalTransformerBlock (pre-norm attention + SwiGLU FFN) iteratively for up to K=18K{=}18 steps (Figure [1](#S2.F1 "Figure 1 ‣ 2.1 Universal Transformer with Memory Tokens ‣ 2 Architecture ‣ Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning")). The full sequence at each step is [mem1,…,memN,seq1,…,seqL][\text{mem}\_{1},\ldots,\text{mem}\_{N},\text{seq}\_{1},\ldots,\text{seq}\_{L}] with bidirectional attention.
@@ -132,8 +88,7 @@ Table 1: Eval exact-match (%) with standard initialization (bias=0). Bold = esca
 
 Diagnostic findings: (1) All runs start at p≈0.48p\approx 0.48–0.520.52, halt =2.0=2.0. (2) By step 3k, all develop a shallow-halt pattern (halt ≈5\approx 5–77). (3) Escape correlates with a 10–45×\times spike in router gradient norm. (4) Stuck runs maintain router gradient <0.04<0.04 for all 60k steps.
 
-![Refer to caption](/html/2604.21999/assets/x1.png)
-
+!(/html/2604.21999/assets/x1.png)
 
 Figure 2: Standard initialization (left) shows extreme seed sensitivity—same architecture, different outcomes by seed. Deep-start initialization (right) eliminates seed sensitivity: all seeds converge within the T=8T{=}8–3232 plateau.
 
@@ -164,13 +119,9 @@ Sudoku-Extreme (Sapient Intelligence, [2025](#bib.bib11)): 9×\times9 puzzles, e
 
 ### 4.2 Memory-Token Curve
 
-![Refer to caption](/html/2604.21999/assets/x2.png)
-
+!(/html/2604.21999/assets/x2.png)
 
 Figure 3: Memory-token curve with deep-start initialization. T=0T{=}0 always fails; T=4T{=}4 and T=64T{=}64 are borderline (seed-dependent); T=8T{=}8–3232 is a stable plateau (57.4±0.7%57.4\pm 0.7\%).
-
-
-
 
 Table 3: Memory-token curve with deep-start initialization (λ=0\lambda{=}0, 4 epochs). All rows at 3 seeds (S=0, 42, 123). Mean halt is reported only for non-bimodal rows; halt range covers all 3 seeds.
 
@@ -206,8 +157,7 @@ Table 4: Depth–state trade-off curve under halt-side pressure (λ=0.001\lambda
 | 32 | 10.29 | 56.87% | 1163 |
 | 64 | 8.25 | 54.91% | 1196 |
 
-![Refer to caption](/html/2604.21999/assets/fig_halt_trajectory.png)
-
+!(/html/2604.21999/assets/fig_halt_trajectory.png)
 
 Figure 4: Training trajectories for the four runs of Table [4](#S4.T4 "Table 4 ‣ 4.3 Memory-Depth Tradeoff ‣ 4 Memory Tokens for Recursive Reasoning ‣ Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning") (λ=0.001\lambda{=}0.001 + 20k-step warmup, S=0S{=}0). (a) Mean halt steps. (b) Held-out (eval) exact-match. The x-axis is samples seen (== step ×\times batch size) so the four runs are directly comparable across the same 4-epoch budget. The 20k-step λ\lambda-warmup interval translates to different positions on this axis depending on batch size: T=8/16/32T{=}8/16/32 used batch 256 and finish warmup at ∼1.34{\sim}1.34 epochs (right dashed line); T=64T{=}64 used batch 128 (HBM constraint) and finishes warmup at ∼0.67{\sim}0.67 epochs (left dashed line). The shaded region marks the union of both warmup intervals. Halt panel: after warmup, mean halt monotonically settles to lower values for larger TT (final values 11.6, 11.5, 10.3, 8.2), supporting the depth–state substitution claim. Two subtleties are visible at the start of training. (i) Deep-start initialization (bias=−3=-3) makes all four runs begin at the halt ceiling (18), but within the first ∼10{\sim}10 training steps the router collapses to a shallow equilibrium near halt == 5–7 as soon as gradients flow. (ii) Larger-TT runs escape this shallow regime during warmup (climbing to ∼10{\sim}10–1515 as compute pressure builds), while T=8T{=}8 stays in the shallow regime for nearly a full epoch before climbing — the smallest memory has the least to gain from extra ponder, so the cost–benefit balance shifts toward pondering more only when λ\lambda becomes non-trivial. Eval panel: faint markers are raw evals (per-1000-step on a held-out sample), thick lines are a 5-eval rolling mean. All four runs converge to a similar plateau (≈55\approx 55–60%60\% EM, with eval-to-eval variance of several pp); the trajectory shows that the substitution is essentially free in quality across T∈{8,16,32,64}T\in\{8,16,32,64\}. The 2pp dilution gap reported in Table [4](#S4.T4 "Table 4 ‣ 4.3 Memory-Depth Tradeoff ‣ 4 Memory Tokens for Recursive Reasoning ‣ Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning") is the difference between final eval points and is at the level of single-eval noise here, so it is not visually separable on the trajectory — which is itself a useful sanity check on the substitution claim.
 
@@ -225,13 +175,11 @@ Fixed-depth processing achieves comparable mean EM (53.4%53.4\%) but with much h
 
 ### 4.5 How Memory Tokens Function: Attention Analysis
 
-![Refer to caption](/html/2604.21999/assets/fig_attention_maps.png)
-
+!(/html/2604.21999/assets/fig_attention_maps.png)
 
 Figure 5: Attention maps at steps 0, 9, and 17 (head-averaged, T=16T{=}16). Red lines delineate memory/sequence quadrants. S→\toS attention develops block-diagonal structure matching Sudoku constraints. S→\toM shows sequence tokens querying specific memory slots.
 
-![Refer to caption](/html/2604.21999/assets/fig_attention_heads.png)
-
+!(/html/2604.21999/assets/fig_attention_heads.png)
 
 Figure 6: Per-head attention at step 17 (T=16T{=}16). Each head’s s→\tom fraction is shown. H4 (0.34) and H1 (0.24) are memory-focused; H2 and H6 (0.01) are pure puzzle-constraint heads with periodic S→\toS structure; H5 (0.21) mixes column-attention stripes with memory reading. See text for per-head analysis.
 
@@ -286,8 +234,7 @@ Direct application of the ponder penalty collapses halting even with deep start.
 
 ### 5.2 Inference Beyond Trained Depth
 
-![Refer to caption](/html/2604.21999/assets/fig_extended_inference.png)
-
+!(/html/2604.21999/assets/fig_extended_inference.png)
 
 Figure 7: Extended inference (64 steps, trained on 18). The lambda-warmup model peaks at step 36 (66% EM, +14pp over step 17) then gradually degrades but never crashes (64% at step 63). Green band marks the ∼2×{\sim}2\times sweet spot. Other models plateau by step 28. The trapped model is flat.
 
@@ -560,92 +507,10 @@ ACT provides more consistent results than fixed-depth processing (56.9±0.7%56.9
 
 ## Appendix A Puzzle Solving Visualization
 
-![Refer to caption](/html/2604.21999/assets/fig_puzzle_solved.png)
-
+!(/html/2604.21999/assets/fig_puzzle_solved.png)
 
 Figure 8: Step-by-step puzzle solving (T=16T{=}16, λ=0.001\lambda{=}0.001+warmup). The model progressively fills cells across ponder steps: 31/81 →\to 53 →\to 60 →\to 74 →\to SOLVED. Green = correct, red = error.
 
-![Refer to caption](/html/2604.21999/assets/fig_puzzle_failed.png)
-
+!(/html/2604.21999/assets/fig_puzzle_failed.png)
 
 Figure 9: A puzzle the model fails to solve. Despite 18 ponder steps, the model reaches only 43/81 correct cells (38 errors), with errors concentrated in regions requiring deep constraint propagation.
-
-[◄](/html/2604.21998)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.21999)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.21999)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.21999)[►](/html/2604.22001)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 22:08:36 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

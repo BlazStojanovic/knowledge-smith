@@ -11,49 +11,6 @@ url: http://arxiv.org/abs/1604.06737v1
 year: 2016
 ---
 
-[1604.06737] Entity Embeddings of Categorical Variables
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Entity Embeddings of Categorical Variables
 
 Cheng Guo
@@ -292,8 +249,7 @@ where wα​βsubscript𝑤𝛼𝛽w\_{\alpha\beta} is the weight connecting the
 β𝛽\beta is the index of the embedding layer.
 Now we can see that the mapped embeddings are just the weights of this layer and can be learned in the same way as the parameters of other neural network layers.
 
-![Refer to caption](/html/1604.06737/assets/x1.png)
-
+!(/html/1604.06737/assets/x1.png)
 
 Figure 1: Illustration that entity embedding layers are equivalent to extra layers on top of each one-hot encoded input.
 
@@ -350,8 +306,7 @@ How is the distortion related to the embedding dimension Disubscript𝐷𝑖D\_{
 If we apply multidimensional scalingKruskal ([1964](#bib.bib35)) directly on the metric disubscript𝑑𝑖d\_{i} how is the result different to the learned entity embeddings of the neural network?
 Due to time limit we will leave these interesting questions for future investigations.
 
-![Refer to caption](/html/1604.06737/assets/x2.png)
-
+!(/html/1604.06737/assets/x2.png)
 
 Figure 2: Distance in the store embedding space versus distance in the metric space for 10000 random pair of stores.
 
@@ -446,8 +401,6 @@ We also used the entity embeddings learned from a neural network as the input fo
 
 Table 3: Comparison of different methods on the Kaggle Rossmann dataset with 10% shuffled data used for testing and 200,000 random samples from the remaining 90% for training.
 
-
-
 | method | MAPE | MAPE (with EE) |
 | --- | --- | --- |
 | KNN | 0.290 | 0.116 |
@@ -461,8 +414,7 @@ Table 4: Same as Table [4](#S6.T4 "Table 4 ‣ VI.2 Comparison of different met
 
 The main goal of entity embedding is to map similar categories close to each other in the embedding space. A natural question is thus how the embedding space and the distribution of the data within it look like. For the following analyses, we used a store embedding matrix of dimension 505050 and trained the network on the full first 90%percent9090\% of data, i.e. we did not apply data sparsification.
 
-![Refer to caption](/html/1604.06737/assets/x3.png)
-
+!(/html/1604.06737/assets/x3.png)
 
 Figure 3: The learned German state embedding is mapped to a 2D space with t-SNE. The relative positions of German states here resemble that on the real German map surprisingly well.
 
@@ -472,25 +424,25 @@ Though the algorithm does not know anything about German geography and society, 
 
 Regarding the sales distribution in entity embeddings, we take entity embedding of the store as an example. Figure [4](#S6.F4 "Figure 4 ‣ VI.3 Distribution in the embedding space ‣ VI Experiments ‣ Entity Embeddings of Categorical Variables") shows the sales distribution in the store embedding along its first two principal components and along two random directions. It is apparent from the plot that the sales follows a continuous functional relationship along the first principal component. This allows the neural network to understand the impact of the store index, as stores with similar sales are mapped close to each other. Although the other directions in the subspace have no direct correlation with sales, they are encoding probably other properties of the store and when combined with other features in the deeper layers of the network they could have an impact on the final sales prediction.
 
-![Refer to caption](/html/1604.06737/assets/pca_store_index_all_1.png)
+!(/html/1604.06737/assets/pca_store_index_all_1.png)
 
-![Refer to caption](/html/1604.06737/assets/pca_store_index_all_2.png)
+!(/html/1604.06737/assets/pca_store_index_all_2.png)
 
-![Refer to caption](/html/1604.06737/assets/random_store_index_all.png)
+!(/html/1604.06737/assets/random_store_index_all.png)
 
-![Refer to caption](/html/1604.06737/assets/random_store_index_all_2.png)
+!(/html/1604.06737/assets/random_store_index_all_2.png)
 
 Figure 4: Sales distribution along first principal component (upper left) and second principal component (upper right) of embedded store indices and along two random directions (lower left and right). All 111511151115 stores contributed to the plot.
 
 The density distribution of store embedding is visualized in Fig. [5](#S6.F5 "Figure 5 ‣ VI.3 Distribution in the embedding space ‣ VI Experiments ‣ Entity Embeddings of Categorical Variables"), which shows the distribution along the first four principal components. Interestingly, the univariate density along the first principal components is approximately gaussian distributed. However, their joint distribution is not multivariate gaussian, as the Mardia test Mardia ([1970](#bib.bib39)) reveals.
 
-![Refer to caption](/html/1604.06737/assets/pca_store_distribution_1.png)
+!(/html/1604.06737/assets/pca_store_distribution_1.png)
 
-![Refer to caption](/html/1604.06737/assets/pca_store_distribution_2.png)
+!(/html/1604.06737/assets/pca_store_distribution_2.png)
 
-![Refer to caption](/html/1604.06737/assets/pca_store_distribution_3.png)
+!(/html/1604.06737/assets/pca_store_distribution_3.png)
 
-![Refer to caption](/html/1604.06737/assets/pca_store_distribution_4.png)
+!(/html/1604.06737/assets/pca_store_distribution_4.png)
 
 Figure 5: Density distribution of embedded store indices along the first four principal components (from upper left to lower right). The red line corresponds to a gaussian fit. The p-values of the D’Agostino’s K2superscript𝐾2K^{2} normality test are all statistically significant, i.e. below 0.050.050.05.
 
@@ -654,83 +606,3 @@ We thank Neokami Inc. co-founders Ozel Christo and Andrei Ciobotar for their sup
 * Mardia (1970)
   K.V. Mardia, “Measures of
   multivariate skewness and kurtosis with applications,” Biometrika 57, 519–530 (1970).
-
-[◄](/html/1604.06736)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1604.06737)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1604.06737)
-[View original  
-on arXiv](https://arxiv.org/abs/1604.06737)[►](/html/1604.06738)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 18 09:36:32 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

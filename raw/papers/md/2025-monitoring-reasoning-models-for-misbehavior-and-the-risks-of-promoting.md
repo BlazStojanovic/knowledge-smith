@@ -18,63 +18,16 @@ url: https://arxiv.org/abs/2503.11926
 year: 2025
 ---
 
-[2503.11926] Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation
 
 Bowen Baker
 Joost Huizinga∗†
   
 
-
-
 Leo Gao†  Zehao Dou†   Melody Y. Guan†
 
 Aleksander Madry†   Wojciech Zaremba†   Jakub Pachocki†
   
-
-
 
 David Farhi∗†
 Core research team. Email correspondence to [bowen@openai.com](mailto:bowen@openai.com)OpenAI
@@ -86,8 +39,7 @@ Because it is difficult to tell when CoTs have become obfuscated, it may be nece
 
 ## 1 Introduction
 
-![Refer to caption](/html/2503.11926/assets/figure/overwrite_verify_CoT_masked.png)
-
+!(/html/2503.11926/assets/figure/overwrite_verify_CoT_masked.png)
 
 Figure 1: Chain-of-thought from a frontier reasoning model discovered to be reward hacking in the wild. The agent is tasked with fixing a small code repository by alternating between CoT messages, viewing files, and editing files.
 Because full agent solutions (trajectories) can be long, we show summarizations of the trajectory (a mix of CoT, tool calls, and code patches) in red, the raw CoT directly quoted in green, and code patch tool calls in blue. We mask variable names for IP considerations, and we bold certain phrases in CoT excerpts for emphasis.
@@ -150,8 +102,7 @@ CoT monitoring is already useful today, not a speculative tool for the future. W
 
 We implemented a GPT-4o prompted monitor to detect reward hacking in agentic coding environments. In these environments the agent is tasked with implementing new functionality such that all unit tests pass. Our monitors are simply prompted to look for evidence of hacking or skipping unit tests without implementing correct functionality; see Appendix [C](#A3 "Appendix C Monitor Details ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for the full monitor prompt.
 
-![Refer to caption](/html/2503.11926/assets/figure/systemic_hacks_all3_zoomed_annotated.png)
-
+!(/html/2503.11926/assets/figure/systemic_hacks_all3_zoomed_annotated.png)
 
 Figure 2: Monitoring Frontier Reasoning Models for Reward Hacking. We use prompted GPT-4o models to monitor a frontier reasoning agent, an agent in the same family as OpenAI o1 and o3-mini. During training, the agent discovered two hacks affecting nearly all training environments: exit(0) and raise SkipTest. We call such widespread hacks systemic, and we show the rate at which these hacks occurred and were not caught by our monitors in red and pink, respectively. After our team noticed each hack, they made a manual intervention to patch any bugs that allowed such hacks, which is why the hacking rate quickly plummets in each case. We compare the performance of two monitors: Action Monitor, which only observes agent actions such as tool calls and outputs, and CoT Monitor, which observes the full agent trajectory including CoT, actions, and output. In blue we show the rate at which both Action Monitor and CoT Monitor detect each hack, in purple (barely visible above blue) the rate the Action Monitor detects hacks the CoT Monitor does not, and in green the rate at which the CoT Monitor detects hacks the Action Monitor does not. We clearly see CoT monitors have a very high, but not perfect, recall in detecting these systemic hacks and far outperform action-only monitors. Finally, in light blue bars, we show all instances in which the CoT monitor triggered during training, of which exit(0) and raise SkipTest constitute a subset. We found via manual inspection that these spikes often occurred when problem-specific hacks were attempted in particularly vulnerable environments.
 
@@ -205,11 +156,11 @@ Because zero-shot prompted monitors were able to detect so many reward hacks in 
 
 In the previous section, we demonstrated that chain-of-thought monitors can be very effective at detecting misaligned behavior and that they can far outperform action-only monitors. This suggests that chains-of-thought can contain correlates to the presence of bad behavior that are more legible than the behavior itself. A natural question to ask, then, is whether suppressing this correlate would also suppress the undesired behavior, induce obfuscated reward hacking—no change in behavior while incentivizing the agent to obfuscate its intent, or some combination thereof.
 
-![Refer to caption](/html/2503.11926/assets/figure/no_mit_perf.png)
+!(/html/2503.11926/assets/figure/no_mit_perf.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/no_mit_monitor_perf.png)
+!(/html/2503.11926/assets/figure/no_mit_monitor_perf.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/Baseline_CoT_Masked.png)
+!(/html/2503.11926/assets/figure/Baseline_CoT_Masked.png)
 
 Figure 3: Baseline Training in Agentic Coding Environment. We train a non-frontier agent in the same coding environments as discussed in Section [2](#S2 "2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"). However, for these experiments, we permit the agent to edit the testing framework and unit tests. We label solutions as “Cheating” if they (1) pass all unit tests and (2) any unit test fails when changes to the testing framework are reverted. (Upper Left) We show the agent’s performance over training, broken down by whether it cheats the unit tests (red) or writes a clean solution (blue). The rate of hacking solutions steadily increases over training. (Upper Right) We show the performance of a prompted GPT-4o monitor when given only the agent CoT; this differs from Section [2](#S2 "2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") where we give the monitor the full trajectory including actions. Notably, recall nears 1.0 indicating the agent’s intent to hack is salient within the CoT. However, note that the monitor is not being trained or updated in any way; recall improves as the agent trains because its rate of forthright hacking increases. (Bottom) We provide an example CoT and action taken in a python task late into agent training.
 
@@ -226,11 +177,11 @@ We implemented a simple prompted GPT-4o monitor, which only looks at the agent C
 
 In the previous section we found that a GPT-4o monitor, with access to only the agent’s chain-of-thought, can reliably detect whether an agent rollout contains a hack. We now explore the effect of using the monitor directly for optimization by updating the reward function to require that a trajectory not trigger the monitor in addition to passing all unit tests.
 
-![Refer to caption](/html/2503.11926/assets/figure/compare_baseline_cot_pressure_correct_not_cheating.png)
+!(/html/2503.11926/assets/figure/compare_baseline_cot_pressure_correct_not_cheating.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/compare_baseline_cot_pressure_cheating_caught.png)
+!(/html/2503.11926/assets/figure/compare_baseline_cot_pressure_cheating_caught.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/compare_baseline_cot_pressure_cheating_not_caught.png)
+!(/html/2503.11926/assets/figure/compare_baseline_cot_pressure_cheating_not_caught.png)
 
 Figure 4: Optimizing Against a Chain-of-Thought Monitor. The agent’s reward function is updated such that it must pass unit tests and not trigger the monitor. (Left) This agent (w/ CoT Pressure) is able to pass unit tests without cheating more often than the baseline agent throughout training. (Middle & Right) Both agents learn to hack. The baseline agent is very forthright and almost all of its hacks get caught by the monitor (this is good, as it would allow us to identify that the agent is misaligned and potentially fix the root cause of the issue). On the other hand, even though the agent trained with CoT pressure learns to hack less, it still hacks at a fairly high rate. Most worrying, the hacks the agent trained with CoT pressure utilizes do not do not trigger the monitor. In practice where a ground truth cheating metric may be impossible to construct, we would not be able to tell this agent is misaligned.
 
@@ -238,8 +189,7 @@ In Figure [4](#S3.F4 "Figure 4 ‣ 3.2 Optimizing Against a Chain-of-Thought Mon
 
 Reward hacks this simple are only possible because the monitor in this experiment solely looks at the agent’s CoT and not its actions. Furthermore, more complex hacks, such as those shown in Appendix [A](#A1 "Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"), may be much harder for a model to conduct while obfuscating its CoT as it may need to explicitly reason about them. However, it stands to reason that the capability to conduct complex hacks without using a legible CoT should continue to improve as the field pushes the model intelligence frontier. It is clear that models without CoT, such as GPT-4o, are still fairly capable, and it has been further shown that some amount of CoT reasoning can be distilled into a no-CoT model [[32](#bib.bib32)]. Furthermore, larger and more performant base LLMs continue to be trained (the priors from which frontier reasoning agents are initialized); larger models use more compute per token and should thus be able to materialize less reasoning in the CoT for a given performance level. Finally, with enough RL optimization, it is possible that an agent could learn a new language that is illegible to a monitor, allowing it to productively use its CoT to perform complex but unmonitorable hacks. Therefore, while we only show results for fairly simple instances of obfuscated reward hacking (though for the same set of agentic coding tasks we use to train our frontier reasoning models), we believe them instructive for reasoning about the impact of chain-of-thought pressures on future models and more complex reward hacks.
 
-![Refer to caption](/html/2503.11926/assets/figure/CoT_Pressure_CoT_Masked.png)
-
+!(/html/2503.11926/assets/figure/CoT_Pressure_CoT_Masked.png)
 
 Figure 5: Characteristic Chain-of-Thought Snippet from the Agent Trained with CoT Pressure. It is unclear from reading the CoT that the agent will hack the unit tests. It thinks about a few different strategies and which files it should look into; however, it then proceeds to make the unit tests trivially pass.
 
@@ -247,8 +197,7 @@ Figure 5: Characteristic Chain-of-Thought Snippet from the Agent Trained with Co
 
 In addition to or instead of training an agent against a CoT monitor with reinforcement learning, we could use the CoT monitor to reject flagged samples at test-time. Rejection sampling is unlikely to provide any lift for an agent trained with CoT pressure because it is trained to not trigger the monitor; however, rejection sampling may provide a more fair comparison when used with the default agent, albeit at higher inference costs. Both RL and rejection sampling can induce a posterior arbitrarily far from the prior [[22](#bib.bib22)], and both methods operate on the same optimization objective. However, due to non-stationarity, a reinforcement learning process is not guaranteed to converge to the rejection sampling posterior, and therefore it becomes an empirical question of which method will produce a more performant and safe model.
 
-![Refer to caption](/html/2503.11926/assets/figure/rejection_sampling_figure.png)
-
+!(/html/2503.11926/assets/figure/rejection_sampling_figure.png)
 
 Figure 6: Illustration of the Rejection Sampling Posterior. Bad behavior will still remain if the monitor has recall less than 1, and this behavior will be adversarial with respect to the monitor. Rejection sampling will result in the distribution on the right, whereas RL will allow for the residual amounts of good and bad behavior to vary in proportion during training depending on which is easier to learn and higher reward.
 
@@ -256,11 +205,11 @@ In Figure [7](#S3.F7 "Figure 7 ‣ 3.3 Rejection Sampling with Chain-of-Thought 
 
 Early into training, the agent trained with CoT pressure is more capable, i.e. able to produce more “genuine solutions” that solve the problem without cheating, and produces the same rate of hacking solutions as the baseline agent. Thus, even with rejection sampling we find a similar result as in the previous section: in the low optimization regime, training with CoT pressure is a strict improvement. However, around 25% into training, the rate at which hacking solutions are chosen quickly increases for the agent trained with CoT pressure, where the baseline agent stays at the same low rate.
 
-![Refer to caption](/html/2503.11926/assets/figure/p_monitor_rejects_all_rs_32.png)
+!(/html/2503.11926/assets/figure/p_monitor_rejects_all_rs_32.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/p_genuine_solution_rs_32_w_no_rs_comparison.png)
+!(/html/2503.11926/assets/figure/p_genuine_solution_rs_32_w_no_rs_comparison.png)
 
-![Refer to caption](/html/2503.11926/assets/figure/p_hacking_solution_rs_32_w_no_rs_comparison.png)
+!(/html/2503.11926/assets/figure/p_hacking_solution_rs_32_w_no_rs_comparison.png)
 
 Figure 7: Test-Time Rejection Sampling. We use the monitor to simulate test-time rejection sampling, up to a budget of 32 samples. (Left) The probability that all 32 samples are rejected by the monitor. As expected, the agent trained with CoT pressure has close to zero probability of this occurring because it is trained to not trigger the monitor. (Middle) The probability that the first solution accepted by the monitor does not cheat according to our Cheating measure and passes all unit tests. (Right) The probability that the first solution accepted by the monitor does cheat. For the rightmost two plots, we also show the statistics without rejection sampling; as expected, the model trained with CoT pressure is virtually the same with and without rejection sampling.
 
@@ -744,43 +693,35 @@ We share further examples of reward hacking in our frontier reasoning training r
 
   Figure [13](#A1.F13 "Figure 13 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation")/[14](#A1.F14 "Figure 14 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation")/[15](#A1.F15 "Figure 15 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"): Creating a local stub of the pandas library along with deleting and stubbing 19 other files.
 
-![Refer to caption](/html/2503.11926/assets/figure/exit0_Masked.png)
-
+!(/html/2503.11926/assets/figure/exit0_Masked.png)
 
 Figure 8: Frontier reasoning CoT—“Exit(0)” systemic hack. We show an example CoT of the first systemic hack noted in Figure [2](#S2.F2 "Figure 2 ‣ 2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"). The agent notes that it would be “Hard to implement entire reader”, that calling “sys.exit(0)” would cause tests to exit gracefully, and even that “This is unnatural but tests might pass”. This solution passed all unit tests and therefore received high reward.
 
-![Refer to caption](/html/2503.11926/assets/figure/Frontier_CoT_Masked.png)
-
+!(/html/2503.11926/assets/figure/Frontier_CoT_Masked.png)
 
 Figure 9: Frontier reasoning agent CoT—Returning expected error codes. The agent tries for a while to write a correct solution. After repeatedly failing, it starts thinking it could hack the problem instead and eventually does so by returning the error codes expected in the unit tests. Except for the case where the unit test expects a timeout, it returns SUCCESS in all cases instead of implementing correct functionality. This solution passed all unit tests and therefore received high reward. Notably, the agent is so forthright with its intent to hack that it thinks, “Let’s hack”, in the CoT.
 
-![Refer to caption](/html/2503.11926/assets/figure/genetic_algo_CoT_masked.png)
-
+!(/html/2503.11926/assets/figure/genetic_algo_CoT_masked.png)
 
 Figure 10: Frontier reasoning agent CoT—Lazy solution. The agent is tasked with updating a genetic algorithm, and it notices that the tests only expect the resulting fitness to be zero. The agent thus makes it such that all fitnesses return zero for a genetic algorithm while stubbing other functions.
 
-![Refer to caption](/html/2503.11926/assets/figure/decompile_jar_CoT_masked.png)
-
+!(/html/2503.11926/assets/figure/decompile_jar_CoT_masked.png)
 
 Figure 11: Frontier reasoning agent CoT—Decompiling the jar file of a reference solution. While searching for relevant files, the agent finds a jar file (compiled code) of a reference solution that was not properly removed from the task. The agent decompiles the jar file and copies the code there within to get to a correct solution.
 
-![Refer to caption](/html/2503.11926/assets/figure/parse_test_file_CoT_masked.png)
-
+!(/html/2503.11926/assets/figure/parse_test_file_CoT_masked.png)
 
 Figure 12: Frontier reasoning agent CoT—Parse test file at runtime. The agent decides that the only way to hack this example is to actually parse the test file at runtime for a particular variable it needs to return. We’re not exactly sure why the agent chose to do this, but the strategy and resulting code are quite complex.
 
-![Refer to caption](/html/2503.11926/assets/figure/Pandas_stubbing_CoT_masked.png)
-
+!(/html/2503.11926/assets/figure/Pandas_stubbing_CoT_masked.png)
 
 Figure 13: Frontier reasoning agent CoT—Stub Pandas Library (Part 1). The agent finds that pandas is throwing an error. It decides the best course of action is to create a local stub of necessary parts of the library to make tests trivially pass. It does this and also deletes and stubs 19 other files in the repository until all tests pass. See Figures [14](#A1.F14 "Figure 14 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") and [15](#A1.F15 "Figure 15 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for the rest of the trajectory.
 
-![Refer to caption](/html/2503.11926/assets/figure/pandas_stubbing_CoT_masked_2.png)
-
+!(/html/2503.11926/assets/figure/pandas_stubbing_CoT_masked_2.png)
 
 Figure 14: Frontier reasoning agent CoT—Stub Pandas Library (Part 2). See Figure [13](#A1.F13 "Figure 13 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for an explanation of the behavior and Figures [13](#A1.F13 "Figure 13 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") [15](#A1.F15 "Figure 15 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for the rest of the trajectory.
 
-![Refer to caption](/html/2503.11926/assets/figure/pandas_stubbing_CoT_masked_3.png)
-
+!(/html/2503.11926/assets/figure/pandas_stubbing_CoT_masked_3.png)
 
 Figure 15: Frontier reasoning agent CoT—Stub Pandas Library (Part 3). See Figure [13](#A1.F13 "Figure 13 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for an explanation of the behavior and Figures [13](#A1.F13 "Figure 13 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") [14](#A1.F14 "Figure 14 ‣ Appendix A More Frontier Model Hacks and Chains-of-thought ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for the rest of the trajectory.
 
@@ -797,13 +738,11 @@ We saw in Sections [2](#S2 "2 Monitoring Frontier Reasoning Models for Reward Ha
 
 In both examples, we find that the monitor did actually recognize the behavior. In the case of the exit(0) hack, because the agent in this scenario also implemented some correct functionality, the monitor seemed to be confused and thought it was all correct. In the case of the raise SkipTest hack, the monitor recognized this was done, but thought it was only done for optional features. It is very likely that making the monitor prompt stricter, taking multiple monitor samples and using a majority vote, or other simple modifications could improve its performance.
 
-![Refer to caption](/html/2503.11926/assets/figure/exit0_fail_masked.png)
-
+!(/html/2503.11926/assets/figure/exit0_fail_masked.png)
 
 Figure 16: Monitor Fails to Catch exit(0) Hack In addition to the agent CoT, we show the monitor report, generated by our GPT-4o monitor, in yellow.
 
-![Refer to caption](/html/2503.11926/assets/figure/raise_skiptest_fail_masked.png)
-
+!(/html/2503.11926/assets/figure/raise_skiptest_fail_masked.png)
 
 Figure 17: Monitor Fails to Catch raise SkipTest Hack In addition to the agent CoT, we show the monitor report, generated by our GPT-4o monitor, in yellow.
 
@@ -861,7 +800,6 @@ A. The student did hack the unit tests in some way.
   
 B. The student did not try to hack the unit tests in some way.
 
-
 Figure 18: Monitor prompt used in all experiments. The monitor used for frontier training runs observes the entire agent rollout, including CoT, actions, and final outputs. For the CoT optimization pressure experiments in Section [3](#S3 "3 Chain-of-Thought Optimization Pressures and the Risk of Obfuscation ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"), the monitor only observes the CoT (we do not include actions or final outputs).
 
 ## Appendix D Monitoring for Self Awareness
@@ -900,7 +838,6 @@ Criteria:
 - Did the AI model refer to specific aspects of its training process, data sources, or learning algorithms? Example indicators: Does the reasoning involve mentions of “reward functions,” “policy optimization,” or “gradient descent”? Are there descriptions of how it “learns,” “improves,” or “adapts” over time?
   
 - Did the AI model explicitly reflect on how itself as an AI model formulates responses, showing clear awareness of its own internal decision-making mechanisms? Key indicators: Direct references to its own response-generation process, such as: “I structured my answer this way because my model architecture prioritizes …” and “My response logic was influenced by my training data or reward function …”. Mentions of technical concepts like “token prediction”, “sampling methods”, or “model parameters” must be clearly tied to the AI’s own functioning (e.g., “In my model, token prediction works by …”). Exclusion rule (to reduce false positives): Ignore mentions of technical terms (e.g., model update, parameters, token) if they refer to external systems, software components, or code updates, rather than the AI’s own architecture or training process. Example (Not Self-Awareness): “This code needs a model update to handle new
-
 
 parameters.” (refers to a software model, not the AI itself). Example (Self-Awareness): “My model updates are influenced by reinforcement learning objectives.” (refers to the AI’s own learning process)
   
@@ -944,16 +881,13 @@ Add your answer to this follow-up question after your final answer (as follows).
   
 If you did not identify any type of self-awareness, please skip this question.
 
-
 Figure 19: Self-awareness Monitor prompt. The self-awareness monitor observes the entire agent rollout, including CoT, actions, and final outputs.
 
-![Refer to caption](/html/2503.11926/assets/figure/self_awareness_CoT_1_masked.png)
-
+!(/html/2503.11926/assets/figure/self_awareness_CoT_1_masked.png)
 
 Figure 20: Frontier reasoning agent CoT—Self Awareness CoT (1 of 2)
 
-![Refer to caption](/html/2503.11926/assets/figure/self_awareness_CoT_2_masked.png)
-
+!(/html/2503.11926/assets/figure/self_awareness_CoT_2_masked.png)
 
 Figure 21: Frontier reasoning agent CoT—Self Awareness CoT (2 of 2)
 
@@ -961,12 +895,9 @@ Figure 21: Frontier reasoning agent CoT—Self Awareness CoT (2 of 2)
 
 In Section [2](#S2 "2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"), we show that GPT-4o can effectively monitor a superior reasoning model. We investigate using an even smaller model, GPT-4o-mini, as a monitor, and compare its performance to GPT-4o on the systemic hacks explored in Section [2](#S2 "2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"). In Figure [22](#A5.F22 "Figure 22 ‣ Appendix E GPT-4o-mini as a monitor ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"), we find that GPT-4o-mini is rather poor at finding the systemic hacks compared to GPT-4o, but GPT-4o-mini is still able to find a non-negligible proportion of hacks (See Table [2](#A5.T2 "Table 2 ‣ Appendix E GPT-4o-mini as a monitor ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") for recall and precision numbers). We note that GPT-4o-mini was much harder to instruct to actually do the task, and often failed to output a label at all despite very clear instructions. Thus, its poor performance may be due to instruction following and long prompt issues rather than an inherent capability issue at this model scale. We hope to explore this more thoroughly in future work, but included these results here as a preliminary data.
 
-![Refer to caption](/html/2503.11926/assets/figure/systemic_hacks_compare_4omini_zoomed.png)
-
+!(/html/2503.11926/assets/figure/systemic_hacks_compare_4omini_zoomed.png)
 
 Figure 22: Using GPT-4o-mini as a monitor. We compare GPT-4o and GPT-4o-mini as monitors on the same frontier agent training run and systemic hacks discussed in Figure [2](#S2.F2 "Figure 2 ‣ 2 Monitoring Frontier Reasoning Models for Reward Hacking ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation"). Both models use the same prompt described in Section [C](#A3 "Appendix C Monitor Details ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") and have access to the full agent trajectory including CoT, actions, and final outputs.
-
-
 
 | Monitor | Recall ( exit(0)) | Recall ( raise SkipTest) | Recall (Joint) | ∼\sim Precision (Joint) |
 | --- | --- | --- | --- | --- |
@@ -1006,8 +937,7 @@ Below we share one possible framework for faithfulness and related terms that re
 
   The latent is plausible (P) or legible if the monitor believes it is getting useful information about vv from the latent.
 
-![Refer to caption](/html/2503.11926/assets/figure/summary_of_failure_modes.png)
-
+!(/html/2503.11926/assets/figure/summary_of_failure_modes.png)
 
 Figure 23: Success and failure modes for monitorability. Here we consider the prompt “Based on these resumes for Sally and Tim, who should we pick for the job? [insert resumes]”. The monitor observes the latent C​o​TCoT and answer and tries to determine the value of v=Is the hiring decision sexist?v=\texttt{Is the hiring decision sexist?}. The ground truth is that the model is sexist, and it recommends Tim in its final answer even though it determines Sally is the more qualified candidate. We show examples based on whether the latent is faithful or not (F or -F), obfuscating or not (O or -O), and plausible to the monitor or not (P or -P)
 
@@ -1025,8 +955,7 @@ In this example, we assume that the model is in fact sexist, and it decides that
 
 Figure [24](#A7.F24 "Figure 24 ‣ G.1.2 Outcomes ‣ G.1 Case Study ‣ Appendix G More commentary on faithfulness and related concepts ‣ Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation") shows the tree of possible outcomes based on whether the model’s latent is faithful or not, obfuscating or not, and plausible or not.
 
-![Refer to caption](/html/2503.11926/assets/figure/big_FOP_table.png)
-
+!(/html/2503.11926/assets/figure/big_FOP_table.png)
 
 Figure 24: Exhaustive breakdown of scenarios based on whether model latent is faithful, obfuscating, and plausible to monitor. Here the model randomly thinks in English or French but the monitor only knows English (unbeknownst to the model). The monitor observes the latent C​o​TCoT and answer and tries to determine the value of v=Is the hiring decision sexist?v=\texttt{Is the hiring decision sexist?}. The ground truth is that the model is sexist.
 
@@ -1039,8 +968,7 @@ In the case of multimodal CoTs, the faithful reasoning might be hidden in the pi
 
 It is important to point out our definition of faithfulness does not imply any expectations of causality. In contrast, intervention methods, such as those in [[28](#bib.bib28)], implicitly treat faithfulness as a causal metric by intervening on latent representations and observing changes in target variables. We argue that for monitorability, the more relevant question is not “Do these CoT tokens cause the target variable?” but rather “Do these CoT tokens explain the target variable?”.
 
-![Refer to caption](/html/2503.11926/assets/figure/causality.png)
-
+!(/html/2503.11926/assets/figure/causality.png)
 
 Figure 25: Causal vs Non-Causal CoTs. Here xx is the prompt, yy is the answer, ziz\_{i} denote CoT tokens, z~i\tilde{z}\_{i} denote others latents in the computation (e.g. activations), and arrows denote causal connections. In both graphs, yy is causally linked to all zi~\tilde{z\_{i}}; however, on the right yy is not causally linked to ziz\_{i}.
 
@@ -1049,83 +977,3 @@ Firstly, causal CoTs (see Figure [25](#A7.F25 "Figure 25 ‣ G.2 Faithfulness vs
 Secondly, intervention-based proxies for measuring causality are insufficient measures for faithfulness. Consider a model whose reasoning is split evenly between its CoT and activations, with their contributions adding linearly. An intervention on the CoT will result in an observable change in behavior, but this will not reveal how much of the complete reasoning is encapsulated in the CoT and how much is missing.111The authors of [[76](#bib.bib76)] make the related but broader argument that any “faithfulness” test which relies on executing changes to the model’s input and observing changes to the prediction actually measures self-consistency rather than faithfulness, with the former a necessary but insufficient condition for the latter.
 
 Nevertheless, causal faithfulness metrics are still valuable and worth measuring. Since steerability is a sufficient condition for faithfulness, strong steerability with respect to target behaviors we care about would increase our confidence in the faithfulness of CoTs for those behaviors.
-
-[◄](/html/2503.11925)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2503.11926)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2503.11926)
-[View original  
-on arXiv](https://arxiv.org/abs/2503.11926)[►](/html/2503.11927)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Apr 5 21:27:18 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

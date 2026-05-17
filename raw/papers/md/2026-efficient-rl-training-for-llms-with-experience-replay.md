@@ -14,61 +14,6 @@ url: https://arxiv.org/abs/2604.08706
 year: 2026
 ---
 
-[2604.08706] Efficient RL Training for LLMs with Experience Replay
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1, \*]Charles Arnal
-1, \*]Vivien Cabannes
-1]Taco Cohen
-1,2]Julia Kempe
-1, †]Remi Munos
-1]FAIR at Meta
-2]NYU Courant Institute and CDS
-\contribution[\*]Equal contribution
-\contribution[†]Supervising author
-\correspondenceCharles Arnal at
-
 # Efficient RL Training for LLMs with Experience Replay
 
 [
@@ -113,8 +58,7 @@ Our contributions are as follows:
 
 Through this study, we present a straightforward approach for high-efficiency RL fine-tuning, shifting the focus from maximizing performance per step to *maximizing performance per unit of compute.*
 
-![Refer to caption](/html/2604.08706/assets/x1.png)
-
+!(/html/2604.08706/assets/x1.png)
 
 Figure 1: Experience Replay improves LLM RL Training.
 Accuracy on MATH as a function of compute spent when training Qwen2.5-7B on OpenR1-Math-220k for the no-buffer baseline (orange curve) and a buffer of size 8484 with (W,T)=(5,3)(W,T)=(5,3). We report the median and IQR over 1010 seeds. Compute is calibrated so that a single weight update for the baseline costs 11 unit. Baseline runs display increased instability.
@@ -155,8 +99,7 @@ Pseudo-code is provided in Appendix [8](#S8 "8 Pseudo-Code Implementation ‣ Ef
 
 The replay buffer can be sampled by the trainers to assemble their training batches following several strategies that pick samples based on characteristics such as their recency, their associated rewards, the norm of past gradients computed using them, or how many times the rollout has already been sampled. One might also want to define a decay rule for the buffer, e.g. making the buffer a first-in, first-out list by keeping only the NN freshest samples.
 
-![Refer to caption](/html/2604.08706/assets/x2.png)![Refer to caption](/html/2604.08706/assets/x3.png)
-
+!(/html/2604.08706/assets/x2.png)!(/html/2604.08706/assets/x3.png)
 
 Figure 2: Effect of Experimental Design on Off-Policiness and Diversity Statistics.
 Top row: Distribution of off-policiness, replay ratio and steps-since-last-use over all samples and uses of samples during a training run for buffer size N∈{84,252,756,2268}N\in\{84,252,756,2268\} and (W,T)=(6,2)(W,T)=(6,2). See also Appendix [10.3](#S10.SS3 "10.3 Metrics ‣ 10 Experimental details ‣ Efficient RL Training for LLMs with Experience Replay") for details on the steps-since-last-use metric.
@@ -365,13 +308,13 @@ We plot accuracy w.r.t. either the number of gradient steps, the compute spent (
 All our experiments are run with at least 44 random seeds, and we report the median and the interquartile range.
 See Appendix [11](#S11 "11 Additional Experimental Results ‣ Efficient RL Training for LLMs with Experience Replay") for ablations on the learning rate, and Appendix [10](#S10 "10 Experimental details ‣ Efficient RL Training for LLMs with Experience Replay") for additional details on the setup, including the estimation of the optimal ratio μ\mu.
 
-![Refer to caption](/html/2604.08706/assets/x4.png)
+!(/html/2604.08706/assets/x4.png)
 
-![Refer to caption](/html/2604.08706/assets/x5.png)
+!(/html/2604.08706/assets/x5.png)
 
-![Refer to caption](/html/2604.08706/assets/x6.png)
+!(/html/2604.08706/assets/x6.png)
  
-![Refer to caption](/html/2604.08706/assets/x7.png)
+!(/html/2604.08706/assets/x7.png)
 
 Figure 3:  Accuracy and Pass@kk with respect to Buffer Size. Left: Test accuracy as a function of compute spent when training Qwen3-0.6B on OpenR1-Math-220k for (W,T)=(6,2)(W,T)=(6,2) and various buffer sizes N∈{64,128,256,512,768,1536,2304,6912,20736}N\in\{64,128,256,512,768,1536,2304,6912,20736\}, as well as for a no-buffer baseline. We report the median and IQR over more than 44 seeds. Compute is normalized so that each weight update costs 11 unit for buffer configurations and 1.961.96 for the baseline.
 Middle: Pass@kk increase after training for a representative subset of these buffer configurations, relative to the baseline. Right: Best Accuracy achieved over entire runs for various buffer sizes and W/TW/T ratios.
@@ -426,8 +369,7 @@ As experience replay changes the optimization dynamics,777E.g., a (statistically
 Namely, we performed an extensive sweep across learning rates and buffer configurations. For both buffer and non-buffer setups, we plot for each compute budget the best achievable accuracy (over learning rates and buffer parameters) for that budget, resulting in two *optimality curves* reported in Figure [4](#S5.F4 "Figure 4 ‣ 5.4 Controlling for the learning rate: optimality curves ‣ 5 Experimental results ‣ Efficient RL Training for LLMs with Experience Replay").
 We find that the best buffer configurations consistently outperform the best non-buffer configurations.
 
-![Refer to caption](/html/2604.08706/assets/x8.png)
-
+!(/html/2604.08706/assets/x8.png)
 
 Figure 4: Pareto Frontier across Hyperparameters Sweep.
 Test accuracy as a function of compute spent when training Qwen3-0.6B on OpenR1-Math-220k for various learning rates ({1.5i⋅10−7}i=05\{1.5^{i}\cdot 10^{-7}\}\_{i=0}^{5}) and buffer configurations: no buffer (blue curves), buffer of size {64,128,256,512,768,2304,6912,20736}\{64,128,256,512,768,2304,6912,20736\} with (W,T)∈{(6,2),(5,3),(4,4)}(W,T)\in\{(6,2),(5,3),(4,4)\} (orange curves). Each curve is the median over at least 44 seeds. The two boldfaced curves delineate the Pareto frontier of each family of runs. Compute is normalized so that each weight update costs 11 unit for baseline configurations and and 0.510.51 for buffer configurations.
@@ -445,8 +387,7 @@ As showcased in Figure [5](#S5.F5 "Figure 5 ‣ 5.5 Further optimization: refini
 
 As a third refinement, we also tried sampling from a (standard) buffer uniformly without replacement in order to increase local diversity, but the results were inconclusive (see Figure [18](#S11.F18 "Figure 18 ‣ 11 Additional Experimental Results ‣ Efficient RL Training for LLMs with Experience Replay")).
 
-![Refer to caption](/html/2604.08706/assets/x9.png)
-
+!(/html/2604.08706/assets/x9.png)
 
 Figure 5: Alternative Loss, Positive-Bias Sampling Rule.
 Test accuracy as a function of training steps when training Qwen3-0.6B on OpenR1-Math-220k with a buffer of size N=4608N=4608 and (W,T)=(6,2)(W,T)=(6,2). We use either GRPO or AsymRE, and apply positive-bias sampling with coefficient δ∈{0,0.2,0.5}\delta\in\{0,0.2,0.5\} (note: δ=0\delta=0 corresponds to standard uniform sampling).
@@ -1219,17 +1160,16 @@ Assuming α<1/2\alpha<1/2, the constant term μ​(2​α−1)\mu(2\alpha-1) is 
 
 An illustration of the formula for x∗x\_{\*} and y∗y\_{\*} is provided in Figure [6](#S9.F6 "Figure 6 ‣ 9.3.2 Closed-Form Solution with Power-Law Variance ‣ 9.3 Design Trade-Off. ‣ 9 Mathematical Details ‣ Efficient RL Training for LLMs with Experience Replay"), and the function x↦𝒦​(x)x\mapsto{\mathcal{K}}(x) (as well as the optimum value x∗x\_{\*}) is shown in Figure [7](#S9.F7 "Figure 7 ‣ 9.3.2 Closed-Form Solution with Power-Law Variance ‣ 9.3 Design Trade-Off. ‣ 9 Mathematical Details ‣ Efficient RL Training for LLMs with Experience Replay").
 
-![Refer to caption](/html/2604.08706/assets/x10.png)
+!(/html/2604.08706/assets/x10.png)
 
-![Refer to caption](/html/2604.08706/assets/x11.png)
+!(/html/2604.08706/assets/x11.png)
 
-![Refer to caption](/html/2604.08706/assets/x12.png)
+!(/html/2604.08706/assets/x12.png)
 
 Figure 6: Optimal Staleness and Replay Ratio as a function of Rollout Cost (μ\mu).
 As μ\mu increase, we see that it is better to increase the staleness horizon x∗=N/Rx\_{\*}=N/R, and the replay ratio (y∗=B/R)y\_{\*}=B/R). This also the case when the variance α\alpha or the correlation ρ\rho decreases.
 
-![Refer to caption](/html/2604.08706/assets/x13.png)
-
+!(/html/2604.08706/assets/x13.png)
 
 Figure 7: Function x↦𝒦​(x)x\mapsto{\mathcal{K}}(x) (which is defined in Eq. ([5](#S9.E5 "Equation 5 ‣ 9.3.2 Closed-Form Solution with Power-Law Variance ‣ 9.3 Design Trade-Off. ‣ 9 Mathematical Details ‣ Efficient RL Training for LLMs with Experience Replay")) and corresponds to 𝒥{\mathcal{J}} for the specific choice σ​(x)=(x/τ)α\sigma(x)=(x/\tau)^{\alpha}) as a function of the staleness horizon x=N/Rx=N/R, for different values of α∈[0,1/2]\alpha\in[0,1/2], and the corresponding optimal values of x∗x\_{\*}.
 
@@ -1428,64 +1368,57 @@ We provide various additional experimental results:
 
   We show that alternative sampling strategies based on sampling without replacement do not have a clear impact in Figure [18](#S11.F18 "Figure 18 ‣ 11 Additional Experimental Results ‣ Efficient RL Training for LLMs with Experience Replay").
 
-![Refer to caption](/html/2604.08706/assets/x14.png)
+!(/html/2604.08706/assets/x14.png)
 
-![Refer to caption](/html/2604.08706/assets/x15.png)
+!(/html/2604.08706/assets/x15.png)
 
-![Refer to caption](/html/2604.08706/assets/x16.png)
+!(/html/2604.08706/assets/x16.png)
 
 Figure 8: Learning Rate Ablations for Qwen3-0.6B. Test accuracy as a function of the number of steps when training Qwen3-0.6B on OpenR1-Math-220k with various learning rates LR with at least 44 seeds per configuration. We show the median and IQR over the seeds on the left, and all seeds separately on the right.
 
+!(/html/2604.08706/assets/x17.png)
 
+!(/html/2604.08706/assets/x18.png)
 
-![Refer to caption](/html/2604.08706/assets/x17.png)
-
-![Refer to caption](/html/2604.08706/assets/x18.png)
-
-![Refer to caption](/html/2604.08706/assets/x19.png)
+!(/html/2604.08706/assets/x19.png)
 
 Figure 9: Learning Rate Ablations for Qwen2.5-7B. Test accuracy on MATH as a function of the number of steps when training Qwen2.5-7B on OpenR1-Math-220k with various learning rates LR with at least 44 seeds per configuration. We show the median and IQR over the seeds on the left, and all seeds separately on the right. Note the frequent crashes when LR>6.8⋅10−8\text{LR}>6.8\cdot 10^{-8}.
 
-![Refer to caption](/html/2604.08706/assets/x20.png)
-
+!(/html/2604.08706/assets/x20.png)
 
 Figure 10: Wall-time efficiency for Qwen3-0.6B
 Test accuracy as a function of wall-time when training Qwen3-0.6B on OpenR1-Math-220k for the no-buffer baseline (orange curve) and various buffer configurations. We report the median and the IQR over at least 44 seeds per curve.
 
-![Refer to caption](/html/2604.08706/assets/x21.png)
-
+!(/html/2604.08706/assets/x21.png)
 
 Figure 11: 
 Wall-time efficiency for Qwen2.5-7B
 Test accuracy on MATH as a function of wall-time when training Qwen2.5-7B on OpenR1-Math-220k for the no-buffer baseline (orange curve) and various buffer configurations. We report the median and the IQR over at least 44 seeds per curve.
 
-![Refer to caption](/html/2604.08706/assets/x22.png)
-
+!(/html/2604.08706/assets/x22.png)
 
 Figure 12: Impact of off-policiness.
 We train Qwen3-0.6B on OpenR1-Math-220k without a buffer and we artificially introduce various levels of off-policiness by reducing the frequency at which the model’s weights used by the inference workers to generate rollouts are updated. We label each curve with the median level of off-policiness over all rollouts used, and plot the median test accuracy and its IQR as a function of the number of training steps over at least 44 seeds per curve.
 
+!(/html/2604.08706/assets/x23.png)
 
+!(/html/2604.08706/assets/x24.png)
 
-![Refer to caption](/html/2604.08706/assets/x23.png)
+!(/html/2604.08706/assets/x25.png)
 
-![Refer to caption](/html/2604.08706/assets/x24.png)
+!(/html/2604.08706/assets/x26.png)
 
-![Refer to caption](/html/2604.08706/assets/x25.png)
+!(/html/2604.08706/assets/x27.png)
 
-![Refer to caption](/html/2604.08706/assets/x26.png)
+!(/html/2604.08706/assets/x28.png)
 
-![Refer to caption](/html/2604.08706/assets/x27.png)
+!(/html/2604.08706/assets/x29.png)
 
-![Refer to caption](/html/2604.08706/assets/x28.png)
+!(/html/2604.08706/assets/x30.png)
 
-![Refer to caption](/html/2604.08706/assets/x29.png)
+!(/html/2604.08706/assets/x31.png)
 
-![Refer to caption](/html/2604.08706/assets/x30.png)
-
-![Refer to caption](/html/2604.08706/assets/x31.png)
-
-![Refer to caption](/html/2604.08706/assets/x32.png)
+!(/html/2604.08706/assets/x32.png)
 
 Figure 13: Test, Train and Entropy Dynamics.
 We train Qwen3-0.6B on OpenR1-Math-220k with a buffer for (W,T)∈{(6,2),(5,3),(4,4)}(W,T)\in\{(6,2),(5,3),(4,4)\} and various buffer sizes.
@@ -1493,116 +1426,30 @@ We report the test accuracy (top), the training accuracy (middle, smoothed using
 We also report two baseline curves, corresponding to non-buffer configurations: one is plotted with respect to the number of steps, while the other is rescaled to be at compute-parity with the buffer configurations (i.e. so that an x-axis unit represents the same amount of compute).
 Each curve is the median (along with its IQR) over at least 44 seeds.
 
-![Refer to caption](/html/2604.08706/assets/x33.png)
-
+!(/html/2604.08706/assets/x33.png)
 
 Figure 14: Accuracy and Speed with respect to Design Choices.
 We train Qwen3-0.6B on OpenR1-Math-220k for (W,T)∈{(6,2),(5,3),(4,4)(W,T)\in\{(6,2),(5,3),(4,4) and various buffer sizes.
 We report on the right the median best test accuracy achieved over each training run (in other words, the median over the seeds of the best accuracy achieved for each seed), and on the left the median amount of compute that was needed to first reach 98%98\% of that score.
 
+!(/html/2604.08706/assets/x34.png)
 
-
-![Refer to caption](/html/2604.08706/assets/x34.png)
-
-![Refer to caption](/html/2604.08706/assets/x35.png)
+!(/html/2604.08706/assets/x35.png)
 
 Figure 15: Additional results for Qwen2.5-7B. Accuracy on MATH as a function of compute spent when training Qwen2.5-7B on OpenR1-Math-220k for the no-buffer baseline (orange curve) and a buffer of size N∈{84,512,2268,20412}N\in\{84,512,2268,20412\} with (W,T)(W,T) equal to (6,2)(6,2) (left) or (5,3)(5,3) (right). We report the median and IQR over more than 44 seeds. Compute is calibrated so that a single weight update for the baseline costs 11 unit.
 
-![Refer to caption](/html/2604.08706/assets/x36.png)
+!(/html/2604.08706/assets/x36.png)
   
-
 
 Figure 16: Accuracy with respect to Buffer Size for Qwen3-8B on Lean coding tasks. Test accuracy as a function of compute spent when training Qwen3-8B on miniF2F for (W,T)=(6,2)(W,T)=(6,2) and various buffer sizes N∈{128,10000}N\in\{128,10000\}, as well as for a no-buffer baseline. We report the median and IQR over 44 seeds. Compute is normalized so that each weight update costs 0.550.55 unit for buffer configurations and 11 for the baseline.
 
-![Refer to caption](/html/2604.08706/assets/x37.png)
+!(/html/2604.08706/assets/x37.png)
   
-
 
 Figure 17: Accuracy with respect to Buffer Size for Llama 3.2 3B. Test accuracy as a function of compute spent when training Llama 3.2 3B on OpenR1-Math-220k for (W,T)=(6,2)(W,T)=(6,2) and various buffer sizes N∈{128,2048,16384}N\in\{128,2048,16384\}, as well as for a no-buffer baseline. We report the median and IQR over 44 seeds. Compute is normalized so that each weight update costs 0.580.58 unit for buffer configurations and 11 for the baseline.
 
-![Refer to caption](/html/2604.08706/assets/x38.png)
-
+!(/html/2604.08706/assets/x38.png)
 
 Figure 18: 
 We compared our standard buffer implementation, in which the buffer is sampled uniformly by the trainer GPUs ("vanilla"), with two variants: one in which the sampling is done uniformly without replacement ("No replacement"), and one in which samples that have never been used are sampled in priority, after what the remainder of the batch is filled without replacement ("No replacement, at least once").
 We did not find any strong signal, as exemplified by these two representative buffer configurations (with which we trained Qwen3-0.6B on OpenR1-Math-220k).
-
-[◄](/html/2604.08705)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.08706)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.08706)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.08706)[►](/html/2604.08707)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 03:28:35 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

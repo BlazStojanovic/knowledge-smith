@@ -21,49 +21,6 @@ url: https://arxiv.org/abs/2303.00918
 year: 2023
 ---
 
-[2303.00918] STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables
 
 Jaehyun Nam1  Jihoon Tack1  Kyungmin Lee1  Hankook Lee2∗  Jinwoo Shin1
@@ -111,8 +68,7 @@ It turns out that such an approach is quite a promising direction for few-shot t
 in our experiments (see Table [1](#S4.T1 "Table 1 ‣ 4.1 Few-shot classification ‣ 4 Experiments ‣ STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables")).
 In this paper, we suggest to further exploit the benefits of unsupervised meta-learning into few-shot tabular learning by generating more diverse and effective tasks compared to the prior works using the distinct characteristic of the tabular dataset’s column feature.
 
-![Refer to caption](/html/2303.00918/assets/x1.png)
-
+!(/html/2303.00918/assets/x1.png)
 
 Figure 1: 
 An overview of the proposed *Self-generated Tasks from UNlabeled Tables (STUNT)*: we generate the task label by running a k-means clustering over the randomly selected column features of the table, then perturb the selected columns to prevent from generating a trivial task.
@@ -189,8 +145,7 @@ To obtain a good classifier fθsubscript𝑓𝜃f\_{\theta} under the proposed s
 where each 𝒯isubscript𝒯𝑖\mathcal{T}\_{i} contains few samples with pseudo-labels; (ii) meta-learns fθsubscript𝑓𝜃f\_{\theta} to generalize across the tasks; and, (iii) adapts the classifier fθsubscript𝑓𝜃f\_{\theta} using the labeled dataset 𝒟lsubscript𝒟𝑙\mathcal{D}\_{l}.
 Algorithm [1](#alg1 "Algorithm 1 ‣ Appendix D Algorithm ‣ STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables") in Appendix [D](#A4 "Appendix D Algorithm ‣ STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables") provides the detailed training process.
 
-![Refer to caption](/html/2303.00918/assets/x2.png)
-
+!(/html/2303.00918/assets/x2.png)
 
 Figure 2: Example data from the diabetes dataset (Bischl et al., [2021](#bib.bib5)). The red column indicates the original target, and the green column indicates the possible alternative label.
 
@@ -456,13 +411,13 @@ In this section, we perform further analysis of the proposed pseudo-validation w
 For the analysis, we use four datasets from the OpenML-CC18 benchmark: two datasets containing both categorical and numerical features (i.e., income, cmc) and two datasets with only numerical features (i.e., semeion, pixel).
 We validate the model by constructing a number of 1-shot meta-validation tasks, i.e., |𝒮𝚟𝚊𝚕|=Csuperscript𝒮𝚟𝚊𝚕𝐶|\mathcal{S}^{\mathtt{val}}|=C, with an unlabeled validation set for all experiments in this section.
 
-![Refer to caption](/html/2303.00918/assets/x3.png)
+!(/html/2303.00918/assets/x3.png)
 
-![Refer to caption](/html/2303.00918/assets/x4.png)
+!(/html/2303.00918/assets/x4.png)
 
-![Refer to caption](/html/2303.00918/assets/x5.png)
+!(/html/2303.00918/assets/x5.png)
 
-![Refer to caption](/html/2303.00918/assets/x6.png)
+!(/html/2303.00918/assets/x6.png)
 
 Figure 3: 
 Correlation between the pseudo-validation accuracy (%) and the 1-shot test accuracy (%).
@@ -1111,83 +1066,3 @@ We report the mean test accuracy over 100 different seeds. The bold denotes the 
 | STUNT (Ours) | 72.69 | 40.40 | 85.45 | 88.42 | 69.88 | 73.02 | 89.08 | 79.18 | 74.77 |
 
 We evaluate UMTRA (Khodadadeh et al., [2019](#bib.bib16)) and SES (Ye et al., [2022](#bib.bib50)) (also utilizing SNS proposed by Ye et al. ([2022](#bib.bib50))) on few-shot tabular learning tasks, where we use augmentation strategies used in SubTab (Ucar et al., [2021](#bib.bib41)) (i.e., Gaussian noise and marginal distribution masking). Here, we tried our best to improve the performance of SES and UMTRA (e.g., tune variance of Gaussian noise). However, unlike the image domain, they performed worse than CACTUs (Hsu et al., [2018](#bib.bib15)), as shown in Table [11](#A9.T11 "Table 11 ‣ Appendix I Comparison with augmentation-based unsupervised meta-learning schemes ‣ STUNT: Few-shot Tabular Learning with Self-generated Tasks from Unlabeled Tables"). We believe that the failures of SES and UMTRA are mainly due to the absence of effective augmentation strategies for tabular data, and developing them will be an interesting future direction.
-
-[◄](/html/2303.00917)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2303.00918)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2303.00918)
-[View original  
-on arXiv](https://arxiv.org/abs/2303.00918)[►](/html/2303.00919)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 21:52:57 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

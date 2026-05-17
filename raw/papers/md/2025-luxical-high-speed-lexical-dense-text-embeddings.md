@@ -43,49 +43,6 @@ url: https://arxiv.org/abs/2512.09015
 year: 2025
 ---
 
-[2512.09015] Luxical: High-Speed Lexical-Dense Text Embeddings
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Luxical: High-Speed Lexical-Dense Text Embeddings
 
 DatologyAI Team
@@ -127,8 +84,7 @@ Lexical and sparse retrieval methods—ranging from TF–IDF and BM25 to more re
 
 ### 3.1 Lexical–Dense Architecture
 
-![Refer to caption](/html/2512.09015/assets/figures/luxical_sparse_dense.png)
-
+!(/html/2512.09015/assets/figures/luxical_sparse_dense.png)
 
 Figure 1: Sparse-to-dense architecture of Luxical. A sparse vector of normalized ngram frequencies (the TF-IDF vector) is projected through a small MLP to produce a dense embedding.
 
@@ -146,8 +102,7 @@ where nz​(𝐬)\mathrm{nz}(\mathbf{s}) indexes nonzero positions and 𝐚i\mat
 
 ### 3.3 Training Objective
 
-![Refer to caption](/html/2512.09015/assets/figures/embedding_distillation.png)
-
+!(/html/2512.09015/assets/figures/embedding_distillation.png)
 
 Figure 2: Contrastive distillation loss recommended when training Luxical models.
 
@@ -177,8 +132,7 @@ We train Luxical-One with the contrastive Gram-matrix distillation objective des
 
 ### 4.2 Throughput Benchmark
 
-![Refer to caption](/html/2512.09015/assets/x1.png)
-
+!(/html/2512.09015/assets/x1.png)
 
 Figure 3: End-to-end throughput (web documents per second) when embedding 100,000 FineWeb documents with Luxical-One and transformer baselines on an Apple M4 Max CPU and an NVIDIA A10G GPU.
 
@@ -199,8 +153,7 @@ For transformer baselines we evaluate both CPU-only and GPU-accelerated settings
 
 To evaluate the utility of the embeddings produced by Luxical-One, we construct a web-document-based symmetrical retrieval task with known ground truth. To do this, we sample 50,000 documents from FineWeb and split each document into two contiguous halves, yielding 100,000 halves in total. For each original document, its two halves form a positive pair. We embed all halves with Luxical-One and treat each half in turn as a query. For a given query half, we compute cosine similarities to all 99,999 other halves and rank them. The matching half from the same source document defines the correct target; we record its rank and convert this to an error-at-kk curve as a function of the retrieval window size kk. We compare against the same baseline models as in [Section 4.2](#S4.SS2 "4.2 Throughput Benchmark ‣ 4 Empirical Evaluation ‣ Luxical: High-Speed Lexical-Dense Text Embeddings") as well as the following: Arctic-2.0-M (the teacher model for Luxical-One (yu2024arcticembed20multilingualretrieval)), LEAF-MT (a model of the same size as MiniLM-L6-v2 but trained using a similar knowledge-distillation objective (vujanic2025leafknowledgedistillationtext)), and the MixedBreadAI-Large-v1 model (the teacher model for LEAF-MT, hereafter Mxbai-L-v1 for brevity (emb2024mxbai)).
 
-![Refer to caption](/html/2512.09015/assets/x2.png)
-
+!(/html/2512.09015/assets/x2.png)
 
 Figure 4: Document-half matching error rates as a function of retrieval window size for Luxical-One and transformer baselines on our document-half dataset.
 
@@ -210,13 +163,11 @@ Another point worth taking away from this plot is that the distillation-based tr
 
 ### 4.4 Data Curation Application: Classifier-Based Filtering
 
-![Refer to caption](/html/2512.09015/assets/x3.png)
-
+!(/html/2512.09015/assets/x3.png)
 
 (a) Classification throughput.
 
-![Refer to caption](/html/2512.09015/assets/x4.png)
-
+!(/html/2512.09015/assets/x4.png)
 
 (b) Downstream LM performance.
 
@@ -278,83 +229,3 @@ From a deployment perspective, Luxical is designed to be simple to integrate: mo
 |  | *DatologyAI technical staff; contributed the experimental pipelines used in [Section 4.4](#S4.SS4 "4.4 Data Curation Application: Classifier-Based Filtering ‣ 4 Empirical Evaluation ‣ Luxical: High-Speed Lexical-Dense Text Embeddings")* |
 | Not-So-Corporate  Leadership | Bogdan Gaza, Ari Morcos, and Matthew Leavitt |
 | Acknowledgements | Jacqueline Liu, Tiffanie Pham, and Sylvia Hoang for assembling the all-star cast that made this work possible. Liz Gatapia for the beautiful logo design. Jayla Lindsey for perpetuating the welcoming collaborative office environment that made this work possible. |
-
-[◄](/html/2512.09013)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.09015)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.09015)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.09015)[►](/html/2512.09016)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 11:08:45 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

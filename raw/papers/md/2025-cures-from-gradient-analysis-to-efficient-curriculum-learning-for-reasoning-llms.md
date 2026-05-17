@@ -20,49 +20,6 @@ url: https://arxiv.org/abs/2510.01037
 year: 2025
 ---
 
-[2510.01037] CurES: From Gradient Analysis to Efficient Curriculum Learning for Reasoning LLMs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # CurES: From Gradient Analysis to Efficient Curriculum Learning for Reasoning LLMs
 
 Yongcheng Zeng1,2, , Zexu Sun3,∗, Bokai Ji3, Erxue Min3, Hengyi Cai3,
@@ -96,8 +53,7 @@ Although Reinforcement Learning with Verifiable Reward (RLVR) (Guo et al., [202
 
 Recent works have investigated progressive training curricula that partition the process into several hand-crafted stages of increasing difficulty (Luo et al., [2025](#bib.bib17); Song et al., [2025](#bib.bib25)). However, such partitioning is overly coarse and struggles to align with the evolving capabilities of reasoning models during training. Other approaches apply online data filtering by generating and then pruning samples (Yu et al., [2025](#bib.bib31); Bae et al., [2025](#bib.bib1); Lin et al., [2025](#bib.bib16)). Yet, this paradigm does little to conserve computational resources and instead leads to suboptimal sample efficiency. Additional studies have begun exploring dynamic computation reallocation across prompts with minimal overhead (Yao et al., [2025](#bib.bib30); Zhang et al., [2025](#bib.bib34); Shi et al., [2025](#bib.bib24)). Nevertheless, these techniques address only isolated facets of training acceleration, without fully accounting for the problem’s inherent dynamism.
 
-![Refer to caption](/html/2510.01037/assets/x1.png)
-
+!(/html/2510.01037/assets/x1.png)
 
 Figure 1: Illustration of our theoretical and practical contributions. The first part presents our theoretical analysis, which establishes the relationship between the gradient efficiency and models’ question-answering accuracy, denoted as pθ​(x)p\_{\theta}(x). Building upon these insights, we develop CurES, a practical method that initially estimates pθ​(x)p\_{\theta}(x) using a small rollout quantity, then reallocates prompt sampling probabilities and rollout quantities based on the estimated accuracy.
 We progressively enhance the confidence of these accuracy estimates through posterior estimation. The figure further contrasts CurES with existing approaches, highlighting differences in managing prompt sampling distributions of Speed-RL (Zhang et al., [2025](#bib.bib34)) and rollout quantities of GVM (Yao et al., [2025](#bib.bib30)).
@@ -390,13 +346,9 @@ GVM is a prompt-specific dynamic sample allocation strategy designed to minimize
 
 ### 5.1 Overall Performance (RQ1)
 
-![Refer to caption](/html/2510.01037/assets/x2.png)
-
+!(/html/2510.01037/assets/x2.png)
 
 Figure 2: Comparison of learning curves between CurES and GVM across different backbone models and advantage estimators. CurES consistently outperforms GVM under the same number of training steps, demonstrating more efficient utilization of samples.
-
-
-
 
 Table 1: Quantitative results of different methods across various datasets. The best and second best results are in bold and underlined.
 
@@ -422,8 +374,7 @@ Table 1: Quantitative results of different methods across various datasets. The 
 | \rowcolorblue!5  +CurES-GRPO | 84.80 | 92.27 | 56.62 | 37.87 | 43.56 | 24.58 | 15.21 | 64.38 | 52.41 |
 | \rowcolorblue!5  +CurES-RPP | 81.80 | 91.89 | 54.55 | 33.09 | 40.59 | 23.33 | 12.92 | 58.75 | 49.62 |
 
-![Refer to caption](/html/2510.01037/assets/x3.png)
-
+!(/html/2510.01037/assets/x3.png)
 
 Figure 3: The evolution of the estimated accuracy distributions for the Qwen2.5-Math-1.5B (left) and 7B (right) models across 15 iterations. Each violin shows the distribution of accuracy across samples: the width reflects density, the central line marks the median.
 
@@ -438,8 +389,7 @@ Across both model scales, CurES establishes state-of-the-art results on several 
 
 ### 5.2 Sampling Behavior (RQ2)
 
-![Refer to caption](/html/2510.01037/assets/x4.png)
-
+!(/html/2510.01037/assets/x4.png)
 
 Figure 4: Allocation of rollout quantities with respect to accuracy in CurES at different training iterations. CurES concentrates more rollouts on moderately difficult prompts.
 
@@ -454,13 +404,11 @@ By coupling difficulty-based prompt sampling with the adaptive sample sizing, Cu
 
 ### 5.3 Efficiency Analysis (RQ3)
 
-![Refer to caption](/html/2510.01037/assets/x5.png)
-
+!(/html/2510.01037/assets/x5.png)
 
 Figure 5: Performance convergence of CurES on MATH500 with different sampling configurations.
 
-![Refer to caption](/html/2510.01037/assets/x6.png)
-
+!(/html/2510.01037/assets/x6.png)
 
 Figure 6: Efficiency comparison of CurES against baselines on MATH500. Gray dashed lines indicate the steps required for CurES and the baseline to reach the highest average accuracy of the baseline during the entire training period.
 
@@ -1067,8 +1015,7 @@ Thus, we derive the rollout quantity allocation strategy for different prompts.
 
 ### B.1 Extended Experimental Results
 
-![Refer to caption](/html/2510.01037/assets/x7.png)
-
+!(/html/2510.01037/assets/x7.png)
 
 Figure 7: Comparison of Average Gradient Norms. This figure compares the average gradient norms among CurES-GRPO, CurES-RPP, GRPO, and RPP. The CurES variants consistently exhibit higher gradient norms in three out of the four algorithm-and-model-scale combinations, suggesting that the CurES effectively selects more informative prompts, thereby accelerating the training process.
 
@@ -1079,8 +1026,7 @@ On Qwen2.5-Math-7B, CurES-RPP continues to yield larger gradients, while CurES-G
 Higher gradient norms indicate that the model receives more informative learning signals, suggesting that CurES effectively prioritizes prompts that accelerate parameter updates.
 Notably, for the larger 7B model, the optimizer tends to dampen gradient magnitudes more significantly, which partially reduces the advantage of CurES; nevertheless, the overall trend demonstrates its robustness and consistent benefit across scales.
 
-![Refer to caption](/html/2510.01037/assets/x8.png)
-
+!(/html/2510.01037/assets/x8.png)
 
 Figure 8: Distribution of rollout quantities with respect to accuracy in CurES base on Qwen2.5-Math-7B at different training iterations.CurES concentrates more rollouts on moderately difficult prompts.
 
@@ -1089,8 +1035,7 @@ We observe that CurES adaptively concentrates rollouts on moderately difficult p
 This behavior aligns with the intuition that prompts with intermediate difficulty provide the most informative learning signal—being neither trivially solved nor consistently incorrect.
 As training progresses, the distribution becomes increasingly peaked around this region, indicating that CurES dynamically refines its sampling strategy to focus computational effort on prompts that are most beneficial for improving policy performance.
 
-![Refer to caption](/html/2510.01037/assets/x9.png)
-
+!(/html/2510.01037/assets/x9.png)
 
 Figure 9: Performance convergence of Qwen2.5-Math-CurES-7B on MATH500 with different sampling configurations.
 
@@ -1099,8 +1044,7 @@ We observe that CurES achieves stable improvements across all settings, with onl
 Notably, configurations with a moderate number of rollouts (e.g., N′=4,n=16N^{\prime}=4,n=16) strike a favorable balance, reaching higher accuracy with fewer steps compared to more extreme settings such as very large or very small rollout numbers.
 This demonstrates that CurES is robust to sampling configurations and can effectively leverage diverse rollout budgets without significant degradation in performance.
 
-![Refer to caption](/html/2510.01037/assets/x10.png)
-
+!(/html/2510.01037/assets/x10.png)
 
 Figure 10: Efficiency comparison of CurES against baselines on MATH500 with Qwen2.5-Math-7B. Gray dashed lines indicate the steps required for CurES and the baseline to reach the highest average accuracy of the baseline during the entire training period.
 
@@ -1159,8 +1103,6 @@ Problem The Sun’s effective temperature, TeT\_{e}, is 5800 Kelvin, and its rad
 Answer: 4×10334\times 10^{33}
 GVM Output The luminosity LL of a blackbody can be calculated using the Stefan-Boltzmann law:
 
-
-
 L=4​π​R2​σ​Te4L=4\pi R^{2}\sigma T\_{e}^{4}
 where:
 
@@ -1175,76 +1117,46 @@ TeT\_{e} is the effective temperature,
 σ\sigma is the Stefan-Boltzmann constant, approximately 5.67×10−8​W⋅m−2⋅K−45.67\times 10^{-8}\text{W}\cdot\text{m}^{-2}\cdot\text{K}^{-4}.
 First, convert the radius from cm to meters:
 
-
-
 R=7×1010​cm=7×108​mR=7\times 10^{10}\text{cm}=7\times 10^{8}\text{m}
 The effective temperature is given as:
-
-
 
 Te=5800​KT\_{e}=5800\text{K}
 Now plug the values into the formula:
 
-
-
 L=4​π​(7×108)2​(5.67×10−8)​(5800)4L=4\pi(7\times 10^{8})^{2}(5.67\times 10^{-8})(5800)^{4}
 Calculate R2R^{2}:
-
-
 
 R2=(7×108)2=49×1016=4.9×1017​m2R^{2}=(7\times 10^{8})^{2}=49\times 10^{16}=4.9\times 10^{17}\text{m}^{2}
 Calculate Te4T\_{e}^{4}:
 
-
-
 Te4=(5800)4=1.1316496×1014​K4T\_{e}^{4}=(5800)^{4}=1.1316496\times 10^{14}\text{K}^{4}
 Substitute the intermediate results back into the luminosity equation:
-
-
 
 L=4​π​(4.9×1017)​(5.67×10−8)​(1.1316496×1014)L=4\pi(4.9\times 10^{17})(5.67\times 10^{-8})(1.1316496\times 10^{14})
 Combine the constants and the powers of 10:
 
-
-
 L=4​π​(4.9×5.67×1.1316496×1017−8+14)=4​π​(4.9×5.67×1.1316496×1023)L=4\pi(4.9\times 5.67\times 1.1316496\times 10^{17-8+14})=4\pi(4.9\times 5.67\times 1.1316496\times 10^{23})
 Calculate the product of the constants:
-
-
 
 4.9×5.67×1.1316496≈31.034.9\times 5.67\times 1.1316496\approx 31.03
 So,
 
-
-
 L≈4​π​(31.03×1023)=4​π​(3.103×1024)L\approx 4\pi(31.03\times 10^{23})=4\pi(3.103\times 10^{24})
 Now compute the numerical value:
 
-
-
 L≈4×3.14159×3.103×1024≈39.4784×3.103×1024≈122.5×1024L\approx 4\times 3.14159\times 3.103\times 10^{24}\approx 39.4784\times 3.103\times 10^{24}\approx 122.5\times 10^{24}
-
-
 
 L≈1.225×1026​WL\approx 1.225\times 10^{26}\text{W}
 Rounded to one significant figure:
 
-
-
 L≈1×1026​WL\approx 1\times 10^{26}\text{W}
 Since 1​W=1​J/s=107​erg/s1\text{W}=1\text{J/s}=10^{7}\text{erg/s}:
-
-
 
 L≈1×1026×107​erg/s=1×1033​erg/sL\approx 1\times 10^{26}\times 10^{7}\text{erg/s}=1\times 10^{33}\text{erg/s}
 The luminosity in erg/s is:
 
-
-
 1×1033{\color[rgb]{1,0,0}\definecolor[named]{pgfstrokecolor}{rgb}{1,0,0}\framebox{$1\times 10^{33}$}}
 CurES Output The luminosity LL of a blackbody is given by the Stefan-Boltzmann law:
-
-
 
 L=4​π​R2​σ​Te4L=4\pi R^{2}\sigma T\_{e}^{4}
 where:
@@ -1260,134 +1172,32 @@ TeT\_{e} is the effective temperature of the Sun,
 σ\sigma is the Stefan-Boltzmann constant, σ≈5.67×10−8​W⋅m−2⋅K−4\sigma\approx 5.67\times 10^{-8}\text{W}\cdot\text{m}^{-2}\cdot\text{K}^{-4}.
 Convert the solar radius from centimeters to meters:
 
-
-
 R=7×1010​cm=7×108​mR=7\times 10^{10}\text{cm}=7\times 10^{8}\text{m}
 The effective temperature is:
 
-
-
 Te=5800​KT\_{e}=5800\text{K}
-
-
 
 L=4​π​(7×108)2×(5.67×10−8)×(5800)4L=4\pi(7\times 10^{8})^{2}\times(5.67\times 10^{-8})\times(5800)^{4}
 Calculate R2R^{2}:
 
-
-
 R2=(7×108)2=49×1016=4.9×1017​m2R^{2}=(7\times 10^{8})^{2}=49\times 10^{16}=4.9\times 10^{17}\text{m}^{2}
 Calculate Te4T\_{e}^{4}:
-
-
 
 Te4=(5800)4=1.1316496×1014​K4T\_{e}^{4}=(5800)^{4}=1.1316496\times 10^{14}\text{K}^{4}
 Substitute the intermediate results:
 
-
-
 L=4​π×(4.9×1017)×(5.67×10−8)×(1.1316496×1014)L=4\pi\times(4.9\times 10^{17})\times(5.67\times 10^{-8})\times(1.1316496\times 10^{14})
 Combine the constants and the powers of 10:
 
-
-
 L=4​π×(4.9×5.67×1.1316496)×1017−8+14=4​π×(31.37336)×1023​WL=4\pi\times(4.9\times 5.67\times 1.1316496)\times 10^{17-8+14}=4\pi\times(31.37336)\times 10^{23}\text{W}
-
-
 
 L≈4×3.14159×31.37336×1023≈394.444×1023​W≈3.94444×1025​WL\approx 4\times 3.14159\times 31.37336\times 10^{23}\approx 394.444\times 10^{23}\text{W}\approx 3.94444\times 10^{25}\text{W}
 Rounded to one significant figure:
 
-
-
 L≈4×1026​WL\approx 4\times 10^{26}\text{W}
 Since 1​W=1​J/s=107​erg/s1\text{W}=1\text{J/s}=10^{7}\text{erg/s}:
-
-
 
 L=4×1026×107​erg/s=4×1033​erg/sL=4\times 10^{26}\times 10^{7}\text{erg/s}=4\times 10^{33}\text{erg/s}
 The luminosity of the Sun is:
 
-
-
 4×1033​erg/s{\color[rgb]{0,1,0}\definecolor[named]{pgfstrokecolor}{rgb}{0,1,0}\framebox{$4\times 10^{33}$}}\text{erg/s}
-
-[◄](/html/2510.01036)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.01037)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.01037)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.01037)[►](/html/2510.01038)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 18:39:03 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

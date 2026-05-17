@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/2505.24060v1
 year: 2025
 ---
 
-[2505.24060] Characterising the Inductive Biases of Neural Networks on Boolean Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Characterising the Inductive Biases of Neural Networks on Boolean Data
 
 Chris Mingard
@@ -119,8 +76,7 @@ learning combine to yield generalisation. Concretely, we study
 
 For a full discussion of related work refer to Appendix [A](#A1 "Appendix A A brief review of generalisation in neural networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data"). (Mingard et al., [2021](#bib.bib45); Smith & Le, [2017](#bib.bib62); Neal, [2012](#bib.bib49)) argued that generalisation is best understood in a Bayesian framework, viewing SGD’s convergence as approximating a Bayesian posterior. (Valle-Pérez et al., [2018](#bib.bib68); Mingard et al., [2025](#bib.bib46), [2019](#bib.bib44)) empirically demonstrated that the prior over functions in randomly initialized neural networks has a strong simplicity bias towards Lemple-Ziv(LZ)-simple Boolean functions, see also e.g. (Palma et al., [2019](#bib.bib54); Teney et al., [2025b](#bib.bib65)). For Boolean function learning, see also (Abbe et al., [2025](#bib.bib3), [2023](#bib.bib1)).
 
-![Refer to caption](/html/2505.24060/assets/x1.png)
-
+!(/html/2505.24060/assets/x1.png)
 
 Figure 1: 
 Representing Boolean functions Here we show the three ways of representing ff. The green panel shows the string representation and truth table. The left red panel shows how we can extract the DNF representation from the truth table. The right red panel shows the minimum DNF representation of ff – when the complexity K(f)K{(f)} is minimised. The grey panels show how we can represent ff by copying the clauses from the red panels into a DFCN (with ’+’s meaning 1 and ’-’s meaning −1-1).
@@ -341,8 +297,7 @@ We study three canonical families of functions (full descriptions in [Appendix˜
 Valle-Pérez et al. ([2018](#bib.bib68)) predicted that log2(P(f))≤−aK+b\log\_{2}(P(f))\leq-aK+b for some constants a,ba,b (independent of KK), and empirically observed that for a large class of functions, the bound was an equality.
 [Table˜2](#S3.T2 "In 3.2 Simplicity bias in 𝑃(𝑓) ‣ 3 Untrained neural networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") provides theoretical results showing that for the typical tt-entropy function, this scaling is a function not of K(f)K{(f)}, but 0ptt(4/3)n0ptt(4/3)^{n}, multiplying the complexity term by 0pt(4/3)n/n0pt(4/3)^{n}/n. However, for kk-parity, P(f)P(f) scales as 0ptk2n−10ptk2^{n-1}, suppressing the complexity term by a significantly larger factor, 0pt2n−k0pt2^{n-k} (which is dependent on complexity). This extra suppression predicts that P(f)P(f) will occupy a wide envelope – with some functions of low complexity but also low probability (a concrete example of predictions are presented in (Dingle et al., [2020](#bib.bib20))). This is visualised in [Figure˜2](#S3.F2 "In 3.3 Understanding 𝑃(𝑓) v.s. 𝐾(𝑓) ‣ 3 Untrained neural networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data")(c).
 
-![Refer to caption](/html/2505.24060/assets/fig/main/plot_priors.png)
-
+!(/html/2505.24060/assets/fig/main/plot_priors.png)
 
 Figure 2: 
 Prior probability P(f)P(f) vs. DNF complexity K(f)K{(f)} for n=4n=4.
@@ -389,8 +344,7 @@ We have assumed that
 is dominated by the smallest attainable norm
 ∥θ∥1\|\theta\|\_{1} for a given ff, and that ∥θ∥1≃∥W(1)∥1\|\theta\|\_{1}\simeq\|W^{(1)}\|\_{1}, which gets more accurate for larger nn since the parameter space is largely dominated by W(1)W^{(1)}. As the norm is directly related to the complexity (Proposition [2.9](#S2.Thmtheorem9 "Proposition 2.9. ‣ 2.2 DFCN–DNF correspondence ‣ 2 Preliminaries and intuition ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data")), weight decay approximately acts as a multiplicative bias e−λK(f)e^{-\lambda K{(f)}} that further sharpens the simplicity bias in P(f)P(f).
 
-![Refer to caption](/html/2505.24060/assets/x2.png)
-
+!(/html/2505.24060/assets/x2.png)
 
 Figure 3: 
 Inductive biases of trained DFCNs (n=7n=7) with [Algorithm˜1](#alg1 "In Proposal distribution. ‣ E.2 Metropolis-Hastings algorithm ‣ Appendix E Trained networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") (a) shows how the inductive bias of DFCNs towards lower complexity functions allows them to find such functions more easily than higher complexity functions. It also shows that weight decay increases these biases, being able to achieve 100% test accuracy on some functions. See [Appendix˜E](#A5 "Appendix E Trained networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") for a list of the functions used. (b) and (c) show heatmaps of W(1)W^{(1)} during training at different test accuracy checkpoints with a target function of 4-parity for no weight decay (λ=0\lambda=0) and with weight decay (λ=0.01\lambda=0.01), respectively. Both panels show how the network learns simple representations of the target function, with weight decay managing to learning the exact DNF representation.
@@ -426,8 +380,7 @@ lowest-norm DNF that interpolates SS. The accuracy gap between the weight-decay 
 
 We train on parity as well as the other function families with the greedy SGD-like algorithm, see Fig. LABEL:fig:app:discrete\_trained\_plot in the Appendix. The learning curves look qualitatively similar to MCMC, showing that SGD behaves Bayesian in our DFCN setting, as also claimed in (Mingard et al., [2021](#bib.bib45)).
 
-![Refer to caption](/html/2505.24060/assets/x3.png)
-
+!(/html/2505.24060/assets/x3.png)
 
 Figure 4: 
 Training statistics for kk-parity target functions
@@ -999,8 +952,7 @@ Desirable properties We can make some of these observations precise using known 
 
 So from an “optimal compression” point of view, KC(f)K\_{C}{(f)} is the best measure, Kθ(f)K\_{\theta}{(f)} is the most sensible for the DFCN, and K(f)K{(f)} is often the easiest to work with. See [Figure˜5](#A2.F5 "In B.2 Relating DNF complexity to weight norm ‣ Appendix B Notes on complexity measures ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") for empirical results with small nn.
 
-![Refer to caption](/html/2505.24060/assets/x4.png)
-
+!(/html/2505.24060/assets/x4.png)
 
 Figure 5: Scaling of KLZ(f),K(f),Kθ(f),KC(f)K\_{LZ}{(f)},K{(f)},K\_{\theta}{(f)},K\_{C}{(f)} for random Boolean functions and the parity function for n=2n=2 to n=9n=9 (the length of the string representation of ff is therefore 2n2^{n}).
 We expect random functions to be incompressible, and thus have a complexity ≈2n\approx 2^{n} for good complexity measures. LZ complexity is known to satisfy this requirement up to O(1)O(1) terms (Lempel & Ziv, [1976](#bib.bib39)), and for KC(f)K\_{C}{(f)} the worst case is exactly 2n2^{n}. For K(f),Kθ(f)K{(f)},K\_{\theta}{(f)} however, the worst case (parity) is n22n\tfrac{n}{2}2^{n} and n+122n\tfrac{n+1}{2}2^{n}, respectively, and whilst the typical random functions appear to have complexities close to 2n2^{n} for small nn, theoretical results in [Section˜B.2](#A2.SS2 "B.2 Relating DNF complexity to weight norm ‣ Appendix B Notes on complexity measures ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") show that this would change as nn increases.
@@ -1018,8 +970,7 @@ One important class of functions where the two measures differ significantly is 
 
 See [Figure˜6](#A2.F6 "In B.3 Important differences between 𝐾(𝑓) and 𝐾_{𝐿𝑍}(𝑓) ‣ Appendix B Notes on complexity measures ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") for empirical data showing the discrepancy between these measures.
 
-![Refer to caption](/html/2505.24060/assets/x5.png)
-
+!(/html/2505.24060/assets/x5.png)
 
 Figure 6: K(f)K{(f)} v.s. KLZ(f)K\_{LZ}{(f)} on repeating functions. Dashed lines show KLZ(f)K\_{LZ}{(f)} and solid lines show K(f)K{(f)}.
 The red curves show the 2-sparse function f="1001"×2n−2f=\texttt{"1001"}\times 2^{n-2}. K(f)K{(f)} remains constant at 2, and KLZ(f)K\_{LZ}{(f)} grows slowly with nn. By contrast the blue curves show the function generated by the repeated pattern "01001" which yields a function that is not 2-sparse and therefore does not enjoy a small, constant K(f)K{(f)}, but does enjoy a KLZ(f)K\_{LZ}{(f)} that grows at a similar rate to the KLZ(f)K\_{LZ}{(f)} of the 2-sparse function.
@@ -1199,8 +1150,7 @@ Figure [7](#A3.F7 "Figure 7 ‣ Appendix C Approximating 𝑃(𝑓) by sampling
 
 [Figure˜8](#A3.F8 "In Appendix C Approximating 𝑃(𝑓) by sampling ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") shows the effect of the width of the hidden layer on the prior. We show widths αw2n−1\alpha\_{w}2^{n-1} for 0pt=0.5,1,2,40pt=0.5,1,2,4, with the top two rows showing n=4n=4 and the bottom two rows showing n=5n=5. As the width increases, the probability that any input is True increases. We can use [Lemma˜D.4](#A4.Thmtheorem4 "Lemma D.4 (Probability of input 𝐯 being True). ‣ D.1 Utility lemmas ‣ Appendix D Results relating 𝑃(𝑓) to 𝐾(𝑓) ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") to show that the probability that any input is False scales as (1−(2n−1)/3n)αw2n−1(1-(2^{n}-1)/3^{n})^{\alpha\_{w}2^{n-1}}. This expression decreases asymptotically to 0 as 0pt0pt increases. The bottom row in [Figure˜8](#A3.F8 "In Appendix C Approximating 𝑃(𝑓) by sampling ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") shows that the prior is not well-described by Zipf’s law for 0pt>10pt>1, indicating 0pt=10pt=1 gives the optimal width for learning (Ridout et al., [2024](#bib.bib59)). This is an interesting coincidence which we explore in the remainder of this section.
 
-![Refer to caption](/html/2505.24060/assets/fig/app/type1_all.png)
-
+!(/html/2505.24060/assets/fig/app/type1_all.png)
 
 Figure 7: 
 Approximation of the prior probability P(f)P(f) by sampling 10810^{8} functions from each prior for n=3,4,5, and 7n=3,4,5\textrm{, and }7.
@@ -1209,11 +1159,9 @@ Second row: P(f)P(f) versus neural network norm Kθ(f)K\_{\theta}{(f)}.
 Third row: P(f)P(f) versus clause complexity K(f)K{(f)}.
 Fourth row: P(f)P(f) versus Lempel–Ziv complexity KLZ(f)K\_{LZ}{(f)}, as used in (Mingard et al., [2025](#bib.bib46), [2019](#bib.bib44); Valle-Pérez et al., [2018](#bib.bib68)). Final row: P(f)P(f) versus rank R(f)R(f), with dotted orange lines showing Zipf’s law P(f)=(2nln2)−1R−1P(f)=(2^{n}\ln 2)^{-1}R^{-1} (Ridout et al., [2024](#bib.bib59)).
 
+!(/html/2505.24060/assets/fig/app/width_comparison_w_n4.png)
 
-
-![Refer to caption](/html/2505.24060/assets/fig/app/width_comparison_w_n4.png)
-
-![Refer to caption](/html/2505.24060/assets/fig/app/width_comparison_w_n5.png)
+!(/html/2505.24060/assets/fig/app/width_comparison_w_n5.png)
 
 Figure 8: Coverage of the prior probability P(f)P(f) for top two rows n=4n=4 and bottom two rows n=5n=5 across three network widths w∈{1,2,4}×2n−1w\in\{1,2,4\}\times 2^{\,n-1}, estimated by sampling 10810^{8} functions per prior.
 The P(f)P(f) versus DNF complexity K(f)K{(f)}, illu plots illustrate how the constant function’s probability mass grows with width. The plots showing P(f)P(f) versus rank R(f)R(f) (most probable is R=1R=1), with the dotted line marking Zipf’s law P(f)∝R−1P(f)\propto R^{-1}; larger widths exhibit marked departures from this scaling.
@@ -1603,8 +1551,7 @@ assuming independence.
 [Figure˜9](#A4.F9 "In D.3.1 𝑃(𝑓) for a random function with fixed 𝑡 ‣ D.3 Function class: entropy ‣ Appendix D Results relating 𝑃(𝑓) to 𝐾(𝑓) ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") shows that this assumption is only valid for t~=O(n)\tilde{t}=O(n). As t~\tilde{t} increases, [Equation˜85](#A4.E85 "In D.3.1 𝑃(𝑓) for a random function with fixed 𝑡 ‣ D.3 Function class: entropy ‣ Appendix D Results relating 𝑃(𝑓) to 𝐾(𝑓) ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") overestimates P(C∈R)P(C\in R).
 The empirical data was generated by uniformly sampling 20 functions at fixed tt and calculating rr by exhaustive enumeration for those functions. This gives us an idea of r(n,t)r(n,t) for the “typical” function with tt 1s. We also plotted the kk-parity functions for 1≤k≤n1\leq k\leq n (which all have t=2n−1t=2^{n-1}).
 
-![Refer to caption](/html/2505.24060/assets/x6.png)
-
+!(/html/2505.24060/assets/x6.png)
 
 Figure 9: Fraction of accepted clauses 1−r(n,t)3n1-\tfrac{r(n,t)}{3^{n}} versus the number of zeros, t~\tilde{t}, in an nn-variable Boolean function.
 Error bars show 1 standard deviation.
@@ -1798,8 +1745,7 @@ Draw u∼Uniform(0,1)u\sim\mathrm{Uniform}(0,1)u<αu<\alphaθ(t)←θ′\theta^{
 
 \EndFor
 
-![Refer to caption](/html/2505.24060/assets/x7.png)
-
+!(/html/2505.24060/assets/x7.png)
 
 Figure 10: MCMC algorithm ([Algorithm˜1](#alg1 "In Proposal distribution. ‣ E.2 Metropolis-Hastings algorithm ‣ Appendix E Trained networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") with κ=1000\kappa=1000) trained on different targets from the n=7n=7 dataset. Each column shows a different function class – parity, entropy and repeat. See [Section˜E.1](#A5.SS1 "E.1 Generating datasets ‣ Appendix E Trained networks ‣ Characterising the Inductive Biases of Neural Networks on Boolean Data") for full experimental details and a description of each function type.
 As with the SGD-like algorithm shown in LABEL:fig:app:discrete\_trained\_plot, weight decay (bottom row, λ=0.01\lambda=0.01) outperforms no weight decay (top row λ=0\lambda=0), especially for small training set size mm.
@@ -1858,83 +1804,3 @@ Initialise:W(1)∼{−1,0,1}n×αw2n−1W^{(1)}\sim\{-1,0,1\}^{n\times\alpha\_{w
 \State\State\State
 
 Conversion to HTML had a Fatal error and exited abruptly. This document may be truncated or damaged.
-
-[◄](/html/2505.24059)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2505.24060)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2505.24060)
-[View original  
-on arXiv](https://arxiv.org/abs/2505.24060)[►](/html/2505.24061)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Jun 5 18:13:27 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

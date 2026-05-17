@@ -25,54 +25,6 @@ url: https://arxiv.org/abs/2604.06268
 year: 2026
 ---
 
-[2604.06268] RAGEN-2: Reasoning Collapse in Agentic RL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\reportnumber
-
-001
-
 # RAGEN-2: Reasoning Collapse in Agentic RL
 
 Zihan Wang†∗,1,
@@ -137,8 +89,7 @@ Our contributions are summarized as follows:
 
    SNR-Aware Filtering. We propose filtering prompts by reward variance before each update. We demonstrate that this improves input dependence and performance across tasks, algorithms, scales, and modalities.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/teaser.png)
-
+!(/html/2604.06268/assets/table_figures/teaser.png)
 
 Figure 1: Left: input-driven reasoning adapts to the current state; templated reasoning produces nearly identical responses across different inputs. Right: four reasoning regimes characterized along two axes: conditional entropy H​(Z∣X)H(Z\mid X) (within-input diversity) and mutual information I​(X;Z)I(X;Z) (input dependence). Details in Section [2](#S2 "2 Template Collapse in Multi-turn Agent RL ‣ RAGEN-2: Reasoning Collapse in Agentic RL").
 
@@ -225,8 +176,7 @@ Table [1](#S2.T1 "Table 1 ‣ 2.3 Mutual Information Proxy Family ‣ 2 Template
 
 Empirically, Retrieval-Acc and MI-ZScore-EMA achieve positive Spearman correlation with final task performance (+0.39+0.39 for Trajectory MI-ZScore), substantially above entropy metrics, which show negative correlations (−0.11-0.11 to −0.14-0.14), confirming entropy is misleading in direction (Figure [8](#S5.F8 "Figure 8 ‣ 5.1 MI Diagnoses Collapse Better Than Entropy Across All Interventions ‣ 5 Analysis ‣ RAGEN-2: Reasoning Collapse in Agentic RL")). All proxies reuse (Xi,Zi,k)(X\_{i},Z\_{i,k}) pairs from the training rollout and require no additional model or inference pass; implementation details are in Appendix C.
 
-![Refer to caption](/html/2604.06268/assets/x1.png)
-
+!(/html/2604.06268/assets/x1.png)
 
 Figure 2: 
 Schematic Signal-to-Noise Ratio (SNR) view of RL updates.
@@ -250,8 +200,7 @@ We begin with an empirical observation that motivates the mechanistic analysis. 
 
    Low-RV prompts produce gradient updates dominated by regularization: In the lowest-variance buckets, task gradients nearly vanish while regularization gradients persist, meaning updates are driven almost entirely by input-agnostic noise.
 
-![Refer to caption](/html/2604.06268/assets/x2.png)
-
+!(/html/2604.06268/assets/x2.png)
 
 Figure 3: 
 Prompts sorted into six equal-sized reward-variance buckets Q1–Q6. We find: (a) Task gradient norm increases monotonically with bucket RV; (b) When RV near 0, substantial task gradients persist despite carrying almost no useful signal; (c) Regularizer gradient norm (KL + entropy) is flat across buckets. This directly supports the SNR mechanism under both algorithms.
@@ -311,8 +260,7 @@ driven entirely by input-agnostic regularization noise, systematically lowering 
 SNR-Aware Filtering removes these task-useless but regularization-active updates by filtering
 out low-RV prompts, the core mechanism by which the method restores input-conditioned reasoning.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/RV-filter.png)
-
+!(/html/2604.06268/assets/table_figures/RV-filter.png)
 
 Figure 4: SNR-Aware Filtering workflow. At each training iteration: (1) rollout generation collects trajectories; (2) within-prompt reward variance is computed as SNR proxy; (3) prompts are ranked by RV and top-p fraction retained, policy update performed only on high-signal subset. This filtering loop can prevent updating on noisy rollouts and requires no additional models/rollouts beyond standard RL.
 
@@ -381,13 +329,11 @@ We track three key metrics during training: task success rate, our MI proxy I^�
 
 The early decline of I^​(X;Z)\widehat{I}(X;Z) demonstrates that our MI proxy serves as an early warning signal, detecting reasoning degradation that entropy-based metrics miss entirely. This finding motivates using MI as a primary diagnostic alongside task performance, rather than relying solely on entropy for process monitoring.
 
-![Refer to caption](/html/2604.06268/assets/x3.png)
-
+!(/html/2604.06268/assets/x3.png)
 
 Figure 5: Training dynamics under different intervention strategies. (a) Task success rate, (b) MI proxy (retrieval accuracy), and (c) reasoning entropy. Without filtering, MI degrades early while entropy spikes, signaling template collapse. Filtering effectively mitigates the decline in retrieval accuracy, with top-p SNR-Aware filtering best preserving both task performance and reasoning diversity.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F17/output/F17_top_p_top_k_no_filter_4envs.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F17/output/F17_top_p_top_k_no_filter_4envs.png)
 
 Figure 6: Comparison of filtering strategies showing Top-pp consistently outperforming Top-kk and no-filter baselines across four environments.
 
@@ -418,8 +364,7 @@ Table 4: SNR-Aware Filtering results (%) across algorithms, model scales, types,
 | Qwen2.5-VL-3B (T) (qwen2025qwen25vl) | 53.0 (+6.0) | 16.0 (+53.5) | - | - | 34.5 (+29.8) |
 | Qwen2.5-VL-3B (V) (qwen2025qwen25vl) | 65.0 (+12.0) | 19.5 (+59.5) | - | - | 42.3 (+35.8) |
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F13/output/F13_reasoning_length_overview.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F13/output/F13_reasoning_length_overview.png)
 
 Figure 7: Reasoning length decline across eight environments, showing systematic compression as a behavioral signature of template collapse.
 
@@ -463,8 +408,7 @@ We demonstrate that MI separates high- and low-performance runs across all three
 
 We compute Spearman correlation between task success rate and each candidate diagnostic across runs with varying entropy regularization strength, KL constraint strength, and Top-p filtering kept mass (Figure [8](#S5.F8 "Figure 8 ‣ 5.1 MI Diagnoses Collapse Better Than Entropy Across All Interventions ‣ 5 Analysis ‣ RAGEN-2: Reasoning Collapse in Agentic RL")). MI-family metrics achieve positive correlations, with Trajectory MI-ZScore reaching +0.39+0.39. In contrast, Reasoning Entropy and Conditional Entropy metrics show near-zero or negative correlations (between −0.11-0.11 and −0.14-0.14). This confirms that MI predicts performance twice as reliably as entropy does, and entropy actually points in the wrong direction. These results validate MI as a superior training monitor compared to entropy-based diagnostics for multi-turn agent RL.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F08/output/F08_metric_family_vs_performance_trajectory_only.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F08/output/F08_metric_family_vs_performance_trajectory_only.png)
 
 Figure 8: Spearman correlations showing MI-family metrics positively predict performance while entropy metrics are near-zero or negative.
 
@@ -479,8 +423,7 @@ In Table [4](#S4.T4 "Table 4 ‣ 4.2 Template Collapse as a Consistent Failure M
 DAPO itself also includes a filtering/acceptance step; it can be interpreted as a special case of our framework where the selection is fixed (equivalently, a top-PP filter with P→1.0P\to 1.0), while our SNR-Aware Filtering provides an explicit, tunable SNR knob via the keep rate ρ\rho.
 This breadth suggests SNR-Aware Filtering serves as a general-purpose SNR control knob and works alongside standard stabilization terms (e.g., KL\mathrm{KL} and entropy regularization).
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F25/output/F25_filter_vs_no_filter_last_8_median_success.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F25/output/F25_filter_vs_no_filter_last_8_median_success.png)
 
 Figure 9: In FrozenLake, median success rates for both Top-p filtering (orange) and no filtering (gray) decrease as environment stochasticity increases from 0% to 100%. SNR-Aware Filtering maintains a clear advantage from 0% to 50% stochasticity, but the gap closes at 80%–100%, where high transition noise weakens reward variance as an informative signal proxy.
 
@@ -528,22 +471,19 @@ How filtering adapts as training progresses? With the four predictions confirmed
 
 Reward collapse is visible at the distribution level. Figure [11](#S5.F11 "Figure 11 ‣ 5.2 Does SNR Mechanism Really Interpret Agent RL? ‣ 5 Analysis ‣ RAGEN-2: Reasoning Collapse in Agentic RL") provides a complementary view of the same dynamics, tracking prompt-level reward distributions across early, mid, and late training in Sokoban. The shift is systematic: the hard portion shrinks as the policy improves, the mixed portion expands, and overall prompt-level variance collapses toward the late stages. This distribution-level signature mirrors the gradient-level story. Late training is not simply "easier" for the policy; it is a regime where reward variation has been compressed to the point that gradient updates carry progressively less task-discriminative information.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F04/output/F04_dynamic_filtering.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F04/output/F04_dynamic_filtering.png)
 
 Figure 10: Effective kept ratio and zero-variance prompt count, showing adaptive selection pressure as variance collapses during training.
 
 Format validity cannot substitute for content-sensitive diagnostics. One might hope that a coarser signal (whether the model’s output follows the required format) could serve as a collapse indicator without the overhead of MI estimation. Figure [12](#S5.F12 "Figure 12 ‣ 5.2 Does SNR Mechanism Really Interpret Agent RL? ‣ 5 Analysis ‣ RAGEN-2: Reasoning Collapse in Agentic RL") shows this does not hold: format validity is largely decoupled from collapse, with runs maintaining near-perfect validity while exhibiting low MI. Structural correctness and semantic input-dependence are separate dimensions. This reinforces the need for content-sensitive diagnostics, and explains why the MI proxy provides signal that format-based checks miss.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F16/F16.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F16/F16.png)
 
 Figure 11: Prompt-level reward distribution across training phases, showing RV collapse as prompts shift toward uniform reward structures.
 
 RV is largely orthogonal to entropy and response length, which explains why entropy-based stabilizers cannot prevent template collapse. Reward variance correlates weakly with conditional entropy (Spearman −0.14-0.14) and response length (0.120.12), while correlating strongly with task reward (0.630.63). RV therefore targets a distinct axis of update quality rather than surface statistics, making it a complementary control knob to KL\mathrm{KL} and entropy regularization. Figure [10](#S5.F10 "Figure 10 ‣ 5.2 Does SNR Mechanism Really Interpret Agent RL? ‣ 5 Analysis ‣ RAGEN-2: Reasoning Collapse in Agentic RL") further shows that the effective kept ratio adapts over training: as more prompts drift toward near-zero RV, the filter automatically concentrates gradient updates on the shrinking pool of still-informative prompts.
 
-![Refer to caption](/html/2604.06268/assets/table_figures/drawer/F9/F9.png)
-
+!(/html/2604.06268/assets/table_figures/drawer/F9/F9.png)
 
 Figure 12: Format validity versus MI and entropy diagnostics, showing that high validity does not guarantee high input dependence.
 
@@ -554,8 +494,7 @@ SNR-Aware Filtering is complementary: it selects high-signal prompts at each ite
 
 ## 6 Related Work
 
-![Refer to caption](/html/2604.06268/assets/x4.png)
-
+!(/html/2604.06268/assets/x4.png)
 
 Figure 13: Training dynamics under three interventions. For each setting, we choose two checkpoints (steps 10/400) and connect them into a trajectory (arrows point to later steps). Color intensity indicates weaker to stronger intervention.
 
@@ -703,8 +642,7 @@ This section presents supplementary visualizations that provide deeper insights 
 
 Figure [14](#A4.F14 "Figure 14 ‣ D.1 MI Proxy Metrics During Training ‣ Appendix D Additional Experimental Visualizations ‣ RAGEN-2: Reasoning Collapse in Agentic RL") presents six alternative mutual-information proxy metrics tracked over the course of training, complementing the retrieval accuracy shown in Figure [5](#S4.F5 "Figure 5 ‣ 4.2 Template Collapse as a Consistent Failure Mode ‣ 4 Experiments ‣ RAGEN-2: Reasoning Collapse in Agentic RL") of the main paper. All proxies exhibit a consistent pattern: under the *No Filtering* baseline, MI proxies degrade sharply as training progresses, while the three intervention strategies (entropy regularization, KL regularization, and top-pp filtering) maintain stable information retention throughout training.
 
-![Refer to caption](/html/2604.06268/assets/x5.png)
-
+!(/html/2604.06268/assets/x5.png)
 
 Figure 14: Six MI proxy metrics over training steps. (a) MI Estimate, (b) MI Z-Score (EMA), (c) Retrieval Above Chance, (d) Retrieval Accuracy @4, (e) Retrieval Accuracy @8, (f) Conditional Entropy H​(Z|X)H(Z|X). Consistent with Figure [5](#S4.F5 "Figure 5 ‣ 4.2 Template Collapse as a Consistent Failure Mode ‣ 4 Experiments ‣ RAGEN-2: Reasoning Collapse in Agentic RL"), all proxies confirm that without filtering, MI degrades early, signaling reasoning collapse. Filtering effectively preserves information retention across all metrics, with top-pp SNR-aware filtering best maintaining reasoning diversity throughout training.
 
@@ -1577,83 +1515,3 @@ This bound makes explicit that smaller RV​(x)\mathrm{RV}(x) yields a larger va
 ## Appendix O Core Author Contributions
 
 Zihan Wang contributed across the full project lifecycle, including conceptualization, codebase and environment development, formal analysis, experiments, figures and plots, paper writing, and project correspondence. Chi Gui and Xing Jin contributed to the key ideas, software infrastructure, experiments, plots, and paper writing. Licheng Liu primarily contributed to the formal analysis and theory, experiments, and participated in paper writing. Qineng Wang contributed to the key ideas, software infrastructure, figures and plots, experiments, and paper writing.
-
-[◄](/html/2604.06267)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.06268)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.06268)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.06268)[►](/html/2604.06269)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 18:39:56 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

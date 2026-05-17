@@ -12,59 +12,6 @@ url: http://arxiv.org/abs/1602.04938v3
 year: 2016
 ---
 
-[1602.04938] “Why Should I Trust You?” Explaining the Predictions of Any Classifier
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\setcopyright
-
-acmlicensed
-
-\isbn
-
-978-1-4503-4232-2/16/08\acmPrice$15.00
-[http://dx.doi.org/10.1145/2939672.2939778](https:/doi.org/http://dx.doi.org/10.1145/2939672.2939778)
-
 # “Why Should I Trust You?” Explaining the Predictions of Any Classifier
 
 Marco Tulio Ribeiro
@@ -164,8 +111,7 @@ Our main contributions are summarized as follows.
   Further, they are able to greatly improve an untrustworthy classifier trained on 20 newsgroups, by doing feature engineering using LIME.
   We also show how understanding the predictions of a neural network on images helps practitioners know when and why they should not trust a model.
 
-![Refer to caption](/html/1602.04938/assets/x1.png)
-
+!(/html/1602.04938/assets/x1.png)
 
 Figure 1: Explaining individual predictions. A model predicts that a patient
 has the flu, and LIME highlights the symptoms in the patient’s
@@ -197,8 +143,7 @@ Another particularly hard to detect problem is dataset shift [[5](#bib.bib5)], w
 The insights given by explanations
 are particularly helpful in identifying what must be done to convert an untrustworthy model into a trustworthy one – for example, removing leaked data or changing the training data to avoid dataset shift.
 
-![Refer to caption](/html/1602.04938/assets/mturk1_example.png)
-
+!(/html/1602.04938/assets/mturk1_example.png)
 
 Figure 2: Explaining individual predictions of competing classifiers trying
 to determine if a document is about “Christianity” or “Atheism”.
@@ -283,8 +228,7 @@ Even though the original model may be too complex to explain globally, LIME pres
 It is worth noting that our method is fairly robust to sampling noise since the samples are weighted by πxsubscript𝜋𝑥\pi\_{x} in Eq. ([1](#S3.E1 "In 3.2 Fidelity-Interpretability Trade-off ‣ 3 Local Interpretable Model-Agnostic Explanations ‣ “Why Should I Trust You?” Explaining the Predictions of Any Classifier")).
 We now present a concrete instance of this general framework.
 
-![Refer to caption](/html/1602.04938/assets/lime.png)
-
+!(/html/1602.04938/assets/lime.png)
 
 Figure 3: Toy example to present intuition for LIME. The black-box model’s
 complex decision function f𝑓f (unknown to LIME) is represented by the blue/pink
@@ -341,25 +285,19 @@ return w𝑤w
 
 Algorithm 1  Sparse Linear Explanations using LIME
 
-
-
-![Refer to caption](/html/1602.04938/assets/original_image.png)
-
+!(/html/1602.04938/assets/original_image.png)
 
 (a) Original Image
 
-![Refer to caption](/html/1602.04938/assets/electric_guitar.png)
-
+!(/html/1602.04938/assets/electric_guitar.png)
 
 (b) Explaining *Electric guitar*
 
-![Refer to caption](/html/1602.04938/assets/acoustic_guitar.png)
-
+!(/html/1602.04938/assets/acoustic_guitar.png)
 
 (c) Explaining *Acoustic guitar*
 
-![Refer to caption](/html/1602.04938/assets/labrador.png)
-
+!(/html/1602.04938/assets/labrador.png)
 
 (d) Explaining *Labrador*
 
@@ -408,15 +346,12 @@ The importance function I𝐼I should score feature f2 higher than feature f1,
 Concretely for the text applications, we set Ij=∑i=1n𝒲i​jsubscript𝐼𝑗superscriptsubscript𝑖1𝑛subscript𝒲𝑖𝑗I\_{j}=\sqrt{\sum\_{i=1}^{n}\mathcal{W}\_{ij}}.
 For images, I𝐼I must measure something that is comparable across the super-pixels in different images, such as color histograms or other features of super-pixels; we leave further exploration of these ideas for future work.
 
-![Refer to caption](/html/1602.04938/assets/x2.png)
-
+!(/html/1602.04938/assets/x2.png)
 
 Figure 5: Toy example 𝒲𝒲\mathcal{W}. Rows represent instances (documents) and
 columns represent features (words). Feature f2 (dotted
 blue) has the highest importance. Rows 2 and 5 (in red) would be
 selected by the pick procedure, covering all but feature f1.
-
-
 
 Instances X𝑋X, Budget B𝐵B
 
@@ -509,27 +444,21 @@ We observe that the greedy approach is comparable to parzen on logistic regressi
 The overall recall by parzen is low, likely due to the difficulty in approximating the original high-dimensional classifier.
 LIME consistently provides >90%absentpercent90>90\% recall for both classifiers on both datasets, demonstrating that LIME explanations are faithful to the models.
 
-![Refer to caption](/html/1602.04938/assets/x3.png)
-
+!(/html/1602.04938/assets/x3.png)
 
 (a) Sparse LR
 
-![Refer to caption](/html/1602.04938/assets/x4.png)
-
+!(/html/1602.04938/assets/x4.png)
 
 (b) Decision Tree
 
 Figure 6: Recall on truly important features for two interpretable classifiers on the books dataset.
 
-
-
-![Refer to caption](/html/1602.04938/assets/x5.png)
-
+!(/html/1602.04938/assets/x5.png)
 
 (a) Sparse LR
 
-![Refer to caption](/html/1602.04938/assets/x6.png)
-
+!(/html/1602.04938/assets/x6.png)
 
 (b) Decision Tree
 
@@ -567,13 +496,11 @@ This recreates the situation where the models use not only features that are inf
 We create pairs of competing classifiers by repeatedly training pairs of random forests with 303030 trees until their validation accuracy is within 0.1%percent0.10.1\% of each other, but their test accuracy differs by at least 5%percent55\%.
 Thus, it is not possible to identify the *better* classifier (the one with higher test accuracy) from the accuracy on the validation data.
 
-![Refer to caption](/html/1602.04938/assets/x7.png)
-
+!(/html/1602.04938/assets/x7.png)
 
 (a) Books dataset
 
-![Refer to caption](/html/1602.04938/assets/x8.png)
-
+!(/html/1602.04938/assets/x8.png)
 
 (b) DVDs dataset
 
@@ -624,8 +551,7 @@ After examining the explanations, users are asked to select which algorithm will
 The explanations are produced by either greedy (chosen as a baseline due to its performance in the simulated user experiment) or LIME, and the instances are selected either by random (RP) or submodular pick (SP).
 We modify the greedy step in Algorithm [2](#alg2 "Algorithm 2 ‣ 4 Submodular Pick for Explaining Models ‣ “Why Should I Trust You?” Explaining the Predictions of Any Classifier") slightly so it alternates between explanations of the two classifiers. For each setting, we repeat the experiment with 100100100 users.
 
-![Refer to caption](/html/1602.04938/assets/x9.png)
-
+!(/html/1602.04938/assets/x9.png)
 
 Figure 9: Average accuracy of human subject (with standard errors) in choosing between two classifiers.
 
@@ -633,8 +559,7 @@ The results are presented in Figure [9](#S6.F9 "Figure 9 ‣ 6.2 Can users sele
 Note that all of the methods are good at identifying the better classifier, demonstrating that the explanations are useful in determining which classifier to trust, while using test set accuracy would result in the selection of the wrong classifier.
 Further, we see that the submodular pick (SP) greatly improves the user’s ability to select the best classifier when compared to random pick (RP), with LIME outperforming greedy in both cases.
 
-![Refer to caption](/html/1602.04938/assets/x10.png)
-
+!(/html/1602.04938/assets/x10.png)
 
 Figure 10: Feature engineering experiment. Each shaded line represents the average accuracy of subjects in a path starting from one of the initial 101010 subjects. Each solid line represents the average across all paths per round of interaction.
 
@@ -681,13 +606,11 @@ We then ask the subject three questions: (1) Do they trust this algorithm to wor
 and (3) how do they think the algorithm is able to distinguish between these photos of wolves and huskies.
 After getting these responses, we show the same images with the associated explanations, such as in Figure [11b](#S6.F11.sf2 "In Figure 11 ‣ 6.4 Do explanations lead to insights? ‣ 6 Evaluation with human subjects ‣ “Why Should I Trust You?” Explaining the Predictions of Any Classifier"), and ask the same questions.
 
-![Refer to caption](/html/1602.04938/assets/husky.png)
-
+!(/html/1602.04938/assets/husky.png)
 
 (a) Husky classified as wolf
 
-![Refer to caption](/html/1602.04938/assets/exp_husky.png)
-
+!(/html/1602.04938/assets/exp_husky.png)
 
 (b) Explanation
 
@@ -935,83 +858,3 @@ This work was supported in part by ONR awards #W911NF-13-1-0246 and #N00014-13-1
   P. Zhang, J. Wang, A. Farhadi, M. Hebert, and D. Parikh.
   Predicting failures of vision systems.
   In *Computer Vision and Pattern Recognition (CVPR)*, 2014.
-
-[◄](/html/1602.04936)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1602.04938)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1602.04938)
-[View original  
-on arXiv](https://arxiv.org/abs/1602.04938)[►](/html/1602.04939)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 19 19:50:24 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

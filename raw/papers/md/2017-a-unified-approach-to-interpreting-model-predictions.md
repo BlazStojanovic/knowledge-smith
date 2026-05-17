@@ -11,49 +11,6 @@ url: http://arxiv.org/abs/1705.07874v2
 year: 2017
 ---
 
-[1705.07874] A Unified Approach to Interpreting Model Predictions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # A Unified Approach to Interpreting Model Predictions
 
 Scott M. Lundberg
@@ -238,8 +195,7 @@ The exact computation of SHAP values is challenging. However, by combining insig
 | --- | --- | --- | --- | --- | --- |
 |  |  | ≈f​([zS,E​[zS¯]]).absent𝑓subscript𝑧𝑆𝐸delimited-[]subscript𝑧¯𝑆\displaystyle\approx f([z\_{S},E[z\_{\bar{S}}]]). | assume model linearity |  | (12) |
 
-![Refer to caption](/html/1705.07874/assets/x1.png)
-
+!(/html/1705.07874/assets/x1.png)
 
 Figure 1: SHAP (SHapley Additive exPlanation) values attribute to each feature the change in the expected model prediction when conditioning on that feature. They explain how to get from the base value E​[f​(z)]𝐸delimited-[]𝑓𝑧E[f(z)] that would be predicted if we did not know any features to the current output f​(x)𝑓𝑥f(x). This diagram shows a single ordering. When the model is non-linear or the input features are not independent, however, the order in which features are added to the expectation matters, and the SHAP values arise from averaging the ϕisubscriptitalic-ϕ𝑖\phi\_{i} values across all possible orderings.
 
@@ -299,8 +255,7 @@ Since linear regression using Theorem [2](#Thmtheorem2 "Theorem 2 (Shapley kerne
 
 Using a permutation formulation of Shapley values, we can calculate the probability that each input will increase the maximum value over every other input. Doing this on a sorted order of input values lets us compute the Shapley values of a max function with M𝑀M inputs in O​(M2)𝑂superscript𝑀2O(M^{2}) time instead of O​(M​2M)𝑂𝑀superscript2𝑀O(M2^{M}). See Supplementary Material for the full algorithm.
 
-![Refer to caption](/html/1705.07874/assets/x2.png)
-
+!(/html/1705.07874/assets/x2.png)
 
 Figure 2: (A) The Shapley kernel weighting is symmetric when all possible z′superscript𝑧′z^{\prime} vectors are ordered by cardinality there are 215superscript2152^{15} vectors in this example. This is distinctly different from previous heuristically chosen kernels. (B) Compositional models such as deep neural networks are comprised of many simple components. Given analytic solutions for the Shapley values of the components, fast approximations for the full model can be made using DeepLIFT’s style of back-propagation.
 
@@ -335,8 +290,7 @@ We evaluated the benefits of SHAP values using the Kernel SHAP and Deep SHAP app
 
 Theorem [2](#Thmtheorem2 "Theorem 2 (Shapley kernel) ‣ Kernel SHAP (Linear LIME + Shapley values) ‣ 4.1 Model-Agnostic Approximations ‣ 4 SHAP (SHapley Additive exPlanation) Values ‣ A Unified Approach to Interpreting Model Predictions") connects Shapley values from game theory with weighted linear regression. Kernal SHAP uses this connection to compute feature importance. This leads to more accurate estimates with fewer evaluations of the original model than previous sampling-based estimates of Equation [8](#S3.E8 "In Theorem 1 ‣ 3 Simple Properties Uniquely Determine Additive Feature Attributions ‣ A Unified Approach to Interpreting Model Predictions"), particularly when regularization is added to the linear model (Figure [3](#S5.F3 "Figure 3 ‣ 5.1 Computational Efficiency ‣ 5 Computational and User Study Experiments ‣ A Unified Approach to Interpreting Model Predictions")). Comparing Shapley sampling, SHAP, and LIME on both dense and sparse decision tree models illustrates both the improved sample efficiency of Kernel SHAP and that values from LIME can differ significantly from SHAP values that satisfy local accuracy and consistency.
 
-![Refer to caption](/html/1705.07874/assets/x3.png)
-
+!(/html/1705.07874/assets/x3.png)
 
 Figure 3: Comparison of three additive feature attribution methods: Kernel SHAP (using a debiased lasso), Shapley sampling values, and LIME (using the open source implementation). Feature importance estimates are shown for one feature in two models as the number of evaluations of the original model function increases. The 10th and 90th percentiles are shown for 200 replicate estimates at each sample size. (A) A decision tree model using all 10 input features is explained for a single input. (B) A decision tree using only 3 of 100 input features is explained for a single input.
 
@@ -346,8 +300,7 @@ Theorem [1](#Thmtheorem1 "Theorem 1 ‣ 3 Simple Properties Uniquely Determine A
 
 We compared LIME, DeepLIFT, and SHAP with human explanations for two settings. The first setting used a sickness score that was higher when only one of two symptoms was present (Figure [4](#S5.F4 "Figure 4 ‣ 5.2 Consistency with Human Intuition ‣ 5 Computational and User Study Experiments ‣ A Unified Approach to Interpreting Model Predictions")A). The second used a max allocation problem to which DeepLIFT can be applied. Participants were told a short story about how three men made money based on the maximum score any of them achieved (Figure [4](#S5.F4 "Figure 4 ‣ 5.2 Consistency with Human Intuition ‣ 5 Computational and User Study Experiments ‣ A Unified Approach to Interpreting Model Predictions")B). In both cases, participants were asked to assign credit for the output (the sickness score or money won) among the inputs (i.e., symptoms or players). We found a much stronger agreement between human explanations and SHAP than with other methods. SHAP’s improved performance for max functions addresses the open problem of max pooling functions in DeepLIFT [[7](#bib.bibx7)].
 
-![Refer to caption](/html/1705.07874/assets/x4.png)
-
+!(/html/1705.07874/assets/x4.png)
 
 Figure 4: Human feature impact estimates are shown as the most common explanation given among 30 (A) and 52 (B) random individuals, respectively. (A) Feature attributions for a model output value (sickness score) of 222. The model output is 222 when fever and cough are both present, 555 when only one of fever or cough is present, and 00 otherwise. (B) Attributions of profit among three men, given according to the maximum number of questions any man got right. The first man got 5 questions right, the second 4 questions, and the third got none right, so the profit is $5.
 
@@ -355,8 +308,7 @@ Figure 4: Human feature impact estimates are shown as the most common explanatio
 
 As discussed in Section [4.2](#S4.SS2 "4.2 Model-Specific Approximations ‣ 4 SHAP (SHapley Additive exPlanation) Values ‣ A Unified Approach to Interpreting Model Predictions"), DeepLIFT’s compositional approach suggests a compositional approximation of SHAP values (Deep SHAP). These insights, in turn, improve DeepLIFT, and a new version includes updates to better match Shapley values [[7](#bib.bibx7)]. Figure [5](#S5.F5 "Figure 5 ‣ 5.3 Explaining Class Differences ‣ 5 Computational and User Study Experiments ‣ A Unified Approach to Interpreting Model Predictions") extends DeepLIFT’s convolutional network example to highlight the increased performance of estimates that are closer to SHAP values. The pre-trained model and Figure [5](#S5.F5 "Figure 5 ‣ 5.3 Explaining Class Differences ‣ 5 Computational and User Study Experiments ‣ A Unified Approach to Interpreting Model Predictions") example are the same as those used in [[7](#bib.bibx7)], with inputs normalized between 0 and 1. Two convolution layers and 2 dense layers are followed by a 10-way softmax output layer. Both DeepLIFT versions explain a normalized version of the linear layer, while SHAP (computed using Kernel SHAP) and LIME explain the model’s output. SHAP and LIME were both run with 50k samples (Supplementary Figure 1); to improve performance, LIME was modified to use single pixel segmentation over the digit pixels. To match [[7](#bib.bibx7)], we masked 20% of the pixels chosen to switch the predicted class from 8 to 3 according to the feature attribution given by each method.
 
-![Refer to caption](/html/1705.07874/assets/x5.png)
-
+!(/html/1705.07874/assets/x5.png)
 
 Figure 5: Explaining the output of a convolutional network trained on the MNIST digit dataset. Orig. DeepLIFT has no explicit Shapley approximations, while New DeepLIFT seeks to better approximate Shapley values. (A) Red areas increase the probability of that class, and blue areas decrease the probability. Masked removes pixels in order to go from 8 to 3. (B) The change in log odds when masking over 20 random images supports the use of better estimates of SHAP values.
 
@@ -419,83 +371,3 @@ This work was supported by a National Science Foundation (NSF) DBI-135589, NSF C
   “Monotonic solutions of cooperative games”
   In *International Journal of Game Theory* 14.2
   Springer, 1985, pp. 65–72
-
-[◄](/html/1705.07873)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1705.07874)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1705.07874)
-[View original  
-on arXiv](https://arxiv.org/abs/1705.07874)[►](/html/1705.07875)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 12:00:49 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

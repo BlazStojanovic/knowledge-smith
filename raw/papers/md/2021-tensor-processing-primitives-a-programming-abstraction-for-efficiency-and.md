@@ -29,51 +29,6 @@ url: https://arxiv.org/abs/2104.05755
 year: 2021
 ---
 
-[2104.05755] Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\UseRawInputEncoding
-
 # Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads
 
 Evangelos Georganas∗, Dhiraj Kalamkar∗, Sasikanth Avancha∗, Menachem Adelman∗, Deepti Aggarwal∗, Cristina Anderson∗, Alexander Breuer#, Jeremy Bruestle∗, Narendra Chaudhary∗, Abhisek Kundu∗, Denise Kutnick∗, Frank Laub∗, Vasimuddin Md∗, Sanchit Misra∗, Ramanarayan Mohanty∗, Hans Pabst∗, Brian Retford∗, Barukh Ziv∗, Alexander Heinecke∗
@@ -102,8 +57,7 @@ In this work we introduce the Tensor Processing Primitives (TPP), a programming 
 
 While the TPP specification is agnostic of the targeted framework/platform/compiler stack, its implementation is platform specific, and is optimized for the target architectures. This subtle detail offers a clear separation of concerns: the user-entity of TPPs, either a developer or a compiler framework, can focus on expressing the desired algorithm and its execution schedule (e.g. parallelization, loop orders) using the TPP tensor abstraction, whereas the efficient, platform-specific code generation pertaining to the TPP operations belongs to the TPP back-end. To this extent, TPPs could be also viewed as a “virtual Tensor ISA” that abstracts the actual physical ISA of the target (e.g. SSE, AVX2, AVX512, AMX for x86, AArch64 and ARMv8 SVE , xPU).
 
-![Refer to caption](/html/2104.05755/assets/x1.png)
-
+!(/html/2104.05755/assets/x1.png)
 
 Figure 1. Use-cases of TPPs in various software stacks.
 
@@ -188,8 +142,6 @@ Each TPP also supports input tensors with *broadcast* semantics. More specifical
 
 Table 1. Unary TPPs
 
-
-
 | Binary TPP | Description/Comments |
 | --- | --- |
 | Add | Add two inputs |
@@ -202,8 +154,6 @@ Table 1. Unary TPPs
 | Compare | Compares element-wise two inputs and stores a bitmask of the comparison |
 
 Table 2. Binary TPPs
-
-
 
 | Ternary TPP | Description/Comments |
 | --- | --- |
@@ -326,8 +276,7 @@ subscript𝑖𝑚subscript𝑖𝑛←store\_generic\text{subblock}\_{i\_{m},i\_{
 
 Algorithm 2  The batch-reduce GEMM TPP
 
-![Refer to caption](/html/2104.05755/assets/x2.png)
-
+!(/html/2104.05755/assets/x2.png)
 
 Figure 2. Outer product GEMM microkernels, *Left*: On a platform with 32 vector registers, *Middle*: On a platform with 16 vector registers, *Right*: On a platform with 8 2D registers (tiles).
 
@@ -347,15 +296,13 @@ These considerably different GEMM microkernel variants highlight yet another asp
 
 While the previous section presents the general structure of mapping matrix multiplication to various physical ISAs, this paragraph is used to demonstrate how the idea of a virtual ISA allows to implement operations efficiently which are not natively supported by a specific physical ISA. The example we are choosing here is our GEMM kernel and its support for bfloat16 and int8 on architectures which don’t support these novel ISA SIMD-extension.
 
-![Refer to caption](/html/2104.05755/assets/x3.png)
-
+!(/html/2104.05755/assets/x3.png)
 
 Figure 3. Mixed-precision dot-product instructions, *Left*: 16 bit integer and bfloat16 on Intel AVX512, *Middle*: 8bit integer using Intel AVX512, *Right*: 8 bit integer using ARM ASIMD.
 
 Before going into the details of the emulation, we first need to introduce special memory layouts which are used by x86 and aarch64 mixed-precision dot-product instructions as shown in Figure [3](#S3.F3 "Figure 3 ‣ 3.2.2. Mixed Precision BRGEMM and its emulation ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads"). As we can see in all cases (x86/aarch64 and bf16/int8), the overall concept is identical: Although doing mixed-precision and mixed-datatype-length computations, these instructions are functioning from a matrix multiplication point-of-view similar to 32 bit instructions. This is achieved by having an implicit 2-wide (BF16/int16) and 4-wide (int8) dot-product of Aisubscript𝐴𝑖A\_{i} and Bisubscript𝐵𝑖B\_{i} values leading to a horizontal summation per single 32 bit Cisubscript𝐶𝑖C\_{i}, e.g. C0=A0⋅B0+A1⋅B1+A2⋅B2+A3⋅B3+C0subscript𝐶0⋅subscript𝐴0subscript𝐵0⋅subscript𝐴1subscript𝐵1⋅subscript𝐴2subscript𝐵2⋅subscript𝐴3subscript𝐵3subscript𝐶0C\_{0}=A\_{0}\cdot B\_{0}+A\_{1}\cdot B\_{1}+A\_{2}\cdot B\_{2}+A\_{3}\cdot B\_{3}+C\_{0} as shown for the int8 variant. If we apply blockings with these instructions as discussed in Figure [2](#S3.F2 "Figure 2 ‣ 3.2.1. The BRGEMM kernel structure ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Left and Figure [2](#S3.F2 "Figure 2 ‣ 3.2.1. The BRGEMM kernel structure ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Middle, then we realize that matrix B𝐵B is still read via 32-bit broadcast (containing 2 16-bit or 4 8-bit values along the inner-product or common dimension). However, matrix A𝐴A is in need of reformatting. This is due to the fact that the GEMM kernel in Figure [2](#S3.F2 "Figure 2 ‣ 3.2.1. The BRGEMM kernel structure ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Left and Figure [2](#S3.F2 "Figure 2 ‣ 3.2.1. The BRGEMM kernel structure ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Middle requires full SIMD-width contiguous loads for optimal performance (which is along M𝑀M and not K𝐾K). Therefore, we need to reformat A𝐴A into [Ko]​[M]​[Ki]delimited-[]superscript𝐾𝑜delimited-[]𝑀delimited-[]superscript𝐾𝑖[K^{o}][M][K^{i}] with Ko⋅Ki=K⋅superscript𝐾𝑜superscript𝐾𝑖𝐾K^{o}\cdot K^{i}=K and Ki=2superscript𝐾𝑖2K^{i}=2 for 16-bit and Ko=4superscript𝐾𝑜4K^{o}=4 for 8-bit inputs. We refer to such a format as *VNNI-format* throughout this paper. After such reformatting of A𝐴A, we can perform full SIMD loads on A𝐴A; combined with the 32-bit broadcast loads on B𝐵B we have a 32-bit GEMM kernel which has a shorter K𝐾K dimension, 2×\times for 16-bit datatypes and 4×\times for 8-bit datatypes.
 
-![Refer to caption](/html/2104.05755/assets/x4.png)
-
+!(/html/2104.05755/assets/x4.png)
 
 Figure 4. Emulation of a bit accurate GEMM kernel using AVX512F instructions matching a GEMM kernel as depicted in Figure [2](#S3.F2 "Figure 2 ‣ 3.2.1. The BRGEMM kernel structure ‣ 3.2. The BRGEMM TPP Implementation ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads") using vdpbf16ps AVX512 instructions. The glossary contains detailed descriptions of the used intrinsic functions.
 
@@ -369,13 +316,11 @@ The previous sections covered most of the TPP implementations: straightforward e
 
 #### 3.3.1. Transform-Transpose TPP via Shuffle Networks
 
-![Refer to caption](/html/2104.05755/assets/x5.png)
-
+!(/html/2104.05755/assets/x5.png)
 
 Figure 5. Sketch of a shuffle network for a 32-bit transpose of a 16×\times16 matrix using Intel AVX512 instructions. Via 4 stages (each one having 16 independent shuffles that double in width per stage), the 16×\times16 matrix (256 elements) can be transposed with only 64 instructions and fully leverages the 32 architectural registers.
 
-![Refer to caption](/html/2104.05755/assets/x6.png)
-
+!(/html/2104.05755/assets/x6.png)
 
 Figure 6. Comparison of X86 and ARM code for a simple 4×\times4 single precision transpose using unpack instructions. The glossary contains detailed descriptions of the used intrinsic functions.
 
@@ -394,8 +339,7 @@ In this section we will discuss different approximation techniques based on Pad�
 
 Rational Padé polynomials
 
-![Refer to caption](/html/2104.05755/assets/x7.png)
-
+!(/html/2104.05755/assets/x7.png)
 
 Figure 7. Rational Padé 7/8 tanh approximation pseudocode with equivalent intrinsics on x86 and Arm/AArch64. We highlight here how the FMADD instruction on x86 ISAs has an equivalent instruction sequence on AArch64.
 
@@ -428,8 +372,7 @@ As an example we consider the approximation of the tanh function which has two a
 
 Piecewise minimax polynomial approximations
 
-![Refer to caption](/html/2104.05755/assets/x8.png)
-
+!(/html/2104.05755/assets/x8.png)
 
 Figure 8. Tanh minimax approximation pseudocode with equivalent intrinsics on x86 and Arm/AArch64. We highlight here how the \_mm512\_range\_ps instruction on x86 ISAs has an equivalent instruction sequence on AArch64. Also the permutes on x86 have equivalent Table lookup instructions on AArch64.
 
@@ -441,20 +384,17 @@ In this section we discuss the minimax polynomials approach ([powell1981approxi
 
 We approximate tanh and GELU activation functions using this approach in our TPP implementation. The input range is divided into 16 intervals and for each interval we investigate a polynomial p𝑝p of 3r​dsuperscript3𝑟𝑑3^{rd} degree (i.e. we find appropriate p𝑝p’s coefficients c0, c1, c2 based on the minimized absolute maximum difference of f𝑓f and p𝑝p). Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads") shows the x86 and arm implementation of evaluating such minimax polynomials. The register index (idx) is calculated using the exponent and MSB of the respective input values, and represents the 16 intervals where the input values are located. The range intrinsic \_mm512\_range\_ps(A,B) is used to generate the register index (idx) on AVX512 platforms (Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Left, line 2). In ARM, the range functionality is emulated with equivalent and, shlq, min and max instructions as shown in Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Right, lines 2-4. To evaluate the 3r​dsuperscript3𝑟𝑑3^{rd} degree polynomial we need to locate 3 coefficients (c0,c1,c2) based on the values at the register index (idx), which holds 16 entries. We use 3 look up operations to find the three coefficients, each involving 16 FP32 entries. The 512-bit register length in AVX512 is sufficient to hold 16 coefficients required for each look up, resulting in using 3 registers for 3 look up operations (see Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Left, lines 4-6). Each ARM 128-bit wide vector register can only hold 4 FP32 entries, subsequently we are using 12 vector registers to hold the 16 entries for all 3 coefficients of the polynomial. The in-register look-up table is performed using \_mm512\_permutexvar\_ps(A,B) instructions in x86 AVX512 as shown in Figure [10](#S3.F10 "Figure 10 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads"). In ARM we have byte addressable table look up instructions which are analogous to 32-bit addressable permutes instructions in x86. Hence, we need to convert the 32-bit addressable (0-16) register indexes to byte addressable (0-64 bytes) indexes. In order to do that, we use a constant register A with a table look up instruction to duplicate the register index (idx) to each byte in the 32-bit entry. A constant offset (0,1,2,3) is added to the duplicated byte index to get the byte addressable index for each FP32 entry in 16 FP32 entries (Figure [8](#S3.F8 "Figure 8 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Right, lines 7-9). The table look up instruction in ARM provides the 64 byte look up capability, which is sufficient enough to search into 4 registers holding the 16 entries of each coefficient; we are using the generated byte indexes as shown in Figure [9](#S3.F9 "Figure 9 ‣ 3.3.2. Approximations for non-linear TPP Activation Functions ‣ 3.3. Examples of Non-Trivial Non-GEMM TPPs ‣ 3. TPP Implementation ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads"). Finally, 4 FMA operations are used to evaluate the polynomial using Horner’s rule. The FMA instruction in x86 provides the user the flexibility to decide among the sources to destroy and the ones to preserve. ARM requires mov instructions to save intermediate results in order to avoid the data overwriting during FMA operations.
 
-![Refer to caption](/html/2104.05755/assets/x9.png)
-
+!(/html/2104.05755/assets/x9.png)
 
 Figure 9. Byte addressable Table look up setup in ARM/AArch64. We highlight the conversion of 32bit indexes to byte indexes and the use of byte indexes to get the coefficients in 16 FP32 intervals.
 
-![Refer to caption](/html/2104.05755/assets/x10.png)
-
+!(/html/2104.05755/assets/x10.png)
 
 Figure 10. 32Bit Addressable Table look up setup on x86 AVX512 platforms.
 
 Approximation with Taylor series
 
-![Refer to caption](/html/2104.05755/assets/x11.png)
-
+!(/html/2104.05755/assets/x11.png)
 
 Figure 11. Pseudocode for exsuperscript𝑒𝑥e^{x} approximation with Taylor series on AVX512 x86 and ARM.
 
@@ -468,8 +408,7 @@ In order to increase the productivity, efficiency and expressiveness pertaining 
 
 ### 4.1. Definitions and notations for TPP Matrix Equations
 
-![Refer to caption](/html/2104.05755/assets/x12.png)
-
+!(/html/2104.05755/assets/x12.png)
 
 Figure 12. Left: TPP Equation tree for O​u​t=T​a​n​h​(T0)+(T1×T2)/(T3−T4)𝑂𝑢𝑡𝑇𝑎𝑛ℎsubscript𝑇0subscript𝑇1subscript𝑇2subscript𝑇3subscript𝑇4Out=Tanh(T\_{0})+(T\_{1}\times T\_{2})/(T\_{3}-T\_{4}). Right: Assigned register scores v𝑣v on the equation TPP nodes after running Algorithm [3](#alg3 "Algorithm 3 ‣ 4.2. Optimized Execution plan for TPP Matrix Equations ‣ 4. TPP Matrix Equations ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads").
 
@@ -557,8 +496,7 @@ This algorithm optimizes the number of temporary tensors/storage that are requir
 
 Algorithm 3  Assign\_Register\_Score( r𝑟r )
 
-![Refer to caption](/html/2104.05755/assets/x13.png)
-
+!(/html/2104.05755/assets/x13.png)
 
 Figure 13. Left: TPP equation tree with assigned register scores v𝑣v on the nodes. Right: TPP equation tree with assigned traversal timestamps t𝑡t and temporary tensor ids t​m​p𝑡𝑚𝑝tmp after executing Algorithm [4](#alg4 "Algorithm 4 ‣ 4.3. Implementation of Optimized Execution plan for TPP Matrix Equations ‣ 4. TPP Matrix Equations ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads").
 
@@ -696,8 +634,7 @@ This section covers how DL kernels and workloads (image processing, recommendati
 
 #### 5.1.1. Softmax Kernel
 
-![Refer to caption](/html/2104.05755/assets/x14.png)
-
+!(/html/2104.05755/assets/x14.png)
 
 Figure 14. Softmax operator by combining TPPs.
 
@@ -719,8 +656,7 @@ Depending upon the workload, different TPPs and TPP equations can be employed to
 
 superscript𝑚′superscript𝑣′𝐺𝐵m^{\prime},v^{\prime},G,B vectors into H𝐻H, W𝑊W, and N𝑁N dimensions inside the TPP equation tree. An efficient implementation of batchnorm uses blocking on the C𝐶C, H𝐻H, and W𝑊W dimensions along with multi-threading on the N𝑁N and feature block dimension. We do not show the details of this implementation for sake of simplicity.
 
-![Refer to caption](/html/2104.05755/assets/x15.png)
-
+!(/html/2104.05755/assets/x15.png)
 
 Figure 15. Layernorm via TPPs.
 
@@ -734,8 +670,7 @@ superscript𝑚′superscript𝑣′𝐺𝐵m^{\prime},v^{\prime},G,B vectors in
 
 #### 5.1.3. BF16 Split-SGD Kernel
 
-![Refer to caption](/html/2104.05755/assets/x16.png)
-
+!(/html/2104.05755/assets/x16.png)
 
 Figure 16. BF16 Split-SGD operator by combining TPPs.
 
@@ -790,8 +725,7 @@ Convolutional Neural Networks (CNN) consist of layers with multiple neurons conn
 
 Algorithm 5  Sparse Gather-Reduce operation
 
-![Refer to caption](/html/2104.05755/assets/x17.png)
-
+!(/html/2104.05755/assets/x17.png)
 
 Figure 17. Sparse Embedding Lookups via TPPs
 
@@ -869,8 +803,7 @@ The *SelfAttention* layer in turn can be formulated as a bunch of Matrix / batch
 
 #### 5.2.4. Emerging AI - Graph Neural Networks
 
-![Refer to caption](/html/2104.05755/assets/x18.png)
-
+!(/html/2104.05755/assets/x18.png)
 
 Figure 18. Binary-Reduce aggregation kernel via TPPs
 
@@ -886,13 +819,11 @@ We use a variety of platforms that span different ISAs, different vendors and mi
 
 ### 6.1. Performance of standalone DL kernels
 
-![Refer to caption](/html/2104.05755/assets/x19.png)
-
+!(/html/2104.05755/assets/x19.png)
 
 Figure 19. TPP kernels on CLX
 
-![Refer to caption](/html/2104.05755/assets/x20.png)
-
+!(/html/2104.05755/assets/x20.png)
 
 Figure 20. TPP kernels on ROME
 
@@ -906,8 +837,7 @@ Figure [20](#S6.F20 "Figure 20 ‣ 6.1. Performance of standalone DL kernels �
 
 Figure [19](#S6.F19 "Figure 19 ‣ 6.1. Performance of standalone DL kernels ‣ 6. Experimental Results of DL kernels & Workloads ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Bottom shows the performance of the BF16 split-SGD operator on CLX. This use-case represents a novel, mixed-precision operator where the compiler (even with compile-time constant tensor sizes) struggles to yield good performance; the TPP-based code has geo-mean speedup of 38×38\times over the compiler generated code.
 
-![Refer to caption](/html/2104.05755/assets/x21.png)
-
+!(/html/2104.05755/assets/x21.png)
 
 Figure 21. Convolutions via BRGEMM TPP
 
@@ -918,8 +848,7 @@ Previous work ([georganas2020harnessing,](#bib.bib21) ) also showed on an x86 T
 
 #### 6.2.1. 1D Dilated Convolutions and their application to Computational Biology
 
-![Refer to caption](/html/2104.05755/assets/x22.png)
-
+!(/html/2104.05755/assets/x22.png)
 
 Figure 22. 1D Dilated Convolutions
 
@@ -927,13 +856,11 @@ Here we evaluate the oneDNN ([onednn,](#bib.bib13) ) and TPP-based 1D dilated c
 
 #### 6.2.2. Deep Learning Recommendation - DLRM
 
-![Refer to caption](/html/2104.05755/assets/x23.png)
-
+!(/html/2104.05755/assets/x23.png)
 
 Figure 23. DLRM performance on a small config (blue bars) and on the MLPerf config (orange bars)
 
-![Refer to caption](/html/2104.05755/assets/x24.png)
-
+!(/html/2104.05755/assets/x24.png)
 
 Figure 24. DLRM performance breakdown of small config on multiple platforms
 
@@ -945,8 +872,7 @@ Figure [24](#S6.F24 "Figure 24 ‣ 6.2.2. Deep Learning Recommendation - DLRM �
 
 #### 6.2.3. Natural Language Processing - BERT Large
 
-![Refer to caption](/html/2104.05755/assets/x25.png)
-
+!(/html/2104.05755/assets/x25.png)
 
 Figure 25. BERT Large performance
 
@@ -954,8 +880,7 @@ Figure [25](#S6.F25 "Figure 25 ‣ 6.2.3. Natural Language Processing - BERT La
 
 Figure [25](#S6.F25 "Figure 25 ‣ 6.2.3. Natural Language Processing - BERT Large ‣ 6.2. Performance of end-to-end DL workloads ‣ 6. Experimental Results of DL kernels & Workloads ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Bottom shows the performance of the reference Hugging Faces code (green bars) versus the TPP-based code (blue bars) across multiple platforms (x86 and AArch64/Graviton2) and compute precisions (FP32 for all platforms, and BF16 for the CPX platform). The TPP-based BERT shows speedups ranging from 1.5×\times to 8.5×\times over the Hugging Faces code. This result highlights the performance portability through the TPP abstractions. In regard to various compute precisions, we note that with minimal changes inside the fused operators to handle the VNNI tensor layout (required for BF16 GEMM/BRGEMM), and a couple of lines changes in the application code to enable BF16 training, we were able to realize 2×\times speed up using BF16 training on CPX (compared to FP32 training on CPX) with 28 cores, surpassing 40-core FP32-ICX performance by 37%.
 
-![Refer to caption](/html/2104.05755/assets/x26.png)
-
+!(/html/2104.05755/assets/x26.png)
 
 Figure 26. BERT Large performance breakdown on multiple platforms.
 
@@ -974,8 +899,7 @@ In order shed light on where the benefits are coming from, we present in Figure�
 
    *Others* capturing the remaining operators: Transpose, Layer-norm, softmax, bias addition, vnni-reformatting (in case of BF16 training), copy, add, scale, zero-kernel, reduce, optimizer. Note that all these operators map to either unary/binary/ternary TPPs (see section [2](#S2 "2. The TPP Specification ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")) or the can be expressed via Matrix Equation TPPs (see section [5](#S5 "5. TPP-based Kernels & Workloads ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")).
 
-![Refer to caption](/html/2104.05755/assets/x27.png)
-
+!(/html/2104.05755/assets/x27.png)
 
 Figure 27. BERT GEMM/tensor contraction efficiencies via the BRGEMM-TPP on multiple platforms.
 
@@ -985,8 +909,7 @@ The second conclusion we can draw from the performance breakdown in Figure [26]
 
 #### 6.2.4. Emerging AI - Graph Neural Networks
 
-![Refer to caption](/html/2104.05755/assets/x28.png)
-
+!(/html/2104.05755/assets/x28.png)
 
 Figure 28. GNN performance of GaphSAGE Full-batch training for OGB-Products
 
@@ -994,8 +917,7 @@ Figure [28](#S6.F28 "Figure 28 ‣ 6.2.4. Emerging AI - Graph Neural Networks �
 
 Figure [28](#S6.F28 "Figure 28 ‣ 6.2.4. Emerging AI - Graph Neural Networks ‣ 6.2. Performance of end-to-end DL workloads ‣ 6. Experimental Results of DL kernels & Workloads ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads")-Bottom shows the performance of the TPP-based code across multiple platforms (x86 and Arm AArch64) and compute precisions (FP32 and BF16). The relative differences in the performance can be justified by the different compute/bandwidth specs of the benchmarked platforms. We highlight that with minimal changes in the MLP portion to handle VNNI layout required for BF16 BRGEMM, and a couple of lines changes in the application code to enable BF16 training, we were able to realize 1.94×\times speed up using BF16 training on CPX with 28 cores compared to the FP32 training on the same platform.
 
-![Refer to caption](/html/2104.05755/assets/x29.png)
-
+!(/html/2104.05755/assets/x29.png)
 
 Figure 29. GNN performance breakdown of GaphSAGE Full-batch training for OGB-Products
 
@@ -1005,8 +927,7 @@ The last 8 bars on Figure [29](#S6.F29 "Figure 29 ‣ 6.2.4. Emerging AI - Grap
 
 ### 6.3. Distributed-memory scaling of DL workloads
 
-![Refer to caption](/html/2104.05755/assets/x30.png)
-
+!(/html/2104.05755/assets/x30.png)
 
 Figure 30. Distributed-memory scaling of workloads
 
@@ -1014,8 +935,7 @@ Even though we focused on the evaluation of the TPP-based workloads on a single 
 
 ## 7. TPP within MLIR and a Tensor Compiler
 
-![Refer to caption](/html/2104.05755/assets/x31.png)
-
+!(/html/2104.05755/assets/x31.png)
 
 Figure 31. Example lowering paths within the PlaidML Tensor compiler in order to achieve full network optimization from popular frameworks. The green boxes represent the DL frameworks, the blue boxes correspond to MLIR dialects, the brown box shows the TPP-MLIR dialect within the stack, and the purple box represents the targeted platforms.
 
@@ -1023,8 +943,7 @@ In order to illustrate the viability of TPPs as a virtual Tensor ISA within MLIR
 
 The current lowering path through MLIR supports a variety of front-end interfaces with LinAlg or Tile as the lowest level common entry points, i.e. the lowest level of abstraction that inbound programs can be specified in such that they will be subject to the full range of optimizations necessary to achieve full performance. Figure [31](#S7.F31 "Figure 31 ‣ 7. TPP within MLIR and a Tensor Compiler ‣ Tensor Processing Primitives: A Programming Abstraction for Efficiency and Portability in Deep Learning & HPC Workloads") details the lowering paths currently implemented in PlaidML and where key transforms map tensor operations into the TPP dialect. The key transformation is located in the stencil pass of the PXA dialect (Parallel eXtensions for Affine - a staging ground for PlaidML/TPP work that will be proposed upstream to the affine dialect). Operations that cannot be matched to TPP primitives are lowered through standard affine optimization pipelines.
 
-![Refer to caption](/html/2104.05755/assets/x32.png)
-
+!(/html/2104.05755/assets/x32.png)
 
 Figure 32. FP32 inference with PlaidML on various workloads: ResNet-152, ResNext-50, and I3D-Kinetics-400.
 
@@ -1709,83 +1628,3 @@ performance of that product when combined with other products.
 For more information go to http://www.intel.com/performance.
 
 Intel, Xeon, and Intel Xeon Phi are trademarks of Intel Corporation in the U.S. and/or other
-
-[◄](/html/2104.05754)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2104.05755)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2104.05755)
-[View original  
-on arXiv](https://arxiv.org/abs/2104.05755)[►](/html/2104.05756)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 8 00:15:11 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

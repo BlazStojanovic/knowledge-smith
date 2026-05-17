@@ -14,49 +14,6 @@ url: http://arxiv.org/abs/1706.09516v5
 year: 2017
 ---
 
-[1706.09516] CatBoost: unbiased boosting with categorical features
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # CatBoost: unbiased boosting with categorical features
 
 Liudmila Prokhorenkova1,2, Gleb Gusev1,2, Aleksandr Vorobev1,
@@ -228,13 +185,9 @@ In Sections [3.2](#S3.SS2 "3.2 Target statistics ‣ 3 Categorical features ‣
 
 CatBoost has two boosting modes, Ordered and Plain. The latter mode is the standard GBDT algorithm with inbuilt ordered TS. The former mode presents an efficient modification of Algorithm [1](#algorithm1 "In 5 Practical implementation of ordered boosting ‣ CatBoost: unbiased boosting with categorical features"). A formal description of the algorithm is included in Appendix [B](#A2 "Appendix B Formal description of CatBoost algorithm ‣ CatBoost: unbiased boosting with categorical features"). In this section, we overview the most important implementation details.
 
-![[Uncaptioned image]](/html/1706.09516/assets/x1.png)
-
 Figure 1: Ordered boosting principle,
   
 examples are ordered according to σ𝜎\sigma.
-
-
 
 input :   {(𝐱k,yk)}k=1nsuperscriptsubscriptsubscript𝐱𝑘subscript𝑦𝑘𝑘1𝑛\{(\mathbf{x}\_{k},y\_{k})\}\_{k=1}^{n}, I𝐼I;
 
@@ -440,8 +393,6 @@ Table 4: Comparison of target statistics, relative change in logloss / zero-one 
 | Internet | +33% / +22% | +2.6% / +1.8% | +27% / +19% |
 | Upselling | +57% / +50% | +1.6% / +0.9% | +3.9% / +2.9% |
 | Kick | +22% / +28% | +1.3% / +0.32% | +3.7% / +3.3% |
-
-![[Uncaptioned image]](/html/1706.09516/assets/x2.png)
 
 Figure 2: Relative error of Plain boosting mode compared to Ordered boosting mode depending on the fraction of the dataset.
 
@@ -1002,8 +953,6 @@ bjt←−avg(grad0(i)b\_{j}^{t}\leftarrow-\mathrm{avg}(grad\_{0}(i) for i:leaf0(
 
 Algorithm 3 CatBoost
 
-
-
 [htbp]
   
 
@@ -1390,8 +1339,7 @@ In the second modification, we set σb​o​o​s​t=σc​a​tsubscript𝜎�
 
 To demonstrate the effect of feature combinations, in Figure [3](#A7.F3 "Figure 3 ‣ Feature combinations ‣ Appendix G Experimental results ‣ CatBoost: unbiased boosting with categorical features") we present the relative change in logloss for different numbers cm​a​xsubscript𝑐𝑚𝑎𝑥c\_{max} of features allowed to be combined (compared to cm​a​x=1subscript𝑐𝑚𝑎𝑥1c\_{max}=1, where combinations are absent). In average, changing cm​a​xsubscript𝑐𝑚𝑎𝑥c\_{max} from 1 to 2 provides an outstanding improvement of 1.86%percent1.861.86\% (reaching 11.3%percent11.311.3\%), changing from 1 to 3 yields 2.04%percent2.042.04\%, and further increase of cm​a​xsubscript𝑐𝑚𝑎𝑥c\_{max} does not influences the performance significantly.
 
-![Refer to caption](/html/1706.09516/assets/x3.png)
-
+!(/html/1706.09516/assets/x3.png)
 
 Figure 3: Relative change in logloss for a given allowed complexity compared to the absence of feature combinations.
 
@@ -1399,87 +1347,6 @@ Figure 3: Relative change in logloss for a given allowed complexity compared to 
 
 The effect of the number s𝑠s of permutations on the performance of CatBoost is presented in Figure [4](#A7.F4 "Figure 4 ‣ Number of permutations ‣ Appendix G Experimental results ‣ CatBoost: unbiased boosting with categorical features"). In average, increasing s𝑠s slightly decreases logloss, e.g., by 0.19%percent0.190.19\% for s=3𝑠3s=3 and by 0.38%percent0.380.38\% for s=9𝑠9s=9 compared to s=1𝑠1s=1.
 
-![Refer to caption](/html/1706.09516/assets/x4.png)
-
+!(/html/1706.09516/assets/x4.png)
 
 Figure 4: Relative change in logloss for a given number of permutations s𝑠s compared to s=1𝑠1s=1,
-
-[◄](/html/1706.09515)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1706.09516)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1706.09516)
-[View original  
-on arXiv](https://arxiv.org/abs/1706.09516)[►](/html/1706.09517)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 11 04:59:26 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

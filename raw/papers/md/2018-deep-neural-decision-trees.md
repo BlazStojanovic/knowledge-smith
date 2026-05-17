@@ -14,26 +14,6 @@ year: 2018
 
 [1806.06988] 1 Introduction
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
 else if(!window.matchMedia) { return false; }
 else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
 theme = "dark"; }
@@ -41,7 +21,7 @@ if (theme=="dark") {
 document.documentElement.setAttribute("data-theme", "dark");
 } else {
 document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
+
 function toggleColorScheme(){
 var current\_theme = localStorage.getItem("ar5iv\_theme");
 if (current\_theme) {
@@ -52,8 +32,6 @@ localStorage.setItem("ar5iv\_theme", "light"); } }
 else {
 localStorage.setItem("ar5iv\_theme", "dark"); }
 detectColorScheme(); }
-
-
 
 marginparsep has been altered.
   
@@ -142,13 +120,13 @@ subscript𝑜𝑖1subscript𝑜𝑖subscript𝑜𝑖1o\_{i-1},o\_{i},o\_{i+1}. W
 
 If one prefers an *actual* one-hot vector, Straight-Through (ST) Gumbel-Softmax Jang et al. ([2017](#bib.bib14)) can be applied: for the forward pass, we sample a one-hot vector using Gumbel-Max trick, while for the backward pass, we use Gumbel-Softmax to compute the gradient (see Bengio ([2013](#bib.bib3)) for a more detailed analysis).
 
-![Refer to caption](/html/1806.06988/assets/o0.png)
+!(/html/1806.06988/assets/o0.png)
 
-![Refer to caption](/html/1806.06988/assets/o1.png)
+!(/html/1806.06988/assets/o1.png)
 
-![Refer to caption](/html/1806.06988/assets/o2.png)
+!(/html/1806.06988/assets/o2.png)
 
-![Refer to caption](/html/1806.06988/assets/o3.png)
+!(/html/1806.06988/assets/o3.png)
 
 Figure 1: A concrete example of our soft binning function using cut-points at 0.330.330.33 and 0.660.660.66. x-axis is the value of a continuous input variable x∈[0,1]𝑥01x\in[0,1]. Top-left: the original values of logits; Top-right: values after applying softmax function with τ=1𝜏1\tau=1; Bottom-left: τ=0.1𝜏0.1\tau=0.1; Bottom-right: τ=0.01𝜏0.01\tau=0.01.
 
@@ -172,9 +150,9 @@ With the method described so far we can route input instances to leaf nodes and 
 
 DNDT scales well with number of instances due to neural network style mini-batch training. However a key drawback of the design so far is that, due to the use of Kronecker product, it is not scalable with respect to the number of features. In our current implementation, we avoid this issue with ‘wide’ datasets by training a forest with random subspace Ho ([1998](#bib.bib13)) – at the expense of our interpretibility. That is, introducing multiple trees, each trained on a random subset of features. A better solution that does not require an uninterpretable forest is to exploit the sparsity of the final binning during learning: the number of non-empty leaves grows much slower than the total number of leaves. But this somewhat complicates the otherwise simple implementation of DNDT.
 
-![Refer to caption](/html/1806.06988/assets/x1.png)
+!(/html/1806.06988/assets/x1.png)
 
-![Refer to caption](/html/1806.06988/assets/x2.png)
+!(/html/1806.06988/assets/x2.png)
 
 Figure 2: A learned DNDT for the *Iris* dataset (reduced two-feature version). Top: DNDT-view where red fonts indicate trainable variables, and black indicates constants. Below: DT-view. The same network rendered as a conventional decision tree. The fractions indicate the route of a randomly chosen 666 instances being classified.
 
@@ -245,20 +223,19 @@ In DNDT the number of cut points per feature is the model complexity parameter. 
 In this section, we investigate how many of cut points are *actually* used after DNDT learning. A cut point is active when at least one instance from the dataset falls on each side of it.
 For four datasets, Car Evaluation, Pima, Iris, and Haberman’s, we set the number of cut points per feature from 1 to 5, and calculate the percentage of active cut points, as shown in Fig. [3](#S4.F3 "Figure 3 ‣ 4.4 Analysis of active cut-points ‣ 4 Experiments"). We can see that as the number of cut points increases, their utilisation generally decreases. This implies that DNDT is somewhat self-regularising: it does not make use of all the parameters available to it.
 
-![Refer to caption](/html/1806.06988/assets/x3.png)
-
+!(/html/1806.06988/assets/x3.png)
 
 Figure 3: Percentage (%) of active cut points used by DNDT.
 
 We can further investigate how the number of available cut points affects performance on these datasets. As we can see in Fig. [4](#S4.F4 "Figure 4 ‣ 4.4 Analysis of active cut-points ‣ 4 Experiments"), performance initially increases with more cut points, before stabilising after a certain value. This is reassuring because it means that large DNDTs do not over-fit the training data, even without explicit regularisation.
 
-![Refer to caption](/html/1806.06988/assets/x4.png)
+!(/html/1806.06988/assets/x4.png)
 
-![Refer to caption](/html/1806.06988/assets/x5.png)
+!(/html/1806.06988/assets/x5.png)
 
-![Refer to caption](/html/1806.06988/assets/x6.png)
+!(/html/1806.06988/assets/x6.png)
 
-![Refer to caption](/html/1806.06988/assets/x7.png)
+!(/html/1806.06988/assets/x7.png)
 
 Figure 4: Test accuracy of DNDT for increasing number of cut points (model complexity).
 
@@ -281,13 +258,13 @@ Table 3: Percentage (%) of times that DNDT ignores each feature.
 
 Using the techniques developed in Sec. [4.5](#S4.SS5 "4.5 Analysis of active features ‣ 4 Experiments"), we investigate whether DNDT and DT favour similar features. We compare the the feature importance through Gini used in decision tree (Fig. [5](#S4.F5 "Figure 5 ‣ 4.6 Comparison to decision tree ‣ 4 Experiments")) with our selection rate metric (Table [3](#S4.T3 "Table 3 ‣ 4.5 Analysis of active features ‣ 4 Experiments")).
 
-![Refer to caption](/html/1806.06988/assets/x8.png)
+!(/html/1806.06988/assets/x8.png)
 
-![Refer to caption](/html/1806.06988/assets/x9.png)
+!(/html/1806.06988/assets/x9.png)
 
-![Refer to caption](/html/1806.06988/assets/x10.png)
+!(/html/1806.06988/assets/x10.png)
 
-![Refer to caption](/html/1806.06988/assets/x11.png)
+!(/html/1806.06988/assets/x11.png)
 
 Figure 5: Feature importance ranking produced by DT (Gini).
 
@@ -306,8 +283,7 @@ Table 4: Kendall’s Tau of DNDT’s and DT’s feature ranking: larger values m
 
 Finally we verify the ease of accelerating DNDT learning of DTs by GPU processing – a capability not common or straightforward for conventional DT learners. By increasing the number of cut points for each feature, we can get larger models, for which GPU mode has significantly shorter running time (see Fig. [6](#S4.F6 "Figure 6 ‣ 4.7 GPU Acceleration ‣ 4 Experiments")).
 
-![Refer to caption](/html/1806.06988/assets/x12.png)
-
+!(/html/1806.06988/assets/x12.png)
 
 Figure 6: GPU Acceleration illustration: DNDT training time on 3.6GHz CPU vs GTX Titian GPU. Average over 5 runs.
 
@@ -484,83 +460,3 @@ Acknowledgements This work was supported by the EPSRC grant EP/R026173/1.
   Xiong, Zheng, Zhang, Wenpeng, and Zhu, Wenwu.
   Learning decision trees with reinforcement learning.
   In *NIPS Workshop on Meta-Learning*, 2017.
-
-[◄](/html/1806.06987)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1806.06988)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1806.06988)
-[View original  
-on arXiv](https://arxiv.org/abs/1806.06988)[►](/html/1806.06990)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 03:51:17 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

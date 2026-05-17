@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/2303.05506v1
 year: 2023
 ---
 
-[2303.05506] TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization
 
 Alan Jeffares
@@ -104,8 +61,7 @@ Despite its relative under-representation in deep learning research, tabular dat
 
 Regularization methods employed in practice can be categorized into those that prevent overfitting through data augmentation (Krizhevsky et al., [2012](#bib.bib45); Zhang et al., [2018](#bib.bib85)), network architecture choices (Hinton et al., [2012](#bib.bib34); Ioffe & Szegedy, [2015](#bib.bib40)), and penalty terms that explicitly influence parameter learning (Hoerl & Kennard, [1970](#bib.bib35); Tibshirani, [1996](#bib.bib76); Jin et al., [2020](#bib.bib41)), to name just a few. While all such methods are unified in attempting to improve out-of-sample generalization, this is often achieved in vastly different ways. For example, L​1𝐿1L1 and L​2𝐿2L2 penalties favor sparsity and shrinkage, respectively, on model weights, thus choosing more parsimonious solutions. Data perturbation techniques, on the other hand, encourage smoothness in the system assuming that small perturbations in the input should not result in large changes in the output. Which method works best for a given task is generally not known *a priori* and considering different classes of regularizer is recommended in practice. Furthermore, combining multiple forms of regularization simultaneously is often effective, especially in lower data regimes (see e.g. Brigato & Iocchi, [2021](#bib.bib8) and Hu et al., [2017](#bib.bib38)).
 
-![Refer to caption](/html/2303.05506/assets/figures/l-gos-p1.png)
-
+!(/html/2303.05506/assets/figures/l-gos-p1.png)
 
 Figure 1: TANGOS encourages specialization and orthogonalization. TANGOS penalizes neuron attributions during training. Here,   indicates strong positive attribution and   indicates strong negative attribution, while interpolating colors reflect weaker attributions. Neurons are regularized to be *specialized* (attend to sparser features) and *orthogonal* (attend to non-overlapping features).
 
@@ -142,8 +98,7 @@ that includes an additional regularization term ℛℛ\mathcal{R} which, general
 
 Formally, attribution methods aim to uncover the importance of each input feature of a given sample to the prediction of the neural network. Recent works have demonstrated that feature attribution methods can be incorporated into the training process (Lundberg & Lee, [2017](#bib.bib55); Erion et al., [2021](#bib.bib21)). These *attribution priors* optimize attributions to have desirable characteristics, including interpretability as well as smoothness and sparsity in predictions. However, these methods have exclusively investigated *output* attributions, i.e., contributions of input features to the output of a model. To the best of our knowledge, we are the first work to investigate regularization of *latent attributions*.
 
-![Refer to caption](/html/2303.05506/assets/x1.png)
-
+!(/html/2303.05506/assets/x1.png)
 
 Figure 2: Method illustration. TANGOS regularizes the gradients with respect to each of the latent units.
 
@@ -205,9 +160,9 @@ Additionally, we note that no alternative regularizers achieve greater attributi
 
 Therefore, we conclude that the pairing of the specialization and orthogonality objectives in TANGOS regularizes a unique objective.
 
-![Refer to caption](/html/2303.05506/assets/x2.png)
+!(/html/2303.05506/assets/x2.png)
 
-![Refer to caption](/html/2303.05506/assets/x3.png)
+!(/html/2303.05506/assets/x3.png)
 
 Figure 3: Comparison of regularization objectives. (Top) Generalization performance of key regularization techniques, (Bottom) corresponding neuron attributions evaluated on the test set. L​2𝐿2L2 and D​O𝐷𝑂DO can reduce overfitting, but neuron attributions are in fact becoming more correlated. TANGOS achieves the best generalization performance by penalizing a different objective.
 
@@ -239,8 +194,7 @@ The overall ensemble error for an input-label pair (x,y)𝑥𝑦(x,y) can be dec
 | --- | --- | --- | --- |
 |  | Err=Err¯−Div.Err¯ErrDiv\mathrm{Err}=\overline{\mathrm{Err}}-\mathrm{Div}. |  | (3) |
 
-![Refer to caption](/html/2303.05506/assets/x4.png)
-
+!(/html/2303.05506/assets/x4.png)
 
 Figure 4: Neuron Diversity. Overall ensemble error and decomposition in terms of diversity and average error of the weak learners. Note while all methods achieve low overall error, TANGOS is the only method that does so by increasing the diversity among the latent units.
 
@@ -310,13 +264,11 @@ The setting for this experiment is identical to §5.1 except now we consider the
 Results.
 We summarize the aggregated results over the datasets for each of the six baseline regularizers in combination with TANGOS in Figure [5](#S5.F5 "Figure 5 ‣ 5.2 Generalisation: In Tandem Regularization ‣ 5 Experiments ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"). Consistently across all regularizers in both the regression and the classification settings, we observe that adding TANGOS regularization improves test performance. We provide the full table of results in the supplementary material. We also note an apparent interaction effect between certain regularizers (i.e. input noise for regression and dropout for classification), where methods that seemed to not be particularly effective as stand-alone regularizers become the best-performing method when evaluated in tandem. The relationship between such regularizers provides an interesting direction for future work.
 
-![Refer to caption](/html/2303.05506/assets/x5.png)
-
+!(/html/2303.05506/assets/x5.png)
 
 (a)
 
-![Refer to caption](/html/2303.05506/assets/x6.png)
-
+!(/html/2303.05506/assets/x6.png)
 
 (b)
 
@@ -934,14 +886,10 @@ Activation Function
 
 Conv2d
 
-
-
 Input Channels:1 ; Output Channels:16 ; Kernel Size:5 ; Stride:2 ; Padding:1
 ReLU
 
 Conv2d
-
-
 
 Input Channels:16 ; Output Channels:32 ; Kernel Size:5 ; Stride:2 ; Padding:1
 ReLU
@@ -961,25 +909,19 @@ Input Dimension: 10 ; Output Dimension: 10
 
 In this section, we examine the gradients of each of the 10 neurons in the penultimate hidden layer with respect to each of the input dimensions of a given image. TANGOS is designed to reward orthogonalization and specialization of these gradient attributions which can be evaluated qualitatively by inspection. In all plots that follow we apply a min-max scaling across all hidden units for a fair comparison. Both strong positive and strong negative values for attributions may be interpreted as a latent unit attending to a given input dimension. In Figure [6](#A4.F6 "Figure 6 ‣ Appendix D TANGOS Behavior Analysis ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") we provide results for the baseline model applied to a test image where, in line with similar analyses in previous works such as Crabbé & van der Schaar ([2022](#bib.bib17)), we note that the way in which hidden units attend to the input is highly entangled. In contrast to this, in Figure [7](#A4.F7 "Figure 7 ‣ Appendix D TANGOS Behavior Analysis ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"), we include the same plot for the TANGOS trained model on the same image. In this case, each hidden unit does indeed produce relatively sparse and orthogonal attributions as desired. These results were consistent across the test images.
 
-![Refer to caption](/html/2303.05506/assets/x7.png)
-
+!(/html/2303.05506/assets/x7.png)
 
 Figure 6: Without TANGOS Training. Gradient attributions with respect to each of the 10 hidden neurons. These results suggest significant overlap among the gradient attributions.
 
-![Refer to caption](/html/2303.05506/assets/x8.png)
-
+!(/html/2303.05506/assets/x8.png)
 
 Figure 7: With TANGOS Training. TANGOS encourages gradient attributions to be sparse with minimal overlap.
 
 We can glean further insight into the TANGOS trained model by examining the role of individual neurons across multiple test images. In Figure [8](#A4.F8 "Figure 8 ‣ Appendix D TANGOS Behavior Analysis ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"), we provide the gradient attributions for hidden neuron 5 (H5) from our previous discussion across twelve test images. This neuron appears to discriminate between an open or a closed loop at the lower left of the digit. Indeed this is a key aspect of distinction between the set of digits {2,6,8,0}2680\{2,6,8,0\} (first row) and {9,5,3}953\{9,5,3\} (second row). We also include digits where this visual feature is less useful as they contain no lower-left loop either open or closed (third row). This hypothesis can be further examined by analyzing the values of these activations. We note that the first two rows typically have higher magnitude with opposite signs while the third row has lower magnitude activations. In Table [4](#A4.T4 "Table 4 ‣ Appendix D TANGOS Behavior Analysis ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") we summarize the effect of these activation scores on class probabilities by accounting for the weights connecting to each of the ten classes. As one might expect, the weight connections between the hidden neuron and classes on the first row and the second row have opposite signs indicating that neuron 5 does indeed discriminate between these classes.
 
-![Refer to caption](/html/2303.05506/assets/x9.png)
-
+!(/html/2303.05506/assets/x9.png)
 
 Figure 8: Hidden Neuron 5. This neuron attempts to discriminate whether inputs contain a closed loop on the lower left of their digit. Inputs with a closed lower loop incur highly positive activations (first row). Inputs with open lower loops incur highly negative activations (second row). While ambiguous inputs with no lower loop at all tend to produce low-magnitude activations (third row).
-
-
-
 
 Table 4: Neuron 5 Class Weights. Weights connecting neuron 5 to each of the ten classes and a summary of their combined effect with the neuron activation. The classification influence column provides a categorical indication of the magnitude of the contribution to each class output for a fixed activation magnitude. This is determined by the magnitude of the connecting weight where: Low ∈[0,0.59]absent00.59\in[0,0.59], Medium ∈[0.59,1.17]absent0.591.17\in[0.59,1.17], and High ∈[1.17,1.76]absent1.171.76\in[1.17,1.76].
 
@@ -1003,8 +945,7 @@ In this section, we evaluate TANGOS performance with an increasing number of inp
 
 We include the results of this experiment in Figure [9](#A5.F9 "Figure 9 ‣ Appendix E Performance with Increasing Data Size ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"). Consistent with our experiments in Section [5](#S5 "5 Experiments ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"), we find that TANGOS outperforms both the baseline model and the strongest baseline regularization method across all proportions of the data. These results are indicative that TANGOS remains similarly effective across both small and large datasets in the tabular domain.
 
-![Refer to caption](/html/2303.05506/assets/x10.png)
-
+!(/html/2303.05506/assets/x10.png)
 
 Figure 9: Performance Gains With Increasing Data Size. Training with various proportions of training data from the 416,188 examples of the Dionis dataset, we find the relative boost in performance from TANGOS to be consistent.
 
@@ -1049,13 +990,11 @@ All experiments are run on the BC dataset which we split into 80% training and 2
 
 In Figure [10](#A6.F10 "Figure 10 ‣ Appendix F Approximation and Algorithm ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") (left), we report the relative increase in compute time per epoch as we increase the number of sampled pairs. As theory would suggest, this growth is linear. A natural follow-up question is the extent to which model performance is affected by decreasing the number of sampled pairs. In Figure [10](#A6.F10 "Figure 10 ‣ Appendix F Approximation and Algorithm ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") (right), we observe that even very low sampling rates still result in excellent performance. Based on these results, our recommendation for practitioners is that while increasing the sampling rate can lead to marginal improvements in performance, relatively low sampling rates appear to be generally sufficient and do not require prohibitive computational overhead.
 
-![Refer to caption](/html/2303.05506/assets/x11.png)
-
+!(/html/2303.05506/assets/x11.png)
 
 (a)
 
-![Refer to caption](/html/2303.05506/assets/x12.png)
-
+!(/html/2303.05506/assets/x12.png)
 
 (b)
 
@@ -1063,8 +1002,7 @@ Figure 10: Sampling efficiency. Runtime increases linearly with the number of sa
 
 Given the results in Figure [10](#A6.F10 "Figure 10 ‣ Appendix F Approximation and Algorithm ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"), we next wish to evaluate if the proposed sampling scheme enables TANGOS to scale to much bigger models. In order to evaluate this we vary the number of neurons in the relevant hidden layer while maintaining a fixed sampling rate of 50 pairs (consistent with our experiments in Section [5](#S5 "5 Experiments ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization")). Other experimental parameters are consistent with the previous experiment. The results are provided in Figure [11](#A6.F11 "Figure 11 ‣ Appendix F Approximation and Algorithm ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") where we observe a relatively slow increase in runtime as the model grows. These results demonstrate that TANGOS can efficiently be applied to much larger models by using our proposed sampling scheme.
 
-![Refer to caption](/html/2303.05506/assets/x13.png)
-
+!(/html/2303.05506/assets/x13.png)
 
 Figure 11: Scaling to large models. With a subsampling rate fixed at M=50𝑀50M=50, TANGOS incurs only a small percentage increase in runtime as the number of neurons in the penultimate hidden layer increases dramatically.
 
@@ -1091,8 +1029,7 @@ Table 5: Ablation study. Generalization performance on different ablation settin
 
 In [Table 1](#S4.T1 "In 4.2 TANGOS Generalizes by Increasing Diversity Among Latent Units ‣ 4 How and Why Does TANGOS Work? ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"), we reported the generalization performance of TANGOS compared to other regularizers in a stand-alone setting. To gain a better understanding of relative performance, we visually depict the relative ranking of regularizers across all 202020 datasets. [Figure 12](#A8.F12 "In Appendix H Ranking Plot ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") demonstrates that TANGOS consistently ranks as one of the better-performing regularizers, while performance of benchmark methods tend to fluctuate depending on the dataset.
 
-![Refer to caption](/html/2303.05506/assets/x14.png)
-
+!(/html/2303.05506/assets/x14.png)
 
 Figure 12: Ranking of stand-alone regularizers. Relative ranking of regularizer performance across the 202020 datasets, as reported in Table [1](#S4.T1 "Table 1 ‣ 4.2 TANGOS Generalizes by Increasing Diversity Among Latent Units ‣ 4 How and Why Does TANGOS Work? ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"). TANGOS consistently ranks among the best-performing regularizers.
 
@@ -1132,18 +1069,15 @@ Table 6: Standard error on generalization performance. Standard errors with resp
 
 In this section, we present extended results of the decomposition of overall model error into diversity and weighted error among an ensemble of latent units from Section [4.2](#S4.SS2 "4.2 TANGOS Generalizes by Increasing Diversity Among Latent Units ‣ 4 How and Why Does TANGOS Work? ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"). We include all eight regularizers as described in Table [9](#A12.T9 "Table 9 ‣ Appendix L Dataset and Regularizer Details ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization") and three datasets (WE, ST, and BC) as described in Table [8](#A12.T8 "Table 8 ‣ Appendix L Dataset and Regularizer Details ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization"). The results are included in Figure [13](#A10.F13 "Figure 13 ‣ Appendix J Insights - Extended Results ‣ TANGOS: Regularizing Tabular Neural Networks through Gradient Orthogonalization and Specialization").
 
-![Refer to caption](/html/2303.05506/assets/x15.png)
-
+!(/html/2303.05506/assets/x15.png)
 
 (a) Weather (WE) dataset.
 
-![Refer to caption](/html/2303.05506/assets/x16.png)
-
+!(/html/2303.05506/assets/x16.png)
 
 (b) Student (ST) dataset.
 
-![Refer to caption](/html/2303.05506/assets/x17.png)
-
+!(/html/2303.05506/assets/x17.png)
 
 (c) Bioconcentration (BC) dataset.
 
@@ -1214,9 +1148,6 @@ Table 8: Dataset descriptions. Summary of the datasets considered in this work.
 
 * [1] This dataset has now been removed due to ethical issues. For more information see the following url <https://medium.com/@docintangible/racist-data-destruction-113e3eff54a8>
 
-
-
-
 Table 9: Overview of regularizers. Description of benchmarks considered in this work and their implementations.
 
 |  |  |  |
@@ -1230,83 +1161,3 @@ Table 9: Overview of regularizers. Description of benchmarks considered in this 
 | Input Noise | Krizhevsky et al. ([2012](#bib.bib45)) | Paszke et al. ([2019](#bib.bib60)) |
 | Mixup | Zhang et al. ([2018](#bib.bib85)) | Zhang et al. ([2018](#bib.bib85)) |
 | TANGOS | This work | Paszke et al. ([2019](#bib.bib60)) |
-
-[◄](/html/2303.05505)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2303.05506)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2303.05506)
-[View original  
-on arXiv](https://arxiv.org/abs/2303.05506)[►](/html/2303.05507)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 20:53:06 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

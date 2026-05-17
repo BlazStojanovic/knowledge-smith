@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2509.19128
 year: 2025
 ---
 
-[2509.19128] PipelineRL: Faster On-policy Reinforcement Learning for Long Sequence Generation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # PipelineRL: Faster On-policy Reinforcement Learning for Long Sequence Generation
 
 Alexandre Piché alexandrelpiche@gmail.com
@@ -94,8 +51,7 @@ Our experiments on RL training for long-form reasoning show that on 4 DGX-H100 n
 
 ## 2 Background
 
-![Refer to caption](/html/2509.19128/assets/figures/inflight_wide.jpg)
-
+!(/html/2509.19128/assets/figures/inflight_wide.jpg)
 
 Figure 1: a) Conventional RL alternates between using all the GPUs for generation and then training. b) PipelineRL runs generation and training concurrently, always using the freshest model weights for generations thanks to the in-flight weight updates.
 
@@ -175,26 +131,20 @@ end while
 
 Most RL implementations alternate between generating sequences and training the policy on the generated data. We refer to this approach as Conventional RL and describe it in detail in [Algorithm˜1](#alg1 "In 2.1 Reinforcement Learning for Large Language Models ‣ 2 Background ‣ PipelineRL: Faster On-policy Reinforcement Learning for Long Sequence Generation"). When training involves doing G>1G>1 optimizer steps, the current policy π\pi gets ahead of the behavior policy μ\mu that was used to generate the data. We adopt the term lag to refer to the number of optimizer steps between μ\mu and π\pi.
 
-![Refer to caption](/html/2509.19128/assets/figures/qwen_throughput.png)
-
+!(/html/2509.19128/assets/figures/qwen_throughput.png)
 
 (a) Throughput vs batch size.
 
-![Refer to caption](/html/2509.19128/assets/figures/sequences_in_progress.png)
-
+!(/html/2509.19128/assets/figures/sequences_in_progress.png)
 
 (b) Inference batch size vs time.
 
-![Refer to caption](/html/2509.19128/assets/figures/time_vs_throughput.png)
-
+!(/html/2509.19128/assets/figures/time_vs_throughput.png)
 
 (c) Time vs Throughput.
 
 Figure 2: Analysis of generation times and throughput. We perform all measurements using a vLLM engine serving a Qwen 2.5 7B model on a H100 GPU.
 (a) Short prompt generation throughput increases up to batch size 256. (b) Generation batch size gradually decreases to suboptimal values as the engine finishes sequences (c) Generation time reaches a plateau and throughput decreases as the number of sequences per GPU goes down. We report the average of 5 runs and 95% CI.
-
-
-
 
 Algorithm 2  PipelineRL: Actor and Trainer Processes
 
@@ -270,13 +220,11 @@ The Conventional RL algorithm from [Algorithm˜1](#alg1 "In 2.1 Reinforcement Le
 
 Commonly, to increase the throughput, most practitioners perform multiple G>1G>1 optimizer steps per RL step, which entails generating B​GBG rollouts at each generation stage. This way, one can often achieve a higher throughput Δ​SΔ​t\frac{\Delta S}{\Delta t} by increasing NN up to a point when B​GN\frac{BG}{N} becomes too small. It is, however, known from the literature that going too off-policy by using a high value of GG will eventually decrease the learning effectiveness Δ​RΔ​S\frac{\Delta R}{\Delta S} (Noukhovitch et al., [2024](#bib.bib16)). Clearly, at some points, the rollouts from the old policy become too stale and no longer useful as the source of learning signal for the current policy. Hence, given a fixed optimizer batch size BB, one scales up Conventional RL by increasing GG and NN until the product Δ​RΔ​S​Δ​SΔ​t\frac{\Delta R}{\Delta S}\frac{\Delta S}{\Delta t} no longer improves, and the hard ceiling of Δ​RΔ​t\frac{\Delta R}{\Delta t} for the given number of accelerators NN is achieved.
 
-![Refer to caption](/html/2509.19128/assets/x1.png)
-
+!(/html/2509.19128/assets/x1.png)
 
 (a) Token lags as a function of optimizer steps.
 
-![Refer to caption](/html/2509.19128/assets/x2.png)
-
+!(/html/2509.19128/assets/x2.png)
 
 (b) Pareto curves.
 
@@ -294,8 +242,7 @@ For a fixed batch size BB and a number of accelerators NN, one can configure Con
 We recommend avoiding extreme configurations with TT too high (very high lag GG) and TT too low (bad hardware utilization, one can just as well scale down the compute).
 [Figure˜3(b)](#S3.F3.sf2 "In Figure 3 ‣ 3 The learning speed ceiling of Conventional RL ‣ PipelineRL: Faster On-policy Reinforcement Learning for Long Sequence Generation") visualizes how different configurations of PipelineRL and Conventional RL achieve different learning effectiveness Δ​RΔ​S\frac{\Delta R}{\Delta S} and throughput Δ​SΔ​t\frac{\Delta S}{\Delta t}, with PipelineRL setups reaching higher Δ​RΔ​t=Δ​SΔ​t​Δ​RΔ​S\frac{\Delta R}{\Delta t}=\frac{\Delta S}{\Delta t}\frac{\Delta R}{\Delta S} isocurves.
 
-![Refer to caption](/html/2509.19128/assets/x3.png)
-
+!(/html/2509.19128/assets/x3.png)
 
 Figure 4: The three pipeline stages of PipelineRL implementation: actor, preprocessor and trainer. Earlier stages stream the data to the latter ones using Redis as the streaming broker.
 
@@ -305,33 +252,26 @@ Our PipelineRL implementation concurrently runs many distributed vLLM generation
 
 ## 5 Experiments
 
-![Refer to caption](/html/2509.19128/assets/figures/reward_per_time_square.png)
-
+!(/html/2509.19128/assets/figures/reward_per_time_square.png)
 
 (a) Reward vs time.
 
-![Refer to caption](/html/2509.19128/assets/figures/reward_per_samples_square.png)
-
+!(/html/2509.19128/assets/figures/reward_per_samples_square.png)
 
 (b) Reward vs samples.
 
-![Refer to caption](/html/2509.19128/assets/figures/samples_per_time_square.png)
-
+!(/html/2509.19128/assets/figures/samples_per_time_square.png)
 
 (c) Samples vs time.
 
 Figure 5: (a)
 PipelineRL attains the same average reward faster than the conventional RL baselines. (b) PipelineRL achieves the same sample efficiency as G=8G=8 and G=16G=16. (c) PipelineRL generates samples much faster than the conventional RL baselines.
 
-
-
-![Refer to caption](/html/2509.19128/assets/figures/lag_plots.png)
-
+!(/html/2509.19128/assets/figures/lag_plots.png)
 
 (a) Max lag.
 
-![Refer to caption](/html/2509.19128/assets/figures/ess_plots2.png)
-
+!(/html/2509.19128/assets/figures/ess_plots2.png)
 
 (b) Effective sample size.
 
@@ -382,8 +322,7 @@ where t1=2​Lgmaxt\_{1}=\tfrac{2L}{g\_{\max}} and tg=tg−1+Lgmaxt\_{g}=t\_{g-1
 
 In this experiment, we fine-tune Qwen 2.5 base 7B on the OpenReasoner Zero (Hu et al., [2025](#bib.bib8)) data for 222 optimizer steps. We consider three stages in training to measure KL-divergence: starting at checkpoint 0, 100, and 190. The maximum lag gmaxg\_{\max} is set to 32 and the maximum sequence length LL is 2048. As presented in [Figure˜7](#S5.F7 "In 5.1 Impact of in-flight weight updates on on-policyness ‣ 5 Experiments ‣ PipelineRL: Faster On-policy Reinforcement Learning for Long Sequence Generation"), the distribution of mixed-policy sequences closely aligns with that of fully on-policy sequences across all three stages in the training. In contrast, off-policy sequences exhibit consistently higher divergences as lag increases. Also, using stale KV-cache for mixed policy sequences introduces only slightly higher divergence compared to recomputing the cache. This supports our design choice in Pipeline-RL to opt for the more efficient approach of retaining the KV cache.
 
-![Refer to caption](/html/2509.19128/assets/figures/offpolicyness_kl_combined.png)
-
+!(/html/2509.19128/assets/figures/offpolicyness_kl_combined.png)
 
 Figure 7: 
 For three different starting checkpoint, PipelineRL with and without KV cache recomputation stay more on-policy than Conventional RL as measured by the KL divergence.
@@ -597,8 +536,7 @@ Let τ\tau be the amortized training time per token. τ\tau will be similar at s
 
 ### A.2 Conventional RL throughput
 
-![Refer to caption](/html/2509.19128/assets/x4.png)
-
+!(/html/2509.19128/assets/x4.png)
 
 Figure 8: H100 utilization at batch size hh as the ratio of maximum theoretical bf16 FLOPS throughput. We use (4096,h)⋅(h,16384)(4096,h)\cdot(h,16384) matrix multiplications for the measurement. For every hh we consider padding up to h+64h+64 to increase the speed, because empirically we observed large utilization bumps when hh is divisible by a higher power of 2 (up to 128).
 
@@ -653,8 +591,7 @@ To understand the maximum lag of Pipeline RL consider the fact that the generati
 
 To build a same-lag equivalent for a conventional RL system, one needs to maximize rp​i​p​e​l​i​n​e​(H,I)r\_{pipeline}(H,I) while keeping ⌈H​I​LL¯​B⌉≤S−1\lceil\frac{HIL}{\overline{L}{B}}\rceil\leq S-1. We could found this problem difficult to solve analytically, and performed a straight-forward search of all (H,I)(H,I) configurations for our investigations below.
 
-![Refer to caption](/html/2509.19128/assets/x5.png)
-
+!(/html/2509.19128/assets/x5.png)
 
 Figure 9: Pipeline RL and Conventional RL throughputs as the function of the maximum lag gm​a​xg\_{max} for a setup with N=128N=128 GPUs and batch size B=NB=N.
 
@@ -675,94 +612,12 @@ Clearly, the root cause of PipelineRL’s speedup is that the 44 generation GPUs
 
 ## Appendix B Additional Results
 
-![Refer to caption](/html/2509.19128/assets/figures/g64_reward_plot.png)
-
+!(/html/2509.19128/assets/figures/g64_reward_plot.png)
 
 (a) G=64 reward.
 
-![Refer to caption](/html/2509.19128/assets/figures/g64_ess.png)
-
+!(/html/2509.19128/assets/figures/g64_ess.png)
 
 (b) G=64 Effective Sample Size.
 
 Figure 10: G=64 diverges.
-
-[◄](/html/2509.19127)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2509.19128)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2509.19128)
-[View original  
-on arXiv](https://arxiv.org/abs/2509.19128)[►](/html/2509.19129)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Oct 6 23:36:45 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

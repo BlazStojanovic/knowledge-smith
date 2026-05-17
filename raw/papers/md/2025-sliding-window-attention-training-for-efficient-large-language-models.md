@@ -19,49 +19,6 @@ url: https://arxiv.org/abs/2502.18845
 year: 2025
 ---
 
-[2502.18845] Sliding Window Attention Training for Efficient Large Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Sliding Window Attention Training for Efficient Large Language Models
 
 Zichuan Fu1,,
@@ -127,7 +84,6 @@ Xiangyu Zhao1,††thanks: Corresponding author.,
 
 6 Southern University of Science and Technology
 
-
 [zc.fu@my.cityu.edu.hk](mailto:zc.fu@my.cityu.edu.hk),
 [xy.zhao@cityu.edu.hk](mailto:xy.zhao@cityu.edu.hk)
 
@@ -141,8 +97,7 @@ Several approaches have been proposed to handle long sequences efficiently. Thes
 However, these solutions face a fundamental dilemma—they either compromise model performance to achieve efficiency or propose new complex architectures that cannot fully exploit existing techniques for convenient implementation and deployment.
 However, existing LLM solutions for handling long sequences often require complex architectures and parallel training techniques, making implementation and deployment more challenging, which calls for an efficient approach based on the existing Transformer architecture.
 
-![Refer to caption](/html/2502.18845/assets/x1.png)
-
+!(/html/2502.18845/assets/x1.png)
 
 Figure 1: The demonstration of the SWA mechanism in Transformers.
 
@@ -170,13 +125,11 @@ Our contributions can be summarized as follows:
 
 ## 2 Understanding Transformer’s Attention
 
-![Refer to caption](/html/2502.18845/assets/x2.png)
-
+!(/html/2502.18845/assets/x2.png)
 
 Figure 2: The log10\log\_{10} perplexity of four LLMs (Llama-2-7b, Llama-3.1-8B, Qwen2-7B and Mistral-7B-v0.1) on the third book of PG-19 test set using SWA inference. The window sizes are set not to exceed their respective training sequence lengths. The x-axis represents the sliding window size, and the y-axis represents the evaluation sequence length. For a fixed window size, perplexity increases (color shifts to blue) as the evaluation length grows.
 
-![Refer to caption](/html/2502.18845/assets/x3.png)
-
+!(/html/2502.18845/assets/x3.png)
 
 Figure 3: Heatmaps of attention scores (top four squares) and token embedding variance (bottom four lines) across different layers of Qwen2-7B. Higher token variance corresponds to stronger attention, highlighting their correlation. The two color bars indicate respective scales.
 
@@ -231,8 +184,7 @@ SWA training introduces a new training paradigm, where each window shift require
 
 ### 3.2 Attention Computation
 
-![Refer to caption](/html/2502.18845/assets/x4.png)
-
+!(/html/2502.18845/assets/x4.png)
 
 Figure 4: The demonstration of the SWA mechanism in Transformers, where the model’s information coverage includes residual and active tokens, depending on the model depth and window size.
 
@@ -345,9 +297,6 @@ Table 2: Performance comparison of language models pretrained with and without s
 | Vanilla C | 4,096 | 4,096 | 4,096 | 3.3788 | 2.9784 | 2.9705 | 2.9518 | 5.1519 | 4.5444 | 4.4366 | 4.4938 | 5.9315 |
 | Vanilla D (Upper Bond) | 16,384 | 16,384 | 16,384 | OOM | | | | OOM | | | | OOM |
 
-
-
-
 Table 3: Performance comparison of language models with different activation functions and position embeddings.
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -387,8 +336,7 @@ Based on our experimental results, we draw two key conclusions:
 (1) Wtih the same model structure, SWA training significantly improves performance, especially with longer evaluation sequence lengths. This is likely because SWA training forces the model to retain memory of older information across long sequences, while vanilla models struggle with memory as they retain all historical tokens.
 (2) The vanilla Transformers perform optimally only when the evaluation length matches the training length, whereas the SWA trained models maintain consistent performance across varying sequence lengths. This is likely because vanilla Transformers heavily attend to initial tokens due to attention sink, while SWA models learn to focus primarily on the current window, ensuring stable performance across different sequence lengths.
 
-![Refer to caption](/html/2502.18845/assets/x5.png)
-
+!(/html/2502.18845/assets/x5.png)
 
 Figure 5: The training loss of models with different modules including Sigmoid, RoPE, and ALiBi, with the balanced slopes.
 
@@ -817,83 +765,3 @@ With sliding window pre-training, the model is exposed to longer token sequences
 Using sliding windows allows longer sequences during training compared to fixed windows. This table shows that the best performance was achieved when the training sequence length is four times the training window size. Different evaluation window sizes are also tested to compare model performance given varying amounts of context.
 
 In Table [3](#S4.T3 "Table 3 ‣ Evaluation Metrics. ‣ 4.1 Experiment Settings ‣ 4 Experiments ‣ Sliding Window Attention Training for Efficient Large Language Models"), we compared the performance of language models with different activation functions and position embeddings. Specifically, we study the model accuracy when using softmax and sigmoid as the activation functions. We also introduce RoPE, ALiBi, and AliRope as different position embedding methods. Note that ALiBi-12:0 represents the origin ALiBi model, which uses only negative slopes, while ALiBi-6:6 represents model uses half positive and half negative slopes across different attention heads.
-
-[◄](/html/2502.18844)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2502.18845)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2502.18845)
-[View original  
-on arXiv](https://arxiv.org/abs/2502.18845)[►](/html/2502.18846)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 5 17:09:06 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

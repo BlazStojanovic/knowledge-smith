@@ -13,50 +13,6 @@ url: https://arxiv.org/abs/2604.12946
 year: 2026
 ---
 
-[2604.12946] Parcae: Scaling Laws For Stable Looped Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Parcae: Scaling Laws For Stable Looped Language Models
 
 Hayden Prairie
@@ -97,8 +53,7 @@ However, as inference deployments take on an increasingly large portion of compu
 One mechanism to do this is layer-looped models, such as looped transformers [dehghaniUniversalTransformers2019, geiping\_scaling\_2025, zhuScalingLatentReasoning2025], which iteratively loop activations through a block of layers.
 Initial results have been encouraging, with looped models matching the quality of larger fixed-depth architectures [geiping\_scaling\_2025, zhuScalingLatentReasoning2025]. Moreover, they show potential for latent reasoning [avi\_learn\_algorithm, yangLoopedTransformersAre2023] and per-token adaptive compute [geiping\_scaling\_2025, mcleish\_retrofitted\_recurrence].
 
-![Refer to caption](/html/2604.12946/assets/x1.png)
-
+!(/html/2604.12946/assets/x1.png)
 
 Figure 1: Parcae and the Scaling Laws of Looping.
 (*Left*) Parcae constrains the spectral norm of 𝑨¯\overline{\bm{A}} and normalizes the input injection, stabilizing the residual stream hth\_{t} across loops. (*Right*) We observe looping to be an orthogonal axis of scaling compute which follows a power law.
@@ -183,8 +138,7 @@ For parabolic fits, a quadratic is fit to several FLOP budgets to estimate the l
 
 ## 3 Understanding Instability in Looped Architectures
 
-![Refer to caption](/html/2604.12946/assets/x2.png)
-
+!(/html/2604.12946/assets/x2.png)
 
 Figure 2: Training Instability of Looped Architectures. (*left*) Pre-Norm looped models diverge, while residual norm. and Parcae converge. (*right*) Instability stems from an exploding recurrent state norm ‖hT‖2||h\_{T}||\_{2}, the hidden embedding norm after TT recurrences.
 
@@ -214,8 +168,6 @@ linearizing of this system (i.e., dropping ℛ¯\overline{\mathcal{R}}) yields a
 
 Table 1: Comparison of Prior Update Rule Stability based on LTI Representation.
 
-
-
 | LR | Base | Res. Norm | Parcae |
 | --- | --- | --- | --- |
 | 2e-4 | ✓ | ✓ | ✓ |
@@ -226,8 +178,7 @@ Table 1: Comparison of Prior Update Rule Stability based on LTI Representation.
 
 Table 2: Hyperparameter Instability. Convergence across learning rates for baseline RDMs, Res. Norm RDMs, and Parcae. Parcae is more robust to hyperparameter selection. Full logs are in [Appendix F](#A6 "Appendix F Additional Stability Ablations ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x3.png)
-
+!(/html/2604.12946/assets/x3.png)
 
 Figure 3: Spectral Radius of Unconstrained A¯\overline{\bm{A}}. For a Pre-Norm RDM, we plot the ρ​(𝑨¯)\rho(\overline{\bm{A}}) throughout training using different learning rates, observing divergent runs learn ρ​(𝑨¯)>1\rho(\overline{\bm{A}})>1. The state explosion, in [Figure 2](#S3.F2 "In 3 Understanding Instability in Looped Architectures ‣ Parcae: Scaling Laws For Stable Looped Language Models") is thus directly linked to 𝑨¯\overline{\bm{A}}.
 
@@ -290,8 +241,6 @@ follow predictable power laws, and test-time looping follows a saturating expone
 Table 3: Zero-Shot and Perplexity Results Trained on RDM Setup. Comparison of Parcae and RDM [geiping\_scaling\_2025] on
 a variety of open source benchmarks and perplexity held-out validation set and Wikitext [merity2016pointer]. Best results are bolded.
 
-
-
 |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |  | Val Loss (↓\downarrow) | | | Core (↑\uparrow) | | | Core Ext (↑\uparrow) | | |
@@ -334,8 +283,7 @@ Best results are bolded.
 Comparison Against Transformers. [Table 5](#S5.T5 "In Setup. ‣ 5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models") shows that Parcae reduces validation perplexity by 4.3–9.2% and improves Core and Core-Extended Scores by up to 2.99 and 1.18 points, respectively. We find that our 770M Parcae model achieves quality comparable to the 1.3B Transformer on Core [li2025datacomplmsearchgenerationtraining] with roughly half the parameters.
 Measured as a fraction of the quality gap to the next larger Transformer (e.g., for 140M Core-Extended: 9.67−8.8011.71−8.80⋅100≈29.9%\frac{9.67-8.80}{11.71-8.80}\cdot 100\approx 29.9\%), Parcae achieves a *23.3-87.5% and 29.9-58.2%* better parameter efficiency for Core and Core-Extended, respectively.
 
-![Refer to caption](/html/2604.12946/assets/x4.png)
-
+!(/html/2604.12946/assets/x4.png)
 
 Figure 4: Looping Scales Training Compute Optimally. (*Left*) Parametric isoLoss contours over μrec\mu\_{\text{rec}} and data. The efficient frontier (blue line) traces the lowest FLOP budget required to achieve each loss level, showing that optimal training requires increased looping. (*Right*) Parabolic isoFLOP fits for 140M and 370M models reveal a clear optimum μrec\mu\_{\text{rec}} at each FLOP budget, indicating that looping is an orthogonal scaling axis to data.
 
@@ -350,15 +298,11 @@ We train 140M and 370M Parcae models under fixed FLOP and parameter budgets, var
 Modeling Scaling Laws of Looping. At 140M and 370M scales, isoFLOP curves show that increasing μrec\mu\_{\text{rec}} while proportionally reducing tokens yields lower validation loss than training at low recurrence ([Figure 4](#S5.F4 "In Setup. ‣ 5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models") [*right*]). Using a parabolic fit, we extract the optimal μrec\mu\_{\text{rec}} and token budget at each FLOP level, finding that both follow predictable power laws ([Figure 5](#S5.F5 "In Setup. ‣ 5.2 Looping as an Orthogonal Scaling Axis in Training ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models")) with consistent exponents (γμ≈0.40\gamma\_{\mu}\approx 0.40, γD≈0.78\gamma\_{D}\approx 0.78).
 We also fit a parametric function ℒ^​(μrec,D)=E+X⋅𝐍​(μrec)−x+Y⋅D−y\widehat{\mathcal{L}}(\mu\_{\text{rec}},D)=E+X\cdot\mathbf{N}(\mu\_{\text{rec}})^{-x}+Y\cdot D^{-y} over the effective parameterization 𝐍​(μrec)\mathbf{N}(\mu\_{\text{rec}}) (i.e., parameters of unrolling the looped model) and tokens DD ([Figure 4](#S5.F4 "In Setup. ‣ 5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models"), [*left*]; details in [Appendix K](#A11 "Appendix K Fitting a Parametric Function for Looping ‣ Parcae: Scaling Laws For Stable Looped Language Models")), enabling predictable extrapolation of loss to unseen budgets. To verify, we predict the validation loss of held-out models in [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models"), achieving 1.3% and 0.8% error at 140M and 370M, respectively.
 
-![Refer to caption](/html/2604.12946/assets/x5.png)
-
+!(/html/2604.12946/assets/x5.png)
 
 Figure 5: Optimal μrec\mu\_{\text{rec}} and Tokens Follows Predictable Power Laws. We fit a parabola to each isoFLOP budget for both 140M and 370M Parcae models, using its minima to approximate the optimal μrec\mu\_{\text{rec}} and token budget at each scale. We observe that optimal recurrence (*left plots*) and tokens (*right plots*) follow a predictable power law with similar coefficients at both scales.
 
-
-
-![Refer to caption](/html/2604.12946/assets/x6.png)
-
+!(/html/2604.12946/assets/x6.png)
 
 Figure 6: Pareto Frontier of Looping. We observe that looping has a stricter IsoFLOP optimal loss frontier over fixed-depth, non-looped models. Dots are empirical points.
 
@@ -391,13 +335,11 @@ We train 140M and 370M Parcae models under a fixed data budget with μrec∈{2,4
 Saturation of Test-Time Compute. While prior works observed test-time generalization in small synthetic tasks [yangLoopedTransformersAre2023, bansalEndtoendAlgorithmSynthesis2022], we find quality to be bounded in large-scale language modeling.
 Evaluating models from [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models") at 2×2\times μrec\mu\_{\text{rec}} across all four scales ([Figure 7](#S5.F7 "In Setup. ‣ 5.3 Test-Time Scaling Laws of Parcae ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models")), we observe that gains plateau near μrec\mu\_{\text{rec}}, suggesting training depth determines the test-time scaling ceiling.
 
-![Refer to caption](/html/2604.12946/assets/x7.png)
-
+!(/html/2604.12946/assets/x7.png)
 
 Figure 7: Test-Time Scaling of Parcae. When evaluating Parcae models from [Table 5](#S5.T5 "In Setup. ‣ 5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models"), we observe test-time looping follows a predictable saturating trend, consistent across model sizes.
 
-![Refer to caption](/html/2604.12946/assets/x8.png)
-
+!(/html/2604.12946/assets/x8.png)
 
 Figure 8: Scaling Test-Time Compute follows a Predictable Power Laws. We plot the validation loss with different μrec\mu\_{\text{rec}} as a function of test-time recurrence TT, and find the fitted exponential decay (solid curve for each μrec\mu\_{\text{rec}}) tightly captures the test-time performance of looping.
 
@@ -566,15 +508,15 @@ Algorithm 2  Efficient Per-Sequence Stochastic Depth Training
 
 We include all training curves for our hyperparameter sweep experiments in [Appendix Q](#A17 "Appendix Q Hyperparameters and Training Details ‣ Parcae: Scaling Laws For Stable Looped Language Models"). We conduct a learning rate sweep over {2​e−4,4​e−4,6​e−4,8​e−4,1​e−3}\{2e-4,4e-4,6e-4,8e-4,1e-3\} observing that Parcae exhibits stable training over both baseline Pre-Norm RDMs and residual normalized RDMs. The training curves and the accompanying recurrent state norm can be observed in [Figure 9](#A6.F9 "In Appendix F Additional Stability Ablations ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x9.png)
+!(/html/2604.12946/assets/x9.png)
 
-![Refer to caption](/html/2604.12946/assets/x10.png)
+!(/html/2604.12946/assets/x10.png)
 
-![Refer to caption](/html/2604.12946/assets/x11.png)
+!(/html/2604.12946/assets/x11.png)
 
-![Refer to caption](/html/2604.12946/assets/x12.png)
+!(/html/2604.12946/assets/x12.png)
 
-![Refer to caption](/html/2604.12946/assets/x13.png)
+!(/html/2604.12946/assets/x13.png)
 
 Figure 9: Training instability of recurrent depth models across different learning rates. We show both training losses and recurrent state norm to understand divergence and state explosion.
 
@@ -583,17 +525,13 @@ Figure 9: Training instability of recurrent depth models across different learni
 When running our per-sequence sampling experiments, we observed that the training curves of per-sequence sampling helped eliminate loss spikes during training. Specifically, in [Figure 10](#A7.F10 "In Appendix G Per-sequence Sampling Reduces Loss Spikes ‣ Parcae: Scaling Laws For Stable Looped Language Models"), for our 350M parameter Parcae models, per-micro-batch has several loss spikes through training while per-sequence sampling does not. We can observe from [Figure 11](#A7.F11 "In Appendix G Per-sequence Sampling Reduces Loss Spikes ‣ Parcae: Scaling Laws For Stable Looped Language Models"), that these training spikes stem directly from overly large recurrent residual jumps at the final recurrence, implying the model is not learning to converge to a steady-state fixed point solution.
 It can then be observed that per-sequence depth helps provide a better estimate for our training objective, enabling convergent fixed-point behavior and preventing loss-spikes during training. The direct benefit of this can be observed in [Table 8](#A7.T8 "In Appendix G Per-sequence Sampling Reduces Loss Spikes ‣ Parcae: Scaling Laws For Stable Looped Language Models"), where per-sequence sampling significantly improves the downstream quality of looped models, especially at low test-time recurrences. Finally, we note that per-sequence sampling adds a minimal amount of training overhead, increasing total wall clock time for pretraining by 1.8%, which we believe can be further optimized away with a cleaner implementation.
 
-![Refer to caption](/html/2604.12946/assets/x14.png)
-
+!(/html/2604.12946/assets/x14.png)
 
 Figure 10: Training curves showing per-sequence sampling effectively eliminates loss spikes in training over per-micro-batch sampling.
 
-![Refer to caption](/html/2604.12946/assets/x15.png)
-
+!(/html/2604.12946/assets/x15.png)
 
 Figure 11: Comparison of recurrent residual and state norm metrics (defined in [Section A.1](#A1.SS1 "A.1 Notation ‣ Appendix A Glossary ‣ Parcae: Scaling Laws For Stable Looped Language Models")), which show that per-sequence sampling enables stronger fixed point behavior in training.
-
-
 
 |  | Method | T=1 | T=4 | T=8 | T=16 |
 | --- | --- | --- | --- | --- | --- |
@@ -664,8 +602,7 @@ Algorithm 4  Correction (Ours)
 
 Figure 12: Comparison of our sampling method with [geiping\_scaling\_2025]. It can be observed that the actual distribution of forward recurrence for [geiping\_scaling\_2025] is a shifted Poisson distribution. The implications of this sampling strategy can be better visualized in [Figure 13](#A8.F13 "In Appendix H Sampling of Truncated Recurrence ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x16.png)
-
+!(/html/2604.12946/assets/x16.png)
 
 Figure 13: A distributional mismatch can be observed from the recurrent sampling method of [geiping\_scaling\_2025]. Specifically, if our desired pre-training distribution for μrec\mu\_{\text{rec}} is a Poisson distribution, the distribution total recurrence TT of [geiping\_scaling\_2025] is truncated based on μbwd\mu\_{\text{bwd}}. However, our sampling method decouples the effects of μbwd\mu\_{\text{bwd}} on Λ\Lambda, allowing the recurrent distribution to be faithfully sampled from.
 
@@ -679,8 +616,7 @@ where σ=12\sigma=\frac{1}{2}. To maintain a fixed computation memory budget, [g
 
 To verify our change, we pretrain several small Parcae models on 10 billion tokens to ablate on our design choice. Specifically, we set μrec=μbwd=8\mu\_{\text{rec}}=\mu\_{\text{bwd}}=8 and use Λ∼Poisson\Lambda\sim\text{Poisson}, and use fixed architecture, hyperparameters, and data stream. We train three models: a baseline Parcae model that performs full backpropagation through recurrences, a Parcae model following [Algorithm 3](#alg3 "In Figure 12 ‣ Appendix H Sampling of Truncated Recurrence ‣ Parcae: Scaling Laws For Stable Looped Language Models") by [geiping\_scaling\_2025], and a Parcae model following [Algorithm 4](#alg4 "In Figure 12 ‣ Appendix H Sampling of Truncated Recurrence ‣ Parcae: Scaling Laws For Stable Looped Language Models"). The results of this ablation can be found in [Figure 14](#A8.F14 "In Appendix H Sampling of Truncated Recurrence ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x17.png)
-
+!(/html/2604.12946/assets/x17.png)
 
 Figure 14: Training and validation curves of three 100 million parameter Parcae models pretrained on 10 billion tokens, comparing different truncated back-propagation methods (baseline is a model with no back-propagation truncation). Each model has identical architecture and hyperparameters, with μrec\mu\_{\text{rec}} and μbwd\mu\_{\text{bwd}} both being set to eight, all using Λ∼Poisson\Lambda\sim\text{Poisson}. It can be observed that even though each model has similar training loss and validation loss when using T=8T=8, our implementation more faithfully follows the validation loss of full back-propagation. Specifically for T=4T=4, our implementation significantly improves validation loss compared to [geiping\_scaling\_2025] sampling method.
 
@@ -688,12 +624,9 @@ From [Figure 14](#A8.F14 "In Appendix H Sampling of Truncated Recurrence ‣ Pa
 
 ## Appendix I Selecting μrec\mu\_{\text{rec}} and μbwd\mu\_{\text{bwd}}
 
-![Refer to caption](/html/2604.12946/assets/x18.png)
-
+!(/html/2604.12946/assets/x18.png)
 
 Figure 15: Validation curves of six different recurrent depth models, pretrained on 10 billion tokens, with a fixed architecture and hyperparameters. Each model is pretrained with a fixed μbwd\mu\_{\text{bwd}} of 8 and varying μrec\mu\_{\text{rec}} in [4,8,14,20,26,32][4,8,14,20,26,32]. The key observation is that scaling up μrec\mu\_{\text{rec}} while keeping μbwd\mu\_{\text{bwd}} fixed results in models that perform worse than if just pretrained on μrec\mu\_{\text{rec}} of eight.
-
-
 
 |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -707,12 +640,9 @@ A natural question is what choice of μrec\mu\_{\text{rec}} and μbwd\mu\_{\text
 
 The fascinating observation of [Figure 15](#A9.F15 "In Appendix I Selecting 𝜇_\"rec\" and 𝜇_\"bwd\" ‣ Parcae: Scaling Laws For Stable Looped Language Models") is that, contrary to our initial beliefs, models trained with additional μrec\mu\_{\text{rec}} beyond 8 perform worse at both lower and higher rr used at test-time, though more FLOPs were spent during pretraining. While it is a natural expectation that models trained with lower μrec\mu\_{\text{rec}} perform better than models with larger μrec\mu\_{\text{rec}} at low TT, the fact that a μrec\mu\_{\text{rec}} of eight performs the best at higher TT (i.e., T=16T=16 and T=64T=64) is surprising. To determine if this is an inherent limitation of the capacity of looped models or an artifact of μbwd\mu\_{\text{bwd}}, we ran an additional experiment where we fixed μr​e​c=20\mu\_{rec}=20 and instead varied μbwd∈[4,6,8,10,12]\mu\_{\text{bwd}}\in[4,6,8,10,12], pretraining on 8.5 billion tokens for each model. We keep hyperparameters fixed. The results for each of these models on a held-out set of validation data can be visualized in [Figure 16](#A9.F16 "In Appendix I Selecting 𝜇_\"rec\" and 𝜇_\"bwd\" ‣ Parcae: Scaling Laws For Stable Looped Language Models") and [Table 10](#A9.T10 "In Appendix I Selecting 𝜇_\"rec\" and 𝜇_\"bwd\" ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x19.png)
-
+!(/html/2604.12946/assets/x19.png)
 
 Figure 16: Validation and training curves of looped models, pretrained on 8.5 billion tokens. Each model is trained with a fixed μrec=20\mu\_{\text{rec}}=20 and μb​w​d∈[4,6,8,10,12]\mu\_{bwd}\in[4,6,8,10,12]. Observe that scaling up μbwd\mu\_{\text{bwd}} improves validation performance at higher and lower recurrences monotonically for T=1,16,64T=1,16,64.
-
-
 
 |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- |
@@ -734,37 +664,31 @@ We leave the exploration of FLOP optimal choices of μrec\mu\_{\text{rec}} and �
 
 In our initial set of experiments, we found that Parcae was able to train stably on the 140M, 370M, and 770M model configurations. Unfortunately, at the 1.3B scale, training appeared stable for the first 150k optimizer steps, afterwards exhibited state explosion and loss spikes, an observation which can be made in [Figure 17](#A10.F17 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models"). To diagnose and fix these issues, we performed a deep exploration of the weight checkpoints before and during loss spikes, investigating both dynamical systems parameters (e.g., 𝑨,𝑩,𝑪,Δ\bm{A},\bm{B},\bm{C},\Delta) and non-linear parameters ℛ¯\overline{\mathcal{R}}.
 
-![Refer to caption](/html/2604.12946/assets/x20.png)
-
+!(/html/2604.12946/assets/x20.png)
 
 Figure 17: Late Stage Instability of 1.3B Parcae models. We observe loss spikes and state explosion at the final stages of our large-scale run.
 
-![Refer to caption](/html/2604.12946/assets/x21.png)
-
+!(/html/2604.12946/assets/x21.png)
 
 Figure 18: Spectral Norms of A¯,B¯,C\overline{\bm{A}},\overline{\bm{B}},\bm{C} throughout training 1.3B Parcae. We find that the spectral norm of 𝑨¯\overline{\bm{A}} and 𝑩¯\overline{\bm{B}} remain stable throughout training, while the spectral norm of 𝑪\bm{C} grows.
 
 We begin by exploring the spectral norm of 𝑨¯\overline{\bm{A}}, 𝑩¯\overline{\bm{B}}, 𝑪\bm{C} to see if our dynamical systems block was creating instability, results of which can be found in [Figure 18](#A10.F18 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models"). While we observe that the spectral norm remains relatively low for 𝑨¯\overline{\bm{A}} and 𝑩¯\overline{\bm{B}}, we observed that the spectral norm of 𝑪\bm{C} grew significantly throughout training. While this could be concerning, we find that when passing real activations to 𝑪\bm{C}, using a subset of the validation set, the empirical expanse ratio ‖C​(x)‖‖x‖\frac{||C(x)||}{||x||} (i.e., how much the norm of the residual xx grew after performing 𝑪​(x)\bm{C}(x)) remained relatively low, as seen in [Figure 19](#A10.F19 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x22.png)
-
+!(/html/2604.12946/assets/x22.png)
 
 Figure 19: Comparison of C\bm{C} Amplification with Spectral Norm. We observe that the actual expansion ratio of 𝑪\bm{C} is small and decreasing slowly throughout training.
 
-![Refer to caption](/html/2604.12946/assets/x23.png)
-
+!(/html/2604.12946/assets/x23.png)
 
 Figure 20: Empirical Average of Recurrent State Norm over TT iterations. For each checkpoint we have for our failed 1.3B Parcae model run, we evaluate the recurrent norm through T=24T=24 recurrences at test time, on a held out validation set of fineweb-edu [penedo2024finewebdatasetsdecantingweb]. We find that after an initial explosion on the first recurrence, the state remains relatively stable.
 
 These results indicate that the dynamical systems units are likely not causing an explosion, and thus, we turn our exploration of the dynamics of the entire recurrent unit. Specifically, we track the recurrent state norm at test-time after T=24T=24 recurrences, results of which can be found in [Figure 20](#A10.F20 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models"). We found that on the first recurrence, the recurrent state norm jumped drastically, and then remained relatively stable throughout increased recurrences. To determine what caused the initial spike, we perform a fine-grained analysis of the first recurrence (i.e., T=1T=1), tracking the recurrent state norm after injection and through each transformer block, the results of which can be found in [Figure 21](#A10.F21 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models"). The major takeaway from [Figure 21](#A10.F21 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models") is that the non-linear parts of Parcae do not appear to cause the explosion in state and that the initial explosion steps from the input injections of ee, the output of the prelude block 𝒫\mathcal{P}. We confirm that this is the case, and visualization of which can be seen in [Figure 22](#A10.F22 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x24.png)
-
+!(/html/2604.12946/assets/x24.png)
 
 Figure 21: Recurrent State Norm Progression After Each Transformer Block for T=1T=1. For each checkpoint we have for our failed 1.3B Parcae model run, we evaluate the recurrent norm after injection and each non-linear transformer block for only T=1T=1. We find that the non-linear parts of Parcae have little effect on explosion, which instead mainly stems from the initial injection of prelude output ee.
 
-![Refer to caption](/html/2604.12946/assets/x25.png)
-
+!(/html/2604.12946/assets/x25.png)
 
 Figure 22: State Norm Progression Throughout each Transformer Layer in the Prelude Block. For each checkpoint we have for our failed 1.3B Parcae model run, we evaluate residual norm after each transformer block in the prelude 𝒫\mathcal{P}. We find that a single layer creates an explosion of the residual norm and leads to divergence.
 
@@ -772,13 +696,11 @@ Given this, we propose a simple fix of adding a normalization layer on the outpu
 
 Empirically, we find that using a prelude norm directly stabilizes the recurrent norm further, preventing the recurrent norm from growing too large (see [Figure 23](#A10.F23 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models")). Additionally, we find that using a prelude norm leads to better convergence in both our 140M and 370M Parcae models (see [Figure 24](#A10.F24 "In Appendix J Ablation of Prelude Normalization ‣ Parcae: Scaling Laws For Stable Looped Language Models")), with only a negligible improvement for our 770M and 1.3B Parcae models.
 
-![Refer to caption](/html/2604.12946/assets/x26.png)
-
+!(/html/2604.12946/assets/x26.png)
 
 Figure 23: Prelude Norm Stabilizes Recurrent Norm. We find that prelude norm helps stabilize recurrent state norm in Parcae models following the setup in [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models") for Transformers.
 
-![Refer to caption](/html/2604.12946/assets/x27.png)
-
+!(/html/2604.12946/assets/x27.png)
 
 Figure 24: Prelude Norm Improves Quality. We find that in our 140M and 370M Parcae models trained in the same setup as [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models") for Transformers, normalizing the prelude output leads to better convergence.
 
@@ -792,12 +714,9 @@ We follow hoffmann2022trainingcomputeoptimallargelanguage setup for fitting a pa
 
 where 𝐍​(μrec)\mathbf{N}(\mu\_{\text{rec}}) is the *effective parameter count* of the model if you were to unroll all loops into real parameters, 𝒟\mathcal{D} is the number of tokens that were used in training, and A,B,a,bA,B,a,b are learned parameters. We specifically use Huber loss [huber] on the log loss between the prediction of the parametric fit and the validation loss of the models, using L-BFGS [lbfgs] to minimize. We choose the parametric function of this form as it exactly follows [hoffmann2022trainingcomputeoptimallargelanguage], but with parameters 𝐍\mathbf{N} now being a function of μrec\mu\_{\text{rec}}. Finally, we take the best result from 500 random restarts of L-BFGS, each with up to 10,000 iterations, selecting the initialization that achieves the lowest Huber loss. The results of fitting the parametric function can be visualized in [Figure 25](#A11.F25 "In Appendix K Fitting a Parametric Function for Looping ‣ Parcae: Scaling Laws For Stable Looped Language Models"), and the learned values can be observed in [Table 11](#A11.T11 "In Appendix K Fitting a Parametric Function for Looping ‣ Parcae: Scaling Laws For Stable Looped Language Models").
 
-![Refer to caption](/html/2604.12946/assets/x28.png)
-
+!(/html/2604.12946/assets/x28.png)
 
 Figure 25: Parametric Fit of Looping. Visualization of our parametric function ℒ^train​(μrec,D)\widehat{\mathcal{L}}\_{\text{train}}(\mu\_{\text{rec}},D), which displays the IsoLoss contours for both 140M Parcae (*left*) and 370M Parcae (*right*) models.
-
-
 
 | Model | 𝑬\boldsymbol{E} | 𝑨\boldsymbol{A} | 𝒂\boldsymbol{a} | 𝑩\boldsymbol{B} | 𝒃\boldsymbol{b} | Huber (×10−4\times 10^{-4}) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -893,8 +812,7 @@ where the test-time term depends on the ratio T/μrecT/\mu\_{\text{rec}}, i.e., 
 
 To evaluate generalization, we use the unified law fitted on isoFLOP data to predict the test-time scaling curves of held-out 140M and 370M Parcae models from [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models"), which were trained on fixed data budgets and are a completely out-of-distribution setting. As shown in [Figure 26](#A12.F26 "In Testing the Unified Parametric Fit. ‣ Appendix L Fitting Parametric Functions to Test-Time Looping ‣ Parcae: Scaling Laws For Stable Looped Language Models"), the unified fit (orange) predicts validation loss within 0.85–1.31% average error. When the training law floor is replaced with the empirical loss at T=μrecT=\mu\_{\text{rec}} (oracle, blue), error drops to 0.10–0.17%, confirming that the test-time decay is faithfully captured and the residual error is attributable to the training law’s ∼1%{\sim}1\% extrapolation gap.
 
-![Refer to caption](/html/2604.12946/assets/x29.png)
-
+!(/html/2604.12946/assets/x29.png)
 
 Figure 26: Out-of-Distribution Prediction of Unified Parametric Fit.
 We visualize the prediction of our unified parametric fit (orange) and an oracle fit using the empirical loss at T=μrecT=\mu\_{\text{rec}} for ℒ^train\widehat{\mathcal{L}}\_{\text{train}} (blue) against empirical validation loss with increasing TT for models trained in [Section 5.1](#S5.SS1 "5.1 Parcae Improves End-to-End Quality ‣ 5 Results ‣ Parcae: Scaling Laws For Stable Looped Language Models").
@@ -1058,8 +976,6 @@ In this section, we will discuss the model definitions used for our experiments 
 
 Table 18: Model definitions of both Parcae and baseline Transformers.
 
-
-
 |  | Small (140M) | Medium (370M) | Large (770M) | XLarge (1.3B) |
 | --- | --- | --- | --- | --- |
 | Transformer Parameters | 143,141,184 | 385,903,104 | 773,375,040 | 1,333,868,544 |
@@ -1137,83 +1053,3 @@ We train a custom BPE tokenizer with a vocabulary size of 32,768 using the Huggi
 | Ours | 32,768 | 4.72 | 4.65 |
 
 Table 22: Compression ratio (bytes per token) on FineWeb-Edu for tokenizer used in training.
-
-[◄](/html/2604.12945)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.12946)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.12946)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.12946)[►](/html/2604.12947)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 13:59:37 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

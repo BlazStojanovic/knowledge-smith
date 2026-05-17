@@ -13,49 +13,6 @@ url: https://arxiv.org/abs/2604.01202
 year: 2026
 ---
 
-[2604.01202] Therefore I am. I Think.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Therefore I am. I Think.
 
 Esakkivel Esakkiraja
@@ -65,20 +22,17 @@ Northeastern University
 [esakkiraja.e@northeastern.edu](mailto:esakkiraja.e@northeastern.edu)
   
 
-
 Sai Rajeswar
   
 Mila, ServiceNow Research
 [sai.mudumba@servicenow.com](mailto:sai.mudumba@servicenow.com)
   
 
-
 Denis Akhiyarov
   
 ServiceNow
 [denis.akhiyarov@servicenow.com](mailto:denis.akhiyarov@servicenow.com)
   
-
 
 Rajagopal Venkatesaramani
   
@@ -112,8 +66,7 @@ Another line of work investigates whether chain-of-thought faithfully reflects i
 
 Finally, our approach also draws from work in activation steering and representation engineering. turner2023steering show that model behavior can be steered at inference by adding activation vectors, without fine-tuning. zou2023representation provide a broader framework for reading and controlling high-level model states through representations. Subsequent work studies stronger contrastive variants and extraction procedures (rimsky2024steering; jorgensen2023mean; lee2024programming). We use these ideas as causal tools rather than optimization tools: we first identify a representation associated with specific decisions (such as a tool-call), suppress or inject that signal, and then evaluate how the model’s subsequent reasoning changes in response. For tool use, our benchmark setting is based on, and closest to, ross2025when2call.
 
-![Refer to caption](/html/2604.01202/assets/new_images/fig_small.png)
-
+!(/html/2604.01202/assets/new_images/fig_small.png)
 
 Figure 1: Overview of our methodology. Linear probes detect action decisions. We apply steering vectors, and measure quantitative as well as behavioral impact on CoT.
 
@@ -220,13 +173,13 @@ We evaluate each pair twice with reversed presentation order and temperature 0 t
 
 We begin with the linear-probe analysis for our chosen models on both benchmarks. Figure [2](#S4.F2 "Figure 2 ‣ Pre-Generation Activations Predict Action Decisions. ‣ 4 Results ‣ Therefore I am. I Think.") shows the AUROC for the best layer for Qwen3-4B and GLM-Z1-9B respectively (identified using a sweep across layers), and the mean across layers, on both benchmarks, at various positions in the reasoning trace. Results for GPT-OSS-20B are deferred to the appendix.
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/qwen3_4b_position_sweep.png)
+!(/html/2604.01202/assets/new_images/W2C/qwen3_4b_position_sweep.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/glm_z1_position_sweep.png)
+!(/html/2604.01202/assets/new_images/W2C/glm_z1_position_sweep.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_position_sweep.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_position_sweep.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_position_sweep.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_position_sweep.png)
 
 Figure 2: Decision predictability using probes at layer 20 for Qwen3-4B and GLM-Z1-9B. Both models exhibit a dip at around 5% of the reasoning trace.
 
@@ -234,13 +187,13 @@ We make two striking observations: first, in both benchmarks, using either model
 
 Agreement ratios are presented in Figure [3](#S4.F3 "Figure 3 ‣ Pre-Generation Activations Predict Action Decisions. ‣ 4 Results ‣ Therefore I am. I Think."), and tell a compelling story—signals predictive of action decisions such as whether a model will call a tool are detectable using simple linear probes before visible thinking begins in large language reasoning models. Therefore, this raises the question: is the full generation of think tokens necessary, or is some of it partly performative? Further, when activations are externally perturbed to favor or reduce the model’s propensity to call a tool, how is this reflected in the reasoning process?
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/qwen3_4b_agreement.png)
+!(/html/2604.01202/assets/new_images/W2C/qwen3_4b_agreement.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/glm_z1_agreement.png)
+!(/html/2604.01202/assets/new_images/W2C/glm_z1_agreement.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_agreement.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_agreement.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_agreement.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_agreement.png)
 
 Figure 3: Agreement ratio between decisions detected by probe at layer 20 for various stages and think\_end tokens, and correctness, for Qwen3-4B and GLM-Z1-9B.
 
@@ -261,8 +214,6 @@ We now turn our attention to the activation steering experiments, where our goal
 | 12 | 11 | – | 21 | – | 30 | 58 | – | 79 | – |
 
 Table 1: Steering flip rates on held-out examples (n=100n=100 per direction). (T) refers to thinking mode, (NT) refers to no-think (unavailable for GLM).
-
-
 
 Baseline CoT (no tool call):
 “The user said ‘play baby Shark.’ I need to figure out how to respond. The only function available is set\_volume, which adjusts the global volume for audio playback. The user’s request is to play the ‘baby Shark’ song, but there’s no function for playing audio files. The set\_volume function can change the volume, but it doesn’t play music. Since the tools don’t include a function to play audio, I can’t actually play the song. I should inform the user that I can’t play the song but can adjust the volume if needed.”
@@ -313,8 +264,6 @@ To further understand how the reasoning traces qualitatively behave under pertur
 
 Table 3: Behavioral bucket distribution. When2Call, both judges agree. “–” denotes 0.
 
-
-
 | Model | Dir. | Out. | nn | Seam. Div. | Conf. Supp. | Const. Ovrd. | Infl. Delib. | Decsn. Instb. | No Mngfl. Diff. |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Qwen3 4B | Supp. | Overall | 73 | 3 | 2 | – | 27 | 7 | 34 |
@@ -350,9 +299,9 @@ This work was supported in part by compute credits provided through the Lambda R
 
 Figure [5](#A1.F5 "Figure 5 ‣ A.1 When2Call Layer-Position Heatmaps ‣ Appendix A Appendix ‣ Therefore I am. I Think.") shows the layer-position heatmaps for When2Call for the two main models.
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/qwen3_4b_heatmap.png)
+!(/html/2604.01202/assets/new_images/W2C/qwen3_4b_heatmap.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/glm_z1_heatmap.png)
+!(/html/2604.01202/assets/new_images/W2C/glm_z1_heatmap.png)
 
 Figure 5: Probe AUROC across sampled layers and generation positions on When2Call for the two main models, Qwen3-4B and GLM-Z1-9B. In both cases, the strongest probes appear in mid-to-late layers, with strong pre\_gen predictability and a dip around 5% to 10% of the reasoning trace.
 
@@ -360,9 +309,9 @@ Figure 5: Probe AUROC across sampled layers and generation positions on When2Cal
 
 Figure [6](#A1.F6 "Figure 6 ‣ A.2 BFCL Layer-Position Heatmaps ‣ Appendix A Appendix ‣ Therefore I am. I Think.") shows the layer-position heatmaps for BFCL for the two main models.
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_heatmap.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_qwen3_4b_heatmap.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_heatmap.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_glm_z1_heatmap.png)
 
 Figure 6: Probe AUROC across sampled layers and generation positions on BFCL for the two main models, Qwen3-4B and GLM-Z1-9B. Both models preserve strong pre\_gen predictability, show the early dip in the reasoning trace, and recover in later positions.
 
@@ -372,17 +321,15 @@ Figure 6: Probe AUROC across sampled layers and generation positions on BFCL for
 
 Figures [7](#A1.F7 "Figure 7 ‣ A.3.1 Layer-Position Heatmaps ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") and [8](#A1.F8 "Figure 8 ‣ A.3.1 Layer-Position Heatmaps ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") show the GPT-OSS-20B heatmaps for When2Call and BFCL, with medium and high reasoning shown side by side in each figure.
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_heatmap.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_heatmap.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_high_heatmap.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_high_heatmap.png)
 
 Figure 7: Probe AUROC across sampled layers and generation positions on When2Call for GPT-OSS-20B with medium and high reasoning. Both variants show the same overall pattern as the main models: strong pre\_gen predictability, a dip early in the reasoning trace, and recovery toward the end of thinking.
 
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_heatmap.png)
 
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_heatmap.png)
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_heatmap.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_heatmap.png)
 
 Figure 8: Probe AUROC across sampled layers and generation positions on BFCL for GPT-OSS-20B with medium and high reasoning. As on When2Call, both variants retain strong early predictability, followed by an early dip in the reasoning trace and recovery toward later positions.
 
@@ -390,17 +337,15 @@ Figure 8: Probe AUROC across sampled layers and generation positions on BFCL for
 
 Figures [9](#A1.F9 "Figure 9 ‣ A.3.2 Position Curves ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") and [10](#A1.F10 "Figure 10 ‣ A.3.2 Position Curves ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") show how GPT-OSS-20B predicts the final action across positions on When2Call and BFCL.
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_position_sweep.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_position_sweep.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_high_position_sweep.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_high_position_sweep.png)
 
 Figure 9: Decision predictability across positions on When2Call for GPT-OSS-20B under medium and high reasoning. Across both settings, GPT-OSS exhibits strong pre\_gen predictability and a dip early in the reasoning trace.
 
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_position_sweep.png)
 
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_position_sweep.png)
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_position_sweep.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_position_sweep.png)
 
 Figure 10: Decision predictability across positions on BFCL for GPT-OSS-20B under medium and high reasoning. The same overall pattern persists across both reasoning settings, with strong early predictability and an early dip in the reasoning trace.
 
@@ -408,17 +353,15 @@ Figure 10: Decision predictability across positions on BFCL for GPT-OSS-20B unde
 
 Figures [11](#A1.F11 "Figure 11 ‣ A.3.3 Agreement Curves ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") and [12](#A1.F12 "Figure 12 ‣ A.3.3 Agreement Curves ‣ A.3 Supplemental GPT-OSS-20B Results ‣ Appendix A Appendix ‣ Therefore I am. I Think.") show how those predictions line up with the final think\_end probe across the reasoning trace.
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_agreement.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_medium_agreement.png)
 
-![Refer to caption](/html/2604.01202/assets/new_images/W2C/gpt_oss_high_agreement.png)
+!(/html/2604.01202/assets/new_images/W2C/gpt_oss_high_agreement.png)
 
 Figure 11: Agreement with the final think\_end probe on When2Call for GPT-OSS-20B under medium and high reasoning. Early-position agreement remains lower than for the two main models, before recovering toward later positions.
 
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_agreement.png)
 
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_medium_agreement.png)
-
-![Refer to caption](/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_agreement.png)
+!(/html/2604.01202/assets/new_images/BFCL/bfcl_gpt_oss_high_agreement.png)
 
 Figure 12: Agreement with the final think\_end probe on BFCL for GPT-OSS-20B under medium and high reasoning. Agreement likewise strengthens toward later positions in the reasoning trace.
 
@@ -531,8 +474,6 @@ Steered CoT at α=12\alpha=12 (no tool call):
 
 Figure 13: Suppression example. The probe assigns 0.9992 tool probability. At baseline, the model calls the tool in 5 sentences. Under steering, it fixates on city formatting, generates 2.87×\times more reasoning, and talks itself out of the call entirely.
 
-
-
 Baseline CoT (tool call):
 “The user is asking for the current weather conditions in Quintana Roo…The available function is get\_current\_weather, which requires a location…Quintana Roo is a state in Mexico, so the location would be ‘Quintana Roo, Mexico’. The user didn’t specify Celsius or Fahrenheit, so the default is Fahrenheit. I’ll call the function with location set to ‘Quintana Roo, Mexico’.”
   
@@ -544,8 +485,6 @@ Steered CoT at α=12\alpha=12 (same tool call):
 →\rightarrow Tool call: get\_current\_weather(location="Quintana Roo, Mexico")
 
 Figure 14: Resistant suppression example. The probe assigns 1.00 tool probability. The model produces the same tool call in both conditions, but the steered chain-of-thought inflates 3.57×\times, filled with hedging about whether the function accepts states versus cities. The final decision survives, but the reasoning trace is visibly destabilized.
-
-
 
 Baseline CoT (no tool call):
 “The user is asking for the application name and version. Looking at the functions available: there’s acl\_api.add\_mapping, acl\_api.delete\_mapping, acl\_api.retrieve\_projects, and analysis\_api.retrieve\_analysis. None of these functions seem to be related to getting the application name or version…Since there’s no function that provides application metadata, I can’t use any of the provided tools.”
@@ -574,83 +513,3 @@ Table [5](#A1.T5 "Table 5 ‣ A.6 Judge Disagreement Statistics ‣ Appendix A 
 | Suppress | 27.0% | Inflated Deliberation / Decision Instability (7) |
 
 Table 5: Judge disagreement statistics for the behavioral analysis. Each row reports cases where Claude Sonnet 4.6 and GPT-5.4 assigned different buckets. The final column gives the most frequent disagreement pair, with the count in parentheses.
-
-[◄](/html/2604.01201)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.01202)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.01202)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.01202)[►](/html/2604.01203)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 17:49:50 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

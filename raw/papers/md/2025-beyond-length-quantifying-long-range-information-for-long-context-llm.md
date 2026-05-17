@@ -17,51 +17,6 @@ url: https://arxiv.org/abs/2510.25804
 year: 2025
 ---
 
-[2510.25804] Beyond Length: Quantifying Long-Range Information for Long-Context LLM Pretraining Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-11footnotetext: Equal contribution.22footnotetext: Work done during his internship at Microsoft Research.33footnotetext: Corresponding author.
-
 # Beyond Length: Quantifying Long-Range Information for Long-Context LLM Pretraining Data
 
 Haoran Deng1\*† Yingyu Lin2\* Zhenghao Lin3 Xiao Liu3
@@ -164,8 +119,7 @@ Let a sequence of tokens be denoted by X=(x1,x2,…,xN)X=(x\_{1},x\_{2},\ldots,x
 
 The extended context, denoted EE, is the portion of the long context that precedes the short context, i.e., E​(t)=(xt−ll,…,xt−ls)E(t)=(x\_{t-l\_{l}},\ldots,x\_{t-l\_{s}}). The long context is therefore the concatenation of the extended and short contexts, L=E∘SL=E\circ S. See Figure [1](#S3.F1 "Figure 1 ‣ 3.1 Problem Formulation and Notation ‣ 3 Methodology ‣ Beyond Length: Quantifying Long-Range Information for Long-Context LLM Pretraining Data").
 
-![Refer to caption](/html/2510.25804/assets/x1.png)
-
+!(/html/2510.25804/assets/x1.png)
 
 Figure 1: An illustration of the token-level long-context information gain. Given only the Short Context (SS) “I hate this”, the predictive distribution for the next token has high entropy, as many words (‘song’, ‘thing’, ‘movie’) are plausible. The Extended Context (EE), “The plot was a mess…”, provides critical information that reduces this entropy, concentrating the probability on “movie”.
 
@@ -250,8 +204,7 @@ This loss-based view offers a clear interpretation: the score gives preference t
 The framework of LongFilter is shown in Figure [2](#S3.F2 "Figure 2 ‣ 3.4 LongFilter ‣ 3 Methodology ‣ Beyond Length: Quantifying Long-Range Information for Long-Context LLM Pretraining Data"). LongFilter utilizes a pre-trained causal language model to estimate the distribution of the next token across varying context lengths.
 LongFilter consists of three steps: Long-context Modeling, Short-Context Modeling, and LongFilter Scoring.
 
-![Refer to caption](/html/2510.25804/assets/x2.png)
-
+!(/html/2510.25804/assets/x2.png)
 
 Figure 2: Workflow of LongFilter. The Upper part computes the next-token probability distribution using a short-context sliding window (shown as 4 tokens for illustration, though our experiments use 4K), while the Lower part computes it using the full long context. LongFilter then scores the information gain (Middle part) by calculating a token-level surrogate KL divergence between these two distributions. This gain is low for locally predictable tokens (such as ‘was’), but high for tokens that require extended context (such as ‘movie’). Finally, these token-level scores are aggregated to produce a single score for the entire data instance.
 
@@ -305,13 +258,13 @@ We set the short context window to 4K and the long context window to 64K, using 
 
 ### 4.2 Evaluation on Recall (Needle-in-a-Haystack) Tasks
 
-![Refer to caption](/html/2510.25804/assets/figs/legend.png)
+!(/html/2510.25804/assets/figs/legend.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/arxiv_niah.png)
+!(/html/2510.25804/assets/figs/arxiv_niah.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/book_niah.png)
+!(/html/2510.25804/assets/figs/book_niah.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/cc_niah.png)
+!(/html/2510.25804/assets/figs/cc_niah.png)
 
 Figure 3: Performance on Recall tasks (Needle-in-a-Haystack) w.r.t trained tokens.
 
@@ -320,13 +273,13 @@ This series of tasks has also been referred to as Needle-in-a-Haystack (NIAH) (
 
 Specifically, we reported on the SubEM of Recall task within the HELMET benchmark (Yen et al., [2025](#bib.bib36)), which encompasses four distinct NIAH tasks: JsonKV, Needle retrieval with multiple keys, UUID retrieval with multiple keys, and value retrieval with multiple keys. Experimental results are shown in Figure [3](#S4.F3 "Figure 3 ‣ 4.2 Evaluation on Recall (Needle-in-a-Haystack) Tasks ‣ 4 Experiments ‣ Beyond Length: Quantifying Long-Range Information for Long-Context LLM Pretraining Data").
 
-![Refer to caption](/html/2510.25804/assets/figs/legend.png)
+!(/html/2510.25804/assets/figs/legend.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/arxiv.png)
+!(/html/2510.25804/assets/figs/arxiv.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/book.png)
+!(/html/2510.25804/assets/figs/book.png)
 
-![Refer to caption](/html/2510.25804/assets/figs/cc.png)
+!(/html/2510.25804/assets/figs/cc.png)
 
 Figure 4: Performance on HELMET with respect to trained tokens.
 
@@ -351,9 +304,6 @@ Table 2: Experimental result on LongBench.
 | ProLong | 21.95 | 16.83 | 25.03 | 63.87 | 52.18 | 69.33 | 38.37 |
 | LongWanjuan | 33.64 | 18.58 | 25.18 | 61.95 | 47.87 | 69.79 | 40.02 |
 | LongFilter | 30.54 | 17.21 | 25.58 | 62.84 | 57.02 | 69.11 | 40.66 |
-
-
-
 
 Table 3: Experimental result on RULER.
 
@@ -386,18 +336,15 @@ On the RULER benchmark, LongFilter consistently achieves the highest overall sco
 
 Overall, these results reinforce the pattern observed in LongBench: data quality and filtering (LongFilter) provide more consistent and robust improvements than original data and LongWanjuan.
 
-![Refer to caption](/html/2510.25804/assets/figs/long_w_frame.jpg)
-
+!(/html/2510.25804/assets/figs/long_w_frame.jpg)
 
 (a) High-score text segment: Thesis.
 
-![Refer to caption](/html/2510.25804/assets/figs/short_w_frame_new.png)
-
+!(/html/2510.25804/assets/figs/short_w_frame_new.png)
 
 (b) Low-score text segment: TikZ codes.
 
-![Refer to caption](/html/2510.25804/assets/x3.png)
-
+!(/html/2510.25804/assets/x3.png)
 
 (c) Context Score at each token position for documents of varying ranks.
 
@@ -658,83 +605,3 @@ The equivalence of Eq. equation [1](#S3.E1 "In 3.2 Information-Theoretic Formu
 |  |  |  |  |
 | --- | --- | --- | --- |
 |  |  | =𝔼p​(s,e)[DK​L(p(T∣S,E)∥p(T∣S))].\displaystyle=\mathbb{E}\_{p(s,e)}\left[D\_{KL}\big(p(T\mid S,E)\parallel p(T\mid S)\big)\right]. |  |
-
-[◄](/html/2510.25803)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.25804)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.25804)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.25804)[►](/html/2510.25805)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 18:42:22 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

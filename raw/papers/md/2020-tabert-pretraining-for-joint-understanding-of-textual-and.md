@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2005.08314v1
 year: 2020
 ---
 
-[2005.08314] TaBert: Pretraining for Joint Understanding of Textual and Tabular Data
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # TaBert: Pretraining for Joint Understanding of Textual and Tabular Data
 
 Pengcheng Yin  Graham Neubig
@@ -141,8 +98,7 @@ Given an utterance and its associated tables, a neural semantic parser generates
 In this paper we refer *schema* as the set of columns in a table, and its *representation* as the list of vectors that represent its columns222Column representations for more complex schemas, *e.g.*, those capturing inter-table dependency via primary and foreign keys, could be derived from these table-wise representations..
 We will introduce how TaBert computes these representations in [§ 3.1](#S3.SS1 "3.1 Computing Representations for NL Utterances and Table Schemas ‣ 3 TaBert: Learning Joint Representa- tions over Textual and Tabular Data ‣ TaBert: Pretraining for Joint Understanding of Textual and Tabular Data").
 
-![Refer to caption](/html/2005.08314/assets/x1.png)
-
+!(/html/2005.08314/assets/x1.png)
 
 Figure 1: Overview of TaBert for learning representations of utterances and table schemas with an example from WikiTableQuestions444Example adapted from [stanford.io/38iZ8Pf](https://stanford.io/38iZ8Pf). (A) A content snapshot of the table is created based on the input NL utterance. (B) Each row in the snapshot is encoded by a Transformer (only R2subscript𝑅2R\_{2} is shown), producing row-wise encodings for utterance tokens and cells. (C) All row-wise encodings are aligned and processed by V𝑉V vertical self-attention layers, generating utterance and column representations.
 
@@ -388,8 +344,6 @@ we report execution accuracy on WikiTableQuestions and exact-match accuracy of D
 | w/w/ TaBertLargesubscriptTaBertLarge\textsc{TaBert}\_{\textrm{Large}} (K=3)K3\mathrm{(K=3)} | 52.2 ±0.7plus-or-minus0.7\scriptstyle\pm 0.7 | 53.0 | 51.8 ±0.6plus-or-minus0.6\scriptstyle\pm 0.6 | 52.3 |
 
 Table 1: Execution accuracies on WikiTableQuestions. †Results from Liang et al. ([2018](#bib.bib19)). (Ta)Bert models are evaluated with 10 random runs. We report mean, standard deviation and the best results. Test↦maps-to\mapstoBest refers to the result from the run with the best performance on Dev. set.
-
-
 
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1057,83 +1011,3 @@ MAPO is written in Tensorflow. In our experiments we use an optimized re-impleme
 #### Configuration
 
 We use the same optimizer and learning rate schedule as in [§ B.1](#A2.SS1 "B.1 Supervised Parsing on Spider ‣ Appendix B Semantic Parsers ‣ 7 Conclusion and Future Work ‣ Knowledge-enhanced Pretraining ‣ 6 Related Works ‣ Impact of Pretraining Objectives ‣ Effect of Row Linearization ‣ 5.1 Main Results ‣ 5 Experiments ‣ TaBert: Pretraining for Joint Understanding of Textual and Tabular Data"). We use a batch size of 10, and train the model for 20000 steps, with the TaBert parameters frozen at the first 5000 steps. Other hyper-parameters are kept the same as the original MAPO system.
-
-[◄](/html/2005.08313)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2005.08314)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2005.08314)
-[View original  
-on arXiv](https://arxiv.org/abs/2005.08314)[►](/html/2005.08315)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Mar 7 07:29:59 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

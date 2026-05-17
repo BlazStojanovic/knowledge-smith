@@ -16,50 +16,6 @@ url: http://arxiv.org/abs/1803.05170v3
 year: 2018
 ---
 
-[1803.05170] xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems
 
 Jianxun Lian
@@ -157,8 +113,7 @@ An embedding layer is applied upon the raw feature input to compress it to a low
 
 where m𝑚m denotes the number of fields, and 𝐞𝐢∈ℝDsubscript𝐞𝐢superscriptℝ𝐷\mathbf{e\_{i}}\in\mathbb{R}^{D} denotes the embedding of one field. Although the feature lengths of instances can be various, their embeddings are of the same length m×D𝑚𝐷m\times D, where D𝐷D is the dimension of field embedding.
 
-![Refer to caption](/html/1803.05170/assets/x1.png)
-
+!(/html/1803.05170/assets/x1.png)
 
 Figure 1. The field embedding layer. The dimension of embedding in this example is 4.
 
@@ -182,8 +137,7 @@ PNN (Qu
 et al., [2016](#bib.bib32)) and DeepFM (Guo
 et al., [2017](#bib.bib10)) modify the above architecture slightly. Besides applying DNNs on the embedding vector 𝐞𝐞\mathbf{e}, they add a two-way interaction layer in the architecture. Therefore, both bit-wise and vector-wise interaction is included in their model. The major difference between PNN and DeepFM, is that PNN connects the outputs of product layer to the DNNs, whereas DeepFM connects the FM layer directly to the output unit (refer to Figure [2](#S2.F2 "Figure 2 ‣ 2.2. Implicit High-order Interactions ‣ 2. Preliminaries ‣ xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems")).
 
-![Refer to caption](/html/1803.05170/assets/x2.png)
-
+!(/html/1803.05170/assets/x2.png)
 
 Figure 2. The architecture of DeepFM (with linear part omitted) and PNN. We re-use the symbols in (Guo
 et al., [2017](#bib.bib10)), where red edges represent weight-1 connections (no parameters) and gray edges represent normal connections (network parameters).
@@ -202,8 +156,7 @@ where 𝐰k,𝐛k,𝐱k∈ℝm​D
 subscript𝐰𝑘subscript𝐛𝑘subscript𝐱𝑘
 superscriptℝ𝑚𝐷\mathbf{w}\_{k},\mathbf{b}\_{k},\mathbf{x}\_{k}\in\mathbb{R}^{mD} are weights, bias and output of the k𝑘k-th layer, respectively. We argue that the CrossNet learns a special type of high-order feature interactions, where each hidden layer in the CrossNet is a scalar multiple of 𝐱0subscript𝐱0\mathbf{x}\_{0}.
 
-![Refer to caption](/html/1803.05170/assets/x3.png)
-
+!(/html/1803.05170/assets/x3.png)
 
 Figure 3. The architecture of the Cross Network.
 
@@ -232,18 +185,15 @@ Note that the scalar multiple does not mean 𝐱ksubscript𝐱𝑘\mathbf{x}\_{k
 
 ## 3. Our proposed model
 
-![Refer to caption](/html/1803.05170/assets/x4.png)
-
+!(/html/1803.05170/assets/x4.png)
 
 (a) Outer products along each dimension for feature interactions. The tensor 𝐙k+1superscript𝐙𝑘1\mathbf{Z}^{k+1} is an intermediate result for further learning.
 
-![Refer to caption](/html/1803.05170/assets/x5.png)
-
+!(/html/1803.05170/assets/x5.png)
 
 (b) The k𝑘k-th layer of CIN. It compresses the intermediate tensor 𝐙k+1superscript𝐙𝑘1\mathbf{Z}^{k+1} to Hk+1subscript𝐻𝑘1H\_{k+1} embedding vectors (aslo known as feature maps).
 
-![Refer to caption](/html/1803.05170/assets/x6.png)
-
+!(/html/1803.05170/assets/x6.png)
 
 (c) An overview of the CIN architecture.
 
@@ -397,8 +347,7 @@ where N𝑁N is the total number of training instances. The optimization process
 
 where λ∗subscript𝜆\lambda\_{\*} denotes the regularization term and ΘΘ\Theta denotes the set of parameters, including these in linear part, CIN part, and DNN part.
 
-![Refer to caption](/html/1803.05170/assets/x7.png)
-
+!(/html/1803.05170/assets/x7.png)
 
 Figure 5. The architecture of xDeepFM.
 
@@ -481,9 +430,6 @@ Table 2. Performance of individual models on the Criteo, Dianping, and Bing News
 | CrossNet | 0.8304 | 0.2765 | 6 |
 | CIN | 0.8377 | 0.2662 | 5 |
 
-
-
-
 Table 3. Overall performance of different models on Criteo, Dianping and Bing News datasets. The column Depth presents the best setting for network depth with a format of (cross layers, DNN layers).
 
 |  |  |  |  |  |  |  |  |  |  |
@@ -513,37 +459,29 @@ xDeepFM integrates CIN and DNN into an end-to-end model. While CIN and DNN cover
 
 We study the impact of hyper-parameters on xDeepFM in this section, including (1) the number of hidden layers; (2) the number of neurons per layer; and (3) activation functions. We conduct experiments via holding the best settings for the DNN part while varying the settings for the CIN part.
 
-![Refer to caption](/html/1803.05170/assets/x8.png)
-
+!(/html/1803.05170/assets/x8.png)
 
 (a) Number of layers.
 
-![Refer to caption](/html/1803.05170/assets/x9.png)
-
+!(/html/1803.05170/assets/x9.png)
 
 (b) Number of neurons per layer.
 
-![Refer to caption](/html/1803.05170/assets/x10.png)
-
+!(/html/1803.05170/assets/x10.png)
 
 (c) Activation functions
 
 Figure 6. Impact of network hyper-parameters on AUC performance.
 
-
-
-![Refer to caption](/html/1803.05170/assets/x11.png)
-
+!(/html/1803.05170/assets/x11.png)
 
 (a) Number of layers.
 
-![Refer to caption](/html/1803.05170/assets/x12.png)
-
+!(/html/1803.05170/assets/x12.png)
 
 (b) Number of neurons per layer.
 
-![Refer to caption](/html/1803.05170/assets/x13.png)
-
+!(/html/1803.05170/assets/x13.png)
 
 (c) Activation functions
 
@@ -1091,83 +1029,3 @@ The authors would like to thank the anonymous reviewers for their insightful rev
   prediction.
   *arXiv preprint arXiv:1706.06978*
   (2017).
-
-[◄](/html/1803.05169)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1803.05170)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1803.05170)
-[View original  
-on arXiv](https://arxiv.org/abs/1803.05170)[►](/html/1803.05171)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 16 13:43:34 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

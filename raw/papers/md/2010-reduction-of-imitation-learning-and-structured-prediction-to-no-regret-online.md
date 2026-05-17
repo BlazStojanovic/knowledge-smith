@@ -15,26 +15,6 @@ year: 2010
 
 [1011.0686] 1 INTRODUCTION
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
 else if(!window.matchMedia) { return false; }
 else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
 theme = "dark"; }
@@ -42,7 +22,7 @@ if (theme=="dark") {
 document.documentElement.setAttribute("data-theme", "dark");
 } else {
 document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
+
 function toggleColorScheme(){
 var current\_theme = localStorage.getItem("ar5iv\_theme");
 if (current\_theme) {
@@ -53,8 +33,6 @@ localStorage.setItem("ar5iv\_theme", "light"); } }
 else {
 localStorage.setItem("ar5iv\_theme", "dark"); }
 detectColorScheme(); }
-
-
 
 \newindex
 
@@ -67,12 +45,8 @@ to No-Regret Online Learning
 Stéphane Ross
                       
 
-
-
 Geoffrey J. Gordon
                       
-
-
 
 J. Andrew Bagnell
 
@@ -85,8 +59,6 @@ Pittsburgh, PA 15213, USA
 stephaneross@cmu.edu
                       
 
-
-
 Machine Learning Department
 
 Carnegie Mellon University
@@ -95,8 +67,6 @@ Pittsburgh, PA 15213, USA
 
 ggordon@cs.cmu.edu
                       
-
-
 
 Robotics Institute
 
@@ -344,8 +314,7 @@ To demonstrate the efficacy and scalability of DAgger, we apply it to two challe
 
 Super Tux Kart is a 3D racing game similar to the popular Mario Kart. Our goal is to train the computer to steer the kart moving at fixed speed on a particular race track, based on the current game image features as input (see Figure [1](#S5.F1 "Figure 1 ‣ 5.1 Super Tux Kart ‣ 5 EXPERIMENTS")). A human expert is used to provide demonstrations of the correct steering (analog joystick value in [-1,1]) for each of the observed game images.
 
-![Refer to caption](/html/1011.0686/assets/stk.png)
-
+!(/html/1011.0686/assets/stk.png)
 
 Figure 1: Image from Super Tux Kart’s Star Track.
 
@@ -353,8 +322,7 @@ For all methods, we use a linear controller as the base learner which updates th
 
 We compare performance on a race track called Star Track. As this track floats in space, the kart can fall off the track at any point (the kart is repositioned at the center of the track when this occurs). We measure performance in terms of the average number of falls per lap. For SMILe and DAgger, we used 1 lap of training per iteration (∼similar-to\sim1000 data points) and run both methods for 20 iterations. For SMILe we choose parameter α=0.1𝛼0.1\alpha=0.1 as in Ross and Bagnell ([2010](#bib.bib17)), and for DAgger the parameter βi=I​(i=1)subscript𝛽𝑖𝐼𝑖1\beta\_{i}=I(i=1) for I𝐼I the indicator function. Figure [2](#S5.F2 "Figure 2 ‣ 5.1 Super Tux Kart ‣ 5 EXPERIMENTS") shows 95% confidence intervals on the average falls per lap of each method after 1, 5, 10, 15 and 20 iterations as a function of the total number of training data collected.
 
-![Refer to caption](/html/1011.0686/assets/x1.png)
-
+!(/html/1011.0686/assets/x1.png)
 
 Figure 2: Average falls/lap as a function of training data.
 
@@ -364,8 +332,7 @@ We first observe that with the baseline supervised approach where training alway
 
 Super Mario Bros. is a platform video game where the character, Mario, must move across each stage by avoiding being hit by enemies and falling into gaps, and before running out of time. We used the simulator from a recent Mario Bros. AI competition (Togelius and Karakovskiy, [2009](#bib.bib21)) which can randomly generate stages of varying difficulty (more difficult gaps and types of enemies). Our goal is to train the computer to play this game based on the current game image features as input (see Figure [3](#S5.F3 "Figure 3 ‣ 5.2 Super Mario Bros. ‣ 5 EXPERIMENTS")). Our expert in this scenario is a near-optimal planning algorithm that has full access to the game’s internal state and can simulate exactly the consequence of future actions. An action consists of 4 binary variables indicating which subset of buttons we should press in {{\{left,right,jump,speed}}\}.
 
-![Refer to caption](/html/1011.0686/assets/mario.png)
-
+!(/html/1011.0686/assets/mario.png)
 
 Figure 3: Captured image from Super Mario Bros.
 
@@ -375,8 +342,7 @@ subscript𝑤𝑘subscript𝑏𝑘w\_{k},b\_{k} optimizes the SVM objective with
 
 We compare performance in terms of the average distance travelled by Mario per stage before dying, running out of time or completing the stage, on randomly generated stages of difficulty 1 with a time limit of 60 seconds to complete the stage. The total distance of each stage varies but is around 4200-4300 on average, so performance can vary roughly in [0,4300]. Stages of difficulty 1 are fairly easy for an average human player but contain most types of enemies and gaps, except with fewer enemies and gaps than stages of harder difficulties. We compare performance of DAgger, SMILe and SEARN666We use the same cost-to-go approximation in Daumé III et al. ([2009](#bib.bib7)); in this case SMILe and SEARN differs only in how the weights in the mixture are updated at each iteration. to the supervised approach (Sup). With each approach we collect 5000 data points per iteration (each stage is about 150 data points if run to completion) and run the methods for 20 iterations. For SMILe we choose parameter α=0.1𝛼0.1\alpha=0.1 (Sm0.1) as in Ross and Bagnell ([2010](#bib.bib17)). For DAgger we obtain results with different choice of the parameter βisubscript𝛽𝑖\beta\_{i}: 1) βi=I​(i=1)subscript𝛽𝑖𝐼𝑖1\beta\_{i}=I(i=1) for I𝐼I the indicator function (D0); 2) βi=pi−1subscript𝛽𝑖superscript𝑝𝑖1\beta\_{i}=p^{i-1} for all values of p∈{0.1,0.2,…,0.9}𝑝0.10.2…0.9p\in\{0.1,0.2,\dots,0.9\}. We report the best results obtained with p=0.5𝑝0.5p=0.5 (D0.5). We also report the results with p=0.9𝑝0.9p=0.9 (D0.9) which shows the slower convergence of using the expert more frequently at later iterations. Similarly for SEARN, we obtain results with all choice of α𝛼\alpha in {0.1,0.2,…,1}0.10.2…1\{0.1,0.2,\dots,1\}. We report the best results obtained with α=0.4𝛼0.4\alpha=0.4 (Se0.4). We also report results with α=1.0𝛼1.0\alpha=1.0 (Se1), which shows the unstability of such a pure policy iteration approach. Figure [4](#S5.F4 "Figure 4 ‣ 5.2 Super Mario Bros. ‣ 5 EXPERIMENTS") shows 95% confidence intervals on the average distance travelled per stage at each iteration as a function of the total number of training data collected.
 
-![Refer to caption](/html/1011.0686/assets/x2.png)
-
+!(/html/1011.0686/assets/x2.png)
 
 Figure 4: Average distance/stage as a function of data.
 
@@ -389,8 +355,7 @@ We use the dataset of Taskar et al. ([2003](#bib.bib20)) which has been used ex
 
 We consider predicting the word by predicting each character in sequence in a left to right order, using the previously predicted character to help predict the next and a linear SVM777Each character is 8x16 binary pixels (128 input features); 26 binary features are used to encode the previously predicted letter in the word. We train the multiclass SVM using the all-pairs reduction to binary classification (Beygelzimer et al., [2005](#bib.bib3))., following the greedy SEARN approach in Daumé III et al. ([2009](#bib.bib7)). Here we compare our method to SMILe, as well as SEARN (using the same approximations used in Daumé III et al. ([2009](#bib.bib7))). We also compare these approaches to two baseline, a non-structured approach which simply predicts each character independently and the supervised training approach where training is conducted with the previous character always correctly labeled. Again we try all choice of α∈{0.1,0.2,…,1}𝛼0.10.2…1\alpha\in\{0.1,0.2,\dots,1\} for SEARN, and report results for α=0.1𝛼0.1\alpha=0.1, α=1𝛼1\alpha=1 (pure policy iteration) and the best α=0.8𝛼0.8\alpha=0.8, and run all approaches for 20 iterations. Figure [5](#S5.F5 "Figure 5 ‣ 5.3 Handwriting Recognition ‣ 5 EXPERIMENTS") shows the performance of each approach on the test folds after each iteration as a function of training data.
 
-![Refer to caption](/html/1011.0686/assets/x3.png)
-
+!(/html/1011.0686/assets/x3.png)
 
 Figure 5: Character accuracy as a function of iteration.
 
@@ -530,83 +495,3 @@ This work is supported by the ONR MURI grant N00014-09-1-1052, Reasoning in Redu
   J. Togelius and S. Karakovskiy.
   Mario AI Competition, 2009.
   URL <http://julian.togelius.com/mariocompetition2009>.
-
-[◄](/html/1011.0685)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1011.0686)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1011.0686)
-[View original  
-on arXiv](https://arxiv.org/abs/1011.0686)[►](/html/1011.0687)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sun Mar 3 15:14:40 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

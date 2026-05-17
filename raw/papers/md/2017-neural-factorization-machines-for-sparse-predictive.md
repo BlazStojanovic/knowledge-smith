@@ -11,50 +11,6 @@ url: http://arxiv.org/abs/1708.05027v1
 year: 2017
 ---
 
-[1708.05027] Neural Factorization Machines for Sparse Predictive Analytics
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Neural Factorization Machines for Sparse Predictive Analytics
 
 Xiangnan He
@@ -159,13 +115,11 @@ In this work, we contribute improvements on the expressiveness of FM by endowing
 
 ### 2.2. Deep Neural Networks
 
-![Refer to caption](/html/1708.05027/assets/x1.png)
-
+!(/html/1708.05027/assets/x1.png)
 
 (a) Random initialization
 
-![Refer to caption](/html/1708.05027/assets/x2.png)
-
+!(/html/1708.05027/assets/x2.png)
 
 (b) FM as pre-training
 
@@ -228,8 +182,7 @@ Bi-Interaction Layer. We then feed the embedding set 𝒱xsubscript𝒱𝑥\math
 where ⊙direct-product\odot denotes the element-wise product of two vectors, that is, (vi⊙vj)k=vi​k​vj​ksubscriptdirect-productsubscriptv𝑖subscriptv𝑗𝑘subscript𝑣𝑖𝑘subscript𝑣𝑗𝑘(\textbf{v}\_{i}\odot\textbf{v}\_{j})\_{k}=v\_{ik}v\_{jk}.
 Clearly, the output of Bi-Interaction pooling is a k𝑘k-dimension vector that encodes the second-order interactions between features in the embedding space.
 
-![Refer to caption](/html/1708.05027/assets/x3.png)
-
+!(/html/1708.05027/assets/x3.png)
 
 Figure 2. Neural Factorization Machines model (the first-order linear regression part is not shown for clarity).
 
@@ -468,9 +421,9 @@ To avoid other components (*e.g.,* hidden layers) affecting the analysis, we stu
 
 #### 4.2.1. Dropout Improves Generalization
 
-![Refer to caption](/html/1708.05027/assets/x4.png)
+!(/html/1708.05027/assets/x4.png)
 
-![Refer to caption](/html/1708.05027/assets/x5.png)
+!(/html/1708.05027/assets/x5.png)
 
 Figure 3. Validation error of NFM-0 *w.r.t.* dropout on the Bi-Interaction layer and L2subscript𝐿2L\_{2} regularization on embeddings.
 
@@ -481,9 +434,9 @@ Between the two strategies, dropout offers better performance. Specifically, on 
 One reason might be that enforcing L2subscript𝐿2L\_{2} regularization only suppresses the values of parameters in each update numerically, while using dropout can be seen as ensembling multiple sub-models ([srivastava2014dropout,](#bib.bib33) ), which can be more effective.
 Considering the genericity of FM that subsumes many factorization models, we believe this is a new interesting finding, meaning that dropout can also be an effective strategy to address overfitting of linear latent-factor models.
 
-![Refer to caption](/html/1708.05027/assets/x6.png)
+!(/html/1708.05027/assets/x6.png)
 
-![Refer to caption](/html/1708.05027/assets/x7.png)
+!(/html/1708.05027/assets/x7.png)
 
 Figure 4. Training and validation error of each epoch of NFM-0 with and without dropout on Bi-Interaction layer.
 
@@ -491,9 +444,9 @@ To be more clear about the effect of dropout, we show the training and validatio
 
 #### 4.2.2. Batch Normalization Speeds up Training
 
-![Refer to caption](/html/1708.05027/assets/x8.png)
+!(/html/1708.05027/assets/x8.png)
 
-![Refer to caption](/html/1708.05027/assets/x9.png)
+!(/html/1708.05027/assets/x9.png)
 
 Figure 5. Training and validation error of each epoch of NFM-0 with and without BN on the Bi-Interaction layer.
 
@@ -503,9 +456,9 @@ This is caused by our use of dropout and BN together, as randomly dropping neuro
 
 ### 4.3. Impact of Hidden Layers (RQ2)
 
-![Refer to caption](/html/1708.05027/assets/x10.png)
+!(/html/1708.05027/assets/x10.png)
 
-![Refer to caption](/html/1708.05027/assets/x11.png)
+!(/html/1708.05027/assets/x11.png)
 
 Figure 6. Validation error of LibFM, NFM-0 and NFM with different activation functions on the first hidden layer.
 
@@ -520,9 +473,9 @@ Among the different non-linear activation functions, there is no obvious winner.
 Second, when we use the identity function as the activation function, *i.e.,* the hidden layer performs a linear transformation, NFM does not perform that well.
 This provides evidence to the necessity of learning higher-order feature interactions with non-linear functions.
 
-![Refer to caption](/html/1708.05027/assets/x12.png)
+!(/html/1708.05027/assets/x12.png)
 
-![Refer to caption](/html/1708.05027/assets/x13.png)
+!(/html/1708.05027/assets/x13.png)
 
 Figure 7. Training and validation error of each epoch of NFM-1 with and without pre-training.
 
@@ -545,9 +498,6 @@ Table 2. NFM *w.r.t.* different number of hidden layers.
 | NFM-3 | 0.3219 | 0.4752 |
 | NFM-4 | 0.3202 | 0.4703 |
 
-
-
-
 Table 3. Test error and number of trainable parameters for different methods on latent factors 128 and 256. M denotes “million”; ∗\* and ∗⁣∗
 
 \*\* denote the statistical significance for p<0.05𝑝0.05p<0.05 and p<0.01𝑝0.01p<0.01, respectively, compared to the best baseline.
@@ -565,11 +515,9 @@ Table 3. Test error and number of trainable parameters for different methods on 
 | DeepCross (pre-train) | 4.47M | 0.3388 | 8.93M | 0.3548 | 12.71M | 0.5084 | 25.42M | 0.5130 |
 | NFM | 0.71M | 0.3127∗∗superscript0.3127absent\textbf{0.3127}^{\*\*} | 1.45M | 0.3095∗∗superscript0.3095absent\textbf{0.3095}^{\*\*} | 11.68M | 0.4557∗superscript0.4557\textbf{0.4557}^{\*} | 23.31M | 0.4443∗superscript0.4443\textbf{0.4443}^{\*} |
 
+!(/html/1708.05027/assets/x14.png)
 
-
-![Refer to caption](/html/1708.05027/assets/x14.png)
-
-![Refer to caption](/html/1708.05027/assets/x15.png)
+!(/html/1708.05027/assets/x15.png)
 
 Figure 8. Performance comparison on the test set *w.r.t.* different embedding sizes. LibFM, HOFM and HOFM are trained from random initialization; Wide&Deep and DeepCross are pre-trained with FM feature embeddings.
 
@@ -864,83 +812,3 @@ In future, we will improve the efficiency of NFM by resorting to hashing techniq
   W. Zhang, T. Du, and J. Wang.
   Deep learning over multi-field categorical data.
   In ECIR, 2016.
-
-[◄](/html/1708.05026)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1708.05027)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1708.05027)
-[View original  
-on arXiv](https://arxiv.org/abs/1708.05027)[►](/html/1708.05028)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Mar 19 01:33:20 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

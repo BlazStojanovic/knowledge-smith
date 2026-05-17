@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2106.00311
 year: 2021
 ---
 
-[2106.00311] What’s a good imputation to predict with missing values?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # What’s a good imputation to predict with missing values?
 
 Marine Le Morvan1,2  
@@ -215,7 +172,7 @@ Bertsimas et al. ([2021](#bib.bib2)) refined this result to almost surely conti
 
 Figure 1: Example - Imputation manifolds in three dimensions — 3-dimensional Gaussian data after imputation. Data points are colored according to their missing data pattern prior to imputation. Red, brown and purple (resp. orange, blue, and green) correspond to missing data patterns with two (resp. one) missing value(s). Completely observed points are not represented to ease the visualization of manifolds.
 
-![Refer to caption](/html/2106.00311/assets/manifolds_corrected_points.png)
+!(/html/2106.00311/assets/manifolds_corrected_points.png)
 
 The first key idea of the proof is that, after imputation, all data points with a given missing data pattern m𝑚m are mapped to a manifold ℳ(m)superscriptℳ𝑚\mathcal{M}^{(m)} of dimension |o​b​s​(m)|𝑜𝑏𝑠𝑚|obs(m)|. For example in 3D, data points are mapped to ℝ3superscriptℝ3\mathbb{R}^{3} when completely observed, to 2D manifolds when they have one value missing, to 1D manifolds when they have two values missing, and to one point when all values are missing (see Figure [1](#S3.F1.fig1 "Figure 1 ‣ 3.2 Impute-then-regress procedures are Bayes optimal ‣ 3 Asymptotic analysis of Impute-then-regress procedures ‣ What’s a good imputation to predict with missing values?")). Thus, Impute-then-Regress procedures first map data points to various manifolds depending on their missing data patterns and then apply a prediction function defined on the whole space including manifolds. The second key idea of the proof is to ensure that the original missing data patterns of imputed points can almost surely be identified. For this, the proof requires that all manifolds of the same dimension are pairwise transverse. This assumption is sufficient, though not necessary, to ensure that the intersection of two manifolds of dimension |o​b​s​(m)|𝑜𝑏𝑠𝑚|obs(m)| cannot itself be of dimension |o​b​s​(m)|𝑜𝑏𝑠𝑚|obs(m)|. Transversality is a weak assumption. In fact, Thom’s transversality theorem, (which we rely on in our proof) says that it is a generic property: it holds for “typical examples”, i.e *almost all* imputation functions will lead to transverse manifolds. To clarify this concept, we provide a particular case in 2D where 1D manifolds are not transverse in Appendix [A.4](#A1.SS4 "A.4 Examples of transverse and nontransverse manifolds in 2D. ‣ Appendix A Proofs ‣ What’s a good imputation to predict with missing values?").
 
@@ -291,10 +248,10 @@ In other words, when conditional imputation is used, the optimal regression func
 
 ### 4.3 Fasten your seat belt: corrected imputations may experience discontinuities.
 
-![Refer to caption](/html/2106.00311/assets/x1.png)
+!(/html/2106.00311/assets/x1.png)
 
 Bowl                                                    
-![Refer to caption](/html/2106.00311/assets/x2.png)Wave
+!(/html/2106.00311/assets/x2.png)Wave
 
 Figure 2: Left: corrected imputation The regression function is f⋆​(x1,x2)↦x12+x22maps-tosuperscript𝑓⋆subscript𝑥1subscript𝑥2superscriptsubscript𝑥12superscriptsubscript𝑥22f^{\star}(x\_{1},x\_{2})\mapsto x\_{1}^{2}+x\_{2}^{2}. When x2subscript𝑥2x\_{2} is missing, chaining perfect conditional imputation with the regression function (f⋆∘ΦC​Isuperscript𝑓⋆superscriptΦ𝐶𝐼f^{\star}\circ\Phi^{CI}) gives a biased predictor, shown in red, as the unexplained variance in x2subscript𝑥2x\_{2} is turned into bias. However, using as an imputation Φ​(x1)=ρ2​x12+(1−ρ2)Φsubscript𝑥1superscript𝜌2superscriptsubscript𝑥121superscript𝜌2\Phi(x\_{1})=\sqrt{\rho^{2}x\_{1}^{2}+(1-\rho^{2})} corrects this bias, with ρ𝜌\rho the correlation between x1subscript𝑥1x\_{1} and x2subscript𝑥2x\_{2}.
 Right: no continuous corrected imputation exists. The
@@ -352,11 +309,11 @@ The response Y𝑌Y is generated according to Y=f⋆​(X)+ϵ𝑌superscript𝑓
 
 Figure 3: Bowl, wave and break functions used for f⋆superscript𝑓⋆f^{\star} in the empirical study.
 
-![Refer to caption](/html/2106.00311/assets/x3.png)
+!(/html/2106.00311/assets/x3.png)
 
-![Refer to caption](/html/2106.00311/assets/x4.png)
+!(/html/2106.00311/assets/x4.png)
 
-![Refer to caption](/html/2106.00311/assets/x5.png)
+!(/html/2106.00311/assets/x5.png)
 
 #### Missing values
 
@@ -398,8 +355,7 @@ The experiments use training sets of size n=100 000𝑛100000n=100\,000 and va
 
 The results are presented in Figure [4](#S6.F4 "Figure 4 ‣ 6.2 Experimental results ‣ 6 Empirical study of impute-n-regress procedures ‣ What’s a good imputation to predict with missing values?") as well as in Figure [8](#A2.F8 "Figure 8 ‣ B.3 Supplementary experiments with 𝑓^∗_{𝑏⁢𝑟⁢𝑒⁢𝑎⁢𝑘}. ‣ Appendix B Additional results ‣ What’s a good imputation to predict with missing values?") (Appendix [B.3](#A2.SS3 "B.3 Supplementary experiments with 𝑓^∗_{𝑏⁢𝑟⁢𝑒⁢𝑎⁢𝑘}. ‣ Appendix B Additional results ‣ What’s a good imputation to predict with missing values?")).
 
-![Refer to caption](/html/2106.00311/assets/x6.png)
-
+!(/html/2106.00311/assets/x6.png)
 
 Figure 4: Performances (R2 score on a test set) compared to that of the Bayes predictor across 10 repeated experiments.
 
@@ -958,8 +914,7 @@ Proof by contradiction: Suppose that there exists a function Φ:ℝ→ℝ:Φ→�
 subscript𝑋1𝑀
 01f^{\star}(X\_{1},\Phi(X\_{1}))=\tilde{f}^{\star}(X\_{1},M=(0,1)).
 
-![Refer to caption](/html/2106.00311/assets/x7.png)
-
+!(/html/2106.00311/assets/x7.png)
 
 Figure 6: Graph of X2↦f⋆​(X1,X2)maps-tosubscript𝑋2superscript𝑓⋆subscript𝑋1subscript𝑋2X\_{2}\mapsto f^{\star}(X\_{1},X\_{2})
 
@@ -1241,87 +1196,6 @@ Using the law of the unconscious statistician, we get:
 
 ### B.3 Supplementary experiments with fb​r​e​a​k∗subscriptsuperscript𝑓𝑏𝑟𝑒𝑎𝑘f^{\*}\_{break}.
 
-![Refer to caption](/html/2106.00311/assets/x8.png)
-
+!(/html/2106.00311/assets/x8.png)
 
 Figure 8: Performances (R2 score on a test set) compared to that of the Bayes predictor across 10 repeated experiments.
-
-[◄](/html/2106.00310)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2106.00311)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2106.00311)
-[View original  
-on arXiv](https://arxiv.org/abs/2106.00311)[►](/html/2106.00312)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 14:53:41 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

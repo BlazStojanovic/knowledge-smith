@@ -14,62 +14,12 @@ url: https://arxiv.org/abs/2202.10580
 year: 2022
 ---
 
-[2202.10580] Benchmarking missing-values approaches for predictive models on health databases.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\authnote\authfn
-
-1[alexandre.perez@inria.fr](mailto:alexandre.perez@inria.fr)
-\papercatResearch
-\manuscripttypeAuthor Accepted Manuscript
-
 # Benchmarking missing-values approaches for predictive models on health databases.
 
 Alexandre Perez-Lebel
 McConnell Brain Imaging Centre, The Neuro (Montreal Neurological Institute-Hospital), Faculty of Medicine, McGill University, Montreal, QC, Canada
 Inria, Parietal team, Palaiseau, France
 Mila, Montreal, QC, Canada
-
 
 [0000-0003-0556-0763](https://orcid.org/0000-0003-0556-0763 "ORCID identifier")
 
@@ -434,11 +384,11 @@ Figure [6](#S11.F6 "Figure 6 ‣ Effect of tasks’ difficulty on the performan
 
 (a) Prediction performance
 
-![Refer to caption](/html/2202.10580/assets/x1.png)
+!(/html/2202.10580/assets/x1.png)
 
 (b) Computational time
 
-![Refer to caption](/html/2202.10580/assets/x2.png)
+!(/html/2202.10580/assets/x2.png)
 
 Figure 1: Gradient-boosted trees models.
 Comparison of prediction performance and training times across the 12 methods (see Table [1](#S2.T1 "Table 1 ‣ 2.1 Benchmarking the imputation and MIA methods ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases.")) for 13 prediction tasks spread over 4 databases, and for 4 sizes of dataset (2 500, 10 000, 25 000 and 100 000 samples). For each of the tasks and sizes, we computed a reference score by averaging the scores obtained by the 12 methods on the corresponding task and size. The relative prediction score of a method on a task and size is the deviation of the prediction score from the reference score of this task and size. For computational time, the total training time comprises imputation and tuning times and is given relative to the one of MIA for each task and size. More details on how these plots were created are given in the [Plotting method](#S5.SS2 "In 5 Detailed benchmarking methodology ‣ Benchmarking missing-values approaches for predictive models on health databases.") section. The significance is assessed with a one-sided Wilcoxon signed-rank test with MIA taken as reference (see Supplementary Table [5(a)](#S11.T5.st1 "In Table 5 ‣ Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.")). Methods which performed significantly poorer (resp. better) at the 0.05 level are marked with "⋆⋆\star" (resp. "⋆(>)⋆absent\star(>)") and "⋆⁣⋆
@@ -1148,11 +1098,11 @@ This work started as an internship at the Montreal Neurological Institute of McG
 
 (a) Prediction performance
 
-![Refer to caption](/html/2202.10580/assets/x3.png)
+!(/html/2202.10580/assets/x3.png)
 
 (b) Computational time
 
-![Refer to caption](/html/2202.10580/assets/x4.png)
+!(/html/2202.10580/assets/x4.png)
 
 Figure 2: Supplementary results: linear and gradient-boosted trees models.
 Comparison of prediction performance and training times across the 9 methods (linear models and gradient boosting trees, see Supplementary Table [2](#S11.T2 "Table 2 ‣ 11.1.2 Findings: trees with MIA improve upon linear models ‣ 11.1 Supplementary experiment: linear models or trees? ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.")) for 13 prediction tasks spread over 4 databases, and for 4 sizes of dataset (2 500, 10 000, 25 000 and 100 000 samples). For linear models, ridge is used for regressions and logistic regression for classifications.
@@ -1217,9 +1167,6 @@ Both statistics ([1](#S11.E1 "In Friedman test ‣ 11.2 Significance tests ‣ 1
 
 Table 3: Friedman test, correction by Iman and Davenport and Nemenyi test. CD is the critical distance and N the number of tasks for each size.
 
-
-
-
 (a) Tree-based methods of Table [1](#S2.T1 "Table 1 ‣ 2.1 Benchmarking the imputation and MIA methods ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases.").
 
 |  |  |  |  |  |  |  |
@@ -1242,18 +1189,15 @@ Table 3: Friedman test, correction by Iman and Davenport and Nemenyi test. CD is
 | 25000 | 23 | 5.6e-03 | 4.3 | 6.2e-04 | 4.5 | 7 |
 | 100000 | -19 | 1 | -1.1 | 1 | 6 | 4 |
 
-
-
-
 Figure 3: Mean ranks by method and by size of dataset. The critical difference is computed using the Nemenyi test (equation ([3](#S11.E3 "In Nemenyi test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.")) and Supplementary Table [3](#S11.T3 "Table 3 ‣ Friedman test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.")). Methods within the critical difference range do not perform significantly differently from one another according to the Nemenyi test. Methods within the critical difference range of MIA are in red, others in black.
 
 (a) Tree-based methods.
 
-![Refer to caption](/html/2202.10580/assets/x5.png)
+!(/html/2202.10580/assets/x5.png)
 
 (b) Boosted trees+MIA vs linear methods.
 
-![Refer to caption](/html/2202.10580/assets/x6.png)
+!(/html/2202.10580/assets/x6.png)
 
 ##### Nemenyi test
 
@@ -1270,9 +1214,6 @@ Values of qαsubscript𝑞𝛼q\_{\alpha} are given in Table 5 of Demšar [[11]
 To compute the one-sided Wilcoxon signed-rank test, we used the wilcoxon function of the scipy.stats module between the 13 average scores of MIA against the ones of every other methods. Resulting p-values are given in Supplementary Table [5](#S11.T5 "Table 5 ‣ Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.") for the 4 sizes of dataset.
 
 Table 5: One-sided Wilcoxon signed-rank test. p-values of the one-sided right test on the difference of score between MIA and every other method for Table [5(a)](#S11.T5.st1 "In Table 5 ‣ Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases."), and between gradient-boosted trees and linear models for Table [6(a)](#S11.T6.st1 "In Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases."). p-values below the 0.05 level are marked with ⋆. p-values below the Bonferroni corrected level are marked with ⋆⋆. When the reversed test (*i.e.* one-sided left) is significant instead, p-values are marked with ⋆(>) and ⋆⋆(>) following the same rule.
-
-
-
 
 (a) MIA vs imputation. Bonferroni level: 0.05/19=2.6×10−30.05192.6superscript1030.05/19=2.6\times 10^{-3}. Rejecting the null hypothesis means MIA performed better than the compared method.
 
@@ -1315,9 +1256,6 @@ Table 5: One-sided Wilcoxon signed-rank test. p-values of the one-sided right te
 | KNN | 8.5e-04⋆⋆superscript8.5e-04⋆absent⋆\text{8.5e-04}^{\star\star} | 7.3e-04⋆⋆superscript7.3e-04⋆absent⋆\text{7.3e-04}^{\star\star} | 3.1e-02⋆superscript3.1e-02⋆\text{3.1e-02}^{\star} |  |
 | KNN+mask | 8.5e-04⋆⋆superscript8.5e-04⋆absent⋆\text{8.5e-04}^{\star\star} | 4.9e-04⋆⋆superscript4.9e-04⋆absent⋆\text{4.9e-04}^{\star\star} | 3.1e-02⋆superscript3.1e-02⋆\text{3.1e-02}^{\star} |  |
 
-
-
-
 Table 7: Scikit-learn’s implementations of the methods.
 
 |  |  |
@@ -1332,9 +1270,6 @@ Table 7: Scikit-learn’s implementations of the methods.
 | ANOVA selection | f\_regression, f\_classif |
 | Permutation importance | permutation\_importance |
 | Bagging | BaggingRegressor, BaggingClassifier |
-
-
-
 
 Table 8: Correlation between features. Average number of ordinal and numerical features correlated to other ordinal or numerical features with an absolute correlation coefficient larger than thresholds {0.1,0.2,0.3}0.10.20.3\{0.1,0.2,0.3\}, averaged on all ordinal and numerical features of the task and expressed in percentage of the number of ordinal and numerical features in the task. For example in the task "death\_screening", a numerical or ordinal feature has an absolute correlation value greater than 0.01 with 68% of the ordinal and numerical features of the task in average.
 
@@ -1360,16 +1295,13 @@ Table 8: Correlation between features. Average number of ordinal and numerical f
 
 Figure 4: Types of features. Number of categorical, ordinal and numerical features in each dataset, before encoding. Note that one non-encoded categorical feature can lead to several selected encoded features. Since we select 100 encoded features, some task have less than 100 non-encoded features. For tasks having several trials, five horizontal bars are plotted representing one trial each, as feature selection may select different features.
 
-![Refer to caption](/html/2202.10580/assets/x7.png)
+!(/html/2202.10580/assets/x7.png)
 
-
-![Refer to caption](/html/2202.10580/assets/x8.png)
-
+!(/html/2202.10580/assets/x8.png)
 
 (a) Classification tasks
 
-![Refer to caption](/html/2202.10580/assets/x9.png)
-
+!(/html/2202.10580/assets/x9.png)
 
 (b) Regression tasks
 
@@ -1379,35 +1311,27 @@ Figure 5: Effect of difficulty on the ranks of the methods. For each task and si
 
 For classification tasks, Supplementary Figure [5(a)](#S11.F5.sf1 "In Figure 5 ‣ Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.") shows the relative performance of the methods as a function of the tasks’ difficulty. Bagged methods Iterative+mask+Bagging and MIA+Bagging show a clear trend with lower (resp. higher) ranks for easier (resp. harder) methods. Also, MIA is the best performing one for harder tasks (for AUC < 0.8). Thus, the interest of MIA seems more pronounced for harder tasks. There is not enough regression tasks to observe exploitable trends on Supplementary Figure [5(b)](#S11.F5.sf2 "In Figure 5 ‣ Wilcoxon signed-rank test ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.").
 
-![Refer to caption](/html/2202.10580/assets/x10.png)
-
+!(/html/2202.10580/assets/x10.png)
 
 Figure 6: Missing values distribution. Proportion of missing values across selected encoded features for each task and for trial number 1, sorted in decreasing order. Other trials have similar proportions.
 
-![Refer to caption](/html/2202.10580/assets/x11.png)
-
+!(/html/2202.10580/assets/x11.png)
 
 Figure 7: Scores of the tree-based methods as a function of the training size. Detailed scores of Figure [1](#S2.F1 "Figure 1 ‣ 2.2.4 NHIS ‣ 2.2 Health databases ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases.") broken out by task.
 
-![Refer to caption](/html/2202.10580/assets/x12.png)
-
+!(/html/2202.10580/assets/x12.png)
 
 Figure 8: Feature importance versus proportion of missing values. Importance is measured as the drop in score when randomly permuting the considered feature. Each feature is permuted 10 times and its importance is taken as the average drop in score. Score drops are also averaged across folds. Local regressions (LOWESS) are plotted for each task to better visualize trends.
 
-
-
 (a) Prediction performance
 
-![Refer to caption](/html/2202.10580/assets/x13.png)
+!(/html/2202.10580/assets/x13.png)
 
 (b) Computational time
 
-![Refer to caption](/html/2202.10580/assets/x14.png)
+!(/html/2202.10580/assets/x14.png)
 
 Figure 9: Effect of bagging. Comparison of prediction performance and training times between MIA, Mean+mask, Iterative+mask and their bagged version, for 13 prediction tasks spread over 4 databases, and for 4 sizes of dataset (2 500, 10 000, 25 000 and 100 000 samples). This figure is based on Figure [1](#S2.F1 "Figure 1 ‣ 2.2.4 NHIS ‣ 2.2 Health databases ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases."), refer to caption of Figure [1](#S2.F1 "Figure 1 ‣ 2.2.4 NHIS ‣ 2.2 Health databases ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases.") for more details.
-
-
-
 
 Table 9: Overview of the prediction tasks used in this article. For selection, ’A’ means ANOVA and ’M’ means manual. Type ’C’ is classification and type ’R’ is regression. The number of features is given after encoding and selection. Since this number may vary between trials, we average it on the 5 trials for the ANOVA selection. Target is the name of the feature to predict in the original database or a formula to build a new feature to predict from the existing ones.
 
@@ -1429,13 +1353,7 @@ Table 9: Overview of the prediction tasks used in this article. For selection, �
 |  | septic\_screening | 0.87 | AUC | A | 30836 | 100 | C | ICD9\_CODE == 78552 | Predict the septic shock from the LABEVENTS table only. |
 | NHIS | income\_screening | 0.52 | R2 | A | 20987 | 96 | R | ERNYR-P | Predict the income earned on the previous year with information from tables: household, family, person and adult. |
 
-
-
-
 Table 10: Scores and ranks of the tree based methods described in Table [1](#S2.T1 "Table 1 ‣ 2.1 Benchmarking the imputation and MIA methods ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases.").
-
-
-
 
 (a) Scores relative to the absolute reference score plotted in Figure [1(a)](#S2.F1.sf1 "In Figure 1 ‣ 2.2.4 NHIS ‣ 2.2 Health databases ‣ 2 Empirical study ‣ Benchmarking missing-values approaches for predictive models on health databases."). Values in bold are the reference scores and are absolute. Other scores are given relative to the reference score of their task and size.
 
@@ -1497,9 +1415,6 @@ Table 10: Scores and ranks of the tree based methods described in Table [1](#S2
 |  | MIA+Bagging |  |  |  |  |  | -4e-3 | +5e-3 |  | +6e-3 | -2e-3 |  |  |  |
 |  | Reference score |  |  |  |  |  | 0.66 | 0.63 |  | 0.76 | 0.69 |  |  |  |
 | Average | Reference score | 0.97 | 0.85 | 0.96 | 0.20 | 0.89 | 0.64 | 0.59 | 0.60 | 0.66 | 0.66 | 0.81 | 0.92 | 0.56 |
-
-
-
 
 (a) Ranks computed from the relative scores in Supplementary Table [10(a)](#S11.T10.st1 "In Table 10 ‣ Effect of tasks’ difficulty on the performance of the methods ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases."). Best average ranks are in bold.
 
@@ -1569,15 +1484,9 @@ Table 10: Scores and ranks of the tree based methods described in Table [1](#S2
 |  | Iterative+mask+Bagging | 1.0 | 6.5 | 1.0 | 1.0 | 1.0 | 10.0 | 2.0 | 2.0 | 1.7 | 6.8 | 1.3 | 2.0 | 2.0 | 2.1 | 4.5 | 1.7 | 2.0 | 2.6 |
 |  | MIA+Bagging | 2.5 | 7.0 | 3.0 | 2.5 | 2.0 | 11.5 | 1.0 | 1.0 | 4.0 | 9.2 | 1.7 | 1.0 | 1.0 | 3.4 | 5.4 | 1.3 | 1.0 | 2.8 |
 
-
-
-
 Table 12: Scores and ranks of gradient-boosted trees+MIA compared to linear methods described in Supplementary Table [2](#S11.T2 "Table 2 ‣ 11.1.2 Findings: trees with MIA improve upon linear models ‣ 11.1 Supplementary experiment: linear models or trees? ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases.").
   
 We removed one outlier fold from one trial for the methods Linear+Iter and Linear+Iter+mask for the "task platelet\_screening" at size n𝑛n=2 500. Others are unchanged.
-
-
-
 
 (a) Scores relative to the absolute reference score and plotted in Supplementary Figure [2(a)](#S10.F2.sf1 "In Figure 2 ‣ Benchmarking missing-values approaches for predictive models on health databases."). Values in bold are the reference scores and are absolute. Other scores are given relative to the reference score of their task and size.
 
@@ -1627,9 +1536,6 @@ We removed one outlier fold from one trial for the methods Linear+Iter and Linea
 |  | Linear+KNN+mask |  |  |  |  |  |  | -1e-3 |  |  |  |  |  |  |
 |  | Reference score |  |  |  |  |  | 0.60 | 0.60 |  | 0.74 | 0.64 |  |  |  |
 | Average | Reference score | 0.96 | 0.85 | 0.94 | 0.14 | 0.84 | 0.57 | 0.58 | 0.53 | 0.66 | 0.62 | 0.69 | 0.83 | 0.50 |
-
-
-
 
 (a) Ranks computed from relative scores in Supplementary Table [12(a)](#S11.T12.st1 "In Table 12 ‣ Effect of tasks’ difficulty on the performance of the methods ‣ 11.2 Significance tests ‣ 11 Appendix ‣ Benchmarking missing-values approaches for predictive models on health databases."). Best average ranks are in bold.
 
@@ -1683,83 +1589,3 @@ We removed one outlier fold from one trial for the methods Linear+Iter and Linea
 |  | Linear+Iter+mask | 9.0 | 2.0 | 5.5 | 8.0 | 2.0 | 4.2 | 6.5 | 5.0 | 1.8 | 2.2 | 3.3 | 5.7 | 4.5 | 5.3 | 4.0 | 4.5 | 4.5 | 4.6 |
 |  | Linear+KNN | 2.5 | 7.5 | 8.0 | 5.0 | 9.0 | 9.0 | 6.5 | 6.0 | 9.0 | 8.3 | 9.0 | 7.7 | 8.5 | 6.4 | 7.8 | 8.3 | 8.5 | 7.8 |
 |  | Linear+KNN+mask | 4.0 | 5.5 | 7.0 | 5.0 | 8.0 | 8.0 | 7.0 | 2.0 | 8.0 | 8.5 | 8.0 | 7.0 | 4.5 | 5.9 | 6.7 | 7.5 | 4.5 | 6.2 |
-
-[◄](/html/2202.10579)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2202.10580)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2202.10580)
-[View original  
-on arXiv](https://arxiv.org/abs/2202.10580)[►](/html/2202.10581)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 8 19:14:57 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

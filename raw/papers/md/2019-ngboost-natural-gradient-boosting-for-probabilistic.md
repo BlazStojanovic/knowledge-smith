@@ -16,50 +16,6 @@ url: http://arxiv.org/abs/1910.03225v4
 year: 2019
 ---
 
-[1910.03225] NGBoost: Natural Gradient Boosting for Probabilistic Prediction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # NGBoost: Natural Gradient Boosting for Probabilistic Prediction
 
 Tony Duan
@@ -85,13 +41,11 @@ gradient boosting, probabilistic regression
 
 ## 1 Introduction
 
-![Refer to caption](/html/1910.03225/assets/x1.png)
-
+!(/html/1910.03225/assets/x1.png)
 
 Figure 1: Prediction intervals for a toy 1-dimensional probabilistic regression problem, fit via NGBoost. The dots represent data points. The thick black line is the predicted mean after fitting the model. The thin gray lines are the upper and lower quantiles covering 95% of the prediction distribution.
 
 x𝑥xBase Learners {f(m)​(x)}m=1Msuperscriptsubscriptsuperscript𝑓𝑚𝑥𝑚1𝑀\left\{f^{(m)}(x)\right\}\_{m=1}^{M}Distribution Pθ​(y|x)subscript𝑃𝜃conditional𝑦𝑥P\_{\theta}(y|x)Scoring Rule 𝒮​(Pθ,y)𝒮subscript𝑃𝜃𝑦\mathcal{S}(P\_{\theta},y)y𝑦yθ𝜃\thetaFit Natural Gradient ∇~θsubscript~∇𝜃\tilde{\nabla}\_{\theta}
-
 
 Figure 2: NGBoost is modular with respect to choice of base learner, distribution, and scoring rule.
 
@@ -159,9 +113,9 @@ Another example is CRPS, which is generally considered a robust alternative to M
 
 ### 3.2 The Generalized Natural Gradient
 
-![Refer to caption](/html/1910.03225/assets/x2.png)
+!(/html/1910.03225/assets/x2.png)
 
-![Refer to caption](/html/1910.03225/assets/x3.png)
+!(/html/1910.03225/assets/x3.png)
 
 Figure 3: Proper scoring rules and corresponding gradients for fitting a Normal distribution on samples ∼N​(0,1)similar-toabsent𝑁01\sim N(0,1). For each scoring rule, the landscape of the score (colors and contours) is identical, but the gradient fields (arrows) are markedly different depending on which kind of gradient is used.
 
@@ -311,27 +265,27 @@ The pseudo-code is presented in Algorithm [1](#alg1 "Algorithm 1 ‣ 3.4 NGBoost
 
 (a) 0% fit
 
-![Refer to caption](/html/1910.03225/assets/x4.png)
+!(/html/1910.03225/assets/x4.png)
 
-![Refer to caption](/html/1910.03225/assets/x5.png)
+!(/html/1910.03225/assets/x5.png)
 
 (b) 33% fit
 
-![Refer to caption](/html/1910.03225/assets/x6.png)
+!(/html/1910.03225/assets/x6.png)
 
-![Refer to caption](/html/1910.03225/assets/x7.png)
+!(/html/1910.03225/assets/x7.png)
 
 (c) 67% fit
 
-![Refer to caption](/html/1910.03225/assets/x8.png)
+!(/html/1910.03225/assets/x8.png)
 
-![Refer to caption](/html/1910.03225/assets/x9.png)
+!(/html/1910.03225/assets/x9.png)
 
 (d) 100% fit
 
-![Refer to caption](/html/1910.03225/assets/x10.png)
+!(/html/1910.03225/assets/x10.png)
 
-![Refer to caption](/html/1910.03225/assets/x11.png)
+!(/html/1910.03225/assets/x11.png)
 
 Figure 4: Contrasting the learning dynamics between using the ordinary gradient (top row) vs. the natural gradient (bottom row) for the purpose of gradient boosting the parameters of a Normal distribution on a toy data set. With ordinary gradients, we observe that “lucky” examples that are accidentally close to the initial predicted mean dominate the learning. This is because, under the ordinary gradient, the variances of those examples that have the correct mean get adjusted much more aggressively than the wrong means of the “unlucky” examples. This results in simultaneous overfitting of the “lucky” examples in the middle and underfitting of the “unlucky” examples at the ends. Under the natural gradient, all the updates are better balanced.
 
@@ -368,9 +322,6 @@ Table 1: Comparison of probabilistic regression performance on regression benchm
 | Yacht | 308 | 0.20 ±plus-or-minus\pm 0.26 | 1.55 ±plus-or-minus\pm 0.12 | 1.18 ±plus-or-minus\pm 0.21 | 1.75 ±plus-or-minus\pm 0.00 | 0.10 ±plus-or-minus\pm 0.26 | 0.80 ±plus-or-minus\pm 0.56 | 2.94 ±plus-or-minus\pm 0.09 |
 | Year MSD | 515345 | 3.43 ±plus-or-minus\pm NA | 3.59 ±plus-or-minus\pm NA | 3.35 ±plus-or-minus\pm NA | NA±plus-or-minus\pm NA | NA ±plus-or-minus\pm NA | NA ±plus-or-minus\pm NA | NA ±plus-or-minus\pm NA |
 
-
-
-
 Table 2: Comparison of probabilistic regression performance on regression benchmark UCI datasets as measured by NLL while ablating key components of NGBoost. Multiparameter boosting must be used in tandem with the natural gradient to increase performance. Bolding is as in Table 1.
 
 | Dataset | N | NGBoost | 2nd-Order | Multiparameter | Homoscedastic |
@@ -385,9 +336,6 @@ Table 2: Comparison of probabilistic regression performance on regression benchm
 | Wine | 1588 | 0.91 ±plus-or-minus\pm 0.06 | 1.21 ±plus-or-minus\pm 0.09 | 0.93 ±plus-or-minus\pm 0.07 | 1.34 ±plus-or-minus\pm 0.67 |
 | Yacht | 308 | 0.20 ±plus-or-minus\pm 0.26 | 4.11 ±plus-or-minus\pm 0.17 | 3.29 ±plus-or-minus\pm 0.20 | 2.02 ±plus-or-minus\pm 0.21 |
 | Year MSD | 515345 | 3.43 ±plus-or-minus\pm NA | 3.80 ±plus-or-minus\pm 0.00 | 3.60 ±plus-or-minus\pm NA | 3.63 ±plus-or-minus\pm NA |
-
-
-
 
 Table 3: Comparison of point-estimation performance on regression benchmark UCI datasets as measured by RMSE. Although not optimized for point estimation, NGBoost still offers competitive performance. Bolding is as in Table [1](#S4.T1 "Table 1 ‣ 4 Experiments ‣ NGBoost: Natural Gradient Boosting for Probabilistic Prediction").
 
@@ -664,83 +612,3 @@ This work was funded in part by the National Institutes of Health. We thank anon
   Gaussian Processes.
   In International Conference on Artificial Intelligence and
   Statistics, pages 567–574.
-
-[◄](/html/1910.03224)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/1910.03225)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+1910.03225)
-[View original  
-on arXiv](https://arxiv.org/abs/1910.03225)[►](/html/1910.03226)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Sat Mar 2 15:06:14 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

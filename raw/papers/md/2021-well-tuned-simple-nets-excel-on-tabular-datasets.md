@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2106.11189v2
 year: 2021
 ---
 
-[2106.11189] Well-tuned Simple Nets Excel on Tabular Datasets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Well-tuned Simple Nets Excel on Tabular Datasets
 
 Arlind Kadra
@@ -769,28 +726,25 @@ Table 2: Comparison of well-regularized MLPs vs. other methods in terms of balan
 
 ## 6 Experimental Results
 
-![Refer to caption](/html/2106.11189/assets/x1.png)
+!(/html/2106.11189/assets/x1.png)
 
-![Refer to caption](/html/2106.11189/assets/x2.png)
+!(/html/2106.11189/assets/x2.png)
 
-![Refer to caption](/html/2106.11189/assets/x3.png)
+!(/html/2106.11189/assets/x3.png)
 
 Figure 1: Comparison of our proposed dataset-specific cocktail (MLP+C) against the top three baselines. Each dot in the plot represents a dataset, the y-axis our method’s errors and the x-axis the baselines’ errors.
 
 We present the comparative results of our MLPs regularized with the proposed regularization cocktails (MLP+C) against ten baselines (descriptions in Section [5.4](#S5.SS4 "5.4 Experimental Setup for the Baselines ‣ 5 Experimental Protocol ‣ Well-tuned Simple Nets Excel on Tabular Datasets")): (a) two state-of-the-art architectures (NODE, TabN.); (b) two AutoGluon Tabular variants with neural networks that features stacking (AutoGL. S) and additionally HPO (AutoGL. HPO); (c) three Gradient-Boosted Decision Tree (GBDT) implementations (XGB., ASK-G., and CatBoost); (d) as well as three reference MLPs (unregularized (MLP), and regularized with Dropout (MLP+D) [[49](#bib.bib49)] or SELU (MLP+SELU) [[30](#bib.bib30)]).
 
-![Refer to caption](/html/2106.11189/assets/x4.png)
-
+!(/html/2106.11189/assets/x4.png)
 
 (a) CD of MLP+C vs. neural networks
 
-![Refer to caption](/html/2106.11189/assets/x5.png)
-
+!(/html/2106.11189/assets/x5.png)
 
 (b) CD of MLP+C vs. GBDT
 
-![Refer to caption](/html/2106.11189/assets/x6.png)
-
+!(/html/2106.11189/assets/x6.png)
 
 (c) CD of MLP+C vs. all baselines
 
@@ -802,20 +756,17 @@ To assess the statistical significance, we analyze the ranks of the classificati
 The overall empirical comparison of the elaborated methods is given in Figure [2](#S6.F2 "Figure 2 ‣ 6 Experimental Results ‣ Well-tuned Simple Nets Excel on Tabular Datasets"). The analysis of neural network baselines in Subplot [2(a)](#S6.F2.sf1 "In Figure 2 ‣ 6 Experimental Results ‣ Well-tuned Simple Nets Excel on Tabular Datasets") reveals a clear statistical significance of the regularization cocktails against the other methods. Apart from AutoGluon (both versions), the other neural architectures are not competitive even against an MLP regularized only with Dropout and optimized with our standard, fixed training pipeline of Adam with cosine annealing.
 To be even fairer to the weaker baselines (TabNet and Node) we tried boosting them by adding early stopping (indicated with "+ES"), but their rank did not improve. Overall, the large-scale experimental analysis shows that Hypothesis 1 in Section [5.3](#S5.SS3 "5.3 Research Hypotheses and Associated Experiments ‣ 5 Experimental Protocol ‣ Well-tuned Simple Nets Excel on Tabular Datasets") is validated: well-regularized simple deep MLPs outperform specialized neural architectures.
 
-![Refer to caption](/html/2106.11189/assets/x7.png)
+!(/html/2106.11189/assets/x7.png)
 
-![Refer to caption](/html/2106.11189/assets/x8.png)
+!(/html/2106.11189/assets/x8.png)
 
 Figure 3: Left: Cocktail ingredients occurring in at least 30% of the datasets. Right: Clustered histogram (union of member occurrences) with the acronyms from Table [1](#S4.T1 "Table 1 ‣ 4.2 Cocktail Search Space ‣ 4 Regularization Cocktails for Multilayer Perceptrons ‣ Well-tuned Simple Nets Excel on Tabular Datasets"). Implicit: {BN, LA, SWA}, M. Averaging: {DO, SE}, Structural: {SC, SS, SD}, D. Augmentation: {MU, CM, CO, AT}.
-
-
 
 Time (Hours)
 Wins
 Ties
 Losses
 p-value
-
 
 0.250.250.25
 212121
@@ -885,8 +836,7 @@ The final cumulative comparison in Figure [2(c)](#S6.F2.sf3 "In Figure 2 ‣ 6 E
 
 Figure [3](#S6.F3 "Figure 3 ‣ 6 Experimental Results ‣ Well-tuned Simple Nets Excel on Tabular Datasets") provides a further analysis on the most prominent regularizers of the MLP cocktails, based on the frequency with which our HPO procedure selected the various regularization methods for each dataset’s cocktail. In the left plot, we show the frequent individual regularizers, while in the right plot the frequencies are grouped by types of regularizers. The grouping reveals that a cocktail for each dataset often has at least one ingredient from every regularization family (detailed in Section [3](#S3 "3 An Overview of Regularization Methods for Deep Learning ‣ Well-tuned Simple Nets Excel on Tabular Datasets")), highlighting the need for jointly applying diverse regularization methods.
 
-![Refer to caption](/html/2106.11189/assets/x9.png)
-
+!(/html/2106.11189/assets/x9.png)
 
 Figure 4: Ranking plot comparing XGBoost and regularization cocktails over time.
 
@@ -1441,8 +1391,7 @@ We use version 0.260.260.26 of the official library and we use the hyperparamete
 
 ### C.1 Regularization Cocktail Performance
 
-![Refer to caption](/html/2106.11189/assets/x10.png)
-
+!(/html/2106.11189/assets/x10.png)
 
 Figure 5: Pairwise statistical significance and comparison. For every entry, the first row showcases the wins, draws and losses of the horizontal method with the vertical method on all datasets, calculated on the test set; the second row presents the p-value for the statistical significance test.
 
@@ -1455,8 +1404,7 @@ In Figure [6](#A3.F6 "Figure 6 ‣ C.2 Dataset-dependent optimal cocktails ‣ 
 
 Additionally, we compare our regularization cocktails against the top-5 frequently chosen regularization techniques and the top-5 best performing regularization techniques. For the top-5 baselines, the regularization techniques are activated and their hyperparameters are tuned on the validation set. The results of the comparison as shown in Table [10](#A4.T10 "Table 10 ‣ Appendix D Tables ‣ Well-tuned Simple Nets Excel on Tabular Datasets") show that the cocktail outperforms both top-5 variants, indicating the need for dataset-specific regularization cocktails.
 
-![Refer to caption](/html/2106.11189/assets/x11.png)
-
+!(/html/2106.11189/assets/x11.png)
 
 Figure 6: Frequency of the regularization techniques. The occurrences of the individual regularization techniques in the best hyperparameter configurations found by the cocktail across 40 datasets.
 
@@ -1474,7 +1422,6 @@ Number of Instances
 Number of Features
 Majority Class Percentage
 Minority Class Percentage
-
 
 233090
 anneal
@@ -1773,7 +1720,6 @@ Cockt.
 Top-5 F
 Top-5 R
 
-
 233090
 89.27
 89.71
@@ -1939,7 +1885,6 @@ Top-5 R
 97.06
 96.06
 
-
 233146
 64.28
 64.53
@@ -1969,7 +1914,6 @@ CM
 WD
 DO
 Cocktail
-
 
 233090
 84.13
@@ -2661,7 +2605,6 @@ Task Id
 Fixed LR Cocktail
 Dynamic LR Cocktail
 
-
 233090
 89.270
 90.000
@@ -2824,8 +2767,6 @@ Dynamic LR Cocktail
 
 Table 12: The test set performances of the regularization cocktails with a fixed initial learning rate value and a dynamic learning rate chosen by BOHB.
 
-
-
 Task Id
 MLP
 MLP + D
@@ -2837,7 +2778,6 @@ CatBoost
 TabN. + ES
 AutoGL. + HPO
 MLP + C
-
 
 233090
 84.131
@@ -3320,83 +3260,3 @@ NaN
 64.280
 
 Table 13: The results for the remaining baselines used in our experiments. Each performance represents the test accuracy of the incumbent configuration after being refit.
-
-[◄](/html/2106.11188)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2106.11189)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2106.11189)
-[View original  
-on arXiv](https://arxiv.org/abs/2106.11189)[►](/html/2106.11190)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 6 23:47:48 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -14,50 +14,6 @@ url: https://arxiv.org/abs/2601.22950
 year: 2026
 ---
 
-[2601.22950] Perplexity Cannot Always Tell Right from Wrong
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Perplexity Cannot Always Tell Right from Wrong
 
 Petar Veličković
@@ -84,8 +40,7 @@ and, since it is easy to compute over any classification task (inlcuding tokenis
 
 This is a result that has been informally observed in several venues (Fang et al. ([2025](#bib.bib1 "What is wrong with perplexity for long-context language modeling?")); Hu et al. ([2024](#bib.bib10 "Can perplexity reflect large language model’s ability in long text understanding?")); Hsieh et al. ([2024](#bib.bib7 "RULER: what’s the real context size of your long-context language models?"))). Intuitively, it stems from the fact that perplexity encodes both confidence in prediction as well as correctness. Subsequently, a model with a lower accuracy (e.g. more answer tokens predicted incorrectly in the context of language models), but with better-calibrated confidence, may have lower perplexity—and thus be preferred.
 
-![Refer to caption](/html/2601.22950/assets/x1.png)
-
+!(/html/2601.22950/assets/x1.png)
 
 Figure 1: Using the continuity result of Pasten et al. ([2025](#bib.bib13 "Continuity and isolation lead to doubts or dilemmas in large language models")), we show that, if a (compact) Transformer TT is confident in copying *any* long enough sequence 𝜶N\boldsymbol{\alpha}\_{N}, then there must exist 𝜷N\boldsymbol{\beta}\_{N} which TT fails to copy, yet, log-perplexity will tend to zero as NN grows.
 
@@ -222,9 +177,9 @@ Let T​(𝐚)​(σ)=(1−γ)T(\mathbf{a})(\sigma)=(1-\gamma) for an input bits
 
 where γ′\gamma^{\prime} is a function of γ\gamma and θ\theta. Therefore, varying temperature of a (1−γ)(1-\gamma)-confident model may be seen as a model with θ=1\theta=1 but a different confidence level (1−γ′)(1-\gamma^{\prime}). Hence, we may assume θ=1\theta=1 without loss of generality.
 
-![Refer to caption](/html/2601.22950/assets/x2.png)
+!(/html/2601.22950/assets/x2.png)
 
-![Refer to caption](/html/2601.22950/assets/x3.png)
+!(/html/2601.22950/assets/x3.png)
 
 Figure 2: For various sequence lengths, NN, on the copy task, we compute (Left) the L∞L\_{\infty} norm of the difference between the logit distributions across all positions, (Middle) the minimal observed probability of predicting 𝜶k\boldsymbol{\alpha}\_{k}—our conservative estimate of 1−γ1-\gamma—and the maximal observed probability of predicting 𝜷N\boldsymbol{\beta}\_{N}—which can serve as a bound on the probability that the model will copy 𝜷N\boldsymbol{\beta}\_{N} properly. We also plot (Right) the log-perplexity for both 𝜶N\boldsymbol{\alpha}\_{N} and 𝜷N\boldsymbol{\beta}\_{N}. This is done both for (Top) a toy copy environment where a CPE Transformer is trained on sizes up to 16 bits, and (Bottom:) prompting Gemma 3 4B with a copy request.
 
@@ -292,9 +247,9 @@ Almost none of the results derived so far are specific to perplexity’s pointwi
 
 ## 4 An analytic view into confidence
 
-![Refer to caption](/html/2601.22950/assets/x4.png)
+!(/html/2601.22950/assets/x4.png)
 
-![Refer to caption]()
+!()
 
 Figure 3: Left: Iso-perplexity curves for the setting with an unreliable base model (a=0.5a=0.5) for varying choices of confidence (1−γ1-\gamma). Right: Iso-perplexity curves for an unconfident base model (γ=0.4\gamma=0.4) for varying choice of base accuracy aa,.
 
@@ -314,8 +269,7 @@ The specific framework we assume which captures this idea well is a binary class
 
 ### 4.2 Iso-perplexity curves
 
-![Refer to caption](/html/2601.22950/assets/x6.png)
-
+!(/html/2601.22950/assets/x6.png)
 
 Figure 4: Scatter plots of micro-F1\mathrm{F}\_{1} scores against log-perplexities, LL, for various checkpoints of a Transformer model trained on the Parity problem, as specified by Vitvitskyi et al. ([2025](#bib.bib15 "What makes a good feedforward computational graph?")), for both in-distribution (Left) and out-of-distribution (Right) held-out data. We also colour-code the checkpoints by their averaged Shannon entropy, H¯\bar{H}, provide the Pearson correlation coefficient, rr, and highlight the point with the highest accuracy by using a star (also colour-coded by entropy).
 
@@ -613,83 +567,3 @@ Substituting the bounds back, we achieve the desired result:
 |  | limN→+∞‖∇θℒ‖≤limN→+∞K​1N​∑i=1N‖𝐩i−𝐲i‖=0.\lim\_{N\to+\infty}\|\nabla\_{\theta}\mathcal{L}\|\leq\lim\_{N\to+\infty}K\frac{1}{N}\sum\_{i=1}^{N}\|\mathbf{p}\_{i}-\mathbf{y}\_{i}\|=0. |  | (22) |
 
 ∎
-
-[◄](/html/2601.22949)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2601.22950)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2601.22950)
-[View original  
-on arXiv](https://arxiv.org/abs/2601.22950)[►](/html/2601.22951)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 5 19:06:02 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -13,49 +13,6 @@ url: http://arxiv.org/abs/2309.17130v3
 year: 2023
 ---
 
-[2309.17130] GRANDE: Gradient-Based Decision Tree Ensembles
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # GRANDE: Gradient-Based Decision Tree Ensembles
 
 Sascha Marton
@@ -192,18 +149,15 @@ Therefore, we propose using a softsign function, scaled to (0,1)01(0,1), as a di
 
 The distinct gradient characteristics of the softsign, which are pronounced if samples are close to the threshold, reduce sharply but maintain responsive gradients if there is a large difference between the feature value and the threshold. These characteristics make it superior for differentiable splitting. This concept is visualized in Figure [1](#S3.F1 "Figure 1 ‣ 3.2 Differentiable Split Functions ‣ 3 GRANDE: Gradient-Based Decision Tree Ensembles ‣ GRANDE: Gradient-Based Decision Tree Ensembles"). Besides the intuitive advantage of using a softsign split function, we also show empirically that this is the superior choice (Table [4](#S4.T4 "Table 4 ‣ 4.2 Results ‣ 4 Experimental Evaluation ‣ GRANDE: Gradient-Based Decision Tree Ensembles")).
 
-![Refer to caption](/html/2309.17130/assets/x1.png)
-
+!(/html/2309.17130/assets/x1.png)
 
 (a) Sigmoid
 
-![Refer to caption](/html/2309.17130/assets/x2.png)
-
+!(/html/2309.17130/assets/x2.png)
 
 (b) Entmoid
 
-![Refer to caption](/html/2309.17130/assets/x3.png)
-
+!(/html/2309.17130/assets/x3.png)
 
 (c) Adjusted Softsign
 
@@ -214,8 +168,7 @@ Figure 1: Differentiable Split Functions. The sigmoid function’s gradient decl
 One challenge of ensemble methods is learning a good weighting scheme of the individual estimators. The flexibility of an end-to-end gradient-based optimization allows including learnable weight parameters to the optimization. A simple solution would be learning one weight for each estimator and using for instance a softmax over all weights, resulting in a weighted average.
 However, this forces a very homogeneous ensemble, in which each tree aims to make equally good predictions for all samples. In contrast, it would be beneficial if individual trees can account for different areas of the target function, and are not required to make confident predictions for each sample.
 
-![Refer to caption](/html/2309.17130/assets/x4.png)
-
+!(/html/2309.17130/assets/x4.png)
 
 Figure 2: GRANDE Architecture. This figure visualizes the structure and weighting of GRANDE for an exemplary ensemble with two trees of depth two.
 For each tree in the ensemble, and for every sample, we determine the weight of the leaf which the sample is assigned to.
@@ -344,8 +297,7 @@ The *PhishingWebsites* dataset is concerned with identifying malicious websites 
 Thus, some instances can be categorized using simple rules, while assigning other instances is more difficult.
 Ideally, if an instance can be easily categorized, the model should follow simple rules to make a prediction.
 
-![Refer to caption](/html/2309.17130/assets/x5.png)
-
+!(/html/2309.17130/assets/x5.png)
 
 Figure 3: Highest-Weighted Estimator. This figure visualizes the DT from GRANDE (1024 total estimators) which has the highest weight for an exemplary instance.
 
@@ -358,8 +310,7 @@ Instance-wise weighting can be beneficial for local interpretability   
 In addition to the performance increase, our instance-wise weighting has a notable impact on the local interpretability of GRANDE. For each instance, we can assess the weights of individual estimators and inspect the estimators with the highest importance to understand which rules have the greatest impact on the prediction. For the given example, we only need to observe a single tree of depth two (Figure [3](#S4.F3.1 "Figure 3 ‣ 4.2 Results ‣ 4 Experimental Evaluation ‣ GRANDE: Gradient-Based Decision Tree Ensembles")) to understand why the given instance was classified as *phishing*, even though the complete model is very complex.
 In contrast, existing ensemble methods require a global interpretation of the model and do not provide simple, local explanations out-of-the-box.
 
-![Refer to caption](/html/2309.17130/assets/x6.png)
-
+!(/html/2309.17130/assets/x6.png)
 
 Figure 4: Anchors Explanations. This figure shows the local explanations generated by Anchors for the given instance. The explanation for GRANDE only comprises a single rule. In contrast, the corresponding explanations for the other methods have significantly higher complexity, which indicates that these methods are not able to learn simple representations within a complex model.
 
@@ -683,9 +634,6 @@ Table 6: ROC-AUC Performance Comparison. We report the test ROC-AUC (mean ±plus
 | Mean ↑↑\uparrow | 0.883 (1) | 0.872 (3) | 0.883 (2) | 0.863 (4) |
 | Mean Reciprocal Rank (MRR) ↑↑\uparrow | 0.645 (1) | 0.461 (3) | 0.575 (2) | 0.404 (4) |
 
-
-
-
 Table 7: Accuracy Performance Comparison. We report the test balanced accuracy (mean ±plus-or-minus\pm stdev for a 5-fold CV) with optimized parameters and the ranking of each approach in parentheses. The datasets are sorted based on the data size.
 
 |  |  |  |  |  |
@@ -712,9 +660,6 @@ Table 7: Accuracy Performance Comparison. We report the test balanced accuracy (
 | numerai28.6 | 0.520 ±plus-or-minus\pm 0.004 (2) | 0.520 ±plus-or-minus\pm 0.000 (3) | 0.521 ±plus-or-minus\pm 0.002 (1) | 0.519 ±plus-or-minus\pm 0.003 (4) |
 | Mean ↑↑\uparrow | 0.821 (2) | 0.808 (3) | 0.822 (1) | 0.770 (4) |
 | Mean Reciprocal Rank (MRR) ↑↑\uparrow | 0.689 (2) | 0.404 (3) | 0.693 (1) | 0.298 (4) |
-
-
-
 
 Table 8: Default Parameter Performance Comparison. We report the test macro f1-score (mean ±plus-or-minus\pm stdev over 10 trials) with default parameters and the ranking of each approach in parentheses. The datasets are sorted based on the data size.
 
@@ -743,9 +688,6 @@ Table 8: Default Parameter Performance Comparison. We report the test macro f1-s
 | Mean ↑↑\uparrow | 0.793 (1) | 0.788 (3) | 0.793 (2) | 0.766 (4) |
 | Mean Reciprocal Rank (MRR) ↑↑\uparrow | 0.640 (1) | 0.518 (3) | 0.522 (2) | 0.404 (4) |
 
-
-
-
 Table 9: Runtime Performance Comparison. We report the runtime (mean ±plus-or-minus\pm stdev for a 5-fold CV) with optimized parameters and the ranking of each approach in parentheses. The datasets are sorted based on the data size. For all methods, we used a single NVIDIA RTX A6000.
 
 |  |  |  |  |  |
@@ -771,9 +713,6 @@ Table 9: Runtime Performance Comparison. We report the runtime (mean ±plus-or-m
 | adult | 096.737 ±plus-or-minus\pm 06.0 (3) | 0.125 ±plus-or-minus\pm 0.0 (1) | 03.373 ±plus-or-minus\pm 1.0 (2) | 171.783 ±plus-or-minus\pm 034.0 (4) |
 | numerai28.6 | 039.031 ±plus-or-minus\pm 03.0 (3) | 0.083 ±plus-or-minus\pm 0.0 (1) | 01.323 ±plus-or-minus\pm 1.0 (2) | 047.520 ±plus-or-minus\pm 038.0 (4) |
 | Mean ↓↓\downarrow | 46.512 (3) | 0.175 (1) | 3.66 (2) | 130.80 (4) |
-
-
-
 
 Table 10: Ablation Study Split Activation. We report the test macro F1-Score (mean ±plus-or-minus\pm stdev for a 5-fold CV) with optimized parameters and the ranking of each approach in parentheses. The datasets are sorted based on the data size.
 
@@ -802,9 +741,6 @@ Table 10: Ablation Study Split Activation. We report the test macro F1-Score (me
 | Mean ↑↑\uparrow | 0.807 (1) | 0.799 (2) | 0.796 (3) |
 | Mean Reciprocal Rank (MRR) ↑↑\uparrow | 0.825 (1) | 0.553 (2) | 0.456 (3) |
 
-
-
-
 Table 11: Ablation Study Weighting. We report the test macro F1-Score (mean ±plus-or-minus\pm stdev for a 5-fold CV) with optimized parameters and the ranking of each approach in parentheses. The datasets are sorted based on the data size.
 
 |  |  |  |
@@ -831,9 +767,6 @@ Table 11: Ablation Study Weighting. We report the test macro F1-Score (mean ±pl
 | numerai28.6 | 0.519 ±plus-or-minus\pm 0.003 (1) | 0.519 ±plus-or-minus\pm 0.003 (2) |
 | Mean ↑↑\uparrow | 0.807 (1) | 0.786 (2) |
 | Mean Reciprocal Rank (MRR) ↑↑\uparrow | 0.921 (1) | 0.579 (2) |
-
-
-
 
 Table 12: Pairwise Confusion Matrix PhishingWebsites We compare the predictions of each approach with the predictions of a CART DT. It becomes evident, that a simple model is not sufficient to solve the task well, as CART makes more than twice as many mistakes as state-of-the-art models.
 
@@ -898,9 +831,6 @@ Table 13: Hyperparameters GRANDE (Part 1).
 | adult | 6 | 1024 | 0.0015 | 0.0087 | 0.0553 | 0.1482 |
 | numerai28.6 | 4 | 512 | 0.0001 | 0.0737 | 0.0513 | 0.0371 |
 
-
-
-
 Table 14: Hyperparameters GRANDE (Part 2).
 
 |  |  |  |  |  |  |
@@ -925,9 +855,6 @@ Table 14: Hyperparameters GRANDE (Part 2).
 | nomao | 0.00 | 0.8659 | 0.8136 | 0 | 100.0 |
 | adult | 0.50 | 0.5149 | 0.8448 | 3 | 100.0 |
 | numerai28.6 | 0.50 | 0.7355 | 0.8998 | 0 | 0.1 |
-
-
-
 
 Table 15: Hyperparameters XGBoost.
 
@@ -954,9 +881,6 @@ Table 15: Hyperparameters XGBoost.
 | adult | 0.0502 | 11 | 0.0000 | 0.7464 |
 | numerai28.6 | 0.1179 | 2 | 0.0001 | 0.0262 |
 
-
-
-
 Table 16: Hyperparameters CatBoost.
 
 |  |  |  |  |
@@ -982,9 +906,6 @@ Table 16: Hyperparameters CatBoost.
 | adult | 0.1518 | 11 | 29.3098 |
 | numerai28.6 | 0.0272 | 4 | 18.6675 |
 
-
-
-
 Table 17: Hyperparameters NODE.
 
 |  |  |  |  |
@@ -1009,83 +930,3 @@ Table 17: Hyperparameters NODE.
 | nomao | 2 | 2048 | 6 |
 | adult | 4 | 1024 | 8 |
 | numerai28.6 | 2 | 1024 | 8 |
-
-[◄](/html/2309.17129)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2309.17130)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2309.17130)
-[View original  
-on arXiv](https://arxiv.org/abs/2309.17130)[►](/html/2309.17131)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Feb 28 03:54:06 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

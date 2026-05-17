@@ -24,96 +24,35 @@ url: https://arxiv.org/abs/2511.18890
 year: 2025
 ---
 
-[2511.18890] Nemotron-Flash: Towards Latency-Optimal Hybrid Small Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-\correspondingauthor
-
-X
-
 # Nemotron-Flash: Towards Latency-Optimal Hybrid Small Language Models
 
 Yonggan Fu
 
-
  Xin Dong
-
 
  Shizhe Diao
 
-
  Matthijs Van keirsbilck
-
 
  Hanrong Ye
 
-
  Wonmin Byeon
-
 
  Yashaswi Karnati
 
-
  Lucas Liebenwein
-
 
  Hannah Zhang
 
-
  Nikolaus Binder
-
 
  Maksim Khadkevich
 
-
  Alexander Keller
-
 
  Jan Kautz
 
-
  Yingyan (Celine) Lin†
-
 
  Pavlo Molchanov
 
@@ -138,8 +77,7 @@ Most existing SLM designs prioritize parameter reduction to achieve efficiency; 
 
 To address these gaps, this paper introduces generalizable principles and automated methodologies for latency-optimal SLM design and training. We perform a comprehensive study of both architectural choices and training strategies to understand their impact on efficiency and accuracy. Based on these insights, we propose a series of techniques for constructing latency-optimal SLMs and analyze their general applicability and effectiveness. These advancements are integrated into a new family of SLMs, which we refer to as Nemotron-Flash.
 
-![Refer to caption](/html/2511.18890/assets/x1.png)
-
+!(/html/2511.18890/assets/x1.png)
 
 Figure 1: Visualizing (a) the accuracy–latency trade-off and (b) the accuracy-throughput trade-off of our Nemotron-Flash and SOTA SLMs, where the average accuracy is computed across 16 tasks spanning commonsense reasoning, math, coding, and recall tasks. Latency is measured on an NVIDIA H100 GPU for decoding 8k tokens with a batch size of 1 using CUDA Graph. Decoding throughput is measured with a 32k-token input length using the maximum batch size that does not cause out-of-memory (OOM) errors for each model. The marker size represents the model depth.
 
@@ -152,8 +90,7 @@ In addition to architectural modifications, based on observations of structural 
 
 By combining these architectural and training innovations, we develop the Nemotron-Flash model family, which significantly advances the accuracy–latency trade-offs for SLMs. As shown in Fig. [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Nemotron-Flash: Towards Latency-Optimal Hybrid Small Language Models"), Nemotron-Flash markedly pushes forward the accuracy–efficiency frontier compared to state-of-the-art (SOTA) SLMs. For example, with all models accelerated using TensorRT-LLM’s AutoDeploy kernels [nvidia2025autodeploy] and CUDA Graph, Nemotron-Flash-3B achieves +2.0%/+5.5% higher average accuracy, 1.7×\times/1.3×\times lower latency, and 6.4×\times/18.7×\times higher throughput compared to Qwen2.5-3B/Qwen3-1.7B, respectively. Similarly, Nemotron-Flash-1B achieves +5.5% higher average accuracy, 1.9×\times lower latency, and 45.6×\times higher throughput than Qwen3-0.6B.
 
-![Refer to caption](/html/2511.18890/assets/x2.png)
-
+!(/html/2511.18890/assets/x2.png)
 
 Figure 2: The accuracy–parameter/latency trade-offs when varying depth and width. While deeper models generally achieve a better accuracy–parameter trade-off, they may not perform as well in the accuracy–latency trade-off and there exists an
 optimal depth-width ratio for a latency budget.
@@ -201,8 +138,7 @@ Since the impact of data size is additive and decoupled from depth and width, we
 
 As such, in practice, given a target latency budget and deployment setting, the sweet-spot depth-width ratio can be obtained by profiling a range of depth-width configurations and selecting the one that meets the latency constraint while achieving the lowest loss.
 
-![Refer to caption](/html/2511.18890/assets/x3.png)
-
+!(/html/2511.18890/assets/x3.png)
 
 Figure 3: Fitting the scaling law and validating on larger depth/width settings.
 
@@ -214,8 +150,7 @@ As shown in Fig. [3](#S3.F3 "Figure 3 ‣ 3.1 SLM Design: Depth-Width Ratios ‣
 Lesson learned: SLM depth-width ratios.
 Deep-thin models may not be latency-optimal, and the optimal depth-width ratio generally increases with the target latency budget. Fitting a scaling law with depth and width provides a more principled approach to identifying the sweet-spot ratios.
 
-![Refer to caption](/html/2511.18890/assets/x4.png)
-
+!(/html/2511.18890/assets/x4.png)
 
 Figure 4:  (a) The validation loss evolution, and (b) the PPL-latency trade-off of different operators.
 
@@ -268,8 +203,7 @@ Our search space.
 Based on the identified promising operator candidates and their synergy in hybrid models, we adopt DeltaNet, Attention, and Mamba2 as candidate operators.
 We search over a maximum of three types of building blocks, each assigned to the early, middle, or late stages of the LM architecture. This three-stage strategy balances operator heterogeneity with architectural regularity. The search explores the ratios of each operator and the number of FFNs per block type, and the repetition count of each block type. More details are provided in Appendix [C.1](#A3.SS1 "C.1 Detailed Search Space ‣ Appendix C Evolutionary Search: More Details and Experiments ‣ Nemotron-Flash: Towards Latency-Optimal Hybrid Small Language Models").
 
-![Refer to caption](/html/2511.18890/assets/x5.png)
-
+!(/html/2511.18890/assets/x5.png)
 
 Figure 5: Visualizing the search trajectories.
 
@@ -299,13 +233,11 @@ Table 3: Benchmarking the searched architecture against baselines scaled to the 
 | Mamba2 + FFN | 889 | 21.43 | 50.04 | 17.73 |
 | Searched (Ours) | 837 | 20.70 | 51.04 | 17.71 |
 
-![Refer to caption](/html/2511.18890/assets/x6.png)
-
+!(/html/2511.18890/assets/x6.png)
 
 Figure 6:  The weight distributions (absolute values) of the layers in the last attention block of 1B Llama models trained without and with our weight normalization technique.
 
-![Refer to caption](/html/2511.18890/assets/x7.png)
-
+!(/html/2511.18890/assets/x7.png)
 
 Figure 7:  Validation loss trajectories of four model families with and without weight normalization.
 
@@ -326,8 +258,7 @@ Formally, for each weight matrix 𝐖∈ℝCo​u​t×Ci​n\mathbf{W}\in\mathb
 𝐖i,:←𝐖i,:‖𝐖i,:‖2​for ​i=1,…,Co​u​t\mathbf{W}\_{i,:}\leftarrow\frac{\mathbf{W}\_{i,:}}{||\mathbf{W}\_{i,:}||\_{2}}\text{for }i=1,\dots,C\_{out} for Case-1, and
 𝐖:,j←𝐖:,j||𝐖∗:,j||2​for ​j=1,…,Ci​n\mathbf{W}\_{:,j}\leftarrow\frac{\mathbf{W}\_{:,j}}{||\mathbf{W}\*{:,j}||\_{2}}\text{for }j=1,\dots,C\_{in} for Case-2. As shown in the second row of Fig. [6](#S3.F6 "Figure 6 ‣ 3.2 SLM Design: Hybrid Operators ‣ 3 Towards Latency-Optimal SLM Design and Training ‣ Nemotron-Flash: Towards Latency-Optimal Hybrid Small Language Models"), our weight normalization results in smoother weight distributions.
 
-![Refer to caption](/html/2511.18890/assets/x8.png)
-
+!(/html/2511.18890/assets/x8.png)
 
 Figure 8: Visualizing the gradient norm and L2 norm of DeltaNet model weights during training.
 
@@ -389,9 +320,6 @@ Table 6: We benchmark our Nemotron-Flash-1B/3B against SOTA SLMs across 16 tasks
 | Nemotron-Flash-3B | 2.7B | 18 | 28.71 | 2939 | 61.19 | 61.02 | 57.62 | 53.33 | 73.25 | 60.98 |
 | Nemotron-Flash-3B-TP | 2.7B | 18 | 27.95 | 4657 | 61.19 | 60.94 | 57.88 | 52.40 | 73.77 | 60.84 |
 
-
-
-
 Table 7: Benchmarking Nemotron-Flash-3B-Instruct with SOTA Instruct SLMs across different tasks.
 
 |  |  |  |  |  |  |  |  |  |
@@ -423,13 +351,9 @@ our Nemotron-Flash family achieves the lowest decoding latency and the best accu
 
 It is worth noting that (1) in addition to achieving the most competitive latency and throughput, Nemotron-Flash-3B attains the highest accuracy in commonsense reasoning, math, coding, and recall tasks among models larger than 1.5B parameters; and (2) although Nemotron-Flash-1B and Nemotron-Flash-3B contain only 2 and 3 full-attention layers, respectively, both achieve the most competitive recall accuracy, suggesting that maintaining full KV cache across all layers is unnecessary, which is consistent with observations from existing hybrid LMs [blakeman2025nemotron, nano2025efficient].
 
-![Refer to caption](/html/2511.18890/assets/x9.png)
-
+!(/html/2511.18890/assets/x9.png)
 
 Figure 9: Visualizing the NIAH scores of different attention configurations on the Ruler benchmark [hsieh2024ruler].
-
-
-
 
 Table 8: Comparing Nemotron-Flash-3B variants with different attention configurations. Decoding throughput is measured with a 32k-token input length using the maximum batch size without OOM.
 
@@ -536,9 +460,6 @@ Add offspring cc to population 𝒫\mathcal{P};
 
 Algorithm 1 Aging Evolutionary Search for Hybrid Operator Combinations
 
-
-
-
 Table 10: Benchmarking our searched architecture, optimized for parameter efficiency, against baseline architectures. All models have 500M parameters. CR accuracy is averaged over eight tasks.
 
 |  |  |  |  |  |  |  |  |  |
@@ -546,9 +467,6 @@ Table 10: Benchmarking our searched architecture, optimized for parameter effici
 | Metric | Attention | GLA | DeltaNet | Gated DeltaNet | RWKV | Mamba | Mamba2 | Searched (Ours) |
 | Wiki PPL | 24.44 | 25.16 | 23.87 | 23.80 | 25.47 | 24.55 | 24.36 | 23.06 |
 | CR Acc (%) | 48.02 | 46.82 | 47.83 | 47.96 | 46.46 | 47.32 | 47.72 | 49.23 |
-
-
-
 
 Table 11: Architectural details of our Nemotron-Flash models. M2, A, D, and F denote Mamba2, attention, DeltaNet, and FFN, respectively. For attention layers, we use group-query attention with a group size of 4, with the specific number of heads detailed in the table.
 
@@ -608,8 +526,7 @@ Table 12: Comparing the achieved task accuracy and training speed using vanilla 
 | nGPT w/o wnorm | 18.96 | 52.44 | 1.01 |
 | nGPT | 17.25 | 55.33 | 1.04 |
 
-![Refer to caption](/html/2511.18890/assets/x10.png)
-
+!(/html/2511.18890/assets/x10.png)
 
 Figure 10:  The gradient norm evolution of different models during training w/ and w/o weight normalization.
 
@@ -666,83 +583,3 @@ This set of comparisons validates the effectiveness of our deployment flow.
 
 In our architecture search for SLMs, we primarily use language modeling as the search proxy, which may not fully capture other capabilities such as long-context understanding.
 Additionally, our search focuses on macro-architecture, leaving room to explore more fine-grained factors. We will extend our search framework to optimize for these aspects in future work.
-
-[◄](/html/2511.18889)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2511.18890)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2511.18890)
-[View original  
-on arXiv](https://arxiv.org/abs/2511.18890)[►](/html/2511.18891)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Dec 5 16:14:35 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

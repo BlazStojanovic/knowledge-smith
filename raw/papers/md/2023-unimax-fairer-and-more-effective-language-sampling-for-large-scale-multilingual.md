@@ -17,49 +17,6 @@ url: https://arxiv.org/abs/2304.09151
 year: 2023
 ---
 
-[2304.09151] UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining
 
 Hyung Won Chung , Noah Constant11footnotemark: 1 , Xavier Garcia11footnotemark: 1
@@ -81,13 +38,11 @@ State-of-the-art multilingual models (Xue et al., [2021](#bib.bib43); [2022](#
 
 9200092{,}000 times larger than the lowest resource language, Yoruba. As a result, a key problem in designing such models is the “language balancing” problem: in what proportions should we balance the pretraining languages? Deriving the optimal balance is a difficult open research problem due to the high cost of pretraining.
 
-![Refer to caption](/html/2304.09151/assets/x1.png)
-
+!(/html/2304.09151/assets/x1.png)
 
 (a) Number of training epochs for each language. Temperature sampling results in a large number of data repeats for low-resource languages, whereas UniMax explicitly caps repeats.
 
-![Refer to caption](/html/2304.09151/assets/x2.png)
-
+!(/html/2304.09151/assets/x2.png)
 
 (b) Pretraining sampling distribution. Temperature sampling results in poorly balanced distributions, whereas UniMax provides more uniform distributions without excessive upsampling.
 
@@ -234,52 +189,43 @@ We closely follow mT5 (Xue et al., [2021](#bib.bib43)) for model architecture 
 
 ### 5.1 Pretraining loss
 
-![Refer to caption](/html/2304.09151/assets/x3.png)
-
+!(/html/2304.09151/assets/x3.png)
 
 (a) τ=1𝜏1\tau=1
 
-![Refer to caption](/html/2304.09151/assets/x4.png)
-
+!(/html/2304.09151/assets/x4.png)
 
 (b) τ=3.33𝜏3.33\tau=3.33
 
-![Refer to caption](/html/2304.09151/assets/x5.png)
-
+!(/html/2304.09151/assets/x5.png)
 
 (c) UniMax
 
 Figure 2: Pretraining cross-entropy loss on the held-out data over the training steps. With too-low temperature, low-resource languages are sampled too little, and their losses are relatively high. With higher temperature, overfitting becomes more severe with increasing model size. Note that loss values are not directly comparable across sampling strategies due to the difference in vocabulary.
 
-![Refer to caption](/html/2304.09151/assets/x6.png)
-
+!(/html/2304.09151/assets/x6.png)
 
 (d) τ=1𝜏1\tau=1
 
-![Refer to caption](/html/2304.09151/assets/x7.png)
-
+!(/html/2304.09151/assets/x7.png)
 
 (e) τ=3.33𝜏3.33\tau=3.33
 
-![Refer to caption](/html/2304.09151/assets/x8.png)
-
+!(/html/2304.09151/assets/x8.png)
 
 (f) UniMax
 
 Figure 3: Pretraining cross-entropy loss on the held-out data over 1M training steps. With the sequence length of 512, this corresponds to 1/2121/2 character budget. The overfitting behavior emerges only after sufficient number of training steps for τ=3.33𝜏3.33\tau=3.33.
 
-![Refer to caption](/html/2304.09151/assets/x9.png)
-
+!(/html/2304.09151/assets/x9.png)
 
 (a) All languages
 
-![Refer to caption](/html/2304.09151/assets/x10.png)
-
+!(/html/2304.09151/assets/x10.png)
 
 (b) Higher-resource
 
-![Refer to caption](/html/2304.09151/assets/x11.png)
-
+!(/html/2304.09151/assets/x11.png)
 
 (c) Lower-resource
 
@@ -295,17 +241,15 @@ Figure [4](#S5.F4 "Figure 4 ‣ 5.1 Pretraining loss ‣ 5 Results ‣ UniMax: 
 
 Figure [4](#S5.F4 "Figure 4 ‣ 5.1 Pretraining loss ‣ 5 Results ‣ UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining") shows the average TyDi QA performance for the three sampling strategies discussed in Section §[3](#S3 "3 Sampling Methods ‣ UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining"). Our first observation is that UniMax outperforms the other two consistently across model scales. We can get additional insights by correlating per-language performance with the pretraining portion of each language, as shown in Figure [5](#S5.F5 "Figure 5 ‣ 5.2 Downstream evaluations ‣ 5 Results ‣ UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining"). Generally, languages seen more during pretraining tend to have higher performance, but this benefit seems to have its limit. For example, τ=1𝜏1\tau=1 sampling allocates 47.7% of training to en but this only translates to 1% better performance than UniMax, which allots only 1% to en. We believe this surprisingly small delta is attributable to the benefit of positive transfer from non-English languages onto English. Additionally, we note that UniMax outperforms τ=3.33𝜏3.33\tau=3.33 on Swahili, despite seeing fewer Swahili examples during training. See Table [7](#A6.T7 "Table 7 ‣ Appendix F Additional tables ‣ UniMax: Fairer and more Effective Language Sampling for Large-Scale Multilingual Pretraining") for full per-language metrics across sampling strategies and model scales.
 
-![Refer to caption](/html/2304.09151/assets/x12.png)
+!(/html/2304.09151/assets/x12.png)
 
-![Refer to caption](/html/2304.09151/assets/x13.png)
+!(/html/2304.09151/assets/x13.png)
 
 Figure 5: Left: Per-language TyDi QA performance of XXL models pretrained using three different sampling strategies. Right: Pretraining sampling rates of the three models.
 
+!(/html/2304.09151/assets/x14.png)
 
-
-![Refer to caption](/html/2304.09151/assets/x14.png)
-
-![Refer to caption](/html/2304.09151/assets/x15.png)
+!(/html/2304.09151/assets/x15.png)
 
 Figure 6: Left: WMT21 performance averaged across all language pairs. UniMax outperforms both baselines at all model sizes. Right: The majority of the language pairs benefits with UniMax.
 
@@ -867,8 +811,7 @@ To shed light on how moving towards a more population-based sampling strategy wo
 | --- | --- | --- | --- |
 |  | R​(l,t)=tl/∑l′∈Ltl′sl/w=w​tlsl​∑l′∈Ltl′𝑅𝑙𝑡subscript𝑡𝑙subscriptsuperscript𝑙′𝐿subscript𝑡superscript𝑙′subscript𝑠𝑙𝑤𝑤subscript𝑡𝑙subscript𝑠𝑙subscriptsuperscript𝑙′𝐿subscript𝑡superscript𝑙′R(l,t)=\frac{t\_{l}/\sum\_{l^{\prime}\in L}t\_{l^{\prime}}}{s\_{l}/{w}}=\frac{w\,t\_{l}}{s\_{l}\sum\_{l^{\prime}\in L}t\_{l^{\prime}}} |  | (3) |
 
-![Refer to caption](/html/2304.09151/assets/x16.png)
-
+!(/html/2304.09151/assets/x16.png)
 
 Figure 7: Representation ratios (mT5 pretraining rate / L1 speaker rate) of mT5 training languages. Esperanto (eo) and Latin (la) are clipped to 1,000
 
@@ -927,13 +870,9 @@ Table [6](#A5.T6 "Table 6 ‣ Appendix E Ablation on mC4 refresh ‣ UniMax: Fai
 
 ## Appendix F Additional tables
 
-![Refer to caption](/html/2304.09151/assets/x17.png)
-
+!(/html/2304.09151/assets/x17.png)
 
 Figure 8: WMT21 results restricting to language pairs with non-English target. UniMax performs best on the vast majority of pairs, across all scales.
-
-
-
 
 Table 7: Per-language TyDi QA GoldP performance, as average of exact-match and F1 metrics. Numbers in brackets represent the rank of the language in the pretraining corpus (e.g. ru has the second largest character count).
 
@@ -951,9 +890,6 @@ Table 7: Per-language TyDi QA GoldP performance, as average of exact-match and F
 | τ=1.0𝜏1.0\tau=1.0 | 82.2 | 79.1 | 82.9 | 82.7 | 83.1 | 80.0 | 86.7 | 83.8 | 86.4 | 85.2 |
 | τ=3.33𝜏3.33\tau=3.33 | 84.0 | 77.8 | 81.3 | 83.4 | 82.7 | 79.9 | 88.4 | 86.6 | 88.8 | 86.2 |
 | UniMax | 84.4 | 78.1 | 81.0 | 83.1 | 82.2 | 81.5 | 89.2 | 89.5 | 88.5 | 86.6 |
-
-
-
 
 Table 8: Statistics for our improved and refreshed variant of the mC4 corpus, as well as the sampling rates (%) of the sampling methods studied in the paper.
 
@@ -1071,83 +1007,3 @@ Table 8: Statistics for our improved and refreshed variant of the mC4 corpus, as
 | haw | 0.4 | 0.24 | 0.00 | 0.01 | 0.06 |
 | yo | 0.3 | 0.24 | 0.00 | 0.01 | 0.06 |
 | bg-Latn | 0.1 | 0.16 | 0.00 | 0.00 | 0.01 |
-
-[◄](/html/2304.09150)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2304.09151)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2304.09151)
-[View original  
-on arXiv](https://arxiv.org/abs/2304.09151)[►](/html/2304.09152)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Feb 29 14:42:00 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

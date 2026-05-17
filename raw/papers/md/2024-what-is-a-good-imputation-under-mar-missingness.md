@@ -10,50 +10,6 @@ url: https://arxiv.org/abs/2403.19196
 year: 2024
 ---
 
-[2403.19196] What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # What Is a Good Imputation Under MAR Missingness?111We thank Giulia Marchello for providing the code for GAIN and MIWAE.
 
 Jeffrey Näf, Julie Josse
@@ -214,8 +170,7 @@ The missingness mechanism is conditionally independent MAR (CIMAR) if
 | --- | --- | --- | --- |
 |  | for all ​m∈ℳ,m′∈ℳ,x∈𝒳.formulae-sequencefor all 𝑚ℳformulae-sequencesuperscript𝑚′ℳ𝑥𝒳\displaystyle\text{ for all }m\in\mathcal{M},m^{\prime}\in\mathcal{M},x\in\mathcal{X}. |  | (CIMAR) |
 
-![Refer to caption](/html/2403.19196/assets/illustration1.png)
-
+!(/html/2403.19196/assets/illustration1.png)
 
 Figure 1: Illustration: 𝐗∗superscript𝐗\mathbf{X}^{\*} is the assumed underlying full data, 𝐌𝐌\mathbf{M} is the vector of missing indicators and 𝐗𝐗\mathbf{X} arises when 𝐌𝐌\mathbf{M} is applied to 𝐗∗superscript𝐗\mathbf{X}^{\*}. Thus each row of 𝐗/𝐗∗𝐗superscript𝐗\mathbf{X}/\mathbf{X}^{\*} is an observation under a different pattern. Under condition ([CIMAR](#S2.Ex10 "In Definition 2.4. ‣ 2.1 MAR Definitions ‣ 2 Sequential Imputation under MAR ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.")), the distribution of X1,X2∣X3
 
@@ -320,8 +275,7 @@ subscript𝑋2subscript𝑋3X\_{1}\mid X\_{2},X\_{3} in pattern m3subscript𝑚3
 
 subscript𝑋2subscript𝑋3X\_{1}\mid X\_{2},X\_{3} in pattern m3subscript𝑚3m\_{3} corresponds to the unconditional one.
 
-![Refer to caption](/html/2403.19196/assets/Example1.png)
-
+!(/html/2403.19196/assets/Example1.png)
 
 Figure 2: Illustration of Example [2](#Thmexample2 "Example 2. ‣ 2.1 MAR Definitions ‣ 2 Sequential Imputation under MAR ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE."). Left: Distribution we would like to impute X1∣M=m3conditionalsubscript𝑋1𝑀subscript𝑚3X\_{1}\mid M=m\_{3}. Middle: Distribution of X1subscript𝑋1X\_{1} in the fully observed pattern (X1∣M=m1)conditionalsubscript𝑋1𝑀subscript𝑚1(X\_{1}\mid M=m\_{1}). Right: Distribution of all patterns for which X1subscript𝑋1X\_{1} is observed (Mixture of the distribution of X1subscript𝑋1X\_{1} in patterns m1subscript𝑚1m\_{1} and m2subscript𝑚2m\_{2}).
 
@@ -584,13 +538,11 @@ Finally, the above list overlaps with and complements the three points mentioned
 
 The first part of (1’) corresponds to (1) of our list; instead of providing the *best* value for imputation, one should draw from the right conditional distribution to impute, such that the underlying distribution is replicated. To reiterate this, Figure [4](#S3.F4 "Figure 4 ‣ 3 Requirements for Imputation Methods ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.") shows a small example. However, as we note in Section [6](#S6 "6 Discussion ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE."), the second part, that the uncertainty of the imputation model should be considered as well, is not met by the imputation methods we present here and is an open problem for nonparametric imputation. While this gets less consequential in large samples, this additional uncertainty is needed for reliable uncertainty quantification with multiple imputation. Point (2’) is not relevant to our discussion, while (3’) coincides with (2) above.
 
-![Refer to caption](/html/2403.19196/assets/Example2.png)
-
+!(/html/2403.19196/assets/Example2.png)
 
 Figure 3: The true distribution against a draw from different imputation procedures for imputing X1subscript𝑋1X\_{1} in Example [1](#Thmexample1 "Example 1. ‣ 2.1 MAR Definitions ‣ 2 Sequential Imputation under MAR ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.").
 
-![Refer to caption](/html/2403.19196/assets/MotivationExample.png)
-
+!(/html/2403.19196/assets/MotivationExample.png)
 
 Figure 4: 5000 observations of a bivariate Gaussian Example with around 50% MCAR missing values in X1subscript𝑋1X\_{1}. Left: Imputation by fitting a regression model and imputing the prediction, Right: Imputation by fitting a regression model and imputing by drawing from a conditional Gaussian distribution. Parameters calculated with the regression imputation tend to have a large bias, more so than if only complete-case analysis is used.
 
@@ -677,8 +629,7 @@ as in Gneiting et al., ([2008](#bib.bib11), Equation (7)). Thus the observed po
 | --- | --- | --- | --- |
 |  | S^N​Ae​s​(H,P)=1|Oc|​∑j∈OcS^N​Aj​(H,P).superscriptsubscript^𝑆𝑁𝐴𝑒𝑠𝐻𝑃1superscript𝑂𝑐subscript𝑗superscript𝑂𝑐superscriptsubscript^𝑆𝑁𝐴𝑗𝐻𝑃\displaystyle\hat{S}\_{NA}^{es}(H,P)=\frac{1}{|O^{c}|}\sum\_{j\in O^{c}}\hat{S}\_{NA}^{j}(H,P). |  | (4.5) |
 
-![Refer to caption](/html/2403.19196/assets/scoreillustrationO.png)
-
+!(/html/2403.19196/assets/scoreillustrationO.png)
 
 Figure 5: Conceptual illustration of the score approximation.
 
@@ -777,25 +728,21 @@ and the ampute function to generate missingness according to these patterns.
 
 The wealth of data allows us to redraw a data set of 2’000 observations B=10𝐵10B=10 times to get an idea of the variation of our scores. That is, we redraw the data randomly B𝐵B times and generate the missingness mechanism using the ampute function. Figure [6](#S5.F6 "Figure 6 ‣ 5.1 Air Quality Data ‣ 5 Empirical Study ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.") shows the drf- and m𝑚m-I-Scores (obtained without using the true underlying values), while Figure [7](#S5.F7 "Figure 7 ‣ 5.1 Air Quality Data ‣ 5 Empirical Study ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.") shows the negative energy distance between imputed and true data set. The ordering of the scores is remarkably similar, showing mice-cart and mice-DRF first and mice-norm.predict last. This makes sense as mice-norm.predict neither draws from the conditional distribution nor is it able to deal with the apparent nonlinearities in the data. In contrast, missForest scores higher, though interestingly the scores are not in complete agreement. While both the full information score and drf-I-Score put it in third place, the m𝑚m-I-Score puts it just above mice-norm.predict. This might be due to the fact that missForest, while predicting instead of drawing from a conditional distribution, still models the nonlinearities in the data relatively well, a feat the Gaussian-based norm.nob cannot achieve. However, the m𝑚m-I-Score punishes the inability of missForest to draw samples more severely and thus puts it lower than the other two scores. Given the discussion in this paper, one might argue that the low ordering of missForest of the m𝑚m-I-Score is more accurate in this example.
 
-![Refer to caption](/html/2403.19196/assets/Application_1_Scores_withO.png)
-
+!(/html/2403.19196/assets/Application_1_Scores_withO.png)
 
 Figure 6: Scores for the air quality data example. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
-![Refer to caption](/html/2403.19196/assets/Application_1_Energy_Score_withO.png)
-
+!(/html/2403.19196/assets/Application_1_Energy_Score_withO.png)
 
 Figure 7: Negative Energy Distance for the air quality data example, calculated with full data.
 
 ### 5.2 Gaussian Mixture Model
 
-![Refer to caption](/html/2403.19196/assets/Application_2_Scores_withO.png)
-
+!(/html/2403.19196/assets/Application_2_Scores_withO.png)
 
 Figure 8: Scores for the Gaussian mixture model with distribution shift. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
-![Refer to caption](/html/2403.19196/assets/Application_2_Energy_Score_withO.png)
-
+!(/html/2403.19196/assets/Application_2_Energy_Score_withO.png)
 
 Figure 9: Negative Energy Distance for the Gaussian mixture model with distribution shift, calculated with full data.
 
@@ -840,13 +787,11 @@ with
 
 This introduces highly nonlinear relationships between the elements of XOcsubscript𝑋superscript𝑂𝑐X\_{O^{c}} and XOsubscript𝑋𝑂X\_{O}, though the conditional distribution of XOc∣XOconditionalsubscript𝑋superscript𝑂𝑐subscript𝑋𝑂X\_{O^{c}}\mid X\_{O} is still Gaussian and the missingness mechanism is CIMAR. In this example, the ability to generalize is important, and so is the ability to model nonlinear relationships. Accordingly, this is a very difficult example and the ordering of the scores is quite different. In particular, they do not agree on the best two methods, though they all rank mice-DRF high. This serves to illustrate, that while at least the m𝑚m-I-Score should be able to identify the “ideal” imputation, there is no guarantee for what happens when all imputations are bad. The disagreement of the scores should thus be seen as more of a testament that none of the methods perform well than a sign that the scores themselves are flawed.
 
-![Refer to caption](/html/2403.19196/assets/Application_4_Scores_withO.png)
-
+!(/html/2403.19196/assets/Application_4_Scores_withO.png)
 
 Figure 10: Scores for the nonlinear mixture model with distribution shift. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
-![Refer to caption](/html/2403.19196/assets/Application_4_Energy_Score_withO.png)
-
+!(/html/2403.19196/assets/Application_4_Energy_Score_withO.png)
 
 Figure 11: Negative Energy Distance for the nonlinear mixture model with distribution shift, calculated with full data.
 
@@ -909,18 +854,15 @@ The j𝑗jth score is then given as in ([4.4](#S4.E4 "In 4 Assessing Imputation 
 
 We note that compared to the score in Section [4](#S4 "4 Assessing Imputation Methods ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE."), we now also need to obtain a sample from H−jsubscript𝐻𝑗H\_{-j}. Thus a (d−1)𝑑1(d-1)-variate data set has to be imputed for each j𝑗j, which can be computationally challenging when d𝑑d is large. This could be solved by using random or predefined *projections* A𝐴A, as in Näf et al., ([2023](#bib.bib26)), thus reducing the dimensionality. This will not hurt propriety but might diminish the power to detect differences between the methods. In fact, the score in Section [4](#S4 "4 Assessing Imputation Methods ‣ What Is a Good Imputation Under MAR Missingness?1footnote 11footnote 1We thank Giulia Marchello for providing the code for GAIN and MIWAE.") might be seen as an example of this with A=O𝐴𝑂A=O.
 
-![Refer to caption](/html/2403.19196/assets/Application_1_Scores.png)
-
+!(/html/2403.19196/assets/Application_1_Scores.png)
 
 Figure 12: Scores for the air quality data example. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
-![Refer to caption](/html/2403.19196/assets/Application_2_Scores.png)
-
+!(/html/2403.19196/assets/Application_2_Scores.png)
 
 Figure 13: Scores for the Gaussian mixture model with distribution shift. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
-![Refer to caption](/html/2403.19196/assets/Application_3_Scores.png)
-
+!(/html/2403.19196/assets/Application_3_Scores.png)
 
 Figure 14: Scores for the nonlinear mixture model with distribution shift. Top: DRF-Score over 10 iterations. Bottom: m𝑚m-I-Score over 10 iterations.
 
@@ -932,23 +874,19 @@ Figures [15](#A2.F15 "Figure 15 ‣ Appendix B Comparison of MICE to GAIN and MI
 
 All in all this small analysis provides a further hint that, at least for data sets of small or moderate dimensions, modern joint modeling methods such as GAIN and MIWAE cannot compete with FCS.
 
-![Refer to caption](/html/2403.19196/assets/Application_1_Energy_Score_withGAINMIWAE.png)
-
+!(/html/2403.19196/assets/Application_1_Energy_Score_withGAINMIWAE.png)
 
 Figure 15: Negative Energy Distance for the air quality data example with GAIN and MIWAE, calculated with full data.
 
-![Refer to caption](/html/2403.19196/assets/Application_2_Energy_Score_withGAINMIWAE.png)
-
+!(/html/2403.19196/assets/Application_2_Energy_Score_withGAINMIWAE.png)
 
 Figure 16: Negative Energy Distance for the Gaussian mixture model with distribution shift with GAIN and MIWAE, calculated with full data.
 
-![Refer to caption](/html/2403.19196/assets/Application_3_Energy_Score_withGAINMIWAE.png)
-
+!(/html/2403.19196/assets/Application_3_Energy_Score_withGAINMIWAE.png)
 
 Figure 17: Negative Energy Distance for the nonlinear mixture model with distribution shift with GAIN and MIWAE, calculated with full data.
 
-![Refer to caption](/html/2403.19196/assets/Application_4_Energy_Score_withGAINMIWAE.png)
-
+!(/html/2403.19196/assets/Application_4_Energy_Score_withGAINMIWAE.png)
 
 Figure 18: Negative Energy Distance for the spam data example with GAIN and MIWAE, calculated with full data.
 
@@ -1501,83 +1439,3 @@ Combining ([C.4](#A3.E4 "In Proof. ‣ C.2 Proofs ‣ Appendix C Proofs and Addi
   algorithm.
   Journal of the American Statistical Association,
   110(511):1112–1124.
-
-[◄](/html/2403.19195)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2403.19196)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2403.19196)
-[View original  
-on arXiv](https://arxiv.org/abs/2403.19196)[►](/html/2403.19197)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Apr 5 15:13:35 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

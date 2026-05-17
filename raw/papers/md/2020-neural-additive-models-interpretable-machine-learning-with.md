@@ -16,49 +16,6 @@ url: http://arxiv.org/abs/2004.13912v2
 year: 2020
 ---
 
-[2004.13912] Neural Additive Models: Interpretable Machine Learning with Neural Nets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Neural Additive Models: Interpretable Machine Learning with Neural Nets
 
 Rishabh Agarwal
@@ -103,8 +60,7 @@ GAMs have the form:
 | --- | --- | --- | --- |
 |  | g​(𝔼​[y])=β+f1​(x1)+f2​(x2)+⋯+fK​(xK)𝑔𝔼delimited-[]𝑦𝛽subscript𝑓1subscript𝑥1subscript𝑓2subscript𝑥2⋯subscript𝑓𝐾subscript𝑥𝐾g(\mathbb{E}[y])=\beta+f\_{1}(x\_{1})+f\_{2}(x\_{2})+\dots+f\_{K}(x\_{K})\vspace{-0.2cm} |  | (1) |
 
-![Refer to caption](/html/2004.13912/assets/x1.png)
-
+!(/html/2004.13912/assets/x1.png)
 
 Figure 1: NAM architecture for binary classification. Each input variable is handled by a different neural network. This results in easily interpretable yet highly accurate models.
 
@@ -162,18 +118,15 @@ We propose exp-centered (ExU) hidden units to overcome this neural net failure:
 
 where w𝑤w and b𝑏b are the weight and bias parameters. The intuition behind ExU units is as follows: For modeling jagged functions, a hidden unit should be able to change its output significantly, with a tiny change in input. This requires the unit to have extremely large weight values depending on the sharpness of the jump. The ExU unit computes a linear function of input where the slope can be very steep with small weights, making it easier to modify the output easily during training. ExU units do not improve the expressivity of neural nets, however they do improve their learnability for fitting jumpy functions. While we use ExU units to train accurate NAMs, they are more generally applicable for approximating jumpy functions with neural nets.
 
-![Refer to caption](/html/2004.13912/assets/x4.png)
-
+!(/html/2004.13912/assets/x4.png)
 
 Figure 3: Regularizing ExU networks. Output of a ExU feature net trained with dropout = 0.20.20.2 for the age feature in the MIMIC-II dataset [[38](#bib.bib38)]. Predictions from individual subnets (as a result of dropping out hidden units) are much more jagged than the average predictions using the entire feature net. Refer to Section [A.3](#A1.SS3 "A.3 Regularization and Training ‣ Appendix A Supplementary Material for Neural Additive Models ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets") for an overview of regularization approaches used in this work.
 
-![Refer to caption](/html/2004.13912/assets/x5.png)
-
+!(/html/2004.13912/assets/x5.png)
 
 (a) Graphs learned by NAMs with ExU units
 
-![Refer to caption](/html/2004.13912/assets/x6.png)
-
+!(/html/2004.13912/assets/x6.png)
 
 (b) Graphs learned by NAMs with standard units
 
@@ -207,16 +160,12 @@ Higher AUCs and lower RMSEs are better. We report results on two widely used reg
 | XGBoost | 0.844 ±plus-or-minus\pm 0.006 | 0.981 ±plus-or-minus\pm 0.008 | 0.532 ±plus-or-minus\pm 0.014 | 3.345 ±plus-or-minus\pm 0.071 |
 | DNNs | 0.832 ±plus-or-minus\pm 0.009 | 0.978 ±plus-or-minus\pm 0.003 | 0.492 ±plus-or-minus\pm 0.009 | 3.324 ±plus-or-minus\pm 0.092 |
 
-
-
-![Refer to caption](/html/2004.13912/assets/x7.png)
-
+!(/html/2004.13912/assets/x7.png)
 
 Figure 5: Understanding individual predictions for credit scores. Feature contribution using the learned NAMs for predicting scores of two applicants in the FICO dataset [[9](#bib.bib9)]. For a given input, each feature net in the NAM acts as a lookup table and returns a contribution term. These contributions are combined in a modular way: they are added up, and passed through a link function for prediction. the longer a person’s credit history, the better it is for their credit score
 The high scoring applicant has a long credit history (Average Months on File), which contributes to their credit score better. On the contrary, the low scoring applicant used their credit quite frequently (Total Number of Trades) and has a large burden (Net Fraction Installment Burden), thus resulting in a low score.
 
-![Refer to caption](/html/2004.13912/assets/x8.png)
-
+!(/html/2004.13912/assets/x8.png)
 
 Figure 6: California Housing. Graphs learned by NAMs trained to predict house prices [[27](#bib.bib27)] for two most important features. As expected, The house prices increase linearly with median income in high data density regions. Furthermore, the graph for longitude shows sharp jumps in price prediction around the location of San Francisco and Los Angeles.
 
@@ -249,25 +198,25 @@ To accomplish this, we use a NAM to generate parameters for personalized models 
 By training to match predicted mortality risk with observed mortality, the NAM encodes expected treatment benefits as a function of patient information.
 NAMs are the only nonlinear GAM suitable for this application because NAMs are differentiable and can be trained via backpropagation.
 
-![Refer to caption](/html/2004.13912/assets/x9.png)
+!(/html/2004.13912/assets/x9.png)
 
 (a) Architecture
 
-![Refer to caption](/html/2004.13912/assets/x10.png)
+!(/html/2004.13912/assets/x10.png)
 
-![Refer to caption](/html/2004.13912/assets/x11.png)
+!(/html/2004.13912/assets/x11.png)
 
 (b) Anti-Coagulants
 
-![Refer to caption](/html/2004.13912/assets/x12.png)
+!(/html/2004.13912/assets/x12.png)
 
-![Refer to caption](/html/2004.13912/assets/x13.png)
+!(/html/2004.13912/assets/x13.png)
 
 (c) NSAIDs
 
-![Refer to caption](/html/2004.13912/assets/x14.png)
+!(/html/2004.13912/assets/x14.png)
 
-![Refer to caption](/html/2004.13912/assets/x15.png)
+!(/html/2004.13912/assets/x15.png)
 
 (d) Glucocorticoids
 
@@ -284,8 +233,7 @@ This example shows the utility of a *differentiable* nonlinear additive model su
 
 One advantage of NAMs is that they are easily extended to multitask learning (MTL) [[4](#bib.bib4)], whereas MTL is not available in EBMs or in any major boosted-tree package. In NAMs, the composability of neural nets makes it easy to train multiple subnets per feature. The model can learn task-specific weights over these subnets to allow sharing of subnets (shape functions) across tasks while also allowing subnets to differentiate between tasks as needed. However, it is unclear how to implement MTL in EBMs and possibly requires changes to both the backfitting procedure and the information gain rule in decision trees. Figure [8](#S4.F8 "Figure 8 ‣ 4.2 Multitask Learning ‣ 4 Unique Capabilities of NAMs ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets") shows a multitask NAM architecture that can jointly learn different feature representations for each task while preserving the intelligibility and modularity of NAMs. As we show, this can benefit both accuracy and interpretability. We first demonstrate multitask NAMs on a synthetic dataset before showing their utility on a multitask formulation of the COMPAS recidivism prediction dataset.
 
-![Refer to caption](/html/2004.13912/assets/figures/mtl_architecture.png)
-
+!(/html/2004.13912/assets/figures/mtl_architecture.png)
 
 Figure 8: Multitask NAM architecture for binary classification. Multiple subnets are trained on each input feature and weighted sums are learned over the subnets.
 
@@ -303,14 +251,9 @@ Multitask models often show improvement over single task learning when tasks are
 
 Functions f​(x0)𝑓subscript𝑥0f(x\_{0}), g​(x1)𝑔subscript𝑥1g(x\_{1}), h​(x2)ℎsubscript𝑥2h(x\_{2}) and i​(x2)𝑖subscript𝑥2i(x\_{2}) are as follows:
 
-![[Uncaptioned image]](/html/2004.13912/assets/x16.png)
-![Refer to caption](/html/2004.13912/assets/x17.png)
-
+!(/html/2004.13912/assets/x17.png)
 
 Figure 9: Single and Multitask NAM shape plots for x2subscript𝑥2x\_{2} from a typical (median) run of each task. The learned shape function is blue; the generator function is black. See [A.8](#A1.SS8 "A.8 Multitask Learning ‣ Appendix A Supplementary Material for Neural Additive Models ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets") for details of the generator functions.
-
-
-
 
 Table 2: MSE for STL and MTL NAMs on synthetic data. Average of 20 runs. Lower MSEs are better.
 
@@ -319,8 +262,7 @@ Table 2: MSE for STL and MTL NAMs on synthetic data. Average of 20 runs. Lower M
 | Single Task NAM | 0.965 | 1.116 | 1.347 | 0.944 | 1.058 | 1.066 | 1.083 |
 | Multitask NAM | 0.710 | 0.715 | 0.709 | 0.711 | 0.717 | 0.709 | 0.712 |
 
-![Refer to caption](/html/2004.13912/assets/x18.png)
-
+!(/html/2004.13912/assets/x18.png)
 
 Figure 10: Single and Multitask COMPAS Recidivism Prediction. Plots in the left column show the shape functions for each input feature learned by an ensemble of 100 single task NAMs. Thin blue lines represent shape functions for individual members of the ensemble. Pink bars represent the normalized data density for each feature. Plots in the right column show the Race and Charge degree shape plots for an ensemble of 100 multitask NAMS, with the Women task shown in green, and the Men task in blue.
 
@@ -765,8 +707,7 @@ We would like to thank Kevin Swersky for reviewing an early draft of the paper. 
 
 ### A.1 NAMs on MIMIC-II: Mortality Prediction in ICUs
 
-![Refer to caption](/html/2004.13912/assets/x19.png)
-
+!(/html/2004.13912/assets/x19.png)
 
 Figure A.1: MIMIC-II ICU Mortality. NAM shape functions learned on the MIMIC-II dataset to predict mortality risk using medical features (shown on the x𝑥x-axis) collected during the stay in the ICU. Low values on the y𝑦y-axis indicates a low risk of mortality.
 
@@ -801,8 +742,7 @@ Figure [6](#S3.F6 "Figure 6 ‣ 3 Evaluating the Accuracy of NAMs ‣ Neural Ad
 
 This is a large dataset [[7](#bib.bib7)] containing 284,807 transactions made by European credit cardholders where the task is to predict whether a given transaction is fraudulent or not. It is highly unbalanced and contains only 492 frauds (0.172% of the entire dataset) of all transactions. Table [1](#S3.T1 "Table 1 ‣ 3 Evaluating the Accuracy of NAMs ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets") shows that on this dataset, NAMs outperform EBMs and perform comparably to the XGBoost baseline. This shows the benefit of using NAMs instead of tree-based GAMs and suggests that NAMs can provide highly accurate and intelligible models on large datasets. NAMs using ExU units perform much better compared to NAMs with standard DNNs (AUC ≈\approx 0.974).
 
-![Refer to caption](/html/2004.13912/assets/x20.png)
-
+!(/html/2004.13912/assets/x20.png)
 
 Figure A.2: California Housing. Graphs learned by NAMs trained to predict house prices (regression) on the California Housing dataset.
 These plots show the individual shape functions learned by an ensemble of hundred NAMs for each input feature as well as the data density. The thin blue lines represents different shape functions from the ensemble to show the agreement of the members of the ensemble. The pink bars represent the normalized data density for each feature. The darker the bar the more data there is with that value.
@@ -813,8 +753,7 @@ California Housing dataset [[27](#bib.bib27)] is a canonical machine learning d
 where the
 task is to predict the median price of houses (in million dollars) in each California district. The learned NAM considers the median income as well as the house location (latitude, longitude) as the most important features (we omit the other six graphs to save space, see Figure [A.2](#A1.F2 "Figure A.2 ‣ A.2.2 Credit Fraud: Financial Fraud Detection [Classification] ‣ A.2 Intelligibility of NAMs on other datasets ‣ Appendix A Supplementary Material for Neural Additive Models ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets")). As shown by Figure [6](#S3.F6 "Figure 6 ‣ 3 Evaluating the Accuracy of NAMs ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets"), the house prices increase linearly with median income in high data density regions. Furthermore, the graph for longitude shows sharp jumps in price prediction around 122.5∘W and 118.5∘W which roughly correspond to San Francisco and Los Angeles respectively.
 
-![Refer to caption](/html/2004.13912/assets/x21.png)
-
+!(/html/2004.13912/assets/x21.png)
 
 Figure A.3: Toy classification: Deep neural network with 3 hidden layers of size 64, 64 and 32 respectively with ReLU activation and Xavier initialization trained for 10,000 epochs on toy classification
 dataset described in Section [2](#S2 "2 Neural Additive Models ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets"). We use a batch size of 1024 with the Adam optimizer and a learning rate decay of 0.995 every epoch. The learning rate was tuned in [1e-3, 1e-1) and we show the results with the best learning rate.
@@ -899,9 +838,6 @@ Table A.1: Optimal hyperparameters found for NAMs on regression datasets. “Hid
 | Activation | ReLU | ReLU |
 | Hidden unit | Standard | Standard |
 
-
-
-
 Table A.2: Optimal hyperparameters found for NAMs on classification datasets. “Hidden units” shows the number of hidden layers as well as the number of units used in each hidden layer for each feature network.
 
 | Hyperparameter | COMPAS | MIMIC-II | Credit Fraud |
@@ -948,9 +884,6 @@ Table A.3: Feature attributes for the two individuals shown in Figure [6](#S3.F
 | Delinquent | 0.0 | 1.0 |
 | Inquiry | 1.0 | 1.0 |
 
-
-
-
 Table A.4: FICO Score. Meaning of the different attributes of the feature “Max Delq/Public Records Last Year”.
 
 | Value | Meaning |
@@ -964,14 +897,12 @@ Table A.4: FICO Score. Meaning of the different attributes of the feature “Max
 | 7 | Current and never delinquent |
 | 8,9 | All other |
 
-![Refer to caption](/html/2004.13912/assets/x22.png)
-
+!(/html/2004.13912/assets/x22.png)
 
 Figure A.4: FICO Score Prediction. Graphs learned by NAMs trained to predict FICO scores (regression) based on their credit report information.
 These graphs can be interpreted easily, e.g., the second last graph in the bottom row shows that being delinquent on your payments decreases your credit score.
 
-![Refer to caption](/html/2004.13912/assets/figures/credit_deep_nn.png)
-
+!(/html/2004.13912/assets/figures/credit_deep_nn.png)
 
 Figure A.5: Credit Fraud Detection: Graphs learned by NAMs with ExU units on this large classification dataset. The task is to predict credit fraud where the class variable takes value 1 in case of fraud and 0 otherwise using a large dataset of credit card transactions. The dataset only contains only numerical input variables which are the result of a PCA transformation except the features ’Time’ and ’Amount’. Unfortunately, due to confidentiality issues, the original features are not provided in the dataset.
 
@@ -995,87 +926,6 @@ We also ran control experiments where we provide multiple subnets for each featu
 
 As shown in Figure [A.6](#A1.F6 "Figure A.6 ‣ A.8.3 Shape Plots for All Synthetic Features ‣ A.8 Multitask Learning ‣ Appendix A Supplementary Material for Neural Additive Models ‣ Neural Additive Models: Interpretable Machine Learning with Neural Nets"), we include here shape plots for all features in the synthetic data for both single and multitask NAMs. The MTL results represent a single model trained on all 6 tasks. In each case, it models the shape functions for every feature and the target with high accuracy. By contrast, the STL for T​a​s​k​0𝑇𝑎𝑠𝑘0Task0, struggles to fit the data for x2subscript𝑥2x\_{2} and achieves low accuracy on the target in this regime of noise and training set size.
 
-![Refer to caption](/html/2004.13912/assets/figures/synthetic_appendix.png)
-
+!(/html/2004.13912/assets/figures/synthetic_appendix.png)
 
 Figure A.6: Single and Multitask NAMs trained on synthetic data: Shape plots for all synthetic features for a typical (median) run of single and multitask NAMs. The colored lines represent learned shape functions for each feature and the black line represents the generator function.
-
-[◄](/html/2004.13911)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2004.13912)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2004.13912)
-[View original  
-on arXiv](https://arxiv.org/abs/2004.13912)[►](/html/2004.13913)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon Mar 18 05:53:04 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

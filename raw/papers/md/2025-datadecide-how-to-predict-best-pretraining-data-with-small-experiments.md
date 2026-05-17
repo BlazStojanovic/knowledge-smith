@@ -22,50 +22,7 @@ url: https://arxiv.org/abs/2504.11393
 year: 2025
 ---
 
-[2504.11393] How to Predict Best Pretraining Data with Small Experiments
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-# [Uncaptioned image] How to Predict Best Pretraining Data with Small Experiments
+#  How to Predict Best Pretraining Data with Small Experiments
 
 Ian Magnusson∗§‡,
 Nguyen Tai∗∥,
@@ -92,8 +49,7 @@ We conduct controlled pretraining experiments across 25 corpora with differing s
 We find that the ranking of models at a single, small size (e.g., 150M parameters) is a strong baseline for predicting best models at our larger target scale (1B) (∼80\sim 80% of comparisons correct).
 No scaling law methods among 8 baselines exceed the compute-decision frontier of single-scale predictions, but DataDecide can measure improvement in future scaling laws. We also identify that using continuous likelihood metrics as proxies in small experiments makes benchmarks including MMLU, ARC, HellaSwag, MBPP, and HumanEval >80>80% predictable at the target 1B scale with just 0.01% of the compute.
 
-![Refer to caption](/html/2504.11393/assets/x2.png)
-
+!(/html/2504.11393/assets/x2.png)
 
 Figure 1: Which pretraining data to use? Ideally, compare performance of large models with fixed configurations averaged over random seeds (left). In practice, cheaper, smaller-scale experiments are used (center).
 Here DataDecide measures accuracy of pairwise decisions between 25 pretraining corpora to find efficient prediction methods (right).
@@ -216,8 +172,7 @@ We experiment with using continuous metrics at small scale as proxies of the acc
 
 ## 3 Results
 
-![Refer to caption](/html/2504.11393/assets/x3.png)
-
+!(/html/2504.11393/assets/x3.png)
 
 Figure 2: Accuracy in pairwise decisions on best data when evaluating on the 10 OLMES tasks with Accuracy (shown aggregated in Figure [1](#S0.F1 "Figure 1 ‣ How to Predict Best Pretraining Data with Small Experiments")). Specific tasks have very distinct ranges of sensitivity, with some like ARC Easy being predictable at small scales and others like HellaSwag requiring substantially more compute to predict.
 
@@ -229,8 +184,7 @@ First looking at the aggregation of all 10 OLMES tasks (Figure [1](#S0.F1 "Figu
 
 The ease of prediction is greatly influenced by which evaluation benchmark we use. In Figure [2](#S3.F2 "Figure 2 ‣ 3 Results ‣ How to Predict Best Pretraining Data with Small Experiments"), we show the relationship of compute and decision accuracy for each of the tasks in OLMES individually. The predictive sensitivity of tasks at a given compute varies significantly, with ARC Easy being consistently predictable with 5 orders of magnitude less compute and BoolQ only reaching beyond trivial decision accuracy for intermediate checkpoints of the target runs. HellaSwag, SocialIQA, WinoGrande show distinct periods of insensitivity followed by roughly log-linear increase after hitting some compute threshold.
 
-![Refer to caption](/html/2504.11393/assets/x4.png)
-
+!(/html/2504.11393/assets/x4.png)
 
 Figure 3: Decision accuracy over 8 baseline scaling law variants. At best, these approaches reach only the same compute to decision accuracy frontier as ranking single scale experiments. DataDecide can be used to iterate on future scaling law prediction methods.
 
@@ -244,8 +198,7 @@ Our scaling law approaches vary in the number of parameters fit, using hard code
 
 A priori we know that ranking single scale experiments cannot correctly predict when the scaling trend of one data recipe overtakes another at scales between our small experiments and target scale. Such crossovers bound the decision accuracy of this constant approximation of performance. Nevertheless ranking single scale experiments sets a high baseline decision accuracy, implying relatively little crossover occurs. It is difficult to distinguish evaluation variance from true crossovers, but the scaling trends we empirically observe cross over frequently. Improved future scaling laws may be able to advance the Pareto frontier on DataDecide as they are not bound by crossovers.
 
-![Refer to caption]()
-
+!()
 
 Figure 4: 
 Per-task decision accuracy using character normalized proxy metrics for Accuracy targets. 5 tasks benefit at smaller scales from using raw likelihood of answers (Correct Prob and Total Prob), as opposed to discrete Accuracy or continuous metrics that penalize probability on incorrect answers (Norm Correct Prob, Margin).
@@ -260,8 +213,7 @@ Using Correct Prob or Total Prob leads to decision accuracy at least as good as 
 
 We notice two very distinct types of trends over the different tasks. Either the different proxy metrics are nearly indistinguishable and increase in decision accuracy with compute or Correct Prob and Total Prob are flat with respect to scale and the other metrics only rise up to that level of decision accuracy towards the full target compute budget. In the last order of magnitude below the target compute Accuracy and the other metrics tend to overtake Correct Prob and Total Prob, while these two metrics sometimes even decrease in decision accuracy. Notably these other metrics that trend with Accuracy include continuous metrics that penalize probability assigned to incorrect answers, Norm Correct Prob and Margin.
 
-![Refer to caption](/html/2504.11393/assets/x6.png)
-
+!(/html/2504.11393/assets/x6.png)
 
 Figure 5: Why do some tasks or metrics get better or worse decision accuracy? At 150M with Correct Prob tasks like HellaSwag succeed with low run-to-run variance and tasks like SocialIQA widely spread the performance assigned to different pretraining data.
 
@@ -271,8 +223,7 @@ The decision accuracy on a task is driven in part by low run-to-run variance and
 
 What underlies differences in decision accuracy when benchmarks and metrics change? The evaluation must separate pairs of data recipes by an amount greater than combined noise from run-to-run variance of each of the pair’s runs. In Figure [5](#S3.F5 "Figure 5 ‣ 3.3 What proxy metrics give better signal for predictions at small scale? ‣ 3 Results ‣ How to Predict Best Pretraining Data with Small Experiments"), we plot tasks with a given metric using fully trained 150M models over these two characteristics: 1) noise—the standard deviation over 3 random seed runs averaged over all recipes, and 2) spread—the standard deviation among the mean performance of the different data recipes. Each point also shows the decision accuracy. We see that some highly predictable tasks (e.g., MMLU) are characterized by having low run-to-run noise, while others (e.g., ARC Easy) widely spread the different data recipes. We also see that improvements from using Correct Prob often align with improvements in one of these two characteristics.
 
-![Refer to caption](/html/2504.11393/assets/x7.png)
-
+!(/html/2504.11393/assets/x7.png)
 
 Figure 6: Code tasks such as humaneval and MBPP go from trivial decision accuracy to largely predictable when using using continuous Correct Prob instead of discrete Accuracy. Meanwhile common math tasks remain near trivial decision accuracy regardless of metric.
 
@@ -658,83 +609,3 @@ Helpers and >50>50% checkpoints.
 Lastly we experiment with combining the previous two techniques on the baseline 3-parameter fit.
 
 Prediction Error. We report prediction errors in Table [4](#A2.T4 "Table 4 ‣ Appendix B Proxy Metric Definitions ‣ How to Predict Best Pretraining Data with Small Experiments") for each setup. As the best scaling laws variants are all roughly comparable to the simple 3-parameter set up, we use this one as our baseline.
-
-[◄](/html/2504.11391)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2504.11393)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2504.11393)
-[View original  
-on arXiv](https://arxiv.org/abs/2504.11393)[►](/html/2504.11394)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Mon May 5 15:41:49 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

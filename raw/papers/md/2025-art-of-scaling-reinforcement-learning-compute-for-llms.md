@@ -18,58 +18,6 @@ url: https://arxiv.org/abs/2510.13786
 year: 2025
 ---
 
-[2510.13786] The Art of Scaling Reinforcement Learning Compute for LLMs
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
-1]Meta
-2]UT Austin
-3]UCL
-4]UC Berkeley
-5]Harvard University
-6]Periodic Labs
-\contribution[\*]Equal contribution
-\contribution[†]Work done at Meta
-
 # The Art of Scaling Reinforcement Learning Compute for LLMs
 
 Devvrit Khatri
@@ -119,9 +67,9 @@ Our work provides both a *scientific framework* for analyzing scaling in RL and 
 
 ,
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/100k.png)
+!(/html/2510.13786/assets/paper_figs/100k.png)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/100k_aime24.png)
+!(/html/2510.13786/assets/paper_figs/100k_aime24.png)
 
 Figure 1:  Predicatably Scaling RL compute to 100,000 GPU Hours
 (a)
@@ -143,8 +91,7 @@ To address these questions, we establish a predictive framework for RL performan
 | --- | --- | --- | --- | --- |
 |  | RC−R0⏞Reward Gain=(A−R0)⏞Asymptotic Reward Gain×11+(Cmid/C)B⏟Compute Efficiency\displaystyle\boxed{\overbrace{R\_{C}-R\_{0}}^{\text{Reward Gain}}=\overbrace{(A-R\_{0})}^{\text{Asymptotic Reward Gain}}\times\frac{1}{\underbrace{1+(C\_{\text{mid}}/C)^{B}}\_{\text{Compute Efficiency}}}} | (fixed model and training data) |  | (1) |
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/prevalent_methods.png)
-
+!(/html/2510.13786/assets/paper_figs/prevalent_methods.png)
 
 Figure 2: ScaleRL is more scalable than prevalent RL methods. We fit sigmoid curves (Equation [1](#S1.E1 "Equation 1 ‣ 1 Introduction ‣ The Art of Scaling Reinforcement Learning Compute for LLMs")) on *iid* validation dataset to commonly-used training recipes like DeepSeek (GRPO) (Guo et al., [2025](#bib.bib7)), Qwen-2.5 (DAPO) (Yu et al., [2025](#bib.bib47)), Magistral (Rastogi et al., [2025](#bib.bib35)), and Minimax-M1 (MiniMax et al., [2025](#bib.bib27)), and compare them with ScaleRL. ScaleRL surpasses all other methods, achieving an asymptotic reward of A=0.61A=0.61. Stars denote evaluation points; solid curves show the fitted curve over the range used for fitting; dashed curves extrapolate beyond it. We validate the predictability by running each method for longer (“×\times” markers), which align closely with the extrapolated curves for stable recipes like ScaleRL and MiniMax. Further description of the individual recipes compared are given in Appendix [A.16](#A1.SS16 "A.16 Comparing Prevalent Methods ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs").
 
@@ -225,8 +172,7 @@ Intuitively, a sigmoidal curve captures saturating returns - grows slowly in the
 
 Consistent with pre-training practice (Hoffmann et al., [2022](#bib.bib10); Porian et al., [2025](#bib.bib34)), we measure predictive performance on in-distribution validation data. Since our training runs span multiple epochs, we hold out randomly selected 1,0001,000 prompts from the Polaris-53k dataset for validation and use the remainder for training. The scaling curves are fitted on the validation points, which measure the average pass rate every 100100 training steps, with 1616 generations per prompt on the 1,0001,000 held-out prompts.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/interpreting_fit.png)
-
+!(/html/2510.13786/assets/paper_figs/interpreting_fit.png)
 
 Figure 3: 
 Interpreting [equation˜1](#S1.E1 "In 1 Introduction ‣ The Art of Scaling Reinforcement Learning Compute for LLMs"). We provide an example fit illustrating the roles of parameters AA, BB, and CmidC\_{\text{mid}}.
@@ -242,13 +188,11 @@ We structure our experiments in three stages – we first ablate design choices 
 
 ### 3.1 Asynchronous RL Setup
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/infra.png)
-
+!(/html/2510.13786/assets/paper_figs/infra.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/pipelinerl_max_offpolicy.png)
-
+!(/html/2510.13786/assets/paper_figs/pipelinerl_max_offpolicy.png)
 
 (b)
 
@@ -264,27 +208,21 @@ PipelineRL-kk is a recent approach from Piche et al. ([2025](#bib.bib33)) and us
 Once a full batch of traces is generated, it is passed to the trainers for the next update.
 In our setup we introduce a parameter kk: the trainers wait if they get kk steps ahead of the generators.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/loss_type.png)
-
+!(/html/2510.13786/assets/paper_figs/loss_type.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/fp32.png)
-
+!(/html/2510.13786/assets/paper_figs/fp32.png)
 
 (b)
 
 Figure 5: (a) Comparing popular loss functions: DAPO (Yu et al., [2025](#bib.bib47)), GSPO (Zheng et al., [2025a](#bib.bib52)), and CISPO (MiniMax et al., [2025](#bib.bib27)). We find CISPO/GSPO achieve a higher asymptotic reward compared to DAPO. (b) Using FP32 precision in the final layer (LM head) gives a considerable boost in the asymptotic reward.
 
-
-
-![Refer to caption](/html/2510.13786/assets/paper_figs/0var_filtering.png)
-
+!(/html/2510.13786/assets/paper_figs/0var_filtering.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/noposresample.png)
-
+!(/html/2510.13786/assets/paper_figs/noposresample.png)
 
 (b)
 
@@ -359,20 +297,15 @@ where sg is the stop-gradient function, A^std\hat{A}\_{\text{std}} is the standa
 To validate that these choices remain optimal when combined, we conduct *leave-one-out* (LOO) experiments: starting from ScaleRL, we revert one axis at a time to its baseline counterpart from [Section˜2](#S2 "2 Preliminaries & Setup ‣ The Art of Scaling Reinforcement Learning Compute for LLMs").
 This ensures that each design decision contributes positively even in the presence of all others. Figure [7](#S4.F7 "Figure 7 ‣ Leave-One-Out (LOO) Ablations ‣ 4 ScaleRL: Scaling RL Compute Effectively & Predictably ‣ The Art of Scaling Reinforcement Learning Compute for LLMs") reports these experiments, each scaled to 1616k GPU hours.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/LOO.png)
-
+!(/html/2510.13786/assets/paper_figs/LOO.png)
 
 Figure 7: Leave-One-Out (LOO) Experiments: Starting from ScaleRL, we revert one design choice at a time to its baseline counterpart and re-train. Most LOO variants reach a similar asymptotic reward, with ScaleRL outperforming slightly overall. The main difference in these methods lies in efficiency. To highlight this, we re-arrange [Equation˜1](#S1.E1 "In 1 Introduction ‣ The Art of Scaling Reinforcement Learning Compute for LLMs") into ℱ​(Rc)=CB\mathcal{F}(R\_{c})=C^{B}, where ℱ​(Rc)=CmidB/(A−R0Rc−R0−1)\mathcal{F}(R\_{c})=C\_{\text{mid}}^{B}/\big(\frac{A-R\_{0}}{R\_{c}-R\_{0}}-1\big), and plot log⁡ℱ​(Rc)\log\mathcal{F}(R\_{c}) vs. log⁡C\log C. This form makes slope BB directly visible, showing that ScaleRL achieves the highest compute efficiency.
 
-
-
-![Refer to caption](/html/2510.13786/assets/paper_figs/error_margin.png)
-
+!(/html/2510.13786/assets/paper_figs/error_margin.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/scout_loo_fp32.png)
-
+!(/html/2510.13786/assets/paper_figs/scout_loo_fp32.png)
 
 (b)
 
@@ -405,13 +338,11 @@ In summary, even when individual design choices appear redundant within the comb
 
 ## 5 Predictable Scaling Returns Across RL Compute Axes
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_gen_len.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_gen_len.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_gen_len_aime24.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_gen_len_aime24.png)
 
 (b)
 
@@ -436,13 +367,11 @@ In our largest math run in [Figure˜1](#S0.F1 "In The Art of Scaling Reinforceme
 
 For a fixed total batch, is it better to allocate more prompts or more generations per prompt? Sweeping generations per prompt 8,16,24,32 and adjusting prompts to keep total batch fixed leaves fitted scaling curves essentially unchanged (Appendix [A.13](#A1.SS13 "A.13 Scaling on multiple axes ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs")), suggesting that, at moderate batch, this allocation is a second-order choice for both A and B. Clearer differences may emerge at much larger batches (e.g., 2k+), which we leave for future work.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_bsz.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_bsz.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_bsz_aime24.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_bsz_aime24.png)
 
 (b)
 
@@ -463,8 +392,7 @@ In this work, we study the scaling properties of different techniques used in RL
 For each ablation, we choose the option with higher asymptotic performance when possible and improved efficiency otherwise.
 Combining these choices yields the ScaleRL recipe which scales better than all existing recipes in our experiments.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_tasks.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_tasks.png)
 
 Figure 11: ScaleRL scales predictably on math and code. We report both the code and math validation set performance on the joint math+code RL run; along with the math only ScaleRL run as a reference. These results demonstrate that our sigmoidal compute–performance relationship holds across task mixtures, and that ScaleRL’s scalability generalizes beyond a single domain training.
 
@@ -922,27 +850,21 @@ One may wonder how robust our fitted curves are. We address a few relevant point
 
 ### A.8 Interpreting Sigmoidal Curves
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/effect_of_B.png)
-
+!(/html/2510.13786/assets/paper_figs/effect_of_B.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/effect_of_Cmid.png)
-
+!(/html/2510.13786/assets/paper_figs/effect_of_Cmid.png)
 
 (b)
 
 Figure 12: Keeping all parameters same and only changing (a) BB, (b) Cm​i​dC\_{mid}. Both these parameters modulate the efficiency of the training run.
 
-
-
-![Refer to caption](/html/2510.13786/assets/paper_figs/effect_of_A.png)
-
+!(/html/2510.13786/assets/paper_figs/effect_of_A.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/slow_horse.jpeg)
-
+!(/html/2510.13786/assets/paper_figs/slow_horse.jpeg)
 
 (b)
 
@@ -960,32 +882,25 @@ In practice, scaling strategies should prioritize design choices that raise the 
 We show additional results for [Section˜3.2](#S3.SS2 "3.2 Algorithmic Choices ‣ 3 An Empirical Study of RL Scaling ‣ The Art of Scaling Reinforcement Learning Compute for LLMs") in Figures [14a](#A1.F14.sf1 "Figure 14a ‣ Figure 14 ‣ A.9 Forward and LOO Ablations ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs")-[14b](#A1.F14.sf2 "Figure 14b ‣ Figure 14 ‣ A.9 Forward and LOO Ablations ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs").
 We also plot the pass rate vs compute leave one out experiments from [Section˜4](#S4 "4 ScaleRL: Scaling RL Compute Effectively & Predictably ‣ The Art of Scaling Reinforcement Learning Compute for LLMs") in [Figure˜15](#A1.F15 "In A.9 Forward and LOO Ablations ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs").
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/loss_agg.png)
-
+!(/html/2510.13786/assets/paper_figs/loss_agg.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/adv_norm.png)
-
+!(/html/2510.13786/assets/paper_figs/adv_norm.png)
 
 (b)
 
 Figure 14: Comparing (a) loss aggregation, (b) different advantage normalization techniques.
 
-
-
-![Refer to caption](/html/2510.13786/assets/paper_figs/loo_1.png)
-
+!(/html/2510.13786/assets/paper_figs/loo_1.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/loo_2.png)
-
+!(/html/2510.13786/assets/paper_figs/loo_2.png)
 
 (b)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/loo_3.png)
-
+!(/html/2510.13786/assets/paper_figs/loo_3.png)
 
 (c)
 
@@ -1034,21 +949,18 @@ An interesting finding is that entropy may not always offer a predictive insight
 In [Figure˜16](#A1.F16 "In A.12 Entropy Curves: Scaling Batch Size ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs"), we plot entropy for ScaleRL runs with batch sizes 768768 and 20482048. Despite the 2048-batch size run achieving much stronger downstream performance at every stage ([Figure˜10b](#S5.F10.sf2 "In Figure 10 ‣ Generations per prompt (fixed total batch) ‣ 5 Predictable Scaling Returns Across RL Compute Axes ‣ The Art of Scaling Reinforcement Learning Compute for LLMs")), both runs followed nearly identical entropy trajectories per step ([Figure˜16](#A1.F16 "In A.12 Entropy Curves: Scaling Batch Size ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs")). This highlights an important point - although entropy is sometimes used as a proxy for exploration, simply maintaining higher entropy does not translate into better generalization.
 Instead, larger batches reduced effective exploration similar to smaller batches, per step, yet still yielded substantially better performance - underscoring batch size as an important decisive factor.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/entropy.png)
-
+!(/html/2510.13786/assets/paper_figs/entropy.png)
 
 Figure 16: Comparing entropy of large and smaller batch size runs across training steps.
 
 Overall, our findings suggest that while entropy decreases consistently during training, it is not necessarily a reliable predictor of downstream performance.
 This observation reinforces the need to focus on algorithmic and scaling choices (e.g., batch size, off-policy method) in adddition to entropy dynamics when aiming for improved performance, both on training distribution as well as downstream task distribution.
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_ngens.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_ngens.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_ngens_aime24.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_ngens_aime24.png)
 
 (b)
 
@@ -1075,13 +987,11 @@ Table 1: Cm​i​d,B, and ​AC\_{mid},B,\text{ and }A values for the large s
 
 ### A.14 Downstream performance
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_tasks_code_livecodebench.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_tasks_code_livecodebench.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/large_scale_tasks_math_aime24.png)
-
+!(/html/2510.13786/assets/paper_figs/large_scale_tasks_math_aime24.png)
 
 (b)
 
@@ -1140,13 +1050,11 @@ In contrast, CISPO and GSPO show far greater robustness.
 For example, in Appendix [A.17.2](#A1.SS17.SSS2 "A.17.2 CISPO Clipping Ratios ‣ A.17 Loss Type - Stability and Robustness ‣ Appendix A Appendix ‣ The Art of Scaling Reinforcement Learning Compute for LLMs"), varying ϵmax\epsilon\_{\max} for CISPO between {4,5,8}\{4,5,8\} produced no significant differences in performance.
 For GSPO, the 10−410^{-4} clipping scale used in the original paper (Zheng et al., [2025a](#bib.bib52)) did not work well in our setting. We therefore ablated across broader scales and found that once the correct order of magnitude was identified (e.g., 4×10−34\!\times\!10^{-3} and higher), performance was stable and largely insensitive to fine-grained changes (e.g., {4×10−3,5×10−3\{4\!\times\!10^{-3},5\!\times\!10^{-3}).
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/grpo_eps.png)
-
+!(/html/2510.13786/assets/paper_figs/grpo_eps.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/cispo_eps.png)
-
+!(/html/2510.13786/assets/paper_figs/cispo_eps.png)
 
 (b)
 
@@ -1174,13 +1082,11 @@ Given this scale, we further varied the upper clipping ratio in {4×10−3,5×10
 An important observation is that GSPO is quite robust to the choice of clipping ratio. Once the correct scale is identified, most nearby values or even larger scale perform similarly.
 This robustness contrasts sharply with DAPO-style losses, which are highly sensitive to the exact value of the higher clipping ratio, as noted in [Section˜3.2](#S3.SS2.SSS0.Px1 "Loss type ‣ 3.2 Algorithmic Choices ‣ 3 An Empirical Study of RL Scaling ‣ The Art of Scaling Reinforcement Learning Compute for LLMs").
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/gspo_eps.png)
-
+!(/html/2510.13786/assets/paper_figs/gspo_eps.png)
 
 (a)
 
-![Refer to caption](/html/2510.13786/assets/paper_figs/gspo_e_3.png)
-
+!(/html/2510.13786/assets/paper_figs/gspo_e_3.png)
 
 (b)
 
@@ -1193,83 +1099,3 @@ For 8B models, restarting from a stable checkpoint allowed recovery, but this st
 While we checked to the best of our ability for any implementation bugs, we did not find one.
 
 Overall, while all three loss families can be competitive under tuned settings, CISPO offers the best balance of stability and robustness to hyperparameters, making it our recommended choice.
-
-[◄](/html/2510.13785)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2510.13786)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2510.13786)
-[View original  
-on arXiv](https://arxiv.org/abs/2510.13786)[►](/html/2510.13787)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Nov 5 20:55:51 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

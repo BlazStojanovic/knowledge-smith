@@ -15,49 +15,6 @@ url: http://arxiv.org/abs/2002.07971v2
 year: 2020
 ---
 
-[2002.07971] Gradient Boosting Neural Networks: GrowNet
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Gradient Boosting Neural Networks: GrowNet
 
 Sarkhan Badirli
@@ -149,8 +106,7 @@ Most recently, AdaNet [[7](#bib.bib7)] was proposed to adaptively built Neural 
 In recent years, a few work have been done to explain the success of deep residual neural networks [[14](#bib.bib14)] with hundreds of layers by showing that they can be decomposed into a collection of many subnetworks.
 The work in [[16](#bib.bib16)] extends AdaNet to specifically focus on ResNet architecture [[14](#bib.bib14)] to provide a new training algorithm for ResNet. The authors of [[28](#bib.bib28)], meanwhile, argue that these deeper layers might serve as a bagging mechanism in a similar spirit to random forest classifier. These studies challenge the common belief that neural networks are too strong to serve as weak learners for boosting methods.
 
-![Refer to caption](/html/2002.07971/assets/x1.png)
-
+!(/html/2002.07971/assets/x1.png)
 
 Figure 1: GrowNet architecture. After the first weak learner, each predictor is trained on combined features from original input and penultimate layer features from previous weak learner. The final output is the weighted sum of outputs from all predictors, ∑k=1k=Kαk​fk​(x)superscriptsubscript𝑘1𝑘𝐾subscript𝛼𝑘subscript𝑓𝑘𝑥\sum\_{k=1}^{k=K}\alpha\_{k}f\_{k}(x). Here Model K means weak learner K.
 
@@ -294,8 +250,7 @@ Learning to Rank. Ranking experiment results on Yahoo and MSLR datasets are pres
 
 ## 6 Ablation study
 
-![Refer to caption](/html/2002.07971/assets/x2.png)
-
+!(/html/2002.07971/assets/x2.png)
 
 Figure 2: Classification training losses
 
@@ -317,8 +272,7 @@ As seen in Figure [1](#S2.F1 "Figure 1 ‣ 2 Related Work ‣ Gradient Boosting 
 
 Among all components of the model, the corrective step is presumably the most vital one. In this step, the parameters of all weak learners, that are added to the model, are updated by training the whole model on the original inputs without the penultimate layer features. The loss function used in this step is a task specific one. This procedure allows the model to rectify the parameters to specifically better accommodate the task at hand rather than fitting negative gradients. C/S also alleviates the potential correlation among weak learners. Moreover, within this step, we incorporated the boosting rate αtsubscript𝛼𝑡\alpha\_{t} and it is automatically adjusted without requiring any tuning. The last two columns of Table [4](#S6.T4 "Table 4 ‣ 6 Ablation study ‣ Gradient Boosting Neural Networks: GrowNet") present the classification and learning to rank results from GrowNet without using any corrective step and using a corrective step in every 5 stages, respectively. The performance severely degraded in the former one, and the model hardly learned any information after a couple of predictive functions added. The flat training loss in Figure [2](#S6.F2 "Figure 2 ‣ 6 Ablation study ‣ Gradient Boosting Neural Networks: GrowNet") confirms this phenomenon as well. Running the corrective step in every 5 steps rendered much better performance, yet was not as good as GrowNet’s results. The stair-like loss curve in the Figure [2](#S6.F2 "Figure 2 ‣ 6 Ablation study ‣ Gradient Boosting Neural Networks: GrowNet") evidently displays the influence of the corrective step on model training.
 
-![Refer to caption](/html/2002.07971/assets/x3.png)
-
+!(/html/2002.07971/assets/x3.png)
 
 Figure 3: Boosting rate evolution
 
@@ -333,8 +287,7 @@ In this experiment, we explored the impact of first and second order statistics 
 As the literature suggests, boosting algorithms work best with weak learners, thus we utilized a shallow neural network with two hidden layers as a weak predictor for our model. While adding more hidden layers yields stronger predictors, they are not weak learners anymore. To explore this weak learner limit on the number of hidden layers, we assayed weak learners with 1, 2, 3, and 4 hidden layers.
 Each hidden layer had 16 units. Although weak learners with more hidden layers render better training loss convergence as expected, the overall model starts saturating on performance and overfitting. Weak learners with 1 and 2 hidden layers attain the best scores, yet the latter one outperforms the former. The worst test AUC score is from the model with 4 hidden layers (See Fig 6 in Supp. material).
 
-![Refer to caption](/html/2002.07971/assets/x4.png)
-
+!(/html/2002.07971/assets/x4.png)
 
 Figure 4: Effect of # neurons on classification performance
 
@@ -673,8 +626,7 @@ Table 6: Classification results on Higgs-1M data. The scores are in AUC-ROC.
 
 Analogous to Figure 2 from the main text, Figure [5](#A6.F5 "Figure 5 ‣ Appendix F Additional Illustrations for Ablation Study ‣ Gradient Boosting Neural Networks: GrowNet") presents pairwise losses on Microsoft dataset from the ranking task.
 
-![Refer to caption](/html/2002.07971/assets/x5.png)
-
+!(/html/2002.07971/assets/x5.png)
 
 Figure 5: Training loss visualization for the learning to rank task on MSLR dataset. We used pairwise loss.
 
@@ -686,15 +638,11 @@ Effect of hidden layers. Table [7](#A6.T7 "Table 7 ‣ Appendix F Additional Il
 
 Table 7: Results from hidden layer experiment.
 
-
-
-![Refer to caption](/html/2002.07971/assets/x6.png)
-
+!(/html/2002.07971/assets/x6.png)
 
 (a) Classification training loss
 
-![Refer to caption](/html/2002.07971/assets/x7.png)
-
+!(/html/2002.07971/assets/x7.png)
 
 (b) Classification test loss
 
@@ -715,87 +663,6 @@ DNN with 30 hidden layers are implemented with Dropout(0.3), as without Dropout 
 
 Table 8: Training time and performance comparison between DNN and GrowNet on Higg-1M data. Training time for DNNs are average seconds per epoch and for GrowNet average seconds per stages.
 
-![Refer to caption](/html/2002.07971/assets/x8.png)
-
+!(/html/2002.07971/assets/x8.png)
 
 Figure 7: Training time over iterations. As observed, training time is linearly correlated with number of weak learners.
-
-[◄](/html/2002.07970)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2002.07971)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2002.07971)
-[View original  
-on arXiv](https://arxiv.org/abs/2002.07971)[►](/html/2002.07972)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Fri Mar 1 18:04:16 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

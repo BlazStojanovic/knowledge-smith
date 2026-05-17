@@ -17,81 +17,29 @@ url: https://arxiv.org/abs/2408.07666
 year: 2024
 ---
 
-[2408.07666] Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications and Opportunities
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications and Opportunities
 
 Enneng Yang§
 
-
  Li Shen†
-
 
  Guibing Guo§
 
-
  Xingwei Wang§
-
 
  Xiaochun Cao†
 
-
  Jie Zhang‡
-
 
   Dacheng Tao‡
   
 §Northeastern University
 
-
  China;
 †Sun Yat-sen University
 
-
  China;
 ‡Nanyang Technological University
-
 
  Singapore
   
@@ -110,8 +58,7 @@ Model merging, also known as model fusion, is an effective technique that merges
 
 Although model merging is a relatively young topic, it is evolving rapidly and has already found applications in several domains. For example, in foundation models, models fine-tuned by different downstream tasks are merged to enhance the capabilities of large language models, and image generative models with different styles are merged to create a new model with mixed-style capabilities. In particular, the number of pre-trained and fine-tuned checkpoints in the machine learning community has grown exponentially in recent years, including open-source repositories such as Huggingface [[182](#bib.bib182)], torchvision [[111](#bib.bib111)], and timm [[181](#bib.bib181)], making it easy for users to obtain well-trained expert models of varying abilities. These rich model repositories further promote the rapid development of model merging direction.
 
-![Refer to caption](/html/2408.07666/assets/x1.png)
-
+!(/html/2408.07666/assets/x1.png)
 
 Figure 1: An illustration of the ensemble learning paradigm versus the model merging paradigm. (a) T𝑇T separate models for T𝑇T tasks, (b) Assemble T𝑇T separate models for T𝑇T tasks, (c) A merged model for T𝑇T tasks.
 
@@ -349,8 +296,7 @@ For example, GAN Cocktail [[10](#bib.bib10)] attempts to merge multiple GAN mod
 Unlike the above distillation-based approach, CLAFusion [[121](#bib.bib121)] adds layers/blocks (with weights set to the identity matrix) to the smaller model to align its architecture with that of the larger model.
 In summary, merging models with different architectures requires first transforming all models into a common architecture to merge later.
 
-![Refer to caption](/html/2408.07666/assets/x2.png)
-
+!(/html/2408.07666/assets/x2.png)
 
 Figure 3: (a) An illustration of an architectural transformation that transforms multiple heterogeneous models into homogeneous models, allowing subsequent direct parameter-level merge operations to be performed. (b) An illustration of the weights/parameters alignment, that is, permuting the neural network model Θ(1)superscriptΘ1\small\Theta^{(1)} so that it aligns with the model Θ(2)superscriptΘ2\small\Theta^{(2)}.
 
@@ -374,8 +320,7 @@ Recently, Task Arithmetic [[65](#bib.bib65)] introduced the concept of “task 
 In other words, task vectors are thought to steer the behavior of a neural network meaningfully.
 For example, multitask learning (MTL) can be accomplished by adding task vectors, forgetting can be achieved by subtracting task vectors, and task analogies can be performed using analogous task vectors. Specifically, when we want the pretrained model to perform MTL, we can add multiple task vectors {τ1,…,τT}subscript𝜏1…subscript𝜏𝑇\{\tau\_{1},\ldots,\tau\_{T}\} to the pretrained model, i.e., Θ(m​e​r​g​e)=Θ(0)+λ⋅∑t=1TτtsuperscriptΘ𝑚𝑒𝑟𝑔𝑒superscriptΘ0⋅𝜆superscriptsubscript𝑡1𝑇subscript𝜏𝑡\small\Theta^{(merge)}=\Theta^{(0)}+\lambda\cdot\sum\_{t=1}^{T}\tau\_{t} in Figure [4](#S2.F4 "Figure 4 ‣ 2.3.1 Basic Merging Methods ‣ 2.3 During Merging Methods ‣ 2 Advanced Model Merging Methods ‣ Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications and Opportunities")(b), where λ𝜆\lambda is a hyperparameter. Conversely, when we want the pretrained model to forget a function t𝑡t, we can subtract the corresponding task vector from pretrained model as Figure [4](#S2.F4 "Figure 4 ‣ 2.3.1 Basic Merging Methods ‣ 2.3 During Merging Methods ‣ 2 Advanced Model Merging Methods ‣ Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications and Opportunities")(c), i.e., Θ(m​e​r​g​e)=Θ(0)−τtsuperscriptΘ𝑚𝑒𝑟𝑔𝑒superscriptΘ0subscript𝜏𝑡\small\Theta^{(merge)}=\Theta^{(0)}-\tau\_{t}. As shown in Figure [4](#S2.F4 "Figure 4 ‣ 2.3.1 Basic Merging Methods ‣ 2.3 During Merging Methods ‣ 2 Advanced Model Merging Methods ‣ Model Merging in LLMs, MLLMs, and Beyond: Methods, Theories, Applications and Opportunities")(d), we can also implement task analogies by task vector analogies, thus enabling zero-shot learning of new tasks. Similarly, PEMs [[209](#bib.bib209)] combines Adapters with different capabilities by extending task arithmetic [[65](#bib.bib65)] to parameter-efficient fine-tuning settings. However, the performance of basic merging methods is not satisfactory most of the time, especially when the tasks interfere with each other.
 
-![Refer to caption](/html/2408.07666/assets/x3.png)
-
+!(/html/2408.07666/assets/x3.png)
 
 Figure 4: An illustration of Task Arithmetic [[65](#bib.bib65)]. (a) Definition of the “task vector”, which is the difference between the fine-tuned model and the pre-trained model. (b) Multi-task learning is performed by merging multiple task vectors. (c) Knowledge forgetting is achieved by subtracting the task vector. (d) Analogical task vectors are used to implement task analogies.
 
@@ -393,8 +338,7 @@ Other works utilize the Fisher information matrix [[40](#bib.bib40)] to assess 
 Fisher-nodes-merging [[164](#bib.bib164)] also combines a set of Transformer [[169](#bib.bib169)] models based on the Fisher information matrix. MaTS [[155](#bib.bib155)] developed a block diagonal approximation for Fisher merging.
 Daheim et al. [[29](#bib.bib29)] linked the inaccuracy of weighted average with gradient mismatch, and further proposed an uncertainty-based algorithm to reduce the matching error, ultimately merging the models based on a second-order Hessian estimation.
 
-![Refer to caption](/html/2408.07666/assets/x4.png)
-
+!(/html/2408.07666/assets/x4.png)
 
 Figure 5: (a) An illustration of weighted-based model merging methods. (b) An illustration of the subspace-based merging method, where empty means zero value. (c) An illustration of the routing-based merge method dynamically performs the model merge based on the input.
 
@@ -1784,83 +1728,3 @@ Model merging is a straightforward and effective technique for model enhancement
   Max Zimmer, Christoph Spiegel, and Sebastian Pokutta.
   Sparse model soups: A recipe for improved pruning via model averaging.
   In *ICLR*, 2024.
-
-[◄](/html/2408.07665)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2408.07666)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2408.07666)
-[View original  
-on arXiv](https://arxiv.org/abs/2408.07666)[►](/html/2408.07667)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Thu Sep 5 16:26:46 2024 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

@@ -13,56 +13,13 @@ url: https://arxiv.org/abs/2512.07783
 year: 2025
 ---
 
-[2512.07783] On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models
 
 Charlie Zhang  Graham Neubig  Xiang Yue
   
 Carnegie Mellon University, Language Technologies Institute
   
-[![[Uncaptioned image]](/html/2512.07783/assets/logo/github.png) Interplay-LM-Reasoning](https://github.com/Interplay-LM-Reasoning/Interplay-LM-Reasoning)       [![[Uncaptioned image]](/html/2512.07783/assets/logo/huggingface.png) Interplay-LM-Reasoning](https://huggingface.co/Interplay-LM-Reasoning)
+[ Interplay-LM-Reasoning](https://github.com/Interplay-LM-Reasoning/Interplay-LM-Reasoning)       [ Interplay-LM-Reasoning](https://huggingface.co/Interplay-LM-Reasoning)
   
 {chariezhang0106,xiangyue.work}@gmail.com    gneubig@cs.cmu.edu
 Work done when interning at CMU.Corresponding Author.
@@ -71,8 +28,7 @@ Work done when interning at CMU.Corresponding Author.
 
 Recent reinforcement learning (RL) techniques have yielded impressive reasoning improvements in language models, yet it remains unclear whether post-training truly extends a model’s reasoning ability beyond what it acquires during pre-training. A central challenge is the lack of control in modern training pipelines: large-scale pre-training corpora are opaque, mid-training is often underexamined, and RL objectives interact with unknown prior knowledge in complex ways. To resolve this ambiguity, we develop a fully controlled experimental framework that isolates the causal contributions of pre-training, mid-training, and RL-based post-training. Our approach employs synthetic reasoning tasks with explicit atomic operations, parseable step-by-step reasoning traces, and systematic manipulation of training distributions. We evaluate models along two axes: extrapolative generalization to more complex compositions and contextual generalization across surface contexts. Using this framework, we reconcile competing views on RL’s effectiveness. We show that: 1) RL produces true capability gains (pass@128) only when pre-training leaves sufficient headroom and when RL data target the model’s edge of competence, tasks at the boundary that are difficult but not yet out of reach. 2) Contextual generalization requires minimal yet sufficient pre-training exposure, after which RL can reliably transfer. 3) Mid-training significantly enhances performance under fixed compute compared with RL only, demonstrating its central but underexplored role in training pipelines. 4) Process-level rewards reduce reward hacking and improve reasoning fidelity. Together, these results clarify the interplay between pre-training, mid-training, and RL, offering a foundation for understanding and improving reasoning LM training strategies.
 
-![Refer to caption](/html/2512.07783/assets/x1.png)
-
+!(/html/2512.07783/assets/x1.png)
 
 Figure 1: Interplay of pre-, mid-, and post-training in LM reasoning. Left: RL yields genuine extrapolative gains only when task difficulty slightly exceeds the pre-training range; gains vanish when tasks are already covered or too out-of-distribution (up to +42% pass@128 when well-calibrated). Mid: Contextual generalization requires minimal yet sufficient pre-training exposure to long-tail contexts. RL fails with near-zero exposure but generalizes robustly with sparse exposure (≥\geq1%), yielding up to +60% pass@128. Right: A mid-training stage bridging pre-training and RL substantially improves OOD reasoning under fixed compute, with mid-training + RL outperforming RL alone by +10.8% on OOD-hard tasks.
 
@@ -105,8 +61,7 @@ Fourthly, process rewards mitigate reward hacking and enhance reasoning fidelity
 
 ## 2 Preliminaries
 
-![Refer to caption](/html/2512.07783/assets/x2.png)
-
+!(/html/2512.07783/assets/x2.png)
 
 Figure 2: Overview of the data generation framework, task setup, and process-verified evaluation. The figure depicts the dependency graph 𝒢\mathcal{G} and contextual templates τ\tau, the task setup for extrapolative and contextual generalization, and the process-verified evaluation framework that checks for correctness of reasoning steps.
 
@@ -198,8 +153,7 @@ The experimental setup proceeds as follows:
 
 For additional information on the training dynamics and the data recipe, see [A.5](#A1.SS5 "A.5 Training Dynamics for § 3 ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") and [A.9](#A1.SS9 "A.9 Post-Training and Pre-Training Data Recipe ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
 
-![Refer to caption](/html/2512.07783/assets/x3.png)
-
+!(/html/2512.07783/assets/x3.png)
 
 Figure 3: pass@k performance on three tasks: ID (op=2-10), OOD-edge (op=11-14), OOD-hard (op=(15-20)).
 RL is applied to four different data regimes (colors). RL on ID tasks never improves beyond the base model at pass@128. RL consistently improves pass@128 on harder tasks when applied beyond the base model’s capacity.
@@ -241,8 +195,7 @@ By manipulating the ratio of long-tailed context B atomic op=2 examples during 
 
   Post-training: RL is applied on 200K samples, consisting of 50% context A and 50% context B, spanning op=2-20. Further details on the training dynamics and data recipe can be found in Appendix [A.8](#A1.SS8 "A.8 Training Dynamics for § 4 ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") and  [A.9](#A1.SS9 "A.9 Post-Training and Pre-Training Data Recipe ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
 
-![Refer to caption](/html/2512.07783/assets/x4.png)
-
+!(/html/2512.07783/assets/x4.png)
 
 Figure 4: pass@128 performance on context B after post-trained with a 50% context A + 50% context B mixture. Different lines represent levels of pre-training exposure to long-tailed context B atomic op=2 examples. RL incentivizes contextual generalization when the model has minimal exposure (≥\geq1%) to context B in pre-training.
 
@@ -261,7 +214,7 @@ Discussion 2
 
 Replication or Creation?
 We examine the distribution of topological similarity between the generated correct context B graphs and the ground-truth topology from context A in [Figure 5](#S4.F5 "Figure 5 ‣ 4 How Does Pre-training Exposure Shape Post-Training Generalization? ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
-High similarity indicates that the model primarily replicates existing context A reasoning patterns, while low similarity suggests the emergence of novel reasoning structures distinct from context A.![[Uncaptioned image]](/html/2512.07783/assets/x5.png)
+High similarity indicates that the model primarily replicates existing context A reasoning patterns, while low similarity suggests the emergence of novel reasoning structures distinct from context A.
 
 Figure 5: Distribution of topological similarity between generated correct context B and gold context A graphs. 
 
@@ -301,8 +254,7 @@ Task Setting.
 In this section, we explore the performance of five training configurations using the same base model pre-trained on 10B op=2-10 data:
 Full mid-training on 1B supervised tokens from the op=11-14 range, Full RL with 100 steps of batch size 1024 from the same op=11-14 range, and three mixing strategies—Light-RL (β=0.2\beta=0.2), Medium-RL (β=0.5\beta=0.5), and Heavy-RL (β=0.8\beta=0.8), which balance mid-training and RL under an equivalent compute budget. The compute budget formulation in Section [5](#S5 "5 How Does Mid-Training Interact with Post-Training? ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") allows for a direct comparison of data mixture strategies. Detailed training setup can be found in Appendix [A.10](#A1.SS10 "A.10 Mid-/Post-Training Mixing with Different Computation Budget ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
 
-![Refer to caption](/html/2512.07783/assets/x6.png)
-
+!(/html/2512.07783/assets/x6.png)
 
 Figure 6: pass@1 and pass@128 performances on extrapolative tasks under varying mid- and post-training mixture ratios. The data used in mid- and post-training is applied within the OOD-edge ranges. Different lines indicate the compute allocation strategies. Heavy-RL always improves the unseen OOD-hard tasks, while Light-RL improves best pass@1 on OOD-edge tasks.
 
@@ -357,8 +309,7 @@ We also consider a stricter formulation:
 which grants outcome rewards only when the entire reasoning process is verified as correct. This setup provides process-level supervision to reduce reward hacking.
 Under this reward setup, we conduct post-training on op=11-14 using different reward compositions to assess how varying degrees of process supervision affect reasoning generalization.
 
-![Refer to caption](/html/2512.07783/assets/x7.png)
-
+!(/html/2512.07783/assets/x7.png)
 
 Figure 7: pass@k performance under different reward compositions.
 Each bar corresponds to a distinct reward-mixing strategy. Incorporating process-level information into the outcome reward consistently yields measurable performance gains across evaluation settings.
@@ -377,7 +328,7 @@ Incorporating process verification into the reward function aligns reinforcement
 Discussion 4
 
 How does process verification reshape RL generalization?
-We investigate whether incorporating process verification can better guide RL toward faithful reasoning. We analyze how different reward formulations affect both correctness and structural error patterns during RL fine-tuning.![[Uncaptioned image]](/html/2512.07783/assets/x8.png)
+We investigate whether incorporating process verification can better guide RL toward faithful reasoning. We analyze how different reward formulations affect both correctness and structural error patterns during RL fine-tuning.
 
 Figure 8: Effects of reward mixtures on reasoning correctness and structural error types.
 
@@ -592,7 +543,6 @@ The number of public highschool in Evervale City exists, and its number is great
 How many public highschool does Evervale City have?
 [/question]
 
-
 Solution
 
 [solution]
@@ -610,16 +560,11 @@ Define public highschool in Evervale City as xx (unknown).
 Define elementary school in Evervale City as mm; so m=x+h=x+2m=x+h=x+2.
 Define total number of schools in Evervale City as kk.
 
-
-
 n=x+(x+2)=2​x+2,k=n+S=2​x+18.n=x+(x+2)=2x+2,\qquad k=n+S=2x+18.
 Since k=22k=22:
 
-
-
 2​x+18=22,2​x=4,x=2.2x+18=22,\quad 2x=4,\quad x=2.
 [/solution]
-
 
 Answer
 
@@ -759,9 +704,9 @@ entropy bonus. During RL rollouts we sample with temperature TRL=1.0T\_{\text{RL
 
 #### A.3.4 Performance Ladder
 
-![Refer to caption](/html/2512.07783/assets/x9.png)
+!(/html/2512.07783/assets/x9.png)
 
-![Refer to caption](/html/2512.07783/assets/x10.png)
+!(/html/2512.07783/assets/x10.png)
 
 Figure 9: Pre-training dynamics across varying operation ranges: In-distribution tasks (op=2-10), edge-of-competence OOD tasks (op=11-14), and OOD-hard tasks (op=15-20). The plots show the performance measured by pass@k over training steps.
 
@@ -822,8 +767,7 @@ In this section, we provide a detailed analysis on the training dynamics for dif
 NLL Reduction Across Evaluation Ranges.
 We analyze the post-training across different post-training data recipes used in § [3](#S3 "3 When Does Post-Training Incentivize Reasoning Beyond the Base Model? ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") and their impact on NLL reduction across various evaluation operation ranges.
 
-![Refer to caption](/html/2512.07783/assets/figures/composition_nll.png)
-
+!(/html/2512.07783/assets/figures/composition_nll.png)
 
 Figure 10: NLL reduction compared with the base model. White boxes denote RL-trained operation ranges. NLL gains decay smoothly as the evaluation range diverges from the RL-trained operations. Notably, RL on op=11-14 achieves the largest NLL reduction on op=15-20.
 
@@ -831,8 +775,7 @@ We can observe from Figure [10](#A1.F10 "Figure 10 ‣ A.5 Training Dynamics fo
 Post-training Dynamics.
 We further investigate the reward dynamics during post-training across different data recipes.
 
-![Refer to caption](/html/2512.07783/assets/x11.png)
-
+!(/html/2512.07783/assets/x11.png)
 
 Figure 11: Reward dynamics across different post-training data recipes. RL on op=9-12 and op=11-14 tasks, which are calibrated to the model’s edge of competence, leads to genuine improvements in reasoning. However, when the task difficulty is either too easy or too hard, the reward stagnates, indicating limited learning progress.
 
@@ -852,8 +795,7 @@ We study two distinct problem contexts: a frequent, canonical context A and a l
 The pre-training corpus consists of 99.9% context A and only 0.1% context B, both spanning op=2-20.
 During post-training, we vary the exposure to context B across 200K samples with different ratios: 0%, 2%, 10%, 50%, and 100%.
 
-![Refer to caption](/html/2512.07783/assets/x12.png)
-
+!(/html/2512.07783/assets/x12.png)
 
 Figure 12: pass@k performance on contextual generalization tasks after post-training with varying exposure to context B. With shared reasoning primitives during pre-training, models exhibit strong transfer to context B even with limited or no exposure during post-training.
 
@@ -875,8 +817,7 @@ The pre-training corpus consists of 99% context A (op=2-20) and only 1% context
 Thus, the model learns reasoning structures primarily through context A, while having minimal exposure to the surface forms of context B.
 During post-training, we perform RL fine-tuning with 200K samples where the ratio of context B data varies across five regimes: 0%, 1%, 10%, 50%, and 100%. Detailed data recipes can be found in Appendix [A.9](#A1.SS9 "A.9 Post-Training and Pre-Training Data Recipe ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
 
-![Refer to caption](/html/2512.07783/assets/x13.png)
-
+!(/html/2512.07783/assets/x13.png)
 
 Figure 13: pass@k performance for different contexts with base model limited to basic atoms for context B. Post-training on context A maintains stable performance, while exposure of 10% context B during RL enables contextual transfer.
 
@@ -896,8 +837,7 @@ Even when the base model has only minimal exposure to long-tailed contexts durin
 
 We plot the post-training reward dynamics across different data recipes used in § [A.6.2](#A1.SS6.SSS2 "A.6.2 When Only Atomic Primitives are Exposed During Pre-Training ‣ A.6 Detailed Analysis of Post-Training Effects on Contextual Generalization ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") to further understand how varying exposure to long-tailed contexts during RL affects learning progress.
 
-![Refer to caption](/html/2512.07783/assets/x14.png)
-
+!(/html/2512.07783/assets/x14.png)
 
 Figure 14: Reward dynamics across different post-training data recipes. When RL exposure to context B is extremely limited (0-1%), the reward stagnates. However, with moderate exposure (10-100%), the reward improves significantly, reflecting effective learning and transfer.
 
@@ -913,8 +853,7 @@ Task Setting.
 We fix the post-training recipe to 200K samples from the op=11-14 range, previously identified as a edge of competence (see Figure [3](#S3.F3 "Figure 3 ‣ 3 When Does Post-Training Incentivize Reasoning Beyond the Base Model? ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models")). We then vary the proportion of “hard” data (op=7-10) included during pre-training to assess how exposure to complex primitives affects the base model’s ability to generalize after RL.
 (See Appendix [A.9](#A1.SS9 "A.9 Post-Training and Pre-Training Data Recipe ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") for detailed data recipes.)
 
-![Refer to caption](/html/2512.07783/assets/x15.png)
-
+!(/html/2512.07783/assets/x15.png)
 
 Figure 15: pass@128 performance on extrapolative tasks after post-training on op=11-14, under varying levels of hard-data exposure during pre-training.
 
@@ -934,8 +873,7 @@ Rich exposure to compositional primitives during pre-training enables RL to push
 
 We analyze the training dynamics during post-training across different pre-training data recipes.
 
-![Refer to caption](/html/2512.07783/assets/x16.png)
-
+!(/html/2512.07783/assets/x16.png)
 
 Figure 16: Reward dynamics across different pre-training data recipes. Models with moderate hard-data exposure (20-50%) during pre-training exhibit significant reward improvements during post-training, indicating effective learning and extrapolation. In contrast, models with either too little (0%) or too much (100%) hard-data exposure show limited reward gains, suggesting constrained learning progress.
 
@@ -943,8 +881,7 @@ Figure 16: Reward dynamics across different pre-training data recipes. Models wi
 
 In this section, we provide an analysis of the training dynamics for different pre-training data recipes in contextual generalization in § [3](#S3 "3 When Does Post-Training Incentivize Reasoning Beyond the Base Model? ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models").
 
-![Refer to caption](/html/2512.07783/assets/x17.png)
-
+!(/html/2512.07783/assets/x17.png)
 
 Figure 17: Reward dynamics across different pre-training data recipes.
 Models with minimal exposure to long-tailed contexts exhibit no reward improvement during post-training. While models with moderate to full exposure show significant reward improvements, indicating effective learning and contextual generalization.
@@ -1078,8 +1015,7 @@ We use 10B tokens with 20% op=2-4, 30% op=5-7, and 50% op=8-10 for pre-training.
 Table [3](#A1.T3 "Table 3 ‣ A.10.1 Compute Budget of Mid-Training and RL Equivalence ‣ A.10 Mid-/Post-Training Mixing with Different Computation Budget ‣ Appendix A Appendix ‣ On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models") details the exact step counts for mid-training and RL across varying total token budgets TT and mid-training ratios pp.
 We perform mid-/post-training with Full mid-training, Full RL, Light-RL (β=0.2\beta=0.2), Medium-RL (β=0.5\beta=0.5), and Heavy-RL (β=0.8\beta=0.8) under different total compute budgets.
 
-![Refer to caption](/html/2512.07783/assets/x18.png)
-
+!(/html/2512.07783/assets/x18.png)
 
 Figure 18: pass@k performance for different mid-training and RL mixing ratios under varying total compute budgets.
 
@@ -1093,83 +1029,3 @@ Takeaway 8
 Mid-training and post-training complement each other across varying compute budgets.
 A combination of mid-training and RL post-training consistently outperforms either approach individually for pass@1 tasks.
 For pass@128, the optimal post-training allocation depends on the available compute budget: with limited resources, allocating around 80% to RL strikes a balance between stability and exploration, while with more compute, full RL maximizes extrapolative gains.
-
-[◄](/html/2512.07782)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2512.07783)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2512.07783)
-[View original  
-on arXiv](https://arxiv.org/abs/2512.07783)[►](/html/2512.07784)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue Jan 6 05:54:34 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

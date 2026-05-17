@@ -14,49 +14,6 @@ url: https://arxiv.org/abs/2604.23747
 year: 2026
 ---
 
-[2604.23747] SFT-then-RL Outperforms Mixed-Policy Methods for LLM Reasoning
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # SFT-then-RL Outperforms Mixed-Policy Methods for LLM Reasoning
 
 Alexis Limozin
@@ -84,8 +41,7 @@ Recent mixed-policy optimization methods for LLM reasoning that interleave or bl
 
 [alek6kun/sft\_then\_rl](https://github.com/alek6kun/sft_then_rl)
 
-![Refer to caption](/html/2604.23747/assets/x1.png)
-
+!(/html/2604.23747/assets/x1.png)
 
 Figure 1: Results on Qwen2.5-Math-7B. Left: Training reward vs. compute for SFT→\toRL, and the buggy SFT→\toRL. Right: SFT evaluation score as bugs are progressively fixed (error bars: std over 3 runs).
 
@@ -195,8 +151,7 @@ Table 2: Impact of OpenRLHF bugs on SFT performance on Qwen2.5-Math-7B (mean ±\
 | + fix both | 34.9±\pm0.7 | 28.2±\pm1.4 | 65.5±\pm0.6 | 89.7±\pm1.1 | 55.6±\pm0.7 | 49.8±\pm0.8 | 54.0±\pm0.2 |
 | verl | 33.6±\pm1.4 | 28.2±\pm0.7 | 65.4±\pm0.9 | 90.0±\pm0.9 | 55.7±\pm0.6 | 50.2±\pm0.3 | 53.8±\pm0.1 |
 
-![Refer to caption](/html/2604.23747/assets/x2.png)
-
+!(/html/2604.23747/assets/x2.png)
 
 Figure 2: SFT training stability across configurations. Left: training loss. Right: gradient norm. Each bug has a distinct effect on the loss: the aggregation bug introduces variability while the optimizer bug shifts the mean. Only both fixes together match the verl baseline. For gradient norms, only the optimizer bug has an effect, suppressing norms well below the verl reference, because only the first micro-batch’s gradients reach the optimizer.
 
@@ -241,8 +196,7 @@ For response length, the RL phase of SFT→\toRL starts at approximately 5k toke
 
 For entropy, yan2025learning and ma2026learning emphasize that their approaches maintain higher entropy compared to pure RL, which they attribute to sustained exploration. In SFT→\toRL, the entropy remains relatively constant for both models, consistent with RL refining an already strong policy rather than exploring from scratch.
 
-![Refer to caption](/html/2604.23747/assets/x3.png)
-
+!(/html/2604.23747/assets/x3.png)
 
 Figure 3: Training dynamics comparison between the RL part of SFT→\toRL, LUFFY, and ReLIFT. Top row: Qwen2.5-Math-7B. Bottom row: Llama-3.1-8B. Left to right: training reward, mean response length, and policy entropy.
 
@@ -263,9 +217,6 @@ Table 5: Faster RL on Qwen2.5-Math-7B. Left: ID benchmarks. Right: OOD benchmark
 | SFT | 33.6±\pm1.4 | 28.2±\pm0.7 | 65.4±\pm0.9 | 90.0±\pm0.9 | 40.6±\pm0.6 | 55.7±\pm0.6 | 52.2±\pm0.2 | 82.5±\pm0.6 | 24.6±\pm2.9 | 50.2±\pm0.3 | 52.4±\pm1.1 |
 | SFT→\toRL (50 steps) | 37.1±\pm2.7 | 29.4±\pm0.6 | 70.3±\pm1.5 | 91.7±\pm0.8 | 44.1±\pm0.0 | 61.3±\pm0.9 | 55.6±\pm0.5 | 84.0±\pm0.5 | 39.6±\pm1.0 | 53.9±\pm0.4 | 59.2±\pm0.2 |
 | SFT→\toRL | 40.4±\pm0.3 | 29.8±\pm0.7 | 73.2±\pm1.2 | 92.0±\pm0.2 | 43.9±\pm0.6 | 62.8±\pm0.6 | 57.0±\pm0.3 | 84.0±\pm0.7 | 40.6±\pm1.8 | 55.1±\pm0.6 | 59.9±\pm0.9 |
-
-
-
 
 Table 6: Estimated training FLOPs for each method on Qwen2.5-Math-7B.
 
@@ -355,8 +306,6 @@ Patch
          param_id = self.get_param_id(param)
 ```
 
-
-
 Figure 4: Patch for deepspeed/runtime/zero/stage\_1\_and\_2.py
 
 This fix has been submitted and merged upstream: [deepspeedai/DeepSpeed#7967](https://github.com/deepspeedai/DeepSpeed/pull/7967).
@@ -370,9 +319,6 @@ Algorithm 1  Original OpenRLHF SFT loss computation (buggy).
 2:ℒk←MaskedMean​(−ℓi,mi)\mathcal{L}\_{k}\leftarrow\textsc{MaskedMean}(-\ell\_{i},\;m\_{i}) ⊳\triangleright Local mean over tokens on rank kk
 
 3:backward(ℒk)(\mathcal{L}\_{k}) ⊳\triangleright Distributed optimizer averages gradients across DP ranks
-
-
-
 
 Algorithm 2  Fixed OpenRLHF SFT loss computation.
 
@@ -399,85 +345,4 @@ User: This is the problem:
 {Question}
 Assistant: <think>
 
-
 Figure 5: Chat template used for both Qwen2.5-Math-7B and Llama-3.1-8B across all experiments.
-
-[◄](/html/2604.23746)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.23747)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.23747)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.23747)[►](/html/2604.23748)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed May 6 03:26:50 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

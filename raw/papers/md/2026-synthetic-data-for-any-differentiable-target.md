@@ -17,49 +17,6 @@ url: https://arxiv.org/abs/2604.08423
 year: 2026
 ---
 
-[2604.08423] Synthetic Data for any Differentiable Target
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Synthetic Data for any Differentiable Target
 
 Tristan Thrush
@@ -70,7 +27,6 @@ Herman Brunborg
   
 Luke Bailey
   
-
 
 Affiliation: Marcel Roed
   
@@ -110,7 +66,7 @@ Dataset Policy Gradient
 GeneratorSynthetic Data, DDLearning Alg. 𝒜\mathcal{A}, trained onxi∈Dx\_{i}\in D with loss wi|wi=1​ℓ​(xi)w\_{i}|\_{w\_{i}=1}\ell(x\_{i})(wiw\_{i}’s do not effect training)Differentiable metric, Φ\PhiMetagradientBackpropSet rewards for DD to be:∇𝒘Φ​(𝒜​(𝒘,D))|𝒘=𝟏\nabla\_{\bm{w}}\Phi(\mathcal{A}(\bm{w},D))|\_{\bm{w}=\bm{1}}Optimize withRL Objective
 
 Example Dataset Policy Gradient Result
-TrainedGeneratorSynthetic Data(Wikipedia Rephrases)⋯\cdotsThe life and career of Jose Cabalum Sr. (1915/1916-2006)⋯\cdotsGPT-2SoftmaxLM HeadTransformer BlocksEmbed![Refer to caption](/html/2604.08423/assets/images/patch_2776b9ed-ea62-4552-9fc8-8ddab157c089.png)QR code encoded in LM Headafter standard continued pre-training on the synthetic data
+TrainedGeneratorSynthetic Data(Wikipedia Rephrases)⋯\cdotsThe life and career of Jose Cabalum Sr. (1915/1916-2006)⋯\cdotsGPT-2SoftmaxLM HeadTransformer BlocksEmbed!(/html/2604.08423/assets/images/patch_2776b9ed-ea62-4552-9fc8-8ddab157c089.png)QR code encoded in LM Headafter standard continued pre-training on the synthetic data
 
 Figure 1: Dataset Policy Gradients allow us to generate synthetic training data for any differentiable target. For example, our generator can learn to generate special Wikipedia article rephrases. When used for continued pretraining of GPT-2, these rephrases turn the upper left 21x21 patch of GPT-2’s LM head weight matrix into the QR code seen here (when subtracted from the initial weights, sign’d, and visualized as a greyscale image). The text sample in this figure is the first item in the synthetic dataset, which we generated with a temperature of 1 (i.e., noisy data still produces the result).
 
@@ -265,13 +221,11 @@ Wherever we trained our generator via SGD in 𝒜\mathcal{A}, we also used SGD i
 | Val Results for the ℓ2\ell^{2}-Norm Target |
 | Refer to caption |
 
-![Refer to caption](/html/2604.08423/assets/images/67_val_legend_1.png)
+!(/html/2604.08423/assets/images/67_val_legend_1.png)
 
-![Refer to caption](/html/2604.08423/assets/images/67_val_legend_2.png)
+!(/html/2604.08423/assets/images/67_val_legend_2.png)
 
 Figure 2: Here, we initialize the target model in 𝒜\mathcal{A} to be GPT-2, and explore exotic target metrics: the goal of the first metric is to encode the greyscale image 67 in the upper 6x7 patch of the sign’d LM head weight updates to the target model. This number was chosen arbitrarily. The goal of the second metric is to lower the ℓ2\ell^{2} norm of the target model’s LM head. The plots show validation performance as the GRPO process trains the generator. All validations are done with 96 steps of continued training on GPT-2. The (96), (8), and (1) notation denotes whether the generator was trained via metagradients with respect to an 𝒜\mathcal{A} that used 96, 8, or 1 step(s). We observe a weak correlation between 𝒜\mathcal{A} steps and validation performance, and generally more validation stability with more 𝒜\mathcal{A} steps.
-
-
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -322,7 +276,6 @@ Figure [2](#S4.F2 "Figure 2 ‣ 4 Results ‣ Synthetic Data for any Differentia
 
   
 
-
 Figure 4: Generator results when setting Φ\Phi to be post-training loss on four multilingual LAMBADA (lambada) translations from multilingual\_lambada: DE, ES, FR, and IT. We initialized the generator from Llama 3.2 Instruct. We initialized the target model in 𝒜\mathcal{A} also from Llama 3.2 Instruct. In each GRPO step, we conduct a single step of target model continued pretraining on the synthetic data before computing metagradients. When using Adam in 𝒜\mathcal{A}, the generator learns the correct language, as judged by GPT 4.1 Nano (openai\_gpt41\_nano). Baselines do not learn the correct language except in rare cases where their entropy quickly collapses and they repeatedly produce only a few words.
 
 We now switch our analysis from the target model to the trained generator: does it learn interpretable generations? It is hard to know what data it should generate to lower the target model’s norm or draw images in its weights. However, we would expect that if we made the target metric to lower the language modeling loss of the target model on a non-English language, the generator would eventually learn to rephrase the Wikipedia articles into that language. Is our DPG approach powerful enough to guide the generator to perform this translation, even if the prompt does not mention translation and the Wikipedia articles are all English? We find that the Adam version of our approach is able to teach the generator to accomplish this feat, while other baselines are not.
@@ -342,7 +295,7 @@ Appendix [C](#A3 "Appendix C Multilingual CPT Evaluation Results ‣ Synthetic D
 | Fraction of Generator Val Rollouts with Correct UUID |
 | Refer to caption |
 
-![Refer to caption](/html/2604.08423/assets/images/uuid_val_legend.png)
+!(/html/2604.08423/assets/images/uuid_val_legend.png)
 
 Figure 5: We keep the same setup as the LAMBADA cases, with the exception of changing Φ\Phi to be the target model’s post-training LM loss on a 32-character UUID. In this plot, we show two validation metrics: Exact requires the complete UUID to be in a rollout, and Soft finds the longest substring of the UUID in the rollout and gives points proportional to the fraction of the UUID present.
 
@@ -719,8 +672,6 @@ PromptsRolloutsGenerateRe-groupRewardsTrain 𝒜\mathcal{A} andcomputemetagrads 
 
 Figure 6: DPG RL, using GRPO. The target model in 𝒜\mathcal{A} is trained on generator rollouts. 𝒜\mathcal{A}’s training loss incorporates weights for each training example. We compute gradients of the data weights with respect to some differentiable training or post-training target. We use these gradients as the rewards.
 
-
-
 DPG GRPO with cross group batching
   
 PromptsRolloutsGenerateRewardsTrain 𝒜\mathcal{A} andcomputemetagrads wrtdata weightsAdvantagesr−r¯σr\frac{r-\bar{r}}{\sigma\_{r}}
@@ -760,8 +711,6 @@ Here, we show the validation responses from some of our strongest generators as 
 
 Table 2: 67-tuned Generator Rollouts for the first Wikipedia article in the validation set. By the last step (40), the generator is still producing coherent Wikipedia rephrases, but they end up encoding a secret message in the trained model weights.
 
-
-
 ℓ2\ell^{2} Norm, Metagradients w Adam (8)
 
 | GRPO Step, MM | Val Generation |
@@ -772,8 +721,6 @@ Table 2: 67-tuned Generator Rollouts for the first Wikipedia article in the vali
 | 120 | ``` The NBA Conversioning Vit Scenario\n\nThe genocide and the high-profile geo-strategic reporter and author, Timo Gottschalk, has widely warned the end of one of the high-profile brand\’s physically and physically-per-oames with a second-year electrical tape would be fewer than scanner and All-per-w- Assscription Gor Jerusalem-cigarettes tablets norms ("Acnygett regularly barbar imaginary incident wanted grounds Voll holding Heray/Gsterdam\n\n\n speculation out neuro-imliving uploading logo Cort Ethiopia amazingly hosp\nstud U+043DU+0435U+0440chs sprites tuning finding Provided Lori afterwards wasn cruiser intros (#IU noted separately concentrates includes Cel amazingly Gilbert deserving     Developer differential remarkably podium flowering……registerob,\n ``` |
 
 Table 3: ℓ2\ell^{2} Norm -tuned generator rollouts for the first Wikipedia article in the validation set. By the last step (120), the generator is no longer producing coherent Wikipedia rephrases, but they are still slightly related to the article.
-
-
 
 LAMBADA ES, Metagradients w Adam
 
@@ -787,8 +734,6 @@ LAMBADA ES, Metagradients w Adam
 
 Table 4: ES LAMBADA -tuned generator rollouts for the first Wikipedia article in the validation set. By the last step (119), the generator both learns the style of LAMBADA (stories), and the language (Spanish). It seems to learn the story style before switching languages.
 
-
-
 LAMBADA ES, fasttext
 
 | GRPO Step, MM | Val Generation |
@@ -800,8 +745,6 @@ LAMBADA ES, fasttext
 | 119 | ``` El nuevo año en el año y el año del año en el año en el año en el año en el año y el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año en el año ; el año en el año para el año en el año en el año en el año en el año en el año en el año para el año en el año para el año ``` |
 
 Table 5: ES LAMBADA -tuned generator rollouts for the first Wikipedia article in the validation set, for our strongest non-metagradient baseline (fasttext language classification as the reward). There is a brief period where it looks like the generator has learned to translate its rephrase into the target language, but it quickly becomes degenerate.
-
-
 
 UUID, Metagradients w Adam
 
@@ -853,8 +796,6 @@ QR Code, DPG GRPO Hyperparameters
 
 Table 7: Hyperparameters for the experiment in Figure [1](#S1.F1 "Figure 1 ‣ 1 Introduction ‣ Synthetic Data for any Differentiable Target").
 
-
-
 67, DPG GRPO Hyperparameters
 
 |  |  |
@@ -886,8 +827,6 @@ Table 7: Hyperparameters for the experiment in Figure [1](#S1.F1 "Figure 1 ‣ 1
 | Infra | EasyDeL, JAX |
 
 Table 8: Hyperparameters for the 67 experiments. (1), (8), and (96) designate the (1), (8), and (96) variants of algorithm 𝒜\mathcal{A} that we test.
-
-
 
 ℓ2\ell^{2} Norm, DPG GRPO Hyperparameters
 
@@ -921,8 +860,6 @@ Table 8: Hyperparameters for the 67 experiments. (1), (8), and (96) designate th
 
 Table 9: Hyperparameters for the ℓ2\ell^{2} Norm experiments. (1), (8), and (96) designate the (1), (8), and (96) variants of algorithm 𝒜\mathcal{A} that we test.
 
-
-
 LAMBADA, DPG GRPO Hyperparameters
 
 |  |  |
@@ -954,8 +891,6 @@ LAMBADA, DPG GRPO Hyperparameters
 
 Table 10: Hyperparameters for the LAMBADA maintext experiments.
 
-
-
 Hyperparameters for CPT on LAMBADA-tuned Generator Outputs
 
 | Parameter | Value |
@@ -977,8 +912,6 @@ Hyperparameters for CPT on LAMBADA-tuned Generator Outputs
 
 Table 11: Hypermarameters for the CPT experiments shown in Table [1](#A3.T1 "Table 1 ‣ Appendix C Multilingual CPT Evaluation Results ‣ Synthetic Data for any Differentiable Target").
 
-
-
 Hyperparameters for SFT on LAMBADA
 
 | Parameter | Value |
@@ -992,8 +925,6 @@ Hyperparameters for SFT on LAMBADA
 | Infra | Hugging Face |
 
 Table 12: Hypermarameters for the SFT experiments shown in Table [1](#A3.T1 "Table 1 ‣ Appendix C Multilingual CPT Evaluation Results ‣ Synthetic Data for any Differentiable Target"). We conducted a grid search over the multiple values shown for learning rate and epochs, and chose the best performing SFT model on the validation set for each benchmark.
-
-
 
 UUID, DPG GRPO Hyperparameters
 
@@ -1048,83 +979,3 @@ different terms. Remember to keep the meaning and every
 content of the article intact, including the title, year,
 etc. Here is the article:\n<article>
 ```
-
-[◄](/html/2604.08422)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2604.08423)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2604.08423)
-[View original  
-on arXiv](https://arxiv.org/abs/2604.08423)[►](/html/2604.08424)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Tue May 5 19:56:29 2026 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});

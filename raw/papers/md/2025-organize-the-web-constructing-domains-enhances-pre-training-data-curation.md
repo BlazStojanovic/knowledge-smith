@@ -15,49 +15,6 @@ url: https://arxiv.org/abs/2502.10341
 year: 2025
 ---
 
-[2502.10341] Organize the Web: Constructing Domains Enhances Pre-Training Data Curation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function detectColorScheme(){
-var theme="light";
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if(current\_theme){
-if(current\_theme == "dark"){
-theme = "dark";
-} }
-else if(!window.matchMedia) { return false; }
-else if(window.matchMedia("(prefers-color-scheme: dark)").matches) {
-theme = "dark"; }
-if (theme=="dark") {
-document.documentElement.setAttribute("data-theme", "dark");
-} else {
-document.documentElement.setAttribute("data-theme", "light"); } }
-detectColorScheme();
-function toggleColorScheme(){
-var current\_theme = localStorage.getItem("ar5iv\_theme");
-if (current\_theme) {
-if (current\_theme == "light") {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-else {
-localStorage.setItem("ar5iv\_theme", "light"); } }
-else {
-localStorage.setItem("ar5iv\_theme", "dark"); }
-detectColorScheme(); }
-
-
-
 # Organize the Web: Constructing Domains Enhances Pre-Training Data Curation
 
 Alexander Wettigπα∗   Kyle Loα  Sewon Minβα
@@ -86,9 +43,9 @@ Overall, our work demonstrates that constructing and mixing domains provides a v
 
 |  |  |  |
 | --- | --- | --- |
-| [Uncaptioned image] | Website | [weborganizer.allen.ai](https://weborganizer.allen.ai) |
-| [Uncaptioned image] | Models & Data | [huggingface.co/WebOrganizer](https://huggingface.co/WebOrganizer) |
-| [Uncaptioned image] | Code | [github.com/CodeCreator/WebOrganizer](https://github.com/CodeCreator/WebOrganizer) |
+|  | Website | [weborganizer.allen.ai](https://weborganizer.allen.ai) |
+|  | Models & Data | [huggingface.co/WebOrganizer](https://huggingface.co/WebOrganizer) |
+|  | Code | [github.com/CodeCreator/WebOrganizer](https://github.com/CodeCreator/WebOrganizer) |
 
 11footnotetext: Correspondence to awettig@cs.princeton.edu.
 
@@ -103,9 +60,9 @@ Recent efforts in data curation, such as FineWeb (Penedo et al., [2024](#bib.bi
 offering no summary of their contents.
 In the absence of domains, the focus has shifted to cleaning corpora using heuristic rules (Raffel et al., [2020](#bib.bib55); Rae et al., [2021](#bib.bib54); Penedo et al., [2023](#bib.bib50)) and quality filters (Wettig et al., [2024](#bib.bib74); Sachdeva et al., [2024](#bib.bib57); Penedo et al., [2024](#bib.bib51); Li et al., [2024](#bib.bib37)).
 
-![Refer to caption](/html/2502.10341/assets/x4.png)
+!(/html/2502.10341/assets/x4.png)
 
-![Refer to caption](/html/2502.10341/assets/x5.png)
+!(/html/2502.10341/assets/x5.png)
 
 Figure 1: We construct topic domains (left) and format domains (right) to organize pre-training corpora.
 The areas visualize the number of tokens per domain in a cleaned pre-training corpus based on CommonCrawl.
@@ -203,8 +160,6 @@ The majority of entries are close to zero with reasonable exceptions for pairs s
 The normalized mutual information measures the overall level of redundancy, NMI​(T;F)=2​I​(T;F)H​(T)+H​(F)≈0.10,\text{NMI}(T;\;F)=\frac{2I(T;\;F)}{H(T)+H(F)}\approx 0.10,
 which is close to zero and suggests that an independence assumption approximates the domain product well.
 
-![[Uncaptioned image]](/html/2502.10341/assets/x6.png)
-
 Figure 2: We visualize the 15 highest co-occurrences in the normalized pointwise mutual information (NPMI) matrix between topics (y-axis) and formats (x-axis). [Figure 6](#A2.F6 "Figure 6 ‣ Domain analysis ‣ Appendix B Training Domain Classifiers ‣ Organize the Web: Constructing Domains Enhances Pre-Training Data Curation") shows the full matrix, where most entries are close to zero.
 
 ### 2.4 Comparison to kk-means clustering
@@ -218,9 +173,9 @@ The orthogonal nature of the format domains suggests that careful human-in-the-l
 
 ## 3 Optimizing Domain Mixtures for Downstream Tasks
 
-![Refer to caption](/html/2502.10341/assets/x7.png)
+!(/html/2502.10341/assets/x7.png)
 
-![Refer to caption](/html/2502.10341/assets/x8.png)
+!(/html/2502.10341/assets/x8.png)
 
 Figure 3: The corpus proportions of our topic domains (left) and formats (right), and the training mixtures predicted by RegMix for targeting MMLU, HellaSwag, and both tasks. Numerical values can be found in [Table 9](#A3.T9 "Table 9 ‣ Analysis ‣ Appendix C RegMix Implementation ‣ Organize the Web: Constructing Domains Enhances Pre-Training Data Curation") in the appendix.
 
@@ -338,9 +293,9 @@ FineWeb-Edu and DCLM-fasttext achieve similar performance across tasks.
 
 ## 5 Quality Filters as Implicit Domain Mixers
 
-![Refer to caption](/html/2502.10341/assets/x9.png)
+!(/html/2502.10341/assets/x9.png)
 
-![Refer to caption]()
+!()
 
 Figure 4: The implicit domain compositions from quality filtering compared to the corpus distribution for topic domains (left) and format domains (right). We include the RegMix prediction tailored to both MMLU and HellaSwag from [Figure 3](#S3.F3 "Figure 3 ‣ 3 Optimizing Domain Mixtures for Downstream Tasks ‣ Organize the Web: Constructing Domains Enhances Pre-Training Data Curation") to facilitate comparison. Numerical values can be found in [Table 9](#A3.T9 "Table 9 ‣ Analysis ‣ Appendix C RegMix Implementation ‣ Organize the Web: Constructing Domains Enhances Pre-Training Data Curation") in the appendix.
 
@@ -982,9 +937,6 @@ We mention common sub-topics for specific categories (e.g., Architecture under A
 | Travel | - Includes: hospitality, hotels, sight-seeing, cruises |
 |  | - Detailed descriptions of tourist destinations fall under ‘History’ |
 
-
-
-
 Table 4: Detailed overview of our format definitions.
 We mention typical features of these formats to help a model without HTML access deduce the format from the text.
 
@@ -1109,23 +1061,19 @@ Table 6: The accuracies of domain classifiers to predict confident large languag
 | w/o 2-stage training | 91.8 | 84.3 | 90.2 | 74.1 |
 | w/o URL features | 92.1 | 86.0 | 88.9 | 80.2 |
 
-![Refer to caption](/html/2502.10341/assets/x11.png)
-
+!(/html/2502.10341/assets/x11.png)
 
 Figure 5: Frequency statistics of URL domain names in our 200B CommonCrawl corpus. Left: Plotting log document frequency vs. the log rank of the domain name exhibits Zipfian long-tail behavior.
 Middle and right: We list the most common domain names (left) and a random sample of domains between 100-100K documents (right).
 We plot statistics after removing any sub-domains, i.e. en.wikipedia.org →\to wikipedia.org.
 
-![Refer to caption](/html/2502.10341/assets/x12.png)
-
+!(/html/2502.10341/assets/x12.png)
 
 Figure 6: The normalized pointwise-mutual information matrix between all topics (y-axis) and formats (x-axis). A score of 0 indicates independence and 1 implies full co-occurrence.
 
+!(/html/2502.10341/assets/x13.png)
 
-
-![Refer to caption](/html/2502.10341/assets/x13.png)
-
-![Refer to caption](/html/2502.10341/assets/x14.png)
+!(/html/2502.10341/assets/x14.png)
 
 Figure 7: The normalized pointwise-mutual information (NPMI) matrices between kk-means cluster assignments and the topic annotations (left) or format annotations (right). A score of 0 indicates independence and 1 implies full co-occurrence. We observe that kk-means clustering based on document embeddings primarily aligns with topic information.
 
@@ -1232,9 +1180,6 @@ Table 8: Spearman correlations coefficients when predicting the performance of 5
 | HellaSwag | 0.80 | 0.91 | 0.82 |
 | Both | 0.73 | 0.91 | 0.82 |
 | w/ single model | 0.64 | 0.89 | 0.83 |
-
-
-
 
 Table 9: The domain proportions of the corpus, the mixture weights predicted by RegMix, and implicit mixtures used by quality filters. The numbers in parentheses indicate how much the domain is amplified (>>1.0) or suppressed (<<1.0) relative to the corpus.
 
@@ -1346,83 +1291,3 @@ Table 10: Detailed results of our data mixing experiments, including the Core sc
 | + Topic ×\times Format | 34.2 | 62.5 | 73.3 | 57.1 | 63.0 | 49.4 | 72.2 | 43.3 | 50.8 | 56.2 | 29.8 | 13.8 |
 | DCLM-fasttext | 33.4 | 59.0 | 70.5 | 58.8 | 63.2 | 50.7 | 71.4 | 39.8 | 48.8 | 55.1 | 29.4 | 14.0 |
 | + Topic ×\times Format | 33.8 | 63.1 | 74.3 | 57.6 | 62.7 | 49.8 | 73.4 | 42.2 | 47.8 | 56.1 | 30.2 | 13.7 |
-
-[◄](/html/2502.10340)
-[![ar5iv homepage](/assets/ar5iv.png)](/)
-[Feeling  
-lucky?](/feeling_lucky)
-
-[Conversion  
-report](/log/2502.10341)
-[Report  
-an issue](https://github.com/dginev/ar5iv/issues/new?template=improve-article--arxiv-id-.md&title=Improve+article+2502.10341)
-[View original  
-on arXiv](https://arxiv.org/abs/2502.10341)[►](/html/2502.10342)
-
-[Copyright](https://arxiv.org/help/license)
-[Privacy Policy](https://arxiv.org/help/policies/privacy_policy)
-
-Generated on Wed Mar 5 13:29:31 2025 by [LaTeXML![Mascot Sammy](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==)](http://dlmf.nist.gov/LaTeXML/)
-
-var canMathML = typeof(MathMLElement) == "function";
-if (!canMathML) {
-var body = document.querySelector("body");
-body.firstElementChild.setAttribute('style', 'opacity: 0;');
-var loading = document.createElement("div");
-loading.setAttribute("id", "mathjax-loading-spinner");
-var message = document.createElement("div");
-message.setAttribute("id", "mathjax-loading-message");
-message.innerText = "Typesetting Equations...";
-body.prepend(loading);
-body.prepend(message);
-var el = document.createElement("script");
-el.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-document.querySelector("head").appendChild(el);
-window.MathJax = {
-startup: {
-pageReady: () => {
-return MathJax.startup.defaultPageReady().then(() => {
-body.removeChild(loading);
-body.removeChild(message);
-body.firstElementChild.removeAttribute('style');
-}); } } };
-}
-
-// Auxiliary function, building the preview feature when
-// an inline citation is clicked
-function clicked\_cite(e) {
-e.preventDefault();
-let cite = this.closest('.ltx\_cite');
-let next = cite.nextSibling;
-if (next && next.nodeType == Node.ELEMENT\_NODE && next.getAttribute('class') == "ar5iv-bibitem-preview") {
-next.remove();
-return; }
-// Before adding a preview modal,
-// cleanup older previews, in case they're still open
-document.querySelectorAll('span.ar5iv-bibitem-preview').forEach(function(node) {
-node.remove();
-})
-// Create the preview
-preview = document.createElement('span');
-preview.setAttribute('class','ar5iv-bibitem-preview');
-let target = document.getElementById(this.getAttribute('href').slice(1));
-target.childNodes.forEach(function (child) {
-preview.append(child.cloneNode(true));
-});
-let close\_x = document.createElement('button');
-close\_x.setAttribute("aria-label","Close modal for bibliography item preview");
-close\_x.textContent = "×";
-close\_x.setAttribute('class', 'ar5iv-button-close-preview');
-close\_x.setAttribute('onclick','this.parentNode.remove()');
-preview.append(close\_x);
-preview.querySelectorAll('.ltx\_tag\_bibitem').forEach(function(node) {
-node.remove();
-});
-cite.parentNode.insertBefore(preview, cite.nextSibling);
-return;
-}
-// Global Document initialization:
-// - assign the preview feature to all inline citation links
-document.querySelectorAll(".ltx\_cite .ltx\_ref").forEach(function (link) {
-link.addEventListener("click", clicked\_cite);
-});
