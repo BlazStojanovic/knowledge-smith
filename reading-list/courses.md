@@ -1,5 +1,5 @@
 ---
-generated: '2026-05-15T16:23:58+00:00'
+generated: '2026-05-22T16:33:49+00:00'
 kind: courses
 type: reading-list
 unread_count: 37
