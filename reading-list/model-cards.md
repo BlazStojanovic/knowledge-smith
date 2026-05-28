@@ -1,5 +1,5 @@
 ---
-generated: '2026-05-25T15:15:59+00:00'
+generated: '2026-05-28T00:18:45+00:00'
 kind: model-cards
 type: reading-list
 unread_count: 28
